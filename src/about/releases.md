@@ -30,7 +30,7 @@ Vue does not have a fixed release cycle.
 
 - Patch releases are released as needed.
 
-- Minor releases always contain new features, with a typical time frame of 3~6 months in between. Minor releases always go through a beta pre-release phase.
+- Minor releases always contain new features, with a typical time frame of 3～6 months in between. Minor releases always go through a beta pre-release phase.
 
 - Major releases will be announced ahead of time, and will go through an early discussion phase and alpha / beta pre-release phases.
 

@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build",
-    "serve": "vitepress serve"
+    "serve": "vitepress serve",
+    "lint": "textlint --format pretty-error src/**"
   },
   "dependencies": {
     "@vue/repl": "^1.0.0",
@@ -14,7 +15,10 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^12.2.3",
-    "@types/node": "^16.9.1"
+    "@types/node": "^16.9.1",
+    "textlint": "^12.1.0",
+    "textlint-filter-rule-allowlist": "^4.0.0",
+    "textlint-rule-preset-vuejs-jp": "github:vuejs-jp/textlint-rule-preset-vuejs-jp"
   },
   "pnpm": {
     "peerDependencyRules": {

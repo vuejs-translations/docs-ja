@@ -59,7 +59,7 @@ When you are ready to ship your app to production, run the following:
 
 This will create a production-ready build of your app in the project's `./dist` directory. Check out the [Production Deployment Guide](/guide/best-practices/production-deployment.html) to learn more about shipping your app to production.
 
-[Next Steps >](#next-steps)
+[Next Steps ＞](#next-steps)
 
 ## Without Build Tools
 
