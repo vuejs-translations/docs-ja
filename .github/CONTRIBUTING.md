@@ -7,9 +7,9 @@
 
 ### GitHub Issues にある本家ドキュメントの差分更新内容を翻訳して貢献する
 
-1. [GitHub Issues](https://github.com/vuejs-translations/docs-ja/issues) から、[このクエリ](https://github.com/vuejs-translations/docs-ja/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-asc) でソート & フィルタして、アサインされていない issues 一覧からできるだけ古いものからやりたい issue を選択します
-2. 選択した issue で、「翻訳やります！」的なコメントで宣言します :raising_hand: (`vuejs-translations/docs-ja` のメンテナの方々は、GitHub の assign 機能で self assign で OK です)
-3. このレポジトリ `vuejs-translations/docs-ja` のメンテナから同 issue でコメントで承認されたら、正式に自分が選んだ issue の翻訳担当者としてアサインされたことになります
+1. [GitHub Issues](https://github.com/vuejs-translations/docs-ja/issues) から、[このクエリー](https://github.com/vuejs-translations/docs-ja/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-asc) でソート & フィルターして、アサインされていない issues 一覧からできるだけ古いものからやりたい issue を選択します
+2. 選択した issue で、「翻訳やります！」的なコメントで宣言します :raising_hand: (`vuejs-translations/docs-ja` のメンテナーの方々は、GitHub の assign 機能で self assign で OK です)
+3. このレポジトリ `vuejs-translations/docs-ja` のメンテナーから同 issue でコメントで承認されたら、正式に自分が選んだ issue の翻訳担当者としてアサインされたことになります
 4. このレポジトリをフォークします！
 5. `main` ブランチからトピックブランチを作成します: `git branch my-topic-branch main`
 6. 変更をコミットします: `git commit -am 'Fix some files'`
@@ -33,7 +33,7 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 - [JTF日本語標準スタイルガイド（翻訳用）](https://www.jtf.jp/tips/styleguide) - 基本的な翻訳スタイル。
 - [Microsoft ローカリゼーション スタイル ガイド](https://www.microsoft.com/ja-jp/language/styleguides) - 技術文書におけるスタイル。
 - [textlint-rule-preset-JTF-style](https://github.com/textlint-ja/textlint-rule-preset-JTF-style) - JTF 日本語標準スタイルガイド（翻訳用）の textlint のルールセット。
-- [textlint-rule-preset-vuejs-jp](https://github.com/vuejs-jp/textlint-rule-preset-vuejs-jp) - Vue.js 日本ユーザグループで一部カスタマイズした textlint のルールセット。
+- [textlint-rule-preset-vuejs-jp](https://github.com/vuejs-jp/textlint-rule-preset-vuejs-jp) - Vue.js 日本ユーザーグループで一部カスタマイズした textlint のルールセット。
 
 ## 翻訳のゆらぎ & トーン
 
@@ -43,19 +43,19 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 
 > Vue.js is a library for building modern web interfaces.
 
-- NG : Vue.js はモダンな Web インターフェースを構築するためのライブラリ**である**。
-- OK : Vue.js はモダンな Web インターフェースを構築するためのライブラリ**です**。
+- NG : Vue.js はモダンな Web インターフェースを構築するためのライブラリー**である**。
+- OK : Vue.js はモダンな Web インターフェースを構築するためのライブラリー**です**。
 
 ### 半角スペースでアルファベット両端を入れて読みやすく！
 
 > Vue.js is a library for building modern web interfaces.
 
-- NG : Vue.jsはモダンなWebインターフェースを構築するためのライブラリです。
-- OK : Vue.js はモダンな Web インターフェースを構築するためのライブラリです。
+- NG : Vue.jsはモダンなWebインターフェースを構築するためのライブラリーです。
+- OK : Vue.js はモダンな Web インターフェースを構築するためのライブラリーです。
 
 例外として、句読点の前後にアルファベットがある場合は、スペースを入れなくてもいいです。
 
-- 読点: 技術的に、Vue.js は MVVM パターンの ViewModel レイヤに注目しています。
+- 読点: 技術的に、Vue.js は MVVM パターンの ViewModel レイヤーに注目しています。
 
 ### 原則、一語一句翻訳、ただ日本語として分かりにくい場合は読みやすさを優先
 
@@ -82,7 +82,7 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 ### 単語の統一 (特に技術用語)
 
 - 技術用語は基本英語、ただ日本語で一般的に使われている場合は日本語 OK !!
-  - 例: 英語の filter 、日本語のフィルタ
+  - 例: 英語の filter 、日本語のフィルター
 - 和訳に困った、とりあえず英語
   - 例: expression -> 式、表現
 - 和訳にして分かりづらい場合は、翻訳と英語(どちらかに括弧付け)でも OK
@@ -92,23 +92,7 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 
 ### 長音訳について
 
-原則、**長音なし**で翻訳する。
+原則、**長音あり**で翻訳する。
 
-- NG: コンピューター
-- OK: コンピュータ
-
-ただし、長音なしで訳した場合、**意味が分かりにくいものは、例外として長音あり**で訳してもよいです。
-
-> Pull Request flow
-
-- NG: プルリクエストフロ
-- OK: プルリクエストフロー
-
-#### 長音訳例外リスト
-
-> NOTE: 以下のリストは随時追加していく
-
-- error: エラー
-- throw: スロー
-- flow: フロー
-- ...
+- NG: コンピュータ
+- OK: コンピューター
