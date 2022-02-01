@@ -17,7 +17,7 @@
 8. フォークした自分のレポジトリに Push します: `git push origin my-topic-branch`
 9. 問題がなければ、プルリクエストを `vuejs-translations/docs-ja` の `main` ブランチに送ります
 10. レビュー :eyes: で指摘事項があったら修正し、再度 Push します :pencil:
-11. レビュー :eyes: で OK :ok_woman: ならば、マージされて内容がデプロイされてドキュメントに反映されます！ :tada:
+11. レビュー :eyes: で OK :ok_woman: ならば、マージされて内容がデプロイされてドキュメントに反映されます！　:tada:
 
 #### Tips: より円滑な Pull Request のコメント記載方法
 
@@ -43,14 +43,18 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 
 > Vue.js is a library for building modern web interfaces.
 
+<!-- textlint-disable -->
 - NG : Vue.js はモダンな Web インターフェースを構築するためのライブラリー**である**。
+<!-- textlint-enable -->
 - OK : Vue.js はモダンな Web インターフェースを構築するためのライブラリー**です**。
 
 ### 半角スペースでアルファベット両端を入れて読みやすく！
 
 > Vue.js is a library for building modern web interfaces.
 
+<!-- textlint-disable -->
 - NG : Vue.jsはモダンなWebインターフェースを構築するためのライブラリーです。
+<!-- textlint-enable -->
 - OK : Vue.js はモダンな Web インターフェースを構築するためのライブラリーです。
 
 例外として、句読点の前後にアルファベットがある場合は、スペースを入れなくてもいいです。
