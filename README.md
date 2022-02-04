@@ -1,24 +1,24 @@
-# vuejs.org
+# vuejs.org 日本語ドキュメント
 
-This is the WIP branch of the brand new vuejs.org. **The content is under heavy updates and re-organization so please refrain from submitting PRs to this branch until we have removed this notice.**
+<!-- This is the WIP branch of the brand new vuejs.org. **The content is under heavy updates and re-organization so please refrain from submitting PRs to this branch until we have removed this notice.** -->
 
-## Contributing
+## 貢献する
 
-This site is built with [VitePress](https://github.com/vuejs/vitepress) and depends on [@vue/theme](https://github.com/vuejs/vue-theme). Site content is written in Markdown format located in `src`. For simple edits, you can directly edit the file on GitHub and generate a Pull Request.
+このサイトは [VitePress](https://github.com/vuejs/vitepress) で構築されており、[@vue/theme](https://github.com/vuejs/vue-theme) に依存しています。サイトのコンテンツは `src` にある Markdown フォーマットで書かれています。シンプルな編集であれば、GitHub 上で直接編集して Pull Request を作成できます。
 
-For local development, [pnpm](https://pnpm.io/) is preferred as package manager:
+ローカルでの開発なら、パッケージマネージャーには [pnpm](https://pnpm.io/) が推奨です:
 
 ```bash
 pnpm i
 pnpm run dev
 ```
 
-## Working on the content
+## コンテンツに関する作業
 
-- See VitePress docs on supported [Markdown Extensions](https://vitepress.vuejs.org/guide/markdown.html) and the ability to [use Vue syntax inside markdown](https://vitepress.vuejs.org/guide/using-vue.html).
+- サポートされている [Markdown 拡張](https://vitepress.vuejs.org/guide/markdown.html)や [Markdown 内で Vue 構文を使用する](https://vitepress.vuejs.org/guide/using-vue.html)機能については、VitePress ドキュメントを参照してください。
 
-- See the [Writing Guide](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) for our rules and recommendations on writing and maintaining documentation content.
+- ドキュメントのルールの執筆と維持するためのルールと推奨事項については [Writing Guide](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) を参照してください。
 
-## Working on the theme
+## テーマに関する作業
 
-If changes need to made for the theme, check out the [instructions for developing the theme alongside the docs](https://github.com/vuejs/vue-theme#developing-with-real-content).
+テーマの変更が必要な場合は、[ドキュメントと並行してテーマを開発するための説明書](https://github.com/vuejs/vue-theme#developing-with-real-content)を確認してください。

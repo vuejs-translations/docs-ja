@@ -1,0 +1,18 @@
+name: textlint
+
+on: [push, pull_request]
+
+jobs:
+  textlint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install deps
+      run: npx pnpm i
+    - name: Run textlint
+      run: npm run lint

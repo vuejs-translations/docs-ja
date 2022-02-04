@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "preset-vuejs-jp": {
+      "no-mix-dearu-desumasu": {
+        "strict": false
+      }
+    }
+  },
+  "filters": {
+    "allowlist": {
+      "allow": [
+        "->",
+        ">="
+      ]
+    },
+    "comments": true
+  }
+}
