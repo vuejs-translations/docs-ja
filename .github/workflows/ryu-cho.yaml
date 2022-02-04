@@ -16,7 +16,7 @@ jobs:
           email: ${{ secrets.RYU_CHO_USER_EMAIL }}
           upstream-repo: https://github.com/vuejs-translations/docs-ja.git
           upstream-repo-branch: main
-          head-repo: https://github.com/vuejs/docs.git
+          head-repo: https://github.com/vuejs/docs
           head-repo-branch: main
           track-from: b27e90689cb81114317fda8d6f9099ad4d68590c
           # path-starts-with: src/
