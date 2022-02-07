@@ -464,7 +464,7 @@ const { foo } = object
 {{ foo }} <!-- properly unwrapped -->
 ```
 
-Now `foo` will be wrapped as expected.
+Now `foo` will be unwrapped as expected.
 
 ### Ref Unwrapping in Reactive Objects \*\*
 
