@@ -3,6 +3,7 @@
     "dev": "vitepress",
     "build": "vitepress build",
     "serve": "vitepress serve",
+    "preinstall": "npx only-allow pnpm",
     "lint": "textlint --format pretty-error src/**"
   },
   "dependencies": {
