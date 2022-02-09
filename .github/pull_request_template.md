@@ -1,5 +1,1 @@
-## Description of Problem
-
-## Proposed Solution
-
-## Additional Information
+resolve #000 ←（`000` の部分を実際の issue 番号に書き換えてください）

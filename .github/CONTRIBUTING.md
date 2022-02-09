@@ -5,11 +5,32 @@
 
 ## 貢献方法
 
+### 未翻訳ページを翻訳する
+1. [GitHub Issues](https://github.com/vuejs-translations/docs-ja/issues) のうち、[翻訳募集中](https://github.com/vuejs-translations/docs-ja/issues?q=is%3Aissue+is%3Aopen+label%3A%E7%BF%BB%E8%A8%B3%E5%8B%9F%E9%9B%86%E4%B8%AD)タグのついている issue を探します
+2. 選択した issue の説明文の下にリンクされている「翻訳まとめ」の issue（[#6](https://github.com/vuejs-translations/docs-ja/issues/6) など）で、「〇〇ページの翻訳やります！」などのコメントで宣言します :raising_hand: (`vuejs-translations/docs-ja` のメンテナーの方々は、GitHub の assign 機能で self assign で OK です)
+    - その際、`@vuejs-translations/ja` のメンションをつけてください
+    - まとめ issue で一元管理しているため、ページ翻訳の issue への直接コメントは無効となります
+    - 翻訳希望は一度に 1 つまでとさせていただきます。複数ページ翻訳希望の場合はプルリクエストがマージされてからお願いします
+3. このレポジトリ `vuejs-translations/docs-ja` のメンテナーからページ翻訳の issue でコメントで承認されたら、自分が選んだ issue の翻訳担当者として正式にアサインされたことになります
+    - 翻訳作業は約 2 週間が目安です。やむを得ず遅くなりそうな場合はページ翻訳の issue にてコメントで知らせてください。連絡がない場合はアサインを取り下げる可能性があります
+4. このレポジトリをフォークします！
+    - README に従い、必ずパッケージをインストールしてください（textlint のため）
+5. `main` ブランチからトピックブランチを作成します: `git branch my-topic-branch main`
+6. 変更をコミットします: `git commit -am 'translate guide/introduction.md'`
+7. lint で引っかかる場合は再度修正を行いコミットします
+8. フォークした自分のレポジトリに Push します: `git push origin my-topic-branch`
+    - ページ翻訳中に英語版ドキュメントの変更が反映される場合があります。Push する前に `main` ブランチを取り込み、差分が発生してないか確認してください
+9. 問題がなければ、プルリクエストを `vuejs-translations/docs-ja` の `main` ブランチに送ります
+10. レビュー :eyes: で指摘事項があったら修正し、再度 Push します :pencil:
+11. レビュー :eyes: で OK :ok_woman: ならば、マージされて内容がデプロイされてドキュメントに反映されます！　:tada:
+
+<!-- TODO: 翻訳が進むまでしばらく非表示
 ### GitHub Issues にある本家ドキュメントの差分更新内容を翻訳して貢献する
+説明文が `New updates on head repo.` の issue について
 
 1. [GitHub Issues](https://github.com/vuejs-translations/docs-ja/issues) から、[このクエリー](https://github.com/vuejs-translations/docs-ja/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-asc) でソート & フィルターして、アサインされていない issues 一覧からできるだけ古いものからやりたい issue を選択します
-2. 選択した issue で、「翻訳やります！」的なコメントで宣言します :raising_hand: (`vuejs-translations/docs-ja` のメンテナーの方々は、GitHub の assign 機能で self assign で OK です)
-3. このレポジトリ `vuejs-translations/docs-ja` のメンテナーから同 issue でコメントで承認されたら、正式に自分が選んだ issue の翻訳担当者としてアサインされたことになります
+2. 選択した issue で、「翻訳やります！」などのコメントで宣言します :raising_hand: (`vuejs-translations/docs-ja` のメンテナーの方々は、GitHub の assign 機能で self assign で OK です)
+3. このレポジトリ `vuejs-translations/docs-ja` のメンテナーから同 issue でコメントで承認されたら、自分が選んだ issue の翻訳担当者として正式にアサインされたことになります
 4. このレポジトリをフォークします！
 5. `main` ブランチからトピックブランチを作成します: `git branch my-topic-branch main`
 6. 変更をコミットします: `git commit -am 'Fix some files'`
@@ -18,15 +39,18 @@
 9. 問題がなければ、プルリクエストを `vuejs-translations/docs-ja` の `main` ブランチに送ります
 10. レビュー :eyes: で指摘事項があったら修正し、再度 Push します :pencil:
 11. レビュー :eyes: で OK :ok_woman: ならば、マージされて内容がデプロイされてドキュメントに反映されます！　:tada:
+-->
 
 #### Tips: より円滑な Pull Request のコメント記載方法
 
 GitHub の Pull Request には、特定の記法を Pull Request の本文に書くことによって、該当 Pull Request のマージ時に自動的に対応する Issues をクローズできる機能があります。
 Pull Request を送るときに、余裕があれば "resolve #123" といった形で、該当する Issues の番号を記載されているとレビュアーが非常に助かります :pray:
 
+<!-- TODO: 翻訳が進むまでしばらく非表示
 ### GitHub Issues とは別のものについて貢献する
 
 手順は上記の `4.` 以降と同じです。
+-->
 
 ## 翻訳スタイル
 
@@ -61,7 +85,7 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 
 - 読点: 技術的に、Vue.js は MVVM パターンの ViewModel レイヤーに注目しています。
 
-### 原則、一語一句翻訳、ただ日本語として分かりにくい場合は読みやすさを優先
+### 原則、一語一句翻訳。ただし日本語として分かりにくい場合は読みやすさを優先
 
 > Alternatively, you can bind the directive directly to an Object. The keys of the object will be the list of classes to toggle based on corresponding values.
 
@@ -75,7 +99,7 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 - NG: 例
 - OK: 例:
 
-ただし、文の途中にハイフン `-` やセミコロン `;` がある場合は、その記号があると理解しづらい訳になる場合は、例外として削除してもよいです。
+ただし、文の途中にハイフン `-` やセミコロン `;` があり、その記号があると理解しづらい訳になる場合は、例外として削除してもよいです。
 
 - 原文:
 > Avoid using track-by="$index" in two situations: when your repeated block contains form inputs that can cause the list to re-render; or when you are repeating a component with mutable state in addition to the repeated data being assigned to it.
