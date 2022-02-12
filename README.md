@@ -1,7 +1,5 @@
 # vuejs.org 日本語ドキュメント
 
-<!-- This is the WIP branch of the brand new vuejs.org. **The content is under heavy updates and re-organization so please refrain from submitting PRs to this branch until we have removed this notice.** -->
-
 ## 貢献する
 
 このサイトは [VitePress](https://github.com/vuejs/vitepress) で構築されており、[@vue/theme](https://github.com/vuejs/vue-theme) に依存しています。サイトのコンテンツは `src` にある Markdown フォーマットで書かれています。シンプルな編集であれば、GitHub 上で直接編集して Pull Request を作成できます。
