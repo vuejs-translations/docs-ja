@@ -32,7 +32,7 @@ devDependencies:
   textlint: 12.1.0
   textlint-filter-rule-allowlist: 4.0.0_textlint@12.1.0
   textlint-filter-rule-comments: 1.2.2_textlint@12.1.0
-  textlint-rule-preset-vuejs-jp: github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/b7cbf96a0b1d28184403bfc087da5f855671f0da_textlint@12.1.0
+  textlint-rule-preset-vuejs-jp: github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/d62d64c25aed61a5f7455028b31aca7640181a13_textlint@12.1.0
 
 packages:
 
@@ -3190,9 +3190,9 @@ packages:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
     dev: true
 
-  github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/b7cbf96a0b1d28184403bfc087da5f855671f0da_textlint@12.1.0:
-    resolution: {tarball: https://codeload.github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tar.gz/b7cbf96a0b1d28184403bfc087da5f855671f0da}
-    id: github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/b7cbf96a0b1d28184403bfc087da5f855671f0da
+  github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/d62d64c25aed61a5f7455028b31aca7640181a13_textlint@12.1.0:
+    resolution: {tarball: https://codeload.github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tar.gz/d62d64c25aed61a5f7455028b31aca7640181a13}
+    id: github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/d62d64c25aed61a5f7455028b31aca7640181a13
     name: textlint-rule-preset-vuejs-jp
     version: 1.3.0
     dependencies:
