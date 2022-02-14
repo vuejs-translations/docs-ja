@@ -13,7 +13,7 @@ specifiers:
   textlint-filter-rule-allowlist: ^4.0.0
   textlint-filter-rule-comments: ^1.2.2
   textlint-rule-preset-vuejs-jp: github:vuejs-jp/textlint-rule-preset-vuejs-jp
-  vitepress: ^0.22.1
+  vitepress: ^0.22.2
   vue: ^3.2.31
 
 dependencies:
