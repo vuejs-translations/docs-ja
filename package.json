@@ -15,8 +15,8 @@
     "@vue/theme": "^1.0.1",
     "dynamics.js": "^1.1.5",
     "gsap": "^3.9.0",
-    "vitepress": "^0.21.6",
-    "vue": "^3.2.28"
+    "vitepress": "^0.22.1",
+    "vue": "^3.2.31"
   },
   "devDependencies": {
     "@nexhome/yorkie": "^2.0.8",
