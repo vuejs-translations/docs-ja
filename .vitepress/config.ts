@@ -130,7 +130,7 @@ export const sidebar = {
           link: '/guide/essentials/reactivity-fundamentals'
         },
         {
-          text: 'Computed Properties',
+          text: '算出プロパティ',
           link: '/guide/essentials/computed'
         },
         {
