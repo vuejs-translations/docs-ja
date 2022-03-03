@@ -75,11 +75,11 @@ import { reactive } from 'vue'
 const state = reactive({ count: 0 })
 ```
 
-リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスとミューテーションを追跡できることです。詳細については、[Reactivity in Depth](/guide/extras/reactivity-in-depth.html) で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
+リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[Reactivity in Depth](/guide/extras/reactivity-in-depth.html) で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
 
 こちらもご参照ください。[Typing Reactive](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />。
 
-コンポーネントのテンプレートでリアクティブな状態を使うには、コンポーネントの `setup()` 関数で宣言し、それを返します。
+コンポーネントのテンプレートでリアクティブな状態を使うには、下記に示すように、コンポーネントの `setup()` 関数で宣言し、それを返します：
 
 ```js{5,9-11}
 import { reactive } from 'vue'
@@ -133,7 +133,7 @@ export default {
 
 ### `<script setup>` \*\*
 
-`setup()` 関数を使って手動で状態やメソッドを公開すると、冗長になることがあります。幸いなことに、これはビルドステップを使用しない場合にのみ必要です。Single-File Components (SFC) を使用する場合は、 `<script setup>` を使用することで大幅に簡略化することができます。
+`setup()` 関数を使って手動で状態やメソッドを公開すると、冗長になることがあります。幸いなことに、これはビルドステップを使用しない場合にのみ必要です。単一ファイルコンポーネント (SFC) を使用する場合は、 `<script setup>` を使用することで大幅に簡略化することができます。
 
 ```vue
 <script setup>
@@ -188,7 +188,7 @@ export default {
 }
 ```
 
-Vue は `methods` の `this` 値を自動的にバインドし、常にコンポーネントのインスタンスを参照するようにします。これにより、イベントリスナーやコールバックとして使用される場合に、メソッドが正しい `this` 値を保持することが保証されます。Vue が適切な `this` 値をバインドできないため、 `methods` を定義する際に矢印関数を使用しないようにしましょう。
+Vue は `methods` の `this` 値を自動的にバインドし、常にコンポーネントのインスタンスを参照するようにします。これにより、イベントリスナーやコールバックとして使用される場合に、メソッドが正しい `this` 値を保持することが保証されます。Vue が適切な `this` 値をバインドできないため、 `methods` を定義する際にアロー関数を使用しないようにしましょう。
 
 ```js
 export default {
@@ -489,7 +489,7 @@ state.count = 1
 console.log(count.value) // 1
 ```
 
-既存の ref にリンクされたプロパティに新しい ref が割り当てられた場合に、それは古い ref を置き換えることとなります。
+既存の ref にリンクされたプロパティに新しい ref が割り当てられた場合、下記に示すように、それは古い ref を置き換えることとなります：
 
 ```js
 const otherCount = ref(2)
@@ -522,7 +522,7 @@ console.log(map.get('count').value)
 
 ### ステートフルなメソッド \*
 
-場合によっては、デバウンスされたイベントハンドラーを作成するなど、動的にメソッド関数を作成する必要があります。
+場合によっては、デバウンスされたイベントハンドラーを作成するなど、下記に示すように、動的にメソッド関数を作成する必要があります：
 
 ```js
 import { debounce } from 'lodash-es'
@@ -564,9 +564,9 @@ export default {
 
 <div class="composition-api">
 
-## リアクティブなトランスフォーム <sup class="vt-badge experimental" /> \*\*
+## リアクティブな変換 <sup class="vt-badge experimental" /> \*\*
 
-Ref で `.value` を使わなければならないのは、JavaScript の言語的な制約による欠点です。しかし、コンパイル時の変換を利用すれば、適切な場所に自動的に `.value` を追加して人間工学を改善することができます。Vue はコンパイル時の変換を提供しており、先ほどの「カウンター」の例をこのように記述することができます。
+Ref で `.value` を使わなければならないのは、JavaScript の言語的な制約による欠点です。しかし、コンパイル時の変換 (ここでいうコンパイル時とは SFC を JavaScript コードへ変換する時) を利用すれば、適切な場所に自動的に `.value` を追加して人間工学を改善することができます。Vue はコンパイル時の変換を提供しており、先ほどの「カウンター」の例をこのように記述することができます。
 
 ```vue
 <script setup>
@@ -583,6 +583,6 @@ function increment() {
 </template>
 ```
 
-[リアクティブなトランスフォーム](/guide/extras/reactivity-transform.html) の詳細については、専用のセクションで説明されています。ただし、現在はまだ実験的なものであり、最終的に完成するまでに変更される可能性があることに注意してください。
+[リアクティブな変換](/guide/extras/reactivity-transform.html) の詳細については、専用のセクションで説明されています。ただし、現在はまだ実験的なものであり、最終的に完成するまでに変更される可能性があることに注意してください。
 
 </div>
