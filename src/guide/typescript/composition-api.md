@@ -1,6 +1,6 @@
 # Composition API とともに TypeScript を使用する
 
-> このページは [TypeScript のサポート](./overview) ページの内容をすでに読んでいることを前提にしています。
+> このページは [TypeScript で Vue を使用する](./overview) ページの内容をすでに読んでいることを前提にしています。
 
 ## コンポーネントの props の型付け
 
