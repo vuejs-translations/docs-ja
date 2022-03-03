@@ -251,7 +251,7 @@ export const sidebar = {
     {
       text: 'TypeScript',
       items: [
-        { text: 'Overview', link: '/guide/typescript/overview' },
+        { text: '概要', link: '/guide/typescript/overview' },
         {
           text: 'TS with Composition API',
           link: '/guide/typescript/composition-api'
