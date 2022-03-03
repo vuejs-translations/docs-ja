@@ -89,8 +89,8 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 
 > Alternatively, you can bind the directive directly to an Object. The keys of the object will be the list of classes to toggle based on corresponding values.
 
-- NG: 別な方法としては、直接ディレクティブをオブジェクトにバインドできます。オブジェクトのキーは、クラスのリストは対応する値に基づいてトグルします。
-- OK: 別な方法としては、直接ディレクティブをオブジェクトにバインドできます。オブジェクトのキーは、対応する値に基づいてトグルする class のリストになります。
+- NG: 別な方法としては、直接ディレクティブをオブジェクトに束縛できます。オブジェクトのキーは、クラスのリストは対応する値に基づいてトグルします。
+- OK: 別な方法としては、直接ディレクティブをオブジェクトに束縛できます。オブジェクトのキーは、対応する値に基づいてトグルする class のリストになります。
 
 ### 原文に使われる ':' や '!' や '?' などの記号は極力残して翻訳
 

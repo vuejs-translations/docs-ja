@@ -1,32 +1,33 @@
-# Creating a Vue Application
+# Vue アプリケーションの作成
 
-## The application instance
+## アプリケーションのインスタンス
 
-Every Vue application starts by creating a new **application instance** with the [`createApp`](/api/application#createapp) function:
+すべての Vue アプリケーションは [`createApp`](/api/application#createapp) 関数で新しい **アプリケーションのインスタンス** を作成することから始まります:
 
 ```js
 import { createApp } from 'vue'
 
 const app = createApp({
-  /* root component options */
+  /* ルートコンポーネント オプション */
 })
 ```
 
-## The Root Component
+## ルートコンポーネント
 
-The object we are passing into `createApp` is in fact a component. Every app requires a "root component" that can contain other components as its children.
+`createApp` に渡しているオブジェクトは、実際にはコンポーネントになります。
+すべてのアプリには、「ルートコンポーネント」という、他のコンポーネントを子要素として保持できるものが必要です。
 
-If you are using Single-File Components, we typically import the root component from another file:
+もし単一ファイルコンポーネントを使用しているなら、通常、ルートコンポーネントを他のファイルからインポートします:
 
 ```js
 import { createApp } from 'vue'
-// import the root component App from a single-file component.
+// ルートコンポーネントを単一ファイルコンポーネントからインポートする
 import App from './App.vue'
 
 const app = createApp(App)
 ```
 
-While many examples in this guide only need a single component, most real applications are organized into a tree of nested, reusable components. For example, a Todo application's component tree might look like this:
+このガイドにある多くの例では単一コンポーネントしか必要としない一方で、実際のほとんどのアプリケーションではネスト化された、再利用性のあるコンポーネントツリーで構成されています。たとえば、TODO アプリケーションのコンポーネントツリーは次のようになります:
 
 ```
 App (root component)
@@ -39,11 +40,11 @@ App (root component)
    └─ TodoStatistics
 ```
 
-We will discuss how to define and compose multiple components together in later sections of the guide. Before that, we will focus on what happens inside a single component.
+複数のコンポーネントをどのように定義し、一緒に構成するかについてはこのガイドの後のセクションで解説します。ですがその前に、ここでは単一コンポーネントの中で起きていることについて焦点を当てていきます。
 
-## Mounting the App
+## アプリのマウント
 
-An application instance won't render anything until its `.mount()` method is called. It expects a "container" argument, which can either be an actual DOM element or a selector string:
+アプリケーションのインスタンスは `.mount()` メソッドが呼ばれるまで何もレンダリングしません。インスタンスには「コンテナ」引数という、実際の DOM 要素、あるいはセレクター文字列が必要です:
 
 ```html
 <div id="app"></div>
@@ -53,13 +54,13 @@ An application instance won't render anything until its `.mount()` method is cal
 app.mount('#app')
 ```
 
-The content of the app's root component will be rendered inside the container element. The container element itself is not considered part of the app.
+アプリのルートコンポーネントのコンテンツはコンテナ要素の中でレンダリングされます。コンテナ要素自体はアプリの要素として見なされません。
 
-The `.mount()` method should always be called after all app configurations and asset registrations are done. Also note that its return value, unlike the asset registration methods, is the root component instance instead of the application instance.
+この `.mount()` メソッドはすべてのアプリの設定やアセットの登録が完了した後、常に呼ばれる必要があります。また、アセット登録をするメソッドとは異なり、返り値はアプリケーションのインスタンスではなく、ルートコンポーネントインスタンスであるということに注意してください。
 
-### In-DOM Root Component Template
+### DOM 内のルートコンポーネントテンプレート
 
-When using Vue without a build step, we can write our root component's template directly inside the mount container:
+ビルドをしないで Vue を扱う場合、ルートコンポーネントのテンプレートをマウントコンテナ内に直接書くことができます:
 
 ```html
 <div id="app">
@@ -81,31 +82,31 @@ const app = createApp({
 app.mount('#app')
 ```
 
-Vue will automatically use the container's `innerHTML` as the template if the root component does not already have a `template` option.
+もしルートコンポーネントに `template` オプションがすでにない場合、Vue は自動的にコンテナの `innerHTML` をテンプレートとして使用します。
 
-## App Configurations
+## アプリの設定
 
-The application instance exposes a `.config` object that allows us to configure a few app-level options, for example defining an app-level error handler that captures errors from all descendent components:
+アプリケーションのインスタンスは、 `.config` オブジェクトを公開し、いくつかのアプリケーションレベルのオプションを設定することができます。たとえば、すべての子孫コンポーネントから発生したエラーを捕捉するアプリケーションレベルのエラーハンドラーを定義するには次のとおりです:
 
 ```js
 app.config.errorHandler = (err) => {
-  /* handle error */
+  /* エラーの制御 */
 }
 ```
 
-The application instance also provides a few methods for registering app-scoped assets. For example, registering a component:
+また、アプリケーションのインスタンスは、アプリ用のアセットを登録するいくつかのメソッドもいくつか用意しています。たとえば、次のようなコンポーネントの登録するメソッドがあります:
 
 ```js
 app.component('TodoDeleteButton', TodoDeleteButton)
 ```
 
-This makes the `TodoDeleteButton` available for use anywhere in our app. We will discuss registration for components and other types of assets in later sections of the guide. You can also browse the full list of application instance APIs in its [API reference](/api/application).
+このメソッドは、`TodoDeleteButton` をこのアプリケーション内でならどこでも使用できるようにしてくれます。コンポーネントや他のアセットの登録のやり方についてはこのガイドの後のセクションで説明します。アプリケーションのインスタンス API の全リストについては、[API reference](/api/application) で確認することができます。
 
-Make sure to apply all app configurations before mounting the app!
+アプリがマウントされる前に、アプリの設定がすべて適用されていることを確認しましょう！
 
-## Multiple application instances
+## 複数のアプリケーションのインスタンス
 
-You are not limited to a single application instance on the same page. The `createApp` API allows multiple Vue applications to co-exist on the same page, each with its own scope for configuration and global assets:
+同じページにアプリケーションのインスタンスが 1 つに制限されるわけではありません。 `createApp` API は同じページ内で複数の Vue アプリケーションが共存することができ、それぞれが独自の設定やグローバルアセットを備えたスコープをもつことができます:
 
 ```js
 const app1 = createApp({
@@ -119,4 +120,4 @@ const app2 = createApp({
 app2.mount('#container-2')
 ```
 
-If you are using Vue to enhance server-rendered HTML and only need Vue to control specific parts of a large page, avoid mounting a single Vue application instance on the entire page. Instead, create multiple small application instances and mount them on the elements they are responsible for.
+もし Vue をサーバーレンダリングされた HTML を拡張するために使用していたり、大きなページの中で特定の一部を操作するためだけに必要とするなら、ページ全体で単一の Vue アプリケーションのインスタンスでマウントするのを避けましょう。その代わりに、複数の小さなアプリケーションのインスタンスを作成し、それぞれの受け持つ要素の上でマウントするようにしてください。

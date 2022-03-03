@@ -451,27 +451,41 @@ function increment() {
 
 [プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgY291bnQgPSByZWYoMClcblxuZnVuY3Rpb24gaW5jcmVtZW50KCkge1xuICBjb3VudC52YWx1ZSsrXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cImluY3JlbWVudFwiPnt7IGNvdW50IH19PC9idXR0b24+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
-ラップ解除はトップレベルのプロパティにのみ適用され、ネストされた ref へのアクセスはラップ解除されないことに注意してください。
+アンラップは、ref がテンプレートに描画されるコンテキスト上のトップレベルのプロパティである場合にのみ適用されることに注意してください。例として `foo` はトップレベルのプロパティですが、`object.foo` はトップレベルではありません。
+
+そこで、下記に示したようなオブジェクトが与えられた：
 
 ```js
 const object = { foo: ref(1) }
 ```
 
+The following expression will **NOT** work as expected:
+
 ```vue-html
-{{ object.foo }} <!-- アンラップしなくても良い -->
+{{ object.foo + 1 }} <!-- アンラップしなくても良い -->
 ```
 
 これを解決するには、`foo` をトップレベルのプロパティにすれば良いです。
+
+レンダリング結果は `[object Object]1` となります。これは `object.foo` が ref オブジェクトであるためです。これを解決するには、下記に示すように `foo` をトップレベルのプロパティにすればよい：
 
 ```js
 const { foo } = object
 ```
 
 ```vue-html
-{{ foo }} <!-- アンラップします -->
+{{ foo + 1 }}
 ```
 
-これで `foo` は期待通りにアンラップされるようになりました。
+これで、レンダリング結果は「2」になります。
+
+注意点としては、ref がテキスト補間の最終評価値（つまり <code v-pre>{{ }}</code> タグ）である場合もアンラップされるので、以下のように `1` がレンダリングされます。
+
+```vue-html
+{{ object.foo }}
+```
+
+これはテキスト補間の便利な機能に過ぎず、 <code v-pre>{{ object.foo.value }}</code> と等価になります。
 
 ### リアクティブなオブジェクトにおける Ref のアンラッピング \*\*
 
