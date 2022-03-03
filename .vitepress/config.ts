@@ -126,7 +126,7 @@ export const sidebar = {
           link: '/guide/essentials/template-syntax'
         },
         {
-          text: 'リアクティブ性の基礎',
+          text: 'リアクティビティの基礎',
           link: '/guide/essentials/reactivity-fundamentals'
         },
         {
