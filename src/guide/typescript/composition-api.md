@@ -31,9 +31,9 @@ const props = defineProps<{
 </script>
 ```
 
-これは "type-based declaration" 型ベースの宣言) と呼ばれます。コンパイラーは型引数に基づいて同等の実行時のオプションを推論しようとします。今回の場合、2 番目の例は最初の例と全く同じ実行時のオプションにコンパイルされます。
+これは "type-based declaration" (型ベースの宣言) と呼ばれます。コンパイラーは型引数に基づいて同等の実行時のオプションを推論しようとします。今回の場合、2 番目の例は最初の例と全く同じ実行時のオプションにコンパイルされます。
 
-type-base declaration (型ベースの宣言) と runtime declaration (実行時宣言) の両方を同時に使用することはできません。
+type-base declaration と runtime declaration の両方を同時に使用することはできません。
 
 props の型をインターフェースとして分離することもできます:
 
@@ -79,7 +79,7 @@ defineProps<Props>()
 
 ### props のデフォルト値 <sup class="vt-badge experimental" />
 
-type-based declaration (型ベースの宣言) を使用すると、props のデフォルト値を宣言することができません。これは、現在実験的な機能である [Reactivity Transform](/guide/extras/reactivity-transform.html) で解決することができます:
+type-based declaration を使用すると、props のデフォルト値を宣言することができません。これは、現在実験的な機能である [Reactivity Transform](/guide/extras/reactivity-transform.html) で解決することができます:
 
 ```vue
 <script setup lang="ts">
@@ -115,7 +115,7 @@ export default defineComponent({
 
 ## コンポーネントの emit の型付け
 
-`<script setup>` では、`emit` 関数も runtime declaration (実行時宣言) もしくは type declaration (型ベースの宣言) のいずれかを使って型付けすることができます:
+`<script setup>` では、`emit` 関数も runtime declaration もしくは type declaration (型宣言) のいずれかを使って型付けすることができます:
 
 ```vue
 <script setup lang="ts">
@@ -130,7 +130,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-型ベースの宣言の場合、引数は、[Call Signatures](https://www.typescriptlang.org/docs/handbook/2/functions.html#call-signatures) を持つ型リテラルでなければなりません。この型リテラルは、返される `emit` 関数の型として使用されます。見れば分かるとおり、型ベースの宣言をすることで emit されるイベントの型をより細かく制御することができます。
+type declaration の場合、引数は、[Call Signatures](https://www.typescriptlang.org/docs/handbook/2/functions.html#call-signatures) を持つ型リテラルでなければなりません。この型リテラルは、返される `emit` 関数の型として使用されます。見れば分かるとおり、型ベースの宣言をすることで emit されるイベントの型をより細かく制御することができます。
 
 `<script setup>` を使用しない場合は、`defineComponent()` は setup コンテキスト内で `emit` 関数のイベント名を推論できます:
 
@@ -254,7 +254,7 @@ function handleChange(event) {
 </template>
 ```
 
-型アノテーションが無い場合、`event` 引数は暗黙の `any` 型になります。`tsconfig.json` で `"strict": true` や `"noImplicitAny": true` にしている場合、これは型エラーになります。そのため、明示的にイベントハンドラーの引数を型付けすることが推奨されます。加えて、`event` のプロパティを明示的に型アサーションする必要があるかもしれません:
+type annotation (型注釈) が無い場合、`event` 引数は暗黙の `any` 型になります。`tsconfig.json` で `"strict": true` や `"noImplicitAny": true` にしている場合、これは型エラーになります。そのため、明示的にイベントハンドラーの引数を型付けすることが推奨されます。加えて、`event` のプロパティを明示的に型アサーションする必要があるかもしれません:
 
 ```ts
 function handleChange(event: Event) {
@@ -318,7 +318,7 @@ onMounted(() => {
 </template>
 ```
 
-厳密な型安全性のために、`el.value` にアクセスする際には、オプショナルチェーンもしくは type guards (型ガード) をする必要があります。なぜなら、コンポーネントがマウントされるまでは ref の初期値は `null` であり、参照されていた要素が `v-if` によってアンマウントされた場合にも `null` にセットされる可能性があるからです。
+厳密な型安全性のために、`el.value` にアクセスする際には、optional chaining もしくは type guards (型ガード) をする必要があります。なぜなら、コンポーネントがマウントされるまでは ref の初期値は `null` であり、参照されていた要素が `v-if` によってアンマウントされた場合にも `null` にセットされる可能性があるからです。
 
 ## コンポーネントのテンプレート参照の型付け
 
