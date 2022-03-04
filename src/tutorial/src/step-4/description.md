@@ -108,4 +108,4 @@ setup() {
 
 イベントハンドラーはインライン表現も使うことができ、共通のタスクを装飾子で簡略にすることができます。これらの詳細は <a target="_blank" href="/guide/essentials/event-handling.html">ガイド - イベントハンドリング</a> の中でカバーされています。
 
-では、自分自身で `increment` <span class="options-api">メソッド</span><span class="composition-api">関数</span> を実装して、`v-on` を使ってボタンにバインドしてみましょう。
+では、自分自身で `increment` <span class="options-api">メソッド</span><span class="composition-api">関数</span> を実装して、`v-on` を使ってボタンに束縛してみましょう。
