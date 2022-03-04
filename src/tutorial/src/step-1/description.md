@@ -1,26 +1,26 @@
-# Getting Started
+# はじめに
 
-Welcome to the Vue tutorial!
+Vue のチュートリアルにようこそ！
 
-The goal of this tutorial is to quickly give you an experience of what it feels like to work with Vue, right in the browser. It does not aim to be comprehensive, and you don't need to understand everything before moving on. However, after you complete it, make sure to also read the <a target="_blank" href="/guide/introduction.html">Guide</a> which covers each topic in more details.
+このチュートリアルの目的はブラウザーで Vue で作業することがどのようなことなのか感じなのかいち早く体験してもらうことです。包括的な内容を目指すものではないため、すべてを理解してから次に進む必要はありません。しかしながら、すべてを完了したあと、各項目についてより詳しく説明している<a target="_blank" href="/guide/introduction.html">ガイド</a>を必ずお読みください。
 
-## Prerequisites
+## 前提条件
 
-The tutorial assumes basic familiarity with HTML, CSS and JavaScript. If you are totally new to front-end development, it might not be the best idea to jump right into a framework as your first step - grasp the basics then come back! Prior experience with other frameworks helps, but is not required.
+このチュートリアルは HTML 、 CSS 、 JavaScript の基本的な知識を前提にしています。もしフロントエンドの開発が全くはじめての場合、最初のステップとしてフレームワークに飛び込むのは良い選択ではないかもしれません。基本を理解してからまた来てください。他のフレームワークを使った過去の経験があるはあなたの手助けになるかもしれませんが、必須ではありません。
 
-## How to Use This Tutorial
+## このチュートリアルの使い方
 
-You can edit the code <span class="wide">on the right</span><span class="narrow">below</span> and see the result update instantly. Each step will introduce a core feature of Vue, and you will be expected to complete the code to get the demo working. If you get stuck, you will have a "Show me!" button that reveals the working code for you. Try not to rely on it too much - you'll learn faster by figuring things out on your own.
+<span class="wide">右</span><span class="narrow">下</span>のコードを編集することができて、瞬時に更新された結果を確認することができます。それぞれのステップでは Vue のコア機能を紹介し、デモが動作するようにコードを完成させることが期待されます。もし行き詰まったら、 "Show me!" ボタンで動作中のコードを表示できます。このボタンに頼り過ぎないようにしましょう。自分自身で考えて解決した方が早く習得できます。
 
-If you are an experienced developer coming from Vue 2 or other frameworks, there are a few settings you can tweak to make the best use of this tutorial. If you are a beginner, it's recommended to go with the defaults.
+Vue 2 や他のフレームワークから来た経験豊富な開発者であれば、このチュートリアルを最大限に活用するために、いくつかの設定を変更することができます。もしあなたが初心者の場合、デフォルトの設定で作業することをお勧めします。
 
 <details>
-<summary>Tutorial Setting Details</summary>
+<summary>チュートリアルの詳細設定</summary>
 
-- Vue offers two API styles: Options API and Composition API. This tutorial is designed to work for both - you can choose your preferred style using the **API Preference** switches at the top. <a target="_blank" href="/guide/introduction.html#api-styles">Learn more about API styles</a>.
+- Vue には 2 つの API スタイルがあります : オプション API とコンポジション API です。このチュートリアルは、両方で動作するように設計されています。上部にある **API Preference** スイッチを使って、好みのスタイルを選択することができます。 <a target="_blank" href="/guide/introduction.html#api-styles">API スタイルの詳細については、こちらをご覧ください</a> 。
 
-- You can also switch between SFC-mode or HTML-mode. The former will show code examples in <a target="_blank" href="/guide/introduction.html#single-file-components">Single-File Component</a> (SFC) format, which is what most developers use when they use Vue with a build step. HTML-mode shows usage without a build step.
+- また、 SFC モードと HTML モードの切り替えも可能です。前者は、 SFC（<a target="_blank" href="/guide/introduction.html#single-file-components">Single-File Component</a>）形式のコード例を表示します。これは、多くの開発者が Vue をビルドステップで使用するときに使用する形式です。HTML モードは、ビルドステップなしで使用する方法を示しています。
 
 </details>
 
-Ready? Click "Next" to get started.
+準備はいいですか？　"Next" をクリックしてください。
