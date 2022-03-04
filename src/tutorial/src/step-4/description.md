@@ -1,12 +1,12 @@
-# Event Listeners
+# イベントリスナー
 
-We can listen to DOM events using the `v-on` directive:
+`v-on` ディレクティブを使うことで DOM イベントを購読することができます:
 
 ```vue-html
 <button v-on:click="increment">{{ count }}</button>
 ```
 
-Due to its frequent use, `v-on` also has a shorthand syntax:
+頻繁に使われるので、`v-on` には省略記法があります:
 
 ```vue-html
 <button @click="increment">{{ count }}</button>
@@ -14,7 +14,7 @@ Due to its frequent use, `v-on` also has a shorthand syntax:
 
 <div class="options-api">
 
-Here, `increment` references a function declared using the `methods` option:
+ここでは、`increment` は `methods` オプションを使って宣言された関数を参照しています:
 
 <div class="sfc">
 
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     increment() {
-      // update component state
+      // コンポーネントの状態を更新する
       this.count++
     }
   }
@@ -46,7 +46,7 @@ createApp({
   },
   methods: {
     increment() {
-      // update component state
+      // コンポーネントの状態を更新する
       this.count++
     }
   }
@@ -55,7 +55,7 @@ createApp({
 
 </div>
 
-Inside a method, we can access the component instance using `this`. The component instance exposes the data properties declared by `data`. We can update the component state by mutating these properties.
+メソッドの中では、`this` を使ってコンポーネントインスタンスにアクセスすることができます。コンポーネントインスタンスは `data` によって宣言されたデータプロパティを公開します。これらのプロパティを変更することで、コンポーネントの状態を更新することができます。
 
 </div>
 
@@ -63,7 +63,7 @@ Inside a method, we can access the component instance using `this`. The componen
 
 <div class="sfc">
 
-Here, `increment` is referencing a function declared in `<script setup>`:
+ここでは、`increment` は `<script setup>` で宣言された関数を参照しています:
 
 ```vue{6-9}
 <script setup>
@@ -72,7 +72,7 @@ import { ref } from 'vue'
 const count = ref(0)
 
 function increment() {
-  // update component state
+  // コンポーネントの状態を更新する
   count.value++
 }
 </script>
@@ -82,14 +82,14 @@ function increment() {
 
 <div class="html">
 
-Here, `increment` is referencing a method in the object returned from `setup()`:
+ここでは、`increment` は `setup()` から返却されたオブジェクトの中にあるメソッドを参照しています:
 
 ```js{$}
 setup() {
   const count = ref(0)
 
   function increment(e) {
-    // update component state
+    // コンポーネントの状態を更新する
     count.value++
   }
 
@@ -102,10 +102,10 @@ setup() {
 
 </div>
 
-Inside the function, we can update the component state by mutating refs.
+関数の中では、参照を変えることによってコンポーネントの状態を更新することができます。
 
 </div>
 
-Event handlers can also use inline expressions, and can simplify common tasks with modifiers. These details are covered in <a target="_blank" href="/guide/essentials/event-handling.html">Guide - Event Handling</a>.
+イベントハンドラーはインライン表現も使うことができ、共通のタスクを装飾子で簡略にすることができます。これらの詳細は <a target="_blank" href="/guide/essentials/event-handling.html">ガイド - イベントハンドリング</a> の中でカバーされています。
 
-Now, try to implement the `increment` <span class="options-api">method</span><span class="composition-api">function</span> yourself and bind it to the button using `v-on`.
+では、自分自身で `increment` <span class="options-api">メソッド</span><span class="composition-api">関数</span> を実装して、`v-on` を使ってボタンにバインドしてみましょう。
