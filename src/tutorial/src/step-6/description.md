@@ -1,20 +1,20 @@
-# Conditional Rendering
+# 条件付きレンダリング
 
-We can use the `v-if` directive to conditionally render an element:
+要素を条件付きでレンダリングする際に `v-if` ディレクティブを使用することができます:
 
 ```vue-html
 <h1 v-if="awesome">Vue is awesome!</h1>
 ```
 
-This `<h1>` will be rendered only if the value of `awesome` is [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy). If `awesome` changes to a [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) value, it will be removed from the DOM.
+この `<h1>` は `awesome` の値が [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) である場合にのみレンダリングされます。もし `awesome` の値が [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) に変わったら、この `<h1>` は DOM から削除されます。
 
-We can also use `v-else` and `v-else-if` to denote other branches of the condition:
+また、他の条件分岐を示すために `v-else` や `v-else-if` を使用することもできます:
 
 ```vue-html
 <h1 v-if="awesome">Vue is awesome!</h1>
 <h1 v-else>Oh no 😢</h1>
 ```
 
-Currently, the demo is showing both `<h1>`s at the same time, and the button does nothing. Try to add `v-if` and `v-else` directives to them, and implement the `toggle()` method so that we can use the button to toggle between them.
+現在、デモでは `<h1>` が両方一緒に表示されていて、ボタンは何もしません。それらに `v-if` と `v-else` ディレクティブを追加し、 `toggle()` メソッドを実装して、ボタンを押下時に切り替えができるようにしてみてください。
 
-More details on `v-if`: <a target="_blank" href="/guide/essentials/conditional.html">Guide - Conditional Rendering</a>
+`v-if` についての詳細: <a target="_blank" href="/guide/essentials/conditional.html">Guide - 条件付きレンダリング</a>
