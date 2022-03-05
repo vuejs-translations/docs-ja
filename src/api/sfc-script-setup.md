@@ -127,15 +127,15 @@ import * as Form from './form-components'
 </template>
 ```
 
-## Using Custom Directives
+## カスタムディレクティブの使用
 
-Globally registered custom directives just work as normal. Local custom directives don't need to be explicitly registered with `<script setup>`, but they must follow the naming scheme `vNameOfDirective`:
+グローバルに登録されたカスタムディレクティブは通常通りに動作します。`<script setup>` ではローカルのカスタムディレクティブは明示的に登録する必要はありませんが、`vNameOfDirective` という命名規則に従う必要があります:
 
 ```vue
 <script setup>
 const vMyDirective = {
   beforeMount: (el) => {
-    // do something with the element
+    // 要素を使って何かする
   }
 }
 </script>
@@ -144,7 +144,7 @@ const vMyDirective = {
 </template>
 ```
 
-If you're importing a directive from elsewhere, it can be renamed to fit the required naming scheme:
+他の場所からディレクティブをインポートする場合、必須の命名規則に合うようにリネームすることができます:
 
 ```vue
 <script setup>
