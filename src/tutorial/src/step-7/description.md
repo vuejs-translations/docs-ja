@@ -33,7 +33,7 @@
 
    </div>
 
-2. 配列を置き換える:
+2. 配列を新しいものに置き換える:
 
    <div class="composition-api">
 
