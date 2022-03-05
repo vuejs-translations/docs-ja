@@ -16,7 +16,7 @@
 
 リストを更新するには、次の 2 つの方法があります:
 
-1. 配列の [ミュータブルな関数](https://stackoverflow.com/questions/9009879/which-javascript-array-functions-are-mutating) を呼び出す:
+1. 配列の [変更メソッド](https://stackoverflow.com/questions/9009879/which-javascript-array-functions-are-mutating) を呼び出す:
 
    <div class="composition-api">
 
