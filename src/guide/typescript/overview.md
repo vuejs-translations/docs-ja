@@ -181,7 +181,7 @@ const count = ref(1)
 不自然な例を以下に示します:
 
 ```vue
-<script setup lang="ts"></script>
+<script setup lang="ts">
 let x: string | number = 1
 </script>
 
