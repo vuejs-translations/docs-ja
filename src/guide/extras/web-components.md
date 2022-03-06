@@ -1,6 +1,6 @@
 # Vue と Web コンポーネント
 
-[Web コンポーネント](https://developer.mozilla.org/en-US/docs/Web/Web_Components) は、開発者が再利用可能なカスタム要素 (custom elements) を作成するための一連の Web ネイティブ API 群の総称です。
+[Web コンポーネント](https://developer.mozilla.org/ja/docs/Web/Web_Components) は、開発者が再利用可能なカスタム要素 (custom elements) を作成するための一連の Web ネイティブ API 群の総称です。
 
 私たちは Vue と Web コンポーネントを主に補完的な技術と考えています。Vue はカスタム要素の作成と使用することの両方に優れたサポートを提供します。既にある Vue アプリケーションにカスタム要素を統合する場合や、Vue を使ってビルドしそしてカスタム要素を配布する場合においても、良き仲間です。
 
@@ -116,7 +116,7 @@ document.body.appendChild(
 
 #### ライフサイクル
 
-- Vue のカスタム要素は、要素の [`connectedCallback`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks) が初めて呼び出されたときに、その shadow root 内に内部の Vue コンポーネントインスタンスをマウントします。
+- Vue のカスタム要素は、要素の [`connectedCallback`](https://developer.mozilla.org/ja/docs/Web/Web_Components/Using_custom_elements#%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%81%AE%E4%BD%BF%E7%94%A8) が初めて呼び出されたときに、その shadow root 内に内部の Vue コンポーネントインスタンスをマウントします。
 
 - 要素の `disconnectedCallback` が呼び出されるとき、Vue はマイクロタスクの tick を動作させた後、ドキュメントから要素が切り離されているかどうかチェックします。
 
@@ -151,11 +151,11 @@ document.body.appendChild(
 
 #### イベント
 
-`this.$emit` や setup の `emit` を通じて発行されたイベントは、カスタム要素上でネイティブの[カスタムイベント (CustomEvents)](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events#adding_custom_data_%E2%80%93_customevent) としてディスパッチされます。追加のイベント引数(ペイロード)は、カスタムイベントオブジェクトの `details` プロパティの配列として公開されます。
+`this.$emit` や setup の `emit` を通じて発行されたイベントは、カスタム要素上でネイティブの[カスタムイベント (CustomEvents)](https://developer.mozilla.org/ja/docs/Web/Events/Creating_and_triggering_events#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%BF%BD%E5%8A%A0_%E2%80%93_customevent) としてディスパッチされます。追加のイベント引数(ペイロード)は、カスタムイベントオブジェクトの `details` プロパティの配列として公開されます。
 
 #### スロット
 
-コンポーネント内部では、通常通り `<slot/>` 要素を使ってスロットをレンダリングすることができます。しかし、生成された要素を使うときは、[ネイティブのスロット構文](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots)しか受け付けません。
+コンポーネント内部では、通常通り `<slot/>` 要素を使ってスロットをレンダリングすることができます。しかし、生成された要素を使うときは、[ネイティブのスロット構文](https://developer.mozilla.org/ja/docs/Web/Web_Components/Using_templates_and_slots)しか受け付けません。
 
 - [スコープ付きスロット](/guide/components/slots.html#scoped-slots)はサポートされていません。
 
