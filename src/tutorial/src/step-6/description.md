@@ -6,7 +6,7 @@
 <h1 v-if="awesome">Vue is awesome!</h1>
 ```
 
-この `<h1>` は `awesome` の値が [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) である場合にのみレンダリングされます。もし `awesome` の値が [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) に変わったら、この `<h1>` は DOM から削除されます。
+この `<h1>` は `awesome` の値が [truthy](https://developer.mozilla.org/ja/docs/Glossary/Truthy) である場合にのみレンダリングされます。もし `awesome` の値が [falsy](https://developer.mozilla.org/ja/docs/Glossary/Falsy) に変わったら、この `<h1>` は DOM から削除されます。
 
 また、他の条件分岐を示すために `v-else` や `v-else-if` を使用することもできます:
 
