@@ -459,15 +459,13 @@ function increment() {
 const object = { foo: ref(1) }
 ```
 
-The following expression will **NOT** work as expected:
+下記に示した式は、期待通りに動作 **しません** ：
 
 ```vue-html
-{{ object.foo + 1 }} <!-- アンラップしなくても良い -->
+{{ object.foo + 1 }}
 ```
 
 これを解決するには、`foo` をトップレベルのプロパティにすれば良いです。
-
-レンダリング結果は `[object Object]1` となります。これは `object.foo` が ref オブジェクトであるためです。これを解決するには、下記に示すように `foo` をトップレベルのプロパティにすればよい：
 
 ```js
 const { foo } = object
