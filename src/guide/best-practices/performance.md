@@ -18,7 +18,7 @@ Vue は、手動で最適化する必要なく、ほとんどの一般的なユ�
 
 - Vue を様々な形でどのように活用するかは、[Vue を使う方法](/guide/extras/ways-of-using-vue.html)を参照してください。
 
-- Jason Miller は、[Application Holotypes](https://jasonformat.com/application-holotypes/) で、Web アプリケーションの種類と、それぞれの理想的な実装/配信について論じています。
+- Jason Miller 氏は、[Application Holotypes](https://jasonformat.com/application-holotypes/) で、Web アプリケーションの種類と、それぞれの理想的な実装/配信について論じています。
 
 ## プロファイリングの選択肢
 
