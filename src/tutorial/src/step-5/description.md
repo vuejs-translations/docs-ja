@@ -1,6 +1,6 @@
-# Form Bindings
+# フォーム入力バインディング
 
-Using `v-bind` and `v-on` together, we can create two-way bindings on form input elements:
+`v-bind` と `v-on` を一緒に使うことで、input 要素に双方向 (two-way) バインディングを作成することができます。
 
 ```vue-html
 <input :value="text" @input="onInput">
@@ -11,8 +11,8 @@ Using `v-bind` and `v-on` together, we can create two-way bindings on form input
 ```js
 methods: {
   onInput(e) {
-    // a v-on handler receives the native DOM event
-    // as the argument.
+    // v-on ハンドラーはネイティブDOMのイベントを
+    // 引数として受け取ります。
     text.value = e.target.value
   }
 }
@@ -24,24 +24,24 @@ methods: {
 
 ```js
 function onInput(e) {
-  // a v-on handler receives the native DOM event
-  // as the argument.
+  // v-on ハンドラーはネイティブDOMのイベントを
+  // 引数として受け取ります。
   text.value = e.target.value
 }
 ```
 
 </div>
 
-Try typing in the input box - you should see the text in `<p>` updating as you type.
+入力ボックスに文字を入力してみてください。`<p>` の中の文字が入力された通りに更新されるのがわかると思います。
 
-To simplify two-way bindings, Vue provides a directive, `v-model`, which is essentially a syntax sugar for the above:
+双方向 (two-way) バインディングを簡略化するために、Vue は上記の糖衣構文 (syntax sugar) の `v-model` というディレクティブを提供しています。
 
 ```vue-html
 <input v-model="text">
 ```
 
-`v-model` automatically syncs the `<input>`'s value with the bound state, so we no longer need to use a event handler for that.
+`v-model` は `<input>` の値をバインドされた状態と自動的に同期するので、そのためのイベントハンドラーを使う必要はありません。
 
-`v-model` works not only on text inputs, but also other input types such as checkboxes, radio buttons, and select dropdowns. We cover more details in <a target="_blank" href="/guide/essentials/forms.html">Guide - Form Bindings</a>.
+`v-model` はテキスト入力だけではなく、チェックボックス、ラジオボタン、セレクトボックスなどの他の入力タイプでも機能します。詳しくは<a target="_blank" href="/guide/essentials/forms.html">ガイド - フォームバインディング</a>を参照してください。
 
-Now, try to refactor the code to use `v-model` instead.
+では、代わりに `v-model` を使用するようにコードをリファクタリングしてみましょう。
