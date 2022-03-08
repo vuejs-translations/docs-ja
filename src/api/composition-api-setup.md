@@ -11,7 +11,7 @@
 
 ## 基本的な使い方
 
-私たちは `setup()` からオブジェクトを返すことによって、 [Reactivity APIs](./reactivity-core.html) を使ったリアクティブな状態を宣言することや、それらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
+[Reactivity APIs](./reactivity-core.html) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
 
 ```vue
 <script>
@@ -38,10 +38,10 @@ export default {
 </template>
 ```
 
-`setup` から返された [refs](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅いアンラップ](/guide/essentials/reactivity-fundamentals.html#ref-unwrapping-in-templates)であるため、テンプレート内で `.value` を使用すべきではないことに注意してください。また、`this` でアクセスしたときも同様にアンラップです。
+`setup` から返された [refs](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals.html#ref-unwrapping-in-templates)ため、テンプレート内で `.value` を使用する必要はないことに注意してください。また、`this` でアクセスしたときも同様にアンラップされます。
 
 :::tip
-`setup()` 自体はコンポーネントインスタンスにアクセスしません。- `this` は `setup()` 内の `null` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
+`setup()` 自体はコンポーネントインスタンスにアクセスできません。- `this` は `setup()` 内では `null` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
 :::
 
 ## Props へのアクセス
@@ -70,7 +70,7 @@ export default {
   setup(props) {
     // `props` から refs オブジェクトへ変換し、分割代入を行います
     const { title } = toRefs(props)
-    // `title` は `props.title` を追跡する参照です
+    // `title` は `props.title` を追跡する ref です
     console.log(title.value)
 
     // もしくは、 `props` 内の単一プロパティから ref へ変換します
@@ -101,7 +101,7 @@ export default {
 }
 ```
 
-context オブジェクトはリアクティブではなく、安全に分割代入されます:
+context オブジェクトはリアクティブではなく、安全に分割代入できます:
 
 ```js
 export default {
@@ -149,7 +149,7 @@ export default {
 
 render 関数を返すことで、他のものを返すことができなくなります。内部的には問題ありませんが、このコンポーネントのメソッドをテンプレート参照から親コンポーネントに公開したい場合には、問題となります。
 
-私たちは [`expose()`](#exposing-public-properties) を呼び出すことによって、この問題を解決することができます:
+[`expose()`](#exposing-public-properties) を呼び出すことによって、この問題を解決することができます:
 
 ```js{8-10}
 import { h, ref } from 'vue'
