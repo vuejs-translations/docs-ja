@@ -2,97 +2,97 @@
 outline: deep
 ---
 
-# Performance
+# パフォーマンス
 
-## Overview
+## 概要
 
-Vue is designed to be performant for most common use cases without much need for manual optimizations. However, there are always challenging scenarios where extra fine-tuning is needed. In this section, we will discuss what you should pay attention to when it comes to performance in a Vue application.
+Vue は、手動で最適化する必要なく、ほとんどの一般的なユースケースに対してパフォーマンスが高くなるように設計されています。しかし、微調整が必要な難しい場面は常に存在します。このセクションでは、Vue アプリケーションのパフォーマンスに関して注意すべき点について説明します。
 
-First, let's discuss the two major aspects of web performance:
+まず、Web パフォーマンスの 2 大要素について説明します:
 
-- **Page Load Performance**: how fast the application shows content and becomes interactive on the initial visit. This is usually measured using web vital metrics like [Largest Contentful Paint (LCP)](https://web.dev/lcp/) and [First Input Delay](https://web.dev/fid/).
+- **ページロードパフォーマンス**: 初回訪問時、アプリケーションがコンテンツを表示しインタラクティブになる速さ。これは通常 [Largest Contentful Paint（最大視覚コンテンツの表示時間、LCP）](https://web.dev/i18n/ja/lcp/)や [First Input Delay （初回入力までの遅延時間、FID）](https://web.dev/i18n/ja/fid/)のような Web バイタルメトリクスによって測られます。
 
-- **Update Performance**: how fast the application updates in response to user input. For example, how fast a list updates when the user types in a search box, or how fast the page switches when the user clicks a navigation link in a Single-Page Application (SPA).
+- **更新パフォーマンス**: ユーザーの入力に応じたアプリケーションの更新速度。例えば、ユーザーが検索ボックスに入力したときのリストの更新速度や、シングルページアプリケーション (SPA) でユーザーがナビゲーションリンクをクリックしたときのページの切り替わり速度などです。
 
-While it would be ideal to maximize both, different frontend architectures tend to affect how easy it is to attain desired performance in these aspects. In addition, the type of application you are building greatly influences what you should prioritize in terms of performance. Therefore, the first step of ensuring optimal performance is picking the right architecture for the type of application you are building:
+この 2 つを最大化させることが理想ですが、フロントエンドのアーキテクチャが異なると、これらの面で望ましい性能を達成するのが容易かどうかに影響する傾向があります。また、構築するアプリケーションの種類によって、性能面で何を優先すべきかに大きく影響します。したがって、最適なパフォーマンスを確保するための最初のステップは、構築するアプリケーションの種類に適したアーキテクチャを選択することです:
 
-- Consult [Ways of Using Vue](/guide/extras/ways-of-using-vue.html) to see how you can leverage Vue in different ways.
+- Vue を様々な形でどのように活用するかは、[Vue を使う方法](/guide/extras/ways-of-using-vue.html)を参照してください。
 
-- Jason Miller discusses the types of web applications and their respective ideal implementation / delivery in [Application Holotypes](https://jasonformat.com/application-holotypes/).
+- Jason Miller 氏は、[Application Holotypes](https://jasonformat.com/application-holotypes/) で、Web アプリケーションの種類と、それぞれの理想的な実装/配信について論じています。
 
-## Profiling Options
+## プロファイリングのオプション
 
-To improve performance, we need to first know how to measure it. There are a number of great tools that can help in this regard:
+パフォーマンス向上のために、まずその計測方法を知る必要があります。役立つ素晴らしい関連ツールがいくつもあります:
 
-For profiling load performance of production deployments:
+本番環境でのロードパフォーマンスプロファイリング:
 
 - [PageSpeed Insights](https://pagespeed.web.dev/)
 - [WebPageTest](https://www.webpagetest.org/)
 
-For profiling performance during local development:
+ローカル開発環境でのパフォーマンスプロファイリング:
 
-- [Chrome DevTools Performance Panel](https://developer.chrome.com/docs/devtools/evaluate-performance/)
-  - [`app.config.performance`](/api/application.html#app-config-performance) enables Vue-specific performance markers in Chrome DevTools' performance timeline.
-- [Vue DevTools Extension](/guide/scaling-up/tooling.html#browser-devtools) also provides a performance profiling feature.
+- [Chrome DevTools Performance パネル](https://developer.chrome.com/docs/devtools/evaluate-performance/)
+  - [`app.config.performance`](/api/application.html#app-config-performance) は、Chrome DevTools のパフォーマンスタイムラインで、Vue 固有のパフォーマンスマーカーを有効にします。
+- [Vue DevTools 拡張](/guide/scaling-up/tooling.html#browser-devtools)もまた、パフォーマンスプロファイリング機能を提供します。
 
-## Page Load Optimizations
+## ページロード最適化
 
-There are many framework-agnostic aspects for optimizing page load performance - check out [this web.dev guide](https://web.dev/fast/) for a comprehensive round up. Here, we will primarily focus on techniques that are specific to Vue.
+ページロードパフォーマンスを最適化するための、フレームワークに依存しない多くの側面があります。包括的なまとめとして、[この web.dev ガイド](https://web.dev/fast/) をチェックしてください。ここでは、主に Vue 固有の技術に焦点を当てます。
 
-### Bundle Size and Tree-shaking
+### バンドルサイズと Tree-shaking
 
-One of the most effective ways to improve page load performance is shipping smaller JavaScript bundles. Here are a few ways to reduce bundle size when using Vue:
+ページロードパフォーマンスを向上させる最も効果的な方法の 1 つは、小さな JavaScript バンドルを配信することです。Vue を使用する際にバンドルサイズを小さくする方法をいくつか紹介します:
 
-- Use a build step if possible.
+- 可能ならビルドステップを使用する
 
-  - Many of Vue's APIs are ["tree-shakable"](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) if bundled via a modern build tool. For example, if you don't use the built-in `<Transition>` component, it won't be included in the final production bundle. Tree-shaking can also remove other unused modules in your source code.
+  - Vue の API の多くは、モダンなビルドツールを介してバンドルする場合、["tree-shakable"](https://developer.mozilla.org/ja/docs/Glossary/Tree_shaking) です。たとえば、組み込みの `<Transition>` コンポーネントを使用しない場合、最終的なプロダクションバンドルには含まれません。Tree-shaking は、ソースコード内の他の未使用のモジュールを削除することもできます。
 
-  - When using a build step, templates are pre-compiled so we don't need to ship the Vue compiler to the browser. This saves **14kb** min+gzipped JavaScript and avoids the runtime compilation cost.
+  - ビルドステップを使用する場合、テンプレートは事前にコンパイルされるため、Vue コンパイラをブラウザーに配信する必要はありません。これにより、最低でも **14kb** の gzip された JavaScript が節約され、実行時のコンパイルコストが回避されます。
 
-- Be cautious of size when introducing new dependencies! In real world applications, bloated bundles are most often a result of introducing heavy dependencies without realizing it.
+- 新しい依存関係を導入するときは、サイズに注意しましょう！実際のアプリケーションでは、バンドルが肥大化するのは、気づかないうちに重い依存関係を導入してしまった結果であることがほとんどです。
 
-  - If using a build step, prefer dependencies that offer ES module formats and are tree-shaking friendly. For example, prefer `lodash-es` over `lodash`.
+  - ビルドステップを使用する場合、ES Modules（ESM と略すこともある）を提供し、tree-shaking に適した依存関係を選択してください。例えば、 `lodash` よりも `lodash-es` を選択します。
 
-  - Check a dependency's size and evaluate whether it is worth the functionality it provides. Note if the dependency is tree-shaking friendly, the actual size increase will depend on the APIs you actually import from it. Tools like [bundle.js.org](https://bundle.js.org/) can be used for quick checks, but measuring with your actual build setup will always be the most accurate.
+  - 依存関係のサイズをチェックし、それが提供する機能に見合うかどうかを評価してください。依存関係が tree-shaking フレンドリーである場合、実際のサイズの増加は、あなたが実際にそこからインポートする API に依存することに注意してください。[bundle.js.org](https://bundle.js.org/) のようなツールは素早いチェックに使用できますが、実際のビルド設定での測定が常に最も正確でしょう。
 
-- If you are using Vue primarily for progressive enhancement and prefer to avoid a build step, consider using [petite-vue](https://github.com/vuejs/petite-vue) (only **6kb**) instead.
+- もし Vue を主にプログレッシブエンハンスメントのために使用していて、ビルドステップを避けたい場合は、代わりに[petite-vue](https://github.com/vuejs/petite-vue)（わずか **6kb**）を使用することを検討してください。
 
-### Code Splitting
+### コード分割
 
-Code splitting is where a build tool splits the application bundle into multiple smaller chunks, which can then be loaded on demand or in parallel. With proper code splitting, features required at page load can be downloaded immediately, with additional chunks being lazy loaded only when needed, thus improving performance.
+コード分割とは、ビルドツールがアプリケーションバンドルを複数の小さなチャンクに分割し、オンデマンドまたは並列でロードできるようにすることです。適切なコード分割を行うことで、ページロード時に必要な機能を即時ダウンロードし、必要なときだけ追加のチャンクを遅延ロードして、パフォーマンスを向上させることができます。
 
-Bundlers like Rollup (which Vite is based upon) or webpack can automatically create split chunks by detecting the ESM dynamic import syntax:
+Rollup（Vite のベースになっている）や webpack などのバンドラーは、ESM の動的インポート構文を検出することで、自動的に分割チャンクを作成することができます:
 
 ```js
-// lazy.js and its dependencies will be split into a separate chunk
-// and only loaded when `loadLazy()` is called.
+// lazy.js とその依存関係は別のチャンクに分割され、
+// `loadLazy()` が呼ばれたときだけロードされます。
 function loadLazy() {
   return import('./lazy.js')
 }
 ```
 
-Lazy loading is best used on features that are not immediately needed after initial page load. In Vue applications, this is typically used in combination with Vue's [Async Component](/guide/components/async.html) feature to create split chunks for component trees:
+遅延ローディングは、最初のページロード後すぐに必要とされない機能で最もよく使用されます。Vue アプリケーションでは、これは通常、Vue の[非同期コンポーネント](/guide/components/async.html)機能と組み合わせて、コンポーネントツリーの分割チャンクを作成するために使用されます:
 
 ```js
 import { defineAsyncComponent } from 'vue'
 
-// a separate chunk is created for Foo.vue and its dependencies.
-// it is only fetched on demand when the async component is
-// rendered on the page.
+// 分割チャンクは Foo.vue とその依存関係のために作られます。
+// これは非同期コンポーネントがページにレンダリングされる
+// タイミングにのみオンデマンドでフェッチされます。
 const Foo = defineAsyncComponent(() => import('./Foo.vue'))
 ```
 
-If using client-side routing via Vue Router, it is strongly recommended to use async components as route components. See [Lazy Loading Routes](https://router.vuejs.org/guide/advanced/lazy-loading.html) for more details.
+Vue Router でクライアントサイドルーティングを使用する場合、ルートコンポーネントとして非同期コンポーネントを使用することが強く推奨されます。詳しくは [Lazy Loading Routes](https://router.vuejs.org/guide/advanced/lazy-loading.html) を参照してください。
 
 ### SSR / SSG
 
-Pure client-side rendering suffers from slow time-to-content. This can be mitigated with Server-Side Rendering (SSR) or Static Site Generation (SSG). Check out the [SSR Guide](/guide/scaling-up/ssr.html) for more details.
+純粋なクライアントサイドレンダリングは、ユーザーのリクエストからレンダリングが完了するまでに時間がかかります。これは、サーバーサイドレンダリング (SSR) または静的サイト生成 (SSG) を使用することで緩和できます。詳しくは [SSR ガイド](/guide/scaling-up/ssr.html)を参照してください。
 
-## Update Optimizations
+## 更新の最適化
 
-### Props Stability
+### プロパティの安定性
 
-In Vue, a child component only updates when at least one of its received props has changed. Consider the following example:
+Vue では、子コンポーネントは、受け取ったプロパティのうち少なくとも 1 つが変更された場合にのみ更新します。次の例で考えてみましょう:
 
 ```vue-html
 <ListItem
@@ -101,9 +101,9 @@ In Vue, a child component only updates when at least one of its received props h
   :active-id="activeId" />
 ```
 
-Inside the `<ListItem>` component, it uses its `id` and `activeId` props to determine whether it is the currently active item. While this works, the problem is that whenever `activeId` changes, **every** `<ListItem>` in the list has to update!
+`<ListItem>` コンポーネントの内部では、`id` と `activeId` プロパティを使用して、現在アクティブなアイテムであるかどうかを判断します。これはうまくいくのですが、問題は `activeId` が変更されるたびに、リスト内の **全ての** `<ListItem>` が更新を行わなければならないことです！
 
-Ideally, only the items whose active status changed should update. We can achieve that by moving the active status computation into the parent, and make `<ListItem>` directly accept an `active` prop instead:
+本来なら、アクティブステータスが変化したアイテムだけを更新しなければなりません。アクティブステータスの計算を親に移し、`<ListItem>` が `active` プロパティを直接受け取るようにすることで、これを実現できます。
 
 ```vue-html
 <ListItem
@@ -112,50 +112,50 @@ Ideally, only the items whose active status changed should update. We can achiev
   :active="item.id === activeId" />
 ```
 
-Now, for most components the `active` prop will remain the same when `activeId` changes, so they no longer need to update. In general, the idea is keeping the props passed to child components as stable as possible.
+これで、ほとんどのコンポーネントでは `activeId` が変わっても `active` プロパティは変わらないので、更新する必要がなくなりました。一般的に、子コンポーネントに渡されるプロパティはできるだけ安定した状態に保つことが大切です。
 
 ### `v-once`
 
-`v-once` is a built-in directive that can be used to render content that relies on runtime data but never needs to update. The entire sub-tree it is used on will be skipped for all future updates. Consult its [API reference](/api/built-in-directives.html#v-once) for more details.
+`v-once` は組み込みのディレクティブで、ランタイムデータに依存しながらも更新の必要がないコンテンツをレンダリングするために使用することができます。このディレクティブが使用されたサブツリー全体は、その後のすべての更新をスキップします。詳細は [API リファレンス](/api/built-in-directives.html#v-once)を参照してください。
 
 ### `v-memo`
 
-`v-memo` is a built-in directive that can be used to conditionally skip the update of large sub-trees or `v-for` lists. Consult its [API reference](/api/built-in-directives.html#v-memo) for more details.
+`v-memo` は組み込みのディレクティブで、大きなサブツリーや `v-for` リストの更新を条件付きでスキップするために使用することができます。詳細は [API リファレンス](/api/built-in-directives.html#v-memo)を参照してください。
 
-## General Optimizations
+## 全般的な最適化
 
-> The following tips affect both page load and update performance.
+> 以下のヒントは、ページロードと更新の両方のパフォーマンスに影響します。
 
-### Virtualize Large Lists
+### 大きなリストの仮想化
 
-One of the most common performance issues in all frontend applications is rendering large lists. No matter how performant a framework is, rendering a list with thousands of items **will** be slow due to the sheer number of DOM nodes that the browser needs to handle.
+すべてのフロントエンドアプリケーションで最も一般的なパフォーマンスの問題の 1 つは、大きなリストをレンダリングすることです。フレームワークがどんなに高速でも、何千ものアイテムを含むリストのレンダリングは、ブラウザーが処理する必要のある DOM ノードの数が膨大になるため、**遅くなります**。
 
-However, we don't necessarily have to render all these nodes upfront. In most cases, the user's screen size can display only a small subset of our large list. We can greatly improve the performance with **list virtualization**, the technique of only rendering the items that are currently in or close to the viewport in a large list.
+しかし、必ずしもすべてのノードを愚直にレンダリングする必要はありません。ほとんどの場合、ユーザーの画面サイズでは、大きなリストのうちの小さなサブセットしか表示できません。**リスト仮想化**は、大きなリストの中で現在ビューポートに表示されているアイテムまたはそれに近いアイテムのみをレンダリングする技術で、パフォーマンスを大幅に向上させることができます。
 
-Implementing list virtualization isn't easy, luckily there are existing community libraries that you can directly use:
+リスト仮想化の実装は簡単ではありませんが、幸運にも、直接使える既存のコミュニティー・ライブラリーがあります:
 
 - [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller)
 - [vue-virtual-scroll-grid](https://github.com/rocwang/vue-virtual-scroll-grid)
 
-### Reduce Reactivity Overhead for Large Immutable Structures
+### 大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす
 
-Vue's reactivity system is deep by default. While this makes state management intuitive, it does create a certain level of overhead when the data size is large, because every property access triggers proxy traps that perform dependency tracking. This typically becomes noticeable when dealing with large arrays of deeply nested objects, where a single render needs to access 100,000+ properties, so it should only affect very specific use cases.
+Vue のリアクティビティシステムは、デフォルトでディープです。これにより状態管理が直感的になりますが、データサイズが大きくなると、プロパティアクセスのたびに依存関係の追跡を行うプロキシトラップがトリガーされるため、一定レベルのオーバーヘッドが発生します。これは通常、深くネストされたオブジェクトの大きな配列を扱うとき、1 回のレンダリングで 10 万以上のプロパティにアクセスする必要があるために顕著になります。これは非常に特定のユースケースにのみ影響するはずです。
 
-Vue does provide an escape hatch to opt-out of deep reactivity by using [`shallowRef()`](/api/reactivity-advanced.html#shallowref) and [`shallowReactive()`](/api/reactivity-advanced.html#shallowreactive). Shallow APIs create state that is reactive only at the root level, and exposes all nested objects untouched. This keeps nested property access fast, with the trade-off being that we must now treat all nested objects as immutable, and updates can only be triggered by replacing the root state:
+Vue は [`shallowRef()`](/api/reactivity-advanced.html#shallowref) と [`shallowReactive()`](/api/reactivity-advanced.html#shallowreactive) によってディープなリアクティビティを回避する方法を提供します。Shallow API は、ルートレベルでのみリアクティブな状態を作り、すべてのネストされたオブジェクトをそのまま公開します。これは、ネストされたプロパティへのアクセスを高速に保ちますが、トレードオフとして、すべてのネストされたオブジェクトをイミュータブルとして扱わなければならず、更新はルートの状態を置き換えることによってのみトリガーされるようになります:
 
 ```js
 const shallowArray = shallowRef([
-  /* big list of deep objects */
+  /* ディープなオブジェクトの大きなリスト */
 ])
 
-// this won't trigger updates...
+// これは更新をトリガーせず...
 shallowArray.value.push(newObject)
-// this does:
+// これはします:
 shallowArray.value = [...shallowArr.value, newObject]
 
-// this won't trigger updates...
+// これは更新をトリガーせず...
 shallowArray.value[0].foo = 1
-// this does:
+// これはします:
 shallowArray.value = [
   {
     ...shallowArray.value[0],
@@ -165,8 +165,8 @@ shallowArray.value = [
 ]
 ```
 
-### Avoid Unnecessary Component Abstractions
+### 不必要なコンポーネントの抽象化を避ける
 
-Sometimes we may create [renderless components](/guide/components/slots.html#renderless-components) or higher-order components (i.e. components that render other components with extra props) for better abstraction or code organization. While there is nothing wrong with this, do keep in mind that component instances are much more expensive than plain DOM nodes, and creating too many of them due to abstraction patterns will incur performance costs.
+時には、より良い抽象化やコード構成のために、[renderless components](/guide/components/slots.html#renderless-components) や高階コンポーネント（つまり、特別なプロパティで他のコンポーネントをレンダリングするコンポーネント）を作ることもあります。これは悪いことではありませんが、コンポーネントインスタンスはプレーンな DOM ノードよりもはるかに高価であり、抽象化パターンによりそれらを大量に生成すると、パフォーマンスコストが発生することを覚えておいてください。
 
-Note that reducing only a few instances won't have noticeable effect, so don't sweat it if the component is rendered only a few times in the app. The best scenario to consider this optimization is again in large lists. Imagine a list of 100 items where each item component contains many child components. Removing one unnecessary component abstraction here could result in a reduction of hundreds of component instances.
+数個のインスタンスを減らすだけでは顕著な効果はないため、アプリ内で数回しかレンダリングされないコンポーネントなら頑張る必要はないことに注意してください。この最適化を検討するのにふさわしい場面は、やはり大きなリストです。100 のアイテムからなり、各アイテムのコンポーネントが多数の子コンポーネントを含んでいるリストを想像してみてください。ここで不要なコンポーネントの抽象化をひとつ削除すると、何百ものコンポーネントインスタンスを削減することができます。
