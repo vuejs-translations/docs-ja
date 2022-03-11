@@ -143,7 +143,7 @@ export const sidebar = {
         },
         { text: 'List Rendering', link: '/guide/essentials/list' },
         {
-          text: 'Event Handling',
+          text: 'イベントハンドリング',
           link: '/guide/essentials/event-handling'
         },
         { text: 'Form Input Bindings', link: '/guide/essentials/forms' },
@@ -235,7 +235,7 @@ export const sidebar = {
           link: '/guide/best-practices/production-deployment'
         },
         {
-          text: 'Performance',
+          text: 'パフォーマンス',
           link: '/guide/best-practices/performance'
         },
         {
@@ -251,7 +251,7 @@ export const sidebar = {
     {
       text: 'TypeScript',
       items: [
-        { text: 'Overview', link: '/guide/typescript/overview' },
+        { text: '概要', link: '/guide/typescript/overview' },
         {
           text: 'TS with Composition API',
           link: '/guide/typescript/composition-api'

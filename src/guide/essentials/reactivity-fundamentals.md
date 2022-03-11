@@ -224,7 +224,7 @@ export default {
 import { nextTick } from 'vue'
 
 function increment() {
-  count.value++
+  state.count++
   nextTick(() => {
     // DOM 更新にアクセスします
   })
@@ -352,7 +352,7 @@ console.log(proxy.nested === raw) // false
    state = reactive({ count: 1 })
    ```
 
-   It also means that when we assign or destructure a reactive object's property into local variables, or when we pass that property into a function, or destructure properties from a reactive object, we will lose the reactivity connection:
+   It also means that when we assign or destructure a reactive object's property into local variables, or when we pass that property into a function, we will lose the reactivity connection:
 
    ```js
    const state = reactive({ count: 0 })
