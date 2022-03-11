@@ -1,19 +1,19 @@
-# Attribute Bindings
+# 属性バインディング
 
-in Vue, mustaches are only used for text interpolation. To bind an attribute to a dynamic value, we use the `v-bind` directive:
+Vue では mustaches (二重中括弧)がテキスト補間のみ使用します。動的な値が属性にバインドするのは、`v-bind` ディレクティブを使います：
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
 ```
 
-A **directive** is a special attribute that starts with the `v-` prefix. They are part of Vue's template syntax. Similar to text interpolations, directive values are JavaScript expressions that have access to the component's state. The full details of `v-bind` and directive syntax are discussed in <a target="_blank" href="/guide/essentials/template-syntax.html">Guide - Template Syntax</a>.
+**ディレクティブ**は `v-` から始まる特別な属性です。これは Vue のテンプレート構文の一部です。テキスト補間と同様に、ディレクティブの値はコンポーネントの状態にアクセスできる JavaScript 式です。`v-bind` とディレクティブ構文の詳細については<a target="_blank" href="/guide/essentials/template-syntax.html">ガイド - テンプレート構文</a>で説明します。
 
-The part after the colon (`:id`) is the "argument" of the directive. Here, the element's `id` attribute will be synced with the `dynamicId` property from the component's state.
+コロン（`:id`）の後の部分はディレクティブの「引数」です。ここでは要素の `id` はコンポーネントの状態から `dynamicId` 属性と同期されます。
 
-Because `v-bind` is used so frequently, it has a dedicated shorthand syntax:
+`v-bind` が非常に頻繁につかうため、専用の省略記法があります:
 
 ```vue-html
 <div :id="dynamicId"></div>
 ```
 
-Now, try to add a dynamic `class` binding to the `<h1>`, using the `titleClass` <span class="options-api">data property</span><span class="composition-api">ref</span> as its value. If it's bound correctly, the text should turn red.
+では、`<h1>` に `titleClass` の<span class="options-api">データプロパティ</span><span class="composition-api">ref</span> を値として動的の属性バインディング追加してみましょう。正しくバインドできたら、文字があかくなります。
