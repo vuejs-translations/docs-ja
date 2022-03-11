@@ -10,10 +10,10 @@ Vue では mustaches (二重中括弧)がテキスト補間のみ使用します
 
 コロン（`:id`）の後の部分はディレクティブの「引数」です。ここでは要素の `id` はコンポーネントの状態から `dynamicId` 属性と同期されます。
 
-`v-bind` が非常に頻繁につかうため、専用の省略記法があります:
+`v-bind` は非常に頻繁につかうため、専用の省略記法があります:
 
 ```vue-html
 <div :id="dynamicId"></div>
 ```
 
-では、`<h1>` に `titleClass` の<span class="options-api">データプロパティ</span><span class="composition-api">ref</span> を値として動的の属性バインディング追加してみましょう。正しくバインドできたら、文字があかくなります。
+では、`<h1>` に `titleClass` の<span class="options-api">データプロパティ</span><span class="composition-api">ref</span> を値として動的の属性バインディングを追加してみましょう。正しくバインドできたら、文字が赤くなります。
