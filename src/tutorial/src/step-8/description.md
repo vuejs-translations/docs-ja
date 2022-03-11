@@ -1,6 +1,6 @@
-# Computed Property
+# 算出プロパティー
 
-Let's keep building on top of the todo list from the last step. Here, we've already added a toggle functionality to each todo. This is done by adding a `done` property to each todo object, and using `v-model` to bind it to a checkbox:
+前回のステップで作成した TODO リストの上に追加していきましょう。ここでは各 TODO にトグル機能を追加していきます。これは各 TODO オブジェクトに `done` プロパティーを追加して、チェックボックスにそれをバインドするために `v-model` を使います:
 
 ```vue-html{2}
 <li v-for="todo in todos">
@@ -9,11 +9,11 @@ Let's keep building on top of the todo list from the last step. Here, we've alre
 </li>
 ```
 
-The next improvement we can add is to be able to hide already completed todos. We already have a button that toggles the `hideCompleted` state. But how do we render different list items based on that state?
+次の変更点はすでに完了した Todo を隠すことができるようにすることです。すでに `hideCompleted` 状態をトグルするボタンがあります。しかし、その状態に基づいて異なるリスト項目をレンダリングするにはどうしたらよいでしょうか？
 
 <div class="options-api">
 
-Introducing <a target="_blank" href="/guide/essentials/computed.html">computed property</a>. We can declare a property that is reactively computed from other properties using the `computed` option:
+<a target="_blank" href="/guide/essentials/computed.html">算出プロパティー</a>の紹介です。他のプロパティーからリアクティブに算出されたプロパティーを `computed` オプションを使用して宣言することができます:
 
 <div class="sfc">
 
@@ -22,7 +22,7 @@ export default {
   // ...
   computed: {
     filteredTodos() {
-      // return filtered todos based on `this.hideCompleted`
+      // `this.hideCompleted` を元にフィルターされた TODO を返却する
     }
   }
 }
@@ -36,7 +36,7 @@ createApp({
   // ...
   computed: {
     filteredTodos() {
-      // return filtered todos based on `this.hideCompleted`
+      // `this.hideCompleted` を元にフィルターされた TODO を返却する
     }
   }
 })
@@ -47,7 +47,7 @@ createApp({
 </div>
 <div class="composition-api">
 
-Introducing <a target="_blank" href="/guide/essentials/computed.html">`computed()`</a>. We can create a computed ref that computes its `.value` based on other reactive data sources:
+<a target="_blank" href="/guide/essentials/computed.html">`computed()`</a> の紹介です。他のリアクティブなデータソースに基づいて `.value` を計算する算出参照をつくることができます:
 
 <div class="sfc">
 
@@ -60,8 +60,8 @@ const todos = ref([
 ])
 
 const filteredTodos = computed(() => {
-  // return filtered todos based on
-  // `todos.value` & `hideCompleted.value`
+  // `todos.value` と `hideCompleted.value` に基づいて
+  // フィルターされた TODO を返却する
 })
 ```
 
@@ -79,8 +79,8 @@ createApp({
     ])
 
     const filteredTodos = computed(() => {
-      // return filtered todos based on
-      // `todos.value` & `hideCompleted.value`
+      // `todos.value` と `hideCompleted.value` に基づいて
+      // フィルターされた TODO を返却する
     })
 
     return {
@@ -99,6 +99,6 @@ createApp({
 + <li v-for="todo in filteredTodos">
 ```
 
-A computed property tracks other reactive state used in its computation as dependencies. It caches the result and automatically updates it when its dependencies change.
+算出プロパティーは、その計算の中で使用される他のリアクティブステートを依存関係として追跡します。計算結果はキャッシュされて、依存関係が変更されると自動的に更新されます。
 
-Now, try to add the `filteredTodos` computed property and implement its computation logic! If implemented correctly, checking off a todo when hiding completed items should instantly hide it as well.
+では、 `filteredTodos` の算出プロパティーを追加して、その算出ロジックを実装してみましょう！　正しく実装されていれば、完了したアイテムを非表示にするときに、TODO のチェックをオフにすると、すぐにそのアイテムも非表示になるはずです。
