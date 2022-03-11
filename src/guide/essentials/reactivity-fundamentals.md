@@ -465,7 +465,7 @@ const object = { foo: ref(1) }
 {{ object.foo + 1 }}
 ```
 
-これを解決するには、`foo` をトップレベルのプロパティにすれば良いです。
+レンダリング結果は `[object Object]1` となります。これは `object.foo` が ref オブジェクトであるためです。これを解決するには、下記に示すように `foo` をトップレベルのプロパティにします：
 
 ```js
 const { foo } = object
