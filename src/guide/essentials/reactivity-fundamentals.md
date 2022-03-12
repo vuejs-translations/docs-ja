@@ -167,7 +167,7 @@ function increment() {
 
 <VueSchoolLink href="https://vueschool.io/lessons/methods-in-vue-3" title="Vue School の無料動画レッスン"/>
 
-コンポーネントのインスタンスにメソッドを追加するには、 `methods` オプションを使用します。これは、必要なメソッドを含むオブジェクトでなければなりません。
+コンポーネントのインスタンスにメソッドを追加するには、 `methods` オプションを使用します。これは、必要なメソッドを含むオブジェクトでなければなりません：
 
 ```js{7-11}
 export default {
