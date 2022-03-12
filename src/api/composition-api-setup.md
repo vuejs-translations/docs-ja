@@ -1,17 +1,17 @@
 # Composition API: setup()
 
 :::info Note
-This page documents the usage of the `setup` component option. If you are using Composition API with Single-File Components, [`<script setup>`](/api/sfc-script-setup.html) is recommended for a more succinct and ergonomic syntax.
+このページでは、`setup` コンポーネントオプションの使用方法を説明します。単一ファイルコンポーネントで Composition API を使用する場合は、より簡潔で人間工学的な構文である [`<script setup>`](/api/sfc-script-setup.html) を使用することを推奨します。
 :::
 
-The `setup()` hook serves as the entry point for Composition API usage in components in the following cases:
+`setup()` フックは、次のような場合にコンポーネントで Composition API を使用するのためのエントリーポイントとして機能します:
 
-1. Using Composition API without a build step;
-2. Integrating with Composition-API-based code in an Options API component.
+1. ビルドステップなしでの Composition API の使用
+2. Options API コンポーネント内の Composition API に基づくコードの統合
 
-## Basic Usage
+## 基本的な使い方
 
-We can declare reactive state using [Reactivity APIs](./reactivity-core.html) and expose them to the template by returning an object from `setup()`. The properties on the returned object will also be made available on the component instance (if other options are used):
+[Reactivity APIs](./reactivity-core.html) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
 
 ```vue
 <script>
@@ -21,7 +21,7 @@ export default {
   setup() {
     const count = ref(0)
 
-    // expose to template and other options API hooks
+    // テンプレートや他の options API フックを公開します
     return {
       count
     }
@@ -38,15 +38,15 @@ export default {
 </template>
 ```
 
-Note that [refs](/api/reactivity-core.html#ref) returned from `setup` are [automatically shallow unwrapped](/guide/essentials/reactivity-fundamentals.html#ref-unwrapping-in-templates) when accessed in the template so you do not need to use `.value` when accessing them. They are also unwrapped in the same way when accessed on `this`.
+`setup` から返された [refs](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals.html#ref-unwrapping-in-templates)ため、テンプレート内で `.value` を使用する必要はないことに注意してください。また、`this` でアクセスしたときも同様にアンラップされます。
 
 :::tip
-`setup()` itself does not have access to the component instance - `this` will have a value of `null` inside `setup()`. You can access Composition-API-exposed values from Options API, but not the other way around.
+`setup()` 自体はコンポーネントインスタンスにアクセスできません。- `this` は `setup()` 内では `null` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
 :::
 
-## Accessing Props
+## Props へのアクセス
 
-The first argument in the `setup` function is the `props` argument. Just as you would expect in a standard component, `props` inside of a `setup` function are reactive and will be updated when new props are passed in.
+`setup` 関数の第 1 引数は `props` 引数です。標準コンポーネントで期待するように、`setup` 関数内の `props` はリアクティブで、新しい `props` が渡されたら更新されます。
 
 ```js
 export default {
@@ -59,21 +59,21 @@ export default {
 }
 ```
 
-Note that if you destructure the `props` object, the destructured variables will lose reactivity. It is therefore recommended to always access props in the form of `props.xxx`.
+もし、`props` オブジェクトを分割代入する場合は、分割代入された変数はリアクティビティを失うことに注意してください。 そのため、常に `props.xxx` の形で props にアクセスすることを推奨します。
 
-If you really need to destructure the props, or need to pass a prop into an external function while retaining reactivity, you can do so with the [toRefs()](./reactivity-utilities.html#torefs) and [toRef()](/api/reactivity-utilities.html#toref) utility APIs:
+もし、本当に props を分割代入すること、もしくはリアクティビティを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー APIs である [toRefs()](./reactivity-utilities.html#torefs) や [toRef()](/api/reactivity-utilities.html#toref) を使用することで、行うことができます:
 
 ```js
 import { toRefs } from 'vue'
 
 export default {
   setup(props) {
-    // turn `props` into an object of refs, then destructure
+    // `props` から refs オブジェクトへ変換し、分割代入を行います
     const { title } = toRefs(props)
-    // `title` is a ref that tracks `props.title`
+    // `title` は `props.title` を追跡する ref です
     console.log(title.value)
 
-    // OR, turn a single property on `props` into a ref
+    // もしくは、 `props` 内の単一プロパティから ref へ変換します
     const title = toRef(props, 'title')
   }
 }
@@ -81,27 +81,27 @@ export default {
 
 ## Setup Context
 
-The second argument passed to the `setup` function is a **Setup Context** object. The context object exposes other values that may be useful inside `setup`:
+`setup` 関数へ渡される第 2 引数は **Setup Context** オブジェクトです。context オブジェクトは `setup` 内で便利と思われる他の値を公開します:
 
 ```js
 export default {
   setup(props, context) {
-    // Attributes (Non-reactive object, equivalent to $attrs)
+    // Attributes (非リアクティブオブジェクト、$attrs と同等です)
     console.log(context.attrs)
 
-    // Slots (Non-reactive object, equivalent to $slots)
+    // Slots (非リアクティブオブジェクト、$slots と同等です)
     console.log(context.slots)
 
-    // Emit events (Function, equivalent to $emit)
+    // Emit events (関数、$emit と同等です)
     console.log(context.emit)
 
-    // Expose public properties (Function)
+    // パブリックプロパティの公開 (関数)
     console.log(context.expose)
   }
 }
 ```
 
-The context object is not reactive and can be safely destructured:
+context オブジェクトはリアクティブではなく、安全に分割代入できます:
 
 ```js
 export default {
@@ -111,30 +111,30 @@ export default {
 }
 ```
 
-`attrs` and `slots` are stateful objects that are always updated when the component itself is updated. This means you should avoid destructuring them and always reference properties as `attrs.x` or `slots.x`. Also note that, unlike `props`, the properties of `attrs` and `slots` are **not** reactive. If you intend to apply side effects based on changes to `attrs` or `slots`, you should do so inside an `onBeforeUpdate` lifecycle hook.
+`attrs` と `slots` はステートフルなオブジェクトです。コンポーネント自身が更新されたとき、常に更新されます。つまり、分割代入の使用を避け、`attrs.x` や `slots.x` のようにプロパティを常に参照する必要があります。また、`props` とは異なり、`attrs` と `slots` のプロパティは **リアクティブではない** ということに注意してください。もし、`attrs` か `slots` の変更による副作用を適用したいのなら、`onBeforeUpdate` ライフサイクルフックの中で行うべきです。
 
-### Exposing Public Properties
+### パブリックプロパティの公開
 
-`expose` is a function that can be used to explicitly limit the properties exposed when the component instance is accessed by a parent component via [template refs](/guide/essentials/template-refs.html#ref-on-component):
+`expose` は、親コンポーネントから[テンプレート参照](/guide/essentials/template-refs.html#ref-on-component)でコンポーネントインスタンスにアクセスする際に、公開するプロパティを明示的に制限するために使用することができる関数です:
 
 ```js{5,10}
 export default {
   setup(props, { expose }) {
-    // make the instance "closed" -
-    // i.e. do not expose anything to the parent
+    // インスタンスを"隠蔽"します -
+    // つまり、 全てを親に公開しません
     expose()
 
     const publicCount = ref(0)
     const privateCount = ref(0)
-    // selectively expose local state
+    // ローカルステートを選択的に公開します
     expose({ count: publicCount })
   }
 }
 ```
 
-## Usage with Render Functions
+## Render 関数での使用
 
-`setup` can also return a [render function](/guide/extras/render-function.html) which can directly make use of the reactive state declared in the same scope:
+`setup` は同じスコープで宣言されたリアクティブなステートを直接利用することができる [render 関数](/guide/extras/render-function.html)を返すこともできます:
 
 ```js{6}
 import { h, ref } from 'vue'
@@ -147,9 +147,9 @@ export default {
 }
 ```
 
-Returning a render function prevents us from returning anything else. Internally that shouldn't be a problem, but it can be problematic if we want to expose methods of this component to the parent component via template refs.
+render 関数を返すことで、他のものを返すことができなくなります。内部的には問題ありませんが、このコンポーネントのメソッドをテンプレート参照から親コンポーネントに公開したい場合には、問題となります。
 
-We can solve this problem by calling [`expose()`](#exposing-public-properties):
+[`expose()`](#exposing-public-properties) を呼び出すことによって、この問題を解決することができます:
 
 ```js{8-10}
 import { h, ref } from 'vue'
@@ -168,4 +168,4 @@ export default {
 }
 ```
 
-The `increment` method would then be available in the parent component via a template ref.
+この `increment` メソッドは、親コンポーネントでテンプレート参照を介して利用可能になります。

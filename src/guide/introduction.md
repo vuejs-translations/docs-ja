@@ -2,12 +2,12 @@
 footer: false
 ---
 
-# Introduction
+# はじめに
 
-:::info You are reading the documentation for Vue 3!
+:::info 今ここに表示されているのは、Vue 3 のドキュメントです！
 
-- Vue 2 documentation has been moved to [v2.vuejs.org](https://v2.vuejs.org/).
-- Upgrading from Vue 2? Check out the [Migration Guide](https://v3-migration.vuejs.org/).
+- Vue 2 のドキュメントは [jp.vuejs.org](https://jp.vuejs.org/) に移動しました。
+- Vue 2 からの移行について詳しくは、[移行ガイド](https://v3-migration.vuejs.org/)を確認してください。
   :::
 
 <style src="/@theme/styles/vue-mastery.css"></style>
@@ -23,11 +23,11 @@ footer: false
   </a>
 </div>
 
-## What is Vue?
+## Vue とは？
 
-Vue (pronounced /vjuː/, like **view**) is a JavaScript framework for building user interfaces. It builds on top of standard HTML, CSS and JavaScript, and provides a declarative and component-based programming model that helps you efficiently develop user interfaces, be it simple or complex.
+Vue (発音は /vjuː/、**view** と同様) は、ユーザーインターフェースの構築のための JavaScript フレームワークです。標準的な HTML、CSS、JavaScript を土台とする、コンポーネントベースの宣言的なプログラミングモデルを提供します。シンプルなものから複雑なものまで、ユーザーインターフェースの開発を効率的に支えるフレームワークです。
 
-Here is a minimal example:
+最小限のサンプルは、次のようになります:
 
 ```js
 import { createApp } from 'vue'
@@ -49,7 +49,7 @@ createApp({
 </div>
 ```
 
-**Result**
+**結果**
 
 <script setup>
 import { ref } from 'vue'
@@ -62,38 +62,38 @@ const count = ref(0)
   </button>
 </div>
 
-The above example demonstrates the two core features of Vue:
+上のサンプルは、Vue が備える次の 2 つのコア機能を示すものです:
 
-- **Declarative Rendering**: Vue extends standard HTML with a template syntax that allows us to declaratively describe HTML output based on JavaScript state.
+- **宣言的レンダリング**: Vue では、標準的な HTML を拡張したテンプレート構文を使って、HTML の出力を宣言的に記述することができます。この出力は、JavaScript の状態に基づきます。
 
-- **Reactivity**: Vue automatically tracks JavaScript state changes and efficiently updates the DOM when changes happen.
+- **リアクティビティ**: Vue は JavaScript の状態の変化を自動的に追跡し、変化が起きると効率的に DOM を更新します。
 
-You may already have questions - don't worry. We will cover every little detail in the rest of the documentation. For now, please read along so you can have a high-level understanding of what Vue offers.
+すでに分からないことがあるかもしれませんが、ご心配なく。このドキュメントの続きを読めば、細かい点まで理解できるようになっています。Vue が何を提供するかを大まかに掴んでいただくため、今はまず、このまま読み進めていただければと思います。
 
-:::tip Prerequisites
-The rest of the documentation assumes basic familiarity with HTML, CSS and JavaScript. If you are totally new to frontend development, it might not be the best idea to jump right into a framework as your first step - grasp the basics then come back! Prior experience with other frameworks helps, but is not required.
+:::tip 前提となる知識
+このドキュメントの続きでは、HTML、CSS、そして JavaScript の基礎知識があることが前提となっています。もしフロントエンドの開発をまったく経験したことがなければ、最初の一歩で Vue のようなフレームワークにすぐに飛び込むのは最適な方針でないかもしれません。基本を習ってからここに戻ってくるのでも大丈夫です！ほかのフレームワークを使用した経験があれば、役立ちます。ただし、必須ではありません。
 :::
 
-## The Progressive Framework
+## プログレッシブフレームワーク
 
-Vue is a framework and ecosystem that covers most of the common features needed in frontend development. But the web is extremely diverse - the things we build on the web may vary drastically in form and scale. With that in mind, Vue is designed to be flexible and incrementally adoptable. Depending on your use case, Vue can be used in different ways:
+Vue は、フロントエンド開発に必要な一般的な機能のほとんどをカバーするフレームワークであり、エコシステムでもあります。しかし、Web はきわめて多様です。私たちが Web で構築するものは、形態の点でも規模の点でもそれぞれ大きく異なります。Vue はそのことを念頭に置いて、柔軟性を提供する設計、そして段階的に適用できる設計となっています。Vue はユースケースに応じて、以下のようにさまざまな方法で活用することができます:
 
-- Enhancing static HTML without a build step
-- Embedding as Web Components on any page
-- Single-Page Application (SPA)
-- Fullstack / Server-Side-Rendering (SSR)
-- JAMStack / Static-Site-Generation (SSG)
-- Targeting desktop, mobile, WebGL or even the terminal
+- ビルドステップなしで静的な HTML を拡充する
+- 任意のページに Web コンポーネントとして埋め込む
+- シングルページアプリケーション (SPA)
+- フルスタック / サーバーサイドレンダリング (SSR)
+- Jamstack / 静的サイトジェネレーション (SSG)
+- デスクトップ、モバイル、WebGL、さらにはターミナルをターゲットとする開発
 
-If you find these concepts intimidating, don't worry! The tutorial and guide only require basic HTML and JavaScript knowledge, and you should be able to follow along without being an expert in any of these.
+これらの概念にはまだ付いていけないと感じても、大丈夫です！チュートリアルとガイドでは、本当に基礎的な HTML と JavaScript の知識だけが求められます。これらの概念のエキスパートでなくても、付いていける内容となっています。
 
-If you are an experienced developer interested in how to best integrate Vue into your stack, or you are curious about what these terms mean, we discuss them in more details in [Ways of Using Vue](/guide/extras/ways-of-using-vue).
+経験豊富な開発者向けには、既存のスタックに Vue を統合する最適な方法や、これらの概念に出る用語の意味について詳しく説明するドキュメントがあります。興味をお持ちの方は、[Vue のさまざまな活用方法](/guide/extras/ways-of-using-vue)をご覧ください。
 
-Despite the flexibility, the core knowledge about how Vue works is shared across all these use cases. Even if you are just a beginner now, the knowledge gained along the way will stay useful as you grow to tackle more ambitious goals in the future. If you are a veteran, you can pick the optimal way to leverage Vue based on the problems you are trying to solve, while retaining the same productivity. This is why we call Vue "The Progressive Framework": it's a framework that can grow with you and adapt to your needs.
+柔軟性を備える一方で、Vue が動く仕組みについての中心的な知識は、上に挙げたすべてのユースケースで共通です。今はまだ初心者であっても、進みながら得てゆく知識は、今後もっと大きなプロジェクトに取り組むうえで常に役立つものであり続けます。ベテランであれば、解決したい問題に応じて、生産性を保ちながら Vue を適切に活用する方法を選定できるでしょう。Vue を「プログレッシブフレームワーク」と呼んでいる理由は、そこにあります。Vue は、皆さんとともに成長し、皆さんのニーズに適応するフレームワークなのです。
 
-## Single-File Components
+## 単一ファイルコンポーネント
 
-In most build-tool-enabled Vue projects, we author Vue components using an HTML-like file format called **Single-File Component** (also known as `*.vue` files, abbreviated as **SFC**). A Vue SFC, as the name suggests, encapsulates the component's logic (JavaScript), template (HTML), and styles (CSS) in a single file. Here's the previous example, written in SFC format:
+ビルドツールが利用可能な Vue プロジェクトでは、**単一ファイルコンポーネント**と呼ばれる、HTML に似たファイル形式の Vue コンポーネントがよく利用されます (`*.vue` ファイルとしても知られ、「**SFC**」と略されます)。Vue の SFC は、その名前が示す通り、コンポーネントのロジック (JavaScript)、テンプレート (HTML)、およびスタイル (CSS) を単一のファイルに収めたものです。先ほどのサンプルコードを SFC 形式で書いたものを以下に示します:
 
 ```vue
 <script>
@@ -117,38 +117,38 @@ button {
 </style>
 ```
 
-SFC is a defining feature of Vue, and is the recommended way to author Vue components **if** your use case warrants a build setup. You can learn more about the [how and why of SFC](/guide/scaling-up/sfc) in its dedicated section - but for now, just know that Vue will handle all the build tools setup for you.
+SFC は、Vue を特徴付ける機能です。ビルドのセットアップが利用できるユースケースで**あれば**、Vue コンポーネントを作成していく方法がおすすめです。詳細を知りたい方は、[SFC の作成方法と用途](/guide/scaling-up/sfc)に特設のセクションがありますので、ぜひご覧ください。ここでは、ビルドツール全体のセットアップを Vue が手伝ってくれることだけ覚えておいてください。
 
-## API Styles
+## 2 つの API スタイル
 
-Vue components can be authored in two different API styles: **Options API** and **Composition API**.
+Vue コンポーネントを作成する際は、**Options API**、そして **Composition API** と呼ばれる 2 種類の異なる API スタイルが利用できます。
 
 ### Options API
 
-With Options API, we define a component's logic using an object of options such as `data`, `methods`, and `mounted`. Properties defined by options are exposed on `this` inside functions, which points to the component instance:
+Options API では、`data`、`methods`、`mounted` といった数々のオプションからなる 1 つのオブジェクトを用いてコンポーネントのロジックを定義します。これらのオプションによって定義されたプロパティには、コンポーネントのインスタンスを指す `this` を使って、関数内から次のようにアクセスできます:
 
 ```vue
 <script>
 export default {
-  // Properties returned from data() becomes reactive state
-  // and will be exposed on `this`.
+  // data() で返すプロパティはリアクティブな状態になり、
+  // `this` 経由でアクセスすることができます。
   data() {
     return {
       count: 0
     }
   },
 
-  // Methods are functions that mutate state and trigger updates.
-  // They can be bound as event listeners in templates.
+  // メソッドの中身は、状態を変化させ、更新をトリガーさせる関数です。
+  // 各メソッドは、テンプレート内のイベントリスナーにバインドすることができます。
   methods: {
     increment() {
       this.count++
     }
   },
 
-  // Lifecycle hooks are called at different stages
-  // of a component's lifecycle.
-  // This function will be called when the component is mounted.
+  // ライフサイクルフックは、コンポーネントのライフサイクルの
+  // 特定のステージで呼び出されます。
+  // 以下の関数は、コンポーネントが「マウント」されたときに呼び出されます。
   mounted() {
     console.log(`The initial count is ${this.count}.`)
   }
@@ -160,27 +160,27 @@ export default {
 </template>
 ```
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgLy8gcmVhY3RpdmUgc3RhdGVcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgY291bnQ6IDBcbiAgICB9XG4gIH0sXG5cbiAgLy8gZnVuY3Rpb25zIHRoYXQgbXV0YXRlIHN0YXRlIGFuZCB0cmlnZ2VyIHVwZGF0ZXNcbiAgbWV0aG9kczoge1xuICAgIGluY3JlbWVudCgpIHtcbiAgICAgIHRoaXMuY291bnQrK1xuICAgIH1cbiAgfSxcblxuICAvLyBsaWZlY3ljbGUgaG9va3NcbiAgbW91bnRlZCgpIHtcbiAgICBjb25zb2xlLmxvZyhgVGhlIGluaXRpYWwgY291bnQgaXMgJHt0aGlzLmNvdW50fS5gKVxuICB9XG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cImluY3JlbWVudFwiPkNvdW50IGlzOiB7eyBjb3VudCB9fTwvYnV0dG9uPlxuPC90ZW1wbGF0ZT4ifQ==)
+[プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgLy8gcmVhY3RpdmUgc3RhdGVcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgY291bnQ6IDBcbiAgICB9XG4gIH0sXG5cbiAgLy8gZnVuY3Rpb25zIHRoYXQgbXV0YXRlIHN0YXRlIGFuZCB0cmlnZ2VyIHVwZGF0ZXNcbiAgbWV0aG9kczoge1xuICAgIGluY3JlbWVudCgpIHtcbiAgICAgIHRoaXMuY291bnQrK1xuICAgIH1cbiAgfSxcblxuICAvLyBsaWZlY3ljbGUgaG9va3NcbiAgbW91bnRlZCgpIHtcbiAgICBjb25zb2xlLmxvZyhgVGhlIGluaXRpYWwgY291bnQgaXMgJHt0aGlzLmNvdW50fS5gKVxuICB9XG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cImluY3JlbWVudFwiPkNvdW50IGlzOiB7eyBjb3VudCB9fTwvYnV0dG9uPlxuPC90ZW1wbGF0ZT4ifQ==)
 
 ### Composition API
 
-With Composition API, we define a component's logic using imported API functions. In SFCs, Composition API is typically used with [`<script setup>`](/api/sfc-script-setup). The `setup` attribute is a hint that makes Vue perform compile-time transforms that allow us to use Composition API with less boilerplate. For example, imports and top-level variables / functions declared in `<script setup>` are directly usable in the template.
+Composition API では、インポートした各種 API 関数を使ってコンポーネントのロジックを定義していきます。SFC において、Composition API は通常、[`<script setup>`](/api/sfc-script-setup) と組み合わせて使用します。`setup` という属性を付けることで、Vue にコンパイル時の変形操作を実行してほしいというヒントが伝えられます。これにより、定型的な書式の少ない Composition API を利用することができます。たとえば、`<script setup>` のなかで宣言したインポート、トップレベルの変数、トップレベルの関数は、テンプレート内で直接使うことができます。
 
-Here is the same component, with the exact same template, but using Composition API and `<script setup>` instead:
+先ほどと同じコンポーネントを、テンプレート部分は同一のまま、Composition API と `<script setup>` に置き換えたサンプルとして以下に示します:
 
 ```vue
 <script setup>
 import { ref, onMounted } from 'vue'
 
-// reactive state
+// リアクティブな状態
 const count = ref(0)
 
-// functions that mutate state and trigger updates
+// 状態を変更し、更新をトリガーする関数。
 function increment() {
   count.value++
 }
 
-// lifecycle hooks
+// ライフサイクルフック
 onMounted(() => {
   console.log(`The initial count is ${count.value}.`)
 })
@@ -191,49 +191,49 @@ onMounted(() => {
 </template>
 ```
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgb25Nb3VudGVkIH0gZnJvbSAndnVlJ1xuXG4vLyByZWFjdGl2ZSBzdGF0ZVxuY29uc3QgY291bnQgPSByZWYoMClcblxuLy8gZnVuY3Rpb25zIHRoYXQgbXV0YXRlIHN0YXRlIGFuZCB0cmlnZ2VyIHVwZGF0ZXNcbmZ1bmN0aW9uIGluY3JlbWVudCgpIHtcbiAgY291bnQudmFsdWUrK1xufVxuXG4vLyBsaWZlY3ljbGUgaG9va3Ncbm9uTW91bnRlZCgoKSA9PiB7XG4gIGNvbnNvbGUubG9nKGBUaGUgaW5pdGlhbCBjb3VudCBpcyAke2NvdW50LnZhbHVlfS5gKVxufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxidXR0b24gQGNsaWNrPVwiaW5jcmVtZW50XCI+Q291bnQgaXM6IHt7IGNvdW50IH19PC9idXR0b24+XG48L3RlbXBsYXRlPiJ9)
+[プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgb25Nb3VudGVkIH0gZnJvbSAndnVlJ1xuXG4vLyByZWFjdGl2ZSBzdGF0ZVxuY29uc3QgY291bnQgPSByZWYoMClcblxuLy8gZnVuY3Rpb25zIHRoYXQgbXV0YXRlIHN0YXRlIGFuZCB0cmlnZ2VyIHVwZGF0ZXNcbmZ1bmN0aW9uIGluY3JlbWVudCgpIHtcbiAgY291bnQudmFsdWUrK1xufVxuXG4vLyBsaWZlY3ljbGUgaG9va3Ncbm9uTW91bnRlZCgoKSA9PiB7XG4gIGNvbnNvbGUubG9nKGBUaGUgaW5pdGlhbCBjb3VudCBpcyAke2NvdW50LnZhbHVlfS5gKVxufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxidXR0b24gQGNsaWNrPVwiaW5jcmVtZW50XCI+Q291bnQgaXM6IHt7IGNvdW50IH19PC9idXR0b24+XG48L3RlbXBsYXRlPiJ9)
 
-### Which to Choose?
+### どちらを選ぶか？
 
-First of all, both API styles are fully capable of covering common use cases. They are different interfaces powered by the exact same underlying system. In fact, the Options API is implemented on top of the Composition API! The fundamental concepts and knowledge about Vue are shared across the two styles.
+まず、どちらのスタイルの API でも、よくあるユースケースは全面的にカバーされます。両者はインターフェースが異なるものの、それを支える基盤のシステムはまったく同じです。事実として、Options API は Composition API を土台にしています！Vue に関する基本的な考え方と必要な知識は、2 つのスタイル間で共通です。
 
-The Options API is centered around the concept of a "component instance" (`this` as seen in the example), which typically aligns better with a class-based mental model for users coming from OOP language backgrounds. It is also more beginner-friendly by abstracting away the reactivity details and enforcing code organization via option groups.
+Options API の考え方は、「コンポーネントのインスタンス」(サンプルに見られる `this`) を中心とするもので、OOP (Object Oriented Programming: オブジェクト指向プログラミング) 言語の経験のあるユーザーにとってはクラスベースの心理的モデルによく適合します。同時に、Options API ではリアクティビティの細かな部分が抽象化され、各オプションのグループによってコードの構成が整理されるため、初心者にとって分かりやすいモデルでもあります。
 
-The Composition API is centered around declaring reactive state variables directly in a function scope, and composing state from multiple functions together to handle complexity. It is more free-form, and requires understanding of how reactivity works in Vue to be used effectively. In return, its flexibility enables more powerful patterns for organizing and reusing logic.
+Composition API は、リアクティブな状態変数を関数のスコープ内で直接宣言し、複数の関数の組み合わせによって状態を組み立てて複雑な処理を扱おう、という考え方が中心にあります。より自由度が高い形式であるため、効果的な使い方をするには Vue のリアクティビティがどのような仕組みで動くのかを理解しておく必要があります。その代わり、柔軟性が高いことから、さまざまなパターンに沿ってロジックの整理や再利用を強力に進めることができます。
 
-You can learn more about the comparison between the two styles and the potential benefits of Composition API in the [Composition API FAQ](/guide/extras/composition-api-faq).
+2 つのスタイル間の比較や、Composition API に秘められたメリットについては、[Composition API に関するよくある質問](/guide/extras/composition-api-faq)で詳しく説明しています。
 
-If you are new to Vue, here's our general recommendation:
+Vue を初めて使う方に、一般的な推奨事項をお伝えします:
 
-- For learning purposes, go with the style that looks easier to understand to you. Again, most of the core concepts are shared between the two styles. You can always pick up the other one at a later time.
+- 学習が目的の場合は、自分で理解しやすいと思うスタイルをお選びください。繰り返しますが、中核的な概念の多くは、どちらのスタイルでも共通です。もう一方のスタイルも、好きなときに後から習得することができます。
 
-- For production use:
+- プロダクション用途の場合は、以下をおすすめします:
 
-  - Go with Options API if you are not using build tools, or plan to use Vue primarily in low-complexity scenarios, e.g. progressive enhancement.
+  - ビルドツールを利用しない予定の場合や、プログレッシブエンハンスメントなどの複雑性の低いシナリオで主に Vue を使う予定の場合は、Options API を選択します。 
 
-  - Go with Composition API + Single-File Components if you plan to build full applications with Vue.
+  - アプリケーション全体を Vue で構築する予定の場合は、Composition API と単一ファイルコンポーネントの組み合わせを使用します。
 
-You don't have to commit to only one style during the learning phase. The rest of the documentation will provide code samples in both styles where applicable, and you can toggle between them at any time using the **API Preference switches** at the top of the left sidebar.
+学習を進める段階では、どちらか一方のスタイルにこだわる必要はありません。このドキュメントの続きの部分に登場するコードサンプルは、該当する場合、両方のスタイルで提供されます。左サイドバーの上部にある **API Preference スイッチ**を使って、いつでもスタイルを切り替えることができます。
 
-## Still Got Questions?
+## さらに知りたいことはありますか？
 
-Check out our [FAQ](/about/faq).
+[よくある質問](/about/faq)をチェックしてみてください。
 
-## Pick Your Learning Path
+## 学習方法を選びましょう
 
-Different developers have different learning styles. Feel free to pick a learning path that suits your preference - although we do recommend going over all content if possible!
+学習の進め方は、開発者によってさまざまです。好みに合った学習方法を自由にお選びください。もし可能なら、すべてのコンテンツに目を通しておくのがおすすめです！
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/tutorial/">
-    <p class="next-steps-link">Try the Tutorial</p>
-    <p class="next-steps-caption">For those who prefer learning things hands-on.</p>
+    <p class="next-steps-link">チュートリアルを試す</p>
+    <p class="next-steps-caption">実際に手を動かしながら学びたい方に。</p>
   </a>
   <a class="vt-box" href="/guide/quick-start.html">
-    <p class="next-steps-link">Read the Guide</p>
-    <p class="next-steps-caption">The guide walks you through every aspect of the framework in full details.</p>
+    <p class="next-steps-link">ガイドを読む</p>
+    <p class="next-steps-caption">ガイドでは、フレームワークのあらゆる面を詳しく解説します。</p>
   </a>
   <a class="vt-box" href="/examples/">
-    <p class="next-steps-link">Check out the Examples</p>
-    <p class="next-steps-caption">Explore examples of core features and common UI tasks.</p>
+    <p class="next-steps-link">サンプルを見る</p>
+    <p class="next-steps-caption">コア機能と一般的な UI タスクのサンプルを観察してみましょう。</p>
   </a>
 </div>
