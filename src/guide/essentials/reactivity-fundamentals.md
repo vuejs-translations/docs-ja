@@ -43,7 +43,7 @@ Vue は、コンポーネントのインスタンスを介して自身の組み�
 
 ### リアクティブプロキシ vs. 独自 \*
 
-Vue 3 では、[JavaScript プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) を活用することで、データをリアクティブにすることができます。Vue 2 から来たユーザーは、以下のエッジケースに注意する必要があります。
+Vue 3 では、[JavaScript プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) を活用することで、データをリアクティブにすることができます。Vue 2 から来たユーザーは、以下のエッジケースに注意する必要があります：
 
 ```js
 export default {
