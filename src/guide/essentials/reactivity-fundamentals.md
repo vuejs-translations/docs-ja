@@ -339,7 +339,7 @@ console.log(proxy.nested === raw) // false
 
 ### `reactive()` の制限 \*\*
 
-`reactive()` API には 2 つの制限があります。：
+`reactive()` API には 2 つの制限があります：
 
 1. オブジェクト型 (オブジェクト、配列、および `Map` や `Set` などの [コレクション型](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections)) に対してのみ機能します。文字列、数値、ブールなどの [プリミティブ型](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) を保持することはできません。
 
