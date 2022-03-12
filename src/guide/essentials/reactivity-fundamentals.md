@@ -216,7 +216,7 @@ export default {
 
 リアクティブな状態を変化させると、DOM は自動的に更新されます。しかし、DOM の更新は同期的に適用されないことに注意する必要があります。その代わりに Vue は、更新サイクルの「next tick」まで更新をバッファリングし、どれだけ状態を変化させても、各コンポーネントは一度だけ更新する必要があることを保証しています。
 
-状態変化後の DOM 更新が完了するのを待つため、[nextTick()](/api/general.html#nexttick) というグローバル API を使用することができます。
+状態変化後の DOM 更新が完了するのを待つため、[nextTick()](/api/general.html#nexttick) というグローバル API を使用することができます：
 
 <div class="composition-api">
 
