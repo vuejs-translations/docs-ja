@@ -383,7 +383,7 @@ import { ref } from 'vue'
 const count = ref(0)
 ```
 
-`ref()` は引数を受け取り、それを `.value` プロパティを持つ ref オブジェクトにラップして返します。
+`ref()` は引数を受け取り、それを `.value` プロパティを持つ ref オブジェクトにラップして返します：
 
 ```js
 const count = ref(0)
