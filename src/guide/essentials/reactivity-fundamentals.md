@@ -304,7 +304,7 @@ function mutateDeeply() {
 
 ### リアクティブプロキシ vs. 独自 \*\*
 
-注意すべきは、`reactive()` の戻り値が、元のオブジェクトの [プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) であり、元のオブジェクトと等しくないということです。
+注意すべきは、`reactive()` の戻り値が、元のオブジェクトの [プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) であり、元のオブジェクトと等しくないということです：
 
 ```js
 const raw = {}
