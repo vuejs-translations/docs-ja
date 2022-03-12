@@ -375,7 +375,7 @@ console.log(proxy.nested === raw) // false
 
 ## `ref()` と共に使うリアクティブな変数 \*\*
 
-Vue は、`reactive()` の制限に対処するため、[`ref()`](/api/reactivity-core.html#ref) という関数も提供しており、任意の値の型を保持できるリアクティブな **"refs "** を作成することができます。
+Vue は、`reactive()` の制限に対処するため、[`ref()`](/api/reactivity-core.html#ref) という関数も提供しており、任意の値の型を保持できるリアクティブな **"refs "** を作成することができます：
 
 ```js
 import { ref } from 'vue'
