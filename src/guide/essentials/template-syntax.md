@@ -1,24 +1,24 @@
-# Template Syntax
+# テンプレート構文
 
-Vue uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying component instance's data. All Vue templates are syntactically valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
+Vue では、HTML ベースのテンプレート構文を使用します。テンプレート構文では、基盤とするコンポーネントのインスタンスのデータと、レンダリングされる DOM を宣言的にバインドすることが可能です。すべての Vue テンプレートは、仕様に準拠しているブラウザーや HTML パーサーでパースできる、構文的に正規の HTML です。
 
-Under the hood, Vue compiles the templates into highly-optimized JavaScript code. Combined with the reactivity system, Vue is able to intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
+内部では、Vue はテンプレートをコンパイルし、高度に最適化された JavaScript のコードにします。リアクティビティ機構と組み合わせ、Vue はアプリの状態が変化したとき、再レンダリングを必要とする最小限のコンポーネントをインテリジェントに見つけ出すことができます。そして、最小限の DOM 操作を適用します。
 
-If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also [directly write render functions](/guide/extras/render-function.html) instead of templates, with optional JSX support. However, do note that they do not enjoy the same level of compile-time optimizations as templates.
+仮想 DOM の各種概念をよく知っていて、生の JavaScript が持つパワーを活かしたいという場合には、テンプレートの代わりに [render 関数を直接記述](/guide/extras/render-function.html)することもできます。さらに、オプションで JSX もサポートされています。ただし、これらの書き方をする場合には、コンパイル時の最適化がテンプレートと同等のレベルでは利用できないことに注意してください。
 
-## Text Interpolation
+## テキスト展開
 
-The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
+データバインディングで最も基本の形式は、二重中括弧を使った「マスタッシュ構文」("Mustache" syntax) によるテキスト展開です:
 
 ```vue-html
 <span>Message: {{ msg }}</span>
 ```
 
-The mustache tag will be replaced with the value of the `msg` property from the corresponding component instance. It will also be updated whenever the `msg` property changes.
+マスタッシュのタグの中身は、対応するコンポーネントのインスタンスが持つ `msg` というプロパティの値に置き換えられます。`msg` プロパティが変更されるたびに、マスタッシュの中身も更新されます。
 
-## Raw HTML
+## 生の HTML
 
-The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use the [`v-html` directive](/api/built-in-directives.html#v-html):
+マスタッシュの中では、データが HTML ではなくプレーンテキストとして解釈されます。本来の HTML を出力したい場合は、次のように [`v-html` ディレクティブ](/api/built-in-directives.html#v-html)を用いる必要があります:
 
 ```vue-html
 <p>Using text interpolation: {{ rawHtml }}</p>
@@ -34,51 +34,51 @@ The double mustaches interprets the data as plain text, not HTML. In order to ou
   <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 </div>
 
-Here we're encountering something new. The `v-html` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, we're basically saying "keep this element's inner HTML up-to-date with the `rawHtml` property on the current active instance."
+ここで、新たな要素が登場しました。この例にある `v-html` という属性は、「**ディレクティブ**」と呼ばれるものの 1 つです。ディレクティブは `v-` という接頭辞を持ち、Vue によって提供される特別な属性であることを示します。そしてご想像の通り、ディレクティブはレンダリングされる DOM に、特別なリアクティブな振る舞いを割り当てます。この例では、簡単に言うと、「現在アクティブなインスタンスが持つ `rawHtml` というプロパティをこの要素の inner HTML に適用して最新に保つ」ということが書かれています。
 
-The contents of the `span` will be replaced with the value of the `rawHtml` property, interpreted as plain HTML - data bindings are ignored. Note that you cannot use `v-html` to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.
+`span` の中身は `rawHtml` プロパティが持つ値に置き換えられ、プレーンな HTML として解釈されます。データバインディングは無視されます。`v-html` は、テンプレートの断片を組み立てるのには利用できないことに注意してください。これは、Vue が文字列ベースのテンプレートエンジンではないためです。それに代わり、UI の再利用や組み立ての基本単位として推奨されているのが「コンポーネント」です。
 
-:::warning Security Warning
-Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.
+:::warning セキュリティーに関する警告
+ウェブサイト上で任意の HTML を動的にレンダリングすることは、[クロスサイトスクリプティング (XSS) 脆弱性](https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0)を招きやすく、非常に危険です。`v-html` は信頼できるコンテンツにのみ使用し、ユーザーから渡されるコンテンツには**決して**使用しないでください。
 :::
 
-## Attribute Bindings
+## 属性バインディング
 
-Mustaches cannot be used inside HTML attributes. Instead, use a [`v-bind` directive](/api/built-in-directives.html#v-bind):
+HTML 属性の中ではマスタッシュ構文が使えません。代わりに、以下の [`v-bind` ディレクティブ](/api/built-in-directives.html#v-bind)を使用します:
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
 ```
 
-The `v-bind` directive instructs Vue to keep the element's `id` attribute in sync with the component's `dynamicId` property. If the bound value is `null` or `undefined`, then the attribute will be removed from the rendered element.
+この `v-bind` ディレクティブは、要素の `id` という属性を、コンポーネントが持つ `dynamicId` というプロパティと同期させるよう Vue に指示しています。バインドされた値が `null` または `undefined` の場合、その属性はレンダリングされる要素から除外されます。
 
-### Shorthand
+### 省略記法
 
-Because `v-bind` is so commonly used, it has a dedicated shorthand syntax:
+`v-bind` は使用頻度が非常に高いため、以下の専用の省略記法があります:
 
 ```vue-html
 <div :id="dynamicId"></div>
 ```
 
-Attributes that start with `:` may look a bit different from normal HTML, but it is in fact a valid character for attribute names and all Vue-supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is optional, but you will likely appreciate it when you learn more about its usage later.
+`:` で始まる属性は、普通の HTML の記法とは少し異なるように見えますが、実際には属性名として有効な文字です。Vue をサポートするすべてのブラウザーは、これを正しく解析することができます。なお、これは最終的にレンダリングされるマークアップには現れません。この省略記法を使うかどうかは任意ですが、その使い方を後ほど詳しく知れば、良さがわかるはずです。
 
-> For the rest of the guide, we will be using the shorthand syntax in code examples, as that's the most common usage for Vue developers.
+> このガイドの残りの部分では、Vue を用いる開発者にとって最も一般的な書き方である省略記法をコード例のなかで使用します。
 
-### Boolean Attributes
+### ブーリアン属性
 
-[Boolean attributes](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) are attributes that can indicate true / false values by its presence on an element. For example, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) is one of the most commonly used boolean attributes.
+[ブーリアン属性](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes)は、要素に含まれるかどうかによって「真」または「偽」の値を表す属性です。例えば、[`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) は最も一般的に用いられるブーリアン属性の 1 つです。
 
-`v-bind` works a bit differently in this case:
+以下のケースでは、`v-bind` は少し特別な動作をします:
 
 ```vue-html
 <button :disabled="isButtonDisabled">Button</button>
 ```
 
-The `disabled` attribute will be included if `isButtonDisabled` has a [truthy value](https://developer.mozilla.org/en-US/docs/Glossary/Truthy). It will also be included if the value is an empty string, maintaining consistency with `<button disabled="">`. For other falsy values the attribute will be omitted.
+この `disabled` という属性は、`isButtonDisabled` が [真値 (truthy value)](https://developer.mozilla.org/ja/docs/Glossary/Truthy) である場合に要素に含まれます。また、`<button disabled="">` との一貫性を保つため、値が空の文字列である場合にも含まれます。それ以外の偽値 (falsy value) の場合には、属性が要素から取り除かれます。
 
-### Dynamically Binding Multiple Attributes
+### 複数の属性を動的にバインドさせる
 
-If you have a JavaScript object representing multiple attributes that looks like this:
+次のような複数の属性を持つ JavaScript オブジェクトがあるとします:
 
 <div class="composition-api">
 
@@ -105,15 +105,15 @@ data() {
 
 </div>
 
-You can bind them to a single element by using `v-bind` without an argument:
+以下のように `v-bind` を引数なしで用いると、これらの複数の属性を 1 つの要素にバインドすることができます:
 
 ```vue-html
 <div v-bind="objectOfAttrs"></div>
 ```
 
-## Using JavaScript Expressions
+## JavaScript の式を用いる
 
-So far we've only been binding to simple property keys in our templates. But Vue actually supports the full power of JavaScript expressions inside all data bindings:
+ここまで、テンプレート内のプロパティのキーに単純なバインドを行う方法だけを見てきました。しかし、実は Vue ではあらゆるデータバインディングにおいて、以下のように JavaScript の式をパワフルに活用することができます:
 
 ```vue-html
 {{ number + 1 }}
@@ -125,28 +125,28 @@ So far we've only been binding to simple property keys in our templates. But Vue
 <div :id="`list-${id}`"></div>
 ```
 
-These expressions will be evaluated as JavaScript in the data scope of the current component instance.
+これらの式は、現在のコンポーネントインスタンスのデータスコープ内で、JavaScript の式として評価されます。
 
-In Vue templates, JavaScript expressions can be used in the following positions:
+Vue のテンプレートでは、以下の場所で JavaScript の式を使用することができます:
 
-- Inside text interpolations (mustaches)
-- In the attribute value of any Vue directives (special attributes that start with `v-`)
+- テキスト展開の内部 (マスタッシュ構文内)
+- 任意の Vue ディレクティブ (`v-` で始まる特殊な属性) の属性値の中身
 
-### Expressions Only
+### 式に限られる
 
-Each binding can only contain **one single expression**, so the following will **NOT** work:
+それぞれのバインディングには、**単一の式**しか含めることができません。そのため、以下はうまく**動作しません**:
 
 ```vue-html
-<!-- this is a statement, not an expression: -->
+<!-- これは宣言であり、式ではありません: -->
 {{ var a = 1 }}
 
-<!-- flow control won't work either, use ternary expressions -->
+<!-- フロー制御も動作しません。代わりに 3 項式を使用してください。 -->
 {{ if (ok) { return message } }}
 ```
 
-### Calling Functions
+### 関数の呼び出し
 
-It is possible to call a component-exposed method inside a binding expression:
+コンポーネントからアクセスできるメソッドであれば、以下のようにバインディングの式の内部で呼び出すことができます:
 
 ```vue-html
 <span :title="toTitleDate(date)">
@@ -155,114 +155,114 @@ It is possible to call a component-exposed method inside a binding expression:
 ```
 
 :::tip
-Functions called inside binding expressions will be called every time the component updates, so they should **not** have any side effects, such as changing data or triggering asynchronous operations.
+バインディングの式の内部で呼び出される関数は、コンポーネントが更新されるたびに呼び出されます。そのため、データの変更や非同期処理をトリガーさせるような副作用が**ない**ことが期待されます。
 :::
 
-### Restricted Globals Access
+### グローバルへのアクセスの制限
 
-Template expressions are sandboxed and only have access to a [restricted list of globals](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3). The list exposes commonly used built-in globals such as `Math` and `Date`.
+テンプレートで用いる式はサンドボックス内で実行され、[限定的なグローバルのリスト](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)に含まれるグローバルにのみアクセスできます。このリストには、`Math` や `Date` などのよく使われる組み込みグローバルが含まれています。
 
-Globals not explicitly included in the list, for example user-attached properties on `window`, will not be accessible in template expressions. You can, however, explicitly define additional globals for all Vue expressions by adding them to [`app.config.globalProperties`](/api/application.html#app-config-globalproperties).
+ユーザーが `window` に付与したプロパティなど、このリストに明示的に含まれていないグローバルには、テンプレート内の式からアクセスすることができません。ただし、[`app.config.globalProperties`](/api/application.html#app-config-globalproperties) に追加することにより、Vue のあらゆる式で利用できるグローバルを明示的に定義することができます。
 
-## Directives
+## ディレクティブ
 
-Directives are special attributes with the `v-` prefix. Vue provides a number of [built-in directives](/api/built-in-directives.html), including `v-html` and `v-bind` which we have introduced above.
+ディレクティブは、`v-` という接頭辞を持つ特別な属性です。Vue では、上で紹介した `v-html` や `v-bind` をはじめ、数々の[組み込みディレクティブ](/api/built-in-directives.html)が用意されています。
 
-Directive attribute values are expected to be single JavaScript expressions (with the exception of `v-for`, `v-on` and `v-slot`, which will be discussed in their respective sections later). A directive's job is to reactively apply updates to the DOM when the value of its expression changes. Take [`v-if`](/api/built-in-directives.html#v-if) as an example:
+ディレクティブの属性値は、JavaScript の単一の式であることが期待されます (ただし `v-for`、`v-on`、`v-slot` は例外であり、後ほどそれぞれのセクションで説明します)。ディレクティブの役割は、式が示す値が変化したとき、リアクティブに更新を DOM に適用することです。例えば、[`v-if`](/api/built-in-directives.html#v-if) を取り上げてみます:
 
 ```vue-html
 <p v-if="seen">Now you see me</p>
 ```
 
-Here, the `v-if` directive would remove / insert the `<p>` element based on the truthiness of the value of the expression `seen`.
+この例では、`v-if` というディレクティブを用いて、式 `seen` が示す値の真偽に基づいて要素 `<p>` を削除したり挿入したりします。
 
-### Arguments
+### 引数
 
-Some directives can take an "argument", denoted by a colon after the directive name. For example, the `v-bind` directive is used to reactively update an HTML attribute:
+一部のディレクティブは引数を取ることができます。引数は、ディレクティブ名の後にコロンで示します。以下は、`v-bind` ディレクティブを使って HTML 属性の 1 つをリアクティブに更新する例です:
 
 ```vue-html
 <a v-bind:href="url"> ... </a>
 
-<!-- shorthand -->
+<!-- 省略記法 -->
 <a :href="url"> ... </a>
 ```
 
-Here `href` is the argument, which tells the `v-bind` directive to bind the element's `href` attribute to the value of the expression `url`. In the shorthand, everything before the argument (i.e. `v-bind:`) is condensed into a single character, `:`.
+この例では `href` が引数です。これにより、要素の `href` という属性を `url` という式の値にバインドするという指示が `v-bind` ディレクティブに伝えられます。省略記法では、引数の前に置かれる `v-bind:` の部分がすべて `:` という 1 文字に凝縮されます。
 
-Another example is the `v-on` directive, which listens to DOM events:
+別の例として、DOM イベントをリッスンする `v-on` ディレクティブを紹介します:
 
 ```vue-html
 <a v-on:click="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- 省略記法 -->
 <a @click="doSomething"> ... </a>
 ```
 
-Here the argument is the event name to listen to: `click`. `v-on` is one of the few directives that also have a corresponding shorthand, with its shorthand character being `@`. We will talk about event handling in more detail too.
+この例では、リッスンするイベント名の `click` が引数です。ごく一部のディレクティブには省略記法の記号として `@` を持つものがあり、`v-on` もその 1 つです。イベントのハンドリングについても、後ほど詳しく説明します。
 
-### Dynamic Arguments
+### 動的引数
 
-It is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets:
+ディレクティブの引数を指す部分では、以下のように角括弧で囲んだ JavaScript の式を用いることもできます:
 
 ```vue-html
 <!--
-Note that there are some constraints to the argument expression,
-as explained in the "Dynamic Argument Expression Constraints" section below.
+引数で使用できる式には、いくつか制約があります。詳細は以下の
+「動的引数の値に関する制約」および「動的引数の構文上の制約」セクションで説明します。
 -->
 <a v-bind:[attributeName]="url"> ... </a>
 
-<!-- shorthand -->
+<!-- 省略記法 -->
 <a :[attributeName]="url"> ... </a>
 ```
 
-Here `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your component instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`.
+この例では、`attributeName` が JavaScript の式として動的に評価され、そこで評価された値が最終的な引数を指す値として使用されます。例えば、コンポーネントのインスタンスが `attributeName` というデータプロパティを持ち、その値が `"href"` のとき、このバインディングは `v-bind:href` と同等になります。
 
-Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
+同じように、動的引数を用いてハンドラーを動的なイベント名にバインドすることもできます:
 
 ```vue-html
 <a v-on:[eventName]="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- 省略記法 -->
 <a @[eventName]="doSomething">
 ```
 
-In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
+この例では、`eventName` の値が `"focus"` のとき、`v-on:[eventName]` が `v-on:focus` と同等になります。
 
-#### Dynamic Argument Value Constraints
+#### 動的引数の値に関する制約
 
-Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
+動的引数は、評価結果が `null` または文字列のいずれかになることが期待されます。`null` は特別な値で、バインディングを削除することを明示的に表します。それ以外の非文字列の値を指定すると、警告が発生します。
 
-#### Dynamic Argument Syntax Constraints
+#### 動的引数の構文上の制約
 
-Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
+動的引数の式には、構文上の制約がいくつかあります。これは、スペースや引用符など特定の文字が HTML の属性名の中では無効となるためです。例えば、次のようなものは無効となります:
 
 ```vue-html
-<!-- This will trigger a compiler warning. -->
+<!-- この場合、コンパイラーで警告が発生します。 -->
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-If you need to pass a complex dynamic argument, it's probably better to use a [computed property](./computed.html), which we will cover shortly.
+複雑な動的引数を渡す必要がある場合は、後ほど取り上げる[計算プロパティ](./computed.html)を使用するとよいでしょう。
 
-When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
+また、HTML ファイルに直接記述する「in-DOM テンプレート」を使用する場合、ブラウザーでは属性名が小文字であることが求められるため、以下のように大文字のキー名を使用することは避ける必要があります:
 
 ```vue-html
 <a :[someAttr]="value"> ... </a>
 ```
 
-The above will be converted to `:[someattr]` in in-DOM templates. If your component has a `someAttr` property instead of `someattr`, your code won't work.
+上のコードは、in-DOM テンプレートでは `:[someattr]` に変換されます。もしコンポーネントに `someattr` ではなく `someAttr` というプロパティしかなければ、このコードは動作しません。
 
-### Modifiers
+### 修飾子
 
-Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the `.prevent` modifier tells the `v-on` directive to call `event.preventDefault()` on the triggered event:
+修飾子は、ドット (.) で示される特別な接頭辞で、ディレクティブを何らかの特別な方法でバインドすることを表します。例えば、以下に示す `.prevent` という修飾子は、イベントがトリガーされたときに `event.preventDefault()` を呼び出すことを `v-on` ディレクティブに伝えます:
 
 ```vue-html
 <form @submit.prevent="onSubmit">...</form>
 ```
 
-You'll see other examples of modifiers later, [for `v-on`](./event-handling.html#event-modifiers) and [for `v-model`](./forms.html#modifiers), when we explore those features.
+その他の修飾子の例として、後ほど [`v-on` のイベント修飾子](./event-handling.html#event-modifiers)や [`v-model` の修飾子](./forms.html#modifiers)などを目にする機会があります。それぞれの機能を学びながらご確認ください。
 
-And finally, here's the full directive syntax visualized:
+最後に、ディレクティブの構文の全容をこちらの図にまとめました:
 
-![directive syntax graph](./images/directive.png)
+![ディレクティブの構文の図解](./images/directive.png)
 
 <!-- https://www.figma.com/file/BGWUknIrtY9HOmbmad0vFr/Directive -->
