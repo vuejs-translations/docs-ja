@@ -1,16 +1,16 @@
-# Declarative Rendering
+# 宣言的レンダリング
 
 <div class="sfc">
 
-What you see in the editor is a Vue Single File Component (SFC). An SFC is a reusable self-contained block of code that encapsulates HTML, CSS and JavaScript that belong together, written inside a `.vue` file.
+エディターに表示されているのは、Vue Single File Component (SFC) です。SFC は再利用可能な自己完結型のコードブロックであり、一緒に属する HTML、CSS、JavaScript をカプセル化して `.vue` ファイル内に記述します。
 
 </div>
 
-The core feature of Vue is **declarative rendering**: using a template syntax that extends HTML, we can describe how the HTML should look like based on JavaScript state. When the state changes, the HTML updates automatically.
+Vue の中核となる機能は**宣言的レンダリング**です。HTML を拡張したテンプレート構文を用いて、JavaScript の状態に基づいて HTML がどのように見えるかを記述することができます。状態が変更されると、HTML は自動的に更新されます。
 
 <div class="composition-api">
 
-State that can trigger updates when changed are considered **reactive**. We can declare reactive state using Vue's `reactive()` API. Objects created from `reactive()` are JavaScript [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that work just like normal objects:
+変更されたときに更新のトリガーとなるような状態は**リアクティブ**とみなされます。`reactive()` API を使用してリアクティブな状態を宣言することができます。`reactive()` で生成されるオブジェクトは JavaScript の [プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) であり、通常のオブジェクトと同様に動きます。:
 
 ```js
 import { reactive } from 'vue'
@@ -23,7 +23,7 @@ console.log(counter.count) // 0
 counter.count++
 ```
 
-`reactive()` only works on objects (including arrays and built-in types like `Map` and `Set`). `ref()`, on the other hand, can take any value type and create an object that exposes the inner value under a `.value` property:
+`reactive()` はオブジェクト（配列や `Map` や `Set` のような組み込み型も含む）に対してのみ動作します。一方、`ref()` は、任意の値の型を取り、`.value` プロパティの下で内部の値を公開するオブジェクトを作成することができます。:
 
 ```js
 import { ref } from 'vue'
@@ -34,17 +34,17 @@ console.log(message.value) // "Hello World!"
 message.value = 'Changed'
 ```
 
-Details on `reactive()` and `ref()` are discussed in <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">Guide - Reactivity Fundamentals</a>.
+`reactive()` と `ref()` の詳細については、<a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">ガイド - リアクティビティの基礎</a>で説明します。
 
 <div class="sfc">
 
-Reactive state declared in the component's `<script setup>` block can be used directly in the template. This is how we can render dynamic text based on the value of the `state` object and `message` ref, using mustaches syntax:
+コンポーネントの `<script setup>` ブロックで宣言されたリアクティブステートはテンプレートで直接使用することができます。このようにして、mustaches 構文を使い、 `state` オブジェクトと `message` ref の値に基づいて動的なテキストをレンダリングすることができます。:
 
 </div>
 
 <div class="html">
 
-The object being passed to `createApp()` is a Vue component. A component's state should be declared inside its `setup()` function, and returned using an object:
+`createApp()` に渡されるオブジェクトは Vue のコンポーネントです。コンポーネントの状態は、その `setup()` 関数内で宣言され、オブジェクトを使用して返される必要があります。:
 
 ```js{2,5}
 setup() {
@@ -57,7 +57,7 @@ setup() {
 }
 ```
 
-Properties in the returned object will be made available in the template. This is how we can render dynamic text based on the value of `message`, using mustaches syntax:
+返されたオブジェクトのプロパティはテンプレートで利用できるようになります。このようにして、mustaches 構文を使い、 `message` の値に基づいて動的なテキストをレンダリングすることができます。:
 
 </div>
 
@@ -66,15 +66,15 @@ Properties in the returned object will be made available in the template. This i
 <p>count is: {{ counter.count }}</p>
 ```
 
-Notice how we did not need to use `.value` when accessing the `message` ref in templates: it is automatically unwrapped for more succinct usage.
+テンプレートで `message` ref にアクセスする際、`.value` を使用する必要がないことに注意してください。自動的にアンラップされ、より簡潔な使い方ができます。
 
 </div>
 
 <div class="options-api">
 
-State that can trigger updates when changed are considered **reactive**. In Vue, reactive state is held in components. In the example code, the object being passed to `createApp()` is a component.
+変更されたときに更新のトリガーとなるような状態は**リアクティブ**とみなされます。Vue では、リアクティブステートはコンポーネントに保持されます。例のコードでは、`createApp()` に渡されるオブジェクトがコンポーネントになっています。
 
-We can declare reactive state using the `data` component option, which should be a function that returns an object:
+`data` コンポーネントオプションを使ってリアクティブステートを宣言することができますが、これはオブジェクトを返す関数であるべきです。
 
 <div class="sfc">
 
@@ -103,7 +103,7 @@ createApp({
 
 </div>
 
-The `message` property will be made available in the template. This is how we can render dynamic text based on the value of `message`, using mustaches syntax:
+`message` プロパティはテンプレート内で使用可能です。このように、 mustaches 構文を使い、 `message` の値に基づいた動的なテキストをレンダリングすることができます。
 
 ```vue-html
 <h1>{{ message }}</h1>
@@ -111,7 +111,7 @@ The `message` property will be made available in the template. This is how we ca
 
 </div>
 
-The content inside the mustaches is not limited to just identifiers or paths - we can use any valid JavaScript expression:
+mustaches の内側の内容は ID やパスに限られません。有効な JavaScript の表現であれば何でも使うことができます。:
 
 ```vue-html
 <h1>{{ message.split('').reverse().join('') }}</h1>
@@ -119,12 +119,12 @@ The content inside the mustaches is not limited to just identifiers or paths - w
 
 <div class="composition-api">
 
-Now, try to create some reactive state yourself, and use it to render dynamic text content for the `<h1>` in the template.
+では、自分でリアクティブステートを作成し、それを使ってテンプレートの `<h1>` に動的なテキストコンテンツをレンダリングしてみましょう。
 
 </div>
 
 <div class="options-api">
 
-Now, try to create a data property yourself, and use it as the text content for the `<h1>` in the template.
+では、自分でデータプロパティを作成して、テンプレート内の `<h1>` のテキストコンテンツとして使ってみてください。
 
 </div>
