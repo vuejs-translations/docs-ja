@@ -10,7 +10,7 @@ Vue の中核となる機能は**宣言的レンダリング**です。HTML を�
 
 <div class="composition-api">
 
-変更されたときに更新のトリガーとなるような状態は**リアクティブ**とみなされます。`reactive()` API を使用してリアクティブな状態を宣言することができます。`reactive()` で生成されるオブジェクトは JavaScript の [プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) であり、通常のオブジェクトと同様に動きます。:
+変更されたときに更新のトリガーとなるような状態は**リアクティブ**とみなされます。Vue の `reactive()` API を使用してリアクティブな状態を宣言することができます。`reactive()` で生成されるオブジェクトは JavaScript の [プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) であり、通常のオブジェクトと同様に動作します:
 
 ```js
 import { reactive } from 'vue'
@@ -111,7 +111,7 @@ createApp({
 
 </div>
 
-mustaches の内側の内容は ID やパスに限られません。有効な JavaScript の表現であれば何でも使うことができます。:
+mustaches の内側の内容は識別子やパスに限られません。有効な JavaScript の式であれば何でも使うことができます。:
 
 ```vue-html
 <h1>{{ message.split('').reverse().join('') }}</h1>
