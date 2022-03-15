@@ -1,13 +1,13 @@
-# You Did It!
+# やったね！
 
-You have finished the tutorial!
+チュートリアルが終了しました！
 
-At this point, you should have a good idea of what it's like to work with Vue. However, we covered a lot of things really fast and glossed over the details, so definitely keep learning! As a next step, you can:
+この時点で、Vue を使った作業がどのようなものであるかは、よく理解できたはずです。しかし、私たちは多くのことを本当に速く学習し、細部には目を瞑ってきました。ですからぜひ学習を継続してください！次のステップとして、次のことができます。:
 
-- Set up a real Vue project on your machine by following the [Quick Start](/guide/quick-start.html).
+- [クイックスタート](/guide/quick-start.html)の手順に従って、あなたのマシン上に実際の Vue プロジェクトをセットアップします。
 
-- Go through the [Main Guide](/guide/essentials/application.html), which covers all the topics we learned so far in greater details, and much more.
+- [メインガイド](/guide/essentials/application.html)では、これまで学んだ全ての内容について、さらに詳しく説明しています。
 
-- Check out some more practical [Examples](/examples/).
+- より実例的な[例](/examples/)を確認します。
 
-We can't wait to see what you build next!
+次は何を作ってくれるのか、楽しみです！
