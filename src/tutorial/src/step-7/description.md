@@ -1,6 +1,6 @@
-# List Rendering
+# リストレンダリング
 
-We can use the `v-for` directive to render a list of elements based on a source array:
+`v-for` ディレクティブを使用すると、配列を基にした要素のリストをレンダリングすることができます:
 
 ```vue-html
 <ul>
@@ -10,13 +10,13 @@ We can use the `v-for` directive to render a list of elements based on a source 
 </ul>
 ```
 
-Here `todo` is a local variable representing the array element currently being iterated on. It's only accessible on or inside the `v-for` element.
+ここでの `todo` は、現在反復処理中の配列の要素を表すローカル変数です。これは `v-for` ディレクティブを使っている要素、またはその内部でのみアクセス可能です。
 
-Notice how we are also giving each todo object a unique `id`, and binding it as the <a target="_blank" href="/api/built-in-special-attributes.html#key">special `key` attribute</a> for each `<li>`. The `key` allows Vue to accurately move each `<li>` to match the position of its corresponding object in the array.
+各 Todo オブジェクトに一意の `id` を与え、それを各 `<li>` の <a target="_blank" href="/api/built-in-special-attributes.html#key">特別な `key` 属性</a> としてバインドしていることに注目してください。この `key` により、Vue は各 `<li>` を配列内の対応するオブジェクトの位置に合わせて正確に移動させることができます。
 
-There are two ways to update the list:
+リストを更新するには、次の 2 つの方法があります:
 
-1. Call [mutating methods](https://stackoverflow.com/questions/9009879/which-javascript-array-functions-are-mutating) on the source array:
+1. 配列の [変更メソッド](https://stackoverflow.com/questions/9009879/which-javascript-array-functions-are-mutating) を呼び出す:
 
    <div class="composition-api">
 
@@ -33,7 +33,7 @@ There are two ways to update the list:
 
    </div>
 
-2. Replace the array with a new one:
+2. 配列を新しいものに置き換える:
 
    <div class="composition-api">
 
@@ -50,6 +50,7 @@ There are two ways to update the list:
 
    </div>
 
-Here we have a simple todo list - try to implement the logic for `addTodo()` and `removeTodo()` methods to make it work!
+ここでは、シンプルな Todo リストを用意しています。`addTodo()` メソッドと `removeTodo()` メソッドのロジックを実装して、動作するようにしてみてください。
 
-More details on `v-for`: <a target="_blank" href="/guide/essentials/list.html">Guide - List Rendering</a>
+`v-for` の詳細: <a target="_blank" href="/guide/essentials/list.html">ガイド - リストレンダリング</a>
+
