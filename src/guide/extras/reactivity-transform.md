@@ -1,7 +1,7 @@
 # Reactivity Transform
 
-:::warning 試験的な機能
-Reactivity Transform は現在、試験的な機能です。デフォルトでは無効になっており、[明示的なオプトイン](#explicit-opt-in)が必要です。最終決定版になるまでに変更される可能性があります。最新の情報は、[GitHub でのプロポーザルと議論](https://github.com/vuejs/rfcs/discussions/369)に注目してください。
+:::warning 実験的な機能
+Reactivity Transform は現在、実験的な機能です。デフォルトでは無効になっており、[明示的なオプトイン](#explicit-opt-in)が必要です。最終決定版になるまでに変更される可能性があります。最新の情報は、[GitHub でのプロポーザルと議論](https://github.com/vuejs/rfcs/discussions/369)に注目してください。
 :::
 
 :::tip Composition API 固有
@@ -30,7 +30,7 @@ function increment() {
 </template>
 ```
 
-ここでの `$ref()` メソッドは **コンパイル時マクロ** です。実行時に呼び出される実際のメソッドではなく、Vue のコンパイラーは、結果の `count` 変数を **リアクティブな変数** として扱うためのヒントとして使用します。
+ここでの `$ref()` メソッドは **コンパイルタイムマクロ** です。実行時に呼び出される実際のメソッドではなく、Vue のコンパイラーは、結果の `count` 変数を **リアクティブな変数** として扱うためのヒントとして使用します。
 
 リアクティブな変数は通常の変数と同じようにアクセスしたり再代入できますが、これらの操作は `.value` つきの ref にコンパイルされます。例えば、上記コンポーネントの `<script>` 部分は以下のようにコンパイルされます:
 
@@ -64,7 +64,7 @@ let count = $ref(0)
 
 ## `$()` を使った分割代入
 
-コンポジション関数からは ref のオブジェクトを返し、その ref を取得するために分割代入を使うのが一般的です。この目的のために Reactivity Transform は **`$()`** マクロを提供します:
+composition 関数からは ref のオブジェクトを返し、その ref を取得するために分割代入を使うのが一般的です。この目的のために Reactivity Transform は **`$()`** マクロを提供します:
 
 ```js
 import { useMouse } from '@vueuse/core'

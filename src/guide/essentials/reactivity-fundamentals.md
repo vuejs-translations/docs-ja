@@ -576,7 +576,7 @@ export default {
 
 <div class="composition-api">
 
-## リアクティビティ変換 <sup class="vt-badge experimental" /> \*\*
+## Reactivity Transform <sup class="vt-badge experimental" /> \*\*
 
 Ref で `.value` を使わなければならないのは、JavaScript の言語的な制約による欠点です。しかし、コンパイル時の変換 (ここでいうコンパイル時とは SFC を JavaScript コードへ変換する時) を利用すれば、適切な場所に自動的に `.value` を追加して人間工学を改善することができます。Vue はコンパイル時の変換を提供しており、先ほどの「カウンター」の例をこのように記述することができます。
 
@@ -595,6 +595,6 @@ function increment() {
 </template>
 ```
 
-[リアクティビティ変換](/guide/extras/reactivity-transform.html) の詳細については、専用のセクションで説明されています。ただし、現在はまだ実験的なものであり、最終的に完成するまでに変更される可能性があることに注意してください。
+[Reactivity Transform](/guide/extras/reactivity-transform.html) の詳細については、専用のセクションで説明されています。ただし、現在はまだ実験的なものであり、最終的に完成するまでに変更される可能性があることに注意してください。
 
 </div>
