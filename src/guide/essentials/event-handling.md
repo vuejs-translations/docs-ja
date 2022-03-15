@@ -194,7 +194,7 @@ methods: {
 
 ```js
 function warn(message, event) {
-  // `これでネイティブイベントにアクセスできるようになりました`
+  // これでネイティブイベントにアクセスできるようになりました
   if (event) {
     event.preventDefault()
   }
