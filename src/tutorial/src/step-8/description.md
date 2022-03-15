@@ -47,7 +47,7 @@ createApp({
 </div>
 <div class="composition-api">
 
-<a target="_blank" href="/guide/essentials/computed.html">`computed()`</a> の紹介です。他のリアクティブなデータソースに基づいて `.value` を計算する算出参照をつくることができます:
+<a target="_blank" href="/guide/essentials/computed.html">`computed()`</a> の紹介です。他のリアクティブなデータソースに基づいて `.value` を計算する算出 ref をつくることができます:
 
 <div class="sfc">
 
