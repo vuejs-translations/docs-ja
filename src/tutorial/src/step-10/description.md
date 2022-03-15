@@ -1,6 +1,6 @@
-# Watchers
+# ウォッチャー
 
-Sometimes we may need to perform "side effects" reactively - for example, logging a number to the console when it changes. We can achieve this with watchers:
+時には "side effects (副作用)" を反応的に実行する必要があるかもしれません - 例えば、数値が変化したときにコンソールにログを記録するといったことです。これはウォッチャーで実現することができます:
 
 <div class="composition-api">
 
@@ -15,7 +15,7 @@ watch(count, (newCount) => {
 })
 ```
 
-`watch()` can directly watch a ref, and the callback gets fired whenever `count`'s value changes. `watch()` can also watch other types of data sources - more details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
+`watch()` は、直接 ref を監視することができ、 `count` の値が変化するたびにコールバックが発生します。 `watch()` は、他のタイプのデータソースを監視することもできます - 詳細は <a target="_blank" href="/guide/essentials/watchers.html">ガイド - ウォッチャー</a> で説明しています。
 
 </div>
 <div class="options-api">
@@ -36,8 +36,8 @@ export default {
 }
 ```
 
-Here, we are using the `watch` option to watch changes to the `count` property. The watch callback is called when `count` changes, and receives the new value as the argument. More details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
+ここでは、`watch` オプションを使用して、`count` プロパティの変更を監視しています。watch コールバックは `count` が変更されたときに呼び出され、新しい値を引数として受け取ります。詳細は <a target="_blank" href="/guide/essentials/watchers.html">ガイド - ウォッチャー</a> で説明しています。
 
 </div>
 
-A more practical example than logging to the console would be fetching new data when an ID changes. The code we have is fetching todos data from a mock API on component mount. There is also a button that increments the todo ID that should be fetched. Try to implement a watcher that fetches a new todo when the button is clicked.
+コンソールへのログ記録よりも実用的な例としては、ID が変更されたときに新しいデータをフェッチすることでしょう。このコードでは、コンポーネントのマウント時にモック API から todos データを取得しています。また、フェッチすべき todo ID をインクリメントするボタンもあります。ボタンがクリックされたときに新しい todo をフェッチするウォッチャーを実装してみてください。
