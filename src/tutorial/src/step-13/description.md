@@ -1,16 +1,16 @@
-# Emits
+# エミット
 
-In addition to receiving props, a child component can also emit events to the parent:
+プロパティを受け取るだけでなく、子コンポーネントは親コンポーネントにイベントを発することもできます:
 
 <div class="composition-api">
 <div class="sfc">
 
 ```vue
 <script setup>
-// declare emitted events
+// エミットされるイベントを宣言します
 const emit = defineEmits(['response'])
 
-// emit with argument
+// 引数を伴うエミット
 emit('response', 'hello from child')
 </script>
 ```
@@ -21,10 +21,10 @@ emit('response', 'hello from child')
 
 ```js
 export default {
-  // declare emitted events
+  // エミットされるイベントを宣言します
   emits: ['response'],
   setup(props, { emit }) {
-    // emit with argument
+    // 引数を伴うエミット
     emit('response', 'hello from child')
   }
 }
@@ -38,10 +38,10 @@ export default {
 
 ```js
 export default {
-  // declare emitted events
+  // エミットされるイベントを宣言します
   emits: ['response'],
   created() {
-    // emit with argument
+    // 引数を伴うエミット
     this.$emit('response', 'hello from child')
   }
 }
@@ -49,9 +49,9 @@ export default {
 
 </div>
 
-The first argument to <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> is the event name. Any additional arguments are passed on to the event listener.
+<span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> の第一引数はイベント名です。追加の引数は、イベントリスナーに渡されます。
 
-The parent can listen to child-emitted events using `v-on` - here the handler receives the extra argument from the child emit call and assigns it to local state:
+親は `v-on` を使って子が発するイベントを聞くことができます。ここでは、ハンドラーは子の emit 呼び出しから余分な引数を受け取り、それをローカルステートに割り当てています:
 
 <div class="sfc">
 
@@ -68,4 +68,4 @@ The parent can listen to child-emitted events using `v-on` - here the handler re
 
 </div>
 
-Now try it yourself in the editor.
+では、自分でエディターで試してみてください。
