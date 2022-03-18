@@ -1,6 +1,6 @@
-# Slots
+# スロット
 
-In addition to passing data via props, the parent component can also pass down template fragments to the child via **slots**:
+props を経由したデータの受け渡しだけでなく、親コンポーネントはテンプレートフラグメントを **スロット** を経由して子コンポーネントへ渡すこともできます:
 
 <div class="sfc">
 
@@ -21,7 +21,7 @@ In addition to passing data via props, the parent component can also pass down t
 
 </div>
 
-In the child component, it can render the slot content from the parent using the `<slot>` element as outlet:
+子コンポーネントでは、 `<slot>` 要素をアウトレットとして使用し、親コンポーネントからのスロットコンテンツをレンダリングできます:
 
 <div class="sfc">
 
@@ -40,10 +40,10 @@ In the child component, it can render the slot content from the parent using the
 
 </div>
 
-Content inside the `<slot>` outlet will be treated as "fallback" content: it will be displayed if the parent did not pass down any slot content:
+`<slot>` アウトレット内のコンテンツは、"フォールバック" コンテンツとして扱われます。親コンポーネントがスロットコンテンツを渡さなかった場合に表示されます:
 
 ```vue-html
 <slot>Fallback content</slot>
 ```
 
-Currently we are not passing any slot content to `<ChildComp>`, so you should see the fallback content. Let's provide some slot content to the child while making use of the parent's `msg` state.
+現在は `<ChildComp>` へスロットコンテンツを渡していないので、フォールバックの内容が確認できるはずです。親コンポーネントの `msg` の状態を利用しつつ、子コンポーネントにいくつかスロットコンテンツを提供してみましょう。

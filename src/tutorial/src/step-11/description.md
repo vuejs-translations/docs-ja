@@ -1,8 +1,8 @@
-# Components
+# コンポーネント
 
-So far, we've only been working with a single component. Real Vue applications are typically created with nested components.
+ここまでは、1 つのコンポーネントだけを扱ってきました。実際の Vue アプリケーションは、多くはネストされたコンポーネントで作成されます。
 
-A parent component can render another component in its template as a child component. To use a child component, we need to first import it:
+親コンポーネントは、そのテンプレートにある別のコンポーネントを子コンポーネントとしてレンダリングすることができます。子コンポーネントを使用するには、まずそれをインポートする必要があります:
 
 <div class="composition-api">
 <div class="sfc">
@@ -27,14 +27,14 @@ export default {
 }
 ```
 
-We also need to register the component using the `components` option. Here we are using the object property shorthand to register the `ChildComp` component under the `ChildComp` key.
+また、`components` オプションを使用して、コンポーネントを登録する必要があります。ここでは、オブジェクトプロパティのショートハンドを使って、 `ChildComp` コンポーネントを `ChildComp` キーの下に登録しています。
 
 </div>
 </div>
 
 <div class="sfc">
 
-Then, we can use the component in the template as:
+そして、そのコンポーネントをテンプレート内で次のように使用することができます:
 
 ```vue-html
 <ChildComp />
@@ -54,9 +54,9 @@ createApp({
 })
 ```
 
-We also need to register the component using the `components` option. Here we are using the object property shorthand to register the `ChildComp` component under the `ChildComp` key.
+また、`components` オプションを使用して、コンポーネントを登録する必要があります。ここでは、オブジェクトプロパティのショートハンドを使用して、 `ChildComp` コンポーネントを `ChildComp` キーに登録しています。
 
-Because we are writing the template in the DOM, it will be subject to browser's parsing rules, which is case-insensitive for tag names. Therefore, we need to use the kebab-cased name to reference the child component:
+DOM にテンプレートを書いているので、タグ名の大文字と小文字を区別しないブラウザーの解析ルールに従います。そのため、子コンポーネントを参照するには、ケバブケースを使用する必要があります。
 
 ```vue-html
 <child-comp></child-comp>
@@ -65,4 +65,4 @@ Because we are writing the template in the DOM, it will be subject to browser's 
 </div>
 
 
-Now try it yourself - import the child component and render it in the template.
+今度は自分でやってみましょう - 子コンポーネントをインポートして、テンプレートにレンダリングしてみましょう。
