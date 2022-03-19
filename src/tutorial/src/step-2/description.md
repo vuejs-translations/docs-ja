@@ -38,7 +38,7 @@ message.value = 'Changed'
 
 <div class="sfc">
 
-コンポーネントの `<script setup>` ブロックで宣言されたリアクティブステートはテンプレートで直接使用することができます。このようにして、mustaches 構文を使い、 `state` オブジェクトと `message` ref の値に基づいて動的なテキストをレンダリングすることができます:
+コンポーネントの `<script setup>` ブロックで宣言されたリアクティブステートはテンプレートで直接使用することができます。このようにして、mustaches 構文を使い、 `counter` オブジェクトと `message` ref の値に基づいて動的なテキストをレンダリングすることができます:
 
 </div>
 
@@ -48,10 +48,10 @@ message.value = 'Changed'
 
 ```js{2,5}
 setup() {
-  const state = reactive({ count: 0 })
+  const counter = reactive({ count: 0 })
   const message = ref('Hello World!')
   return {
-    state,
+    counter,
     message
   }
 }
