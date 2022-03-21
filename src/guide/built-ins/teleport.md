@@ -21,7 +21,7 @@
 </div>
 ```
 
-そして、以下が `<MyModal>` の実装です。
+そして、以下が `<MyModal>` の実装です:
 
 <div class="composition-api">
 
