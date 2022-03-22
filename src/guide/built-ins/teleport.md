@@ -14,7 +14,7 @@
 
 ```vue-html
 <div class="outer">
-  <h3>Vue Teleport の例</h3>
+  <h3>Vue Teleport Example</h3>
   <div>
     <MyModal />
   </div>
@@ -33,11 +33,11 @@ const open = ref(false)
 </script>
 
 <template>
-  <button @click="open = true">モーダルを開く</button>
+  <button @click="open = true">Open Modal</button>
 
   <div v-if="open" class="modal">
-    <p>モーダルからこんにちは！</p>
-    <button @click="open = false">閉じる</button>
+    <p>Hello from the modal!</p>
+    <button @click="open = false">Close</button>
   </div>
 </template>
 
@@ -68,11 +68,11 @@ export default {
 </script>
 
 <template>
-  <button @click="open = true">モーダルを開く</button>
+  <button @click="open = true">Open Modal</button>
 
   <div v-if="open" class="modal">
-    <p>モーダルからこんにちは！</p>
-    <button @click="open = false">閉じる</button>
+    <p>Hello from the modal!</p>
+    <button @click="open = false">Close</button>
   </div>
 </template>
 
@@ -101,12 +101,12 @@ export default {
 `<Teleport>` は、ネストされた DOM 構造から抜け出せるようにすることで、これらの問題を回避するクリーンな方法を提供します。それでは、`<MyModal>` を修正して、 `<Teleport>` を使用するようにしてみましょう:
 
 ```vue-html{3,8}
-<button @click="open = true">モーダルを開く</button>
+<button @click="open = true">Open Modal</button>
 
 <Teleport to="body">
   <div v-if="open" class="modal">
-    <p>モーダルからこんにちは！</p>
-    <button @click="open = false">閉じる</button>
+    <p>Hello from the modal!</p>
+    <button @click="open = false">Close</button>
   </div>
 </Teleport>
 ```
@@ -120,12 +120,12 @@ let open = $ref(false)
 </script>
 
 <div class="demo">
-  <button @click="open = true">モーダルを開く</button>
+  <button @click="open = true">Open Modal</button>
   <ClientOnly>
     <Teleport to="body">
       <div v-if="open" class="demo modal-demo">
-        <p style="margin-bottom:20px">モーダルからこんにちは！</p>
-        <button @click="open = false">閉じる</button>
+        <p style="margin-bottom:20px">Hello from the modal!</p>
+        <button @click="open = false">Close</button>
       </div>
     </Teleport>
   </ClientOnly>
