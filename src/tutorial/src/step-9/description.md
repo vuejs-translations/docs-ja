@@ -1,8 +1,8 @@
-# Lifecycle and Template Refs
+# ライフサイクルとテンプレート参照
 
-So far, Vue has been handling all the DOM updates for us, thanks to reactivity and declarative rendering. However, inevitably there will be cases where we need to manually work with the DOM.
+これまで Vue はリアクティビティと宣言的レンダリングのおかげですべての DOM 更新を処理してくれました。しかし、必然的に DOM を手動で操作する必要がある場合があります。
 
-We can request a **template ref** - i.e. a reference to an element in the template - using the <a target="_blank" href="/api/built-in-special-attributes.html#ref">special `ref` attribute</a>:
+<a target="_blank" href="/api/built-in-special-attributes.html#ref">特別な `ref` 属性</a>（例：テンプレート内の要素）をつかって、テンプレート参照が要求できます：
 
 ```vue-html
 <p ref="p">hello</p>
@@ -10,7 +10,7 @@ We can request a **template ref** - i.e. a reference to an element in the templa
 
 <div class="composition-api">
 
-To access the ref, we need to declare<span class="html"> and expose</span> a ref with matching name:
+ref にアクセスするには、一致する名前を定義して<span class="html">公開する</span>必要があります：
 
 <div class="sfc">
 
@@ -33,9 +33,9 @@ setup() {
 
 </div>
 
-Notice the ref is initialized with `null` value. This is because the element doesn't exist yet when <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> is executed. The template ref is only accessible after the component is **mounted**.
+ref は `null` で初期化されることに注目してください。これは <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> が実行時に要素がまだ存在されないためです。テンプレート参照はコンポーネントが**マウントした後**でないとアクセスできません。
 
-To run code after mount, we can use the `onMounted()` function:
+マウントした後のコードを実施したい場合、`onMounted()` の関数が使えます：
 
 <div class="sfc">
 
@@ -43,7 +43,7 @@ To run code after mount, we can use the `onMounted()` function:
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  // component is now mounted.
+  // コンポーネントがマウントされました。
 })
 ```
 
@@ -56,7 +56,7 @@ import { onMounted } from 'vue'
 createApp({
   setup() {
     onMounted(() => {
-      // component is now mounted.
+      // コンポーネントがマウントされました。
     })
   }
 })
@@ -67,16 +67,16 @@ createApp({
 
 <div class="options-api">
 
-The element will be exposed on `this.$refs` as `this.$refs.p`. However, you can only access it after the component is **mounted**.
+要素が `this.$refs` は `this.$refs.p` として公開されますが、コンポーネントが**マウントさした後**でないとにアクセスできません。
 
-To run code after mount, we can use the `mounted` option:
+マウントした後のコードを実施したい場合、`mounted` の option が使えます：
 
 <div class="sfc">
 
 ```js
 export default {
   mounted() {
-    // component is now mounted.
+    // コンポーネントがマウントされました。
   }
 }
 ```
@@ -87,7 +87,7 @@ export default {
 ```js
 createApp({
   mounted() {
-    // component is now mounted.
+    // コンポーネントがマウントされました。
   }
 })
 ```
@@ -95,6 +95,6 @@ createApp({
 </div>
 </div>
 
-This is called a **lifecycle hook** - it allows us to register a callback to be called at certain times of the component's lifecycle. There are other hooks such as <span class="options-api">`created` and `updated`</span><span class="composition-api">`onUpdated` and `onUnmounted`</span>. Check out the <a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">Lifecycle Diagram</a> for more details.
+これは**ライフサイクルフック**とよばれます。コンポーネントライフサイクルは特定の時にコールバックが登録できます。他にも <span class="options-api">`created` と `updated`</span><span class="composition-api">`onUpdated` と `onUnmounted`</span> があります。詳しくは<a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">ライフサイクルダイアグラム</a>を参照してください。
 
-Now, try to add an <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> hook, access the `<p>` via <span class="options-api">`this.$refs.p`</span><span class="composition-api">`p.value`</span>, and perform some direct DOM operations on it (e.g. changing its `textContent`).
+では、 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> のフックを追加し、`<p>` の要素が<span class="options-api">`this.$refs.p`</span><span class="composition-api">`p.value`</span>でアクセスして直接に DOM の操作（例:`textContent` の変更）をしてみましょう。
