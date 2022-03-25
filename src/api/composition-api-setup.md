@@ -64,7 +64,7 @@ export default {
 もし、本当に props を分割代入すること、もしくはリアクティビティを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー APIs である [toRefs()](./reactivity-utilities.html#torefs) や [toRef()](/api/reactivity-utilities.html#toref) を使用することで、行うことができます:
 
 ```js
-import { toRefs } from 'vue'
+import { toRefs, toRef } from 'vue'
 
 export default {
   setup(props) {
