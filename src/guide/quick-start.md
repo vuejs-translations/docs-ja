@@ -8,7 +8,7 @@ footer: false
 
 ## ビルドツールあり
 
-ビルドセットアップによって Vue の[単一ファイルコンポーネント](/guide/scaling-up/sfc) (SFC) を使うことができます。Vue の公式ビルドセットアップは、モダンで軽量、そして非常に高速なフロントエンドビルドツールである [Vite](https://vitejs.dev) に基づいています。
+ビルドセットアップによって Vue の[単一ファイルコンポーネント](/guide/scaling-up/sfc) (SFC) を使うことができます。Vue の公式ビルドセットアップは、モダンで軽量、そして非常に高速なフロントエンドビルドツールである [Vite](https://ja.vitejs.dev) に基づいています。
 
 ### オンライン
 
@@ -19,7 +19,7 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 :::tip 前提条件
 
 - コマンドラインに精通していること
-- [Node.js](https://nodejs.org/) をインストールすること
+- [Node.js](https://nodejs.org/ja/) をインストールすること
   :::
 
 マシン上にビルドツール対応の Vue プロジェクトを作成するためには、コマンドラインで次のコマンドを（`>` 記号なしで）実行します。
@@ -50,9 +50,9 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 
 あなたの初めての Vue プロジェクトが今実行されているはずです！　いくつか追加のヒントをどうぞ:
 
-- IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) です。[WebStorm](https://www.jetbrains.com/webstorm/) も利用できます。
+- IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) です。[WebStorm](https://www.jetbrains.com/ja-jp/webstorm/) も利用できます。
 - バックエンドフレームワークとの統合を含む、ツールのさらなる詳細については、[ツールガイド](/guide/scaling-up/tooling.html) で説明しています。
-- 礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://vitejs.dev/) を確認しましょう。
+- 礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://ja.vitejs.dev/) を確認しましょう。
 - もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview.html) を確認しましょう。
 
 あなたのアプリをプロダクション環境に出す準備ができたら、これを実行してください:
@@ -86,7 +86,7 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 
 上の例ではグローバル `Vue` 変数の下ですべての API が公開されている、Vue のグローバルビルドを使っています。
 
-グローバルビルドは機能しますが、以降のドキュメントでは一貫性を保つため主に [ES modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) 構文を使用します。ネイティブ ES モジュールで Vue を使うには、代わりに次の HTML を使用してください。
+グローバルビルドは機能しますが、以降のドキュメントでは一貫性を保つため主に [ES modules](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules) 構文を使用します。ネイティブ ES モジュールで Vue を使うには、代わりに次の HTML を使用してください。
 
 ```html
 <script type="importmap">
@@ -144,7 +144,7 @@ export default {
 }
 ```
 
-これを機能させるためには、`file://` プロトコルの代わりに `http://` プロトコル経由で提供する必要があります。ローカル HTTP サーバーを起動するには、まず [Node.js](https://nodejs.org/) をインストールし、そしてコマンドラインから HTML ファイルと同じディレクトリーで `npx serve` を実行します。静的ファイルを正しい MIME タイプで提供できる他の HTTP サーバーを使うこともできます。
+これを機能させるためには、`file://` プロトコルの代わりに `http://` プロトコル経由で提供する必要があります。ローカル HTTP サーバーを起動するには、まず [Node.js](https://nodejs.org/ja/) をインストールし、そしてコマンドラインから HTML ファイルと同じディレクトリーで `npx serve` を実行します。静的ファイルを正しい MIME タイプで提供できる他の HTTP サーバーを使うこともできます。
 
 あなたはインポートされたコンポーネントのテンプレートが JavaScript 文字列としてインライン化されていることに気づいたかもしれません。あなたが VSCode を使っていれば、[es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 拡張をインストールして `/*html*/` コメントを文字列の前につけることで構文を強調表示 (syntax highlighting) できます。
 
