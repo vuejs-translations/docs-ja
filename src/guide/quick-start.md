@@ -84,7 +84,7 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 </script>
 ```
 
-上の例ではグローバル `Vue` 変数の下で公開されているすべての Vue API が Vue のグローバルビルドを使っています。
+上の例ではグローバル `Vue` 変数の下ですべての API が公開されている、Vue のグローバルビルドを使っています。
 
 グローバルビルドは機能しますが、以降のドキュメントでは一貫性を保つため主に [ES modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) 構文を使用します。ネイティブ ES モジュールで Vue を使うには、代わりに次の HTML を使用してください。
 
