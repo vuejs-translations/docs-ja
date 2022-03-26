@@ -35,7 +35,7 @@ Used to annotate a prop with more advanced types when using runtime props declar
 
 ## ComponentCustomProperties
 
-コンポーネントインスタンス型にカスタムグローバルプロパティをサポートする拡張の為に使われます。
+カスタムグローバルプロパティをコンポーネントインスタンス型にサポートさせる拡張に使われます。
 Used to augment the component instance type to support custom global properties.
 
 - **例**
@@ -82,8 +82,7 @@ Used to augment the component options type to support custom options.
 
 ## ComponentCustomProps
 
-TSX 要素のプロパティとして宣言されていないプロパティを TSX プロパティとして使用する為に拡張します。
-Used to augment allowed TSX props in order to use non-declared props on TSX elements.
+TSX 要素のプロパティとして宣言されていないプロパティを TSX プロパティとして使用するために拡張します。
 
 - **例**
 
@@ -135,7 +134,7 @@ Used to augment allowed TSX props in order to use non-declared props on TSX elem
 :::
 
 :::info 参照
-SFC `<style>` タグは、`v-bind CSS` 関数を使用した CSS 値の動的コンポーネント状態へのリンクをサポートします。これにより、型を拡張せずにカスタムプロパティを使用できます。
+SFC `<style>` タグは、`v-bind CSS` 関数を使って、CSS の値を動的コンポーネントの状態にリンクすることをサポートしています。
 
 - [v-bind() in CSS](/api/sfc-css-features.html#v-bind-in-css)
   :::
