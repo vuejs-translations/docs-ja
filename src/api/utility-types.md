@@ -127,7 +127,7 @@ Used to augment allowed TSX props in order to use non-declared props on TSX elem
   ```
 
   ```html
-  <div :style="{ '--bg-color': 'blue' }"></div>
+  <div :style="{ '--bg-color': 'blue' }">
   ```
 
 :::tip
