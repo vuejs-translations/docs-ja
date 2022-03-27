@@ -6,8 +6,7 @@
 
 ## PropType\<T>
 
-ランタイムプロパティ宣言を使用する際、より具体的な型でプロパティに注釈を付けるために使用されます。
-Used to annotate a prop with more advanced types when using runtime props declarations.
+ランタイムプロパティ宣言を使用する際、より具体的な型でプロパティに注釈を付けるために使われます。
 
 - **例**
 
@@ -35,8 +34,7 @@ Used to annotate a prop with more advanced types when using runtime props declar
 
 ## ComponentCustomProperties
 
-カスタムグローバルプロパティをコンポーネントインスタンス型にサポートさせる拡張に使われます。
-Used to augment the component instance type to support custom global properties.
+コンポーネントインスタンス型を拡張してカスタムグローバルプロパティのサポートするのに使われます。
 
 - **例**
 
@@ -59,8 +57,7 @@ Used to augment the component instance type to support custom global properties.
 
 ## ComponentCustomOptions
 
-カスタムオプションをサポートしたコンポーネントオプション型として拡張するために使用されます。
-Used to augment the component options type to support custom options.
+コンポーネントオプション型を拡張してカスタムオプションをサポートするのに使われます。
 
 - **例**
 
@@ -82,7 +79,7 @@ Used to augment the component options type to support custom options.
 
 ## ComponentCustomProps
 
-TSX 要素のプロパティとして宣言されていないプロパティを TSX プロパティとして使用するために拡張します。
+TSX 要素のプロパティとして宣言されていないプロパティを拡張して TSX プロパティとして使用します。
 
 - **例**
 
@@ -107,11 +104,11 @@ TSX 要素のプロパティとして宣言されていないプロパティを 
 
 ## CSSProperties
 
-スタイルプロパティに適用する値を決めるために拡張します。
+スタイルプロパティに適用できる値を拡張します。
 
 - **例**
 
-  どんなカスタム CSS プロパティでも許容します
+  どんなカスタム CSS プロパティでも適用できます
 
   ```ts
   declare module 'vue' {
