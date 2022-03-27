@@ -4,6 +4,8 @@
 
 ## コンポーネントの props の型付け
 
+### `<script setup>` の使用
+
 `<script setup>` を使用する場合、 `defineProps()` マクロは、引数に基づいて props の型を推論できます:
 
 ```vue
