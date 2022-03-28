@@ -55,7 +55,7 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 - 礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://ja.vitejs.dev/) を確認しましょう。
 - もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview.html) を確認しましょう。
 
-あなたのアプリをプロダクション環境に出す準備ができたら、これを実行してください:
+あなたのアプリをプロダクション環境に出す準備ができたら、以下を実行してください:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run build</span></span>
 <span class="line"></span></code></pre></div>
