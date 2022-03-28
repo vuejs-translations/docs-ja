@@ -52,7 +52,7 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 
 - IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) です。[WebStorm](https://www.jetbrains.com/ja-jp/webstorm/) も利用できます。
 - バックエンドフレームワークとの統合を含む、ツールのさらなる詳細については、[ツールガイド](/guide/scaling-up/tooling.html) で説明しています。
-- 礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://ja.vitejs.dev/) を確認しましょう。
+- 基礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://ja.vitejs.dev/) を確認しましょう。
 - もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview.html) を確認しましょう。
 
 あなたのアプリをプロダクション環境に出す準備ができたら、以下を実行してください:
