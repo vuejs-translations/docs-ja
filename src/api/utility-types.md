@@ -30,7 +30,7 @@
   }
   ```
 
-- **See also:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)
+- **参照:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)
 
 ## ComponentCustomProperties
 
