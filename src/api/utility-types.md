@@ -22,7 +22,7 @@
   export default {
     props: {
       book: {
-        // より具体的な型を`Object`に提供します
+        // より具体的な型を `Object` に提供します
         type: Object as PropType<Book>,
         required: true
       }
