@@ -1,14 +1,14 @@
-# Utility Types
+# ユーティリティー型
 
 :::info
-This page only lists a few commonly used utility types that may need explanation for their usage. For a full list of exported types, consult the [source code](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131).
+このページでは、一般的に使われるものの中から、使用法の説明が必要ないくつかのユーティリティー型のみがリストされています。export された型の完全なリストについては、[ソースコード](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131)を参照してください。
 :::
 
 ## PropType\<T>
 
-Used to annotate a prop with more advanced types when using runtime props declarations.
+ランタイムプロパティ宣言を使用する際、より具体的な型でプロパティに注釈を付けるために使われます。
 
-- **Example**
+- **例**
 
   ```ts
   import { PropType } from 'vue'
@@ -22,7 +22,7 @@ Used to annotate a prop with more advanced types when using runtime props declar
   export default {
     props: {
       book: {
-        // provide more specific type to `Object`
+        // より具体的な型を `Object` に提供します
         type: Object as PropType<Book>,
         required: true
       }
@@ -30,13 +30,13 @@ Used to annotate a prop with more advanced types when using runtime props declar
   }
   ```
 
-- **See also:** [Guide - Typing Component Props](/guide/typescript/options-api.html#typing-component-props)
+- **参照:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)
 
 ## ComponentCustomProperties
 
-Used to augment the component instance type to support custom global properties.
+コンポーネントインスタンス型を拡張してカスタムグローバルプロパティのサポートするのに使われます。
 
-- **Example**
+- **例**
 
   ```ts
   import axios from 'axios'
@@ -50,16 +50,16 @@ Used to augment the component instance type to support custom global properties.
   ```
 
   :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api.html#augmenting-global-properties) for more details.
+  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
   :::
 
-- **See also:** [Guide - Augmenting Global Properties](/guide/typescript/options-api.html#augmenting-global-properties)
+- **参照:** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)
 
 ## ComponentCustomOptions
 
-Used to augment the component options type to support custom options.
+コンポーネントオプション型を拡張してカスタムオプションをサポートするのに使われます。
 
-- **Example**
+- **例**
 
   ```ts
   import { Route } from 'vue-router'
@@ -72,16 +72,16 @@ Used to augment the component options type to support custom options.
   ```
 
   :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api.html#augmenting-global-properties) for more details.
+  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
   :::
 
-- **See also:** [Guide - Augmenting Custom Options](/guide/typescript/options-api.html#augmenting-custom-options)
+- **参照:** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)
 
 ## ComponentCustomProps
 
-Used to augment allowed TSX props in order to use non-declared props on TSX elements.
+TSX 要素のプロパティとして宣言されていないプロパティを拡張して TSX プロパティとして使用します。
 
-- **Example**
+- **例**
 
   ```ts
   declare module 'vue' {
@@ -94,21 +94,21 @@ Used to augment allowed TSX props in order to use non-declared props on TSX elem
   ```
 
   ```tsx
-  // now works even if hello is not a declared prop
+  // hello が宣言されていないプロパティでも使えるようになります
   <MyComponent hello="world" />
   ```
 
   :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api.html#augmenting-global-properties) for more details.
+  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
   :::
 
 ## CSSProperties
 
-Used to augment allowed values in style property bindings.
+スタイルプロパティに適用できる値を拡張します。
 
-- **Example**
+- **例**
 
-  Allow any custom CSS property
+  どんなカスタム CSS プロパティでも適用できます
 
   ```ts
   declare module 'vue' {
@@ -125,12 +125,12 @@ Used to augment allowed values in style property bindings.
   <div :style="{ '--bg-color': 'blue' }">
   ```
 
- :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api.html#augmenting-global-properties) for more details.
-  :::
-  
-  :::info See also
-SFC `<style>` tags support linking CSS values to dynamic component state using the `v-bind CSS` function. This allows for custom properties without type augmentation. 
+:::tip
+拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
+:::
+
+:::info 参照
+SFC `<style>` タグは、`v-bind CSS` 関数を使って、CSS の値を動的コンポーネントの状態にリンクすることをサポートしています。
 
 - [v-bind() in CSS](/api/sfc-css-features.html#v-bind-in-css)
   :::
