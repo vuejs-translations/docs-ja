@@ -13,7 +13,7 @@ const selected = ref('')
 const multiSelected = ref([])
 </script>
 
-# Form Input Bindings
+# フォーム入力バインディング
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/user-inputs-vue-devtools-in-vue-3" title="Free Lesson on User Inputs with Vue.js"/>
@@ -23,7 +23,7 @@ const multiSelected = ref([])
   <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-user-inputs-in-vue" title="Free Lesson on User Inputs with Vue.js"/>
 </div>
 
-When dealing with forms on the frontend, we often need to sync the state of form input elements with corresponding state in JavaScript. It can be cumbersome to manually wire up value bindings and change event listeners:
+フロントエンドでフォームを扱う場合、フォームの入力要素の状態と、対応する JavaScript の状態を同期しなければならないことがよくあります。値のバインディングやイベントリスナーの変更を手動で行うのは面倒です:
 
 ```vue-html
 <input
@@ -31,25 +31,25 @@ When dealing with forms on the frontend, we often need to sync the state of form
   @input="event => text = event.target.value">
 ```
 
-The `v-model` directive helps us simplify the above to:
+`v-model` ディレクティブは、上記を単純化するのに役立ちます:
 
 ```vue-html
 <input v-model="text">
 ```
 
-In addition, `v-model` can be used on inputs of different types, `<textarea>`, and `<select>` elements. It automatically expands to different DOM property and event pairs based on the element it is used on:
+さらに、 `v-model` は様々な種類の入力や `<textarea>` 、 `<select>` 要素の入力で使用することができます。使用する要素に応じて、異なる DOM プロパティとイベントのペアに自動で展開します。
 
-- `<input>` with text types and `<textarea>` elements use `value` property and `input` event;
-- `<input type="checkbox">` and `<input type="radio">` use `checked` property and `change` event;
-- `<select>` use `value` as a prop and `change` as an event.
+- text 型の `<input>` と `<textarea>` 要素は `value` プロパティと `input` イベントを使用します。
+- `<input type="checkbox">` と `<input type="radio">` は `checked` プロパティと `change` イベントを使用します。
+- `<select>` は `value` プロパティと `change` イベントを使用します。
 
 ::: tip Note
-`v-model` will ignore the initial `value`, `checked` or `selected` attributes found on any form elements. It will always treat the current bound JavaScript state as the source of truth. You should declare the initial value on the JavaScript side, using <span class="options-api">the `data` option</span><span class="composition-api">reactivity APIs</span>.
+`v-model` はフォーム要素にある `value` 、 `checked` 、 `selected` 属性の初期値を無視します。 `v-model` は常に現在バインドされた JavaScript の状態を信頼できるソースとして扱います。初期値の宣言は JavaScript 側で、  <span class="options-api">`data` オプション</span><span class="composition-api">リアクティビティ API</span> を使用して行ってください。
 :::
 
-## Basic Usage
+## 基本的な使い方
 
-### Text
+### テキスト
 
 ```vue-html
 <p>Message is: {{ message }}</p>
@@ -74,15 +74,15 @@ In addition, `v-model` can be used on inputs of different types, `<textarea>`, a
 
 <span id="vmodel-ime-tip"></span>
 ::: tip Note
-For languages that require an [IME](https://en.wikipedia.org/wiki/Input_method) (Chinese, Japanese, Korean etc.), you'll notice that `v-model` doesn't get updated during IME composition. If you want to respond to these updates as well, use an `input` event listener and `value` binding instead of using `v-model`.
+[IME](https://en.wikipedia.org/wiki/Input_method) を必要とする言語 (中国語、日本語、韓国語など) では、IME による入力中に `v-model` が更新されないことに気づくでしょう。 もしこれらの更新にも対応したい場合は、 `v-model` の代わりに `input` イベントリスナーと `value` バインディングを使用してください。
 :::
 
-### Multiline text
+### 複数行テキスト
 
 ```vue-html
 <span>Multiline message is:</span>
 <p style="white-space: pre-line;">{{ message }}</p>
-<textarea v-model="message" placeholder="add multiple lines"></textarea>
+<textarea v-model="messageテキストaceholder="add multiple lines"></textarea>
 ```
 
 <div class="demo">
@@ -102,7 +102,7 @@ For languages that require an [IME](https://en.wikipedia.org/wiki/Input_method) 
 
 </div>
 
-Note that interpolation inside `<textarea>` won't work. Use `v-model` instead.
+なお、`<textarea>` 内の補間は機能しません。代わりに `v-model` を使用してください。
 
 ```vue-html
 <!-- bad -->
@@ -112,9 +112,9 @@ Note that interpolation inside `<textarea>` won't work. Use `v-model` instead.
 <textarea v-model="text"></textarea>
 ```
 
-### Checkbox
+### チェックボックス
 
-Single checkbox, boolean value:
+単一のチェックボックス、 boolean 値:
 
 ```vue-html
 <input type="checkbox" id="checkbox" v-model="checked" />
@@ -137,7 +137,7 @@ Single checkbox, boolean value:
 
 </div>
 
-We can also bind multiple checkboxes to the same array or [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) value:
+複数のチェックボックスを同じ配列もしくは [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) の値にバインドすることもできます。
 
 <div class="composition-api">
 
@@ -186,7 +186,7 @@ export default {
   <label for="demo-mike">Mike</label>
 </div>
 
-In this case, the `checkedNames` array will always contain the values from the currently checked boxes.
+この場合、 `checkedNames` 配列には現在チェックされているボックスの値が常に格納されます。
 
 <div class="composition-api">
 
@@ -199,7 +199,7 @@ In this case, the `checkedNames` array will always contain the values from the c
 
 </div>
 
-### Radio
+### ラジオ
 
 ```vue-html
 <div>Picked: {{ picked }}</div>
@@ -232,9 +232,9 @@ In this case, the `checkedNames` array will always contain the values from the c
 
 </div>
 
-### Select
+### セレクト
 
-Single select:
+単一のセレクト:
 
 ```vue-html
 <div>Selected: {{ selected }}</div>
@@ -269,10 +269,10 @@ Single select:
 </div>
 
 :::tip Note
-If the initial value of your `v-model` expression does not match any of the options, the `<select>` element will render in an "unselected" state. On iOS this will cause the user not being able to select the first item because iOS does not fire a change event in this case. It is therefore recommended to provide a disabled option with an empty value, as demonstrated in the example above.
+もし `v-model` 式の初期値がどのオプションにもマッチしない場合、 `<select>` 要素は "unselected" 状態でレンダリングされます。 iOS では、このような場合に change イベントが発火しないため、ユーザーは最初のアイテムを選択できないことになります。したがって、上記の例のように、空の値を持つ disabled オプションを提供することが推奨されます。
 :::
 
-Multiple select (bound to array):
+複数のセレクト (配列へのバインド):
 
 ```vue-html
 <div>Selected: {{ selected }}</div>
@@ -305,7 +305,7 @@ Multiple select (bound to array):
 
 </div>
 
-Select options can be dynamically rendered with `v-for`:
+セレクトオプションは `v-for` で動的にレンダリングすることができます:
 
 <div class="composition-api">
 
@@ -360,9 +360,9 @@ export default {
 
 </div>
 
-## Value Bindings
+## 値のバインディング
 
-For radio, checkbox and select options, the `v-model` binding values are usually static strings (or booleans for checkbox):
+ラジオやチェックボックス、セレクトオプションにおいて、 `v-model` でバインディングされる値は通常は静的な文字列です (またチェックボックスでは真偽値も):
 
 ```vue-html
 <!-- `picked` is a string "a" when checked -->
@@ -377,9 +377,9 @@ For radio, checkbox and select options, the `v-model` binding values are usually
 </select>
 ```
 
-But sometimes we may want to bind the value to a dynamic property on the current active instance. We can use `v-bind` to achieve that. In addition, using `v-bind` allows us to bind the input value to non-string values.
+しかし時には現在アクティブなインスタンスの動的プロパティに値をバインドしたいことがあります。それには `v-bind` を使用することができます。さらに、 `v-bind` を使用することで文字列以外の値も入力値にバインドすることができます。
 
-### Checkbox
+### チェックボックス
 
 ```vue-html
 <input
@@ -389,7 +389,7 @@ But sometimes we may want to bind the value to a dynamic property on the current
   false-value="no" />
 ```
 
-`true-value` and `false-value` are Vue-specific attributes that only work with `v-model`. Here the `toggle` property's value will be set to `'yes'` when the box is checked, and set to `'no'` when unchecked. You can also bind them to dynamic values using `v-bind`:
+`true-value` と `false-value` は `v-model` においてのみ機能する Vue 特有の属性です。ここでは `toggle` プロパティの値はボックスがチェックされると `'yes'` がセットされ、チェックが外されると `'no'` がセットされます。 `v-bind` を使用して動的な値にバインドすることもできます。
 
 ```vue-html
 <input
@@ -400,62 +400,62 @@ But sometimes we may want to bind the value to a dynamic property on the current
 ```
 
 :::tip Tip
-The `true-value` and `false-value` attributes don't affect the input's `value` attribute, because browsers don't include unchecked boxes in form submissions. To guarantee that one of two values is submitted in a form (e.g. "yes" or "no"), use radio inputs instead.
+ブラウザはチェックされていないボックスをフォームの送信には含めないため、 `true-value` と `false-value` 属性は入力の `value` 属性に影響を与えません。 2 つの値 (例、 "yes" もしくは "no" ) のうち 1 つが送信されることを保証するには、代わりにラジオを使用してください。
 :::
 
-### Radio
+### ラジオ
 
 ```vue-html
 <input type="radio" v-model="pick" :value="first" />
 <input type="radio" v-model="pick" :value="second" />
 ```
 
-`pick` will be set to the value of `first` when the first radio input is checked, and set to the value of `second` when the second one is checked.
+`pick` には、 1 つ目のラジオがチェックされると  `first` の値がセットされ、 2 つ目のラジオがチェックされると `second` の値がセットされます。
 
-### Select Options
+### セレクトオプション
 
 ```vue-html
 <select v-model="selected">
-  <!-- inline object literal -->
+  <!-- インラインのオブジェクトリテラル -->
   <option :value="{ number: 123 }">123</option>
 </select>
 ```
 
-`v-model` supports value bindings of non-string values as well! In the above example, when the option is selected, `selected` will be set to the object literal value of `{ number: 123 }`.
+`v-model` は文字列でない値のバインディングもサポートしています！　上記の例では、オプションが選択されると、 `selected` にはオブジェクトリテラル値である `{ number: 123 }` がセットされます。
 
-## Modifiers
+## 修飾子
 
 ### `.lazy`
 
-By default, `v-model` syncs the input with the data after each `input` event (with the exception of IME composition as [stated above](#vmodel-ime-tip)). You can add the `lazy` modifier to instead sync after `change` events:
+デフォルトでは、 `v-model` は各 `input` イベントの後に、入力とデータを同期します ([上記](#vmodel-ime-tip) の IME による入力は例外とします)。 代わりに `change` イベント後に同期する `lazy` 修飾子を追加することができます。
 
 ```vue-html
-<!-- synced after "change" instead of "input" -->
+<!-- "input" の代わりに "change" イベント後に同期されます -->
 <input v-model.lazy="msg" />
 ```
 
 ### `.number`
 
-If you want user input to be automatically typecast as a number, you can add the `number` modifier to your `v-model` managed inputs:
+ユーザー入力を自動で数値として型変換したい場合、 `v-model` で管理している入力に `number` 就職を追加することができます。
 
 ```vue-html
 <input v-model.number="age" />
 ```
 
-If the value cannot be parsed with `parseFloat()`, then the original value is used instead.
+もし値が `parseFloat()` で解析できない場合は、代わりに元の値が使用されます。
 
-The `number` modifier is applied automatically if the input has `type="number"`.
+input が `type="number"` を持つ場合は `number` 修飾子が自動で適用されます。
 
 ### `.trim`
 
-If you want whitespace from user input to be trimmed automatically, you can add the `trim` modifier to your `v-model`-managed inputs:
+ユーザー入力から自動で空白を取り除きたい場合、 `v-model` で管理している入力に `trim` 修飾子を追加することができます。
 
 ```vue-html
 <input v-model.trim="msg" />
 ```
 
-## `v-model` with Components
+## コンポーネントの `v-model`
 
-> If you're not yet familiar with Vue's components, you can skip this for now.
+> Vueのコンポーネントにまだ慣れていない場合、とりあえずはこのセクションをスキップすることができます。
 
-HTML's built-in input types won't always meet your needs. Fortunately, Vue components allow you to build reusable inputs with completely customized behavior. These inputs even work with `v-model`! To learn more, read about [Usage with `v-model`](/guide/components/events.html#usage-with-v-model) in the Components guide.
+HTML 組み込みの input タイプが常にあなたのニーズを満たすとは限りません。幸いなことに、 Vue のコンポーネントでは完全にカスタマイズされた動作を持つ再利用可能な入力を構築することが可能です。それらの入力は `v-model` でも動作します！　詳しくは、コンポーネントガイドの [`v-model` の使い方](/guide/components/events.html#usage-with-v-model) を参照してください。
