@@ -10,7 +10,7 @@
 
 <div class="composition-api">
 
-ref にアクセスするには、一致する名前を定義して<span class="html">公開する</span>必要があります：
+ref にアクセスするには、一致する名前を定義<span class="html">して公開</span>する必要があります：
 
 <div class="sfc">
 
@@ -67,7 +67,7 @@ createApp({
 
 <div class="options-api">
 
-要素が `this.$refs` は `this.$refs.p` として公開されますが、コンポーネントが**マウントさした後**でないとにアクセスできません。
+要素が `this.$refs` は `this.$refs.p` として公開されますが、コンポーネントが**マウントされた後**でないとにアクセスできません。
 
 マウントした後のコードを実施したい場合、`mounted` の option が使えます：
 
@@ -95,6 +95,6 @@ createApp({
 </div>
 </div>
 
-これは**ライフサイクルフック**とよばれます。コンポーネントライフサイクルは特定の時にコールバックが登録できます。他にも <span class="options-api">`created` と `updated`</span><span class="composition-api">`onUpdated` と `onUnmounted`</span> があります。詳しくは<a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">ライフサイクルダイアグラム</a>を参照してください。
+これは**ライフサイクルフック**とよばれます。コンポーネントライフサイクルの特定の時に呼び出されるコールバックが登録できます。他にも <span class="options-api">`created` と `updated`</span><span class="composition-api">`onUpdated` と `onUnmounted`</span> があります。詳しくは<a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">ライフサイクルダイアグラム</a>を参照してください。
 
 では、 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> のフックを追加し、`<p>` の要素が<span class="options-api">`this.$refs.p`</span><span class="composition-api">`p.value`</span>でアクセスして直接に DOM の操作（例:`textContent` の変更）をしてみましょう。
