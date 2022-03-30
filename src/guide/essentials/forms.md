@@ -102,7 +102,7 @@ const multiSelected = ref([])
 
 </div>
 
-なお、`<textarea>` 内の補間は機能しません。代わりに `v-model` を使用してください。
+`<textarea>` 内の補間は機能しないことに注意してください。代わりに `v-model` を使用してください。
 
 ```vue-html
 <!-- bad -->
