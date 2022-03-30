@@ -234,7 +234,7 @@ export default {
 
 ### セレクト
 
-単一のセレクト:
+単一選択:
 
 ```vue-html
 <div>Selected: {{ selected }}</div>
