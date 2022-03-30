@@ -436,7 +436,7 @@ export default {
 
 ### `.number`
 
-ユーザー入力を自動で数値として型変換したい場合、 `v-model` で管理している入力に `number` 就職を追加することができます。
+ユーザー入力を自動で数値として型変換したい場合、 `v-model` で管理している入力に `number` 修飾子を追加することができます。
 
 ```vue-html
 <input v-model.number="age" />
