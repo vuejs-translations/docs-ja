@@ -2,37 +2,36 @@
 outline: deep
 ---
 
-# Composition API FAQ
+# Composition API に関するよくある質問
 
 :::tip
-This FAQ assumes prior experience with Vue - in particular, experience with Vue 2 while primarily using Options API.
+このページは Vue を使用した経験、 特に Vue 2 の Options API の経験があることを前提としています。
 :::
 
-## What is Composition API?
+## Composition API とは?
+Composition API はオプションを宣言する代わりに関数をインポートすることで Vue コンポーネントを書くことができる API セットのことです。以下に記載する API を含む包括的な用語です:
 
-Composition API is a set of APIs that allows us to author Vue components using imported functions instead of declaring options. It is an umbrella term that covers the following APIs:
+- [Reactivity API](/api/reactivity-core.html) 、例: `ref()` と `reactive()` で、リアクティブな状態を作り、状態を監視します。
 
-- [Reactivity API](/api/reactivity-core.html), e.g. `ref()` and `reactive()`, that allows us to directly create reactive state, computed state, and watchers.
+- [Lifecycle Hooks](/api/composition-api-lifecycle.html)、 例: `onMounted()` と `onUnmounted()` で、コンポーネントのライフサイクルにフックを設定します。
 
-- [Lifecycle Hooks](/api/composition-api-lifecycle.html), e.g. `onMounted()` and `onUnmounted()`, that allow us to programmatically hook into the component lifecycle.
+- [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` のような、 Reactivity API を使用するために用いられる Vue の依存性の注入のことです。
 
-- [Dependency Injection](/api/composition-api-dependency-injection.html), i.e. `provide()` and `inject()`, that allow us to leverage Vue's dependency injection system while using Reactivity APIs.
-
-Composition API is a built-in feature of Vue 3, and is currently available to Vue 2 via the officially maintained [`@vue/composition-api`](https://github.com/vuejs/composition-api) plugin. In Vue 3, it is also primarily used together with the [`<script setup>`](/api/sfc-script-setup.html) syntax in Single-File Components. Here's a basic example of a component using Composition API:
+Composition API は Vue 3 に組み込まれていて、現在は Vue 2 においても公式のプラグイン [`@vue/composition-api`](https://github.com/vuejs/composition-api)  で使うことができます。 Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup.html) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
 
 ```vue
 <script setup>
 import { ref, onMounted } from 'vue'
 
-// reactive state
+// リアクティブな状態
 const count = ref(0)
 
-// functions that mutate state and trigger updates
+// 状態を変更し更新トリガーする関数
 function increment() {
   count.value++
 }
 
-// lifecycle hooks
+// ライフサイクルフック
 onMounted(() => {
   console.log(`The initial count is ${count.value}.`)
 })
@@ -43,99 +42,99 @@ onMounted(() => {
 </template>
 ```
 
-Despite an API style based on function composition, **Composition API is NOT functional programming**. Composition API is based on Vue's mutable, fine-grained reactivity paradigm, whereas functional programming emphasizes immutability.
+コンポジション関数ベースでスタイリングされた API にも関わらず、 **Composition API は関数型プログラミングではありません**。 関数型言語プログラミングはイミュータブルを重視するのに対して、 Composition API は Vue のミュータブルできめ細かなリアクティブさをベースにしています。
 
-If you are interested in learning how to use Vue with Composition API, you can set the site-wide API preference to Composition API using the toggle at the top of the left sidebar, and then go through the guide from the beginning.
+Vue の Composition API の使い方について興味があるようでしたら、左サイドメニューの一番上にある　API 選択トグルを Composition API に切り替えて、最初からガイドを読み進めることができます。
 
-## Why Composition API?
+## なぜComposition APIなのか?
 
-### Better Logic Reuse
+### より良いロジックの再利用
 
-The primary advantage of Composition API is that it enables clean, efficient logic reuse in the form of [Composable functions](/guide/reusability/composables.html). It solves [all the drawbacks of mixins](/guide/reusability/composables.html#vs-mixins), the primary logic reuse mechanism for Options API.
+Composition API の最大の利点は [Composable functions](/guide/reusability/composables.html) 形式で、クリーンかつ効率的にロジックを再利用できることです。これは Options API の主要なロジック再利用メカニズムであった[ミックスインの欠点を全て](/guide/reusability/composables.html#vs-mixins)解決しています。
 
-Composition API's logic reuse capability has given rise to impressive community projects such as [VueUse](https://vueuse.org/), an ever-growing collection of composable utilities. It also serves as a clean mechanism for easily integrating stateful third-party services or libraries into Vue's reactivity system, for example [immutable data](/guide/extras/reactivity-in-depth.html#immutable-data), [state machines](/guide/extras/reactivity-in-depth.html#state-machines), and [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs).
+Composition API のロジック再利用性は [VueUse](https://vueuse.org/) のようなすばらしいコミュニティプロジェクトを生み出し、コンポーザブルの利便性を広める存在を増やし続けています。クリーンなメカニズムによってサードパーティーサービス・ライブラリーと Vue のリアクティブ機能との安定した統合も容易にしてくれています、例えば [immutable data](/guide/extras/reactivity-in-depth.html#immutable-data) 、 [state machines](/guide/extras/reactivity-in-depth.html#state-machines) 、そして [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs) などです。
 
-### More Flexible Code Organization
+### より柔軟なコード整理
 
-Many users love that we write organized code by default with Options API: everything has its place based on the option it falls under. However, Options API poses serious limitations when a single component's logic grows beyond a certain complexity threshold. This limitation is particularly prominent in components that need to deal with multiple **logical concerns**, which we have witnessed first hand in many production Vue 2 apps.
+多くのユーザーはデフォルトの Options API で構成されたコードを書くことを好みます: なにごとにもあるべき方法というものが決まっているものです。しかしながら、 Options API では単一ファイルコンポーネントのロジックが成長し、ある一定以上の複雑さを超えた時点で深刻な制限を受けることになります。この制限は複数の**論理的関心**を扱うコンポーネントで特に顕著で、私たちは実際に稼働している多くの Vue 2 アプリケーションで目にしてきました。
 
-Take the folder explorer component from Vue CLI's GUI as an example: this component is responsible for the following logical concerns:
+例として Vue CLI の GUI で使われるフォルダーエクスプローラコンポーネントをとりあげます: このコンポーネントは以下のような論理的関心を担っています。
 
-- Tracking current folder state and displaying its content
-- Handling folder navigation (opening, closing, refreshing...)
-- Handling new folder creation
-- Toggling show favorite folders only
-- Toggling show hidden folders
-- Handling current working directory changes
+- 現在のフォルダーの状態のトラッキングと内容の表示
+- フォルダーナビゲーションのハンドリング(開く、閉じる、再読み込み)
+- 新規フォルダーの作成のハンドリング
+- お気に入りフォルダーのみ表示の切り替え
+- 隠しフォルダーの表示切り替え
+- 作業中のディレクトリーの変更のハンドリング
 
-The [original version](https://github.com/vuejs/vue-cli/blob/a09407dd5b9f18ace7501ddb603b95e31d6d93c0/packages/@vue/cli-ui/src/components/folder/FolderExplorer.vue#L198-L404) of the component was written in Options API. If we give each line of code a color based on the logical concern it is dealing with, this is how it looks:
+[オリジナル](https://github.com/vuejs/vue-cli/blob/a09407dd5b9f18ace7501ddb603b95e31d6d93c0/packages/@vue/cli-ui/src/components/folder/FolderExplorer.vue#L198-L404) のコンポーネントは Options API で書かれました。もし、これらのロジックを論理的関心ごとにを色付けしたコードで示した場合、以下のようになります:
 
 <img alt="folder component before" src="./images/options-api.png" width="129" height="500" style="margin: 1.2em auto">
 
-Notice how code dealing with the same logical concern is forced to be split under different options, located in different parts of the file. In a component that is several hundred lines long, understanding and navigating a single logical concern requires constantly scrolling up and down the file, making it much more difficult than it should be. In addition, if we ever intend to extract a logical concern into a reusable utility, it takes quite a bit of work to find and extract the right pieces of code from different parts of the file.
+同じ論理的関心を扱うコードがファイルの異なる部分、異なるオプションに分割せざるを得なくなっていることに注目してください。数百行あるコンポーネントの中から、1 つの論理的関心ごとを理解し終えるにはファイルの上から下まで何度もスクロールしなければならず、必要以上に困難なものにしています。加えて、もし私たちが論理的関心を再利用の利便性のため抽出しようとしたら、機能の断片となるちっぽけコードをファイルの異なるパートから抜き出すことになります。
 
-Here's the same component, before and after the [refactor into Composition API](https://gist.github.com/yyx990803/8854f8f6a97631576c14b63c8acd8f2e):
+これが同じコンポーネントを [Composition API にリファクタリング](https://gist.github.com/yyx990803/8854f8f6a97631576c14b63c8acd8f2e) する前と後です:
 
 ![folder component after](./images/composition-api-after.png)
 
-Notice how the code related to the same logical concern can now be grouped together: we no longer need to jump between different options blocks while working on a specific logical concern. Moreover, we can now move a group of code into an external file with minimal effort, since we no longer need to shuffle the code around in order to extract them. This reduced friction for refactoring is key to the long-term maintainability in large codebases.
+コードが同じ論理的関心でまとまっていることに注目してください:もはや特定の論理的関心のために異なるオプションブロックを飛び回る必要はなくなりました。そのうえ、コードをまとめて最小限の労力で外部ファイルに移すことができ、コードをあちこちひっかき回す必要もありません。リファクタリングのしづらさが減ることは大規模なコードを長期間メンテナンスする時のカギです。
 
-### Better Type Inference
+### より良い型推論
 
-In recent years, more and more frontend developers are adopting [TypeScript](https://www.typescriptlang.org/) as it helps us write more robust code, make changes with more confidence, and provides a great development experience with IDE support. However, the Options API, originally conceived in 2013, was designed without type inference in mind. We had to implement some [absurdly complex type gymnastics](https://github.com/vuejs/core/blob/44b95276f5c086e1d88fa3c686a5f39eb5bb7821/packages/runtime-core/src/componentPublicInstance.ts#L132-L165) to make type inference work with the Options API. Even with all this effort, type inference for Options API can still break down for mixins and dependency injection.
+ここ数年、多くのフロントエンドの開発者たちが [TypeScript](https://www.typescriptlang.org/) を取り入れ、より堅牢なコードを書き、より安心して変更を加えられるようにしていて、また IDE のサポートと共にすばらしい開発体験を提供してくれています。しかしながら、2013 年に Options API が生まれた当時、型推論の考慮がない状態でデザインされました。 Options API に型推論を取り入れるためには [馬鹿馬鹿しいほどに複雑な型の運動](https://github.com/vuejs/core/blob/44b95276f5c086e1d88fa3c686a5f39eb5bb7821/packages/runtime-core/src/componentPublicInstance.ts#L132-L165)をしなければなりませんでした。これだけの努力をしても、 Options API の型推論はミックスインや依存性の注入により壊れてしまいます。
 
-This had led many developers who wanted to use Vue with TS to lean towards Class API powered by `vue-class-component`. However, a class-based API heavily relies on ES decorators, a language feature that was only a stage 2 proposal when Vue 3 was being developed in 2019. We felt it was too risky to base an official API on an unstable proposal. Since then, the decorators proposal has gone through yet another complete overhaul, and has yet to reach stage 3 as of this writing. In addition, class-based API suffers from logic reuse and organization limitations similar to Options API.
+このため、 Vue を Typescript で使いたい多くの開発者が `vue-class-component` による Class API を使うようになりました。ですが、クラスベースの API は ES デコレータに重度に依存しているため、 機能的には Vue 3 が開発された 2019 年時点の、ステージ 2 のプロポーザル段階のものになっています。私たちは公式の API が不安定なプロポーザルベースに依存していることはリスキー過ぎると感じました。それ以降、デコレータのプロポーザルはまたも全面的に見直され、ドキュメント執筆時点ではステージ 3 にも至ってません。 加えて、クラスベースの API は Options API と同様にロジックの再利用とコード整理の制限の悩みがあります。
 
-In comparison, Composition API utilizes mostly plain variables and functions, which are naturally type friendly. Code written in Composition API can enjoy full type inference with little need for manual type hints. Most of the time, Composition API code will look largely identical in TypeScript and plain JavaScript. This also makes it possible for plain JavaScript users to benefit from partial type inference.
+これと比較して、 Composition API はほとんどプレーンな変数と関数を活用しているため、もともと型と親和性があります。 Composition API で書かれたコードのほとんどはタイプヒントを付ける必要なく型推論を享受することができます。大抵の場合 Composition API のコードは、TypeScript とプレーンな JavaScript でほぼ同じに見えるでしょう。これにより、プレーンな Javascript ユーザーも部分的に型推論の恩恵を得ることが可能です。
 
-### Smaller Production Bundle and Less Overhead
+### プロダクションバンドルをより小さく、そしてオーバーヘッドを減らす
 
-Code written in Composition API and `<script setup>` is also more efficient and minification-friendly than Options API equivalent. This is because the template in a `<script setup>` component is compiled as a function inlined in the same scope of the `<script setup>` code. Unlike property access from `this`, the compiled template code can directly access variables declared inside `<script setup>`, without an instance proxy in between. This also leads to better minification because all the variable names can be safely shortened.
+Composition API で書かれたコードと `<script setup>` は　Options API より効率的でバンドルサイズの縮小化に親和性があります。テンプレート内の `<script setup>` コンポーネントは `<script setup>` と同じスコープ内にインラインの関数としてコンパイルされます。`this` からのプロパティアクセスとは異なり、コンパイルされたテンプレートコードは `<script setup>` 内で宣言された変数に、インスタンスを介さず直接アクセスすることができるようになります。これは、すべての変数名を安全に短縮することにもなり、より良い縮小化につながります。
 
-## Relationship with Options API
+## Options API との関係
 
-### Does Composition API cover all use cases?
+### Composition API は全てのユースケースをカバーしていますか?
 
-Yes in terms of stateful logic. When using Composition API, there are only a few options that may still be needed: `props`, `emits`, `name`, and `inheritAttrs`. If using `<script setup>`, then `inheritAttrs` is typically the only option that may require a separate normal `<script>` block.
+はい、状態を持つロジックについてはそうです。 少しではありますが、Composition API を使う時にオプションがいくつか必要になります: `props` 、 `emits` 、 `name` 、 と `inheritAttrs` です。もし `<script setup>` を使っているしたら、唯一 `inheritAttrs` がプレーンな `<script>` が必要なオプションです。
 
-If you intend to exclusively use Composition API (along with the options listed above), you can shave a few kbs off your production bundle via a [compile-time flag](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) that drops Options API related code from Vue. Note this also affects Vue components in your dependencies.
+Composition API だけを使用したい場合は(上にあげたオプションと共に)、 [compile-time flag](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) を使用することで Options API に関するコードを省き数キロバイトプロダクションバンドルをカットすることができます。これはあなたの依存関係内の Vue コンポーネントに影響に与える点に注意してください。
 
-### Can I use both APIs together?
+### 両方の API を一緒に使うことはできますか?
 
-Yes. You can use Composition API via the [`setup()`](/api/composition-api-setup.html) option in an Options API component.
+はい。 Options API のコンポーネント内で [`setup()`](/api/composition-api-setup.html) オプションを使用することで Composition API を使うことができます。
 
-However, we only recommend doing so if you have an existing Options API codebase that needs to integrate with new features / external libraries written with Composition API.
+しかしながら、この方法は既存の Options API コードベースがあり、Composition API で書かれた新しい機能/外部ライブラリーと統合する必要がある場合にのみ採ることを推奨します。
 
-### Will Options API be deprecated?
+### Options API は非推奨になったのですか?
 
-No, we do not have any plan to do so. Options API is an integral part of Vue and the reason many developers love it. We also realize that many of the benefits of Composition API only manifest in larger-scale projects, and Options API remains a solid choice for many low-to-medium-complexity scenarios.
+いいえ、私たちは特にそうする予定はありません。 Options API は Vue の不可欠な要素であり、多くの開発者が Vue を愛する理由にもなっています。 Composition API の利点の多くは大規模プロジェクトでこそ現れるものであり、多くの低~中程度の複雑性のシナリオにおいては Options API が堅実な選択肢であり続けることも理解しています。
 
-## Relationship with Class API
+## Class API との関係
 
-We no longer recommend using Class API with Vue 3, given that Composition API provides great TypeScript integration with additional logic reuse and code organization benefits.
+Vue 3 においてはもはや Class API を推奨してません。 Composition API が提供する強力な TypeScript との統合とロジックの再利用とコード整理の恩恵があるためです。
 
-## Comparison with React Hooks
+## React Hooks との比較
 
-Composition API provides the same level of logic composition capabilities as React Hooks, but with some important differences.
+Composition API は React Hooks と同レベルのロジック構成機能を提供しますが、いくつか重要な違いがあります。
 
-React Hooks are invoked repeatedly every time a component updates. This creates a number of caveats that can confuse even seasoned React developers. It also leads to performance optimization issues that can severely affect development experience. Here are some examples:
+React Hooks はコンポーネントが更新されるたびに繰り返し実行されます。そのため、熟練した React 開発者でも戸惑うような注意点がいくつも出てきます。また、開発体験に深刻な影響を与えるパフォーマンス最適化の問題にもつながります。以下はその例です:
 
-- Hooks are call-order sensitive and cannot be conditional.
+- Hooks は呼び出し順序に敏感で、条件付きでない
 
-- Variables declared in a React component can be captured by a hook closure and become "stale" if the developer fails to pass in the correct dependencies array. This leads to React developers relying on ESLint rules to ensure correct dependencies are passed. However, the rule is often not smart enough and over-compensates for correctness, which leads to unnecessary invalidation and headaches when edge cases are encountered.
+- React コンポーネント内で変数が宣言されるとフッククロージャに補足され、開発者が正しく依存関係の配列にパスしなかった場合に "stale" になります。そのため、 React の開発者は ESLint のルールに頼りつつ正しい依存関係を渡すようにしています。しかし、このルールは十分に賢くないことが多く、正しさを補おうとし過ぎるあまり、エッジケースに遭遇したときに不必要に無効化され頭痛の種になることがあります。
 
-- Expensive computations require the use of `useMemo`, which again requires manually passing in the correct dependencies array.
+- `useMemo` を使用するときにコストの高い計算が必要となり、再び手動で正しい依存関係の配列を渡す必要があります。
 
-- Event handlers passed to child components cause unnecessary child updates by default, and require explicit `useCallback` as an optimization. This is almost always needed, and again requires a correct dependencies array. Neglecting this leads to over-rendering apps by default and can cause performance issues without realizing it.
+- 子コンポーネントに渡されるイベントハンドラーは、デフォルトでは不必要な子コンポーネントの更新を引き起こすので、最適化として明示的に `useCallback` を必要とします。これはほとんど常に必要であり、また正しい依存関係の配列が必要です。これを無視すると、デフォルトでアプリケーションがオーバーレンダリングされることになり、気づかないうちにパフォーマンスの問題を引き起こす可能性があります。
 
-- The stale closure problem, combined with Concurrent features, makes it difficult to reason about when a piece of hooks code is run, and makes working with mutable state that should persist across renders (via `useRef`) cumbersome.
+- stale クロージャの問題は、 Concurrent 機能と組み合わさって、フックコードの一部がいつ実行されるかを推論することを難しくし、(`useRef` によって) レンダー間で持続されるべき変更可能な状態を扱うことを面倒なものにします。
 
-In comparison, Vue Composition API:
+これと比較して、 Vue Composition API :
 
-- Invokes `setup()` or `<script setup>` code only once. This makes the code align better with the intuitions of idiomatic JavaScript usage as there are no stale closures to worry about. Composition API calls are also not sensitive to call order and can be conditional.
+- `setup()` または `<script setup>` のコードを一度だけ呼び出します。これにより、コードは JavaScript の慣用的な使い方に沿った直感的なコードになり、 stale クロージャの心配はありません。 Composition API の呼び出しは、呼び出しの順番に関係なく、条件付きで呼び出すことができます。
 
-- Vue's runtime reactivity system automatically collects reactive dependencies used in computed properties and watchers, so there's no need to manually declare dependencies.
+- Vue のランタイムリアクティブシステムは、算出プロパティやウォッチャで使用されるリアクティブな依存関係を自動的に収集するため、依存関係を手動で宣言する必要がありません。
 
-- No need to manually cache callback functions to avoid unnecessary child updates. In general, Vue's fine-grained reactivity system ensures child components only update when they need to. Manual child-update optimizations are rarely a concern for Vue developers.
+- 子コンポーネントの不要な更新を避けるために、コールバック関数を手動でキャッシュする必要がありません。一般に、 Vue のきめ細かいリアクティブシステムにより、子コンポーネントは必要なときだけ更新されます。 Vue の開発者が手動で子コンポーネント更新の最適化を気にする必要はほとんどありません。
 
-We acknowledge the creativity of React Hooks, and it is a major source of inspiration for Composition API. However, the issues mentioned above do exist in its design and we noticed Vue's reactivity model happens to provide a way around them.
+React Hooks のクリエイティブさは確かなものですし Composition API のインスピレーションの大きな源となっています。ですが、上に書いたような課題が設計の中に存在します。さらに、私たちは Vue のリアクティブモデルがそれらを回避する方法を提供していることに気づきました。
