@@ -9,13 +9,14 @@ outline: deep
 :::
 
 ## Composition API とは?
+
 Composition API はオプションを宣言する代わりに関数をインポートすることで Vue コンポーネントを書くことができる API セットのことです。以下に記載する API を含む包括的な用語です:
 
-- [Reactivity API](/api/reactivity-core.html) 、例: `ref()` と `reactive()` で、リアクティブな状態を作り、状態を監視します。
+- [Reactivity API](/api/reactivity-core.html) 、例: `ref()` や `reactive()` で、リアクティブな状態、算出状態、ウォッチャーを直接作成できます。
 
-- [Lifecycle Hooks](/api/composition-api-lifecycle.html)、 例: `onMounted()` と `onUnmounted()` で、コンポーネントのライフサイクルにフックを設定します。
+- [Lifecycle Hooks](/api/composition-api-lifecycle.html)、 例: `onMounted()` や `onUnmounted()` で、コンポーネントのライフサイクルにプログラム的なフックを設定します。
 
-- [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` のような、 Reactivity API を使用するために用いられる Vue の依存性の注入のことです。
+- [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` によって、 Reactivity API を使用しながらる Vue の依存性注入システムを利用できます。
 
 Composition API は Vue 3 に組み込まれていて、現在は Vue 2 においても公式のプラグイン [`@vue/composition-api`](https://github.com/vuejs/composition-api)  で使うことができます。 Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup.html) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
 
@@ -42,7 +43,7 @@ onMounted(() => {
 </template>
 ```
 
-コンポジション関数ベースでスタイリングされた API にも関わらず、 **Composition API は関数型プログラミングではありません**。 関数型言語プログラミングはイミュータブルを重視するのに対して、 Composition API は Vue のミュータブルできめ細かなリアクティブさをベースにしています。
+関数合成ベースの API スタイルにも関わらず、 **Composition API は関数型プログラミングではありません**。 関数型プログラミングはイミュータブルを重視するのに対して、 Composition API は Vue のミュータブルできめ細かなリアクティブさをベースにしています。
 
 Vue の Composition API の使い方について興味があるようでしたら、左サイドメニューの一番上にある　API 選択トグルを Composition API に切り替えて、最初からガイドを読み進めることができます。
 
@@ -89,7 +90,7 @@ Composition API のロジック再利用性は [VueUse](https://vueuse.org/) の
 
 ### プロダクションバンドルをより小さく、そしてオーバーヘッドを減らす
 
-Composition API で書かれたコードと `<script setup>` は　Options API より効率的でバンドルサイズの縮小化に親和性があります。テンプレート内の `<script setup>` コンポーネントは `<script setup>` と同じスコープ内にインラインの関数としてコンパイルされます。`this` からのプロパティアクセスとは異なり、コンパイルされたテンプレートコードは `<script setup>` 内で宣言された変数に、インスタンスを介さず直接アクセスすることができるようになります。これは、すべての変数名を安全に短縮することにもなり、より良い縮小化につながります。
+Composition API で書かれたコードと `<script setup>` は　Options API より効率的でバンドルサイズの縮小化に親和性があります。テンプレート内の `<script setup>` コンポーネントは `<script setup>` と同じスコープ内にインラインの関数としてコンパイルされます。`this` からのプロパティアクセスとは異なり、コンパイルされたテンプレートコードは `<script setup>` 内で宣言された変数に、インスタンスプロキシを間に挟まずに直接アクセスすることができるようになります。これは、すべての変数名を安全に短縮することにもなり、より良い縮小化につながります。
 
 ## Options API との関係
 
@@ -123,13 +124,13 @@ React Hooks はコンポーネントが更新されるたびに繰り返し実�
 
 - React コンポーネント内で変数が宣言されるとフッククロージャに補足され、開発者が正しく依存関係の配列にパスしなかった場合に "stale" になります。そのため、 React の開発者は ESLint のルールに頼りつつ正しい依存関係を渡すようにしています。しかし、このルールは十分に賢くないことが多く、正しさを補おうとし過ぎるあまり、エッジケースに遭遇したときに不必要に無効化され頭痛の種になることがあります。
 
-- `useMemo` を使用するときにコストの高い計算が必要となり、再び手動で正しい依存関係の配列を渡す必要があります。
+- コストの高い計算には `useMemo` の使用が必要となり、再び手動で正しい依存関係の配列を渡す必要があります。
 
 - 子コンポーネントに渡されるイベントハンドラーは、デフォルトでは不必要な子コンポーネントの更新を引き起こすので、最適化として明示的に `useCallback` を必要とします。これはほとんど常に必要であり、また正しい依存関係の配列が必要です。これを無視すると、デフォルトでアプリケーションがオーバーレンダリングされることになり、気づかないうちにパフォーマンスの問題を引き起こす可能性があります。
 
 - stale クロージャの問題は、 Concurrent 機能と組み合わさって、フックコードの一部がいつ実行されるかを推論することを難しくし、(`useRef` によって) レンダー間で持続されるべき変更可能な状態を扱うことを面倒なものにします。
 
-これと比較して、 Vue Composition API :
+これと比較して、 Vue Composition API は:
 
 - `setup()` または `<script setup>` のコードを一度だけ呼び出します。これにより、コードは JavaScript の慣用的な使い方に沿った直感的なコードになり、 stale クロージャの心配はありません。 Composition API の呼び出しは、呼び出しの順番に関係なく、条件付きで呼び出すことができます。
 
