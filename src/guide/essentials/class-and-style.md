@@ -1,28 +1,28 @@
-# Class and Style Bindings
+# クラスとスタイルのバインディング
 
-A common need for data binding is manipulating an element's class list and its inline styles. Since they are both attributes, we can use `v-bind` to handle them: we only need to calculate a final string with our expressions. However, meddling with string concatenation is annoying and error-prone. For this reason, Vue provides special enhancements when `v-bind` is used with `class` and `style`. In addition to strings, the expressions can also evaluate to objects or arrays.
+データバインディングは、HTML 要素に持たせる CSS クラスのリストやインラインのスタイルを自在に操作したいという、よくあるニーズに応えます。どちらも属性なので `v-bind` で扱うことができ、あとは式で最終的な文字列を算出すればよいだけです。しかし、文字列の結合に手を出すのは、手間がかかり、間違いが起きやすくなるものです。そこで、Vue では `class` や `style` に対して `v-bind` を用いるとき、特別な拡張が利用できるようになっています。文字列のほかに、オブジェクトまたは配列として評価される式も利用できます。
 
-## Binding HTML Classes
+## HTML クラスのバインディング
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3" title="Free Vue.js Dynamic CSS Classes Lesson"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3" title="Vue.js の動的 CSS クラスについて学ぶ無料レッスン"/>
 </div>
 
 <div class="composition-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue" title="Free Vue.js Dynamic CSS Classes Lesson"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue" title="Vue.js の動的 CSS クラスについて学ぶ無料レッスン"/>
 </div>
 
-### Binding to Objects
+### オブジェクトとのバインディング
 
-We can pass an object to `:class` (short for `v-bind:class`) to dynamically toggle classes:
+`:class` (`v-bind:class` の省略記法) では、オブジェクトを渡して CSS クラスを動的に切り替えることができます。
 
 ```vue-html
 <div :class="{ active: isActive }"></div>
 ```
 
-The above syntax means the presence of the `active` class will be determined by the [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) of the data property `isActive`.
+上の構文は、コンポーネントのデータの `isActive` というプロパティが[真値](https://developer.mozilla.org/ja/docs/Glossary/Truthy)であるかどうかによって `active` という CSS クラスを含めるかどうかを決定する、という意味になります。
 
-You can have multiple classes toggled by having more fields in the object. In addition, the `:class` directive can also co-exist with the plain `class` attribute. So given the following state:
+オブジェクトのフィールドを増やせば、複数のクラスをトグルすることができます。さらに、`:class` ディレクティブは通常の `class` 属性と共存させることもできます。例えば、次のような状態があるとします:
 
 <div class="composition-api">
 
@@ -46,7 +46,7 @@ data() {
 
 </div>
 
-And the following template:
+そしてテンプレートが次のようになっているとします:
 
 ```vue-html
 <div
@@ -55,15 +55,15 @@ And the following template:
 ></div>
 ```
 
-It will render:
+このとき、レンダリング結果は次のようになります:
 
 ```vue-html
 <div class="static active"></div>
 ```
 
-When `isActive` or `hasError` changes, the class list will be updated accordingly. For example, if `hasError` becomes `true`, the class list will become `"static active text-danger"`.
+`isActive` や `hasError` が変化すると、それに合わせてクラスのリストも更新されます。例えば、`hasError` が `true` になればクラスのリストは `"static active text-danger"` に変わります。
 
-The bound object doesn't have to be inline:
+バインドするオブジェクトはインラインにしなくても構いません:
 
 <div class="composition-api">
 
@@ -95,7 +95,7 @@ data() {
 <div :class="classObject"></div>
 ```
 
-This will render the same result. We can also bind to a [computed property](./computed) that returns an object. This is a common and powerful pattern:
+これも、同じレンダリング結果を得られます。オブジェクトを返す[算出プロパティ](./computed)にクラスをバインドすることも可能です。次の例は、よく使われる強力なパターンです:
 
 <div class="composition-api">
 
@@ -136,9 +136,9 @@ computed: {
 <div :class="classObject"></div>
 ```
 
-### Binding to Arrays
+### 配列とのバインディング
 
-We can bind `:class` to an array to apply a list of classes:
+次のように `:class` を配列にバインドすると、クラスのリストを適用することができます:
 
 <div class="composition-api">
 
@@ -166,68 +166,68 @@ data() {
 <div :class="[activeClass, errorClass]"></div>
 ```
 
-Which will render:
+レンダリング結果は次のようになります:
 
 ```vue-html
 <div class="active text-danger"></div>
 ```
 
-If you would like to also toggle a class in the list conditionally, you can do it with a ternary expression:
+リストに含まれる特定のクラスを条件に基づいて切り替えたい場合には、三項演算子を使えば実現できます:
 
 ```vue-html
 <div :class="[isActive ? activeClass : '', errorClass]"></div>
 ```
 
-This will always apply `errorClass`, but `activeClass` will only be applied when `isActive` is truthy.
+この場合、`errorClass` は常に適用され、`activeClass` は `isActive` が真のときだけ適用されます。
 
-However, this can be a bit verbose if you have multiple conditional classes. That's why it's also possible to use the object syntax inside array syntax:
+しかし、条件を付けたいクラスが複数あると、これでは少し冗長になります。そこで、配列構文の中でオブジェクト構文を使うこともできるようになっています:
 
 ```vue-html
 <div :class="[{ active: isActive }, errorClass]"></div>
 ```
 
-### With Components
+### コンポーネントでの使用
 
-> This section assumes knowledge of [Components](/guide/essentials/component-basics). Feel free to skip it and come back later.
+> このセクションは、[コンポーネント](/guide/essentials/component-basics)についての知識があることを前提としています。スキップして、後から読み直すのでも大丈夫です。
 
-When you use the `class` attribute on a component with a single root element, those classes will be added to the component's root element, and merged with any existing class already on it.
+ルート要素が 1 つだけのコンポーネントで `class` 属性を使用すると、そこで指定したクラスがコンポーネントのルート要素に追加され、すでに指定されている既存のクラスとマージされます。
 
-For example, if we have a component named `my-component` with the following template:
+例えば、`my-component` という名前のコンポーネントがあり、次のようなテンプレートになっているとします:
 
 ```vue-html
-<!-- child component template -->
+<!-- 子コンポーネントのテンプレート -->
 <p class="foo bar">Hi!</p>
 ```
 
-Then add some classes when using it:
+そして、コンポーネントを使う際にクラスをいくつか追加します:
 
 ```vue-html
-<!-- when using the component -->
+<!-- コンポーネントを使用する時点 -->
 <my-component class="baz boo"></my-component>
 ```
 
-The rendered HTML will be:
+レンダリングされる HTML は次のようになります:
 
 ```vue-html
 <p class="foo bar baz boo">Hi</p>
 ```
 
-The same is true for class bindings:
+次のクラスバインディングでも同様です:
 
 ```vue-html
 <my-component :class="{ active: isActive }"></my-component>
 ```
 
-When `isActive` is truthy, the rendered HTML will be:
+`isActive` が真値のとき、レンダリングされる HTML は次のようになります:
 
 ```vue-html
 <p class="foo bar active">Hi</p>
 ```
 
-If your component has multiple root elements, you would need to define which element will receive this class. You can do this using the `$attrs` component property:
+コンポーネントに複数のルート要素を持たせているときは、どの要素にクラスを渡すか指定する必要があります。これは、以下のように `$attrs` コンポーネントプロパティを使って行います:
 
 ```vue-html
-<!-- my-component template using $attrs -->
+<!-- $attrs を使った my-component のテンプレート -->
 <p :class="$attrs.class">Hi!</p>
 <span>This is a child component</span>
 ```
@@ -236,20 +236,20 @@ If your component has multiple root elements, you would need to define which ele
 <my-component class="baz"></my-component>
 ```
 
-Will render:
+レンダリング結果は次のようになります:
 
 ```html
 <p class="baz">Hi!</p>
 <span>This is a child component</span>
 ```
 
-You can learn more about component attribute inheritance in [Fallthrough Attributes](/guide/components/attrs.html) section.
+コンポーネントの属性の継承については、[フォールスルー属性](/guide/components/attrs.html)のセクションで詳しく説明しています。
 
-## Binding Inline Styles
+## インラインスタイルのバインディング
 
-### Binding to Objects
+### オブジェクトへのバインディング
 
-`:style` supports binding to JavaScript object values - it corresponds to an [HTML element's `style` property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style):
+`:style` では次のような JavaScript のオブジェクト値へのバインディングがサポートされ、[HTML 要素の `style` プロパティ](https://developer.mozilla.org/ja/docs/Web/API/HTMLElement/style) に対応します:
 
 <div class="composition-api">
 
@@ -277,13 +277,13 @@ data() {
 <div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
 ```
 
-Although camelCase keys are recommended, `:style` also supports kebab-cased CSS property keys (corresponds to how they are used in actual CSS) - for example:
+CSS プロパティのキーにはキャメルケース (camelCase) が推奨されますが、`:style` では CSS の実際の書き方に対応するケバブケース (kebab-cased) のキーもサポートされています。例:
 
 ```vue-html
 <div :style="{ 'font-size': fontSize + 'px' }"></div>
 ```
 
-It is often a good idea to bind to a style object directly so that the template is cleaner:
+テンプレートをすっきりさせるため、多くの場合、次のようにスタイルオブジェクトを直接バインドするとよいでしょう:
 
 <div class="composition-api">
 
@@ -315,26 +315,26 @@ data() {
 <div :style="styleObject"></div>
 ```
 
-Again, object style binding is often used in conjunction with computed properties that return objects.
+スタイルへのオブジェクトのバインディングも、オブジェクトを返す算出プロパティと組み合わせて使用することが多くあります。
 
-### Binding to Arrays
+### 配列へのバインディング
 
-We can bind `:style` to an array of multiple style objects. These objects will be merged and applied to the same element:
+`:style` は、複数のスタイルオブジェクトからなる配列にバインドすることができます。各オブジェクトはマージされ、同じ要素に適用されます:
 
 ```vue-html
 <div :style="[baseStyles, overridingStyles]"></div>
 ```
 
-### Auto-prefixing
+### 自動プレフィックス
 
-When you use a CSS property that requires a [vendor prefix](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) in `:style`, Vue will automatically add the appropriate prefix. Vue does this by checking at runtime to see which style properties are supported in the current browser. If the browser doesn't support a particular property then various prefixed variants will be tested to try to find one that is supported.
+`:style` で [ベンダープレフィックス](https://developer.mozilla.org/ja/docs/Glossary/Vendor_Prefix)を必要とする CSS プロパティを指定すると、Vue が適切なプレフィックスを自動的に追加します。Vue は、実行時にブラウザーでどのスタイルプロパティがサポートされているかをチェックして、適切なものを追加します。特定のプロパティがブラウザーでサポートされていない場合、Vue はさまざまなプレフィックスのバリエーションをテストし、サポートされているものを見つけようと試みます。
 
-### Multiple Values
+### マルチバリュー
 
-You can provide an array of multiple (prefixed) values to a style property, for example:
+style プロパティには、プレフィックス付きを含む複数の値を、配列で指定することができます。例:
 
 ```vue-html
 <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
 ```
 
-This will only render the last value in the array which the browser supports. In this example, it will render `display: flex` for browsers that support the unprefixed version of flexbox.
+このように指定すると、配列に含まれる値のうち、ブラウザーでサポートされる最後の値のみがレンダリングに使われます。この例では、接頭辞なしのバージョンのフレックスボックスをサポートするブラウザーでは、`display: flex` がレンダリングに使われます。
