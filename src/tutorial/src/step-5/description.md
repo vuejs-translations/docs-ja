@@ -13,7 +13,7 @@ methods: {
   onInput(e) {
     // v-on ハンドラーはネイティブDOMのイベントを
     // 引数として受け取ります。
-    text.value = e.target.value
+    this.text = e.target.value
   }
 }
 ```
