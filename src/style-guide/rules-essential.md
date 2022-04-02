@@ -325,7 +325,7 @@ computed: {
   <button class="c-Button c-Button--close">×</button>
 </template>
 
-<!-- BEMコンベンションの使用 -->
+<!-- BEM 規約の使用 -->
 <style>
 .c-Button {
   border: none;
