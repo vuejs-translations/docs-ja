@@ -149,7 +149,7 @@ data() {
 
 これが魅力的なのは、よくある 2 つのケースです。
 
-- リスト内の項目をフィルタリングする場合（例： `v-for="user in users" v-if="user.isActive"`）は、 `users` を新しい計算されたプロパティに置き換えて、フィルタリングされたリスト (例: `activeUsers`) を返してください。
+- リスト内の項目をフィルタリングする場合（例： `v-for="user in users" v-if="user.isActive"`）は、 `users` を新しい算出プロパティに置き換えて、フィルタリングされたリスト (例: `activeUsers`) を返してください。
 
 - 非表示にすべきリストをレンダリングしないようにする (例: `v-for="user in users" v-if="shouldShowUsers"`)には、 `v-if` をコンテナ要素 (例: `ul`, `ol`) に移動してください。
 
