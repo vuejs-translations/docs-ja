@@ -4,13 +4,13 @@ Web アクセシビリティ（a11y としても知られます）とは、障�
 
 始めたいけどどこから始めたらいいか分からない？
 
-[ワールド・ワイド・ウェブ・コンソーシアム (W3C)](https://www.w3.org/) が提供する [Web アクセシビリティの計画と管理ガイド](https://www.w3.org/WAI/planning-and-managing/)を確認してください。
+[World Wide Web Consortium (W3C)](https://www.w3.org/) が提供する [Web アクセシビリティの計画と管理ガイド](https://www.w3.org/WAI/planning-and-managing/)を確認してください。
 
 ## スキップリンク
 
 各ページの上部にメインコンテンツに直接アクセスできるリンクを設け、ユーザーが複数の Web ページで繰り返されるコンテンツを読み飛ばせるようにする必要があります。
 
-通常、これは `App.vue` のトップで行われます。これはすべてのページで最初にフォーカス可能な要素になります:
+通常、これは `App.vue` の上部に置かれ、すべてのページで最初にフォーカス可能な要素になります:
 
 ```vue-html
 <ul class="skip-links">
@@ -40,7 +40,7 @@ Web アクセシビリティ（a11y としても知られます）とは、障�
 }
 ```
 
-ユーザーがルートを変更したら、スキップリンクにフォーカスを戻してください。これは、スキップリンクのテンプレート参照でフォーカスを呼び出すことで実現できます（`vue-router` の使用を想定しています）。
+ユーザーがルートを変更したら、スキップリンクにフォーカスを戻します。これは、スキップリンクのテンプレート参照でフォーカスを呼び出すことで実現できます（`vue-router` の使用を想定しています）。
 
 <div class="options-api">
 
@@ -78,7 +78,7 @@ watch(
 
 </div>
 
-[メインコンテンツへのスキップリンクに関する資料を読む](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[メインコンテンツへのスキップリンクに関するドキュメントを読む](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
 ## コンテンツ構成
 
@@ -114,7 +114,7 @@ watch(
 
 ### ランドマーク
 
-[ランドマーク](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)は、アプリケーション内のセクションへのプログラム的なアクセスを提供します。アシスティブ・テクノロジーに依存するユーザーは、アプリケーションの各セクションに移動し、コンテンツをスキップすることができます。これを実現するために、[ARIA ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles)を使用できます。
+[ランドマーク](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)は、アプリケーション内のセクションへのプログラムによるアクセスを提供します。アシスティブ・テクノロジーに依存するユーザーは、アプリケーションの各セクションに移動し、コンテンツをスキップすることができます。これを実現するために、[ARIA ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles)を使用できます。
 
 | HTML            | ARIA ロール            | ランドマークの目的                                                                                                 |
 | --------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -128,7 +128,7 @@ watch(
 | section         | role="region"        | 関連性がありユーザーが移動したくなるであろうコンテンツ。この要素にはラベルを付ける必要がある |
 
 :::tip ヒント:
-[HTML5のセマンティック要素をサポートしていないレガシーブラウザー](https://caniuse.com/html5semantic)との互換性を最大化するために、助長なランドマークロール属性を持つランドマーク HTML 要素を使用することが推奨されています。
+[HTML5 のセマンティック要素をサポートしていないレガシーブラウザー](https://caniuse.com/html5semantic)との互換性を最大化するために、助長なランドマークロール属性を持つランドマーク HTML 要素を使用することが推奨されています。
 :::
 
 [ランドマークについてもっと読む](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
@@ -156,7 +156,7 @@ watch(
 
 <!-- <common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-form 要素に `autocomplete='on'` を記述すると、フォーム内のすべての入力欄に適用されることに注意してください。また、各入力欄に対して異なる [autocomplete 属性の値](https://developer.mozilla.org/ja/docs/Web/HTML/Attributes/autocomplete) を設定することができます。
+form 要素に `autocomplete='on'` を記述すると、フォーム内のすべての入力欄に適用されることに注意してください。各入力欄に対して異なる [autocomplete 属性の値](https://developer.mozilla.org/ja/docs/Web/HTML/Attributes/autocomplete) を設定することもできます。
 
 ### ラベル
 
@@ -169,12 +169,12 @@ form 要素に `autocomplete='on'` を記述すると、フォーム内のすべ
 
 <!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Chrome DevTools でこの要素を検査し、Elements タブ内の Accessibility タブを開くと、入力欄がどのようにラベルから名前を得ているか確認できます:
+Chrome DevTools でこの要素を検査し、Elements タブ内の Accessibility タブを開くと、入力欄がどのようにラベルから名付けられているか確認できます:
 
 ![Chrome DevTools が、入力欄がラベルから得たアクセシブルな名前を表示している](./images/AccessibleLabelChromeDevTools.png)
 
 :::warning 注意:
-このように入力フィールドをラップするラベルを見たことがあるかもしれません。
+このように入力フィールドをラップするラベルを見たことがあるかもしれません:
 
 ```vue-html
 <label>
@@ -239,7 +239,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 #### `aria-describedby`
 
-[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute)は `aria-labelledby` と同じように使われますが、ユーザーが必要とするかもしれない追加の情報を含む説明を提供します。これはどのような入力欄に対しても、その基準を記述するために使用することができます:
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) は `aria-labelledby` と同じように使われますが、ユーザーが必要とするかもしれない追加の情報を含む説明を提供します。これはどのような入力欄に対しても、その基準を記述するために使用することができます:
 
 ```vue-html
 <form
@@ -267,7 +267,6 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 <!-- <common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-You can see the description by inspecting Chrome DevTools:
 Chrome DevTools で検査することで、その説明文を確認することができます:
 
 ![Chrome DevTools が、入力欄に設定された aria-labelledby のアクセシブルな名前と、aria-describedby の説明文を表示している](./images/AccessibleARIAdescribedby.png)
@@ -301,7 +300,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 <!-- <common-codepen-snippet title="Form Placeholder" slug="ExZvvMw" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-ユーザーがフォームに入力するのに必要な情報は、入力欄外で提供するとよいでしょう。
+ユーザーがフォームを入力するのに必要な情報は、入力欄外で提供するとよいでしょう。
 
 ### インストラクション
 
@@ -335,9 +334,9 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 <!-- <common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-### コンテンツを隠す
+### コンテンツの非表示
 
-通常、たとえ入力欄がアクセシブルな名前を持っていても、ラベルを視覚的に隠すことは推奨されません。しかし、入力欄の機能が周囲の内容から理解できるのであれば、視覚的にラベルを隠すことができます。
+通常、たとえ入力欄がアクセシブルな名前を持っていても、ラベルを視覚的に非表示にすることは推奨されません。しかし、入力欄の機能が周囲の内容から理解できるのであれば、視覚的にラベルを非表示にすることができます。
 
 この検索フィールドを見てみましょう:
 
@@ -349,9 +348,9 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 </form>
 ```
 
-このようにできるのは、検索ボタンが、入力フィールドの目的を視覚的に明らかにしているからです。
+非表示にできるのは、検索ボタンが入力フィールドの目的を視覚的に明らかにしているからです。
 
-要素を CSS で視覚的に隠しつつ、なおアシスティブ・テクノロジーからはそれを利用できます:
+要素を CSS で視覚的に非表示にしつつ、なおアシスティブ・テクノロジーからはそれを利用できます:
 
 ```css
 .hidden-visually {
@@ -371,25 +370,25 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 #### `aria-hidden="true"`
 
-`aria-hidden="true"` を追加すると、アシスティブ・テクノロジーから要素を隠しますが、その他のユーザーは視覚的に利用できます。フォーカス可能な要素、純粋に装飾的な要素、複製された要素、画面外のコンテンツには使用しないでください。
+`aria-hidden="true"` を追加すると、アシスティブ・テクノロジーから要素を隠しますが、その他のユーザーは視覚的に利用できます。フォーカス可能な要素、純粋に装飾的なコンテンツ、複製されたコンテンツ、画面外のコンテンツには使用しないでください。
 
 ```vue-html
-<p>これはスクリーンリーダーから隠れません。</p>
-<p aria-hidden="true">これはスクリーンリーダーから隠れます。</p>
+<p>これはスクリーンリーダーから非表示ではありません。</p>
+<p aria-hidden="true">これはスクリーンリーダーから非表示です。</p>
 ```
 
 ### ボタン
 
-フォーム内でボタンを使用する場合、フォームを送信しないようにするため type を設定する必要があります。
+フォーム内で button を使用する場合、フォームを送信しないようにするため type を設定する必要があります。
 またはボタンを作成するために input を使用することもできます:
 
 ```vue-html
 <form action="/dataCollectionLocation" method="post" autocomplete="on">
-  <!-- Buttons -->
+  <!-- ボタン -->
   <button type="button">キャンセル</button>
   <button type="submit">確定</button>
 
-  <!-- Input buttons -->
+  <!-- Input ボタン -->
   <input type="button" value="キャンセル" />
   <input type="submit" value="確定" />
 </form>
@@ -437,14 +436,14 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 World Wide Web Consortium (W3C) の Web Accessibility Initiative (WAI) は、さまざまなコンポーネントの Web アクセシビリティ規格を策定しています:
 
-- [User Agent Accessibility Guidelines (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)
-  - ウェブブラウザとメディアプレーヤー、アシスティブ・テクノロジーの観点を含む
-- [Authoring Tool Accessibility Guidelines (ATAG)](https://www.w3.org/WAI/standards-guidelines/atag/)
+- [ユーザーエージェントアクセシビリティガイドライン (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)
+  - Web ブラウザとメディアプレーヤー、アシスティブ・テクノロジーの観点を含む
+- [オーサリングツールアクセシビリティガイドライン (ATAG)](https://www.w3.org/WAI/standards-guidelines/atag/)
   - オーサリングツール
-- [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
-  - ウェブコンテンツ - 開発者や、オーサリングツール、アクセシビリティ評価ツールが使用する
+- [Web コンテンツアクセシビリティガイドライン (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
+  - Web コンテンツ - 開発者や、オーサリングツール、アクセシビリティ評価ツールが使用する
 
-### Web Content Accessibility Guidelines (WCAG)
+### Web コンテンツアクセシビリティガイドライン (WCAG)
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/) は、[WCAG 2.0](https://www.w3.org/TR/WCAG20/) を拡張し、Web の変化に対応することで、新しい技術の実装を可能にするものです。W3C は、Web アクセシビリティ方針を策定又は更新する際に、最新版の WCAG を使用することを推奨しています。
 
@@ -457,14 +456,14 @@ World Wide Web Consortium (W3C) の Web Accessibility Initiative (WAI) は、さ
 - [理解可能](https://www.w3.org/TR/WCAG21/#understandable)
   - 情報及びユーザーインターフェースの操作は全ての利用者に理解可能でなければならない
 - [堅牢](https://www.w3.org/TR/WCAG21/#robust)
-  - 技術の進歩に従い、利用者はコンテンツにアクセスできなければならない
+  - テクノロジーが進歩しても、利用者はコンテンツにアクセスできなければならない
 
 #### Web Accessibility Initiative – Accessible Rich Internet Applications (WAI-ARIA)
 
 W3C の WAI-ARIA は、動的コンテンツや高度なユーザーインターフェイスコントロールの構築方法に関するガイダンスを提供しています。
 
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
-- [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
+- [WAI-ARIA オーサリングプラクティス 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
 ## リソース
 
@@ -473,7 +472,7 @@ W3C の WAI-ARIA は、動的コンテンツや高度なユーザーインター
 - [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/)
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
-- [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
+- [WAI-ARIA オーサリングプラクティス 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
 ### アシスティブ・テクノロジー
 
@@ -512,7 +511,7 @@ W3C の WAI-ARIA は、動的コンテンツや高度なユーザーインター
 - _[肢体](https://webaim.org/articles/motor/)_ - このようなユーザーは、音声認識ソフトウェア、アイトラッキング、シングルスイッチアクセス、頭部装着型指示器、息操作スイッチ、特大トラックボールマウス、アダプティブキーボード、その他のアシスティブ・テクノロジーなど、さまざまな[肢体障害支援技術](https://webaim.org/articles/motor/assistive)の使用が有効です。
 - _[認知](https://webaim.org/articles/cognitive/)_ - このようなユーザーには、補足的なメディア、構造的なコンテンツ、明確でシンプルな文章が有効です。
 
-WebAim の以下のリンクをチェックして、ユーザーからの理解を深めましょう:
+WebAim の以下のリンクをチェックして、ユーザーの理解を深めましょう:
 
 - [Web アクセシビリティの視点: すべての人にとっての影響と利点を探る](https://www.w3.org/WAI/perspective-videos/)
 - [Web ユーザーのストーリー](https://www.w3.org/WAI/people-use-web/user-stories/)
