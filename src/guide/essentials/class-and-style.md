@@ -12,9 +12,9 @@
   <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue" title="Vue.js の動的 CSS クラスについて学ぶ無料レッスン"/>
 </div>
 
-### オブジェクトとのバインディング
+### オブジェクトへのバインディング
 
-`:class` (`v-bind:class` の省略記法) では、オブジェクトを渡して CSS クラスを動的に切り替えることができます:
+`:class` (`v-bind:class` の省略記法) では、オブジェクトを渡して CSS クラスを動的に切り替えることができます。
 
 ```vue-html
 <div :class="{ active: isActive }"></div>
@@ -212,7 +212,7 @@ data() {
 <p class="foo bar baz boo">Hi</p>
 ```
 
-クラスバインディングでも同様です:
+次のクラスバインディングでも同様です:
 
 ```vue-html
 <my-component :class="{ active: isActive }"></my-component>
@@ -329,7 +329,7 @@ data() {
 
 `:style` で [ベンダープレフィックス](https://developer.mozilla.org/ja/docs/Glossary/Vendor_Prefix)を必要とする CSS プロパティを指定すると、Vue が適切なプレフィックスを自動的に追加します。Vue は、実行時にブラウザーでどのスタイルプロパティがサポートされているかをチェックして、適切なものを追加します。特定のプロパティがブラウザーでサポートされていない場合、Vue はさまざまなプレフィックスのバリエーションをテストし、サポートされているものを見つけようと試みます。
 
-### 複数の値
+### マルチバリュー
 
 style プロパティには、プレフィックス付きを含む複数の値を、配列で指定することができます。例:
 
