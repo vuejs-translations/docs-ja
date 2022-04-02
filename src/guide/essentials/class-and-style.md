@@ -212,7 +212,7 @@ data() {
 <p class="foo bar baz boo">Hi</p>
 ```
 
-次のクラスバインディングでも同様です:
+クラスバインディングでも同様です:
 
 ```vue-html
 <my-component :class="{ active: isActive }"></my-component>
