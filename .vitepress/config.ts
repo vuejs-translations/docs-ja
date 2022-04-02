@@ -239,7 +239,7 @@ export const sidebar = {
           link: '/guide/best-practices/performance'
         },
         {
-          text: 'Accessibility',
+          text: 'アクセシビリティ',
           link: '/guide/best-practices/accessibility'
         },
         {
