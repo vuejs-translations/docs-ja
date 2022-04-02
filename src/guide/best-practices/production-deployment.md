@@ -1,44 +1,44 @@
-# Production Deployment
+# 本番デプロイ
 
-## Development vs. Production
+## 開発と本番の違い
 
-During development, Vue provides a number of features to improve the development experience:
+開発時において、Vue は開発体験を向上させるための様々な機能を提供します:
 
-- Warning for common errors and pitfalls
-- Props / events validation
-- Reactivity debugging hooks
-- Devtools integration
+- よくあるエラーや落とし穴に対する警告
+- Props や events に対するバリデーション
+- リアクティビティーのデバックのためのフック
+- 開発者ツールとの連携
 
-However, these features become useless in production. Some of the warning checks can also incur a small amount of performance overhead. When deploying to production, we should drop all the unused, development-only code branches for smaller payload size and better performance.
+しかし、これらの機能は本番では役に立ちません。警告の検査の中には、わずかなパフォーマンスのオーバーヘッドを発生させるものもあります。本番へのデプロイ時には、ペイロードサイズを小さくしてパフォーマンスを向上させるために、使用されていない開発専用のコードブランチをすべて削除する必要があります。
 
-## Without Build Tools
+## ビルドツールなし
 
-If you are using Vue without a build tool by loading it from a CDN or self-hosted script, make sure to use the production build (dist files that end in `.prod.js`) when deploying to production. Production builds are pre-minified with all development-only code branches removed.
+CDN やセルフホストのスクリプトからロードして、ビルドツールなしで Vue を使用している場合、本番にデプロイする時は必ず本番向けビルド (末尾が `.prod.js` である dist ファイル) を使用して下さい。本番向けビルドは、開発専用のコードブランチがすべて削除され事前に最小化されています。
 
-- If using global build (accessing via the `Vue` global): use `vue.global.prod.js`.
-- If using ESM build (accessing via native ESM imports): use `vue.esm-browser.prod.js`.
+- グローバルビルドを使用している場合 ( `Vue` グローバル経由でアクセスしている場合): `vue.global.prod.js` を使用して下さい。
+- ESM ビルドを使用している場合(ネイティブの ESM インポートでアクセスしている場合): `vue.esm-browser.prod.js` を使用して下さい。
 
-Consult the [dist file guide](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) for more details.
+詳しくは、[dist ファイルガイド](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use)をご覧ください。
 
-## With Build Tools
+## ビルドツールあり
 
-Projects scaffolded via `create-vue` (based on Vite) or Vue CLI (based on webpack) are pre-configured for production builds.
+`create-vue` (Vite ベース) または Vue CLI (webpack ベース) で生成されたプロジェクトは、本番ビルド用にあらかじめ設定がされています。
 
-If using a custom setup, make sure that:
+カスタムセットアップを使用している場合は、以下を確認してください:
 
-1. `vue` resolves to `vue.runtime.esm-bundler.js`.
-2. The [compile time feature flags](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) are properly configured.
-3. <code>process.env<wbr>.NODE_ENV</code> is replaced with `"production"` during build.
+1. `vue` が `vue.runtime.esm-bundler.js` で解決される。
+2. [コンパイル時の機能フラグ](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags)が適切に設定されている。
+3. <code>process.env<wbr>.NODE_ENV</code> がビルド時に `"production"` に置き換わる。
 
-Additional references:
+その他の参考文献:
 
-- [Vite production build guide](https://vitejs.dev/guide/build.html)
-- [Vite deployment guide](https://vitejs.dev/guide/static-deploy.html)
-- [Vue CLI deployment guide](https://cli.vuejs.org/guide/deployment.html)
+- [Vite 本番環境用のビルドガイド](https://ja.vitejs.dev/guide/build.html)
+- [Vite デプロイガイド](https://ja.vitejs.dev/guide/static-deploy.html)
+- [Vue CLI デプロイガイド](https://cli.vuejs.org/guide/deployment.html)
 
-## Tracking Runtime Errors
+## ランタイムエラーの追跡
 
-The [app-level error handler](/api/application.html#app-config-errorhandler) can be used to report errors to tracking services:
+[アプリケーションレベルのエラーハンドラー](/api/application.html#app-config-errorhandler) は、トラッキングサービスへエラーを報告するために使用できます:
 
 ```js
 import { createApp } from 'vue'
@@ -46,8 +46,8 @@ import { createApp } from 'vue'
 const app = createApp(...)
 
 app.config.errorHandler = (err, instance, info) => {
-  // report error to tracking services
+  // トラッキングサービスへエラーを報告する
 }
 ```
 
-Services such as [Sentry](https://docs.sentry.io/platforms/javascript/guides/vue/) and [Bugsnag](https://docs.bugsnag.com/platforms/javascript/vue/) also provide official integrations for Vue.
+[Sentry](https://docs.sentry.io/platforms/javascript/guides/vue/) や [Bugsnag](https://docs.bugsnag.com/platforms/javascript/vue/) などのサービスも、Vue の公式連携を提供しています。
