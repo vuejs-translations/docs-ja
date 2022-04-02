@@ -14,7 +14,7 @@
 
 ### オブジェクトとのバインディング
 
-`:class` (`v-bind:class` の省略記法) では、オブジェクトを渡して CSS クラスを動的に切り替えることができます。
+`:class` (`v-bind:class` の省略記法) では、オブジェクトを渡して CSS クラスを動的に切り替えることができます:
 
 ```vue-html
 <div :class="{ active: isActive }"></div>
