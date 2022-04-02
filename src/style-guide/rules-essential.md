@@ -6,7 +6,6 @@
 
 ユーザーコンポーネントの名前は、ルートの `App` コンポーネントを除いて、常に複数ワードであるべきです。これは、すべての HTML 要素が一語であるため、既存および将来の HTML 要素との[衝突を防ぐ](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name)ためです。
 
-
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
 
