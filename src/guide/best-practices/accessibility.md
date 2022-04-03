@@ -229,7 +229,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
       aria-labelledby="billing name"
     />
   </div>
-  <button type="submit">確定</button>
+  <button type="submit">Submit</button>
 </form>
 ```
 
