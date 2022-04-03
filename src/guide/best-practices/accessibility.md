@@ -328,7 +328,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
   <legend>Using aria-describedby</legend>
   <label id="dob" for="dob">Date of Birth:</label>
   <input type="date" name="dob" id="dob" aria-describedby="dob-instructions" />
-  <p id="dob-instructions">YYYY/MM/DD</p>
+  <p id="dob-instructions">MM/DD/YYYY</p>
 </fieldset>
 ```
 
