@@ -261,7 +261,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
     />
     <p id="nameDescription">Please provide first and last name.</p>
   </div>
-  <button type="submit">確定</button>
+  <button type="submit">Submit</button>
 </form>
 ```
 
