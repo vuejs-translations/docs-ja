@@ -389,7 +389,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
   <button type="submit">Submit</button>
 
   <!-- Input ボタン -->
-  <input type="button" value="キャンセル" />
+  <input type="button" value="Cancel" />
   <input type="submit" value="Submit" />
 </form>
 ```
