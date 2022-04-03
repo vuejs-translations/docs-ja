@@ -178,7 +178,7 @@ Chrome DevTools でこの要素を検査し、Elements タブ内の Accessibilit
 
 ```vue-html
 <label>
-  名前:
+  Name:
   <input type="text" name="name" id="name" v-model="name" />
 </label>
 ```
