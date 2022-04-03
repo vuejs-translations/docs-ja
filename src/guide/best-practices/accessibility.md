@@ -317,7 +317,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
     id="date"
     aria-labelledby="date-label date-instructions"
   />
-  <p id="date-instructions">YYYY/MM/DD</p>
+  <p id="date-instructions">MM/DD/YYYY</p>
 </fieldset>
 ```
 
