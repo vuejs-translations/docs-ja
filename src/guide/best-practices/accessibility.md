@@ -385,7 +385,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 ```vue-html
 <form action="/dataCollectionLocation" method="post" autocomplete="on">
   <!-- ボタン -->
-  <button type="button">キャンセル</button>
+  <button type="button">Cancel</button>
   <button type="submit">確定</button>
 
   <!-- Input ボタン -->
