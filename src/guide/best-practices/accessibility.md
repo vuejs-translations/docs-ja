@@ -326,7 +326,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 ```vue-html
 <fieldset>
   <legend>aria-describedby を使う</legend>
-  <label id="dob" for="dob">誕生日:</label>
+  <label id="dob" for="dob">Date of Birth:</label>
   <input type="date" name="dob" id="dob" aria-describedby="dob-instructions" />
   <p id="dob-instructions">YYYY/MM/DD</p>
 </fieldset>
