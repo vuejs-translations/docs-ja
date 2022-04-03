@@ -37,7 +37,7 @@ const multiSelected = ref([])
 <input v-model="text">
 ```
 
-さらに、 `v-model` は様々な種類の入力や `<textarea>` 、 `<select>` 要素の入力で使用することができます。使用する要素に応じて、異なる DOM プロパティとイベントのペアに自動で展開します。
+さらに、 `v-model` は様々な種類の入力や `<textarea>` 、 `<select>` 要素の入力で使用することができます。使用する要素に応じて、異なる DOM プロパティとイベントのペアに自動で展開します:
 
 - text 型の `<input>` と `<textarea>` 要素は `value` プロパティと `input` イベントを使用します。
 - `<input type="checkbox">` と `<input type="radio">` は `checked` プロパティと `change` イベントを使用します。
