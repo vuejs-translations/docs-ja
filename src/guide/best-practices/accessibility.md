@@ -373,7 +373,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 `aria-hidden="true"` を追加すると、アシスティブ・テクノロジーから要素を隠しますが、その他のユーザーは視覚的に利用できます。フォーカス可能な要素、純粋に装飾的なコンテンツ、複製されたコンテンツ、画面外のコンテンツには使用しないでください。
 
 ```vue-html
-<p>これはスクリーンリーダーから非表示ではありません。</p>
+<p>This is not hidden from screen readers.</p>
 <p aria-hidden="true">This is hidden from screen readers.</p>
 ```
 
