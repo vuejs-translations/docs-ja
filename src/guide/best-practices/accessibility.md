@@ -163,7 +163,7 @@ form 要素に `autocomplete='on'` を記述すると、フォーム内のすべ
 すべてのフォームコントロールの目的を説明するため、ラベルを用意しましょう。`for` と `id` をリンクします:
 
 ```vue-html
-<label for="name">名前</label>
+<label for="name">Name</label>
 <input type="text" name="name" id="name" v-model="name" />
 ```
 
