@@ -425,7 +425,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
   <input type="text" name="searchIcon" id="searchIcon" v-model="searchIcon" />
   <button type="submit">
     <i class="fas fa-search" aria-hidden="true"></i>
-    <span class="hidden-visually">検索</span>
+    <span class="hidden-visually">Search</span>
   </button>
 </form>
 ```
