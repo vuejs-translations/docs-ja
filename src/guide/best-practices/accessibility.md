@@ -150,7 +150,7 @@ watch(
       v-model="item.value"
     />
   </div>
-  <button type="submit">確定</button>
+  <button type="submit">Submit</button>
 </form>
 ```
 
