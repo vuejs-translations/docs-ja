@@ -365,13 +365,13 @@ export default {
 ラジオやチェックボックス、セレクトオプションにおいて、 `v-model` でバインディングされる値は通常は静的な文字列です (またチェックボックスでは真偽値も):
 
 ```vue-html
-<!-- `picked` is a string "a" when checked -->
+<!-- チェックされているとき `picked` は文字列 "a" -->
 <input type="radio" v-model="picked" value="a" />
 
-<!-- `toggle` is either true or false -->
+<!-- `toggle` は true か false のいずれか -->
 <input type="checkbox" v-model="toggle" />
 
-<!-- `selected` is a string "abc" when the first option is selected -->
+<!-- 最初のオプションが選択されているとき `selected` は文字列 "abc" -->
 <select v-model="selected">
   <option value="abc">ABC</option>
 </select>
