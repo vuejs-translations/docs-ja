@@ -294,7 +294,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
       :placeholder="item.placeholder"
     />
   </div>
-  <button type="submit">確定</button>
+  <button type="submit">Submit</button>
 </form>
 ```
 
