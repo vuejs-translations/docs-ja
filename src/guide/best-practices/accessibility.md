@@ -191,7 +191,7 @@ Chrome DevTools でこの要素を検査し、Elements タブ内の Accessibilit
 [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) で入力欄にアクセシブルな名前を与えることもできます。
 
 ```vue-html
-<label for="name">名前</label>
+<label for="name">Name</label>
 <input
   type="text"
   name="name"
