@@ -82,7 +82,7 @@ const multiSelected = ref([])
 ```vue-html
 <span>Multiline message is:</span>
 <p style="white-space: pre-line;">{{ message }}</p>
-<textarea v-model="messageテキストaceholder="add multiple lines"></textarea>
+<textarea v-model="message" placeholder="add multiple lines"></textarea>
 ```
 
 <div class="demo">
