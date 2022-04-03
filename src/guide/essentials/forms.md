@@ -137,7 +137,7 @@ const multiSelected = ref([])
 
 </div>
 
-複数のチェックボックスを同じ配列もしくは [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) の値にバインドすることもできます。
+複数のチェックボックスを同じ配列もしくは [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) の値にバインドすることもできます:
 
 <div class="composition-api">
 
