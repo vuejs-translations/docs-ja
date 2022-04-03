@@ -259,7 +259,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
       aria-labelledby="billing name"
       aria-describedby="nameDescription"
     />
-    <p id="nameDescription">姓と名を入力してください。</p>
+    <p id="nameDescription">Please provide first and last name.</p>
   </div>
   <button type="submit">確定</button>
 </form>
