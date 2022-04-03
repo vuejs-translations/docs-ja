@@ -412,7 +412,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
       type="image"
       class="btnImg"
       src="https://img.icons8.com/search"
-      alt="検索"
+      alt="Search"
     />
   </form>
   ```
