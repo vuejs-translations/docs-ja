@@ -15,7 +15,7 @@ Web アクセシビリティ（a11y としても知られます）とは、障�
 ```vue-html
 <ul class="skip-links">
   <li>
-    <a href="#main" ref="skipLink">メインコンテンツまでスキップする</a>
+    <a href="#main" ref="skipLink">Skip to main content</a>
   </li>
 </ul>
 ```
@@ -98,15 +98,15 @@ watch(
 <main role="main" aria-labelledby="main-title">
   <h1 id="main-title">Main title</h1>
   <section aria-labelledby="section-title">
-    <h2 id="section-title">セクションタイトル</h2>
-    <h3>セクションサブタイトル</h3>
+    <h2 id="section-title"> Section Title </h2>
+    <h3>Section Subtitle</h3>
     <!-- コンテンツ -->
   </section>
   <section aria-labelledby="section-title">
-    <h2 id="section-title">セクションタイトル</h2>
-    <h3>セクションサブタイトル</h3>
+    <h2 id="section-title"> Section Title </h2>
+    <h3>Section Subtitle</h3>
     <!-- コンテンツ -->
-    <h3>セクションサブタイトル</h3>
+    <h3>Section Subtitle</h3>
     <!-- コンテンツ -->
   </section>
 </main>
