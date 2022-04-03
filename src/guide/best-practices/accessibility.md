@@ -344,7 +344,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 <form role="search">
   <label for="search" class="hidden-visually">Search: </label>
   <input type="text" name="search" id="search" v-model="search" />
-  <button type="submit">検索</button>
+  <button type="submit">Search</button>
 </form>
 ```
 
