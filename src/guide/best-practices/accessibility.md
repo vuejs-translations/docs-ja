@@ -218,7 +218,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
   method="post"
   autocomplete="on"
 >
-  <h1 id="billing">支払い</h1>
+  <h1 id="billing">Billing</h1>
   <div class="form-item">
     <label for="name">名前:</label>
     <input
