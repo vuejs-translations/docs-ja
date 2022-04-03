@@ -309,7 +309,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 ```vue-html
 <fieldset>
-  <legend>aria-labelledby を使う</legend>
+  <legend>Using aria-labelledby</legend>
   <label id="date-label" for="date">現在の日時:</label>
   <input
     type="date"
