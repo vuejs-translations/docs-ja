@@ -250,7 +250,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 >
   <h1 id="billing">Billing</h1>
   <div class="form-item">
-    <label for="name">氏名:</label>
+    <label for="name">Full Name:</label>
     <input
       type="text"
       name="name"
