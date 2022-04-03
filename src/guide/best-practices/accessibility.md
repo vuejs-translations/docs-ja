@@ -406,7 +406,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
   ```vue-html
   <form role="search">
-    <label for="search" class="hidden-visually">検索: </label>
+    <label for="search" class="hidden-visually">Search: </label>
     <input type="text" name="search" id="search" v-model="search" />
     <input
       type="image"
