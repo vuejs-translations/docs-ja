@@ -96,7 +96,7 @@ watch(
 
 ```vue-html
 <main role="main" aria-labelledby="main-title">
-  <h1 id="main-title">メインタイトル</h1>
+  <h1 id="main-title">Main title</h1>
   <section aria-labelledby="section-title">
     <h2 id="section-title">セクションタイトル</h2>
     <h3>セクションサブタイトル</h3>
