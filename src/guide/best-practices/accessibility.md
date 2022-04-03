@@ -374,7 +374,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 ```vue-html
 <p>これはスクリーンリーダーから非表示ではありません。</p>
-<p aria-hidden="true">これはスクリーンリーダーから非表示です。</p>
+<p aria-hidden="true">This is hidden from screen readers.</p>
 ```
 
 ### ボタン
