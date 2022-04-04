@@ -114,7 +114,7 @@ watch(
 
 ### ランドマーク
 
-[ランドマーク](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)は、アプリケーション内のセクションへのプログラムによるアクセスを提供します。アシスティブ・テクノロジーに依存するユーザーは、アプリケーションの各セクションに移動し、コンテンツをスキップすることができます。これを実現するために、[ARIA ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles)を使用できます。
+[ランドマーク](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)は、アプリケーション内のセクションへのプログラムによるアクセスを提供します。アシスティブ・テクノロジー（支援技術）に依存するユーザーは、アプリケーションの各セクションに移動し、コンテンツをスキップすることができます。これを実現するために、[ARIA ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles)を使用できます。
 
 | HTML            | ARIA ロール            | ランドマークの目的                                                                                                 |
 | --------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------- |
