@@ -133,7 +133,7 @@ watch(
 
 [ランドマークについてもっと読む](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
-## セマンティックフォーム
+## セマンティックなフォーム
 
 フォームを作成する際、次の要素を使うことができます: `<form>`、 `<label>`、 `<input>`、 `<textarea>`、 `<button>`
 
