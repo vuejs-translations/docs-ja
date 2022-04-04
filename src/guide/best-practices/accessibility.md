@@ -169,7 +169,7 @@ form 要素に `autocomplete='on'` を記述すると、フォーム内のすべ
 
 <!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Chrome DevTools でこの要素を検査し、Elements タブ内の Accessibility タブを開くと、入力欄がどのようにラベルから名付けられているか確認できます:
+Chrome デベロッパー ツールでこの要素を検査し、Elements タブ内の Accessibility タブを開くと、入力欄がどのようにラベルから名付けられているか確認できます:
 
 ![Chrome DevTools が、入力欄がラベルから得たアクセシブルな名前を表示している](./images/AccessibleLabelChromeDevTools.png)
 
