@@ -269,7 +269,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 Chrome DevTools で検査することで、その説明文を確認することができます:
 
-![Chrome DevTools が、入力欄に設定された aria-labelledby のアクセシブルな名前と、aria-describedby の説明文を表示している](./images/AccessibleARIAdescribedby.png)
+![Chrome デベロッパー ツールが、入力欄に設定された aria-labelledby のアクセシブルな名前と、aria-describedby の説明文を表示している](./images/AccessibleARIAdescribedby.png)
 
 ### プレースホルダー
 
