@@ -235,7 +235,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 <!-- <common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-![Chrome DevTools が、入力欄が aria-labelledby から得たアクセシブルな名前を表示している](./images/AccessibleARIAlabelledbyDevTools.png)
+![Chrome デベロッパー ツールが、入力欄が aria-labelledby から得たアクセシブルな名前を表示している](./images/AccessibleARIAlabelledbyDevTools.png)
 
 #### `aria-describedby`
 
