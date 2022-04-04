@@ -171,7 +171,7 @@ form 要素に `autocomplete='on'` を記述すると、フォーム内のすべ
 
 Chrome デベロッパー ツールでこの要素を検査し、Elements タブ内の Accessibility タブを開くと、入力欄がどのようにラベルから名付けられているか確認できます:
 
-![Chrome DevTools が、入力欄がラベルから得たアクセシブルな名前を表示している](./images/AccessibleLabelChromeDevTools.png)
+![Chrome デベロッパー ツールが、入力欄がラベルから得たアクセシブルな名前を表示している](./images/AccessibleLabelChromeDevTools.png)
 
 :::warning 注意:
 このように入力フィールドをラップするラベルを見たことがあるかもしれません:
