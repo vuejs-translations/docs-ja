@@ -205,7 +205,7 @@ Chrome デベロッパー ツールでこの要素を検査し、Elements タブ
 
 Chrome DevTools でこの要素を検査し、アクセシブルな名前がどのように変更されたか確認できます:
 
-![Chrome DevTools が、入力欄が aria-label から得たアクセシブルな名前を表示している](./images/AccessibleARIAlabelDevTools.png)
+![Chrome デベロッパー ツールが、入力欄が aria-label から得たアクセシブルな名前を表示している](./images/AccessibleARIAlabelDevTools.png)
 
 #### `aria-labelledby`
 
