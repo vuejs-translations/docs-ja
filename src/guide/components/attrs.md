@@ -2,115 +2,115 @@
 outline: deep
 ---
 
-# Fallthrough Attributes
+# フォールスルー属性
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+> このページは、[コンポーネントの基礎](/guide/essentials/component-basics)をすでに読んでいることを想定して説明しています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
-## Attribute Inheritance
+## 属性の継承
 
-A "fallthrough attribute" is an attribute or `v-on` event listener that is passed to a component, but is not explicitly declared in the receiving component's [props](./props) or [emits](./events.html#declaring-emitted-events). Common examples of this include `class`, `style`, and `id` attributes.
+"フォールスルー属性"とは、あるコンポーネントに渡されたものの、受け取ったコンポーネントの [props](./props) や [emits](./events.html#declaring-emitted-events) で明確に宣言されていない属性、または `v-on` イベントリスナーを指します。よくある例としては、`class`、`style`、`id` 属性などがあります。
 
-When a component renders a single root element, fallthrough attributes will be automatically added to the root element's attributes. For example, given a `<MyButton>` component with the following template:
+コンポーネントが単一のルート要素をレンダリングする時、フォールスルー属性は自動的にルート要素の属性に追加されます。例えば、次のようなテンプレートを持つ `<MyButton>` コンポーネントがあったとします:
 
 ```vue-html
-<!-- template of <MyButton> -->
+<!-- <MyButton> のテンプレート -->
 <button>click me</button>
 ```
 
-And a parent using this component with:
+そして、このコンポーネントを使う親が以下です:
 
 ```vue-html
 <MyButton class="large" />
 ```
 
-The final rendered DOM would be:
+最終的に DOM は以下のようにレンダリングされます:
 
 ```html
 <button class="large">click me</button>
 ```
 
-### `class` and `style` Merging
+### `class` と `style` のマージ
 
-If the child component's root element already has existing `class` or `style` attributes, it will be merged with the `class` and `style` values that are inherited from the parent. Suppose we change the template of `<MyButton>` in the previous example to:
+もし、子コンポーネントのルート要素にすでに `class` や `style` 属性がある場合は、親から継承された `class` や `style` の値にマージされます。先ほどの例の `<MyButton>` のテンプレートを次のように変更するとします:
 
 ```vue-html
-<!-- template of <MyButton> -->
+<!-- <MyButton> の テンプレート -->
 <button class="btn">click me</button>
 ```
 
-Then the final rendered DOM would now become:
+そうすると、最終的にレンダリングされる DOM は、こうなります:
 
 ```html
 <button class="btn large">click me</button>
 ```
 
-### `v-on` Listener Inheritance
+### `v-on` リスナーの継承
 
-The same rule applies to `v-on` event listeners:
+同じルールが `v-on` イベントリスナーにも適用されます:
 
 ```vue-html
 <MyButton @click="onClick" />
 ```
 
-The `click` listener will be added to the root element of `<MyButton>`, i.e. the native `<button>` element. When the native `<button>` is clicked, it will trigger the `onClick` method of the parent component. If the native `<button>` already has a `click` listener bound with `v-on`, then both listeners will trigger.
+`click` リスナーは `<MyButton>` のルート要素、つまりネイティブの `<button>` 要素に追加されます。ネイティブの `<button>` がクリックされた時、親コンポーネントの `onClick` メソッドがトリガーされます。もし、ネイティブの `<button>` が既に `v-on` でバインドされた `click` リスナーを持っている場合、両方のリスナーがトリガーされます。
 
-### Nested Component Inheritance
+### ネストされたコンポーネントの継承
 
-If a component renders another component as its root node, for example, we refactored `<MyButton>` to render a `<BaseButton>` as its root:
+あるコンポーネントが他の 1 つのコンポーネントをルートノードとしてレンダリングする場合を考えてみましょう。例として、`<MyButton>` をルートとして `<BaseButton>` をレンダリングするようにリファクタリングしました:
 
 ```vue-html
-<!-- template of <MyButton/> that simply renders another component -->
+<!-- シンプルに他の 1 つのコンポーネントをレンダリングする <MyButton/> のテンプレート -->
 <BaseButton />
 ```
 
-Then the fallthrough attributes received by `<MyButton>` will be automatically forwarded to `<BaseButton>`.
+この時、`<MyButton>` が受け取ったフォールスルー属性は、自動的に `<BaseButton>` に転送されます。
 
-Note that:
+以下の点に注意してください:
 
-1. Forwarded attributes do not include any attributes that are declared as props, or `v-on` listeners of declared events by `<MyButton>` - in other words, the declared props and listeners have been "consumed" by `<MyButton>`.
+1. 転送された属性には、`<MyButton>` が props として宣言した属性や、宣言したイベントの `v-on` リスナーは含まれません。言い換えると、宣言した props とリスナーは `<MyButton>` によって "消費" されています。
 
-2. Forwarded attributes may be accepted as props by `<BaseButton>`, if declared by it.
+2. 転送された属性は、 `<BaseButton>` が宣言していれば、 props として受け取ることができます。
 
-## Disabling Attribute Inheritance
+## 属性の継承の無効化
 
-If you do **not** want a component to automatically inherit attributes, you can set `inheritAttrs: false` in the component's options.
+コンポーネントに自動的な属性の継承をさせたくない場合は、コンポーネントのオプションで `inheritAttrs: false` を設定することができます。
 
 <div class="composition-api">
 
-If using `<script setup>`, you will need to declare this option using a separate, normal `<script>` block:
+`<script setup>` を使用するなら、このオプションは別の通常の `<script>` ブロックを使って宣言する必要があります:
 
 ```vue
 <script>
-// use normal <script> to declare options
+// 通常の <script> でオプションを宣言
 export default {
   inheritAttrs: false
 }
 </script>
 
 <script setup>
-// ...setup logic
+// ロジックのセットアップ
 </script>
 ```
 
 </div>
 
-The common scenario for disabling attribute inheritance is when attributes need to be applied to other elements besides the root node. By setting the `inheritAttrs` option to `false`, you can take full control over where the fallthrough attributes should be applied.
+属性の継承を無効にする一般的なシナリオは、ルートノード以外の要素に属性を適用する必要がある場合です。 `inheritAttrs` オプションを `false` に設定することで、フォールスルー属性を適用する場所を完全に制御することができます。
 
-These fallthrough attributes can be accessed directly in template expressions as `$attrs`:
+これらのフォールスルー属性は、テンプレート式で `$attrs` として直接アクセスすることができます:
 
 ```vue-html
 <span>Fallthrough attributes: {{ $attrs }}</span>
 ```
 
-The `$attrs` object includes all attributes that are not declared by the component's `props` or `emits` options (e.g., `class`, `style`, `v-on` listeners, etc.).
+`$attrs` オブジェクトには、コンポーネントの `props` や `emits` オプションで宣言されていないすべての属性 (例えば `class`, `style`, `v-on` リスナーなど) が含まれます。
 
-Some notes:
+備考:
 
-- Unlike props, fallthrough attributes preserve their original casing in JavaScript, so an attribute like `foo-bar` needs to be accessed as `$attrs['foo-bar']`.
+- props とは異なり、フォールスルー属性は JavaScript では元のケーシングを保持します。したがって、 `foo-bar` のような属性は `$attrs['foo-bar']` としてアクセスされる必要があります。
 
-- A `v-on` event listener like `@click` will be exposed on the object as a function under `$attrs.onClick`.
+- `@click` のような `v-on` イベントリスナーは、オブジェクトで `$attrs.onClick` という関数として公開されます。
 
-Using our `<MyButton>` component example from the [previous section](#attribute-inheritance) - sometimes we may need to wrap the actual `<button>` element with an extra `<div>` for styling purposes:
+[前のセクション](#attribute-inheritance)で紹介した `<MyButton>` コンポーネントの例では、スタイリングのために実際の `<button>` 要素を `<div>` でラップする必要がある場合があります:
 
 ```vue-html
 <div class="btn-wrapper">
@@ -118,7 +118,7 @@ Using our `<MyButton>` component example from the [previous section](#attribute-
 </div>
 ```
 
-We want all fallthrough attributes like `class` and `v-on` listeners to be applied to the inner `<button>`, not the outer `<div>`. We can achieve this with `inheritAttrs: false` and `v-bind="$attrs"`:
+`class` や `v-on` リスナーなどのすべてのフォールスルー属性を、外側の `<div>` ではなく、内側の `<button>` に適用されるようにしたいです。これは、 `inheritAttrs: false` と `v-bind="$attrs"` で実現できます:
 
 ```vue-html{2}
 <div class="btn-wrapper">
@@ -126,17 +126,17 @@ We want all fallthrough attributes like `class` and `v-on` listeners to be appli
 </div>
 ```
 
-Remember that [`v-bind` without an argument](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) binds all the properties of an object as attributes of the target element.
+[引数なしの `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) はオブジェクトのすべてのプロパティをターゲット要素の属性としてバインドすることを覚えておきましょう。
 
-## Attribute Inheritance on Multiple Root Nodes
+## 複数のルートノードでの属性継承
 
-Unlike components with a single root node, components with multiple root nodes do not have an automatic attribute fallthrough behavior. If `$attrs` are not bound explicitly, a runtime warning will be issued.
+ルートノードが 1 つのコンポーネントと異なり、複数のルートノードを持つコンポーネントは、自動的に属性をフォールスルーするふるまいがありません。 `$attrs` が明示的にバインドされていない場合は、実行時に警告が出ます。
 
 ```vue-html
 <CustomLayout id="custom-layout" @click="changeValue" />
 ```
 
-If `<CustomLayout>` has the following multi-root template, there will be a warning because Vue cannot be sure where to apply the fallthrough attributes:
+もし `<CustomLayout>` が以下のようなマルチルートのテンプレートを持っている場合、 Vue はどこにフォールスルー属性を適用すればよいか分からないため、警告されます:
 
 ```vue-html
 <header>...</header>
@@ -144,7 +144,7 @@ If `<CustomLayout>` has the following multi-root template, there will be a warni
 <footer>...</footer>
 ```
 
-The warning will be suppressed if `$attrs` is explicitly bound:
+警告は `$attrs` が明示的にバインドされている場合は抑制されます:
 
 ```vue-html{2}
 <header>...</header>
@@ -152,11 +152,11 @@ The warning will be suppressed if `$attrs` is explicitly bound:
 <footer>...</footer>
 ```
 
-## Accessing Fallthrough Attributes in JavaScript
+## JavaScript 内でフォールスルー属性にアクセスする
 
 <div class="composition-api">
 
-If needed, you can access a component's fallthrough attributes in `<script setup>` using the `useAttrs()` API:
+必要であれば、`<script setup>` 内で `useAttrs()` API を使用してコンポーネントのフォールスルー属性にアクセスすることができます:
 
 ```vue
 <script setup>
@@ -166,24 +166,24 @@ const attrs = useAttrs()
 </script>
 ```
 
-If not using `<script setup>`, `attrs` will be exposed as a property of the `setup()` context:
+もし `<script setup>` を使用していない場合、 `attrs` は `setup()` コンテキストのプロパティとして公開されます:
 
 ```js
 export default {
   setup(props, ctx) {
-    // fallthrough attributes are exposed as ctx.attrs
+    // フォールスルー属性が ctx.attrs として公開される
     console.log(ctx.attrs)
   }
 }
 ```
 
-Note that although the `attrs` object here always reflect the latest fallthrough attributes, it isn't reactive (for performance reasons). You cannot use watchers to observe its changes. If you need reactivity, use a prop. Alternatively, you can use `onUpdated()` to perform side effects with latest `attrs` on each update.
+ここで `attrs` オブジェクトは常に最新のフォールスルー属性を反映していますが、リアクティブではないことに注意してください（パフォーマンス上の理由です）。ウォッチャーを使ってその変更を監視することはできません。リアクティビティが必要であれば、 prop を使ってください。または、 `onUpdated()` を使用して、更新されるたびに最新の `attrs` が実行される副作用を実行することもできます。
 
 </div>
 
 <div class="options-api">
 
-If needed, you can access a component's fallthrough attributes via the `$attrs` instance property:
+必要であれば、`$attrs` インスタンスプロパティを介して、コンポーネントのフォールスルー属性にアクセスすることができます:
 
 ```js
 export default {
