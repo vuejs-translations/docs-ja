@@ -8,7 +8,7 @@ Vue は Options API での TypeScript の使用をサポートしていますが
 
 ## コンポーネントの props の型付け
 
-Options API における型推論は、コンポーネントを `defineComponent()` でラップする必要があります。そうすることで、Vue は `props` オプションを元に、`required: true` や、 `default` などの追加のオプションを考慮した上で、props の型を推論することができるようになります。
+Options API における props の型推論は、コンポーネントを `defineComponent()` でラップする必要があります。そうすることで、Vue は `props` オプションを元に、`required: true` や、 `default` などの追加のオプションを考慮した上で、props の型を推論することができるようになります。
 
 ```ts
 import { defineComponent } from 'vue'
