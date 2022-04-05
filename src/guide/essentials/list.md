@@ -1,11 +1,11 @@
 # リストレンダリング
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/list-rendering-in-vue-3" title="Vue.js のリストレンダリングについての無料レッスン"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/list-rendering-in-vue-3" title="Vue.js のリストレンダリングについて学ぶ無料レッスン"/>
 </div>
 
 <div class="composition-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-list-rendering-in-vue" title="Vue.js のリストレンダリングについての無料レッスン"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-list-rendering-in-vue" title="Vue.js のリストレンダリングについて学ぶ無料レッスン"/>
 </div>
 
 ## `v-for`
