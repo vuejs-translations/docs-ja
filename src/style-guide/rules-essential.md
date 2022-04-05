@@ -96,7 +96,7 @@ data() {
     todos: [
       {
         id: 1,
-        text: 'v-forの使い方を学ぶ'
+        text: 'Learn to use v-for'
       },
       {
         id: 2,
