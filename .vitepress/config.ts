@@ -257,7 +257,7 @@ export const sidebar = {
           link: '/guide/typescript/composition-api'
         },
         {
-          text: 'TS with Options API',
+          text: 'Options API とともに TypeScript を使用する',
           link: '/guide/typescript/options-api'
         }
       ]
