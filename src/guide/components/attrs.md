@@ -73,7 +73,7 @@ outline: deep
 
 ## 属性の継承の無効化
 
-コンポーネントに自動的な属性の継承をさせたくない場合は、コンポーネントのオプションで `inheritAttrs: false` を設定することができます。
+コンポーネントに自動的な属性の継承をさせたく**ない**場合は、コンポーネントのオプションで `inheritAttrs: false` を設定することができます。
 
 <div class="composition-api">
 
