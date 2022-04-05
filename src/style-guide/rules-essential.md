@@ -100,7 +100,7 @@ data() {
       },
       {
         id: 2,
-        text: 'キーの使い方を覚える'
+        text: 'Learn to use key'
       }
     ]
   }
