@@ -10,7 +10,7 @@
 
 ## `v-for`
 
-配列ベースの複数の項目のリストをレンダリングするには、`v-for` ディレクティブを使用します。`v-for` ディレクティブでは、`item in items` という形式の特別な構文が必要になります。ここで、`items` は元のデータの配列を示し、`item` は反復処理の対象となっている配列要素の**エイリアス**を示します:
+配列に基づいて項目のリストをレンダリングするには、`v-for` ディレクティブを使用します。`v-for` ディレクティブでは、`item in items` という形式の特別な構文が必要になります。ここで、`items` は元のデータの配列を指し、`item` は反復処理の対象となっている配列要素の**エイリアス**を指します:
 
 <div class="composition-api">
 
@@ -88,7 +88,7 @@ const items = [{ message: 'Foo' }, { message: 'Bar' }]
 
 </div>
 
-`v-for` の変数のスコープは、以下の JavaScript と同様です:
+`v-for` の変数のスコープは、次の JavaScript と同様です:
 
 ```js
 const parentMessage = 'Parent'
@@ -103,7 +103,7 @@ items.forEach((item, index) => {
 })
 ```
 
-`v-for` の値が `forEach` のコールバックの関数シグネチャと一致している様子に注目してください。実際、関数の引数での分割代入と同様に、`v-for` の item のエイリアスでも以下のように分割代入を使用することができます:
+`v-for` の値が `forEach` のコールバック関数のシグネチャと一致している様子に注目してください。実際、関数の引数を分割代入するときと同様に、`v-for` の item のエイリアスでも分割代入を行うことができます:
 
 ```vue-html
 <li v-for="{ message } in items">
@@ -116,7 +116,7 @@ items.forEach((item, index) => {
 </li>
 ```
 
-ネストされた `v-for` でも、スコープはネストされた関数と同様です。それぞれの `v-for` のスコープでは、以下のように親のスコープにアクセスできます:
+ネストされた `v-for` でも、スコープはネストされた関数と同様です。以下のように、それぞれの `v-for` のスコープでは親のスコープにアクセスできます:
 
 ```vue-html
 <li v-for="item in items">
@@ -126,7 +126,7 @@ items.forEach((item, index) => {
 </li>
 ```
 
-区切り文字には `in` の代わりに `of` を使用することもできます。そうすると JavaScript のイテレーター構文に近付きます:
+区切り文字として `in` の代わりに `of` を使用することもできます。そうすると JavaScript のイテレーター構文に近付きます:
 
 ```vue-html
 <div v-for="item of items"></div>
@@ -134,7 +134,7 @@ items.forEach((item, index) => {
 
 ## `v-for` をオブジェクトに適用する
 
-`v-for` は、以下のようにオブジェクトの各プロパティを反復処理するのにも使用できます:
+`v-for` は、オブジェクトの各プロパティを反復処理するのにも使用できます。
 
 <div class="composition-api">
 
@@ -199,7 +199,7 @@ data() {
 </div>
 
 :::tip 注意
-オブジェクトを反復処理する際、順序は `Object.keys()` による列挙に基づきますが、JavaScript エンジンの異なる実装間での一貫性は保証されていません。
+オブジェクトを反復処理する際の順序は `Object.keys()` による列挙に基づきますが、JavaScript エンジンの異なる実装間での一貫性は保証されていません。
 :::
 
 ## `v-for` で範囲を使用する
@@ -225,17 +225,17 @@ data() {
 </ul>
 ```
 
-## `v-for` と `v-if` を組み合わせて使用する
+## `v-for` と `v-if` を組み合わせる場合
 
 :::warning 注意
 暗黙の優先順位があるため、`v-if` と `v-for` を同一の要素に対して使用することは**推奨されません**。詳しくは[スタイルガイド](/style-guide/rules-essential.html#avoid-v-if-with-v-for)を参照してください。
 :::
 
-同一のノードに両方が存在する場合、`v-if` のほうが `v-for` よりも優先順位が高くなります。これは、以下のように `v-if` の条件内からは `v-for` のスコープにある変数にアクセスできないことを意味します:
+同一のノードに両方が存在する場合、`v-if` のほうが `v-for` よりも優先順位が高くなります。これは、以下のように `v-if` の条件では `v-for` のスコープにある変数にアクセスできないことを意味します:
 
 ```vue-html
 <!--
-プロパティ "todo" がインスタンスでは未定義であるため、
+プロパティ "todo" がインスタンスでは未定義のため、
 エラーがスローされます。
 -->
 <li v-for="todo in todos" v-if="!todo.isComplete">
@@ -243,7 +243,7 @@ data() {
 </li>
 ```
 
-この問題は、以下のようにラップ用の `<template>` タグを設け、そこに `v-for` を移動することで解決できます (このほうがより明示的でもあります):
+この問題は、以下のようにラップ用の `<template>` タグを設けて、そこに `v-for` を移動することで解決できます (このほうがより明示的でもあります):
 
 ```vue-html
 <template v-for="todo in todos">
@@ -255,9 +255,9 @@ data() {
 
 ## `key` による状態管理
 
-`v-for` でレンダリングされた要素のリストを Vue が更新するとき、デフォルトでは「インプレースパッチ」という戦略が使用されます。データ項目の順序が変更された場合、Vue は項目の順序に沿って DOM 要素を移動させるのではなく、個々の要素にインプレースでパッチを当て、インデックスごとにレンダリングされるべきものを反映させます。
+`v-for` でレンダリングされた要素のリストを Vue が更新するとき、デフォルトでは「その場での修繕」(in-place patch) という戦略が用いられます。データ項目の順序が変更された場合、Vue は項目の順序に合うように DOM 要素を移動させるのではなく、個々の要素をその場所のままで修正し、各インデックスでレンダリングされるべきものを反映させます。
 
-このデフォルトのモードは効率性が高いものの、**これが適すのはリストのレンダリング出力が、子コンポーネントの状態や一時的な DOM の状態 (フォームの入力値など) に依存しない場合に限られます**。
+このデフォルトのモードは効率性が高いものの、**これが適すのは、リストのレンダリング出力が子コンポーネントの状態や一時的な DOM の状態 (フォームの入力値など) に依存しない場合に限られます**。
 
 Vue に各ノードを一意に追跡するためのヒントを与え、既存の要素を再利用して並べ替えを適用できるようにするには、以下のように各項目に一意の `key` 属性を指定する必要があります:
 
@@ -267,7 +267,7 @@ Vue に各ノードを一意に追跡するためのヒントを与え、既存�
 </div>
 ```
 
-`<template v-for>` を使用する場合、`key` の位置は以下のように `<template>` のコンテナー内にする必要があります:
+`<template v-for>` を使用する場合、`key` は以下のように `<template>` のコンテナー内に置きます:
 
 ```vue-html
 <template v-for="todo in todos" :key="todo.name">
@@ -279,21 +279,21 @@ Vue に各ノードを一意に追跡するためのヒントを与え、既存�
 ここでいう `key` は、`v-bind` でバインドされる特別な属性です。[`v-for` をオブジェクトに適用する](#v-for-with-an-object)場合のプロパティのキー変数と混同しないように注意してください。
 :::
 
-`v-for` の `key` 属性は、可能なら必ず指定することが[推奨されます](/style-guide/rules-essential.html#use-keyed-v-for)。ただし、反復処理する DOM のコンテンツが単純なものである (つまりコンポーネントやステートフルな DOM 要素を含まない) 場合、またはパフォーマンス向上のために意図的にデフォルト動作を使用したい場合は、この限りではありません。
+`v-for` の `key` 属性は、可能な場合は必ず指定することが[推奨されます](/style-guide/rules-essential.html#use-keyed-v-for)。ただし、反復処理する DOM の内容が単純なものである (つまりコンポーネントやステートフルな DOM 要素を含まない) 場合、またはパフォーマンス向上のために意図的にデフォルト動作を使用したい場合は、この限りではありません。
 
-`key` のバインディングには、プリミティブ型の値、つまり文字列と数値が想定されています。オブジェクトは `v-for` の key に使用してはいけません。`key` 属性の詳しい使用方法については、[`key` API のドキュメント](/api/built-in-special-attributes.html#key)を参照してください。
+`key` のバインディングにはプリミティブ型の値、つまり文字列と数値が想定されます。`v-for` の key にオブジェクトを指定してはいけません。`key` 属性の詳しい使用方法については、[`key` API ドキュメント](/api/built-in-special-attributes.html#key)を参照してください。
 
 ## `v-for` をコンポーネントに適用する
 
 > このセクションは、[コンポーネント](/guide/essentials/component-basics)についての知識があることを前提としています。読み飛ばして、後で戻ってくるのも大丈夫です。
 
-通常の要素と同様に、`v-for` はコンポーネントにも直接適用することができます (`key` を指定することを忘れないでください):
+通常の要素と同様に、コンポーネントにも `v-for` をそのまま適用することができます (`key` を指定することを忘れないでください):
 
 ```vue-html
 <my-component v-for="item in items" :key="item.id"></my-component>
 ```
 
-ただし、そのままではコンポーネントに自動的に渡されるデータはありません。なぜなら、コンポーネントはそれ自身の独立したスコープを持つからです。コンポーネントに反復処理対象のデータを渡すには、プロパティを併用する必要があります:
+ただし、これだけではデータが自動的にコンポーネントに渡されるようにはなりません。なぜなら、コンポーネントはそれ自身の独立したスコープを持つからです。コンポーネントに反復処理対象のデータを渡すには、以下のようにプロパティを併用する必要があります:
 
 ```vue-html
 <my-component
@@ -304,16 +304,16 @@ Vue に各ノードを一意に追跡するためのヒントを与え、既存�
 ></my-component>
 ```
 
-`item` を自動的に注入しないようにしている理由は、そうしてしまうと、コンポーネントが `v-for` の動作と密に結合してしまうためです。データがどこから来るのかを明示的に指定することで、コンポーネントを別の場所でも再利用できるようにしています。
+`item` を自動的に注入しないようにしている理由は、そうしてしまうと、コンポーネントが `v-for` の動作と密に結合してしまうためです。データの供給源を明示的に指定することで、コンポーネントを別の場所でも再利用できるようにしています。
 
 <div class="composition-api">
 
-[シンプルな ToDo リストのサンプル](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCBUb2RvSXRlbSBmcm9tICcuL1RvZG9JdGVtLnZ1ZSdcbiAgXG5jb25zdCBuZXdUb2RvVGV4dCA9IHJlZignJylcbmNvbnN0IHRvZG9zID0gcmVmKFtcbiAge1xuICAgIGlkOiAxLFxuICAgIHRpdGxlOiAnRG8gdGhlIGRpc2hlcydcbiAgfSxcbiAge1xuICAgIGlkOiAyLFxuICAgIHRpdGxlOiAnVGFrZSBvdXQgdGhlIHRyYXNoJ1xuICB9LFxuICB7XG4gICAgaWQ6IDMsXG4gICAgdGl0bGU6ICdNb3cgdGhlIGxhd24nXG4gIH1cbl0pXG5cbmxldCBuZXh0VG9kb0lkID0gNFxuXG5mdW5jdGlvbiBhZGROZXdUb2RvKCkge1xuICB0b2Rvcy52YWx1ZS5wdXNoKHtcbiAgICBpZDogbmV4dFRvZG9JZCsrLFxuICAgIHRpdGxlOiBuZXdUb2RvVGV4dC52YWx1ZVxuICB9KVxuICBuZXdUb2RvVGV4dC52YWx1ZSA9ICcnXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuXHQ8Zm9ybSB2LW9uOnN1Ym1pdC5wcmV2ZW50PVwiYWRkTmV3VG9kb1wiPlxuICAgIDxsYWJlbCBmb3I9XCJuZXctdG9kb1wiPkFkZCBhIHRvZG88L2xhYmVsPlxuICAgIDxpbnB1dFxuICAgICAgdi1tb2RlbD1cIm5ld1RvZG9UZXh0XCJcbiAgICAgIGlkPVwibmV3LXRvZG9cIlxuICAgICAgcGxhY2Vob2xkZXI9XCJFLmcuIEZlZWQgdGhlIGNhdFwiXG4gICAgLz5cbiAgICA8YnV0dG9uPkFkZDwvYnV0dG9uPlxuICA8L2Zvcm0+XG4gIDx1bD5cbiAgICA8dG9kby1pdGVtXG4gICAgICB2LWZvcj1cIih0b2RvLCBpbmRleCkgaW4gdG9kb3NcIlxuICAgICAgOmtleT1cInRvZG8uaWRcIlxuICAgICAgOnRpdGxlPVwidG9kby50aXRsZVwiXG4gICAgICBAcmVtb3ZlPVwidG9kb3Muc3BsaWNlKGluZGV4LCAxKVwiXG4gICAgPjwvdG9kby1pdGVtPlxuICA8L3VsPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiVG9kb0l0ZW0udnVlIjoiPHNjcmlwdCBzZXR1cD5cbmRlZmluZVByb3BzKFsndGl0bGUnXSlcbmRlZmluZUVtaXRzKFsncmVtb3ZlJ10pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8bGk+XG4gICAge3sgdGl0bGUgfX1cbiAgICA8YnV0dG9uIEBjbGljaz1cIiRlbWl0KCdyZW1vdmUnKVwiPlJlbW92ZTwvYnV0dG9uPlxuICA8L2xpPlxuPC90ZW1wbGF0ZT4ifQ==)で、コンポーネントのリストをレンダリングする際に `v-for` を使って各インスタンスに異なるデータを渡す方法を確認してください。
+[シンプルな ToDo リストのサンプル](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcbmltcG9ydCBUb2RvSXRlbSBmcm9tICcuL1RvZG9JdGVtLnZ1ZSdcbiAgXG5jb25zdCBuZXdUb2RvVGV4dCA9IHJlZignJylcbmNvbnN0IHRvZG9zID0gcmVmKFtcbiAge1xuICAgIGlkOiAxLFxuICAgIHRpdGxlOiAnRG8gdGhlIGRpc2hlcydcbiAgfSxcbiAge1xuICAgIGlkOiAyLFxuICAgIHRpdGxlOiAnVGFrZSBvdXQgdGhlIHRyYXNoJ1xuICB9LFxuICB7XG4gICAgaWQ6IDMsXG4gICAgdGl0bGU6ICdNb3cgdGhlIGxhd24nXG4gIH1cbl0pXG5cbmxldCBuZXh0VG9kb0lkID0gNFxuXG5mdW5jdGlvbiBhZGROZXdUb2RvKCkge1xuICB0b2Rvcy52YWx1ZS5wdXNoKHtcbiAgICBpZDogbmV4dFRvZG9JZCsrLFxuICAgIHRpdGxlOiBuZXdUb2RvVGV4dC52YWx1ZVxuICB9KVxuICBuZXdUb2RvVGV4dC52YWx1ZSA9ICcnXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuXHQ8Zm9ybSB2LW9uOnN1Ym1pdC5wcmV2ZW50PVwiYWRkTmV3VG9kb1wiPlxuICAgIDxsYWJlbCBmb3I9XCJuZXctdG9kb1wiPkFkZCBhIHRvZG88L2xhYmVsPlxuICAgIDxpbnB1dFxuICAgICAgdi1tb2RlbD1cIm5ld1RvZG9UZXh0XCJcbiAgICAgIGlkPVwibmV3LXRvZG9cIlxuICAgICAgcGxhY2Vob2xkZXI9XCJFLmcuIEZlZWQgdGhlIGNhdFwiXG4gICAgLz5cbiAgICA8YnV0dG9uPkFkZDwvYnV0dG9uPlxuICA8L2Zvcm0+XG4gIDx1bD5cbiAgICA8dG9kby1pdGVtXG4gICAgICB2LWZvcj1cIih0b2RvLCBpbmRleCkgaW4gdG9kb3NcIlxuICAgICAgOmtleT1cInRvZG8uaWRcIlxuICAgICAgOnRpdGxlPVwidG9kby50aXRsZVwiXG4gICAgICBAcmVtb3ZlPVwidG9kb3Muc3BsaWNlKGluZGV4LCAxKVwiXG4gICAgPjwvdG9kby1pdGVtPlxuICA8L3VsPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiVG9kb0l0ZW0udnVlIjoiPHNjcmlwdCBzZXR1cD5cbmRlZmluZVByb3BzKFsndGl0bGUnXSlcbmRlZmluZUVtaXRzKFsncmVtb3ZlJ10pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8bGk+XG4gICAge3sgdGl0bGUgfX1cbiAgICA8YnV0dG9uIEBjbGljaz1cIiRlbWl0KCdyZW1vdmUnKVwiPlJlbW92ZTwvYnV0dG9uPlxuICA8L2xpPlxuPC90ZW1wbGF0ZT4ifQ==)で、`v-for` でコンポーネントのリストをレンダリングするとき、各インスタンスに異なるデータをどのように渡せばよいかを確認できます。
 
 </div>
 <div class="options-api">
 
-[シンプルな ToDo リストのサンプル](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBUb2RvSXRlbSBmcm9tICcuL1RvZG9JdGVtLnZ1ZSdcbiAgXG5leHBvcnQgZGVmYXVsdCB7XG4gIGNvbXBvbmVudHM6IHsgVG9kb0l0ZW0gfSxcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbmV3VG9kb1RleHQ6ICcnLFxuICAgICAgdG9kb3M6IFtcbiAgICAgICAge1xuICAgICAgICAgIGlkOiAxLFxuICAgICAgICAgIHRpdGxlOiAnRG8gdGhlIGRpc2hlcydcbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAgIGlkOiAyLFxuICAgICAgICAgIHRpdGxlOiAnVGFrZSBvdXQgdGhlIHRyYXNoJ1xuICAgICAgICB9LFxuICAgICAgICB7XG4gICAgICAgICAgaWQ6IDMsXG4gICAgICAgICAgdGl0bGU6ICdNb3cgdGhlIGxhd24nXG4gICAgICAgIH1cbiAgICAgIF0sXG4gICAgICBuZXh0VG9kb0lkOiA0XG4gICAgfVxuICB9LFxuICBtZXRob2RzOiB7XG4gICAgYWRkTmV3VG9kbygpIHtcbiAgICAgIHRoaXMudG9kb3MucHVzaCh7XG4gICAgICAgIGlkOiB0aGlzLm5leHRUb2RvSWQrKyxcbiAgICAgICAgdGl0bGU6IHRoaXMubmV3VG9kb1RleHRcbiAgICAgIH0pXG4gICAgICB0aGlzLm5ld1RvZG9UZXh0ID0gJydcbiAgICB9XG4gIH1cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG5cdDxmb3JtIHYtb246c3VibWl0LnByZXZlbnQ9XCJhZGROZXdUb2RvXCI+XG4gICAgPGxhYmVsIGZvcj1cIm5ldy10b2RvXCI+QWRkIGEgdG9kbzwvbGFiZWw+XG4gICAgPGlucHV0XG4gICAgICB2LW1vZGVsPVwibmV3VG9kb1RleHRcIlxuICAgICAgaWQ9XCJuZXctdG9kb1wiXG4gICAgICBwbGFjZWhvbGRlcj1cIkUuZy4gRmVlZCB0aGUgY2F0XCJcbiAgICAvPlxuICAgIDxidXR0b24+QWRkPC9idXR0b24+XG4gIDwvZm9ybT5cbiAgPHVsPlxuICAgIDx0b2RvLWl0ZW1cbiAgICAgIHYtZm9yPVwiKHRvZG8sIGluZGV4KSBpbiB0b2Rvc1wiXG4gICAgICA6a2V5PVwidG9kby5pZFwiXG4gICAgICA6dGl0bGU9XCJ0b2RvLnRpdGxlXCJcbiAgICAgIEByZW1vdmU9XCJ0b2Rvcy5zcGxpY2UoaW5kZXgsIDEpXCJcbiAgICA+PC90b2RvLWl0ZW0+XG4gIDwvdWw+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0iLCJUb2RvSXRlbS52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuXHRwcm9wczogWyd0aXRsZSddLFxuICBlbWl0czogWydyZW1vdmUnXVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGxpPlxuICAgIHt7IHRpdGxlIH19XG4gICAgPGJ1dHRvbiBAY2xpY2s9XCIkZW1pdCgncmVtb3ZlJylcIj5SZW1vdmU8L2J1dHRvbj5cbiAgPC9saT5cbjwvdGVtcGxhdGU+In0=)で、コンポーネントのリストをレンダリングする際に `v-for` を使って各インスタンスに異なるデータを渡す方法を確認してください。
+[シンプルな ToDo リストのサンプル](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBUb2RvSXRlbSBmcm9tICcuL1RvZG9JdGVtLnZ1ZSdcbiAgXG5leHBvcnQgZGVmYXVsdCB7XG4gIGNvbXBvbmVudHM6IHsgVG9kb0l0ZW0gfSxcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbmV3VG9kb1RleHQ6ICcnLFxuICAgICAgdG9kb3M6IFtcbiAgICAgICAge1xuICAgICAgICAgIGlkOiAxLFxuICAgICAgICAgIHRpdGxlOiAnRG8gdGhlIGRpc2hlcydcbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAgIGlkOiAyLFxuICAgICAgICAgIHRpdGxlOiAnVGFrZSBvdXQgdGhlIHRyYXNoJ1xuICAgICAgICB9LFxuICAgICAgICB7XG4gICAgICAgICAgaWQ6IDMsXG4gICAgICAgICAgdGl0bGU6ICdNb3cgdGhlIGxhd24nXG4gICAgICAgIH1cbiAgICAgIF0sXG4gICAgICBuZXh0VG9kb0lkOiA0XG4gICAgfVxuICB9LFxuICBtZXRob2RzOiB7XG4gICAgYWRkTmV3VG9kbygpIHtcbiAgICAgIHRoaXMudG9kb3MucHVzaCh7XG4gICAgICAgIGlkOiB0aGlzLm5leHRUb2RvSWQrKyxcbiAgICAgICAgdGl0bGU6IHRoaXMubmV3VG9kb1RleHRcbiAgICAgIH0pXG4gICAgICB0aGlzLm5ld1RvZG9UZXh0ID0gJydcbiAgICB9XG4gIH1cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG5cdDxmb3JtIHYtb246c3VibWl0LnByZXZlbnQ9XCJhZGROZXdUb2RvXCI+XG4gICAgPGxhYmVsIGZvcj1cIm5ldy10b2RvXCI+QWRkIGEgdG9kbzwvbGFiZWw+XG4gICAgPGlucHV0XG4gICAgICB2LW1vZGVsPVwibmV3VG9kb1RleHRcIlxuICAgICAgaWQ9XCJuZXctdG9kb1wiXG4gICAgICBwbGFjZWhvbGRlcj1cIkUuZy4gRmVlZCB0aGUgY2F0XCJcbiAgICAvPlxuICAgIDxidXR0b24+QWRkPC9idXR0b24+XG4gIDwvZm9ybT5cbiAgPHVsPlxuICAgIDx0b2RvLWl0ZW1cbiAgICAgIHYtZm9yPVwiKHRvZG8sIGluZGV4KSBpbiB0b2Rvc1wiXG4gICAgICA6a2V5PVwidG9kby5pZFwiXG4gICAgICA6dGl0bGU9XCJ0b2RvLnRpdGxlXCJcbiAgICAgIEByZW1vdmU9XCJ0b2Rvcy5zcGxpY2UoaW5kZXgsIDEpXCJcbiAgICA+PC90b2RvLWl0ZW0+XG4gIDwvdWw+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0iLCJUb2RvSXRlbS52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuXHRwcm9wczogWyd0aXRsZSddLFxuICBlbWl0czogWydyZW1vdmUnXVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGxpPlxuICAgIHt7IHRpdGxlIH19XG4gICAgPGJ1dHRvbiBAY2xpY2s9XCIkZW1pdCgncmVtb3ZlJylcIj5SZW1vdmU8L2J1dHRvbj5cbiAgPC9saT5cbjwvdGVtcGxhdGU+In0=)で、`v-for` でコンポーネントのリストをレンダリングするとき、各インスタンスに異なるデータをどのように渡せばよいかを確認できます。
 
 </div>
 
@@ -321,7 +321,7 @@ Vue に各ノードを一意に追跡するためのヒントを与え、既存�
 
 ### ミューテーションメソッド
 
-Vue は、監視対象の配列のミューテーションメソッドをラップして、これらのメソッドでビューの更新もトリガーされるようにしています。ラップされるメソッドは次の通りです:
+Vue は、監視対象の配列のミューテーションメソッドをラップして、これらのメソッドでビューの更新も併せてトリガーされるようにしています。Vue がラップしているメソッドは次の通りです:
 
 - `push()`
 - `pop()`
@@ -333,12 +333,12 @@ Vue は、監視対象の配列のミューテーションメソッドをラッ�
 
 ### 配列の置き換え
 
-ミューテーションメソッドはその名が示す通り、呼び出し元の配列を変化させるメソッドです。これに対し、`filter()`、`concat()`、`slice()` など、呼び出し元の配列を変化させないメソッドもあります。これらは**常に新しい配列を返します**。ミューテーションしないメソッドを扱う場合は、古い配列を新しい配列に置き換える必要があります。
+ミューテーションメソッドはその名が示す通り、呼び出し元の配列を変化させるメソッドです。これに対し、`filter()`、`concat()`、`slice()` など、呼び出し元の配列を変化させないメソッドもあります。これらのメソッドは**常に新しい配列を返します**。ミューテーションしないメソッドを扱う場合は、以下のように、古い配列を新しい配列に置き換える必要があります:
 
 <div class="composition-api">
 
 ```js
-// `item` は配列に含まれる値の参照です。
+// `item` は配列値の参照です
 items.value = items.value.filter((item) => item.message.match(/Foo/))
 ```
 
@@ -351,11 +351,11 @@ this.items = this.items.filter((item) => item.message.match(/Foo/))
 
 </div>
 
-このようにすると、Vue が既存の DOM を破棄してリスト全体を再レンダリングするように思えるかもしれませんが、幸いにもそのようなことはありません。Vue には DOM 要素を最大限に再利用するためのスマートな発見的アルゴリズムが実装されているため、既存の配列を重複するオブジェクトが含まれる新しい配列に置き換える場合でも、非常に効率的な処理が行われます。
+このようにすると、Vue が既存の DOM を破棄してリスト全体を再レンダリングするように思えるかもしれませんが、幸いにもそのようなことはありません。Vue には DOM 要素を最大限に再利用するためのスマートな発見的アルゴリズムが実装されているため、既存の配列を、重複するオブジェクトが含まれる新しい配列に置き換える場合でも、非常に効率的な処理が行われます。
 
 ## フィルタリング/並べ替えの結果を表示する
 
-ある配列について、オリジナルのデータを実際に変更したりリセットしたりせずに、フィルタリングや並べ替えを適用したものを表示したいことが時々あります。そのような場合には、算出プロパティを用意して、フィルタリングや並べ替えを適用した配列を返すことができます。
+時には、配列のオリジナルのデータを実際に変更したりリセットしたりせずに、フィルタリングや並べ替えを適用したものを見せたいことがあります。そのような場合には、フィルタリングや並べ替えを適用した配列を返す算出プロパティを作成することができます。
 
 例:
 
@@ -430,7 +430,7 @@ methods: {
 </ul>
 ```
 
-算出プロパティのなかで `reverse()` と `sort()` を使用するときは、注意が必要です！この 2 つのメソッドには、算出プロパティのゲッターのなかでは避けるべき、元の配列を変更するという作用があります。以下のように、これらのメソッドを呼び出す前には元の配列のコピーを作成します:
+算出プロパティのなかで `reverse()` と `sort()` を使用するときは注意してください！この 2 つのメソッドには、算出プロパティのゲッターのなかでは避けるべき、元の配列を変更するという作用があります。以下のように、これらのメソッドを呼び出す前には元の配列のコピーを作成します:
 
 ```diff
 - return numbers.reverse()
