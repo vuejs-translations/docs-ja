@@ -2,31 +2,31 @@
 footer: false
 ---
 
-# Quick Start
+# クイックスタート
 
-Depending on your use case and preference, you can use Vue with or without a build step.
+あなたのユースケースや好みに応じて、ビルドステップの有無に関わらず Vue を使うことができます。
 
-## With Build Tools
+## ビルドツールあり
 
-A build setup allows us to use Vue [Single-File Components](/guide/scaling-up/sfc) (SFCs). The official Vue build setup is based on [Vite](https://vitejs.dev), a frontend build tool that is modern, lightweight and extremely fast.
+ビルドセットアップによって Vue の[単一ファイルコンポーネント](/guide/scaling-up/sfc) (SFC) を使うことができます。Vue の公式ビルドセットアップは、モダンで軽量、そして非常に高速なフロントエンドビルドツールである [Vite](https://ja.vitejs.dev) に基づいています。
 
-### Online
+### オンライン
 
-You can try Vue with SFCs online on [StackBlitz](https://vite.new/vue). StackBlitz runs the Vite-based build setup directly in the browser, so it is almost identical to the local setup but doesn't require installing anything on your machine.
+SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみることができます。StackBlitz は Vite に基づいたビルドセットアップをブラウザー上で直接実行するので、ローカルのセットアップとほとんど同じですが、あなたのマシンに何かをインストールする必要がありません。
 
-### Local
+### ローカル
 
-:::tip Pre-requisites
+:::tip 前提条件
 
-- Familiarity with the command line
-- Install [Node.js](https://nodejs.org/)
+- コマンドラインに精通していること
+- [Node.js](https://nodejs.org/ja/) をインストールすること
   :::
 
-To create a build-tool-enabled Vue project on your machine, run the following command in your command line (without the `>` sign):
+マシン上にビルドツール対応の Vue プロジェクトを作成するためには、コマンドラインで次のコマンドを（`>` 記号なしで）実行します。
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt;</span> <span style="color:#A6ACCD;">npm init vue@latest</span></span></code></pre></div>
 
-This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official Vue project scaffolding tool. You will be presented with prompts for a number of optional features such as TypeScript and testing support:
+このコマンドは、公式の Vue プロジェクトスキャフォールディングツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。TypeScript やテストのサポートといった複数のオプション機能がプロンプトに表示されます:
 
 <div class="language-sh"><pre><code><span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Project name: <span style="color:#888;">… <span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add TypeScript? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
@@ -41,32 +41,32 @@ This command will install and execute [create-vue](https://github.com/vuejs/crea
 <span style="color:#A6ACCD;">Scaffolding project in ./<span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span>...</span>
 <span style="color:#A6ACCD;">Done.</span></code></pre></div>
 
-If you are unsure about an option, simply choose `No` by hitting enter for now. Once the project is created, follow the instructions to install dependencies and start the dev server:
+もしオプションについてはっきりとわからないなら、今のところ単純にエンターを押して `No` を選んでください。プロジェクトが作成されたら、指示に従って依存関係をインストールし開発サーバーを起動しましょう:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">cd</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span>
 <span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm install</span></span>
 <span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run dev</span></span>
 <span class="line"></span></code></pre></div>
 
-You should now have your first Vue project running! Here are some additional tips:
+あなたの初めての Vue プロジェクトが今実行されているはずです！　いくつか追加のヒントをどうぞ:
 
-- The recommended IDE setup is [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar). [WebStorm](https://www.jetbrains.com/webstorm/) is also viable.
-- More tooling details, including integration with backend frameworks, are discussed in the [Tooling Guide](/guide/scaling-up/tooling.html).
-- To learn more about the underlying build tool Vite, check out the [Vite docs](https://vitejs.dev).
-- If you chose to use TypeScript, check out the [TypeScript Usage Guide](typescript/overview.html).
+- IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) です。[WebStorm](https://www.jetbrains.com/ja-jp/webstorm/) も利用できます。
+- バックエンドフレームワークとの統合を含む、ツールのさらなる詳細については、[ツールガイド](/guide/scaling-up/tooling.html) で説明しています。
+- 基礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://ja.vitejs.dev/) を確認しましょう。
+- もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview.html) を確認しましょう。
 
-When you are ready to ship your app to production, run the following:
+あなたのアプリをプロダクション環境に出す準備ができたら、以下を実行してください:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run build</span></span>
 <span class="line"></span></code></pre></div>
 
-This will create a production-ready build of your app in the project's `./dist` directory. Check out the [Production Deployment Guide](/guide/best-practices/production-deployment.html) to learn more about shipping your app to production.
+これであなたのアプリのプロダクション向けビルドがプロジェクトの `./dist` ディレクトリーに作成されます。プロダクション環境への出荷についてさらに学ぶには [プロダクション環境への配信](/guide/best-practices/production-deployment.html) を確認してください。
 
-[Next Steps ＞](#next-steps)
+[次のステップ ＞](#次のステップ)
 
-## Without Build Tools
+## ビルドツールなし
 
-To get started with Vue without a build step, simply copy the following code into an HTML file and open it in your browser:
+ビルドステップなしで Vue を始めるには、単に次のコードを HTML ファイルにコピーしてブラウザーでそれを開くだけでよいです:
 
 ```html
 <script src="https://unpkg.com/vue@3"></script>
@@ -84,9 +84,9 @@ To get started with Vue without a build step, simply copy the following code int
 </script>
 ```
 
-The above example uses the global build of Vue where all APIs are exposed under the global `Vue` variable.
+上の例ではグローバル `Vue` 変数の下ですべての API が公開されている、Vue のグローバルビルドを使っています。
 
-While the global build works, we will be primarily using [ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) syntax throughout the rest of the documentation for consistency. In order to use Vue over native ES modules, use the following HTML instead:
+グローバルビルドは機能しますが、以降のドキュメントでは一貫性を保つため主に [ES modules](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules) 構文を使用します。ネイティブ ES モジュールで Vue を使うには、代わりに次の HTML を使用してください。
 
 ```html
 <script type="importmap">
@@ -112,17 +112,17 @@ While the global build works, we will be primarily using [ES modules](https://de
 </script>
 ```
 
-Notice how we can import directly from `'vue'` in our code - this is made possible by the `<script type="importmap">` block, leveraging a native browser feature called [Import Maps](https://caniuse.com/import-maps). Import maps are currently only available in Chromium-based browsers, so we recommend using Chrome or Edge during the learning process. If your preferred browser does not support import maps yet, you can polyfill it with [es-module-shims](https://github.com/guybedford/es-module-shims).
+コード中の `'vue'` から直接インポートする方法に注目してください - これは `<script type="importmap">` によって可能になり、[Import Maps](https://caniuse.com/import-maps) と呼ばれるネイティブのブラウザー機能を活用します。Import maps は現在のところ Chromium ベースのブラウザーのみで利用可能なので、学習過程の間は Chrome または Edge の使用を推奨します。あなたの好むブラウザーがまだ import maps に対応していなくとも、[es-module-shims](https://github.com/guybedford/es-module-shims) でポリフィル (polyfill) できます。
 
-You can add entries for other dependencies to the import map - just make sure they point to the ES modules version of the library you intend to use.
+他の依存関係のエントリーを import map に追加することができます - 使おうとしているライブラリーの ES モジュールバージョンを指していることは確認してください。
 
-:::tip Not for production
-The import-maps-based setup is meant for learning only - if you intend to use Vue without build tools in production, make sure to check out the [Production Deployment Guide](/guide/best-practices/production-deployment.html#without-build-tools).
+:::tip プロダクション向けではありません
+Import maps に基づいたセットアップは学習のみを目的にしています - プロダクション環境でビルドツールを用いずに Vue を使おうとしている場合は、[プロダクション環境への配信](/guide/best-practices/production-deployment.html#without-build-tools) を確認してください。
 :::
 
-### Serving over HTTP
+### HTTP 経由の提供
 
-As we dive deeper into the guide, we may need to split our code into separate JavaScript files so that they are easier to manage. For example:
+ガイドをさらに深く潜っていくと、管理しやすくするためにコードを個別の JavaScript ファイルに分割する必要がでるかもしれません。例えば:
 
 ```html
 <!-- index.html -->
@@ -144,25 +144,25 @@ export default {
 }
 ```
 
-In order for this to work, you need to serve your HTML over the `http://` protocol instead of `file://` protocol. To start a local HTTP server, first install [Node.js](https://nodejs.org/en/), and then run `npx serve` from the command line in the same directory where your HTML file is. You can also use any other HTTP server that can serve static files with correct MIME types.
+これを機能させるためには、`file://` プロトコルの代わりに `http://` プロトコル経由で提供する必要があります。ローカル HTTP サーバーを起動するには、まず [Node.js](https://nodejs.org/ja/) をインストールし、そしてコマンドラインから HTML ファイルと同じディレクトリーで `npx serve` を実行します。静的ファイルを正しい MIME タイプで提供できる他の HTTP サーバーを使うこともできます。
 
-You may have noticed that the imported component's template is inlined as a JavaScript string. If you are using VSCode, you can install the [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) extension and prefix the strings with a `/*html*/` comment to get syntax highlighting for them.
+あなたはインポートされたコンポーネントのテンプレートが JavaScript 文字列としてインライン化されていることに気づいたかもしれません。あなたが VSCode を使っていれば、[es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 拡張をインストールして `/*html*/` コメントを文字列の前につけることで構文を強調表示 (syntax highlighting) できます。
 
-## Next Steps
+## 次のステップ
 
-If you skipped the [Introduction](/guide/introduction), we strongly recommend reading it before moving on to the rest of the documentation.
+あなたが [はじめに](/guide/introduction) を跳ばしたなら、残りのドキュメントに移る前にこれを読むことを強く推奨します。
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/guide/essentials/application.html">
-    <p class="next-steps-link">Continue the Guide</p>
-    <p class="next-steps-caption">The guide walks you through every aspect of the framework in full details.</p>
+    <p class="next-steps-link">ガイドを続ける</p>
+    <p class="next-steps-caption">ガイドはこのフレームワークのあらゆる側面について詳しく説明しています。</p>
   </a>
   <a class="vt-box" href="/tutorial/">
-    <p class="next-steps-link">Try the Tutorial</p>
-    <p class="next-steps-caption">For those who prefer learning things hands-on.</p>
+    <p class="next-steps-link">チュートリアルを試す</p>
+    <p class="next-steps-caption">手を動かしながら学びたい人々のために。</p>
   </a>
   <a class="vt-box" href="/examples/">
-    <p class="next-steps-link">Check out the Examples</p>
-    <p class="next-steps-caption">Explore examples of core features and common UI tasks.</p>
+    <p class="next-steps-link">例を見てみる</p>
+    <p class="next-steps-caption">コア機能や一般的な UI タスクの例を探索する。</p>
   </a>
 </div>
