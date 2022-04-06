@@ -30,7 +30,7 @@ import type { Member } from './Member'
       <template #title>コアチームメンバー</template>
       <template #lead
         >コアチームメンバーは1つから複数のプロジェクトを積極的にメンテナンスしています。
-        彼らは Vue エコシステムに有意な貢献をしており、プロジェクトとユーザの成功のために長い期間献身しています。</template
+        彼らは Vue エコシステムに有意な貢献をしており、プロジェクトとユーザーの成功のために長い期間献身しています。</template
       >
     </TeamList>
 
