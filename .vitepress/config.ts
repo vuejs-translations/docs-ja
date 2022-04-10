@@ -510,7 +510,7 @@ export const sidebar = {
           link: '/style-guide/'
         },
         {
-          text: 'A - Essential',
+          text: '優先度A: 必須',
           link: '/style-guide/rules-essential'
         },
         {
