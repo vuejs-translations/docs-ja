@@ -570,7 +570,7 @@ const BlogPost = {
 <blog-post post-title="hello!" @update-post="onUpdatePost"></blog-post>
 ```
 
-### 自己クローズタグ
+### 自己クロージングタグ
 
 これまでのコードサンプルでは、コンポーネントに自己クローズ (self-closing) タグを使用していました:
 
@@ -586,7 +586,7 @@ const BlogPost = {
 <my-component></my-component>
 ```
 
-これは HTML の仕様では、[いくつかの特定の要素](https://html.spec.whatwg.org/multipage/syntax.html#void-elements)でのみ自己クローズタグの省略が認められているからです。最も一般的なのは `<input>` と `<img>` です。他のすべての要素では、自己クローズタグを省略すると、ネイティブの HTML パーサーは開始タグを終了させなかったと判断します。例えば、次のようなスニペットです:
+これは HTML の仕様では、[いくつかの特定の要素](https://html.spec.whatwg.org/multipage/syntax.html#void-elements)でのみ自己クロージングタグの省略が認められているからです。最も一般的なのは `<input>` と `<img>` です。他のすべての要素では、自己クロージングタグを省略すると、ネイティブの HTML パーサーは開始タグを終了させなかったと判断します。例えば、次のようなスニペットです:
 
 ```vue-html
 <my-component /> <!-- ここがクロージングタグのつもりです -->
