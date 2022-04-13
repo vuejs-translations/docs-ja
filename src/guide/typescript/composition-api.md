@@ -164,7 +164,8 @@ year.value = '2020'
 時に、ref に対して複雑な型を指定する必要があります。そのような場合には `Ref` 型を使います:
 
 ```ts
-import { ref, Ref } from 'vue'
+import { ref } from 'vue'
+import type { Ref } from 'vue'
 
 const year: Ref<string | number> = ref('2020')
 
@@ -269,7 +270,8 @@ function handleChange(event: Event) {
 provide (提供) と inject (注入) は通常、別々のコンポーネントで実行されます。注入された値を適切に型付けするために、Vue は `InjectionKey` インターフェースを提供します。これは、`Symbol` を継承したジェネリック型で、provider (値を提供する側) と consumer (値を利用する側) の間で注入された値の型を同期させるために使用できます:
 
 ```ts
-import { provide, inject, InjectionKey } from 'vue'
+import { provide, inject } from 'vue'
+import type { InjectionKey } from 'vue'
 
 const key = Symbol() as InjectionKey<string>
 
