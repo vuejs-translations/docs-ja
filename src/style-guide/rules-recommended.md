@@ -1,55 +1,55 @@
-# Priority C Rules: Recommended
+# 優先度C: 推奨
 
-Where multiple, equally good options exist, an arbitrary choice can be made to ensure consistency. In these rules, we describe each acceptable option and suggest a default choice. That means you can feel free to make a different choice in your own codebase, as long as you're consistent and have a good reason. Please do have a good reason though! By adapting to the community standard, you will:
+同じくらい良いオプションが複数ある場合、一貫性を確保するために任意の選択をすることができます。これらのルールでは、それぞれ許容可能なオプションを説明し、既定の選択を提案します。つまり、一貫性があり、良い理由を持ち続ける限り、独自のコードベースで自由に異なる選択肢を作ることができます。ですが、良い理由はあるのでしょうか！コミュニティーの標準に合わせることで、あなたは:
 
-1. Train your brain to more easily parse most of the community code you encounter
-2. Be able to copy and paste most community code examples without modification
-3. Often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+1. 直面するコミュニティのコードを容易に理解できるように脳を慣れさせます。
+2. ほとんどのコミュニティのコードサンプルを変更なしにコピーして貼り付ける事ができます。
+3. 少なくとも Vue に関しては、ほとんどの場合、新たな人材はあなたのコーディングスタイルよりも既に慣れ親しんだものを好みます。
 
-## Component/instance options order
+## コンポーネント/インスタンスオプションの順番
 
-**Component/instance options should be ordered consistently.**
+**コンポーネント/インスタンスのオプションは、一貫した順序で並べる必要があります**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add new properties from plugins.
+これは、コンポーネントのオプションに推奨されるデフォルトの順序です。カテゴリーに分かれているので、プラグインから新しいプロパティを追加する場所がわかるでしょう。
 
-1. **Global Awareness** (requires knowledge beyond the component)
+1. **グローバルな意識** (コンポーネントを超えた知識を必要とする)
 
    - `name`
 
-2. **Template Compiler Options** (changes the way templates are compiled)
+2. **テンプレートコンパイラのオプション** (テンプレートのコンパイル方法を変更する)
 
    - `compilerOptions`
 
-3. **Template Dependencies** (assets used in the template)
+3. **テンプレートの依存関係** (テンプレートで使用されているアセット)
 
    - `components`
    - `directives`
 
-4. **Composition** (merges properties into the options)
+4. **構成** (プロパティをオプションにマージする)
 
    - `extends`
    - `mixins`
    - `provide`/`inject`
 
-5. **Interface** (the interface to the component)
+5. **インターフェース** (コンポーネントへのインタフェース)
 
    - `inheritAttrs`
    - `props`
    - `emits`
 
-6. **Composition API** (the entry point for using the Composition API)
+6. **Composition API** (Composition API を使用するためのエントリーポイント)
 
    - `setup`
 
-7. **Local State** (local reactive properties)
+7. **ローカルステート** (ローカルのリアクティブなプロパティ)
 
    - `data`
    - `computed`
 
-8. **Events** (callbacks triggered by reactive events)
+8. **イベント** (リアクティブイベントによるコールバック)
 
    - `watch`
-   - Lifecycle Events (in the order they are called)
+   - ライフサイクルイベント (この順番に)
      - `beforeCreate`
      - `created`
      - `beforeMount`
@@ -64,28 +64,28 @@ This is the default order we recommend for component options. They're split into
      - `renderTracked`
      - `renderTriggered`
 
-9. **Non-Reactive Properties** (instance properties independent of the reactivity system)
+9. **リアクティブでないプロパティ** (リアクティビティシステムに依存しないインスタンスプロパティ)
 
    - `methods`
 
-10. **Rendering** (the declarative description of the component output)
+10. **レンダリング** (コンポーネント出力の宣言的記述)
     - `template`/`render`
 
-## Element attribute order
+## 要素属性の順序
 
-**The attributes of elements (including components) should be ordered consistently.**
+**要素（構成要素を含む）の属性は、一貫した順序で並べる必要があります。**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add custom attributes and directives.
+これは、コンポーネント・オプションに推奨されるデフォルトの順序です。カテゴリーに分かれているので、カスタム属性やディレクティブをどこに追加すればいいのかがわかります。
 
-1. **Definition** (provides the component options)
+1. **定義** (コンポーネント・オプションを提供する)
 
    - `is`
 
-2. **List Rendering** (creates multiple variations of the same element)
+2. **リストレンダリング** (同じ要素を複数のバリエーションで作成する)
 
    - `v-for`
 
-3. **Conditionals** (whether the element is rendered/shown)
+3. **条件分岐** (要素がレンダリング/表示されているかどうか)
 
    - `v-if`
    - `v-else-if`
@@ -93,42 +93,42 @@ This is the default order we recommend for component options. They're split into
    - `v-show`
    - `v-cloak`
 
-4. **Render Modifiers** (changes the way the element renders)
+4. **レンダリングモディファイア** (要素のレンダリング方法を変更する)
 
    - `v-pre`
    - `v-once`
 
-5. **Global Awareness** (requires knowledge beyond the component)
+5. **グローバルアウェアネス** (コンポーネントを超えた知識を必要とします)
 
    - `id`
 
-6. **Unique Attributes** (attributes that require unique values)
+6. **ユニークな属性** (一意な値を必要とする属性)
 
    - `ref`
    - `key`
 
-7. **Two-Way Binding** (combining binding and events)
+7. **双方向バインディング** (バインディングとイベントの組み合わせ)
 
    - `v-model`
 
-8. **Other Attributes** (all unspecified bound & unbound attributes)
+8. **その他の属性** (すべての未指定のバウンド＆アンバウンドアトリビュート)
 
-9. **Events** (component event listeners)
+9. **イベント** (コンポーネントイベントリスナー)
 
    - `v-on`
 
-10. **Content** (overrides the content of the element)
+10. **コンテンツ** (要素の内容を上書きする)
     - `v-html`
     - `v-text`
 
-## Empty lines in component/instance options
+## コンポーネント/インスタンスのオプションに空白行がある
 
-**You may want to add one empty line between multi-line properties, particularly if the options can no longer fit on your screen without scrolling.**
+**特に、スクロールしないと画面に収まらないようなオプションの場合、複数行のプロパティの間に1行空行を追加するとよいでしょう。**
 
-When components begin to feel cramped or difficult to read, adding spaces between multi-line properties can make them easier to skim again. In some editors, such as Vim, formatting options like this can also make them easier to navigate with the keyboard.
+コンポーネントが窮屈に感じられたり、読みにくくなったりした場合、複数行のプロパティの間にスペースを追加することで、再び読み飛ばしやすくすることができます。Vim などのエディターでは、このような書式設定オプションにより、キーボードでの操作を容易にすることもできます。
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>良い例</h3>
 
 ```js
 props: {
@@ -158,8 +158,8 @@ computed: {
 ```
 
 ```js
-// No spaces are also fine, as long as the component
-// is still easy to read and navigate.
+// コンポーネントであれば、スペースなしでも構いません。
+// やはり見やすく、操作しやすいです。
 props: {
   value: {
     type: String,
@@ -184,12 +184,12 @@ computed: {
 
 </div>
 
-## Single-file component top-level element order
+## シングルファイルコンポーネントのトップレベル要素の順序
 
-**[Single-File Components](/guide/scaling-up/sfc.html) should always order `<script>`, `<template>`, and `<style>` tags consistently, with `<style>` last, because at least one of the other two is always necessary.**
+**[Single-File Components](/guide/scaling-up/sfc.html) では、 `<script>`, `<template>`, `<style>` タグの順番は常に一定で、 `<style>` は最後にする必要があります。なぜなら他の二つのうち少なくとも一つは常に必要だからです。**
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>悪い例</h3>
 
 ```vue-html
 <style>/* ... */</style>
@@ -212,7 +212,7 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>良い例</h3>
 
 ```vue-html
 <!-- ComponentA.vue -->

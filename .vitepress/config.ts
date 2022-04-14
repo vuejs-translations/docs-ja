@@ -518,7 +518,7 @@ export const sidebar = {
           link: '/style-guide/rules-strongly-recommended'
         },
         {
-          text: 'C - Recommended',
+          text: '優先度C: 推奨',
           link: '/style-guide/rules-recommended'
         },
         {
