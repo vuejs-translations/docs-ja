@@ -35,7 +35,8 @@ export default defineComponent({
 それらの複雑な props の型注釈をつけるには、`PropType` ユーティリティーを使用します:
 
 ```ts
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
 
 interface Book {
   title: string
@@ -69,7 +70,8 @@ export default defineComponent({
 TypeScript の [設計上の制限](https://github.com/microsoft/TypeScript/issues/38845) により、`validator` と `default` の prop オプションに関数を使用する場合は注意が必要です - 必ずアロー関数を使うようにしてください:
 
 ```ts
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
 
 interface Book {
   title: string
