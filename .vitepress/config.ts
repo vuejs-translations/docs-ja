@@ -239,7 +239,7 @@ export const sidebar = {
           link: '/guide/best-practices/performance'
         },
         {
-          text: 'Accessibility',
+          text: 'アクセシビリティ',
           link: '/guide/best-practices/accessibility'
         },
         {
@@ -510,7 +510,7 @@ export const sidebar = {
           link: '/style-guide/'
         },
         {
-          text: 'A - Essential',
+          text: '優先度A: 必須',
           link: '/style-guide/rules-essential'
         },
         {
