@@ -184,7 +184,7 @@ computed: {
 
 </div>
 
-## シングルファイルコンポーネントのトップレベル要素の順序
+## 単一ファイルコンポーネントのトップレベル要素の順序
 
 **[Single-File Components](/guide/scaling-up/sfc.html) では、 `<script>`, `<template>`, `<style>` タグの順番は常に一定で、 `<style>` は最後にする必要があります。なぜなら他の二つのうち少なくとも一つは常に必要だからです。**
 
