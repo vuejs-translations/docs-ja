@@ -432,7 +432,7 @@ emit('enlarge-text')
 
 参照:[コンポーネントの emit の型付け](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
-`<script setup>` を使用していない時は `emits` オプションを使用してイベント発行を宣言することができます。セットアップコンテキスト (`setup()` に第 2 引数として渡されます) のプロパティとして `emit` 関数にアクセスすることができます:
+`<script setup>` を使用していない時は `emits` オプションを使用してイベント発行を宣言することができます。setup コンテキスト (`setup()` に第 2 引数として渡されます) のプロパティとして `emit` 関数にアクセスすることができます:
 
 ```js
 export default {
