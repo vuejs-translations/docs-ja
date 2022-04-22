@@ -2,44 +2,44 @@
 outline: deep
 ---
 
-# Style Guide
+# スタイルガイド
 
 :::warning Status Notice
-The style guide is currently a bit outdated. Most examples are in Options API only, and there are no rules regarding `<script setup>` and Composition API. We are planning to improve it in the future.
+このスタイルガイドは現在少し古くなっています。ほとんどの例は Options API のみで、`<script setup>` や Composition API に関するルールは存在しません。今後、改善する予定です。
 :::
 
-This is the official style guide for Vue-specific code. If you use Vue in a project, it's a great reference to avoid errors, bikeshedding, and anti-patterns. However, we don't believe that any style guide is ideal for all teams or projects, so mindful deviations are encouraged based on past experience, the surrounding tech stack, and personal values.
+このドキュメントは、 Vue 固有の記法についての公式なスタイルガイドです。もしあなたがプロジェクトにおいて Vue を使用する場合は、エラーや有益でない議論、アンチパターンを避けるための素晴らしい参考資料となります。しかし、どんなスタイルガイドもすべてのチームやプロジェクトにとって理想的であるとは考えていません。そのため、過去の経験、周囲の技術スタック、および個人的な価値観に基づいて、注意深い逸脱が奨励されます。
 
-For the most part, we also avoid suggestions about JavaScript or HTML in general. We don't mind whether you use semicolons or trailing commas. We don't mind whether your HTML uses single-quotes or double-quotes for attribute values. Some exceptions will exist however, where we've found that a particular pattern is helpful in the context of Vue.
+ほとんどの場合、一般的な JavaScript や HTML に関する提案も避けています。セミコロンや末尾のカンマの使用は気にしません。 HTML の属性値がシングルクオートで囲まれているかダブルクオートで囲まれているかも気にしません。しかし、特定のパターンにおいて Vue のコンテキストが役立つと判明した場合については、その限りではありません。
 
-Finally, we've split rules into four categories:
+最後に、私達はルールを 4 つのカテゴリーに分けました:
 
-## Rule Categories
+## ルールのカテゴリー
 
-### Priority A: Essential (Error Prevention)
+### 優先度A：必須（エラー対策）
 
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
+これらのルールはエラーを防ぐのに役立ちますので、何としても学んで守ってください。例外はありますが、非常にまれで、 JavaScript と Vue の両方の専門的な知識を持つ人のみが行うべきことです。
 
-- [See all priority A rules](./rules-essential)
+- [優先度Aのルールをすべて見る](./rules-essential)
 
-### Priority B: Strongly Recommended
+### 優先度B：強く推奨
 
-These rules have been found to improve readability and/or developer experience in most projects. Your code will still run if you violate them, but violations should be rare and well-justified.
+これらのルールは、ほとんどのプロジェクトで可読性および/または開発者の経験を向上させることが判明しています。これらのルールに違反した場合でも、あなたのコードは動作しますが、違反はまれで、十分に正当化されるべきです。
 
-- [See all priority B rules](./rules-strongly-recommended)
+- [優先度Bのルールをすべて見る](./rules-strongly-recommended)
 
-### Priority C: Recommended
+### 優先度C：推奨
 
-Where multiple, equally good options exist, an arbitrary choice can be made to ensure consistency. In these rules, we describe each acceptable option and suggest a default choice. That means you can feel free to make a different choice in your own codebase, as long as you're consistent and have a good reason. Please do have a good reason though! By adapting to the community standard, you will:
+同じくらい良いオプションが複数ある場合、一貫性を確保するために任意の選択をすることができます。これらのルールでは、それぞれ許容可能なオプションを説明し、既定の選択を提案します。つまり、一貫性があり、良い理由を持ち続ける限り、独自のコードベースで自由に異なる選択肢を作ることができます。ですが、良い理由はあるのでしょうか！コミュニティーの標準に合わせることで、あなたは:
 
-1. Train your brain to more easily parse most of the community code you encounter
-2. Be able to copy and paste most community code examples without modification
-3. Often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+1. 直面するコミュニティのコードを容易に理解できるように脳を慣れさせます。
+2. ほとんどのコミュニティのコードサンプルを変更なしにコピーして貼り付ける事ができます。
+3. 少なくとも Vue に関しては、ほとんどの場合、新たな人材はあなたのコーディングスタイルよりも既に慣れ親しんだものを好みます。
 
-- [See all priority C rules](./rules-recommended)
+- [優先度Cのルールをすべて見る](./rules-recommended)
 
-### Priority D: Use with Caution
+### 優先順位D 注意深く使用する
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+ Vue のいくつかの機能は、まれなエッジケースに対応するため、またはレガシーコードベースからの移行をよりスムーズにするために存在します。しかし、使いすぎると、コードのメンテナンスが難しくなったり、バグの原因になったりすることがあります。これらのルールは、潜在的にリスクの高い機能に注目し、いつ、なぜ、それらを避けるべきかを説明するものです。
 
-- [See all priority D rules](./rules-use-with-caution)
+- [優先度Dのルールをすべて見る](./rules-use-with-caution)

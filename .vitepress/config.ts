@@ -35,6 +35,13 @@ const nav = [
     activeMatch: `^/ecosystem/`,
     items: [
       {
+        text: 'Core Libraries',
+        items: [
+          { text: 'Vue Router', link: 'https://router.vuejs.org/' },
+          { text: 'Pinia', link: 'https://pinia.vuejs.org/' }
+        ]
+      },
+      {
         text: 'Resources',
         items: [
           { text: 'Partners', link: '/ecosystem/partners' },
@@ -239,7 +246,7 @@ export const sidebar = {
           link: '/guide/best-practices/performance'
         },
         {
-          text: 'Accessibility',
+          text: 'アクセシビリティ',
           link: '/guide/best-practices/accessibility'
         },
         {
@@ -257,7 +264,7 @@ export const sidebar = {
           link: '/guide/typescript/composition-api'
         },
         {
-          text: 'TS with Options API',
+          text: 'Options API とともに TypeScript を使用する',
           link: '/guide/typescript/options-api'
         }
       ]
@@ -510,7 +517,7 @@ export const sidebar = {
           link: '/style-guide/'
         },
         {
-          text: 'A - Essential',
+          text: '優先度A: 必須',
           link: '/style-guide/rules-essential'
         },
         {
@@ -518,7 +525,7 @@ export const sidebar = {
           link: '/style-guide/rules-strongly-recommended'
         },
         {
-          text: 'C - Recommended',
+          text: '優先度C: 推奨',
           link: '/style-guide/rules-recommended'
         },
         {
