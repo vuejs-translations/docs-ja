@@ -17,7 +17,7 @@ pnpm i
 pnpm run dev
 ```
 
-このプロジェクトで使用するNode.jsは、Optional chainingなどのJavaScriptの新機能をコード内で使用するため、 `v14.19.0` 以降である必要があります。
+このプロジェクトで使用する Node.js は、Optional chaining などの JavaScript の新機能をコード内で使用するため、 `v14.19.0` 以降である必要があります。
 
 
 ## コンテンツに関する作業
