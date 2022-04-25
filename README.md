@@ -17,6 +17,9 @@ pnpm i
 pnpm run dev
 ```
 
+このプロジェクトで使用する Node.js は、Optional chaining などの JavaScript の新機能をコード内で使用するため、 `v14.19.0` 以降である必要があります。
+
+
 ## コンテンツに関する作業
 
 - サポートされている [Markdown 拡張](https://vitepress.vuejs.org/guide/markdown.html)や [Markdown 内で Vue 構文を使用する](https://vitepress.vuejs.org/guide/using-vue.html)機能については、VitePress ドキュメントを参照してください。
