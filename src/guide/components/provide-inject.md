@@ -1,20 +1,20 @@
 # Provide / Inject
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+> このページは、[コンポーネントの基礎](/guide/essentials/component-basics)を既に読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらを読んでください。
 
-## Prop Drilling
+## Prop のバケツリレー（Prop Drilling）
 
-Usually, when we need to pass data from the parent to a child component, we use [props](/guide/components/props). However, imagine the case where we have a large component tree, and a deeply nested component needs something from a distant ancestor component. With only props, we would have to pass the same prop across the entire parent chain:
+通常、親コンポーネントから子コンポーネントにデータを渡す必要がある場合、[props](/guide/components/props) を使用します。ですが、大きなコンポーネントツリーがあり、深くネストされたコンポーネントが遠い祖先のコンポーネントから何かしらを必要とするケースを想像してみてください。props だけだと、親コンポーネントのチェーン全体に同じ prop を渡さなければなりません:
 
-![prop drilling diagram](./images/prop-drilling.png)
+![prop バケツリレーダイアグラム](./images/prop-drilling.png)
 
 <!-- https://www.figma.com/file/yNDTtReM2xVgjcGVRzChss/prop-drilling -->
 
-Notice although the `<Footer>` component may not care about these props at all, it still needs to declare and pass them along just so `<DeepChild>` can access them. If there is a longer parent chain, more components would be affected along the way. This is called "props drilling" and definitely isn't fun to deal with.
+`<Footer>` コンポーネントはこれらの props を全く気にしないかもしれませんが、`<DeepChild>` がそれらにアクセスできるように宣言して渡す必要があることに注意してください。さらに長い親チェーンがある場合、より多くのコンポーネントが影響を受けることになります。これは "props のバケツリレー（Prop Drilling）" と呼ばれていて、対処するのが楽しいことでないことは明らかです。
 
-We can solve props drilling with `provide` and `inject`. A parent component can serve as a **dependency provider** for all its descendants. Any component in the descendant tree, regardless of how deep it is, can **inject** dependencies provided by components up in its parent chain.
+props のバケツリレーは `provide` と `inject` で解決できます。親コンポーネントは、そのすべての子孫コンポーネントに対して **依存関係を提供するプロバイダー (dependency provider)** として機能することができます。子孫ツリー内のどのコンポーネントも、その深さに関係なく、親チェーン内の上位コンポーネントが提供する依存性を**注入 (inject)** することができます。
 
-![Provide/inject scheme](./images/provide-inject.png)
+![Provide/inject スキーマ](./images/provide-inject.png)
 
 <!-- https://www.figma.com/file/PbTJ9oXis5KUawEOWdy2cE/provide-inject -->
 
@@ -22,7 +22,7 @@ We can solve props drilling with `provide` and `inject`. A parent component can 
 
 <div class="composition-api">
 
-To provide data to a component's descendants, use the [`provide()`](/api/composition-api-dependency-injection.html#provide) function:
+コンポーネントの子孫にデータを提供するには [`provide()`](/api/composition-api-dependency-injection.html#provide) 関数を使います:
 
 ```vue
 <script setup>
@@ -32,7 +32,7 @@ provide(/* key */ 'message', /* value */ 'hello!')
 </script>
 ```
 
-If not using `<script setup>`, make sure `provide()` is called synchronously inside `setup()`:
+`<script setup>` を使わない場合、`setup()` 内で `provide()` が同期的に呼び出されていることを確認してください:
 
 ```js
 import { provide } from 'vue'
@@ -44,9 +44,9 @@ export default {
 }
 ```
 
-The `provide()` function accepts two arguments. The first argument is called the **injection key**, which can be a string or a `Symbol`. The injection key is used by descendent components to lookup the desired value to inject. A single component can call `provide()` multiple times with different injection keys to provide different values.
+`provide()` 関数は 2 つの引数を受け付けます。第 1 引数は**インジェクションキー**と呼ばれ、文字列または `Symbol` となります。インジェクションキーは、子孫のコンポーネントが、インジェクション（注入）に必要な値を探すのに使われます。1 つのコンポーネントが異なる値を提供するために、異なるインジェクションキーで `provide()` を複数回呼び出すことができます。
 
-The second argument is the provided value. The value can be of any type, including reactive state such as refs:
+第 2 引数は提供される値です。この値は refs のようなリアクティブな状態を含む、任意の型にすることができます:
 
 ```js
 import { ref, provide } from 'vue'
@@ -55,13 +55,13 @@ const count = ref(0)
 provide('key', count)
 ```
 
-Providing reactive values allows the descendent components using the provided value to establish a reactive connection to the provider component.
+リアクティブな値を提供することで、提供された値を使用する子孫コンポーネントが、プロバイダーコンポーネントとのリアクティブな接続を確立することができます。
 
 </div>
 
 <div class="options-api">
 
-To provide data to a component's descendants, use the [`provide`](/api/options-composition.html#provide) option:
+コンポーネントの子孫にデータを提供するには、[`provide`](/api/options-composition.html#provide) オプションを使用します:
 
 ```js
 export default {
@@ -71,9 +71,9 @@ export default {
 }
 ```
 
-For each property in the `provide` object, the key is used by child components to locate the correct value to inject, while the value is what ends up being injected.
+`provide` オブジェクトの各プロパティについて、キーは子コンポーネントが注入する正しい値を見つけるために使用され、最終的に値が注入されます。
 
-If we need to provide per-instance state, for example data declared via the `data()`, then `provide` must use a function value:
+インスタンスごとの状態、例えば `data()` を経由して宣言されたデータなどを提供する必要がある場合、 `provide` は関数の値を使用しなければなりません:
 
 ```js{7-12}
 export default {
@@ -83,7 +83,7 @@ export default {
     }
   },
   provide() {
-    // use function syntax so that we can access `this`
+    // `this` にアクセスできるように関数構文を使用します
     return {
       message: this.message
     }
@@ -91,13 +91,13 @@ export default {
 }
 ```
 
-However, do note this does **not** make the injection reactive. We will discuss [making injections reactive](#working-with-reactivity) below.
+しかし、これはインジェクションをリアクティブにするものでは**ない**ことに注意してください。[インジェクションをリアクティブにする](#working-with-reactivity)ことについては後ほど説明します。
 
 </div>
 
-## App-level Provide
+## アプリケーションレベルの Provide
 
-In addition to providing data in a component, we can also provide at the app level:
+コンポーネント内だけでなく、アプリケーションレベルでデータを提供することも可能です:
 
 ```js
 import { createApp } from 'vue'
@@ -107,13 +107,13 @@ const app = createApp({})
 app.provide(/* key */ 'message', /* value */ 'hello!')
 ```
 
-App-level provides are available to all components rendered in the app. This is especially useful when writing [plugins](/guide/reusability/plugins.html), as plugins typically wouldn't be able to provide values using components.
+アプリケーションレベルの Provide は、アプリケーションでレンダリングされるすべてのコンポーネントで利用可能です。これは特に[プラグイン](/guide/reusability/plugins.html)を書くときに便利です。プラグインは通常、コンポーネントを使って値を提供することができないからです。
 
 ## Inject
 
 <div class="composition-api">
 
-To inject data provided by an ancestor component, use the [`inject()`](/api/composition-api-dependency-injection.html#inject) function:
+祖先コンポーネントが提供するデータを注入するには [`inject()`](/api/composition-api-dependency-injection.html#inject) 関数を使用します:
 
 ```vue
 <script setup>
@@ -123,11 +123,11 @@ const message = inject('message')
 </script>
 ```
 
-If the provided value is a ref, it will be injected as-is and will **not** be automatically unwrapped. This allows the injector component to retain the reactivity connection to the provider component.
+提供された値が ref である場合、そのまま注入され、自動的にアンラップされることは**ありません**。これにより、インジェクターコンポーネントはプロバイダーコンポーネントとのリアクティビティの接続を保持することができます。
 
-[Full provide + inject Example with Reactivity](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgcHJvdmlkZSB9IGZyb20gJ3Z1ZSdcbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcblxuLy8gYnkgcHJvdmlkaW5nIGEgcmVmLCB0aGUgR3JhbmRDaGlsZFxuLy8gY2FuIHJlYWN0IHRvIGNoYW5nZXMgaGFwcGVuaW5nIGhlcmUuXG5jb25zdCBtZXNzYWdlID0gcmVmKCdoZWxsbycpXG5wcm92aWRlKCdtZXNzYWdlJywgbWVzc2FnZSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxpbnB1dCB2LW1vZGVsPVwibWVzc2FnZVwiPlxuICA8Q2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCJcbiAgfVxufSIsIkNoaWxkLnZ1ZSI6IjxzY3JpcHQgc2V0dXA+XG5pbXBvcnQgR3JhbmRDaGlsZCBmcm9tICcuL0dyYW5kQ2hpbGQudnVlJ1xuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0IHNldHVwPlxuaW1wb3J0IHsgaW5qZWN0IH0gZnJvbSAndnVlJ1xuXG5jb25zdCBtZXNzYWdlID0gaW5qZWN0KCdtZXNzYWdlJylcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxwPlxuICAgIE1lc3NhZ2UgdG8gZ3JhbmQgY2hpbGQ6IHt7IG1lc3NhZ2UgfX1cbiAgPC9wPlxuPC90ZW1wbGF0ZT4ifQ==)
+[リアクティビティある provide と inject の完全なサンプル](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgcHJvdmlkZSB9IGZyb20gJ3Z1ZSdcbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcblxuLy8gYnkgcHJvdmlkaW5nIGEgcmVmLCB0aGUgR3JhbmRDaGlsZFxuLy8gY2FuIHJlYWN0IHRvIGNoYW5nZXMgaGFwcGVuaW5nIGhlcmUuXG5jb25zdCBtZXNzYWdlID0gcmVmKCdoZWxsbycpXG5wcm92aWRlKCdtZXNzYWdlJywgbWVzc2FnZSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxpbnB1dCB2LW1vZGVsPVwibWVzc2FnZVwiPlxuICA8Q2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCJcbiAgfVxufSIsIkNoaWxkLnZ1ZSI6IjxzY3JpcHQgc2V0dXA+XG5pbXBvcnQgR3JhbmRDaGlsZCBmcm9tICcuL0dyYW5kQ2hpbGQudnVlJ1xuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0IHNldHVwPlxuaW1wb3J0IHsgaW5qZWN0IH0gZnJvbSAndnVlJ1xuXG5jb25zdCBtZXNzYWdlID0gaW5qZWN0KCdtZXNzYWdlJylcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxwPlxuICAgIE1lc3NhZ2UgdG8gZ3JhbmQgY2hpbGQ6IHt7IG1lc3NhZ2UgfX1cbiAgPC9wPlxuPC90ZW1wbGF0ZT4ifQ==)
 
-Again, if not using `<script setup>`, `inject()` should only be called synchronously inside `setup()`:
+繰り返しますが、もし `<script setup>` を使用しないのであれば、`inject()` は `setup()` の内部でのみ同期的に呼び出す必要があります:
 
 ```js
 import { inject } from 'vue'
@@ -144,68 +144,68 @@ export default {
 
 <div class="options-api">
 
-To inject data provided by an ancestor component, use the [`inject`](/api/options-composition.html#inject) option:
+祖先コンポーネントが提供するデータを注入するには、[`inject`](/api/options-composition.html#inject) オプションを使用します:
 
 ```js
 export default {
   inject: ['message'],
   created() {
-    console.log(this.message) // injected value
+    console.log(this.message) // 注入された値
   }
 }
 ```
 
-Injections are resolved **before** the component's own state, so you can access injected properties in `data()`:
+インジェクションはコンポーネント自身の状態よりも**先に**解決されるので、`data()` で注入されたプロパティにアクセスすることができます:
 
 ```js
 export default {
   inject: ['message'],
   data() {
     return {
-      // initial data based on injected value
+      // 注入された値による初期 data
       fullMessage: this.message
     }
   }
 }
 ```
 
-[Full provide + inject example](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcblxuZXhwb3J0IGRlZmF1bHQge1xuICBjb21wb25lbnRzOiB7IENoaWxkIH0sXG4gIHByb3ZpZGUoKSB7XG4gICAgcmV0dXJuIHtcbiAgICAgIG1lc3NhZ2U6ICdoZWxsbydcbiAgICB9XG4gIH1cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxDaGlsZCAvPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiQ2hpbGQudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBHcmFuZENoaWxkIGZyb20gJy4vR3JhbmRDaGlsZC52dWUnXG5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgY29tcG9uZW50czoge1xuICAgIEdyYW5kQ2hpbGRcbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuICBpbmplY3Q6IFsnbWVzc2FnZSddXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBNZXNzYWdlIHRvIGdyYW5kIGNoaWxkOiB7eyBtZXNzYWdlIH19XG4gIDwvcD5cbjwvdGVtcGxhdGU+In0=)
+[provide と inject の完全なサンプル](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcblxuZXhwb3J0IGRlZmF1bHQge1xuICBjb21wb25lbnRzOiB7IENoaWxkIH0sXG4gIHByb3ZpZGUoKSB7XG4gICAgcmV0dXJuIHtcbiAgICAgIG1lc3NhZ2U6ICdoZWxsbydcbiAgICB9XG4gIH1cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxDaGlsZCAvPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiQ2hpbGQudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBHcmFuZENoaWxkIGZyb20gJy4vR3JhbmRDaGlsZC52dWUnXG5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgY29tcG9uZW50czoge1xuICAgIEdyYW5kQ2hpbGRcbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuICBpbmplY3Q6IFsnbWVzc2FnZSddXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBNZXNzYWdlIHRvIGdyYW5kIGNoaWxkOiB7eyBtZXNzYWdlIH19XG4gIDwvcD5cbjwvdGVtcGxhdGU+In0=)
 
-### Injection Aliasing \*
+### Injection エイリアス \*
 
-When using the array syntax for `inject`, the injected properties are exposed on the component instance using the same key. In the example above, the property was provided under the key `"message"`, and injected as `this.message`. The local key is the same as the injection key.
+配列構文で `inject` を使用した場合、注入されたプロパティは同じキーを使用してコンポーネントインスタンス上で公開されます。上の例では、プロパティは `"message"` というキーで提供され、`this.message` という名前で注入されます。ローカルのキーは、インジェクションキーと同じです。
 
-If we want to inject the property using a different local key, we need to use the object syntax for the `inject` option:
+もし、別のローカルキーを使ってプロパティを注入したい場合は、`inject` オプションにオブジェクト構文を使う必要があります:
 
 ```js
 export default {
   inject: {
-    /* local key */ localMessage: {
-      from: /* injection key */ 'message'
+    /* ローカルキー */ localMessage: {
+      from: /* インジェクションキー */ 'message'
     }
   }
 }
 ```
 
-Here, the component will locate a property provided with the key `"message"`, and then expose it as `this.localMessage`.
+ここでは、コンポーネントが `"message"` というキーで提供されるプロパティを見つけ、`this.localMessage` として公開します。
 
 </div>
 
-### Injection Default Values
+### インジェクションのデフォルト値
 
-By default, `inject` assumes that the injected key is provided somewhere in the parent chain. In the case where the key is not provided, there will be a runtime warning.
+デフォルトでは、`inject` は注入されるキーが親チェーンのどこかで提供されることを想定しています。キーが提供されていない場合、実行時に警告が表示されます。
 
-If we want to make an injected property work with optional providers, we need to declare a default value, similar to props:
+インジェクトされたプロパティをオプションのプロバイダーで動作させたい場合は、props と同様にデフォルト値を宣言する必要があります:
 
 <div class="composition-api">
 
 ```js
-// `value` will be "default value"
-// if no data matching "message" was provided
+// もし "message" にマッチするデータがなかった場合は、
+// `value` は "default value" になります
 const value = inject('message', 'default value')
 ```
 
-In some cases, the default value may need to be created by calling a function or instantiating a new class. To avoid unnecessary computation or side effects in case the optional value is not used, we can use a factory function for creating the default value:
+場合によっては、関数を呼び出したり、新しいクラスをインスタンス化したりして、デフォルト値を作成する必要があるかもしれません。オプションの値が使用されないケースで不要な計算や副作用を避けるために、デフォルト値を作成するためのファクトリー関数を使用することができます:
 
 ```js
 const value = inject('key', () => new ExpensiveClass())
@@ -217,16 +217,16 @@ const value = inject('key', () => new ExpensiveClass())
 
 ```js
 export default {
-  // object syntax is required
-  // when declaring default values for injections
+  // インジェクションのデフォルト値を宣言する時は、
+  // オブジェクト構文が必要です
   inject: {
     message: {
-      from: 'message', // this is optional if using the same key for injection
+      from: 'message', // 同じキーで注入する場合、これは省略可能です
       default: 'default value'
     },
     user: {
-      // use a factory function for non-primitive values that are expensive
-      // to create, or ones that should be unique per component instance.
+      // 作成に手間がかかる非プリミティブな値や、
+      // コンポーネントインスタンスごとに一意であるべき値には、ファクトリー関数を使用します
       default: () => ({ name: 'John' })
     }
   }
@@ -235,16 +235,16 @@ export default {
 
 </div>
 
-## Working with Reactivity
+## リアクティビティと共に利用する
 
 <div class="composition-api">
 
-When using reactive provide / inject values, **it is recommended to keep any mutations to reactive state inside of the _provider_ whenever possible**. This ensures that the provided state and its possible mutations are co-located in the same component, making it easier to maintain in the future.
+リアクティブな値を provide / inject する場合、**可能な限り、リアクティブな状態への変更を _provider_ の内部で維持することが推奨されます**。これは、提供されるステートとその可能な変更が同じコンポーネントに配置されることを保証し、将来のメンテナンスをより容易にしてくれます。
 
-There may be times when we need to update the data from an injector component. In such cases, we recommend providing a function that is responsible for mutating the state:
+インジェクターコンポーネントからデータを更新する必要がある場合があります。そのような場合は、状態の変更を担当する関数を提供することをおすすめします:
 
 ```vue{7-9,13}
-<!-- inside provider component -->
+<!-- プロバイダーコンポーネント内部 -->
 <script setup>
 import { provide, ref } from 'vue'
 
@@ -262,7 +262,7 @@ provide('location', {
 ```
 
 ```vue{5}
-<!-- in injector component -->
+<!-- インジェクターコンポーネント内部 -->
 <script setup>
 import { inject } from 'vue'
 
@@ -274,7 +274,7 @@ const { location, updateLocation } = inject('location')
 </template>
 ```
 
-Finally, you can wrap the provided value with [`readonly()`](/api/reactivity-core.html#readonly) if you want to ensure that the data passed through `provide` cannot be mutated by the injected component.
+最後に、`provide` を通して渡されたデータが注入されたコンポーネントによって変更されないようにしたい場合は、提供された値を [`readonly()`](/api/reactivity-core.html#readonly) でラップすることができます。
 
 ```vue
 <script setup>
@@ -289,7 +289,7 @@ provide('read-only-count', readonly(count))
 
 <div class="options-api">
 
-In order to make injections reactively linked to the provider, we need to provide a computed property using the [computed()](/api/reactivity-core.html#computed) function:
+インジェクションをプロバイダーとリアクティブに連携させるためには、[computed()](/api/reactivity-core.html#computed) 関数を使って、computed プロパティを提供する必要があります:
 
 ```js{10}
 import { computed } from 'vue'
@@ -302,28 +302,28 @@ export default {
   },
   provide() {
     return {
-      // explicitly provide a computed property
+      // 算出プロパティを明示的に提供する
       message: computed(() => this.message)
     }
   }
 }
 ```
 
-[Full provide + inject Example with Reactivity](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcbmltcG9ydCB7IGNvbXB1dGVkIH0gZnJvbSAndnVlJ1xuXG5leHBvcnQgZGVmYXVsdCB7XG4gIGNvbXBvbmVudHM6IHsgQ2hpbGQgfSxcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbWVzc2FnZTogJ2hlbGxvJ1xuICAgIH1cbiAgfSxcbiAgcHJvdmlkZSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbWVzc2FnZTogY29tcHV0ZWQoKCkgPT4gdGhpcy5tZXNzYWdlKVxuICAgIH1cbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGlucHV0IHYtbW9kZWw9XCJtZXNzYWdlXCI+XG4gIDxDaGlsZCAvPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiQ2hpbGQudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBHcmFuZENoaWxkIGZyb20gJy4vR3JhbmRDaGlsZC52dWUnXG5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgY29tcG9uZW50czoge1xuICAgIEdyYW5kQ2hpbGRcbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuICBpbmplY3Q6IFsnbWVzc2FnZSddXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBNZXNzYWdlIHRvIGdyYW5kIGNoaWxkOiB7eyBtZXNzYWdlIH19XG4gIDwvcD5cbjwvdGVtcGxhdGU+In0=)
+[リアクティブな provide と inject のフルガイド](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcbmltcG9ydCB7IGNvbXB1dGVkIH0gZnJvbSAndnVlJ1xuXG5leHBvcnQgZGVmYXVsdCB7XG4gIGNvbXBvbmVudHM6IHsgQ2hpbGQgfSxcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbWVzc2FnZTogJ2hlbGxvJ1xuICAgIH1cbiAgfSxcbiAgcHJvdmlkZSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbWVzc2FnZTogY29tcHV0ZWQoKCkgPT4gdGhpcy5tZXNzYWdlKVxuICAgIH1cbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPGlucHV0IHYtbW9kZWw9XCJtZXNzYWdlXCI+XG4gIDxDaGlsZCAvPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiQ2hpbGQudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBHcmFuZENoaWxkIGZyb20gJy4vR3JhbmRDaGlsZC52dWUnXG5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgY29tcG9uZW50czoge1xuICAgIEdyYW5kQ2hpbGRcbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuICBpbmplY3Q6IFsnbWVzc2FnZSddXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBNZXNzYWdlIHRvIGdyYW5kIGNoaWxkOiB7eyBtZXNzYWdlIH19XG4gIDwvcD5cbjwvdGVtcGxhdGU+In0=)
 
-The `computed()` function is typically used in Composition API components, but can also be used to complement certain use cases in Options API. You can learn more about its usage by reading the [Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html) and [Computed Properties](/guide/essentials/computed.html) with the API Preference set to Composition API.
+`computed()` 関数は、通常 Composition API のコンポーネントで使用されますが、Options API の特定のユースケースを補完するために使用することもできます。API Preference を Composition API に設定して[リアクティビティの基礎](/guide/essentials/reactivity-fundamentals.html)と[算出プロパティ](/guide/essentials/computed.html)を読むと、より詳しい使い方を学ぶことができます。
 
-:::warning Temporary Config Required
-The above usage requires setting `app.config.unwrapInjectedRef = true` to make injections automatically unwrap computed refs. This will become the default behavior in Vue 3.3 and this config is introduced temporarily to avoid breakage. It will no longer be required after 3.3.
+:::warning 一時的な設定が必要
+上記の使い方では、`app.config.unwrapInjectedRef = true` を設定して、インジェクションが自動的に算出 ref をアンラップするようにする必要があります。これは Vue 3.3 でデフォルトの動作になり、この設定は破損を避けるために一時的に導入されています。3.3 以降では不要になります。
 :::
 
 </div>
 
-## Working with Symbol Keys
+## シンボルキーと共に利用する
 
-So far, we have been using string injection keys in the examples. If you are working in a large application with many dependency providers, or you are authoring components that are going to be used by other developers, it is best to use Symbol injection keys to avoid potential collisions.
+今までの例では、文字列のインジェクションキーを使っていました。もしあなたが多くの依存関係を提供するプロバイダーを持つ大規模なアプリケーションで作業していたり、他の開発者が使用する予定のコンポーネントを作成している場合は、衝突の危険性を避けるためにシンボルインジェクションキーを使用するのがベストです。
 
-It's recommended to export the Symbols in a dedicated file:
+シンボルは専用のファイルに書き出しておくことをおすすめします:
 
 ```js
 // keys.js
@@ -333,38 +333,38 @@ export const myInjectionKey = Symbol()
 <div class="composition-api">
 
 ```js
-// in provider component
+// プロバイダーコンポーネント内
 import { provide } from 'vue'
 import { myInjectionKey } from './keys.js'
 
 provide(myInjectionKey, {
-  /* data to provide */
+  /* 提供するデータ */
 })
 ```
 
 ```js
-// in injector component
+// インジェクターコンポーネント内
 import { inject } from 'vue'
 import { myInjectionKey } from './keys.js'
 
 const injected = inject(myInjectionKey)
 ```
 
-See also: [Typing Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
+参照: [Provide / Inject の型付け](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
 
 </div>
 
 <div class="options-api">
 
 ```js
-// in provider component
+// プロバイダーコンポーネント内
 import { myInjectionKey } from './keys.js'
 
 export default {
   provide() {
     return {
       [myInjectionKey]: {
-        /* data to provide */
+        /* 提供するデータ */
       }
     }
   }
@@ -372,7 +372,7 @@ export default {
 ```
 
 ```js
-// in injector component
+// インジェクターコンポーネント内
 import { myInjectionKey } from './keys.js'
 
 export default {
