@@ -16,7 +16,7 @@ const { name, intro, region, logo, proficiencies } = data
   <component
     :is="page ? 'div' : 'a'"
     class="partner-card"
-    :class="{ hero, page }"
+    :class="{ hero, page, flipLogo }"
     :href="'/partners/' + normalizeName(name) + '.html'"
   >
     <div class="info">
