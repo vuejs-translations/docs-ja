@@ -348,7 +348,7 @@ console.log(proxy.nested === raw) // false
    ```js
    let state = reactive({ count: 0 })
 
-   // これは動きません！
+   // 上記の参照（{ count: 0 }）は、もはや追跡されていません（リアクティブな接続が失われました！）。
    state = reactive({ count: 1 })
    ```
 
