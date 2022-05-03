@@ -1,24 +1,24 @@
-# Async Components
+# 非同期コンポーネント
 
-## Basic Usage
+## 基本的な使い方
 
-In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it's needed. To make that possible, Vue has a [`defineAsyncComponent`](/api/general.html#defineasynccomponent) function:
+大規模なアプリケーションでは、アプリを小さなチャンクに分割し、必要なときにのみサーバーからコンポーネントを読み込む必要があるかもしれません。これを実現するために、Vue には [`defineAsyncComponent`](/api/general.html#defineasynccomponent) 関数があります:
 
 ```js
 import { defineAsyncComponent } from 'vue'
 
 const AsyncComp = defineAsyncComponent(() => {
   return new Promise((resolve, reject) => {
-    // ...load component from server
-    resolve(/* loaded component */)
+    // ...サーバーからコンポーネントを読み込む
+    resolve(/* 読み込まれたコンポーネント */)
   })
 })
-// ... use `AsyncComp` like a normal component
+// ... `AsyncComp` を普通のコンポーネントと同じように使用する
 ```
 
-As you can see, `defineAsyncComponent` accepts a loader function that returns a Promise. The Promise's `resolve` callback should be called when you have retrieved your component definition from the server. You can also call `reject(reason)` to indicate the load has failed.
+このように、`defineAsyncComponent` は Promise を返すローダー関数を受け取ります。Promise の `resolve` コールバックは、コンポーネントの定義をサーバーから取得したときに呼ばれます。読み込みが失敗したことを示すために、`reject(reason)` を呼ぶこともできます。 
 
-[ES module dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports) also returns a Promise, so most of the time we will use it in combination with `defineAsyncComponent`. Bundlers like Vite and webpack also support the syntax, so we can use it to import Vue SFCs:
+[ES モジュールの動的インポート](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports) も Promise を返すため、ほとんどの場合には `defineAsyncComponent` と合わせて使用します。Vite や webpack などのバンドラーもこの構文をサポートしているため、の Vue SFC をインポートするためにも使用できます。
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -28,11 +28,11 @@ const AsyncComp = defineAsyncComponent(() =>
 )
 ```
 
-The resulting `AsyncComp` is a wrapper component that only calls the loader function when it is actually rendered on the page. In addition, it will pass along any props to the inner component, so you can use the async wrapper to seamlessly replace the original component while achieving lazy loading.
+結果的に得られる `AsyncComp` は、実際にページ上にレンダリングされるときにローダー関数を呼ぶだけのラッパーコンポーネントです。さらに、内側のコンポーネントに任意の props を渡せるため、非同期ラッパーを使用すると、コンポーネントをシームレスに置換するとともに、遅延読み込みも実現できます。
 
 <div class="options-api">
 
-You can also use `defineAsyncComponent` when [registering a component locally](/guide/components/registration.html#local-registration):
+[コンポーネントをローカルに登録する](/guide/components/registration.html#local-registration)ときには、`defineAsyncComponent` も利用できます:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -49,32 +49,31 @@ export default {
 
 </div>
 
-## Loading and Error States
+## ローディングとエラーの状態
 
-Asynchronous operations inevitably involve loading and error states - `defineAsyncComponent()` supports handling these states via advanced options:
+非同期の操作は必然的にローディングとエラーの状態に関係してきます。そのため、`defineAsyncComponent()` ではこれらの状態のハンドリングを高度なオプションによりサポートしています。
 
 ```js
 const AsyncComp = defineAsyncComponent({
-  // the loader function
+  // ローダー関数
   loader: () => import('./Foo.vue'),
 
-  // A component to use while the async component is loading
+  // 非同期コンポーネントの読み込み中に使用するコンポーネント
   loadingComponent: LoadingComponent,
-  // Delay before showing the loading component. Default: 200ms.
+  // ローディングコンポーネント表示前の遅延。デフォルト: ms200。
   delay: 200,
 
-  // A component to use if the load fails
+  // 読み込みに失敗した場合にコンポーネント
   errorComponent: ErrorComponent,
-  // The error component will be displayed if a timeout is
-  // provided and exceeded. Default: Infinity.
+  // エラーコンポーネントは timeout が与えられて
+  // その時間を超えた場合に表示される。デフォルト: Infinity。  
   timeout: 3000
 })
 ```
+ローディングコンポーネントが与えられた場合、内側のコンポーネントが読み込まれている間に表示されます。ローディングコンポーネントが表示されるまでに、デフォルトで 200ms の遅延があります。このようになっているのは、高速なネットワークではローディング状態が短く、置き換えが速すぎて、ちらつきのように見えてしまう恐れがあるためです。
 
-If a loading component is provided, it will be displayed first while the inner component is being loaded. There is a default 200ms delay before the loading component is shown - this is because on fast networks, an instant loading state may get replaced too fast and end up looking like a flicker.
+エラーコンポーネントが与えられた場合、ローダー関数から返された Promise が reject されたときに表示されます。リクエストが長すぎる場合にエラーコンポーネントを表示するために、timeout を指定することもできます。
 
-If an error component is provided, it will be displayed when the Promise returned by the loader function is rejected. You can also specify a timeout to show the error component when the request is taking too long.
+## Suspense とともに使用する
 
-## Using with Suspense
-
-Async components can be used with the `<Suspense>` built-in component. The interaction between `<Suspense>` and async components are documented in the [dedicated chapter for `<Suspense>`](/guide/built-ins/suspense.html).
+非同期コンポーネントは、ビルトインコンポーネント `<Suspense>` とともに使用することもできます。`<Suspense>` と非同期コンポーネント間のインタラクションについては、[`<Suspense>` のページ](/guide/built-ins/suspense.html) にドキュメントがあります。
