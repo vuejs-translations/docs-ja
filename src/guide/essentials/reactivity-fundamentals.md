@@ -343,7 +343,7 @@ console.log(proxy.nested === raw) // false
 
 1. オブジェクト型 (オブジェクト、配列、および `Map` や `Set` などの [コレクション型](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections)) に対してのみ機能します。文字列、数値、ブールなどの [プリミティブ型](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) を保持することはできません。
 
-2. Vue のリアクティビティ追跡はプロパティアクセス上で動作するため、リアクティブなオブジェクトへの参照を常に同じに保つ必要があります。つまり、最初の参照へのリアクティブな接続が失われるため、リアクティブなオブジェクトを簡単に「置き換える」ことはできません。
+2. Vue のリアクティビティ追跡はプロパティアクセス上で動作するため、リアクティブなオブジェクトへの参照を常に同じに保つ必要があります。つまり、最初の参照へのリアクティブな接続が失われるため、リアクティブなオブジェクトを簡単に「置き換える」ことはできません:
   
    ```js
    let state = reactive({ count: 0 })
