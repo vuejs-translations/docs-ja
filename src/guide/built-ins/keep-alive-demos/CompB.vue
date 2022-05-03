@@ -3,7 +3,7 @@ let msg = $ref('')
 </script>
 
 <template>
-  <p>Current component: B</p>
-  <span style="margin-right:20px;">Message is: {{ msg }}</span>
+  <p>現在のコンポーネント: B</p>
+  <span style="margin-right:20px;">メッセージ: {{ msg }}</span>
   <input v-model="msg">
 </template>
