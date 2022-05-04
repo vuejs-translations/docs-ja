@@ -60,10 +60,10 @@ const AsyncComp = defineAsyncComponent({
 
   // 非同期コンポーネントの読み込み中に使用するコンポーネント
   loadingComponent: LoadingComponent,
-  // ローディングコンポーネント表示前の遅延。デフォルト: ms200。
+  // ローディングコンポーネント表示前の遅延。デフォルト: 200ms。
   delay: 200,
 
-  // 読み込みに失敗した場合にコンポーネント
+  // 読み込みに失敗した場合に使用するコンポーネント
   errorComponent: ErrorComponent,
   // エラーコンポーネントは timeout が与えられて
   // その時間を超えた場合に表示される。デフォルト: Infinity。  
