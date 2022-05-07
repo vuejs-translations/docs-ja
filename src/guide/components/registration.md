@@ -77,7 +77,7 @@ import ComponentA from './ComponentA.vue'
 </template>
 ```
 
-SFC を用いない場合は、以下のように `components` オプションを使用する必要があります:
+ `<script setup>` を用いない場合は、以下のように `components` オプションを使用する必要があります:
 
 ```js
 import ComponentA from './ComponentA.js'
