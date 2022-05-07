@@ -65,7 +65,7 @@ app
 
 <div class="composition-api">
 
-SFC と `<script setup>` の組み合わせを用いる場合、インポートしたコンポーネントは自動的にローカル登録されます:
+SFC を `<script setup>` と共に使用する場合、インポートしたコンポーネントを登録なしでローカルに使用できるようになります:
 
 ```vue
 <script setup>
