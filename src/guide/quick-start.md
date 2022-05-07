@@ -74,7 +74,9 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 <div id="app">{{ message }}</div>
 
 <script>
-  Vue.createApp({
+  const { createApp } = Vue
+
+  createApp({
     data() {
       return {
         message: 'Hello Vue!'
@@ -84,7 +86,11 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 </script>
 ```
 
-上の例ではグローバル `Vue` 変数の下ですべての API が公開されている、Vue のグローバルビルドを使っています。
+上記の例では、Vue のグローバルビルドを使用しており、すべての API はグローバル変数 `Vue` の下で公開されています。例えば、`ref` という API も使いたい場合は、以下のようにします:
+
+```js
+const { createApp, ref } = Vue
+```
 
 グローバルビルドは機能しますが、以降のドキュメントでは一貫性を保つため主に [ES modules](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules) 構文を使用します。ネイティブ ES モジュールで Vue を使うには、代わりに次の HTML を使用してください。
 
@@ -112,11 +118,15 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 </script>
 ```
 
-コード中の `'vue'` から直接インポートする方法に注目してください - これは `<script type="importmap">` によって可能になり、[Import Maps](https://caniuse.com/import-maps) と呼ばれるネイティブのブラウザー機能を活用します。Import maps は現在のところ Chromium ベースのブラウザーのみで利用可能なので、学習過程の間は Chrome または Edge の使用を推奨します。あなたの好むブラウザーがまだ import maps に対応していなくとも、[es-module-shims](https://github.com/guybedford/es-module-shims) でポリフィル (polyfill) できます。
+コード中の `'vue'` から直接インポートする方法に注目してください - これは `<script type="importmap">` によって可能になり、[Import Maps](https://caniuse.com/import-maps) と呼ばれるネイティブのブラウザー機能を活用します。
 
 他の依存関係のエントリーを import map に追加することができます - 使おうとしているライブラリーの ES モジュールバージョンを指していることは確認してください。
 
-:::tip プロダクション向けではありません
+:::tip Import Maps のブラウザサポート
+Import maps は現在のところ Chromium ベースのブラウザーのみで利用可能なので、学習過程の間は Chrome または Edge の使用を推奨します。あなたの好むブラウザーがまだ import maps に対応していなくとも、[es-module-shims](https://github.com/guybedford/es-module-shims) でポリフィル (polyfill) できます。
+:::
+
+:::warning プロダクション向けではありません
 Import maps に基づいたセットアップは学習のみを目的にしています - プロダクション環境でビルドツールを用いずに Vue を使おうとしている場合は、[プロダクション環境への配信](/guide/best-practices/production-deployment.html#without-build-tools) を確認してください。
 :::
 
