@@ -74,7 +74,7 @@ HTML 属性の中ではマスタッシュ構文が使えません。代わりに
 <button :disabled="isButtonDisabled">Button</button>
 ```
 
-この `disabled` という属性は、`isButtonDisabled` が [真値 (truthy value)](https://developer.mozilla.org/ja/docs/Glossary/Truthy) である場合に要素に含まれます。また、`<button disabled="">` との一貫性を保つため、値が空の文字列である場合にも含まれます。それ以外の偽値 (falsy value) の場合には、属性が要素から取り除かれます。
+この `disabled` という属性は、`isButtonDisabled` が [真値 (truthy value)](https://developer.mozilla.org/ja/docs/Glossary/Truthy) である場合に要素に含まれます。また、`<button disabled="">` との一貫性を保つため、値が空の文字列である場合にも含まれます。それ以外の偽値 ([falsy values](https://developer.mozilla.org/ja/docs/Glossary/Falsy)) の場合には、属性が要素から取り除かれます。
 
 ### 複数の属性を動的にバインドさせる
 
