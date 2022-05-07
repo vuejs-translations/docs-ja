@@ -207,7 +207,7 @@ export const sidebar = {
     {
       text: 'Built-in Components',
       items: [
-        { text: 'Transition', link: '/guide/built-ins/transition' },
+        { text: 'トランジション', link: '/guide/built-ins/transition' },
         {
           text: 'TransitionGroup',
           link: '/guide/built-ins/transition-group'
