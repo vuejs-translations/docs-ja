@@ -118,7 +118,7 @@ const { createApp, ref } = Vue
 </script>
 ```
 
-コード中の `'vue'` から直接インポートする方法に注目してください - これは `<script type="importmap">` によって可能になり、[Import Maps](https://caniuse.com/import-maps) と呼ばれるネイティブのブラウザー機能を活用します。
+コード中の `'vue'` から直接インポートする方法に注目してください - これは `<script type="importmap">` ブロックによって可能になり、[Import Maps](https://caniuse.com/import-maps) と呼ばれるネイティブのブラウザー機能を活用します。
 
 他の依存関係のエントリーを import map に追加することができます - 使おうとしているライブラリーの ES モジュールバージョンを指していることは確認してください。
 
