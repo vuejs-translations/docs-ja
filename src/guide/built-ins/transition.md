@@ -465,7 +465,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 ```vue{5}
 <!-- MyTransition.vue -->
 <script>
-// JavaScript フックやロジックを記載 ...
+// JavaScript フックのロジックを記載 ...
 </script>
 
 <template>
