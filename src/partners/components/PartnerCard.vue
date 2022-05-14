@@ -9,27 +9,35 @@ const { data, hero, page } = defineProps<{
   page?: boolean
 }>()
 
-const { name, intro, region, logo, proficiencies } = data
+const { name, intro, region, logo, proficiencies, flipLogo } = data
 </script>
 
 <template>
   <component
     :is="page ? 'div' : 'a'"
     class="partner-card"
-    :class="{ hero, page }"
+    :class="{ hero, page, flipLogo }"
     :href="'/partners/' + normalizeName(name) + '.html'"
   >
     <div class="info">
+      <img
+        class="logo dark"
+        v-if="hero && flipLogo"
+        :src="getLogo(logo, flipLogo)"
+      />
       <img class="logo" v-if="hero" :src="getLogo(logo)" />
       <h3 v-else>{{ name }}</h3>
+
       <p class="region"><Location /> {{ region.join(', ') }}</p>
+
       <p>{{ intro }}</p>
+
       <h4 v-if="hero">Proficiencies</h4>
       <p v-if="hero">
         <span class="proficiency" v-for="p in proficiencies">{{ p }}</span>
       </p>
     </div>
-    <img :src="getHero(name)" :alt="name + ' hero'" />
+    <img class="big" :src="getHero(name)" :alt="name + ' hero'" />
   </component>
 </template>
 
@@ -68,23 +76,31 @@ h3 {
 .logo {
   margin-bottom: 1em;
   max-width: 240px;
+  max-height: 120px;
 }
 
-.dark .logo {
-  filter: grayscale(1) invert(1);
+.logo.dark,
+.dark .flipLogo .logo:not(.dark) {
+  display: none;
 }
 
-.partner-card:not(.hero) img {
+.dark .logo.dark {
+  display: inline-block;
+}
+
+.partner-card:not(.hero) .big {
   margin-top: auto;
 }
 
 .partner-card.hero .info {
   margin-right: 2em;
 }
-.partner-card.hero img {
+.partner-card.hero .big {
   display: inline-block;
   margin-left: auto;
   width: 60%;
+  max-height: 360px;
+  object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -97,7 +113,7 @@ h3 {
   .logo {
     max-width: 200px;
   }
-  .partner-card.hero img {
+  .partner-card.hero .big {
     width: 100%;
   }
 }
@@ -158,12 +174,13 @@ h4 {
 }
 
 .proficiency {
+  display: inline-block;
   color: var(--vt-c-text-code);
   font-weight: 600;
   font-size: 0.85em;
-  margin-right: 4px;
+  margin: 2px;
   background-color: var(--vt-c-bg-mute);
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 6px;
 }
 </style>

@@ -1,14 +1,14 @@
-# Component Registration
+# コンポーネントの登録
 
-<VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Free Vue.js Component Registration Lesson"/>
+<VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="コンポーネントの登録について学ぶ Vue.js の無料レッスン"/>
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+> このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
-A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template. There are two ways to register components: global and local.
+Vue のコンポーネントをテンプレートで使用する時は、それがどこで実装されているかを Vue に知らせるため、「登録」を行う必要があります。コンポーネントの登録方法には、グローバルとローカルの 2 つがあります。
 
-## Global Registration
+## グローバル登録
 
-We can make components available globally in the current [Vue application](/guide/essentials/application.html) using the `app.component()` method:
+開発中の [Vue アプリケーション](/guide/essentials/application.html)でグローバルにコンポーネントを利用できるようにするには、以下に示す `app.component()` メソッドを使用します:
 
 ```js
 import { createApp } from 'vue'
@@ -16,16 +16,16 @@ import { createApp } from 'vue'
 const app = createApp({})
 
 app.component(
-  // the registered name
+  // 登録名
   'MyComponent',
-  // the implementation
+  // 実装
   {
     /* ... */
   }
 )
 ```
 
-If using SFCs, you will be registering the imported `.vue` files:
+SFC を使用する場合は、インポートした `.vue` ファイルを登録します:
 
 ```js
 import MyComponent from './App.vue'
@@ -33,7 +33,7 @@ import MyComponent from './App.vue'
 app.component('MyComponent', MyComponent)
 ```
 
-The `app.component()` method can be chained:
+`app.component()` メソッドはチェーンにすることができます:
 
 ```js
 app
@@ -42,30 +42,30 @@ app
   .component('ComponentC', ComponentC)
 ```
 
-Globally registered components can be used in the template of any component within this application:
+グローバル登録したコンポーネントは、アプリケーション内の任意のコンポーネントのテンプレートで使用することができます:
 
 ```vue-html
-<!-- this will work in any component inside the app -->
+<!-- これはアプリ内のどのコンポーネントでも動作します -->
 <ComponentA/>
 <ComponentB/>
 <ComponentC/>
 ```
 
-This even applies to all subcomponents, meaning all three of these components will also be available _inside each other_.
+これは、サブコンポーネントにも漏れなく適用されます。そのため、上の 3 つのコンポーネントはすべて _各コンポーネント内でも互いに_ 使える、ということになります。
 
-## Local Registration
+## ローカル登録
 
-While convenient, global registration has a few drawbacks:
+グローバル登録は便利な反面、以下に示すいくつかの欠点があります:
 
-1. Global registration prevents build systems from removing unused components (a.k.a "tree-shaking"). If you globally register a component but end up not using it anywhere in your app, it will still be included in the final bundle.
+1. グローバル登録では、未使用のコンポーネントを削除してくれるビルドシステムの処理 (いわゆる「ツリーシェイク」) が阻害されます。グローバル登録したコンポーネントは、最後までアプリのどこにも用いなかった場合でも、最終的なバンドルには含まれてしまいます。
 
-2. Global registration makes dependency relationships less explicit in large applications. It makes it difficult to locate a child component's implementation from a parent component using it. This can affect long-term maintainability similar to using too many global variables.
+2. グローバル登録では、大規模なアプリケーションでの依存関係の分かりやすさが低下します。グローバル登録では、子コンポーネントを使っている親コンポーネントから、子コンポーネントの実装部分を探し出すことが難しくなります。きわめて多くのグローバル変数が使われている状況と同じように、これは長期的な保守性に影響を与える可能性があります。
 
-Local registration scopes the availability of the registered components to the current component only. It makes the dependency relationship more explicit, and is more tree-shaking friendly.
+ローカルでの登録を利用すると、登録したコンポーネントを使えるスコープが現在のコンポーネントのみに限定されます。これによって依存関係が分かりやすくなり、ツリーシェイクが働きやすくなります。
 
 <div class="composition-api">
 
-When using SFC with `<script setup>`, imported components are automatically registered locally:
+SFC を `<script setup>` と共に使用する場合、インポートしたコンポーネントを登録なしでローカルに使用できるようになります:
 
 ```vue
 <script setup>
@@ -77,7 +77,7 @@ import ComponentA from './ComponentA.vue'
 </template>
 ```
 
-If not using SFC, you will need to use the `components` option:
+ `<script setup>` を用いない場合は、以下のように `components` オプションを使用する必要があります:
 
 ```js
 import ComponentA from './ComponentA.js'
@@ -95,7 +95,7 @@ export default {
 </div>
 <div class="options-api">
 
-Local registration is done using the `components` option:
+ローカル登録は、以下のように `components` オプションを使って行います:
 
 ```vue
 <script>
@@ -115,7 +115,7 @@ export default {
 
 </div>
 
-For each property in the `components` object, the key will be the registered name of the component, while the value will contain the implementation of the component. The above example is using the ES2015 property shorthand and is equivalent to:
+`components` オブジェクトのプロパティそれぞれについて、キーがコンポーネントの登録名になります。そして、値にコンポーネントの実装が保持されます。上の例では ES2015 のプロパティの省略記法を使っていて、これは次の表記と等価です:
 
 ```js
 export default {
@@ -126,16 +126,16 @@ export default {
 }
 ```
 
-Note that **locally registered components are _not_ also available in descendent components**. In this case, `ComponentA` will be made available to the current component only, not any of its child or descendent components.
+ただし、 **ローカル登録されたコンポーネントが子孫のコンポーネントでも利用できるようにはならない**ことに注意してください。上の場合、`ComponentA` は現在のコンポーネントのみで利用可能になり、その子や子孫のコンポーネントで利用可能になるわけではありません。
 
-## Component Name Casing
+## コンポーネント名での大文字・小文字の使い方
 
-Throughout the guide, we are using PascalCase names when registering components. This is because:
+このガイドでは、コンポーネントを登録する際に PascalCase の名前を用いています。これは次の理由によります:
 
-1. PascalCase names are valid JavaScript identifiers. This makes it easier to import and register components in JavaScript. It also helps IDEs with auto-completion.
+1. PascalCase の名前は JavaScript の識別子として有効です。そのため、JavaScript でコンポーネントをインポートしたり登録したりするのが容易になります。また、IDE のオートコンプリートも働きやすくなります。
 
-2. `<PascalCase />` makes it more obvious that this is a Vue component instead of a native HTML element in templates. It also differentiates Vue components from custom elements (web components).
+2. テンプレートで `<PascalCase />` を用いると、これがネイティブの HTML 要素ではなく、Vue のコンポーネントであることがより明確になります。また、Vue コンポーネントとカスタムの要素 (Web Components) を区別することも可能になります。
 
-This is the recommended style when working with SFC or string templates. However, as discussed in [DOM Template Parsing Caveats](/guide/essentials/component-basics.html#dom-template-parsing-caveats), PascalCase tags are not usable in DOM templates.
+このスタイルは、SFC や文字列テンプレートを合わせて使う時に推奨されるスタイルです。ただし、[DOM テンプレート解析の注意点](/guide/essentials/component-basics.html#dom-template-parsing-caveats) で説明しているように、DOM テンプレート内では PascalCase のタグが使えません。
 
-Luckily, Vue supports resolving kebab-case tags to components registered using PascalCase. This means a component registered as `MyComponent` can be referenced in the template via both `<MyComponent>` and `<my-component>`. This allows us to use the same JavaScript component registration code regardless of template source.
+幸いなことに、Vue は PascalCase で登録したコンポーネントから kebab-case 形式のタグへの解決をサポートしています。これにより、`MyComponent` として登録したコンポーネントは、`<MyComponent>` と `<my-component>` のどちらを使ってもテンプレート内で参照できます。そのため、テンプレートの出どころに関わらず、JavaScript のコンポーネント登録のコードには同じものを用いることができます。
