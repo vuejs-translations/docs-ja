@@ -25,7 +25,7 @@ app.component(
 )
 ```
 
-SFC を使用する場合は、以下のように `.vue` ファイルをインポートして登録します:
+SFC を使用する場合は、インポートした `.vue` ファイルを登録します:
 
 ```js
 import MyComponent from './App.vue'
@@ -51,7 +51,7 @@ app
 <ComponentC/>
 ```
 
-これは、サブコンポーネントにもすべて適用されます。そのため、上の 3 つのコンポーネントはどれもお互いの内側で使える、ということになります。
+これは、サブコンポーネントにも漏れなく適用されます。そのため、上の 3 つのコンポーネントはすべて _各コンポーネント内でも互いに_ 使える、ということになります。
 
 ## ローカル登録
 
@@ -65,7 +65,7 @@ app
 
 <div class="composition-api">
 
-SFC と `<script setup>` の組み合わせを用いる場合、コンポーネントはインポートするだけで自動的にローカル登録されます:
+SFC を `<script setup>` と共に使用する場合、インポートしたコンポーネントを登録なしでローカルに使用できるようになります:
 
 ```vue
 <script setup>
@@ -77,7 +77,7 @@ import ComponentA from './ComponentA.vue'
 </template>
 ```
 
-SFC を用いない場合は、以下のように `components` オプションを使用する必要があります:
+ `<script setup>` を用いない場合は、以下のように `components` オプションを使用する必要があります:
 
 ```js
 import ComponentA from './ComponentA.js'

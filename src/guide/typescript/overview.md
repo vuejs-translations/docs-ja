@@ -28,13 +28,13 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 - [Visual Studio Code](https://code.visualstudio.com/) (VSCode) は、すぐに利用できる TypeScript サポートを提供しているため、強く推奨されます。
 
-  - [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) は公式 VSCode 拡張機能です。Vue SFC 内部での TypeScript のサポートなど、その他の優れた機能を持ちます。
+  - [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) は公式 VSCode 拡張機能です。Vue SFC 内部での TypeScript のサポートなど、その他の優れた機能を持ちます。
 
     :::tip
     Volar は Vue 2 の公式 VSCode 拡張機能である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。現在 Vetur がインストールされている場合、Vue 3 のプロジェクトで必ず無効化してください。
     :::
 
-  - TS ファイル内で `*.vue` をインポートする際に型サポートを得る場合、[TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) も必要となります。
+  - TS ファイル内で `*.vue` をインポートする際に型サポートを得る場合、[TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) も必要となります。
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) は TypeScript と Vue の両方をすぐに利用できるようサポートしています。他の JetBrains IDE も最初から、または [この無料プラグイン](https://plugins.jetbrains.com/plugin/9442-vue-js) で、これらをサポートしています。
 
@@ -59,7 +59,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 > このセクションは、VSCode + Volar の場合のみ該当します。
 
-Vue SFC と TypeScript を連携させるために、 Volar は Vue 固有のサポートをパッチした別の TS 言語サービスインスタンスを作成し、Vue SFC 内で使われます。同時に、プレーンな TS ファイルは依然として VSCode の組み込み TS 言語サービスによって処理されます。TS ファイル内での Vue SFC インポートのサポート時に [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) が必要なのはそういった理由からです。このデフォルトのセットアップ方法はうまく動きますが、プロジェクトごとに 2 つの TS 言語サービスインスタンスが実行されます: 1 つは Volar の言語サービス、もう 1 つは VSCode の組み込み言語サービスです。これは少し非効率であり、大規模プロジェクトではパフォーマンスの問題を引き起こす可能性があります。
+Vue SFC と TypeScript を連携させるために、 Volar は Vue 固有のサポートをパッチした別の TS 言語サービスインスタンスを作成し、Vue SFC 内で使われます。同時に、プレーンな TS ファイルは依然として VSCode の組み込み TS 言語サービスによって処理されます。TS ファイル内での Vue SFC インポートのサポート時に [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) が必要なのはそういった理由からです。このデフォルトのセットアップ方法はうまく動きますが、プロジェクトごとに 2 つの TS 言語サービスインスタンスが実行されます: 1 つは Volar の言語サービス、もう 1 つは VSCode の組み込み言語サービスです。これは少し非効率であり、大規模プロジェクトではパフォーマンスの問題を引き起こす可能性があります。
 
 Volar はパフォーマンスの改善のために、"Takeover Mode" と呼ばれる機能を提供しています。Takeover Mode では、Volar は単一の TS 言語サービスインスタンスを使用して Vue と TS の両ファイルをサポートします。
 

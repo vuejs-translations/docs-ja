@@ -24,33 +24,23 @@
 10. レビュー :eyes: で指摘事項があったら修正し、再度 Push します :pencil:
 11. レビュー :eyes: で OK :ok_woman: ならば、マージされて内容がデプロイされてドキュメントに反映されます！　:tada:
 
-<!-- TODO: 翻訳が進むまでしばらく非表示
 ### GitHub Issues にある本家ドキュメントの差分更新内容を翻訳して貢献する
 説明文が `New updates on head repo.` の issue について
 
-1. [GitHub Issues](https://github.com/vuejs-translations/docs-ja/issues) から、[このクエリー](https://github.com/vuejs-translations/docs-ja/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-asc) でソート & フィルターして、アサインされていない issues 一覧からできるだけ古いものからやりたい issue を選択します
-2. 選択した issue で、「翻訳やります！」などのコメントで宣言します :raising_hand: (`vuejs-translations/docs-ja` のメンテナーの方々は、GitHub の assign 機能で self assign で OK です)
-3. このレポジトリ `vuejs-translations/docs-ja` のメンテナーから同 issue でコメントで承認されたら、自分が選んだ issue の翻訳担当者として正式にアサインされたことになります
-4. このレポジトリをフォークします！
-5. `main` ブランチからトピックブランチを作成します: `git branch my-topic-branch main`
-6. 変更をコミットします: `git commit -am 'Fix some files'`
-7. lint で引っかかる場合は再度修正を行いコミットします
-8. フォークした自分のレポジトリに Push します: `git push origin my-topic-branch`
-9. 問題がなければ、プルリクエストを `vuejs-translations/docs-ja` の `main` ブランチに送ります
-10. レビュー :eyes: で指摘事項があったら修正し、再度 Push します :pencil:
-11. レビュー :eyes: で OK :ok_woman: ならば、マージされて内容がデプロイされてドキュメントに反映されます！　:tada:
--->
+1. [GitHub Issues](https://github.com/vuejs-translations/docs-ja/issues) から、[このクエリー](https://github.com/vuejs-translations/docs-ja/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-asc+New+updates+on+head+repo.) でソート & フィルターして、アサインされていない issues 一覧からできるだけ古いものからやりたい issue を選択します
+2. 選択した issue で、「対応します！」などのコメントで宣言します :raising_hand: (`vuejs-translations/docs-ja` のメンテナーの方々は、GitHub の assign 機能で self assign で OK です)
+3. このレポジトリ `vuejs-translations/docs-ja` のメンテナーから同 issue で承認されたら、自分が選んだ issue の担当者として正式にアサインされたことになります
+
+残りの手順は上記の `4.` 以降と同じです。
 
 #### Tips: より円滑な Pull Request のコメント記載方法
 
 GitHub の Pull Request には、特定の記法を Pull Request の本文に書くことによって、該当 Pull Request のマージ時に自動的に対応する Issues をクローズできる機能があります。
 Pull Request を送るときに、余裕があれば "resolve #123" といった形で、該当する Issues の番号を記載されているとレビュアーが非常に助かります :pray:
 
-<!-- TODO: 翻訳が進むまでしばらく非表示
 ### GitHub Issues とは別のものについて貢献する
 
 手順は上記の `4.` 以降と同じです。
--->
 
 ## 翻訳スタイル
 
