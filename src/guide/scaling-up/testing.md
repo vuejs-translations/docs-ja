@@ -2,41 +2,41 @@
 import TestingApiSwitcher from './TestingApiSwitcher.vue'
 </script>
 
-# Testing
+# テスト
 
-## Why Test?
+## なぜテストをするのか？
 
-Automated tests help you and your team build complex Vue applications quickly and confidently by preventing regressions and encouraging you to break apart your application into testable functions, modules, classes, and components. As with any application, your new Vue app can break in many ways, and it's important that you can catch these issues and fix them before releasing.
+自動テストは、アプリケーションをテスト可能な関数、モジュール、クラス、およびコンポーネントに分解することを奨励することによって、手戻りを防ぎ、あなたとチームが複雑な Vue アプリケーションを迅速かつ自信を持って構築するのを助けてくれます。他のアプリケーションと同様、新しい Vue アプリケーションはさまざまなことで壊れる可能性があるため、リリース前に問題をキャッチして修正可能であることが重要になります。
 
-In this guide, we'll cover basic terminology and provide our recommendations on which tools to choose for your Vue 3 application.
+このガイドでは、基本的な用語解説と、Vue 3 アプリケーションにどのようなツールを選択すべきかについて、私たちのおすすめの方法を紹介します。
 
-There is one Vue-specific section covering composables. See [Testing Composables](#testing-composables) below for more details.
+Vue 固有のセクションが 1 つあり、そこではコンポーザブル関数をカバーしています。詳しくは、以下の [コンポーザブル関数 のテスト](#testing-composables)を参照してください。
 
-## When to Test
+## いつテストをするか？
 
-Start testing early! We recommend you begin writing tests as soon as you can. The longer you wait to add tests to your application, the more dependencies your application will have, and the harder it will be to start.
+早くテストを始めましょう！私たちは、できる限り早くテストを書き始めることをおすすめします。アプリケーションにテストを追加するのが遅れれば遅れるほど、 アプリケーションの依存性が高まり、始めるのが困難になります。
 
-## Testing Types
+## テストの種類
 
-When designing your Vue application's testing strategy, you should leverage the following testing types:
+Vue アプリケーションのテスト戦略を設計する際には、以下のような種類のテストを活用する必要があります:
 
-- **Unit**: Checks that inputs to a given function, class, or composable are producing the expected output or side effects.
-- **Component**: Checks that your component mounts, renders, can be interacted with, and behaves as expected. These tests import more code than unit tests, are more complex, and require more time to execute.
-- **End-to-end**: Checks features that span multiple pages and make real network requests against your production-built Vue application. These tests often involve standing up a database or other backend.
+- **ユニット**: 関数、クラス、あるいはコンポーザブル関数へ与えられた入力が、期待される出力や副作用を作っているかどうかをチェックします。
+- **コンポーネント**: コンポーネントのマウント、レンダリング、それらがインタラクティブであるか、期待通りのふるまいであるかをチェックします。これらのテストはユニットテストよりも多くのコードをインポートし、より複雑で、実行に多くの時間を必要とします。
+- **エンドツーエンド**: 複数のページにまたがる機能や、実際のネットワークリクエストを、実用環境と同等に構築された Vue アプリケーションに対してチェックします。これらのテストでは、データベースや他のバックエンドを立ち上げることがよくあります。
 
-Each testing type plays a role in your application's testing strategy and each will protect you against different types of issues.
+アプリケーションのテスト戦略においては各テストが種別ごとの役割を果たし、それぞれ異なるタイプの問題からあなたを守ってくれます。
 
-## Overview
+## 概要
 
-We will briefly discuss what each of these are, how they can be implemented for Vue applications, and provide some general recommendations.
+各テストがどのようなものか、Vue アプリケーションにどのように実装できるかを簡単に説明し、一般的な推奨事項を説明します。
 
-## Unit Testing
+## ユニットテスト
 
-Unit tests are written to verify that small, isolated units of code are working as expected. A unit test usually covers a single function, class, composable, or module. Unit tests focus on logical correctness and only concern themselves with a small portion of the application's overall functionality. They may mock large parts of your application's environment (e.g. initial state, complex classes, 3rd party modules, and network requests).
+ユニットテストは、小さく分離したコードユニットが期待通りに動作していることを検証するために書かれます。ユニットテストは通常、単一の関数、クラス、コンポーザブル、またはモジュールをカバーします。ユニットテストは、論理的な正しさに焦点を当て、アプリケーション全体のごく一部の機能にしか関心を持ちません。ユニットテストは、アプリケーションの環境の大部分 (たとえば、初期状態、複雑なクラス、サードパーティーモジュール、ネットワークリクエストなど) をモックすることがあります。
 
-In general, unit tests will catch issues with a function's business logic and logical correctness.
+一般に、ユニットテストは関数のビジネスロジックや論理的な正しさに関する問題を検出します。
 
-Take for example this `increment` function:
+この `increment` 関数を例にしてみます:
 
 ```js
 // helpers.js
@@ -48,9 +48,9 @@ export function increment (current, max = 10) {
 }
 ```
 
-Because it's very self-contained, it'll be easy to invoke the increment function and assert that it returns what it's supposed to, so we'll write a Unit Test.
+この関数は内容が自己完結しているので、インクリメント関数を呼び出して、それが想定しているものを返すかどうかアサーションするのは簡単でしょう。さっそくユニットテストを書いてみます。
 
-If any of these assertions fail, it's clear that the issue is contained within the `increment` function.
+これらのアサーションのいずれかが失敗した場合、問題が `increment` 関数の中にあることは明らかです。
 
 ```js{4-16}
 // helpers.spec.js
@@ -71,66 +71,66 @@ describe('increment', () => {
 })
 ```
 
-As mentioned previously, unit testing is typically applied to self-contained business logic, components, classes, modules, or functions that do not involve UI rendering, network requests, or other environmental concerns.
+先ほど書いた通り、ユニットテストは通常、自己完結型のビジネスロジック、コンポーネント、クラス、モジュール、もしくは UI レンダリングやネットワークリクエストなどを含まず他の環境に関係しない関数に適用されます。
 
-These are typically plain JavaScript / TypeScript modules unrelated to Vue. In general, writing unit tests for business logic in Vue applications does not differ significantly from applications using other frameworks.
+これらは通常、Vue とは関係のないプレーンな JavaScript / TypeScript モジュールです。一般的に言って、Vue アプリケーションのビジネスロジックのユニットテストを書くことは、他のフレームワークを使用したアプリケーションと大きく異なるものではありません。
 
-There are two instances where you DO unit test Vue-specific features:
+Vue 固有の機能をユニットテストする場合、2 つのケースがあります:
 
-1. Composables
-2. Components
+1. コンポーザブル
+2. コンポーネント
 
-### Composables
+### コンポーザブル
 
-One category of functions specific to Vue applications are [Composables](/guide/reusability/composables.html), which may require special handling during tests.
-See [Testing Composables](#testing-composables) below for more details.
+Vue アプリケーションに特有の関数のカテゴリーの 1 つに[コンポーザブル](/guide/reusability/composables.html)があり、こちらはテスト時に特別な処理を必要とする場合があります。
+詳細は、以下の[Composablesのテスト](#testing-composables)を参照してください。
 
-### Unit Testing Components
+### コンポーネントのユニットテスト
 
-A component can be tested in two ways:
+コンポーネントは 2 つの方法でテストできます:
 
-1. Whitebox: Unit Testing
+1. ホワイトボックス: ユニットテスト
 
-   Tests that are "Whitebox tests" are aware of the implementation details and dependencies of a component. They are focused on **isolating** the component under test. These tests will usually involve mocking some, if not all of your component's children, as well as setting up plugin state and dependencies (e.g. Vuex).
+   "ホワイトボックステスト"は、コンポーネントの実装の詳細や依存関係を認識した上でテストを行います。このテストは、テスト対象のコンポーネントを **分離** することに重点を置いています。これらのテストでは、コンポーネントの子要素をモックしたり、プラグインの状態や依存関係（例: Vuex）を設定したりすることになります。
 
-2. Blackbox: Component Testing
+2. ブラックボックス: コンポーネントのテスト
 
-   Tests that are "Blackbox tests" are unaware of the implementation details of a component. These tests mock as little as possible to test the integration of your component and the entire system. They usually render all child components and are considered more of an "integration test". See the [Component Testing recommendations](#component-testing) below.
+   "ブラックボックステスト"は、コンポーネントの実装の詳細については意識しません。これらのテストは、コンポーネントとシステム全体の統合をテストするために、できるだけモックを少なくします。通常、子コンポーネントをすべてレンダリングするため、より"統合テスト"に近いものと考えられています。以下、[コンポーネントテストの推奨事項](#component-testing)を参照してください。
 
-### Recommendation
+### 推奨事項
 
 - [Vitest](https://vitest.dev/)
 
-  Since the official setup created by `create-vue` is based on [Vite](https://vitejs.dev/), we recommend using a unit testing framework that can leverage the same configuration and transform pipeline directly from Vite. [Vitest](https://vitest.dev/) is a unit testing framework designed specifically for this purpose, created and maintained by Vue / Vite team members. It integrates with Vite-based projects with minimal effort, and is blazing fast.
+  `create-vue` で作成される公式の設定は [Vite](https://vitejs.dev/) をベースにしているので、Vite と同じ設定・変換パイプラインを直接利用できるユニットテストフレームワークを使用することをお勧めします。[Vitest](https://vitest.dev/) は、この目的のために特別に設計されたユニットテストフレームワークで、Vue / Vite チームのメンバーによって開発、メンテナンスされています。Vite ベースのプロジェクトと最小限の労力で統合でき、非常に高速です。
 
-:::warning In Active Development
-Vitest is relatively new and is still undergoing rapid development. While it is not considered stable yet, the team is working hard to get it to production ready state.
+:::warning 積極的に開発中
+Vitest は比較的新しく、現在も急速に開発が進んでいます。まだ安定しているとは言えませんが、チームはプロダクションレディの状態にするために懸命に動いています。
 :::
 
-### Other Options
+### その他の選択肢
 
-- [Peeky](https://peeky.dev/) is another fast unit test runner with first-class Vite integration. It is also created by a Vue core team member and offers a GUI-based testing interface.
+- [Peeky](https://peeky.dev/) は最も Vite と統合されている、もう 1 つの高速ユニットテストランナーです。こちらも Vue のコアチームのメンバーによって作成されていて、GUI ベースのテストインターフェイスを提供します。
 
-- [Jest](https://jestjs.io/) is a popular unit testing framework, and can be made to work with Vite via the [vite-jest](https://github.com/sodatea/vite-jest) package. However, we only recommend Jest if you have an existing Jest test suite that needs to be migrated over to a Vite-based project, as Vitest offers a more seamless integration and better performance.
+- [Jest](https://jestjs.io/) はポピュラーなユニットテストフレームワークで、[vite-jest](https://github.com/sodatea/vite-jest) パッケージによって Vite で動作させることができます。ですが、Jest を推奨するのは既存の Jest テストスイートを Vite ベースのプロジェクトに移行する必要がある場合のみです。Vitest はよりシームレスな統合と優れたパフォーマンスを提供するからです。
 
-## Component Testing
+## コンポーネントのテスト
 
-In Vue applications, components are the main building blocks of the UI. Components are therefore the natural unit of isolation when it comes to validating your application's behavior. From a granularity perspective, component testing sits somewhere above unit testing and can be considered a form of integration testing. Much of your Vue Application should be covered by a component test and we recommend that each Vue component has its own spec file.
+Vue アプリケーションでは、コンポーネントは UI の主要なビルディングブロックです。したがって、アプリケーションの動作を検証する時の分離の単位として、コンポーネントは自然な単位といえます。粒度の観点からは、コンポーネントテストはユニットテストの上のどこかに位置し、かつ統合テストの一形態とも考えることができます。Vue アプリケーションの多くはコンポーネントテストでカバーされるべきであり、各 Vue コンポーネントは専用の spec ファイルを持つようにすることをお勧めします。
 
-Component tests should catch issues relating to your component's props, events, slots that it provides, styles, classes, lifecycle hooks, and more.
+コンポーネントテストは、コンポーネントのプロップス、イベント、提供するスロット、スタイル、クラス、ライフサイクルフックなどに関する問題を検出するようにする必要があります。
 
-Component tests should not mock child components, but instead test the interactions between your component and its children by interacting with the components as a user would. For example, a component test should click on an element like a user would instead of programmatically interacting with the component.
+コンポーネントテストでは、子コンポーネントをモックするのではなく、代わりにユーザーと同じようにコンポーネントと相互的な操作を行い、 コンポーネントとその子コンポーネントの間のインタラクションをテストするのが望ましいです。例えば、コンポーネントテストでは、プログラムでコンポーネントとやりとりするのではなく、 ユーザーが行うように要素をクリックするようにしなければなりません。
 
-Component tests should focus on the component's public interfaces rather than internal implementation details. For most components, the public interface is limited to: events emitted, props, and slots. When testing, remember to **test what a component does, not how it does it**.
+コンポーネントのテストでは、内部実装の詳細よりもそのコンポーネントのパブリックなインターフェイスに注目する必要があります。ほとんどのコンポーネントでは、公開インターフェースは限定されています: テストする際は**コンポーネントが何をするのかをテストするのであって、どのようにするのかをテストするのではない** ことを忘れないようにしましょう。
 
-**DO**
+**やること**
 
-- For **Visual** logic: assert correct render output based on inputted props and slots.
-- For **Behavioral** logic: assert correct render updates or emitted events in response to user input events.
+- **ビジュアル** のロジック: 入力されたプロップスとスロットに基づくレンダリング結果の正しさを評価します。
+- **ふるまい** のロジック: ユーザーの入力イベントに対応した更新内容のレンダリングやイベント発信を評価します。
 
-  In the below example, we demonstrate a Stepper component that has a DOM element labeled "increment" and can be clicked. We pass a prop called `max` that prevents the Stepper from being incremented past `2`, so if we click the button 3 times, the UI should still say `2`.
+  以下の例では、"increment" というラベルの付いた DOM 要素を持ち、クリックすることができるステッパー・コンポーネントを示しています。`max` という props を渡すことで、ステッパーが `2` を超えてインクリメントすることを防ぎます。したがって、ボタンを 3 回クリックしても、UI は `2` と表示されるはずです。
 
-  We know nothing about the implementation of Stepper, only that the "input" is the `max` prop and the "output" is the state of the DOM as the user will see it.
+  私たちはステッパーの実装について何も知りません。ただ、"入力"が `max` props で、"出力"がユーザーが見る DOM の状態であることだけが分かっています。
 
 <TestingApiSwitcher>
 
@@ -145,11 +145,11 @@ render(Stepper, {
 
 const { getByText } = render(Component)
 
-getByText('0') // Implicit assertion that "0" is within the component
+getByText('0') // コンポーネント内に "0 "があることを暗黙のうちに評価します
 
 const button = getByText('increment')
 
-// Dispatch a click event to our increment button.
+// インクリメントボタンにクリックイベントをディスパッチします。
 await fireEvent.click(button)
 
 getByText('1')
@@ -201,97 +201,97 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
 </TestingApiSwitcher>
 
-- **DON'T**
+- **やらないこと**
 
-  Don't assert the private state of a component instance or test the private methods of a component. Testing implementation details makes the tests brittle, as they are more likely to break and require updates when the implementation changes.
+  コンポーネントインスタンスのプライベートな状態をアサーションしたり、プライベートなメソッドをテストしないでください。実装の詳細をテストするとテストが壊れやすくなり、実装が変更されたときにテストの更新が必要になる可能性が高くなります。
 
-  The component's ultimate job is rendering the correct DOM output, so tests focusing on the DOM output provide the same level of correctness assurance (if not more) while being more robust and resilient to change.
+  コンポーネントの最終的な仕事は正しい DOM をレンダリングすることです。DOM 出力に焦点を当てたテストは同じレベルの正しさを保証すると同時に、（少なくとも）より堅牢で変化に強くなります。
 
-  Don't rely exclusively on snapshot tests. Asserting HTML strings does not describe correctness. Write tests with intentionality.
+  スナップショットテストだけに頼らないでください。HTML 文字列のアサーションは正しさを表すものではありません。意図を持ってテストを書いてください。
 
-  If a method needs to be tested thoroughly, consider extracting it into a standalone utility function and write a dedicated unit test for it. If it cannot be extracted cleanly, it may be tested as a part of a component, integration, or end-to-end test that covers it.
+  もしメソッドを徹底的にテストする必要があるなら、スタンドアローンのユーティリティー関数に抽出し、専用のユニットテストを書くことを検討してください。きれいに抽出できない場合は、それをカバーするコンポーネントテスト、統合テスト、またはエンドツーエンドテストの一部としてテストすることができます。
 
-### Recommendation
+### 推奨事項
 
-- [Vitest](https://vitest.dev/) for components or composables that render headlessly. (e.g. the [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) function in VueUse. Components and DOM can be tested using [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro).
+- [Vitest](https://vitest.dev/) はヘッドレスでレンダリングするコンポーネントやコンポーザブルのためのライブラリーです（例: VueUse の[`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon)関数など）。コンポーネントと DOM は [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro) を使うことでテストできます。
 
-- [Cypress Component Testing](https://on.cypress.io/component) for components whose expected behavior depends on properly rendering styles or triggering native DOM events. Can be used with Testing Library via [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
+- [Cypress Component Testing](https://on.cypress.io/component) はテストで期待する動作が、スタイルの適切なレンダリングやネイティブ DOM イベントのトリガーに依存するようなコンポーネントのためのライブラリーです。テストライブラリーは、[@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro) を介して使用することができます。
 
-The main differences between Vitest and browser-based runners are speed and execution context. In short, browser-based runners, like Cypress, can catch issues that node-based runners, like Vitest, cannot (e.g. style issues, real native DOM events, cookies, local storage, and network failures), but browser-based runners are *orders of magnitude slower than Vitest* because they do open a browser, compile your stylesheets, and more. Cypress is a browser-based runner that supports component testing. Please read [Vitest's comparison page](https://vitest.dev/guide/comparisons.html#cypress) for the latest information comparing Vitest and Cypress.
+Vitest とブラウザーベースのランナーの主な違いは、スピードと実行コンテキストです。つまり、Cypress のようなブラウザーベースのランナーは Vitest のようなノードベースのランナーでは捕捉できない問題（例: スタイルの問題、本物のネイティブ DOM イベント、クッキー、ローカルストレージ、ネットワーク障害など）をキャッチすることができます。ですが、ブラウザーベースのランナーは、ブラウザーを開き、スタイルシートをコンパイルなどをするので **Vitest より桁違いに遅い** のです。Cypress はコンポーネントテストをサポートするブラウザーベースのランナーです。Vitest と Cypress の比較に関する最新情報は [Vitest の比較ページ](https://vitest.dev/guide/comparisons.html#cypress)をお読みください。
 
-### Mounting Libraries
+### ライブラリーのマウント
 
-Component testing often involves mounting the component being tested in isolation, triggering simulated user input events, and asserting on the rendered DOM output. There are dedicated utility libraries that make these tasks simpler.
+コンポーネントのテストでは、テスト対象のコンポーネントを単独でマウントし、シミュレーションされたユーザー入力イベントをトリガーし、レンダリングした DOM に対してアサーションを行うことがよくあります。これらの作業を簡単にする専用のユーティリティーライブラリーがあります。
 
-- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) is a Vue testing library focused on testing components without relying on implementation details. Built with accessibility in mind, its approach also makes refactoring a breeze. Its guiding principle is that the more tests resemble the way software is used, the more confidence they can provide.
+- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) は、実装の詳細に依存しないコンポーネントのテストに重点を置いた Vue のテストライブラリーです。アクセシビリティを念頭に置いて構築されており、そのアプローチによりリファクタリングも容易になります。このガイドの指針は、テストがソフトウェアの使われ方に似ていればいるほど、より信頼性を高めることができるというものです。
 
-- [`@vue/test-utils`](https://github.com/vuejs/test-utils) is the official low-level component testing library that was written to provide users access to Vue specific APIs. It's also the lower-level library `@testing-library/vue` is built on top of.
+- [`@vue/test-utils`](https://github.com/vuejs/test-utils) は、Vue 固有の API へのアクセスをユーザーに提供するために書かれた、公式のローレベルコンポーネントテストライブラリーです。`@testing-library/vue` はこのライブラリー上に構築されているローレベルのライブラリーでもあります。
 
-We recommend using `@testing-library/vue` for testing components in applications, as its focus aligns better with the testing priorities of applications. Use `@vue/test-utils` only if you are building advanced components that require testing Vue-specific internals.
+アプリケーションのテストの優先順位と一致するため、アプリケーションのコンポーネントテストには `@testing-library/vue` を使用することをお勧めします。Vue 固有の内部機能をテストする必要があるような、高度なコンポーネントを構築する場合にのみ `@vue/test-utils` を使用してください。
 
-### Other Options
+### その他の選択肢
 
-- [Nightwatch](https://v2.nightwatchjs.org/) is an E2E test runner with Vue Component Testing support. ([Example Project](https://github.com/nightwatchjs-community/todo-vue) in Nightwatch v2)
+- [Nightwatch](https://v2.nightwatchjs.org/) は、Vue コンポーネントテストをサポートする E2E テストランナーです。(Nightwatch バージョン 2 の[プロジェクトの例](https://github.com/nightwatchjs-community/todo-vue)）
 
-## E2E Testing
+## E2E テスト
 
-While unit tests provide developers with some degree of confidence, unit and component tests are limited in their abilities to provide holistic coverage of an application when deployed to production. As a result, end-to-end (E2E) tests provide coverage on what is arguably the most important aspect of an application: what happens when users actually use your applications.
+ユニットテストは開発者にある程度の信頼性を与えますが、ユニットテストやコンポーネントテストは、本番環境に展開したときにアプリケーションの総合的なカバレッジを提供する性能が制限されます。その結果として、E2E（エンドツーエンド）テストは、アプリケーションの最も重要な側面に関するカバレッジを提供します: すなわち、ユーザーが実際にアプリケーションを使用するときに何が起こるか、です。
 
-End-to-end tests focus on multi-page application behavior that makes network requests against your production-built Vue application. They often involve standing up a database or other backend and may even be run against a live staging environment.
+エンドツーエンドテストは、本番と同等に構築された Vue アプリケーションに対してネットワークリクエストを行う、複数ページのアプリケーションの動作に焦点を当てます。多くの場合、データベースやその他のバックエンドを立ち上げる必要があり、稼働中のステージング環境に対して実行されることもあります。
 
-End-to-end tests will often catch issues with your router, state management library, top-level components (e.g. an App or Layout), public assets, or any request handling. As stated above, they catch critical issues that may be impossible to catch with unit tests or component tests.
+エンドツーエンドテストは、ルーター、状態管理ライブラリー、トップレベルのコンポーネント（例 : アプリケーションやレイアウト）、パブリックアセット、またはリクエスト処理に関する問題をしばしば捕捉します。上記のように、ユニットテストやコンポーネントテストではできない重要な問題をキャッチすることができます。
 
-End-to-end tests do not import any of your Vue application's code, but instead rely completely on testing your application by navigating through entire pages in a real browser.
+エンドツーエンドテストは Vue アプリケーションのコードを一切インポートせず、代わりに実際のブラウザーでページ全体を操作してアプリケーションをテストすることに完全に依存しています。
 
-End-to-end tests validate many of the layers in your application. They can either target your locally built application, or even a live Staging environment. Testing against your Staging environment not only includes your frontend code and static server, but all associated backend services and infrastructure.
+エンドツーエンドテストは、アプリケーションの多くのレイヤーを検証します。ローカルでビルドしたアプリケーションを対象とすることも、稼働中のステージング環境を対象とすることもできます。ステージング環境に対するテストは、フロントエンドのコードと静的サーバーだけでなく、関連するすべてのバックエンドのサービスとインフラストラクチャーもテスト対象に含みます。
 
-> The more your tests resemble the way your software is used, the more confidence they can give you. - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Author of the Testing Library
+> テストがソフトウェアの使われ方に似ていればいるほど、テストはより信頼できるものになる。- [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - テスティングライブラリーの著者
 
-By testing how user actions impact your application, E2E tests are often the key to higher confidence in whether an application is functioning properly or not.
+ユーザーの行動がアプリケーションにどのような影響を与えるかをテストすることで、E2E テストは、アプリケーションが適切に機能しているかどうかの信頼性を高める鍵となることが多いです。
 
-### Choosing an E2E Testing Solution
+### E2E テストソリューションの選択
 
-While end-to-end (E2E) testing on the web has gained a negative reputation for unreliable (flaky) tests and slowing down development processes, modern E2E tools have made strides forward to create more reliable, interactive, and useful tests. When choosing an E2E testing framework, the following sections provide some guidance on things to keep in mind when choosing a testing framework for your application.
+ウェブ上のエンドツーエンド (E2E) テストは、信頼性の低い（脆弱な）テストで開発プロセスの遅延を起こす、というネガティブな評判があります。ですが、最近の E2E ツールは、より信頼性が高く、インタラクティブで、役に立つテストを作成できるよう発展してきています。E2E テストフレームワークを選択するときのため、以下のセクションでは、アプリケーションのためのテストフレームワーク選定にあたって心に留めておくべきガイドラインを記載します。
 
-#### Cross-browser testing
+#### クロスブラウザーテスト
 
-One of the primary benefits that end-to-end (E2E) testing is known for is its ability to test your application across multiple browsers. While it may seem desirable to have 100% cross-browser coverage, it is important to note that cross browser testing has diminishing returns on a team's resources due the additional time and machine power required to run them consistently. As a result, it is important to be mindful of this trade-off when choosing the amount of cross-browser testing your application needs.
+エンドツーエンド（E2E）テストで知られている最も大きな利点の 1 つは、複数のブラウザーにわたってアプリケーションをテストできることです。100% のクロスブラウザーカバレッジが望ましいと思われるかもしれませんが、クロスブラウザーテストを一貫して実行するために必要な時間とマシンパワーが増えるため、チームのリソースに対するリターンが減る点に注意することが重要です。そのため、アプリケーションに必要なクロスブラウザーテストの量を選択する際には、このトレードオフを意識することが重要です。
 
-#### Faster feedback loops
+#### フィードバックループの高速化
 
-One of the primary problems with end-to-end (E2E) tests and development is that running the entire suite takes a long time. Typically, this is only done in continuous integration and deployment (CI/CD) pipelines. Modern E2E testing frameworks have helped to solve this by adding features like parallelization, which allows for CI/CD pipelines to often run magnitudes faster than before. In addition, when developing locally, the ability to selectively run a single test for the page you are working on while also providing hot reloading of tests can help to boost a developer's workflow and productivity.
+エンドツーエンド（E2E）テストと開発における主な問題の 1 つは、スート全体を実行するのに長い時間がかかるということです。一般的に、これは継続的インテグレーションとデプロイメント（CI/CD）パイプラインでのみ実行されます。最新の E2E テストフレームワークは、並列化などの機能を追加することでこの問題を解決し、CI/CD パイプラインを以前より数段速く実行できるようになりました。さらに、ローカルで開発する場合、作業中のページに対して単一のテストを選択的に実行し、テストのホットリロードを提供する機能は、開発者のワークフローと生産性を向上させるのに役立ちます。
 
-#### First-class debugging experience
+#### 一級のデバッグ体験
 
-While developers have traditionally relied on scanning logs in a terminal window to help determine what went wrong in a test, modern end-to-end (E2E) test frameworks allow developers to leverage tools that they are already familiar with, e.g. browser developer tools.
+従来の開発者はテストで何が問題だったかを判断するための方法としてターミナルウィンドウのログ調査に頼っていましたが、最新のエンドツーエンド（E2E）テストフレームワークでは、開発者がすでに使い慣れているツール、例えばブラウザーの開発者ツールを活用することができます。
 
-#### Visibility in headless mode
+#### ヘッドレスモードでの可視性
 
-When end-to-end (E2E) tests are run in continuous integration / deployment pipelines, they are often run in headless browsers (i.e., no visible browser is opened for the user to watch). A critical feature of modern E2E testing frameworks is the ability to see snapshots and/or videos of the application during testing, providing some insight into why errors are happening. Historically, it was tedious to maintain these integrations.
+エンドツーエンド (E2E) テストが継続的インテグレーション / デプロイメントパイプラインで実行されるとき、しばしばヘッドレスブラウザーで実行されます（すなわち、ユーザーが見るためのブラウザーが開かれません）。最新の E2E テストフレームワークの重要な機能では、テスト中にアプリケーションのスナップショットやビデオを見て、エラーが発生した理由に対する何らかの洞察を得られる機能があります。歴史的に、これらの機能の統合を維持するのは面倒なことでした。
 
-### Recommendation
+### 推奨事項
 
 - [Cypress](https://www.cypress.io/)
 
-  Overall, we believe Cypress provides the most complete E2E solution with features like an informative graphical interface, excellent debuggability, built-in assertions and stubs, flake-resistance, parallelization, and snapshots. As mentioned above, it also provides support for [Component Testing](https://docs.cypress.io/guides/component-testing/introduction). However, it only supports Chromium-based browsers and Firefox.
+  全体的に見て Cypress は、有益なグラフィカルインターフェース、優れたデバッグ性、組み込みアサーションとスタブ、耐フレーク性、並列化、スナップショットなどの機能により、最も完成した E2E ソリューションを提供すると私たちは考えています。また、前述の通り[コンポーネントのテスト](https://docs.cypress.io/guides/component-testing/introduction)もサポートしています。ですが、サポートしているのは Chromium ベースのブラウザーと Firefox のみです。
 
-### Other Options
+### その他の選択肢
 
-- [Playwright](https://playwright.dev/) is also a great E2E testing solution with a wider range of browser support (mainly WebKit). See [Why Playwright](https://playwright.dev/docs/why-playwright) for more details.
+- [Playwright](https://playwright.dev/) は、より幅広いブラウザー（主に WebKit）をサポートする、優れた E2E テストソリューションでもあります。詳しくは[なぜ Playwright なのか](https://playwright.dev/docs/why-playwright)をご覧ください。
 
-- [Nightwatch v2](https://v2.nightwatchjs.org/) is an E2E testing solution based on [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). This gives it the widest browser support range.
+- [Nightwatch v2](https://v2.nightwatchjs.org/) は、[Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) をベースとした E2E テストソリューションです。こちらは最も広い範囲のブラウザーをサポートしています。
 
-## Recipes
+## レシピ
 
-### Adding Vitest to a Project
+### Vitest プロジェクトに追加する
 
-In a Vite-based Vue project, run:
+Vite ベースの Vue プロジェクトでは、以下を実行します:
 
 ```sh
 > npm install -D vitest happy-dom @testing-library/vue@next
 ```
 
-Next, update the Vite configuration to add the `test` option block:
+次に、 Vite の設定を更新して `test` オプションブロックを追加します:
 
 ```js{6-12}
 // vite.config.js
@@ -300,17 +300,17 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   // ...
   test: {
-    // enable jest-like global test APIs
+    // jest ライクなグローバルテスト API を有効化
     globals: true,
-    // simulate DOM with happy-dom
-    // (requires installing happy-dom as a peer dependency)
+    // happy-dom 環境の DOM をシミュレーションします
+    // （peer dependency として happy-dom のインストールが必要です）
     environment: 'happy-dom'
   }
 })
 ```
 
 :::tip
-If you are using TypeScript, add `vitest/globals` to the `types` field in your `tsconfig.json`.
+TypeScript を使用している場合は、`tsconfig.json` の `types` フィールドに `vitest/globals` を追加してください。
 
 ```json
 // tsconfig.json
@@ -323,7 +323,7 @@ If you are using TypeScript, add `vitest/globals` to the `types` field in your `
 ```
 :::
 
-Then create a file ending in `*.test.js` in your project. You can place all test files in a test directory in project root, or in test directories next to your source files. Vitest will automatically search for them using the naming convention.
+そして、`*.test.js` で終わるファイルをプロジェクト内に作成します。すべてのテストファイルは、プロジェクトのルートにあるテストディレクトリー、またはソースファイルの隣接するテストディレクトリーに置くことができます。Vitest は命名規則を使用して自動的にファイルを検索してくれます。
 
 ```js
 // MyComponent.test.js
@@ -342,7 +342,7 @@ test('it should work', () => {
 })
 ```
 
-Finally, update `package.json` to add the test script and run it:
+最後に、`package.json` を更新して、テストスクリプトを追加し、実行します:
 
 ```json{4}
 {
@@ -357,18 +357,18 @@ Finally, update `package.json` to add the test script and run it:
 > npm test
 ```
 
-### Testing Composables
+### コンポーザブルのテスト
 
-> This section assumes you have read the [Composables](/guide/reusability/composables.html) section.
+> このセクションは[コンポーザブル](/guide/reusability/composables.html)セクションを既に読んでいることを想定しています。
 
-When it comes to testing composables, we can divide them into two categories: composables that do not rely on a host component instance, and composables that do.
+コンポーザブルをテストする場合、2 つのカテゴリーに分割することができます:ホストコンポーネントのインスタンスに依存しないコンポーザブルと、依存するコンポーザブルです。
 
-A composable depends on a host component instance when it uses the following APIs:
+以下の API を使用する場合、コンポーザブルはホストコンポーネントインスタンスに依存します:
 
-- Lifecycle hooks
+- ライフサイクルフック
 - Provide / Inject
 
-If a composable only uses Reactivity APIs, then it can be tested by directly invoking it and asserting its returned state / methods:
+Reactivity API のみを使用するコンポーザブルの場合、それを直接呼び出して、返された状態やメソッドをアサーションすることでテストすることができます:
 
 ```js
 // counter.js
@@ -398,7 +398,7 @@ test('useCounter', () => {
 })
 ```
 
-A composable that relies on lifecycle hooks or Provide / Inject needs to be wrapped in a host component to be tested. We can create a helper like the following:
+ライフサイクルフックや Provide / Inject に依存するコンポーザブルは、テスト対象となるホストコンポーネントでラップする必要があります。以下のようなヘルパーを作成するといいでしょう:
 
 ```js
 // test-utils.js
@@ -409,13 +409,13 @@ export function withSetup(composable) {
   const app = createApp({
     setup() {
       result = composable()
-      // suppress missing template warning
+      // template の警告を抑えます
       return () => {}
     }
   })
   app.mount(document.createElement('div'))
-  // return the result and the app instance
-  // for testing provide / unmount
+  // provide / unmount のテストのため
+  // result と app インスタンスを返却します
   return [result, app]
 }
 ```
@@ -425,16 +425,16 @@ import { useFoo } from './foo'
 
 test('useFoo', () => {
   const [result, app] = withSetup(() => useFoo(123))
-  // mock provide for testing injections
+  // injection のテストのため provide をモック
   app.provide(...)
-  // run assertions
+  // アサーションを実行
   expect(result.foo.value).toBe(1)
-  // trigger onUnmounted hook if needed
+  // 必要に応じて onUnmounted フックを実行します
   app.unmount()
 })
 ```
 
-For more complex composables, it could also be easier to test it by writing tests against the wrapper component using [Component Testing](#component-testing) techniques.
+より複雑なコンポーザブルの場合、[コンポーネントテスト](#component-testing)のテクニックを使ってラッパーコンポーネントに対するテストを書くことで、より簡単にテストすることもできます。
 
 <!--
 TODO more testing recipes can be added in the future e.g.
