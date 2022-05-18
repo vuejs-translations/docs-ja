@@ -1,25 +1,25 @@
-# Template Refs
+# テンプレート参照
 
-While Vue's declarative rendering model abstracts away most of the direct DOM operations for you, there may still be cases where we need direct access to the underlying DOM elements. To achieve this, we can use the special `ref` attribute:
+Vue の宣言型レンダリングモデルは、直接的な DOM 操作のほとんどを抽象化してくれます。それでも、基盤の DOM 要素に直接アクセスすることが必要になるケースがまだ存在するかもしれません。次に示す `ref` という特殊な属性を用いると、それを実現することができます:
 
 ```vue-html
 <input ref="input">
 ```
 
-`ref` is a special attribute, similar to the `key` attribute discussed in the `v-for` chapter. It allows us to obtain a direct reference to a specific DOM element or child component instance after it's mounted. This may be useful when you want to, for example, programmatically focus an input on component mount, or initialize a 3rd party library on an element.
+`ref` は、`v-for` の章で説明した `key` 属性に似た、特殊な属性です。これを使用すると、特定の DOM 要素や子コンポーネントのインスタンスがマウントされた後に、そのインスタンスへの直接の参照を取得することができます。例えば、コンポーネントがマウントされた時にプログラムを使って入力欄にフォーカスを当てたり、ある要素に使用するサードパーティのライブラリーを初期化したりしたい時に便利です。
 
-## Accessing the Refs
+## 参照へのアクセス
 
 <div class="composition-api">
 
-To obtain the reference with Composition API, we need to declare a ref with the same name:
+Composition API で参照を取得するには、以下のように同名の ref を宣言します:
 
 ```vue
 <script setup>
 import { ref, onMounted } from 'vue'
 
-// declare a ref to hold the element reference
-// the name must match template ref value
+// 要素の参照を保持する ref を宣言します。
+// 名前は、テンプレートの ref の値に一致させる必要があります。
 const input = ref(null)
 
 onMounted(() => {
@@ -32,7 +32,7 @@ onMounted(() => {
 </template>
 ```
 
-If not using `<script setup>`, make sure to also return the ref from `setup()`:
+`<script setup>` を使用しない場合は、`setup()` から ref を返す必要もあります:
 
 ```js{6}
 export default {
@@ -49,7 +49,7 @@ export default {
 </div>
 <div class="options-api">
 
-The resulting ref is exposed on `this.$refs`:
+結果として得られる参照は、以下のように `this.$refs` で公開されます:
 
 ```vue
 <script>
@@ -67,33 +67,33 @@ export default {
 
 </div>
 
-Note that you can only access the ref **after the component is mounted.** If you try to access <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> in a template expression, it will be `null` on the first render. This is because the element doesn't exist until after the first render!
+参照にアクセスできるのは、**コンポーネントがマウントされた後**に限られることに注意してください。テンプレートの式で <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> にアクセスしようとしても、初回のレンダリングでは `null` になっています。なぜなら、初回のレンダリングが終わった後でないと要素が存在しないためです！
 
 <div class="composition-api">
 
-If you are trying to watch the changes of a template ref, make sure to account for the case where the ref has `null` value:
+テンプレート参照の更新を監視する時は、参照が `null` 値になる場合があることを考慮する必要があります:
 
 ```js
 watchEffect(() => {
   if (input.value) {
     input.value.focus()
   } else {
-    // not mounted yet, or the element was unmounted (e.g. by v-if)
+    // 要素がまだマウントされていない、または (v-if などによって) アンマウントされた
   }
 })
 ```
 
-See also: [Typing Template Refs](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
+こちらもご覧ください: [テンプレート参照の型付け](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
 
 </div>
 
-## Refs inside `v-for`
+## `v-for` の中の参照
 
-> Requires v3.2.25 or above
+> v3.2.25 以降が必要です。
 
 <div class="composition-api">
 
-When `ref` is used inside `v-for`, the corresponding ref should contain an Array value, which will be populated with the elements after mount:
+`v-for` の中で `ref` を使用すると、対応する参照には配列値が格納されます。そしてこの配列値には、マウント後の要素が代入されます:
 
 ```vue
 <script setup>
@@ -117,12 +117,12 @@ onMounted(() => console.log(itemRefs.value))
 </template>
 ```
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgb25Nb3VudGVkIH0gZnJvbSAndnVlJ1xuXG5jb25zdCBsaXN0ID0gcmVmKFsxLCAyLCAzXSlcblxuY29uc3QgaXRlbVJlZnMgPSByZWYoW10pXG5cbm9uTW91bnRlZCgoKSA9PiB7XG4gIGFsZXJ0KGl0ZW1SZWZzLnZhbHVlLm1hcChpID0+IGkudGV4dENvbnRlbnQpKVxufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDx1bD5cbiAgICA8bGkgdi1mb3I9XCJpdGVtIGluIGxpc3RcIiByZWY9XCJpdGVtUmVmc1wiPlxuICAgICAge3sgaXRlbSB9fVxuICAgIDwvbGk+XG4gIDwvdWw+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
+[プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgb25Nb3VudGVkIH0gZnJvbSAndnVlJ1xuXG5jb25zdCBsaXN0ID0gcmVmKFsxLCAyLCAzXSlcblxuY29uc3QgaXRlbVJlZnMgPSByZWYoW10pXG5cbm9uTW91bnRlZCgoKSA9PiB7XG4gIGFsZXJ0KGl0ZW1SZWZzLnZhbHVlLm1hcChpID0+IGkudGV4dENvbnRlbnQpKVxufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDx1bD5cbiAgICA8bGkgdi1mb3I9XCJpdGVtIGluIGxpc3RcIiByZWY9XCJpdGVtUmVmc1wiPlxuICAgICAge3sgaXRlbSB9fVxuICAgIDwvbGk+XG4gIDwvdWw+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
 </div>
 <div class="options-api">
 
-When `ref` is used inside `v-for`, the resulting ref value will be an array containing the corresponding elements:
+`v-for` の中で `ref` を使用すると、結果として得られる参照の値は、対応する要素を格納する配列になります:
 
 ```vue
 <script>
@@ -149,27 +149,27 @@ export default {
 </template>
 ```
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbGlzdDogWzEsIDIsIDNdXG4gICAgfVxuICB9LFxuICBtb3VudGVkKCkge1xuICAgIGNvbnNvbGUubG9nKHRoaXMuJHJlZnMuaXRlbXMpXG4gIH1cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDx1bD5cbiAgICA8bGkgdi1mb3I9XCJpdGVtIGluIGxpc3RcIiByZWY9XCJpdGVtc1wiPlxuICAgICAge3sgaXRlbSB9fVxuICAgIDwvbGk+XG4gIDwvdWw+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
+[プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgbGlzdDogWzEsIDIsIDNdXG4gICAgfVxuICB9LFxuICBtb3VudGVkKCkge1xuICAgIGNvbnNvbGUubG9nKHRoaXMuJHJlZnMuaXRlbXMpXG4gIH1cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDx1bD5cbiAgICA8bGkgdi1mb3I9XCJpdGVtIGluIGxpc3RcIiByZWY9XCJpdGVtc1wiPlxuICAgICAge3sgaXRlbSB9fVxuICAgIDwvbGk+XG4gIDwvdWw+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
 </div>
 
-It should be noted that the ref array does **not** guarantee the same order as the source array.
+参照の配列では、元の配列と同じ順序が**保証されない**ことに注意する必要があります。
 
-## Function Refs
+## 関数を使った参照
 
-Instead of a string key, the `ref` attribute can also be bound to a function, which will be called on each component update and gives you full flexibility on where to store the element reference. The function receives the element reference as the first argument:
+`ref` 属性は、文字列のキーの代わりに、関数にバインドすることもできます。関数はコンポーネントが更新されるたびに呼び出され、要素の参照をどこに保持するかを柔軟に決めることができます。関数は、第 1 引数として要素への参照を受け取ります:
 
 ```vue-html
-<input :ref="(el) => { /* assign el to a property or ref */ }">
+<input :ref="(el) => { /* el をプロパティまたは ref に保持する */ }">
 ```
 
-Note we are using a dynamic `:ref` binding so we can pass it a function instead of a ref name string. When the element is unmounted, the argument will be `null`. You can, of course, use a method instead of an inline function.
+動的な `:ref` のバインディングを使っていることに注目してください。これにより、参照の名前を示す文字列ではなく、関数を渡すことが可能になります。要素がアンマウントされると、引数は `null` になります。もちろん、インライン関数のほかに、メソッドを指定することもできます。
 
-## Ref on Component
+## コンポーネントでの参照
 
-> This section assumes knowledge of [Components](/guide/essentials/component-basics). Feel free to skip it and come back later.
+> このセクションでは、[コンポーネント](/guide/essentials/component-basics)の知識があることが前提となります。読み飛ばして、後で戻ってくるのでも大丈夫です。
 
-`ref` can also be used on a child component. In this case the reference will be that of a component instance:
+`ref` は子コンポーネントに対して使用することもできます。その場合、以下のように、参照はコンポーネントのインスタンスへの参照になります:
 
 <div class="composition-api">
 
@@ -181,7 +181,7 @@ import Child from './Child.vue'
 const child = ref(null)
 
 onMounted(() => {
-  // child.value will hold an instance of <Child />
+  // child.value は <Child /> のインスタンスを保持します。
 })
 </script>
 
@@ -202,7 +202,7 @@ export default {
     Child
   },
   mounted() {
-    // this.$refs.child will hold an instance of <Child />
+    // this.$refs.child は <Child /> のインスタンスを保持します。
   }
 }
 </script>
@@ -214,11 +214,11 @@ export default {
 
 </div>
 
-<span class="composition-api">If the child component is using Options API or not using `<script setup>`, the</span><span class="options-api">The</span> referenced instance will be identical to the child component's `this`, which means the parent component will have full access to every property and method of the child component. This makes it easy to create tightly coupled implementation details between the parent and the child, so component refs should be only used when absolutely needed - in most cases, you should try to implement parent / child interactions using the standard props and emit interfaces first.
+<span class="composition-api">子コンポーネントが Options API で書かれている場合、または子コンポーネントが `<script setup>` を使わずに書かれている場合、</span><span class="options-api"></span>参照されるインスタンスは子コンポーネントの `this` と同じになります。これは、親コンポーネントからは子コンポーネントのすべてのプロパティとメソッドに完全にアクセスできることを意味します。そうなると、親と子の間で実装の細かな部分が緊密に結合された状態が作られやすくなってしまいます。したがって、コンポーネントの参照は、絶対に必要と言える場合に限って使用するべきです。ほとんどの場合、まずは標準の props と emit のインターフェースを使って親子間のやり取りを実装することを試みるとよいでしょう。
 
 <div class="composition-api">
 
-An exception here is that components using `<script setup>` are **private by default**: a parent component referencing a child component using `<script setup>` won't be able to access anything unless the child component chooses to expose a public interface using the `defineExpose` macro:
+特例は、`<script setup>` を使用するコンポーネントです。このようなコンポーネントは、**デフォルトでプライベート**となります。`<script setup>` が使われている子コンポーネントを親コンポーネントから参照する場合、親コンポーネントは、子コンポーネントで `defineExpose` マクロを使って選択されたパブリックインターフェース以外のものにアクセスすることができません:
 
 ```vue
 <script setup>
@@ -234,14 +234,14 @@ defineExpose({
 </script>
 ```
 
-When a parent gets an instance of this component via template refs, the retrieved instance will be of the shape `{ a: number, b: number }` (refs are automatically unwrapped just like on normal instances).
+親がテンプレート参照を用いてこのコンポーネントのインスタンスを取得する場合、取得されるインスタンスは `{ a: number, b: number }` の形になります (通常のインスタンスと同様に、ref は自動的にアンラップされます)。
 
-See also: [Typing Component Template Refs](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
+こちらもご覧ください: [コンポーネントのテンプレート参照の型付け](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
 
-The `expose` option can be used to limit the access to a child instance:
+子インスタンスへのアクセスに制限を設けるには、`expose` オプションを使用します:
 
 ```js
 export default {
@@ -263,6 +263,6 @@ export default {
 }
 ```
 
-In the above example, a parent referencing this component via template ref will only be able to access `publicData` and `publicMethod`.
+上の例では、テンプレート参照を用いてこのコンポーネントを参照する親に、`publicData` と `publicMethod` のみへのアクセスを許可します。
 
 </div>

@@ -45,7 +45,7 @@ export default {
 <div class="html">
 
 ```js
-import ChildComp from './ChildComp.vue'
+import ChildComp from './ChildComp.js'
 
 createApp({
   components: {

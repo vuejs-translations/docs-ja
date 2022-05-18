@@ -29,7 +29,7 @@ Provides animated transition effects to a **single** element or component.
   interface TransitionProps {
     /**
      * Used to automatically generate transition CSS class names.
-     * e.g. `name: fade'` will auto expand to `.fade-enter`,
+     * e.g. `name: 'fade'` will auto expand to `.fade-enter`,
      * `.fade-enter-active`, etc.
      */
     name?: string
@@ -55,7 +55,7 @@ Provides animated transition effects to a **single** element or component.
      * Controls the timing sequence of leaving/entering transitions.
      * Default behavior is simultaneous.
      */
-    mode?: 'in-out' | 'out-in'
+    mode?: 'in-out' | 'out-in' | 'default'
     /**
      * Whether to apply transition on initial render.
      * Default: false
@@ -244,9 +244,9 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
 
   <!-- Array (use `v-bind`) -->
-  <keepalive :include="['a', 'b']">
+  <KeepAlive :include="['a', 'b']">
     <component :is="view"></component>
-  </keepalive>
+  </KeepAlive>
   ```
 
   Usage with `max`:
