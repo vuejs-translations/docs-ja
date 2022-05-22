@@ -221,7 +221,7 @@ export const sidebar = {
       items: [
         { text: 'トランジション', link: '/guide/built-ins/transition' },
         {
-          text: 'TransitionGroup',
+          text: 'トランジショングループ',
           link: '/guide/built-ins/transition-group'
         },
         { text: 'KeepAlive', link: '/guide/built-ins/keep-alive' },
