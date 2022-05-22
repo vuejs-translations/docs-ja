@@ -173,7 +173,7 @@ SFC では、ネイティブの HTML 要素と区別するために、子コン�
 <button-counter></button-counter>
 ```
 
-詳細は [DOM テンプレート解析の注意点](#dom-template-parsing-caveats)を参照ください。
+詳細は [DOM テンプレート解析の注意点](#dom-テンプレート解析の注意点)を参照ください。
 
 ## Props の受け渡し
 
