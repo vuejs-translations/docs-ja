@@ -12,7 +12,7 @@ Vue のコンポーネントでは、明示的な props (プロパティ) の宣
 
 <div class="composition-api">
 
-SFC で `<script setup>` を使用する場合、`defineProps()` マクロを使って props を宣言します:
+SFC で `<script setup>` を使用する場合、`defineProps()` マクロを使ってプロパティを宣言します:
 
 ```vue
 <script setup>
@@ -34,13 +34,13 @@ export default {
 }
 ```
 
-`defineProps()` に渡している引数と、Options API の `props` オプションに渡している値が同じであることに注目してください。props 用の同じ Options API が、2 つの宣言スタイル間で共有されています。
+`defineProps()` に渡している引数と、Options API の `props` オプションに渡している値が同じであることに注目してください。同じ props オプションの API が、2 つの宣言スタイル間で共有されています。
 
 </div>
 
 <div class="options-api">
 
-props は、以下のように [`props`](/api/options-state.html#props) オプションを使って宣言します:
+プロパティは、以下のように [`props`](/api/options-state.html#props) オプションを使って宣言します:
 
 ```js
 export default {
@@ -54,7 +54,7 @@ export default {
 
 </div>
 
-props の宣言には、文字列の配列に加え、オブジェクト構文を用いることもできます:
+プロパティの宣言には、文字列の配列に加え、オブジェクト構文を用いることもできます:
 
 <div class="options-api">
 
@@ -90,19 +90,19 @@ export default {
 
 </div>
 
-オブジェクト宣言の構文に含める各プロパティについて、キーにはプロパティの名前、値には目的の型のコンストラクタ関数を指定します。
+オブジェクト宣言の構文に含める各プロパティについて、キーにはプロパティの名前、値には目的の型のコンストラクター関数を指定します。
 
 これは自分のコンポーネントを文書化するのに役立ちます。また、誤った型を渡した時にブラウザーのコンソールに警告が表示されるようになり、コンポーネントを利用する他の開発者のためにもなります。このページの後半では、[プロパティのバリデーション](#prop-validation)について詳しく説明します。
 
 <div class="options-api">
 
-[コンポーネントの props の型付け](/guide/typescript/options-api.html#typing-component-props)も合わせて参照してください。<sup class="vt-badge ts" />
+[コンポーネントのプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)も合わせて参照してください。<sup class="vt-badge ts" />
 
 </div>
 
 <div class="composition-api">
 
-TypeScript と `<script setup>` の組み合わせを用いる場合、型アノテーションをそのまま使って props を宣言することも可能です:
+TypeScript と `<script setup>` の組み合わせを用いる場合、型アノテーションをそのまま使ってプロパティを宣言することも可能です:
 
 ```vue
 <script setup lang="ts">
@@ -113,7 +113,7 @@ defineProps<{
 </script>
 ```
 
-詳細: [コンポーネントの props の型付け](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+詳細: [コンポーネントのプロパティの型付け](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
@@ -148,13 +148,13 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-技術的には、子コンポーネントに props を渡すときにも camelCase を用いることができます (ただし [DOM テンプレート](/guide/essentials/component-basics.html#dom-template-parsing-caveats)内を除く)。しかし、常に kebab-case (ケバブケース) を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
+技術的には、子コンポーネントにプロパティを渡すときにも camelCase を用いることができます (ただし [DOM テンプレート](/guide/essentials/component-basics.html#dom-template-parsing-caveats)内を除く)。しかし、常に kebab-case (ケバブケース) を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
 
 ```vue-html
 <MyComponent greeting-message="hello" />
 ```
 
-[コンポーネントのタグには、可能な限り PascalCase を用いる](/guide/components/registration.html#component-name-casing)ことが推奨されます。これは Vue コンポーネントとネイティブ要素の区別が付き、テンプレートの可読性が高まるためです。しかし、props を渡すときに camelCase を用いることには、それほど実用的なメリットがありません。そのため、Vue では各言語の規約に従うことが推奨されます。
+[コンポーネントのタグには、可能な限り PascalCase を用いる](/guide/components/registration.html#component-name-casing)ことが推奨されます。これは Vue コンポーネントとネイティブ要素の区別が付き、テンプレートの可読性が高まるためです。しかし、プロパティを渡すときに camelCase を用いることには、それほど実用的なメリットがありません。そのため、Vue では各言語の規約に従うことが推奨されます。
 
 ### 静的なプロパティと動的なプロパティ
 
@@ -174,7 +174,7 @@ export default {
 <BlogPost :title="post.title + ' by ' + post.author.name" />
 ```
 
-### 異なる種類の値を渡す
+### いろいろな種類の値を渡す
 
 上の 2 つは、たまたま文字列の値を渡す例ですが、プロパティには _どんな_ 種類の値も渡すことができます。
 
@@ -342,7 +342,7 @@ export default {
    ```js
    const props = defineProps(['size'])
 
-   // 算出プロパティ。プロパティが変更されると自動的に更新される。
+   // プロパティが変更されると自動的に更新される算出プロパティ
    const normalizedSize = computed(() => props.size.trim().toLowerCase())
    ```
 
@@ -397,9 +397,9 @@ defineProps({
   // デフォルト値を持つオブジェクト
   propE: {
     type: Object,
-      // オブジェクトと配列のデフォルトは、ファクトリー関数を使って
-      // 返す必要があります。ファクトリー関数は、コンポーネントが
-      // 受け取った生の各プロパティを引数として受け取ります。
+    // オブジェクトと配列のデフォルトは、ファクトリー関数を使って
+    // 返す必要があります。ファクトリー関数は、コンポーネントが
+    // 受け取った生の各プロパティを引数として受け取ります。
     default(rawProps) {
       return { message: 'hello' }
     }
@@ -492,7 +492,7 @@ export default {
 
 <div class="composition-api">
 
-[型のみの props 宣言](/api/sfc-script-setup.html#typescript-only-features) を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
+[型のみのプロパティ宣言](/api/sfc-script-setup.html#typescript-only-features) を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
 
 </div>
 <div class="options-api">
@@ -505,7 +505,7 @@ export default {
 
 ### 実行時の型チェック
 
-`type` には、以下のネイティブコンストラクタを指定することができます:
+`type` には、以下のネイティブコンストラクターを指定することができます:
 
 - `String`
 - `Number`
@@ -516,7 +516,7 @@ export default {
 - `Function`
 - `Symbol`
 
-加えて、`type` にはカスタムのクラスやコンストラクタ関数を指定することもできます。その場合、`instanceof` チェックによってアサーションが行われます。例えば、次のクラスがあったとします:
+加えて、`type` にはカスタムのクラスやコンストラクター関数を指定することもできます。その場合、`instanceof` チェックによってアサーションが行われます。例えば、次のクラスがあったとします:
 
 ```js
 class Person {
