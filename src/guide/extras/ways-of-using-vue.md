@@ -1,51 +1,51 @@
-# Ways of Using Vue
+# Vue のさまざまな活用方法
 
-We believe there is no "one size fits all" story for the web. This is why Vue is designed to be flexible and incrementally adoptable. Depending on your use case, Vue can be used in different ways to strike the optimal balance between stack complexity, developer experience and end performance.
+私たちは、Web に「どんな場合にも通用する」ストーリーはないと考えています。このため、Vue は柔軟で段階的に採用できるよう設計されています。ユースケースに応じて、Vue はスタックの複雑さ、開発者体験、およびエンドパフォーマンスの最適なバランスを取るために、さまざまな方法で使用できます。
 
-## Standalone Script
+## スタンドアロンスクリプト
 
-Vue can be used as a standalone script file - no build step required! If you have a backend framework already rendering most of the HTML, or your frontend logic isn't complex enough to justify a build step, this is the easiest way to integrate Vue into your stack. You can think of Vue as a more declarative replacement of jQuery in such cases.
+Vue は、ビルド不要でスタンドアロンのスクリプトファイルとして使用できます。バックエンドフレームワークがすでに HTML の大部分をレンダリングしている場合、またはフロントエンドのロジックがビルドを必要とするほど複雑でない場合、これは Vue をスタックに統合するもっとも簡単な方法です。このような場合、Vue は jQuery をより宣言的に置き換えたものと考えることができます。
 
-Vue also provides an alternative distribution called [petite-vue](https://github.com/vuejs/petite-vue) that is specifically optimized for progressively enhancing existing HTML. It has a smaller feature set, but is extremely lightweight and uses an implementation that is more efficient in no-build-step scenarios.
+Vue は、既存の HTML を徐々に強化するために特に最適化された[petite-vue](https://github.com/vuejs/petite-vue)と呼ばれる代替ディストリビューションも提供しています。これは、機能セットは小さいですが、非常に軽量で、ビルドステップなしのシナリオでより効率的な実装が使用されています。
 
-## Embedded Web Components
+## 組み込み型 Web コンポーネント
 
-You can use Vue to [build standard Web Components](/guide/extras/web-components) that can be embedded in any HTML page, regardless of how they are rendered. This option allows you to leverage Vue in a completely consumer-agnostic fashion: the resulting web components can be embedded in legacy applications, static HTML, or even applications built with other frameworks.
+Vue を使用して、レンダリング方法に関係なく、任意の HTML ページに埋め込むことができる[標準の Web コンポーネントを構築する](/guide/extras/web-components)ことができます。このオプションを使用すると、完全に利用者に依存しない方法で Vue を活用できます。結果として得られる Web コンポーネントは、レガシーなアプリケーションや静的な HTML、あるいは他のフレームワークで構築されたアプリケーションに埋め込むことができます。
 
-## Single-Page Application (SPA)
+## シングルページアプリケーション (SPA)
 
-Some applications require rich interactivity and non-trivial stateful logic on the frontend. The best way to build such applications is to use an architecture where Vue not only controls the entire page, but also handles data updates and navigation without having to reload the page. This type of application is typically referred to as a Single-Page Application (SPA).
+アプリケーションによっては、フロントエンドにリッチなインタラクティビティと簡易ではないステートフルなロジックを必要とするものがあります。このようなアプリケーションを構築する最良の方法は、Vue がページ全体を制御するだけでなく、ページを再読み込みすることなくデータの更新やナビゲーションを処理するアーキテクチャを使用することです。このようなアプリケーションは、一般にシングルページアプリケーション (SPA) と呼ばれます。
 
-Vue provides core libraries and [comprehensive tooling support](/guide/scaling-up/tooling) with amazing developer experience for building modern SPAs, including:
+Vue は、モダンな SPA を素晴らしい開発者体験で構築するために、以下のようなコアライブラリと[包括的なツールのサポート](/guide/scaling-up/tooling)を提供します。
 
-- Client-side router
-- Blazing fast build tool chain
-- IDE support
-- Browser devtools
-- TypeScript integrations
-- Testing utilities
+- クライアントサイドルーター
+- 高速なビルドツールチェーン
+- IDE のサポート
+- ブラウザーの開発ツール
+- TypeScript との統合
+- テストユーティリティ
 
-SPAs typically require the backend to expose API endpoints - but you can also pair Vue with solutions like [Inertia.js](https://inertiajs.com) to get the SPA benefits while retaining a server-centric development model.
+SPA では通常、バックエンドが API エンドポイントを公開する必要があります。しかし、Vue と[Inertia.js](https://inertiajs.com)などのソリューションを組み合わせれば、サーバー中心の開発モデルを維持しながら SPA の利点を得ることもできます。
 
-## Fullstack / SSR
+## フルスタック / サーバーサイドレンダリング (SSR)
 
-Pure client-side SPAs are problematic when the app is sensitive to SEO and time-to-content. This is because the browser will receive a largely empty HTML page, and has to wait until the JavaScript is loaded before rendering anything.
+SEO や表示速度が重要なアプリの場合、純粋なクライアントサイド SPA は問題があります。これは、ブラウザーがほとんど空の HTML ページを受け取り、何かをレンダリングする前に JavaScript が読み込まれるまで待機しなければならないためです。
 
-Vue provides first-class APIs to "render" a Vue app into HTML strings on the server. This allows the server to send back already-rendered HTML, allowing end users to see the content immediately while the JavaScript is being downloaded. Vue will then "hydrate" the application on the client side to make it interactive. This is called [Server-Side Rendering (SSR)](/guide/scaling-up/ssr) and it greatly improves Core Web Vital metrics such as [Largest Contentful Paint (LCP)](https://web.dev/lcp/).
+Vue は、Vue アプリをサーバー上の HTML 文字列に「レンダリング」するための一流の API を提供します。これにより、サーバーはすでにレンダリングされた HTML を送り返し、エンドユーザーは JavaScript をダウンロードしている間、コンテンツをすぐに見ることができるようになります。そして Vue は、クライアント側でアプリケーションを「ハイドレート」して、インタラクティブなものにします。これは [サーバーサイドレンダリング (SSR)](/guide/scaling-up/ssr) と呼ばれ、 [Largest Contentful Paint (LCP)](https://web.dev/lcp/) などの Core Web Vital のメトリクスを大きく向上させます。
 
-There are higher-level Vue-based frameworks built on top of this paradigm, such as [Nuxt](https://v3.nuxtjs.org/), which allow you to develop a fullstack application using Vue and JavaScript.
+このパラダイムの上に構築された Vue ベースの上位フレームワークとして[Nuxt](https://v3.nuxtjs.org/)などがあり、Vue と JavaScript を使ってフルスタックアプリケーションを開発することが可能です。
 
-## JAMStack / SSG
+## Jamstack / 静的サイトジェネレーション (SSG)
 
-Server-side rendering can be done ahead of time if the required data is static. This means we can pre-render an entire application into HTML and serve them as static files. This improves site performance and makes deployment a lot simpler since we no longer need to dynamically render pages on each request. Vue can still hydrate such applications to provide rich interactivity on the client. This technique is commonly referred to as Static-Site Generation (SSG), also known as [JAMStack](https://jamstack.org/what-is-jamstack/).
+サーバーサイドレンダリングは、必要なデータが静的なものであれば事前に行うことができます。つまり、アプリケーション全体をあらかじめ HTML にレンダリングし、静的ファイルとして提供することができるのです。これにより、サイトのパフォーマンスが向上し、リクエストごとにページを動的にレンダリングする必要がなくなるため、デプロイが非常に簡単になります。Vue は、このようなアプリケーションをハイドレートして、クライアント上でリッチなインタラクティビティを提供できます。この手法は、一般に静的サイトジェネレーション (SSG)と呼ばれ、[Jamstack](https://jamstack.org/what-is-jamstack/)としても知られています。
 
-The Vue team maintains a static-site generator called [VitePress](https://vitepress.vuejs.org/), which powers this website you are reading right now! In addition, [Nuxt](https://v3.nuxtjs.org/) also supports SSG. You can even mix SSR and SSG for different routes in the same Nuxt app.
+Vue チームは、[VitePress](https://vitepress.vuejs.org/)と呼ばれる静的サイトジェネレーターを保守しており、あなたが今読んでいるこの Web サイトを動かしています！さらに、[Nuxt](https://v3.nuxtjs.org/)も SSG をサポートしています。同じ Nuxt アプリの中で、異なる経路の SSR と SSG を混在させることも可能です。
 
-## Beyond the Web
+## Web 以外
 
-Although Vue is primarily designed for building web applications, it is by no means limited to just the browser. You can:
+Vue は主に Web アプリケーションを構築するために設計されていますが、決してブラウザーだけに限定されるものではありません。以下のことが可能です。
 
-- Build desktop apps with [Electron](https://www.electronjs.org/) or [Tauri](https://tauri.studio/en/)
-- Build mobile apps with [Ionic Vue](https://ionicframework.com/docs/vue/overview)
-- Build desktop and mobile apps from the same codebase with [Quasar](https://quasar.dev/)
-- Use Vue's [Custom Renderer API](/api/custom-renderer) to build custom renderers targeting [WebGL](https://troisjs.github.io/) or even [the terminal](https://github.com/ycmjason/vuminal)!
+- [Electron](https://www.electronjs.org/) や [Tauri](https://tauri.studio/en/) を使ってデスクトップアプリケーションを構築する
+- [Ionic Vue](https://ionicframework.com/docs/vue/overview) でモバイルアプリを構築する
+- [Quasar](https://quasar.dev/) で、同じコードベースからデスクトップとモバイルのアプリをビルドする
+- Vue の [Custom Renderer API](/api/custom-renderer) を使って [WebGL](https://troisjs.github.io/) や [the terminal](https://github.com/ycmjason/vuminal) を対象としたカスタムレンダラーをビルドできます！
