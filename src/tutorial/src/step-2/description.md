@@ -16,7 +16,7 @@ Vue の中核となる機能は**宣言的レンダリング**です。HTML を�
 import { reactive } from 'vue'
 
 const counter = reactive({
-  count: 1
+  count: 0
 })
 
 console.log(counter.count) // 0
