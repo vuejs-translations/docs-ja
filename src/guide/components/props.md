@@ -1,18 +1,18 @@
-# Props
+# プロパティ
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+> このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="Free Vue.js Props Lesson"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="プロパティについて学ぶ Vue.js の無料レッスン"/>
 </div>
 
-## Props Declaration
+## プロパティの宣言
 
-Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in the next section).
+Vue のコンポーネントでは、明示的な props (プロパティ) の宣言が必要です。これにより Vue は、外部からコンポーネントに渡された props を fallthrough 属性 (次のセクションで説明します) として扱うべきかを知ることができます。
 
 <div class="composition-api">
 
-In SFCs using `<script setup>`, props can be declared using the `defineProps()` macro:
+SFC で `<script setup>` を使用する場合、`defineProps()` マクロを使ってプロパティを宣言します:
 
 ```vue
 <script setup>
@@ -22,31 +22,31 @@ console.log(props.foo)
 </script>
 ```
 
-In non-`<script setup>` components, props are declared using the [`props`](/api/options-state.html#props) option:
+`<script setup>` を用いないコンポーネントの場合、[`props`](/api/options-state.html#props) オプションを使って props を宣言します:
 
 ```js
 export default {
   props: ['foo'],
   setup(props) {
-    // setup() receives props as the first argument.
+    // setup() は第 1 引数に props を受け取ります。
     console.log(props.foo)
   }
 }
 ```
 
-Notice the argument passed to `defineProps()` is the same as the value provided to the `props` options: the same props options API is shared between the two declaration styles.
+`defineProps()` に渡している引数と、Options API の `props` オプションに渡している値が同じであることに注目してください。同じ props オプションの API が、2 つの宣言スタイル間で共有されています。
 
 </div>
 
 <div class="options-api">
 
-Props are declared using the [`props`](/api/options-state.html#props) option:
+プロパティは、以下のように [`props`](/api/options-state.html#props) オプションを使って宣言します:
 
 ```js
 export default {
   props: ['foo'],
   created() {
-    // props are exposed on `this`
+    // props は `this` 上で公開されます。
     console.log(this.foo)
   }
 }
@@ -54,7 +54,7 @@ export default {
 
 </div>
 
-In addition to declaring props using an array of strings, we can also use the object syntax:
+プロパティの宣言には、文字列の配列に加え、オブジェクト構文を用いることもできます:
 
 <div class="options-api">
 
@@ -71,7 +71,7 @@ export default {
 <div class="composition-api">
 
 ```js
-// in <script setup>
+// <script setup> 内
 defineProps({
   title: String,
   likes: Number
@@ -79,7 +79,7 @@ defineProps({
 ```
 
 ```js
-// in non-<script setup>
+// <script setup> 以外
 export default {
   props: {
     title: String,
@@ -90,19 +90,19 @@ export default {
 
 </div>
 
-For each property in the object declaration syntax, the key is the name of the prop, while the value should be the constructor function of the expected type.
+オブジェクト宣言の構文に含める各プロパティについて、キーにはプロパティの名前、値には目的の型のコンストラクター関数を指定します。
 
-This not only documents your component, but will also warn other developers using your component in the browser console if they pass the wrong type. We will discuss more details about [prop validation](#prop-validation) further down this page.
+これは自分のコンポーネントを文書化するのに役立ちます。また、誤った型を渡した時にブラウザーのコンソールに警告が表示されるようになり、コンポーネントを利用する他の開発者のためにもなります。このページの後半では、[プロパティのバリデーション](#prop-validation)について詳しく説明します。
 
 <div class="options-api">
 
-See also: [Typing Component Props](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
+[コンポーネントのプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)も合わせて参照してください。<sup class="vt-badge ts" />
 
 </div>
 
 <div class="composition-api">
 
-If you are using TypeScript with `<script setup>`, it's also possible to declare props using pure type annotations:
+TypeScript と `<script setup>` の組み合わせを用いる場合、型アノテーションをそのまま使ってプロパティを宣言することも可能です:
 
 ```vue
 <script setup lang="ts">
@@ -113,15 +113,15 @@ defineProps<{
 </script>
 ```
 
-More details: [Typing Component Props](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+詳細: [コンポーネントのプロパティの型付け](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
-## Prop Passing Details
+## プロパティ渡しの詳細
 
-### Prop Name Casing
+### プロパティ名での大文字・小文字の使い分け
 
-We declare long prop names using camelCase because this avoids having to use quotes when using them as property keys, and allows us to reference them directly in template expressions because they are valid JavaScript identifiers:
+長いプロパティ名は、camelCase (キャメルケース) で宣言します。そうすると、プロパティのキーとして使うときに引用符を使わなくて済みます。camelCase は JavaScript の有効な識別子であるため、以下のようにテンプレート式で直接参照することができます:
 
 <div class="composition-api">
 
@@ -148,77 +148,77 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-Technically, you can also use camelCase when passing props to a child component (except in [DOM templates](/guide/essentials/component-basics.html#dom-template-parsing-caveats)). However, the convention is using kebab-case in all cases to align with HTML attributes:
+技術的には、子コンポーネントにプロパティを渡すときにも camelCase を用いることができます (ただし [DOM テンプレート](/guide/essentials/component-basics.html#dom-template-parsing-caveats)内を除く)。しかし、常に kebab-case (ケバブケース) を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
 
 ```vue-html
 <MyComponent greeting-message="hello" />
 ```
 
-We use [PascalCase for component tags](/guide/components/registration.html#component-name-casing) when possible because it improves template readability by differentiating Vue components from native elements. However, there isn't as much practical benefits for using camelCase when passing props, so we choose to follow each language's conventions.
+[コンポーネントのタグには、可能な限り PascalCase を用いる](/guide/components/registration.html#component-name-casing)ことが推奨されます。これは Vue コンポーネントとネイティブ要素の区別が付き、テンプレートの可読性が高まるためです。しかし、プロパティを渡すときに camelCase を用いることには、それほど実用的なメリットがありません。そのため、Vue では各言語の規約に従うことが推奨されます。
 
-### Static vs. Dynamic Props
+### 静的なプロパティと動的なプロパティ
 
-So far, you've seen props passed as static values, like in:
+ここまでで、静的な値として渡すプロパティを見てきました。例:
 
 ```vue-html
 <BlogPost title="My journey with Vue" />
 ```
 
-You've also seen props assigned dynamically with `v-bind` or its `:` shortcut, such as in:
+`v-bind` またはそのショートカットである `:` を使って、プロパティを動的に割り当てる例も見てきました。例:
 
 ```vue-html
-<!-- Dynamically assign the value of a variable -->
+<!-- 変数の値を動的に代入 -->
 <BlogPost :title="post.title" />
 
-<!-- Dynamically assign the value of a complex expression -->
+<!-- 複雑な式の値を動的に代入 -->
 <BlogPost :title="post.title + ' by ' + post.author.name" />
 ```
 
-### Passing Different Value Types
+### いろいろな種類の値を渡す
 
-In the two examples above, we happen to pass string values, but _any_ type of value can be passed to a prop.
+上の 2 つは、たまたま文字列の値を渡す例ですが、プロパティには _どんな_ 種類の値も渡すことができます。
 
-#### Number
+#### 数値
 
 ```vue-html
-<!-- Even though `42` is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.       -->
+<!-- `42` は静的な値ですが、これが文字列ではなく JavaScript の        -->
+<!-- 式であることを Vue に伝えるため、v-bind を用いる必要があります。 -->
 <BlogPost :likes="42" />
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- 変数の値に動的に代入します。 -->
 <BlogPost :likes="post.likes" />
 ```
 
-#### Boolean
+#### ブール値
 
 ```vue-html
-<!-- Including the prop with no value will imply `true`. -->
+<!-- 値なしでプロパティを指定すると、暗黙で `true` を指定したことになります。 -->
 <BlogPost is-published />
 
-<!-- Even though `false` is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.          -->
+<!-- `false` は静的な値ですが、これが文字列ではなく JavaScript の     -->
+<!-- 式であることを Vue に伝えるため、v-bind を用いる必要があります。 -->
 <BlogPost :is-published="false" />
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- 変数の値に動的に代入します。 -->
 <BlogPost :is-published="post.isPublished" />
 ```
 
-#### Array
+#### 配列
 
 ```vue-html
-<!-- Even though the array is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.            -->
+<!-- 静的な配列でも、これが文字列ではなく JavaScript の         -->
+<!-- 式であることを Vue に伝えるため、v-bind を用いる必要があります。 -->
 <BlogPost :comment-ids="[234, 266, 273]" />
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- 変数の値に動的に代入します。 -->
 <BlogPost :comment-ids="post.commentIds" />
 ```
 
-#### Object
+#### オブジェクト
 
 ```vue-html
-<!-- Even though the object is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.             -->
+<!-- 静的なオブジェクトでも、これが文字列ではなく JavaScript の -->
+<!-- 式であることを Vue に伝えるため、v-bind を用いる必要があります。 -->
 <BlogPost
   :author="{
     name: 'Veronica',
@@ -226,13 +226,13 @@ In the two examples above, we happen to pass string values, but _any_ type of va
   }"
  />
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- 変数の値に動的に代入します。 -->
 <BlogPost :author="post.author" />
 ```
 
-### Binding Multiple Properties Using an Object
+### オブジェクトを利用した複数のプロパティのバインディング
 
-If you want to pass all the properties of an object as props, you can use [`v-bind` without an argument](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) (`v-bind` instead of `:prop-name`). For example, given a `post` object:
+オブジェクトに含まれるすべてのプロパティを props として渡したい場合には、[引数なしの `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) を使用します (`:プロパティ名` の代わりに `v-bind`)。例えば、以下のような `post` オブジェクトがあるとします:
 
 <div class="options-api">
 
@@ -261,30 +261,30 @@ const post = {
 
 </div>
 
-The following template:
+このとき、テンプレートでは以下を用いることができます:
 
 ```vue-html
 <BlogPost v-bind="post" />
 ```
 
-Will be equivalent to:
+これは以下の表記と等価です:
 
 ```vue-html
 <BlogPost :id="post.id" :title="post.title" />
 ```
 
-## One-Way Data Flow
+## 一方向のデータフロー
 
-All props form a **one-way-down binding** between the child property and the parent one: when the parent property updates, it will flow down to the child, but not the other way around. This prevents child components from accidentally mutating the parent's state, which can make your app's data flow harder to understand.
+すべてのプロパティでは、子のプロパティと親のプロパティとの間に**一方向バインディング**が形成されます。親のプロパティが更新されたときには子にも流れますが、その逆はありません。これにより、親の状態が誤って子コンポーネントによって変更されてアプリのデータフローが把握しにくくなる、といった事態が防がれます。
 
-In addition, every time the parent component is updated, all props in the child component will be refreshed with the latest value. This means you should **not** attempt to mutate a prop inside a child component. If you do, Vue will warn you in the console:
+さらに、親コンポーネントが更新されるたびに、子コンポーネント内のすべてのプロパティは最新の値に更新されます。そのため、子コンポーネント内でプロパティの変更を試みては**いけません**。もし試みると、Vue がコンソールで警告を発します:
 
 <div class="composition-api">
 
 ```js
 const props = defineProps(['foo'])
 
-// ❌ warning, props are readonly!
+// ❌ 警告、プロパティは読み取り専用です！
 props.foo = 'bar'
 ```
 
@@ -295,7 +295,7 @@ props.foo = 'bar'
 export default {
   props: ['foo'],
   created() {
-    // ❌ warning, props are readonly!
+    // ❌ 警告、プロパティは読み取り専用です！
     this.foo = 'bar'
   }
 }
@@ -303,17 +303,17 @@ export default {
 
 </div>
 
-There are usually two cases where it's tempting to mutate a prop:
+通常、プロパティを変更したい状況には以下の 2 つがあります:
 
-1. **The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards.** In this case, it's best to define a local data property that uses the prop as its initial value:
+1. **プロパティは初期値を渡すために用いて、それ以降、子コンポーネントではローカルのデータプロパティとして利用したい。** この場合、以下のようにローカルのデータプロパティを定義して、その初期値にプロパティを使用するのが最も適切です:
 
    <div class="composition-api">
 
    ```js
    const props = defineProps(['initialCounter'])
 
-   // counter only uses props.initialCounter as the initial value;
-   // it is disconnected from future prop updates.
+   // props.initialCounter は counter の初期値を指定するためだけに
+   // 使われ、今後発生するプロパティの更新からは切り離されます。
    const counter = ref(props.initialCounter)
    ```
 
@@ -325,8 +325,8 @@ There are usually two cases where it's tempting to mutate a prop:
      props: ['initialCounter'],
      data() {
        return {
-         // counter only uses this.initialCounter as the initial value;
-         // it is disconnected from future prop updates.
+         // this.initialCounter は counter の初期値を指定するためだけに
+         // 使われ、今後発生するプロパティの更新からは切り離されます。
          counter: this.initialCounter
        }
      }
@@ -335,14 +335,14 @@ There are usually two cases where it's tempting to mutate a prop:
 
    </div>
 
-2. **The prop is passed in as a raw value that needs to be transformed.** In this case, it's best to define a computed property using the prop's value:
+2. **プロパティを、変換が必要な生の値として渡したい。** この場合、以下のような算出プロパティを定義して、その中でプロパティの値を利用するのが最も適切です:
 
    <div class="composition-api">
 
    ```js
    const props = defineProps(['size'])
 
-   // computed property that auto-updates when the prop changes
+   // プロパティが変更されると自動的に更新される算出プロパティ
    const normalizedSize = computed(() => props.size.trim().toLowerCase())
    ```
 
@@ -353,7 +353,7 @@ There are usually two cases where it's tempting to mutate a prop:
    export default {
      props: ['size'],
      computed: {
-       // computed property that auto-updates when the prop changes
+       // プロパティが変更されると自動的に更新される算出プロパティ
        normalizedSize() {
          return this.size.trim().toLowerCase()
        }
@@ -363,58 +363,58 @@ There are usually two cases where it's tempting to mutate a prop:
 
    </div>
 
-### Mutating Object / Array Props
+### オブジェクト/配列のプロップを変更する
 
-When objects and arrays are passed as props, while the child component cannot mutate the prop binding, it **will** be able to mutate the object or array's nested properties. This is because in JavaScript objects and arrays are passed by reference, and it is unreasonably expensive for Vue to prevent such mutations.
+オブジェクトや配列をプロパティとして渡した場合、子コンポーネントがプロパティのバインディングを変更することはできませんが、オブジェクトや配列のネストされたプロパティを変更することは**可能です**。これは、JavaScript ではオブジェクトや配列が参照渡しであり、Vue がそのような変更を防ぐのにかかるコストが現実的でないためです。
 
-The main drawback of such mutations is that it allows the child component to affect parent state in a way that isn't obvious to the parent component, potentially making it more difficult to reason about the data flow in the future. As a best practice, you should avoid such mutations unless the parent and child are tightly coupled by design. In most cases, the child should [emit an event](/guide/components/events.html) to let the parent perform the mutation.
+このような変更の主な欠点は、親コンポーネントにとって明瞭でない方法で子コンポーネントが親の状態に影響を与えることを許してしまい、後からデータの流れを見極めるのが難しくなる可能性があることです。親と子を密に結合させる設計でない限り、ベストプラクティスとしてはそのような変更を避けるべきです。ほとんどの場合、子コンポーネントは[イベントを発行](/guide/components/events.html)して、変更を親コンポーネントに実行してもらう必要があります。
 
-## Prop Validation
+## プロパティのバリデーション
 
-Components can specify requirements for their props, such as the types you've already seen. If a requirement is not met, Vue will warn you in the browser's JavaScript console. This is especially useful when developing a component that is intended to be used by others.
+先ほど見た型のように、コンポーネントではプロパティに対する要件を指定することができます。要件が合わないと、Vue がブラウザーの JavaScript コンソールで警告を発します。他の人に使ってもらうことを想定したコンポーネントを開発する場合、これはとても便利です。
 
-To specify prop validations, you can provide an object with validation requirements to the <span class="composition-api">`defineProps()` macro</span><span class="options-api">`props` option</span>, instead of an array of strings. For example:
+プロパティのバリデーションを指定するには、文字列の配列の代わりに <span class="composition-api">`defineProps()` マクロ</span><span class="options-api">`props` オプション</span>を用いて、バリデーションの要件を持たせたオブジェクトを指定します。例:
 
 <div class="composition-api">
 
 ```js
 defineProps({
-  // Basic type check
-  //  (`null` and `undefined` values will allow any type)
+  // 基本的な型チェック
+  // (`null` 値と `undefined` 値は、任意の型を許可します)
   propA: Number,
-  // Multiple possible types
+  // 複数の型の可能性
   propB: [String, Number],
-  // Required string
+  // 必須の文字列
   propC: {
     type: String,
     required: true
   },
-  // Number with a default value
+  // デフォルト値を持つ数値
   propD: {
     type: Number,
     default: 100
   },
-  // Object with a default value
+  // デフォルト値を持つオブジェクト
   propE: {
     type: Object,
-    // Object or array defaults must be returned from
-    // a factory function. The function receives the raw
-    // props received by the component as the argument.
+    // オブジェクトと配列のデフォルトは、ファクトリー関数を使って
+    // 返す必要があります。ファクトリー関数は、コンポーネントが
+    // 受け取った生の各プロパティを引数として受け取ります。
     default(rawProps) {
       return { message: 'hello' }
     }
   },
-  // Custom validator function
+  // カスタムのバリデーター関数
   propF: {
     validator(value) {
-      // The value must match one of these strings
+      // 値が以下の文字列のいずれかに一致する必要がある
       return ['success', 'warning', 'danger'].includes(value)
     }
   },
-  // Function with a default value
+  // デフォルト値を持つ関数
   propG: {
     type: Function,
-    // Unlike object or array default, this is not a factory function - this is a function to serve as a default value
+    // オブジェクトや配列のデフォルトと異なり、これはファクトリー関数ではなく、デフォルト値として機能する関数です
     default() {
       return 'Default function'
     }
@@ -423,7 +423,7 @@ defineProps({
 ```
 
 :::tip
-Code inside the `defineProps()` argument **cannot access other variables declared in `<script setup>`**, because the entire expression is moved to an outer function scope when compiled.
+`defineProps()` の引数の中のコードは、コンパイル時に式全体が外側の関数スコープに移されるため、`**<script setup>`** 内で宣言している他の変数にアクセスすることができません。
 :::
 
 </div>
@@ -432,42 +432,42 @@ Code inside the `defineProps()` argument **cannot access other variables declare
 ```js
 export default {
   props: {
-    // Basic type check
-    //  (`null` and `undefined` values will allow any type)
+    // 基本的な型チェック
+    // (`null` 値と `undefined` 値は、任意の型を許可します)
     propA: Number,
-    // Multiple possible types
+    // 複数の型の可能性
     propB: [String, Number],
-    // Required string
+    // 必須の文字列
     propC: {
       type: String,
       required: true
     },
-    // Number with a default value
+    // デフォルト値を持つ数値
     propD: {
       type: Number,
       default: 100
     },
-    // Object with a default value
+    // デフォルト値を持つオブジェクト
     propE: {
       type: Object,
-      // Object or array defaults must be returned from
-      // a factory function. The function receives the raw
-      // props received by the component as the argument.
+      // オブジェクトと配列のデフォルトは、ファクトリー関数を使って
+      // 返す必要があります。ファクトリー関数は、コンポーネントが
+      // 受け取った生の各プロパティを引数として受け取ります。
       default(rawProps) {
         return { message: 'hello' }
       }
     },
-    // Custom validator function
+    // カスタムのバリデーター関数
     propF: {
       validator(value) {
-        // The value must match one of these strings
+        // 値が以下の文字列のいずれかに一致する必要がある
         return ['success', 'warning', 'danger'].includes(value)
       }
     },
-    // Function with a default value
+    // デフォルト値を持つ関数
     propG: {
       type: Function,
-      // Unlike object or array default, this is not a factory function - this is a function to serve as a default value
+      // オブジェクトや配列のデフォルトと異なり、これはファクトリー関数ではなく、デフォルト値として機能する関数です
       default() {
         return 'Default function'
       }
@@ -478,34 +478,34 @@ export default {
 
 </div>
 
-Additional details:
+その他の詳細:
 
-- All props are optional by default, unless `required: true` is specified.
+- `required: true` が指定されていないすべてのプロパティは、デフォルトでオプションです。
 
-- An absent optional prop other than `Boolean` will have `undefined` value.
+- `Boolean` 以外のオプションのプロパティは、値が指定されないと `undefined` 値になります。
   
-- The `Boolean` absent props will be cast to `false`. You should set a `default` value for it in order to get desired behavior.
+- `Boolean` のプロパティは、値が指定されないと `false` に変換されます。望みの動作を得るためには、`default` の値を指定する必要があります。
 
-- If a `default` value is specified, it will be used if the resolved prop value is `undefined` - this includes both when the prop is absent, or an explicit `undefined` value is passed.
+- `default` の値を指定すると、プロパティの値が `undefined` に解決される時、それが使用されます。プロパティが指定されなかった場合と、明示的に `undefined` 値が渡された場合も、これに含まれます。
 
-When prop validation fails, Vue will produce a console warning (if using the development build).
+プロパティのバリデーションに失敗すると、Vue がコンソールに警告を出します (開発ビルドを使用する場合)。
 
 <div class="composition-api">
 
-If using [Type-based props declarations](/api/sfc-script-setup.html#typescript-only-features), Vue will try its best to compile the type annotations into equivalent runtime prop declarations. For example, `defineProps<{ msg: string }>` will be compiled into `{ msg: { type: String, required: true }}`.
+[型のみのプロパティ宣言](/api/sfc-script-setup.html#typescript-only-features) を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
 
 </div>
 <div class="options-api">
 
-::: tip Note
-Note that props are validated **before** a component instance is created, so instance properties (e.g. `data`, `computed`, etc.) will not be available inside `default` or `validator` functions.
+::: tip 注意
+プロパティのバリデーションは、コンポーネントのインスタンスが生成される**前**に実行されます。そのため、`default` や `validator` 関数の中ではインスタンスのプロパティ (例えば `data`、`computed` など) が使用できないことに注意してください。
 :::
 
 </div>
 
-### Runtime Type Checks
+### 実行時の型チェック
 
-The `type` can be one of the following native constructors:
+`type` には、以下のネイティブコンストラクターを指定することができます:
 
 - `String`
 - `Number`
@@ -516,7 +516,7 @@ The `type` can be one of the following native constructors:
 - `Function`
 - `Symbol`
 
-In addition, `type` can also be a custom class or constructor function and the assertion will be made with an `instanceof` check. For example, given the following class:
+加えて、`type` にはカスタムのクラスやコンストラクター関数を指定することもできます。その場合、`instanceof` チェックによってアサーションが行われます。例えば、次のクラスがあったとします:
 
 ```js
 class Person {
@@ -527,7 +527,7 @@ class Person {
 }
 ```
 
-You could use it as a prop's type:
+これをプロパティの型として用いるとします:
 
 <div class="composition-api">
 
@@ -550,11 +550,11 @@ export default {
 
 </div>
 
-to validate that the value of the `author` prop was created with `new Person`.
+こうすると、`author` というプロパティの値が `new Person` で作成されたものであることをバリデーションで確かめることができます。
 
-## Boolean Casting
+## ブール値の型変換
 
-Props with `Boolean` type has special casting rules to mimic the behavior of native boolean attributes. Given a `<MyComponent>` with the following declaration:
+`Boolean` 型のプロパティは、ネイティブのブール値の属性が振る舞う様子を模倣するために、特殊な型変換の規則を持っています。次のような宣言を含む `<MyComponent>` があるとします:
 
 <div class="composition-api">
 
@@ -577,17 +577,17 @@ export default {
 
 </div>
 
-The component can be used like this:
+このコンポーネントは、次のように使用することができます:
 
 ```vue-html
-<!-- equivalent of passing :disabled="true" -->
+<!-- :disabled="true" を渡すのと同等 -->
 <MyComponent disabled />
 
-<!-- equivalent of passing :disabled="false" -->
+<!-- :disabled="false" を渡すのと同等 -->
 <MyComponent />
 ```
 
-When a prop is declared to allow multiple types, e.g.
+また、以下のように複数の型を受け付けるようにプロパティを宣言した場合:
 
 <div class="composition-api">
 
@@ -610,4 +610,4 @@ export default {
 
 </div>
 
-The casting rules for `Boolean` will apply regardless of type appearance order.
+`Boolean` の型変換の規則は、型が登場する順序に関係なく適用されます。
