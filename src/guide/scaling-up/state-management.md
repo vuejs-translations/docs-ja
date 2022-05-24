@@ -200,7 +200,7 @@ export const store = reactive({
 クリックハンドラーは `store.increment()` をカッコ付きで使用していることに注意してください - これはコンポーネントメソッドではないので、適切な `this` コンテキストでメソッドを呼び出すために必要です。
 :::
 
-ここでは 1 つのリアクティブオブジェクトを store として使っていますが、`ref()` や `computed()` のような他の [Reactivity APIs](/api/reactivity-core.html) で作られたリアクティブな状態を共有することができますし、[コンポーザブル](/guide/reusability/composables.html) からグローバルな状態を返すこともできます:
+ここでは 1 つのリアクティブオブジェクトを store として使っていますが、`ref()` や `computed()` のような他の [リアクティビティ API](/api/reactivity-core.html) で作られたリアクティブな状態を共有することができますし、[コンポーザブル](/guide/reusability/composables.html) からグローバルな状態を返すこともできます:
 
 ```js
 import { ref } from 'vue'
