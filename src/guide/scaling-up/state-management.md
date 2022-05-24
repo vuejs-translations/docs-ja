@@ -10,16 +10,16 @@
 <script setup>
 import { ref } from 'vue'
 
-// state
+// 状態
 const count = ref(0)
 
-// actions
+// アクション
 function increment() {
   count.value++
 }
 </script>
 
-<!-- view -->
+<!-- ビュー -->
 <template>{{ count }}</template>
 ```
 
@@ -29,13 +29,13 @@ function increment() {
 ```vue
 <script>
 export default {
-  // state
+  // 状態
   data() {
     return {
       count: 0
     }
   },
-  // actions
+  // アクション
   methods: {
     increment() {
       this.count++
@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<!-- view -->
+<!-- ビュー -->
 <template>{{ count }}</template>
 ```
 
