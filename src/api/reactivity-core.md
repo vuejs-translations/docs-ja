@@ -1,9 +1,9 @@
-# Reactivity API: Core
+# リアクティビティ API: Core
 
 :::info See also
-より Reactivity APIs を理解するために、ガイド内の次の章を読むことを推奨します:
+よりリアクティビティ API を理解するために、ガイド内の次の章を読むことを推奨します:
 
-- [Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html) (API 環境設定が Composition API に設定されている場合)
+- [リアクティビティの基礎](/guide/essentials/reactivity-fundamentals.html) (API 環境設定が Composition API に設定されている場合)
 - [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
   :::
 

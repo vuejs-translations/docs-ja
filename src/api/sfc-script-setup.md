@@ -53,7 +53,7 @@ import { capitalize } from './helpers'
 
 ## リアクティビティ
 
-リアクティブな状態は [Reactivity APIs](./reactivity-core.html) を使って明示的に作成する必要があります。`setup()` 関数から返された値と同じように、テンプレート内で参照されるときに ref は自動的にアンラップされます:
+リアクティブな状態は [リアクティビティ API](./reactivity-core.html) を使って明示的に作成する必要があります。`setup()` 関数から返された値と同じように、テンプレート内で参照されるときに ref は自動的にアンラップされます:
 
 ```vue
 <script setup>
