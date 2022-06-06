@@ -1,156 +1,157 @@
-# Tooling
+# ツールガイド
 
-## Try It Online
+## オンラインで試す
 
-You don't need to install anything on your machine to try out Vue SFCs - there are online playgrounds that allow you to do so right in the browser:
+Vue の SFC を試すためにマシンに何かをインストールする必要はありません - ブラウザーですぐに試せるオンラインのプレイグラウンドがあります:
 
-- [Vue SFC Playground](https://sfc.vuejs.org)
-  - Always deployed from latest commit
-  - Designed for inspecting component compilation results
+- [Vue SFC プレイグラウンド](https://sfc.vuejs.org)
+  - 常に最新のコミットがデプロイされています
+  - コンポーネントのコンパイル結果を確認できるように設計されています
 - [Vue + Vite on StackBlitz](https://vite.new/vue)
-  - IDE-like environment running actual Vite dev server in the browser
-  - Closest to local setup
+  - ブラウザー上で Vite の開発サーバーを実行している IDE 的な環境です
+  - ローカルでセットアップした状態に近いです
 
-It is also recommended to use these online playgrounds to provide reproductions when reporting bugs.
+また、バグ報告の際には、これらのオンラインのプレイグラウンドで再現方法を提供することが推奨されます。
 
-## Project Scaffolding
+## プロジェクトの雛形の作成 (Project Scaffolding)
 
 ### Vite
 
-[Vite](https://vitejs.dev/) is a lightweight and fast build tool with first-class Vue SFC support. It is created by Evan You, who is also the author of Vue!
+[Vite](https://vitejs.dev/) は、ファーストクラスの Vue SFC のサポートがある軽量で高速なビルドツールです。Vue の作者でもある Evan You によって作成されました！
 
-To get started with Vite + Vue, simply run:
+Vite + Vue で始めるには、以下を実行するだけです:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">$</span> <span style="color:#A6ACCD;">npm init vue@latest</span></span></code></pre></div>
 
-This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official Vue project scaffolding tool.
+このコマンドは、Vue 公式の雛形作成 (scaffolding) ツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。
 
-- To learn more about Vite, check out the [Vite docs](https://vitejs.dev).
-- To configure Vue-specific behavior in a Vite project, for example passing options to the Vue compiler, check out the docs for [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#readme).
+- Vite の詳細については、[Vite ドキュメント](https://ja.vitejs.dev) を参照してください。
+- Vite のプロジェクトで Vue のコンパイラーにオプションを渡すなどの、Vue 固有の設定をするには、[@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#readme) のドキュメントを参照してください。
 
-Both online playgrounds mentioned above also support downloading files as a Vite project.
+上記のオンラインプレイグラウンドはいずれも Vite プロジェクトとしてのファイルのダウンロードにも対応しています。
 
 ### Vue CLI
 
-[Vue CLI](https://cli.vuejs.org/) is the official webpack-based toolchain for Vue. It is now in maintenance mode and we recommend starting new projects with Vite unless you rely on specific webpack-only features. Vite will provide superior developer experience in most cases.
+[Vue CLI](https://cli.vuejs.org/) は、Vue のための公式の webpack ベースのツールチェーンです。現在はメンテナンスモードで、特定の webpack のみの機能に依存していない限り、新しいプロジェクトは Vite で始めることを推奨します。ほとんどの場合において Vite は優れた開発経験を提供します。
 
-For information on migrating from Vue CLI to Vite:
+Vue CLI から Vite への移行は以下を参照してください:
 
-- [Vue CLI -> Vite Migration Guide from VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
-- [Tools / Plugins that help with auto migration](https://github.com/vitejs/awesome-vite#vue-cli)
+- [Vue CLI -> Vite マイグレーションガイド from VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
+- [自動マイグレーションをサポートするツール / プラグイン](https://github.com/vitejs/awesome-vite#vue-cli)
 
-### Note on In-Browser Template Compilation
+### ブラウザー上でのテンプレートコンパイルについての注意点
 
-When using Vue without a build step, component templates are written either directly in the page's HTML or as inlined JavaScript strings. In such cases, Vue needs to ship the template compiler to the browser in order to perform on-the-fly template compilation. On the other hand, the compiler would be unnecessary if we pre-compile the templates with a build step. To reduce client bundle size, Vue provides [different "builds"](https://unpkg.com/browse/vue@3/dist/) optimized for different use cases.
+Vue をビルドステップなしで使用する場合、コンポーネントテンプレートページの HTML に直接もしくはインラインの JavaScript の文字列として書き込まれます。Vue はオンザフライでテンプレートのコンパイルを実行するために、テンプレートコンパイラーをブラウザーに同梱する必要があります。一方、ビルドステップでテンプレートをプリコンパイルすれば、コンパイラーは不要になります。Vue は、クライアントのバンドルサイズを小さくするために、ユースケースごとに最適化された [さまざまな「ビルド」](https://unpkg.com/browse/vue@3/dist/) を提供しています。
 
-- Build files that start with `vue.runtime.*` are **runtime-only builds**: they do not include the compiler. When using these builds, all templates must be pre-compiled via a build step.
+- `vue.runtime.*` で始まるビルドファイルは、**ランタイムのみのビルド** です: コンパイラーは含まれません。これらのビルドを使用する場合、全てのテンプレートはビルド時にプリコンパイルする必要があります。
 
-- Build files that do not include `.runtime` are **full builds**: they include the compiler and support compiling templates directly in the browser. However, they will increase the payload by ~14kb.
+- `.runtime` を含まないビルドファイルは、**フルビルド** です: コンパイラーを含み、ブラウザー上でのテンプレートのコンパイルをサポートします。しかし、ペイロードが ~14kb 増加します。
 
-Our default tooling setups use the runtime-only build since all templates in SFCs are pre-compiled. If, for some reason, you need in-browser template compilation even with a build step, you can do so by configuring the build tool to alias `vue` to `vue/dist/vue.esm-bundler.js` instead.
+デフォルトのツールのセットアップでは、SFC 内の全てのテンプレートがコンパイル済みのため、ランタイムのみのビルドを使用しまし。もし、何らかの理由でビルドステップが有ってもブラウザー上でのコンパイルが必要な場合は、`vue` の代わりに `vue/dist/vue.esm-bundler.js` にエイリアスするようにビルドツールを設定すれば、コンパイルできるようになります。
 
-If you are looking for a lighter-weight alternative for no-build-step usage, check out [petite-vue](https://github.com/vuejs/petite-vue).
+ビルドステップが無いより軽量なものをお探しの場合は、[petie-vue](https://github.com/vuejs/petite-vue) をチェックしてみてください。
 
-## IDE Support
+## IDE のサポート
 
-- The recommended IDE setup is [VSCode](https://code.visualstudio.com/) + the [Volar](https://github.com/johnsoncodehk/volar) extension. Volar provides syntax highlighting, TypeScript support, and intellisense for template expressions and component props.
+- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar) の拡張です。Volor は、シンタックスハイライト、TypeScript のサポート、テンプレートとコンポーネントの props の intellisense を提供します。
 
   :::tip
-  Volar replaces [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), our previous official VSCode extension for Vue 2. If you have Vetur currently installed, make sure to disable it in Vue 3 projects.
+  Volor は Vue 2 用の以前の VSCode 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
   :::
 
-- [WebStorm](https://www.jetbrains.com/webstorm/) also provides great built-in support for Vue SFCs.
+- [WebStorm](https://www.jetbrains.com/webstorm/) も Vue SFC の素晴らしいサポートを提供しています。
 
-- Other IDEs that support the [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP) can also leverage Volar's core functionalities via LSP. One examples is [coc-volar](https://github.com/yaegassy/coc-volar) which provides Vue SFC support for vim/Neovim.
+- [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP) をサポートする他の IDE も LSP を介して Volar のコア機能を利用できます。一例として、[coc-volar](https://github.com/yaegassy/coc-volar) は vim/Neovim に Vue SFC サポートを提供します。
 
-## Browser Devtools
+## ブラウザーの開発者ツール
 
 <VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
 
-The Vue browser devtools extension allows you to explore a Vue app's component tree, inspect the state of individual components, track state management events, and profile performance.
+Vue のブラウザー開発者ツール拡張では、コンポーネントツリーの探索や、個別のコンポーネントの状態の確認、状態管理イベントの追跡、パフォーマンスのプロファイルなどができます。
 
 ![devtools screenshot](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
 
-- [Documentation](https://devtools.vuejs.org/)
+- [ドキュメント](https://devtools.vuejs.org/)
 - [Chrome Extension](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- [Standalone Electron app](https://devtools.vuejs.org/guide/installation.html#standalone)
+- [スタンドアロンの Electron アプリ](https://devtools.vuejs.org/guide/installation.html#standalone)
 
 ## TypeScript
 
-Main article: [Using Vue with TypeScript](/guide/typescript/overview).
+主な記事: [TypeScript で Vue を使用する](/guide/typescript/overview).
 
-- [Volar](https://github.com/johnsoncodehk/volar) provides type checking for SFCs using `<script lang="ts">` blocks, including template expressions and cross-component props validation.
+- [Volar](https://github.com/johnsoncodehk/volar) は `<script lang="ts">` ブロックを使用した SFC に対して、テンプレートやコンポーネント間のプロパティの検証を含む型チェックを提供します。
 
 - Use [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) for performing the same type checking from the command line, or for generating `d.ts` files for SFCs.
+- コマンドラインから同様の型チェックを行う場合や、SFC 用の `d.ts` ファイルを生成する場合は、[`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) を使用します。
 
-## Testing
+## テスト
 
-Main article: [Testing Guide](/guide/scaling-up/testing).
+主な記事: [テストガイド](/guide/scaling-up/testing).
 
-- [Cypress](https://www.cypress.io/) is recommended for E2E tests. It can also be used for component testing for Vue SFCs via the [Cypress Component Test Runner](https://docs.cypress.io/guides/component-testing/introduction).
+- E2E テストには [Cypress](https://www.cypress.io/) を推奨します。また、[Cypress Component Test Runner](https://docs.cypress.io/guides/component-testing/introduction) を介して、Vue の SFC のコンポーネントテストに使用することも可能です。
 
-- [Vitest](https://vitest.dev/) is a test runner created by Vue / Vite team members that focuses on speed. It is specifically designed for Vite-based applications to provide the same instant feedback loop for unit / component testing.
+- [Vitest](https://vitest.dev/) は、Vue / Vite チームのメンバーによって作成された、スピードに重点を置いたテストランナーです。Vite ベースのアプリケーションにユニット/コンポーネントテストと同じ即時のフィードバックループを提供するために、特別に設計されています。
 
-- [Jest](https://jestjs.io/) can be made to work with Vite via [vite-jest](https://github.com/sodatea/vite-jest). However, this is only recommended if you have existing Jest-based test suites that you need to migrate over to a Vite-based setup, as Vitest provides similar functionalities with a much more efficient integration.
+- [Jest](https://jestjs.io/) は [vite-jest](https://github.com/sodatea/vite-jest) を介して Vite で動作させることができます。しかし、これは、既存の Jest ベースのテストスイートを Vite ベースに移行する必要がある場合にのみ推奨される方法で、Vitest では同様の機能をより効率的に統合することができます。
 
-## Linting
+## リント
 
-The Vue team maintains [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue), an [ESLint](https://eslint.org/) plugin that supports SFC-specific linting rules.
+Vue チームは、SFC 固有のリントルールをサポートする [ESLint](https://eslint.org/) プラグインである [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) をメンテナンスしています。
 
-Users previously using Vue CLI may be used to having linters configured via webpack loaders. However when using a Vite-based build setup, our general recommendation is:
+Vue CLI を使用していたユーザーは、webpack ローダーを介してリンターを設定することに慣れているかもしれません。しかし、Vite ベースのビルド設定を使用する場合、私たちの一般的な推奨事項は次のとおりです:
 
-1. `npm install -D eslint eslint-plugin-vue`, then follow `eslint-plugin-vue`'s [configuration guide](https://eslint.vuejs.org/user-guide/#usage).
+1. `npm install -D eslint eslint-plugin-vue` を実行し、それから `eslint-plugin-vue` の [設定ガイド](https://eslint.vuejs.org/user-guide/#usage) に従います。
 
-2. Setup ESLint IDE extensions, for example [ESLint for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), so you get linter feedback right in your editor during development. This also avoids unnecessary linting cost when starting the dev server.
+2. [ESLint for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) などの ESLint の IDE 拡張を設定することで、開発中にエディターで直接リンターのフィードバックを受けることができます。また、開発サーバーの起動時に不要なリントが実行されるコストを回避することができます。
 
-3. Run ESLint as part of the production build command, so you get full linter feedback before shipping to production.
+3. プロダクションビルドコマンドの一部として ESLint を実行し、プロダクションにリリースする前に完全なリンターのフィードバックを受けることができます。
 
-4. (Optional) Setup tools like [lint-staged](https://github.com/okonet/lint-staged) to automatically lint modified files on git commit.
+4. (任意) [lint-staged](https://github.com/okonet/lint-staged) のようなツールを設定して、git commit 時に変更したファイルを自動的にリントするようにします。
 
-## Formatting
+## コードフォーマット
 
-- The [Volar](https://github.com/johnsoncodehk/volar) VSCode extension provides formatting for Vue SFCs out of the box.
+- [Volar](https://github.com/johnsoncodehk/volar) VSCode 拡張は、Vue SFC のフォーマットをそのまま提供します。
 
-- Alternatively, [Prettier](https://prettier.io/) provides built-in Vue SFC formatting support.
+- また、 [Prettier](https://prettier.io/) では、Vue の SFC のフォーマットを組み込みでサポートしています。
 
-## SFC Custom Block Integrations
+## SFC カスタムブロック統合
 
-Custom blocks are compiled into imports to the same Vue file with different request queries. It is up to the underlying build tool to handle these import requests.
+カスタムブロックは、異なるリクエストクエリを持つ同じ Vue ファイルへのインポートにコンパイルされます。これらのインポートリクエストを処理するのは、ビルドツールに任されています。
 
-- If using Vite, a custom Vite plugin should be used to transform matched custom blocks into executable JavaScript. [Example](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
+- Vite を使用する場合、カスタム Vite プラグインを使用して、マッチしたカスタムブロックを実行可能な JavaScript に変換する必要があります。[例](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
 
-- If using Vue CLI or plain webpack, a webpack loader should be configured to transform the matched blocks. [Example](https://vue-loader.vuejs.org/guide/custom-blocks.html)
+- Vue CLI またはプレーンな webpack を使用している場合、マッチしたブロックを変換するために webpack ローダーを設定する必要があります。[例](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
-## Lower-Level Packages
+## 低レベルのパッケージ群
 
 ### `@vue/compiler-sfc`
 
-- [Docs](https://github.com/vuejs/core/tree/main/packages/compiler-sfc)
+- [ドキュメント](https://github.com/vuejs/core/tree/main/packages/compiler-sfc)
 
-This package is part of the Vue core monorepo and is always published with the same version as the main `vue` package. It is included as a dependency of the main `vue` package and proxied under `vue/compiler-sfc` so you don't need to install it individually.
+このパッケージは Vue core のモノレポの一部で、常にメインの `vue` パッケージと同じバージョンで公開されています。このパッケージはメインの `vue` パッケージの依存関係として含まれており、 `vue/compiler-sfc` の下にプロキシされているので、個別にインストールする必要はありません。
 
-The package itself provides lower-level utilities for processing Vue SFCs and is only meant for tooling authors that need to support Vue SFCs in custom tools.
+このパッケージ自体は、Vue SFC を処理するための低レベルのユーティリティーを提供し、カスタムツールで Vue SFC をサポートする必要があるツールの作者のみを対象としています。
 
 :::tip
-Always prefer using this package via the `vue/compiler-sfc` deep import since this ensures its version is in sync with the Vue runtime.
+Vue のランタイムと同期したバージョンであることを保証するため `vue/compiler-sfc` のディープインポートを介して使用するのが好ましいです。
 :::
 
 ### `@vitejs/plugin-vue`
 
-- [Docs](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
+- [ドキュメント](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
 
-Official plugin that provides Vue SFC support in Vite.
+Vite で Vue SFC のサポートを提供するための公式プラグインです。
 
 ### `vue-loader`
 
-- [Docs](https://vue-loader.vuejs.org/)
+- [ドキュメント](https://vue-loader.vuejs.org/)
 
-The official loader that provides Vue SFC support in webpack. If you are using Vue CLI, also see [docs on modifying `vue-loader` options in Vue CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+webpack で Vue の SFC サポートを提供するための公式ローダーです。Vue CLI をお使いの方は、[Vue CLI の `vue-loader` オプションの編集についてのドキュメント](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader) もご覧ください。
 
-## Other Online Playgrounds
+## その他のオンラインプレイグラウンド
 
-- [VueUse Playground](https://play.vueuse.org)
+- [VueUse プレイグラウンド](https://play.vueuse.org)
 - [Vue + Vite on Repl.it](https://replit.com/@templates/VueJS-with-Vite)
 - [Vue on CodeSandbox](https://codesandbox.io/s/vue-3)
 - [Vue on Codepen](https://codepen.io/pen/editor/vue)
