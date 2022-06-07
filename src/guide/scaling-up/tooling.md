@@ -41,19 +41,19 @@ Vue CLI から Vite への移行は以下を参照してください:
 
 ### ブラウザー上でのテンプレートコンパイルについての注意点
 
-Vue をビルドステップなしで使用する場合、コンポーネントテンプレートページの HTML に直接もしくはインラインの JavaScript の文字列として書き込まれます。Vue はオンザフライでテンプレートのコンパイルを実行するために、テンプレートコンパイラーをブラウザーに同梱する必要があります。一方、ビルドステップでテンプレートをプリコンパイルすれば、コンパイラーは不要になります。Vue は、クライアントのバンドルサイズを小さくするために、ユースケースごとに最適化された [さまざまな「ビルド」](https://unpkg.com/browse/vue@3/dist/) を提供しています。
+Vue をビルドステップなしで使用する場合、コンポーネントテンプレートはページの HTML に直接もしくはインラインの JavaScript の文字列として書き込まれます。Vue はオンザフライでテンプレートのコンパイルを実行するために、テンプレートコンパイラーをブラウザーに同梱する必要があります。一方、ビルドステップでテンプレートをプリコンパイルすれば、コンパイラーは不要になります。Vue は、クライアントのバンドルサイズを小さくするために、ユースケースごとに最適化された [さまざまな「ビルド」](https://unpkg.com/browse/vue@3/dist/) を提供しています。
 
 - `vue.runtime.*` で始まるビルドファイルは、**ランタイムのみのビルド** です: コンパイラーは含まれません。これらのビルドを使用する場合、全てのテンプレートはビルド時にプリコンパイルする必要があります。
 
 - `.runtime` を含まないビルドファイルは、**フルビルド** です: コンパイラーを含み、ブラウザー上でのテンプレートのコンパイルをサポートします。しかし、ペイロードが ~14kb 増加します。
 
-デフォルトのツールのセットアップでは、SFC 内の全てのテンプレートがコンパイル済みのため、ランタイムのみのビルドを使用しまし。もし、何らかの理由でビルドステップが有ってもブラウザー上でのコンパイルが必要な場合は、`vue` の代わりに `vue/dist/vue.esm-bundler.js` にエイリアスするようにビルドツールを設定すれば、コンパイルできるようになります。
+デフォルトのツールのセットアップでは、SFC 内の全てのテンプレートがコンパイル済みのため、ランタイムのみのビルドを使用します。もし、何らかの理由でビルドステップが有ってもブラウザー上でのコンパイルが必要な場合は、`vue` の代わりに `vue/dist/vue.esm-bundler.js` にエイリアスするようにビルドツールを設定すれば、コンパイルできるようになります。
 
-ビルドステップが無いより軽量なものをお探しの場合は、[petie-vue](https://github.com/vuejs/petite-vue) をチェックしてみてください。
+ビルドステップが無いより軽量なものをお探しの場合は、[petite-vue](https://github.com/vuejs/petite-vue) をチェックしてみてください。
 
 ## IDE のサポート
 
-- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar) の拡張です。Volor は、シンタックスハイライト、TypeScript のサポート、テンプレートとコンポーネントの props の intellisense を提供します。
+- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar) の拡張です。Volor は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネントの props の intellisense を提供します。
 
   :::tip
   Volor は Vue 2 用の以前の VSCode 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
@@ -80,9 +80,8 @@ Vue のブラウザー開発者ツール拡張では、コンポーネントツ�
 
 主な記事: [TypeScript で Vue を使用する](/guide/typescript/overview).
 
-- [Volar](https://github.com/johnsoncodehk/volar) は `<script lang="ts">` ブロックを使用した SFC に対して、テンプレートやコンポーネント間のプロパティの検証を含む型チェックを提供します。
+- [Volar](https://github.com/johnsoncodehk/volar) は `<script lang="ts">` ブロックを使用した SFC に対して、テンプレート内の式やコンポーネント間のプロパティの検証を含む型チェックを提供します。
 
-- Use [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) for performing the same type checking from the command line, or for generating `d.ts` files for SFCs.
 - コマンドラインから同様の型チェックを行う場合や、SFC 用の `d.ts` ファイルを生成する場合は、[`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) を使用します。
 
 ## テスト
