@@ -137,7 +137,7 @@ export default defineComponent({
 
 ### 単一ファイルコンポーネントでの使用法
 
-SFC で TypeScript を使用する場合、`<script>` タグに `lang="ts"` 属性を追加してください。`lang="ts"` が存在する場合、全てのテンプレート式に対してもより厳格な型チェックを利用できます。
+SFC で TypeScript を使用する場合、`<script>` タグに `lang="ts"` 属性を追加してください。`lang="ts"` が存在する場合、全てのテンプレート内の式に対してもより厳格な型チェックを利用できます。
 
 ```vue
 <script lang="ts">
@@ -176,7 +176,7 @@ const count = ref(1)
 
 ### テンプレート内での TypeScript
 
-`<template>` は、`<script lang="ts">` や `<script setup lang="ts">` が使われている場合、バインディング式について、TypeScript をサポートします。これは、テンプレート式で型キャストを行う必要がある場合に便利です。
+`<template>` は、`<script lang="ts">` や `<script setup lang="ts">` が使われている場合、バインディング式について、TypeScript をサポートします。これは、テンプレート内の式で型キャストを行う必要がある場合に便利です。
 
 不自然な例を以下に示します:
 
@@ -204,7 +204,7 @@ let x: string | number = 1
 ```
 
 :::tip
-Vue CLI または webpack ベースのセットアップを使用する場合、テンプレート式での TypeScript の使用には `vue-loader@^16.8.0` が必要になります。
+Vue CLI または webpack ベースのセットアップを使用する場合、テンプレート内の式での TypeScript の使用には `vue-loader@^16.8.0` が必要になります。
 :::
 
 ## API 固有のレシピ
