@@ -67,7 +67,7 @@ Vue をビルドステップなしで使用する場合、コンポーネント�
 
 <VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
 
-Vue のブラウザー開発者ツール拡張では、コンポーネントツリーの探索や、個別のコンポーネントの状態の確認、状態管理イベントの追跡、パフォーマンスのプロファイルなどができます。
+Vue のブラウザー開発者ツール拡張では、Vue アプリのコンポーネントツリーの探索や、個別のコンポーネントの状態の確認、状態管理イベントの追跡、パフォーマンスのプロファイルなどができます。
 
 ![devtools screenshot](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
 
