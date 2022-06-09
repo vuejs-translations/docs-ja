@@ -288,7 +288,7 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 Vite ベースの Vue プロジェクトでは、以下を実行します:
 
 ```sh
-> npm install -D vitest happy-dom @testing-library/vue@next
+> npm install -D vitest happy-dom @testing-library/vue
 ```
 
 次に、Vite の設定を更新して `test` オプションブロックを追加します:
