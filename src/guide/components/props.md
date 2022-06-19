@@ -8,7 +8,7 @@
 
 ## プロパティの宣言
 
-Vue のコンポーネントでは、明示的な props (プロパティ) の宣言が必要です。これにより Vue は、外部からコンポーネントに渡された props を fallthrough 属性 (次のセクションで説明します) として扱うべきかを知ることができます。
+Vue のコンポーネントでは、明示的な props (プロパティ) の宣言が必要です。これにより Vue は、外部からコンポーネントに渡された props を fallthrough 属性（[専用のセクション](/guide/components/attrs)で説明します）として扱うべきかを知ることができます。
 
 <div class="composition-api">
 
