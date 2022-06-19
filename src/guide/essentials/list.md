@@ -338,7 +338,7 @@ Vue は監視対象の配列のミューテーションメソッドをラップ�
 <div class="composition-api">
 
 ```js
-// `item` は配列値の参照です
+// `items` は配列値の参照です
 items.value = items.value.filter((item) => item.message.match(/Foo/))
 ```
 
