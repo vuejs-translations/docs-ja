@@ -232,8 +232,11 @@ export const sidebar = {
     {
       text: 'Scaling Up',
       items: [
-        { text: 'Single-File Components', link: '/guide/scaling-up/sfc' },
-        { text: 'Tooling', link: '/guide/scaling-up/tooling' },
+        {
+          text: '単一ファイルコンポーネント',
+          link: '/guide/scaling-up/sfc'
+        },
+        { text: 'ツールガイド', link: '/guide/scaling-up/tooling' },
         { text: 'Routing', link: '/guide/scaling-up/routing' },
         {
           text: '状態管理',

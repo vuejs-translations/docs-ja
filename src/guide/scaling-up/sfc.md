@@ -39,7 +39,7 @@ SFC にはビルドステップが必要ですが、その代わりに多くの�
 - [コンポーネントスコープのCSS](/api/sfc-css-features)
 - [Composition API を使用する場合のより人間工学的な構文](/api/sfc-script-setup)
 - テンプレートとスクリプトを相互分析することによるコンパイル時の最適化の強化
-- テンプレート式のオートコンプリートとタイプチェックによる[IDE のサポート](/guide/scaling-up/tooling.html#ide-support)
+- テンプレート内の式のオートコンプリートと型チェックによる[IDE のサポート](/guide/scaling-up/tooling.html#IDE-のサポート)
 - すぐに使用できるホットモジュールリプレイスメント（HMR）のサポート
 
 SFC は、フレームワークとしての Vue を特徴付ける機能であり、次のシナリオで Vue を使用するための推奨されるアプローチです:
