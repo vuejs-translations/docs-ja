@@ -229,7 +229,7 @@ server.get('/', (req, res) => {
 
 Vite は組み込みの [Vue サーバーサイドレンダリングのサポート](https://vitejs.dev/guide/ssr.html)を提供しますが、そのサポート内容は意図的に低レベルになっています。Vite を直接使いたい場合は、[vite-plugin-ssr](https://vite-plugin-ssr.com/) をチェックしてください。このプラグイン、多くの難しい設定を抽象化してくれる公式のプラグインです。
 
-また、手動設定を使用した Vue + Vite SSR プロジェクトの例が[こちら](https://github.com/vitejs/vite/tree/main/packages/playground/ssr-vue)にありますので、これをベースに構築することもできます。これは、SSR やビルドツールの経験が豊富で、より高レベルのアーキテクチャーを完全に制御したい場合にのみ推奨されます。
+また、手動設定を使用した Vue + Vite SSR プロジェクトの例が[こちら](https://github.com/vitejs/vite/tree/main/playground/ssr-vue)にありますので、これをベースに構築することもできます。これは、SSR やビルドツールの経験が豊富で、より高レベルのアーキテクチャーを完全に制御したい場合にのみ推奨されます。
 
 ## SSR フレンドリーなコードを書く
 
