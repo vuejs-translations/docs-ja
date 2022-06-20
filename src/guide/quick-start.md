@@ -123,7 +123,11 @@ const { createApp, ref } = Vue
 他の依存関係のエントリーを import map に追加することができます - 使おうとしているライブラリーの ES モジュールバージョンを指していることは確認してください。
 
 :::tip Import Maps のブラウザサポート
-Import maps は現在のところ Chromium ベースのブラウザーのみで利用可能なので、学習過程の間は Chrome または Edge の使用を推奨します。あなたの好むブラウザーがまだ import maps に対応していなくとも、[es-module-shims](https://github.com/guybedford/es-module-shims) でポリフィル (polyfill) できます。
+Import maps は Chromium ベースのブラウザーでデフォルトでサポートされているため、学習過程の間は Chrome または Edge の使用を推奨します。
+
+Firefox を使用している場合、バージョン 102+ でのみサポートされており、現在は `about:config` にある `dom.importMaps.enabled` オプションで有効にする必要があります。
+
+あなたの好むブラウザーがまだ import maps に対応していなくとも、[es-module-shims](https://github.com/guybedford/es-module-shims) でポリフィル (polyfill) できます。
 :::
 
 :::warning プロダクション向けではありません

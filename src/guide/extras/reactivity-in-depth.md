@@ -69,7 +69,7 @@ whenDepsChange(update)
 
 JavaScript でプロパティにアクセスを傍受する方法は 2 つあります:[getter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get)/[setters](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set) と [Proxies](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) です。Vue 2 では、ブラウザのサポートの制限により、getter/setter のみを使用していました。Vue 3 では、Proxies はリアクティブオブジェクトに、getter/setters は refs に使用されています。以下は、動作を説明する疑似コードです:
 
-```js{4,8,17,21}
+```js{4,9,17,22}
 function reactive(obj) {
   return new Proxy(obj, {
     get(target, key) {
@@ -77,8 +77,8 @@ function reactive(obj) {
       return target[key]
     },
     set(target, key, value) {
-      trigger(target, key)
       target[key] = value
+      trigger(target, key)
     }
   })
 }
@@ -90,8 +90,8 @@ function ref(value) {
       return value
     },
     set value(newValue) {
-      trigger(refObject, 'value')
       value = newValue
+      trigger(refObject, 'value')
     }
   }
   return refObject
