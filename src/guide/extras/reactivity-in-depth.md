@@ -6,19 +6,19 @@ outline: deep
 import SpreadSheet from './demos/SpreadSheet.vue'
 </script>
 
-# Reactivity in Depth
+# リアクティビティの探求
 
-One of Vue’s most distinct features is the unobtrusive reactivity system. Component state are reactive JavaScript objects. When you modify them, the view updates. It makes state management simple and intuitive, but it’s also important to understand how it works to avoid some common gotchas. In this section, we are going to dig into some of the lower-level details of Vue’s reactivity system.
+Vue の最も特徴的な機能の 1 つは、控えめなリアクティビティシステムです。コンポーネントの状態はリアクティブな JavaScript オブジェクトです。状態を変更すると、ビュー (View) が更新されます。状態管理はシンプルで直感的ですが、よくある落とし穴を避けるために、仕組みを理解することも重要です。このセクションでは Vue のリアクティビティシステムのより低レベルの詳細について、いくつか掘り下げていきます。
 
-## What is Reactivity?
+## リアクティビティとは？
 
-This term comes up in programming quite a bit these days, but what do people mean when they say it? Reactivity is a programming paradigm that allows us to adjust to changes in a declarative manner. The canonical example that people usually show, because it’s a great one, is an Excel spreadsheet:
+最近この用語がプログラミングでよく出てくるようになりましたが、人々がそれについて話すとき、何を意味しているのでしょうか？リアクティビティとは、宣言的な方法で変化に対応できるようにするプログラミングパラダイムです。よく挙げられる典型的な例として Excel のスプレッドシートが挙げられます:
 
 <SpreadSheet />
 
-Here cell A2 is defined via a formula of `= A0 + A1` (you can click on A2 to view or edit the formula), so the spreadsheet gives us 3. No surprises there. But if you update A0 or A1, you'll notice that A2 automagically updates too.
+ここでセル A2 は `= A0 + A1` という数式で定義されているので（A2 をクリックして数式を表示または編集できます）、スプレッドシートには 3 が表示されます。これは驚くことではありません。ですが A0 や A1 を更新すると、A2 も自動的に更新されることに気がつくでしょう。
 
-JavaScript doesn’t usually work like this. If we were to write something comparable in JavaScript:
+JavaScript は通常このようには動作しません。JavaScript で同等のものを書こうとすると:
 
 ```js
 let A0 = 1
@@ -28,12 +28,12 @@ let A2 = A0 + A1
 console.log(A2) // 3
 
 A0 = 2
-console.log(A2) // Still 3
+console.log(A2) // 3 のまま
 ```
 
-When we mutate `A0`, `A2` does not change automatically.
+`A0` を変更しても、`A2` は自動的に変化しません。
 
-So how would we do this in JavaScript? First, in order to re-run the code that updates `A2`, let's wrap it in a function:
+では、JavaScript でこれを行うにはどうしたらよいでしょうか？まず、`A2` を更新するコードを再実行するために、それを関数でラップしてみましょう:
 
 ```js
 let A2
@@ -43,31 +43,31 @@ function update() {
 }
 ```
 
-Then, we need to define a few terms:
+次に、いくつかの用語を定義する必要があります:
 
-- The `update()` function produces a **side effect**, or **effect** for short, because it modifies the state of the program.
+- `update()` 関数はプログラムの状態を変更するため、**副作用（サイドエフェクト: side effect）**、もしくは略して**作用（エフェクト: effect）**を発生させます。
 
-- `A0` and `A1` are considered **dependencies** of the effect, as their values are used to perform the effect. The effect is said to be a **subscriber** to its dependencies.
+- `A0` と `A1` は作用の**依存関係**と見なされ、それらの値は作用を実行するために使用されます。作用は依存関係との関係において**購読者（subscriber）**と言われます。
 
-What we need is a magic function that can invoke `update()` (the **effect**) whenever `A0` or `A1` (the **dependencies**) change:
+必要なのは `A0` や `A1`（**依存関係**）が変わるたびに `update()`（**作用**）を呼び出せるマジックメソッドです:
 
 ```js
 whenDepsChange(update)
 ```
 
-This `whenDepsChange()` function has the following tasks:
+この `whenDepsChange()` 関数には、以下のようなタスクがあります:
 
-1. Track when a variable is read. E.g. when evaluating the expression `A0 + A1`, both `A0` and `A1` are read.
+1. 変数が読み込まれたときの追跡。例えば `A0 + A1` という式を評価するときに、`A0` と `A1` の両方が読み込まれます。
 
-2. If a variable is read when there is a currently running effect, make that effect a subscriber to that variable. E.g. because `A0` and `A1` are read when `update()` is being executed, `update()` becomes a subscriber to both `A0` and `A1` after the first call.
+2. 実行中の作用があるときに変数が読み込まれた場合、作用をその変数の購読者にします。例： `update()` が実行されているときに `A0` と `A1` が読み込まれるので、最初の呼び出し以降は `update()` が `A0` と `A1` の両方の購読者になります。
 
-3. Detect when a variable is mutated. E.g. when `A0` is assigned a new value, notify all its subscriber effects to re-run.
+3. 変数が変更されたときの検知。例:`A0` に新しい値が代入されたとき、再実行のため購読者である作用すべてに通知します。
 
-## How Reactivity Works in Vue
+## Vue におけるリアクティビティの仕組み
 
-We can't really track the reading and writing of local variables like in the example. There's just no mechanism for doing that in vanilla JavaScript. What we **can** do though, is intercept the reading and writing of **object properties**.
+私たちは、この例のようなローカル変数の読み書きを実際に追跡することはできません。バニラ（素の）JavaScript にはそのような仕組みがないのです。**できる**のは、**オブジェクトのプロパティ**の読み書きを傍受(インターセプト)することです。
 
-There are two ways of intercepting property access in JavaScript: [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)/[setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) and [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Vue 2 used getter/setters exclusively due to browser support limitations. In Vue 3, Proxies are used for reactive objects and getter/setters are used for refs. Here's some pseudo-code that illustrates how they work:
+JavaScript でプロパティにアクセスを傍受する方法は 2 つあります:[getter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get)/[setters](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set) と [Proxies](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) です。Vue 2 では、ブラウザのサポートの制限により、getter/setter のみを使用していました。Vue 3 では、Proxies はリアクティブオブジェクトに、getter/setters は refs に使用されています。以下は、動作を説明する疑似コードです:
 
 ```js{4,9,17,22}
 function reactive(obj) {
@@ -99,20 +99,20 @@ function ref(value) {
 ```
 
 :::tip
-Code snippets here and below are meant to explain the core concepts in the simplest form possible, so many details are omitted, and edge cases ignored.
+ここと以下のコードスニペットは、核となるコンセプトをできるだけシンプルに説明することを目的としているため、多くの詳細は省略され、エッジケースも無視されています。
 :::
 
-This explains a few [limitations of reactive objects](/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive) that we have discussed in the fundamentals section:
+これは基礎のセクションで説明したいくつかの[リアクティブオブジェクトの制限](/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive)を説明するものです:
 
-- When you assign or destructure a reactive object's property to a local variable, the reactivity is "disconnected" because access to the local variable no longer triggers the get / set proxy traps.
+- リアクティブオブジェクトのプロパティをローカル変数に割り当てたり分割代入した場合、ローカル変数へのアクセスはプロキシーが仕込んだ get/set をトリガーしなくなるため、リアクティビティが"切断"されます。
 
-- The returned proxy from `reactive()`, although behaving just like the original, has a different identity if we compare it to the original using the `===` operator.
+- `reactive()` から返されたプロキシーはオリジナルと同じように動作しますが、`===` 演算子を用いてオリジナルと比較すると、異なる固有性を持つことになります。
 
-Inside `track()`, we check whether there is a currently running effect. If there is one, we lookup the subscriber effects (stored in a Set) for the property being tracked, and add the effect to the Set:
+`track()` の内部では、現在実行中の作用があるかどうかをチェックします。ある場合は、追跡しているプロパティの購読者である作用（Set に格納）を検索し、その作用を Set に追加します:
 
 ```js
-// This will be set right before an effect is about
-// to be run. We'll deal with this later.
+// これは、作用の実行直前に設定されます。
+// これについては後ほど扱います。
 let activeEffect
 
 function track(target, key) {
@@ -123,9 +123,9 @@ function track(target, key) {
 }
 ```
 
-Effect subscriptions are stored in a global `WeakMap<target, Map<key, Set<effect>>>` data structure. If no subscribing effects Set was found for a property (tracked for the first time), it will be created. This is what the `getSubscribersForProperty()` function does, in short. For simplicity, we will skip its details.
+エフェクトサブスクリプションは、グローバルなデータストラクチャ `WeakMap<target, Map<key, Set<effect>>` に格納されます。もし、あるプロパティに対してサブスクライブする作用の Set が見つからなかった場合（初めて追跡された場合）、Set が作成されます。要するに、これが `getSubscribersForProperty()` 関数が行うことです。説明の簡略化のため、詳細は割愛します。
 
-Inside `trigger()`, we again lookup the subscriber effects for the property. But this time we invoke them instead:
+`trigger()` 内部では再びプロパティの購読者である作用を検索しています。ですが、今回は探す代わりに作用を呼び出しています:
 
 ```js
 function trigger(target, key) {
@@ -134,7 +134,7 @@ function trigger(target, key) {
 }
 ```
 
-Now let's circle back to the `whenDepsChange()` function:
+では、`whenDepsChange()` 関数に話を戻しましょう:
 
 ```js
 function whenDepsChange(update) {
@@ -147,11 +147,11 @@ function whenDepsChange(update) {
 }
 ```
 
-It wraps the raw `update` function in an effect that sets itself as the current active effect before running the actual update. This enables `track()` calls during the update to locate the current active effect.
+ここでは実際のアップデートを実行する前に、作用自身に現在のアクティブなエフェクトをセットするために素の `update` 関数をラップしています。これにより、アップデート中に `track()` を呼び出し、現在のアクティブな作用を特定することができます。
 
-At this point, we have created an effect that automatically tracks its dependencies, and re-runs whenever a dependency changes. We call this a **Reactive Effect**.
+この時点で、依存関係を自動的に追跡し、依存関係が変更されるたびに再実行する作用が作成しました。これを**リアクティブ作用（Reactive Effect）**と呼びます。
 
-Vue provides an API that allows you to create reactive effects: [`watchEffect()`](/api/reactivity-core.html#watcheffect). In fact, you may have noticed that it works pretty similarly to the magical `whenDepsChange()` in the example. We can now rework the original example using actual Vue APIs:
+Vue はリアクティブ作用を作成するための API を提供しています:[watchEffect()`](/api/reactivity-core.html#watcheffect)。実際、この例にある魔法のような `whenDepsChange()` とかなり似た動きをすることに気づくかもしれません。これで、実際の Vue の API を使って最初のサンプルを作り直すことができます:
 
 ```js
 import { ref, watchEffect } from 'vue'
@@ -161,15 +161,15 @@ const A1 = ref(1)
 const A2 = ref()
 
 watchEffect(() => {
-  // tracks A0 and A1
+  // A0 と A1 を追跡
   A2.value = A0.value + A1.value
 })
 
-// triggers the effect
+// 作用をトリガー
 A0.value = 2
 ```
 
-Using a reactive effect to mutate a ref isn't the most interesting use case - in fact, using a computed property makes it more declarative:
+ref の変更のためにリアクティブ作用を使用するのはあまり気持ちのいい使い方ではありません。実際、算出プロパティを使う方がより宣言的です:
 
 ```js
 import { ref, computed } from 'vue'
@@ -181,9 +181,9 @@ const A2 = computed(() => A0.value + A1.value)
 A0.value = 2
 ```
 
-Internally, `computed` manages its invalidation and re-computation using a reactive effect.
+内部的には、`computed` がリアクティブ作用を使って無効化や再計算を管理しています。
 
-So what's an example of a common and useful reactive effect? Well, updating the DOM! We can implement simple "reactive rendering" like this:
+では、一般的で便利なリアクティブ作用の例とは何でしょうか？そう、DOM の更新です！単純な"リアクティブレンダリング"を実装するには、次のようにします:
 
 ```js
 import { ref, watchEffect } from 'vue'
@@ -194,46 +194,46 @@ watchEffect(() => {
   document.body.innerHTML = `count is: ${count.value}`
 })
 
-// updates the DOM
+// DOM を更新
 count.value++
 ```
 
-In fact, this is pretty close to how a Vue component keeps the state and the DOM in sync - each component instance creates a reactive effect to render and update the DOM. Of course, Vue components use much more efficient ways to update the DOM than `innerHTML`. This is discussed in [Rendering Mechanism](./rendering-mechanism).
+実際、これは Vue のコンポーネントが状態と DOM を同期させる方法にかなり近いです。各コンポーネントのインスタンスは、DOM をレンダリングして更新するためのリアクティブ作用を作成します。もちろん、Vue コンポーネントは `innerHTML` よりもずっと効率的な方法で DOM を更新しています。これについては[レンダリングメカニズム](./rendering-mechanism)で説明されています。
 
 <div class="options-api">
 
-The `ref()`, `computed()` and `watchEffect()` APIs are all part of the Composition API. If you have only been using Options API with Vue so far, you'll notice that Composition API is closer to how Vue's reactivity system works under the hood. In fact, in Vue 3 the Options API is implemented on top of the Composition API. All property access on the component instance (`this`) triggers getter/setters for reactivity tracking, and options like `watch` and `computed` invoke their Composition API equivalents internally.
+`ref()`、`computed()` と `watchEffect()` API はすべて Composition API の一部です。これまで Vue で Options API だけを使用していた方は、Composition API が Vue のリアクティブシステムの仕組みに近いことに気がつくでしょう。実際、Vue 3 では、Options API は Composition API の上に実装されています。コンポーネントインスタンス（`this`）のすべてのプロパティへのアクセスは、リアクティビティ追跡のための getter/setter をトリガーし、`watch` や `computed` などのオプションは、内部的に Composition API と同等のものを呼び出します。
 
 </div>
 
-## Runtime vs. Compile-time Reactivity
+## ランタイム VS. リアクティビティのコンパイルタイム
 
-Vue's reactivity system is primarily runtime-based: the tracking and triggering are all performed while the code is running directly in the browser. The pros of runtime reactivity is that it can work without a build step, and there are fewer edge cases. On the other hand, this makes it constrained by the syntax limitations of JavaScript.
+Vue のリアクティビティシステムは、主にランタイムベースです:追跡とトリガーは、すべてコードがブラウザーで直接実行されている間に行われます。ランタイム中のリアクティビティの長所は、ビルドステップなしで動作すること、そしてエッジケースが少ないことです。一方で、JavaScript の構文の制限に制約されることになります。
 
-We have already encountered a limitation in the previous example: JavaScript does not provide a way for us to intercept the reading and writing of local variables, so we have to always access reactive state as object properties, using either reactive objects or refs.
+先ほどの例では、すでにその制限に遭遇しました:JavaScript はローカル変数の読み書きをインターセプトする方法を提供していません。なので、リアクティブな状態にアクセスするには、常にリアクティブオブジェクトか refs を使ってオブジェクトのプロパティとしてアクセスしなければなりません。
 
-We have been experimenting with the [Reactivity Transform](/guide/extras/reactivity-transform.html) feature to reduce the code verbosity:
+私たちは、コードの冗長性を減らすために[Reactivity Transform](/guide/extras/reactivity-transform.html)機能を実験的に使用しています:
 
 ```js
 let A0 = $ref(0)
 let A1 = $ref(1)
 
-// track on variable read
+// 変数の読み込みの追跡
 const A2 = $computed(() => A0 + A1)
 
-// trigger on variable write
+// 変数の書き込みをトリガー
 A0 = 2
 ```
 
-This snippet compiles into exactly what we'd have written without the transform, by automatically appending `.value` after references to the variables. With Reactivity Transform, Vue's reactivity system becomes a hybrid one.
+このスニペットは、変数への参照の後に自動的に `.value` を追加することで、トランスフォームなしで書いたものと全く同じにコンパイルされます。Reactivity Transform によって、Vue のリアクティビティシステムは洗練されたものになります。
 
-## Reactivity Debugging
+## リアクティビティのデバッグ
 
-It's great that Vue's reactivity system automatically tracks dependencies, but in some cases we may want to figure out exactly what is being tracked, or what is causing a component to re-render.
+Vue のリアクティビティシステムが依存関係を自動的に追跡するのは素晴らしいことですが、場合によっては、何が追跡されているのか、あるいは何がコンポーネントの再レンダリングを引き起こしているのかを正確に把握したいと時があるかもしれません。
 
-### Component Debugging Hooks
+### コンポーネントデバッグフック
 
-We can debug what dependencies are used during a component's render and which dependency is triggering an update using the <span class="options-api">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> and <span class="options-api">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> lifecycle hooks. Both hooks will receive a debugger event which contains information on the dependency in question. It is recommended to place a `debugger` statement in the callbacks to interactively inspect the dependency:
+コンポーネントのレンダリング時にどの依存関係が使われているか、どの依存関係が更新のトリガーになっているかは、<span class="options-api">`renderTracked`</span><span class="composition-api">`onRenderTracked`</span> と <span class="options-api">`renderTriggered`</span><span class="composition-api">`onRenderTriggered`</span> ライフサイクルフックを使ってデバッグすることができます。どちらのフックも、調べたい依存関係の情報を含むデバッガーイベントを受け取ります。依存関係を対話的に調査するために、コールバックの中に `debugger` ステートメントを置くことをお勧めします:
 
 <div class="composition-api">
 
@@ -268,10 +268,10 @@ export default {
 </div>
 
 :::tip
-Component debug hooks only work in development mode.
+コンポーネントデバッグフックは開発モードでのみ動作します。
 :::
 
-The debug event objects have the following type:
+デバッグイベントオブジェクトの型は下記の通りです:
 
 <span id="debugger-event"></span>
 
@@ -289,45 +289,45 @@ type DebuggerEvent = {
 }
 ```
 
-### Computed Debugging
+### 算出プロパティのデバッグ
 
 <!-- TODO options API equivalent -->
 
-We can debug computed properties by passing `computed()` a second options object with `onTrack` and `onTrigger` callbacks:
+`computed()` の第 2 引数に `onTrack` と `onTrigger` のコールバック関数オブジェクトを渡すことで、算出プロパティをデバッグすることができます:
 
-- `onTrack` will be called when a reactive property or ref is tracked as a dependency.
-- `onTrigger` will be called when the watcher callback is triggered by the mutation of a dependency.
+- `onTrack` はリアクティブなプロパティや ref が依存関係として追跡されるときに呼ばれます。
+- `onTrigger` は依存関係の変更によってウォッチャーのコールバック関数がトリガーされたときに呼ばれます。
 
-Both callbacks will receive debugger events in the [same format](#debugger-event) as component debug hooks:
+どちらのコールバックも、コンポーネントデバッグフックと[同じフォーマット](#debugger-event)でデバッガーイベントを受信します:
 
 ```js
 const plusOne = computed(() => count.value + 1, {
   onTrack(e) {
-    // triggered when count.value is tracked as a dependency
+    // count.value が依存関係として追跡されたときにトリガーされます
     debugger
   },
   onTrigger(e) {
-    // triggered when count.value is mutated
+    // count.value が変更されたときにトリガーされます
     debugger
   }
 })
 
-// access plusOne, should trigger onTrack
+// plusOne にアクセスすると、onTrack がトリガーされる
 console.log(plusOne.value)
 
-// mutate count.value, should trigger onTrigger
+// count.value を変更すると、onTrigger がトリガーされる
 count.value++
 ```
 
 :::tip
-`onTrack` and `onTrigger` computed options only work in development mode.
+算出プロパティの `onTrack` と `onTrigger` オプションは開発モードでのみ動作します。
 :::
 
-### Watcher Debugging
+### ウォッチャーのデバッグ
 
 <!-- TODO options API equivalent -->
 
-Similar to `computed()`, watchers also support the `onTrack` and `onTrigger` options:
+`computed()` と同様にウォッチャーも `onTrack` と `onTrigger` オプションをサポートしています:
 
 ```js
 watch(source, callback, {
@@ -350,22 +350,22 @@ watchEffect(callback, {
 ```
 
 :::tip
-`onTrack` and `onTrigger` watcher options only work in development mode.
+ウォッチャーの `onTrack` と `onTrigger` オプションは開発モードでのみ動作します。
 :::
 
-## Integration with External State Systems
+## 外部の状態システムとの統合
 
-Vue's reactivity system works by deeply converting plain JavaScript objects into reactive proxies. The deep conversion can be unnecessary or sometimes unwanted when integrating with external state management systems (e.g. if an external solution also uses Proxies).
+Vue のリアクティビティシステムは、プレーンな JavaScript オブジェクトをリアクティブなプロキシーに綿密に変換することで機能します。外部の状態管理システムと統合する場合（例えば、外部のソリューションもプロキシーを使用する場合）、この変換は不要になることがあり、時には望ましくないことになります。
 
-The general idea of integrating Vue's reactivity system with an external state management solution is to hold the external state in a [`shallowRef`](/api/reactivity-advanced.html#shallowref). A shallow ref is only reactive when its `.value` property is accessed - the inner value is left intact. When the external state changes, replace the ref value to trigger updates.
+Vue のリアクティビティシステムを外部の状態管理ソリューションと統合する一般的な方法は、外部の状態を [`shallowRef`](/api/reactivity-advanced.html#shallowref) で保持することです。shallow ref は `.value` プロパティにアクセスしたときのみリアクティブになり、内部の値はそのまま残されます。外部の状態が変化したら、更新をトリガーするために ref の値を置き換えます。
 
-### Immutable Data
+### イミュータブルなデータ
 
-If you are implementing a undo / redo feature, you likely want to take a snapshot of the application's state on every user edit. However, Vue's mutable reactivity system isn't best suited for this if the state tree is large, because serializing the entire state object on every update can be expensive in terms of both CPU and memory costs.
+undo/redo 機能（元に戻す/やり直す機能）を実装する場合、ユーザーが編集するたびにアプリケーションの状態のスナップショットを取得したいと思うかもしれません。ですが、ステートツリーが大きい場合、こういった機能に対しては Vue のミュータブル（変更可能）なリアクティビティシステムは適していません。更新があるたびにステートオブジェクト全体をシリアライズすると、CPU とメモリー両方のコストがかかる可能性があるためです。
 
-[Immutable data structures](https://en.wikipedia.org/wiki/Persistent_data_structure) solve this by never mutating the state objects - instead, it creates new objects that share the same, unchanged parts with old ones. There are different ways of using immutable data in JavaScript, but we recommend using [Immer](https://immerjs.github.io/immer/) with Vue because it allows you to use immutable data while keeping the more ergonomic, mutable syntax.
+[イミュータブルなデータ構造](https://en.wikipedia.org/wiki/Persistent_data_structure)は、ステートオブジェクトを決して変更させないことでこれを解決します。変更の代わりに、古いオブジェクトと同じ、変化のない部分を共有する新しいオブジェクトを作成するのです。JavaScript でイミュータブルなデータを使用する方法はさまざまありますが、Vue で [Immer](https://immerjs.github.io/immer/) を使用すると、ミュータブルな構文を維持しつつ、より人に分かりやすい状態でイミュータブルなデータを使用できるため、おすすめです。
 
-We can integrate Immer with Vue via a simple composable:
+Immer と Vue は、簡単なコンポーザブルを介して統合できます:
 
 ```js
 import produce from 'immer'
@@ -381,13 +381,13 @@ export function useImmer(baseState) {
 }
 ```
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZUltbWVyIH0gZnJvbSAnLi9pbW1lci5qcydcbiAgXG5jb25zdCBbaXRlbXMsIHVwZGF0ZUl0ZW1zXSA9IHVzZUltbWVyKFtcbiAge1xuICAgICB0aXRsZTogXCJMZWFybiBWdWVcIixcbiAgICAgZG9uZTogdHJ1ZVxuICB9LFxuICB7XG4gICAgIHRpdGxlOiBcIlVzZSBWdWUgd2l0aCBJbW1lclwiLFxuICAgICBkb25lOiBmYWxzZVxuICB9XG5dKVxuXG5mdW5jdGlvbiB0b2dnbGVJdGVtKGluZGV4KSB7XG4gIHVwZGF0ZUl0ZW1zKGl0ZW1zID0+IHtcbiAgICBpdGVtc1tpbmRleF0uZG9uZSA9ICFpdGVtc1tpbmRleF0uZG9uZVxuICB9KVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPHVsPlxuICAgIDxsaSB2LWZvcj1cIih7IHRpdGxlLCBkb25lIH0sIGluZGV4KSBpbiBpdGVtc1wiXG4gICAgICAgIDpjbGFzcz1cInsgZG9uZSB9XCJcbiAgICAgICAgQGNsaWNrPVwidG9nZ2xlSXRlbShpbmRleClcIj5cbiAgICAgICAge3sgdGl0bGUgfX1cbiAgICA8L2xpPlxuICA8L3VsPlxuPC90ZW1wbGF0ZT5cblxuPHN0eWxlPlxuLmRvbmUge1xuICB0ZXh0LWRlY29yYXRpb246IGxpbmUtdGhyb3VnaDtcbn1cbjwvc3R5bGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJpbW1lclwiOiBcImh0dHBzOi8vdW5wa2cuY29tL2ltbWVyQDkuMC43L2Rpc3QvaW1tZXIuZXNtLmpzP21vZHVsZVwiXG4gIH1cbn0iLCJpbW1lci5qcyI6ImltcG9ydCBwcm9kdWNlIGZyb20gJ2ltbWVyJ1xuaW1wb3J0IHsgc2hhbGxvd1JlZiB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZUltbWVyKGJhc2VTdGF0ZSkge1xuICBjb25zdCBzdGF0ZSA9IHNoYWxsb3dSZWYoYmFzZVN0YXRlKVxuICBjb25zdCB1cGRhdGUgPSAodXBkYXRlcikgPT4ge1xuICAgIHN0YXRlLnZhbHVlID0gcHJvZHVjZShzdGF0ZS52YWx1ZSwgdXBkYXRlcilcbiAgfVxuXG4gIHJldHVybiBbc3RhdGUsIHVwZGF0ZV1cbn0ifQ==)
+[プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZUltbWVyIH0gZnJvbSAnLi9pbW1lci5qcydcbiAgXG5jb25zdCBbaXRlbXMsIHVwZGF0ZUl0ZW1zXSA9IHVzZUltbWVyKFtcbiAge1xuICAgICB0aXRsZTogXCJMZWFybiBWdWVcIixcbiAgICAgZG9uZTogdHJ1ZVxuICB9LFxuICB7XG4gICAgIHRpdGxlOiBcIlVzZSBWdWUgd2l0aCBJbW1lclwiLFxuICAgICBkb25lOiBmYWxzZVxuICB9XG5dKVxuXG5mdW5jdGlvbiB0b2dnbGVJdGVtKGluZGV4KSB7XG4gIHVwZGF0ZUl0ZW1zKGl0ZW1zID0+IHtcbiAgICBpdGVtc1tpbmRleF0uZG9uZSA9ICFpdGVtc1tpbmRleF0uZG9uZVxuICB9KVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPHVsPlxuICAgIDxsaSB2LWZvcj1cIih7IHRpdGxlLCBkb25lIH0sIGluZGV4KSBpbiBpdGVtc1wiXG4gICAgICAgIDpjbGFzcz1cInsgZG9uZSB9XCJcbiAgICAgICAgQGNsaWNrPVwidG9nZ2xlSXRlbShpbmRleClcIj5cbiAgICAgICAge3sgdGl0bGUgfX1cbiAgICA8L2xpPlxuICA8L3VsPlxuPC90ZW1wbGF0ZT5cblxuPHN0eWxlPlxuLmRvbmUge1xuICB0ZXh0LWRlY29yYXRpb246IGxpbmUtdGhyb3VnaDtcbn1cbjwvc3R5bGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJpbW1lclwiOiBcImh0dHBzOi8vdW5wa2cuY29tL2ltbWVyQDkuMC43L2Rpc3QvaW1tZXIuZXNtLmpzP21vZHVsZVwiXG4gIH1cbn0iLCJpbW1lci5qcyI6ImltcG9ydCBwcm9kdWNlIGZyb20gJ2ltbWVyJ1xuaW1wb3J0IHsgc2hhbGxvd1JlZiB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZUltbWVyKGJhc2VTdGF0ZSkge1xuICBjb25zdCBzdGF0ZSA9IHNoYWxsb3dSZWYoYmFzZVN0YXRlKVxuICBjb25zdCB1cGRhdGUgPSAodXBkYXRlcikgPT4ge1xuICAgIHN0YXRlLnZhbHVlID0gcHJvZHVjZShzdGF0ZS52YWx1ZSwgdXBkYXRlcilcbiAgfVxuXG4gIHJldHVybiBbc3RhdGUsIHVwZGF0ZV1cbn0ifQ==)
 
-### State Machines
+### ステートマシン
 
-[State Machine](https://en.wikipedia.org/wiki/Finite-state_machine) is a model for describing all the possible states an application can be in, and all the possible ways it can transition from one state to another. While it may be overkill for simple components, it can help make complex state flows more robust and manageable.
+[ステートマシン](https://en.wikipedia.org/wiki/Finite-state_machine)は、アプリケーションが取りうるすべての状態と、ある状態から別の状態に移行するためのすべての方法を記述するためのモデルです。単純なコンポーネントには過剰かもしれませんが、複雑な状態遷移をより堅牢で管理しやすくするのに役立ちます。
 
-One of the most popular state machine implementations in JavaScript is [XState](https://xstate.js.org/). Here's a composable that integrates with it:
+JavaScript で最も人気のあるステートマシンの実装の 1 つとして [XState](https://xstate.js.org/) があります。ここに XState と統合したコンポーザブルがあります:
 
 ```js
 import { createMachine, interpret } from 'xstate'
@@ -405,8 +405,8 @@ export function useMachine(options) {
 }
 ```
 
-[Try it in the Playground](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZU1hY2hpbmUgfSBmcm9tICcuL21hY2hpbmUuanMnXG4gIFxuY29uc3QgW3N0YXRlLCBzZW5kXSA9IHVzZU1hY2hpbmUoe1xuICBpZDogJ3RvZ2dsZScsXG4gIGluaXRpYWw6ICdpbmFjdGl2ZScsXG4gIHN0YXRlczoge1xuICAgIGluYWN0aXZlOiB7IG9uOiB7IFRPR0dMRTogJ2FjdGl2ZScgfSB9LFxuICAgIGFjdGl2ZTogeyBvbjogeyBUT0dHTEU6ICdpbmFjdGl2ZScgfSB9XG4gIH1cbn0pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cInNlbmQoJ1RPR0dMRScpXCI+XG4gICAge3sgc3RhdGUubWF0Y2hlcyhcImluYWN0aXZlXCIpID8gXCJPZmZcIiA6IFwiT25cIiB9fVxuICA8L2J1dHRvbj5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ4c3RhdGVcIjogXCJodHRwczovL3VucGtnLmNvbS94c3RhdGVANC4yNy4wL2VzL2luZGV4LmpzP21vZHVsZVwiXG4gIH1cbn0iLCJtYWNoaW5lLmpzIjoiaW1wb3J0IHsgY3JlYXRlTWFjaGluZSwgaW50ZXJwcmV0IH0gZnJvbSAneHN0YXRlJ1xuaW1wb3J0IHsgc2hhbGxvd1JlZiB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZU1hY2hpbmUob3B0aW9ucykge1xuICBjb25zdCBtYWNoaW5lID0gY3JlYXRlTWFjaGluZShvcHRpb25zKVxuICBjb25zdCBzdGF0ZSA9IHNoYWxsb3dSZWYobWFjaGluZS5pbml0aWFsU3RhdGUpXG4gIGNvbnN0IHNlcnZpY2UgPSBpbnRlcnByZXQobWFjaGluZSlcbiAgICAub25UcmFuc2l0aW9uKChuZXdTdGF0ZSkgPT4gKHN0YXRlLnZhbHVlID0gbmV3U3RhdGUpKVxuICAgIC5zdGFydCgpXG4gIGNvbnN0IHNlbmQgPSAoZXZlbnQpID0+IHNlcnZpY2Uuc2VuZChldmVudClcblxuICByZXR1cm4gW3N0YXRlLCBzZW5kXVxufSJ9)
+[プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZU1hY2hpbmUgfSBmcm9tICcuL21hY2hpbmUuanMnXG4gIFxuY29uc3QgW3N0YXRlLCBzZW5kXSA9IHVzZU1hY2hpbmUoe1xuICBpZDogJ3RvZ2dsZScsXG4gIGluaXRpYWw6ICdpbmFjdGl2ZScsXG4gIHN0YXRlczoge1xuICAgIGluYWN0aXZlOiB7IG9uOiB7IFRPR0dMRTogJ2FjdGl2ZScgfSB9LFxuICAgIGFjdGl2ZTogeyBvbjogeyBUT0dHTEU6ICdpbmFjdGl2ZScgfSB9XG4gIH1cbn0pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cInNlbmQoJ1RPR0dMRScpXCI+XG4gICAge3sgc3RhdGUubWF0Y2hlcyhcImluYWN0aXZlXCIpID8gXCJPZmZcIiA6IFwiT25cIiB9fVxuICA8L2J1dHRvbj5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCIsXG4gICAgXCJ4c3RhdGVcIjogXCJodHRwczovL3VucGtnLmNvbS94c3RhdGVANC4yNy4wL2VzL2luZGV4LmpzP21vZHVsZVwiXG4gIH1cbn0iLCJtYWNoaW5lLmpzIjoiaW1wb3J0IHsgY3JlYXRlTWFjaGluZSwgaW50ZXJwcmV0IH0gZnJvbSAneHN0YXRlJ1xuaW1wb3J0IHsgc2hhbGxvd1JlZiB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZU1hY2hpbmUob3B0aW9ucykge1xuICBjb25zdCBtYWNoaW5lID0gY3JlYXRlTWFjaGluZShvcHRpb25zKVxuICBjb25zdCBzdGF0ZSA9IHNoYWxsb3dSZWYobWFjaGluZS5pbml0aWFsU3RhdGUpXG4gIGNvbnN0IHNlcnZpY2UgPSBpbnRlcnByZXQobWFjaGluZSlcbiAgICAub25UcmFuc2l0aW9uKChuZXdTdGF0ZSkgPT4gKHN0YXRlLnZhbHVlID0gbmV3U3RhdGUpKVxuICAgIC5zdGFydCgpXG4gIGNvbnN0IHNlbmQgPSAoZXZlbnQpID0+IHNlcnZpY2Uuc2VuZChldmVudClcblxuICByZXR1cm4gW3N0YXRlLCBzZW5kXVxufSJ9)
 
 ### RxJS
 
-[RxJS](https://rxjs.dev/) is a library for working with asynchronous event streams. The [VueUse](https://vueuse.org/) library provides the [`@vueuse/rxjs`](https://vueuse.org/rxjs/readme.html) add-on for connecting RxJS streams with Vue's reactivity system.
+[RxJS](https://rxjs.dev/) は、非同期イベントストリームを扱うためのライブラリーです。[VueUse](https://vueuse.org/) ライブラリーは、RxJS ストリームと Vue のリアクティブシステムを接続するための [`@vueuse/rxjs`](https://vueuse.org/rxjs/readme.html) アドオンを提供します。
