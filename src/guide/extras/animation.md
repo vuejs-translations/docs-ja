@@ -5,13 +5,13 @@ import Colors from './demos/Colors.vue'
 import AnimateWatcher from './demos/AnimateWatcher.vue'
 </script>
 
-# Animation Techniques
+# アニメーションテクニック
 
-Vue provides the [`<Transition>`](/guide/built-ins/transition.html) and [`<TransitionGroup>`](/guide/built-ins/transition-group.html) components for handling enter / leave and list transitions. However, there are many other ways of using animations on the web, even in a Vue application. Here we will discuss a few additional techniques.
+Vue には、enter (挿入) / leave (削除) とリストのトランジションを処理するための[`<Transition>`](/guide/built-ins/transition.html) と [`<TransitionGroup>`](/guide/built-ins/transition-group.html)というコンポーネントがあります。しかし、Vue のアプリケーションであっても、Web 上でアニメーションを使用する方法は他にもたくさんあります。ここでは、いくつかの追加のテクニックについて説明します。
 
-## Class-based Animations
+## クラスベースのアニメーション
 
-For elements that are not entering / leaving the DOM, we can trigger animations by dynamically adding a CSS class:
+DOM に entering (挿入) / leaving (削除) しない要素については、CSS のクラスを動的に追加することで、アニメーションを起動することができます。
 
 <div class="composition-api">
 
@@ -88,9 +88,9 @@ export default {
 
 <DisabledButton />
 
-## State-driven Animations
+## 状態駆動アニメーション
 
-Some transition effects can be applied by interpolating values, for instance by binding a style to an element while an interaction occurs. Take this example for instance:
+トランジション効果の中には、値を補間して適用できるものがあります。例えば、インタラクションが発生している間、要素にスタイルをバインドすることで適用できます。例えばこのような例を見てみましょう。
 
 <div class="composition-api">
 
@@ -141,13 +141,13 @@ export default {
 
 <Colors />
 
-In addition to color, you can also use style bindings to animate transform, width, or height. You can even animate SVG paths using spring physics - after all, they are all attribute data bindings:
+色だけでなく、スタイルバインディングを使用して、変形、幅、高さをアニメーション化することもできます。また、SVG のパスをばねの物理的性質を利用したアニメーションにすることもできます。結局のところ、これらはすべて属性データバインディングです。
 
 <ElasticHeader />
 
-## Animating with Watchers
+## ウォッチャーを使ったアニメーション
 
-With some creativity, we can use watchers to animate anything based on some numerical state. For example we can animate the number itself:
+工夫次第で、ウォッチャーを使って、数値の状態に応じたアニメーションを作成することができます。例えば、数値そのものをアニメーションさせることができます。
 
 <div class="composition-api">
 
