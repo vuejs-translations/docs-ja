@@ -13,7 +13,7 @@
 
 ## スクラッチでのシンプルなルーティング
 
-もしシンプルなルーティングのみ必要で、ルーターライブラリーを含めたくない場合は、[動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)を使って、ブラウザーの [`hashchange` イベント](/guide/essentials/component-basics.html#dynamic-components) をリッスンしたり、 [History API](https://developer.mozilla.org/ja/docs/Web/API/History) を使うことで、現在のコンポーネントの状態を変更することができます。
+もしシンプルなルーティングのみ必要で、フル機能のルーターライブラリーを含めたくない場合は、[動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)を使って、ブラウザーの [`hashchange` イベント](https://developer.mozilla.org/ja/docs/Web/API/Window/hashchange_event) をリッスンしたり、 [History API](https://developer.mozilla.org/ja/docs/Web/API/History) を使うことで、現在のコンポーネントの状態を変更することができます。
 
 以下は、最小構成の例です:
 
