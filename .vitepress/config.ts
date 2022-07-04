@@ -237,7 +237,7 @@ export const sidebar = {
           link: '/guide/scaling-up/sfc'
         },
         { text: 'ツールガイド', link: '/guide/scaling-up/tooling' },
-        { text: 'Routing', link: '/guide/scaling-up/routing' },
+        { text: 'ルーティング', link: '/guide/scaling-up/routing' },
         {
           text: '状態管理',
           link: '/guide/scaling-up/state-management'
