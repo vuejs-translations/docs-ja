@@ -277,6 +277,8 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 プレースホルダーの問題点の 1 つは、デフォルトでは[カラーコントラスト基準](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)を満たしていないことです。カラーコントラストを修正すると、プレースホルダーは入力フィールドにあらかじめ入力されたデータのように見えるようになります。次の例を見ると、色のコントラスト基準を満たす Last Name プレースホルダーは、あらかじめ入力されたデータのように見えることがわかります:
 
+![Accessible placeholder](./images/AccessiblePlaceholder.png)
+
 ```vue-html
 <form
   class="demo"
@@ -298,7 +300,25 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Form Placeholder" slug="ExZvvMw" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
+```css
+/* https://www.w3schools.com/howto/howto_css_placeholder.asp */
+
+#lastName::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+#lastName:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: black;
+}
+
+#lastName::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: black;
+}
+```
 
 ユーザーがフォームを入力するのに必要な情報は、入力欄外で提供するとよいでしょう。
 
