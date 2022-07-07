@@ -2,17 +2,17 @@
 outline: deep
 ---
 
-# Rendering Mechanism
+# レンダリングの仕組み
 
-How does Vue take a template and turn it into actual DOM nodes? How does Vue update those DOM nodes efficiently? We will attempt to shed some light on these questions here by diving into Vue's internal rendering mechanism.
+Vue はどのようにしてテンプレートを取得して実際の DOM に変換しているのでしょうか？　Vue はどうやって DOM ノードを効率的に更新しているのでしょうか？ここでは Vue 内部のレンダリングのメカニズムに踏み込んで、これらの疑問に光を当ててみたいと思います。
 
-## Virtual DOM
+## 仮想 DOM
 
-You have probably heard about the term virtual DOM, which Vue's rendering system is based upon.
+Vue のレンダリングシステムがベースとしている仮想 DOM という言葉を聞いたことはあるかと思います。
 
-The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM. The concept was pioneered by [React](https://reactjs.org/), and has been adapted in many other frameworks with different implementations, including Vue.
+仮想 DOM（VDOM）とは、UI の理想的な、または"仮想"表現をメモリー内に保持し、"実際の" DOM と同期させるというプログラミングの概念です。このコンセプトは [React](https://reactjs.org/) によって開拓され、Vue を含む他の多くのフレームワークで、異なる実装で適応されています。
 
-Virtual DOM is more of a pattern than a specific technology, so there is no one canonical implementation. We can illustrate the idea using a simple example:
+仮想 DOM は特定の技術というよりパターンなので、1 つの標準的な実装というものはありません。簡単な例を使って、その考え方を説明しましょう:
 
 ```js
 const vnode = {
@@ -21,56 +21,56 @@ const vnode = {
     id: 'hello'
   },
   children: [
-    /* more vnodes */
+    /* 多くの vnode */
   ]
 }
 ```
 
-Here, `vnode` is a plain JavaScript object (a "virtual node") representing a `<div>` element. It contains all the information that we need to create the actual element. It also contains more children vnodes, which makes it the root of a virtual DOM tree.
+ここで、`vnode` は `<div>` 要素を表すプレーンな JavaScript オブジェクト（"仮想ノード"）です。これは、実際の要素を作成するために必要なすべての情報を含んでいます。さらに、子ノードも含んでいて、仮想 DOM ツリーのルートとなります。
 
-A runtime renderer can walk a virtual DOM tree and construct a real DOM tree from it. This process is called **mount**.
+ランタイムのレンダラーは、仮想 DOM ツリー内を走査して、実際の DOM ツリーを構築することができます。この処理を**マウント**と呼びます。
 
-If we have two copies of virtual DOM trees, the renderer can also walk and compare the two trees, figuring out the differences, and apply those changes to the actual DOM. This process is called **patch**, also known as "diffing" or "reconciliation".
+仮想 DOM ツリーのコピーが 2 つある場合、レンダラーは 2 つのツリーを走査して比較し、その違いを把握して、その変更を実際の DOM に適用することもできます。このプロセスは**パッチ**と呼ばれ、または"差分"や"リコンシリエーション"とも呼ばれます。
 
-The main benefit of virtual DOM is that it gives the developer the ability to programmatically create, inspect and compose desired UI structures in a declarative way, while leaving the direct DOM manipulation to the renderer.
+仮想 DOM の主な利点は、DOM の直接的な操作はレンダラーに任せ、開発者は宣言的な方法で希望する UI 構造をプログラム的に作成、検査、合成できることです。
 
-## Render Pipeline
+## レンダーパイプライン
 
-At the high level, this is what happens when a Vue component is mounted:
+大まかには、Vue のコンポーネントがマウントされると、以下のようなことが起こります:
 
-1. **Compile**: Vue templates are compiled into **render functions**: functions that return virtual DOM trees. This step can be done either ahead-of-time via a build step, or on-the-fly by using the runtime compiler.
+1. **コンパイル**: Vue のテンプレートは、仮想 DOM ツリーを返す関数である **render 関数**にコンパイルされます。このステップは、ビルドステップで事前に行うか、ランタイムコンパイラーを使用してその場で行うことができます。
 
-2. **Mount**: The runtime renderer invokes the render functions, walks the returned virtual DOM tree, and creates actual DOM nodes based on it. This step is performed as a [reactive effect](./reactivity-in-depth), so it keeps track of all reactive dependencies that were used.
+2. **マウント**: ランタイムレンダラーはレンダー関数を呼び出し、返された仮想 DOM ツリーを走査して、それに基づいて実際の DOM ノードを作成します。このステップは、[reactive effect](./reactivity-in-depth) として実行されるため、使用されたすべてのリアクティブな依存関係を追跡します。
 
-3. **Patch**: When a dependency used during mount changes, the effect re-runs. This time, a new, updated Virtual DOM tree is created. The runtime renderer walks the new tree, compares it with the old one, and applies necessary updates to the actual DOM.
+3. **パッチ**: マウント中に使用される依存関係が変更されると、エフェクト（副作用）が再実行されます。このとき、更新された新しい仮想 DOM ツリーが作成されます。ランタイムレンダラーは新しいツリーを走査して、古いツリーと比較し、必要な更新を実際の DOM に適用します。
 
-![render pipeline](./images/render-pipeline.png)
+![レンダーパイプライン](./images/render-pipeline.png)
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 
-## Templates vs. Render Functions
+## テンプレート VS レンダー関数
 
-Vue templates are compiled into virtual DOM render functions. Vue also provides APIs that allow us to skip the template compilation step and directly author render functions. Render functions are more flexible than templates when dealing with highly dynamic logic, because you can work with vnodes using the full power of JavaScript.
+Vue のテンプレートは、仮想 DOM レンダー関数にコンパイルされます。また、Vue はテンプレートのコンパイルステップをスキップしてレンダー関数を直接書ける API を提供しています。レンダー関数は、JavaScript のパワーすべてを使って vnode を操作できます。そのため、高度に動的なロジックを扱う場面において、テンプレートよりも柔軟性があります。
 
-So why does Vue recommend templates by default? There are a number of reasons:
+では、なぜ Vue はデフォルトでテンプレートを推奨しているのでしょうか？理由はいくつかあります:
 
-1. Templates are closer to actual HTML. This makes it easier to reuse existing HTML snippets, apply accessibility best practices, style with CSS, and for designers to understand and modify.
+1. テンプレートは、実際の HTML に近いものになっています。これにより、既存の HTML スニペットの再利用、アクセシビリティベストプラクティスの適用、CSS によるスタイル付け、デザイナーが理解し修正することが容易になります。
 
-2. Templates are easier to statically analyze due to their more deterministic syntax. This allows Vue's template compiler to apply many compile-time optimizations to improve the performance of the virtual DOM (which we will discuss below).
+2. テンプレートは、より決定論的な構文であるため、より静的な解析がしやすくなっています。これにより、Vue のテンプレートコンパイラーは多くのコンパイル時の最適化を適用でき、仮想 DOM のパフォーマンスを向上させることができます（これについては後ほど説明します）。
 
-In practice, templates are sufficient for most use cases in applications. Render functions are typically only used in reusable components that need to deal with highly dynamic rendering logic. Render function usage is discussed in more detail in [Render Functions & JSX](./render-function).
+実際、アプリケーションのほとんどのユースケースはテンプレートで十分です。通常、レンダー関数は高度に動的なレンダリングロジックを扱う必要がある再利用可能なコンポーネントでのみ使用されます。レンダー関数の使用法については、[レンダー関数と JSX](./render-function) で詳しく説明しています。
 
-## Compiler-Informed Virtual DOM
+## コンパイラー情報に基づく仮想 DOM
 
-The virtual DOM implementation in React and most other virtual-DOM implementations are purely runtime: the reconciliation algorithm cannot make any assumptions about the incoming virtual DOM tree, so it has to fully traverse the tree and diff the props of every vnode in order to ensure correctness. In addition, even if a part of the tree never changes, new vnodes are always created for them on each re-render, resulting in unnecessary memory pressure. This is one of the most criticized aspect of virtual DOM: the somewhat brute-force reconciliation process sacrifices efficiency in return for declarativeness and correctness.
+React の仮想 DOM 実装や他のほとんどの仮想 DOM 実装は完全にランタイムです:照合アルゴリズムは入力される仮想 DOM ツリーを予想できないため、正確さの確保のためにツリー全体をトラバースして、すべての vnode のプロパティの差分を比較する必要があります。加えて、ツリーの一部が変更されない場合でも再レンダリングのたびに新しい vnode が作成されるため、不要なメモリー負荷が発生します。これは仮想 DOM の最も批判される点の 1 つです:やや強引な照合プロセスは、宣言性と正確さと引き換えに効率を犠牲にしているのです。
 
-But it doesn't have to be that way. In Vue, the framework controls both the compiler and the runtime. This allows us to implement many compile-time optimizations that only a tightly-coupled renderer can take advantage of. The compiler can statically analyze the template and leave hints in the generated code so that the runtime can take shortcuts whenever possible. At the same time, we still preserve the capability for the user to drop down to the render function layer for more direct control in edge cases. We call this hybrid approach **Compiler-Informed Virtual DOM**.
+ですが、このようにする必要はないのです。Vue では、フレームワークがコンパイラーとランタイムの両方を制御します。これにより、緊密に結合されたレンダラーだけが利用できる、多くのコンパイル時の最適化を実装することができます。コンパイラーは、テンプレートを静的に解析し、生成されたコードにヒントを残して、ランタイムが可能な限りショートカットを行えるようにすることができます。同時に、エッジケースでより直接的に制御するために、ユーザーがレンダー関数レイヤーにドロップダウンする機能も残しています。このハイブリッドなアプローチを **コンパイラー情報に基づく仮想 DOM** と呼びます。
 
-Below, we will discuss a few major optimizations done by the Vue template compiler to improve the virtual DOM's runtime performance.
+以下では、Vue テンプレートコンパイラーが仮想 DOM の実行時パフォーマンスを向上させるために行った、主要な最適化についていくつか解説します。
 
-### Static Hoisting
+### 静的ホイスティング
 
-Quite often there will be parts in a template that do not contain any dynamic bindings:
+テンプレートには、動的バインディングを含まない部分がよくあります:
 
 ```vue-html{2-3}
 <div>
@@ -80,30 +80,30 @@ Quite often there will be parts in a template that do not contain any dynamic bi
 </div>
 ```
 
-[Inspect in Template Explorer](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PlxuICA8ZGl2PmJhcjwvZGl2PlxuICA8ZGl2Pnt7IGR5bmFtaWMgfX08L2Rpdj5cbjwvZGl2PiIsInNzciI6ZmFsc2UsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[テンプレートエクスプローラーで観察する](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PlxuICA8ZGl2PmJhcjwvZGl2PlxuICA8ZGl2Pnt7IGR5bmFtaWMgfX08L2Rpdj5cbjwvZGl2PiIsInNzciI6ZmFsc2UsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
 
-The `foo` and `bar` divs are static - re-creating vnodes and diffing them on each re-render is unnecessary. The Vue compiler automatically hoists their vnode creation calls out of the render function, and reuses the same vnodes on every render. The renderer is also able to completely skip diffing them when it notices the old vnode and the new vnode are the same one.
+`foo` と `bar` の div たちは静的なので、再レンダリングのたびに vnode を再作成して差分を取ることは不要です。Vue コンパイラーは、vnode の作成呼び出しをレンダー関数から自動的に巻き上げ（ホイスティング）、レンダリングのたびに同じ vnode を再利用します。また、レンダラーは、古い vnode と新しい vnode が同じものであることに気づいたときに、それらの差分比較を完全にスキップすることができます。
 
-In addition, when there are enough consecutive static elements, they will be condensed into a single "static vnode" that contains the plain HTML string for all these nodes ([Example](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). These static vnodes are mounted by directly setting `innerHTML`. They also cache their corresponding DOM nodes on initial mount - if the same piece of content is reused elsewhere in the app, new DOM nodes are created using native `cloneNode()`, which is extremely efficient.
+加えて、連続する静的要素が十分にある場合、これらのノードのプレーンな HTML 文字列を含む単一の "静的 vnode" に凝縮されます ([例](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=))。これらの静的 vnode は、`innerHTML` を直接設定してマウントされます。また、初期マウント時に対応する DOM ノードをキャッシュします。アプリケーション内の他の場所で同じコンテンツが再利用される場合、ネイティブの `cloneNode()` を使用して新しい DOM ノードが作成されるため、非常に効率的です。
 
-### Patch Flags
+### パッチフラグ
 
-For a single element with dynamic bindings, we can also infer a lot of information from it at compile time:
+動的バインディングを持つ単一の要素については、コンパイル時にそこから多くの情報を推論することもできます:
 
 ```vue-html
-<!-- class binding only -->
+<!-- クラスバインディングのみ -->
 <div :class="{ active }"></div>
 
-<!-- id and value bindings only -->
+<!-- id と value バインディングのみ -->
 <input :id="id" :value="value">
 
-<!-- text children only -->
+<!-- text の子のみ -->
 <div>{{ dynamic }}</div>
 ```
 
-[Inspect in Template Explorer](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2IDpjbGFzcz1cInsgYWN0aXZlIH1cIj48L2Rpdj5cblxuPGlucHV0IDppZD1cImlkXCIgOnZhbHVlPVwidmFsdWVcIj5cblxuPGRpdj57eyBkeW5hbWljIH19PC9kaXY+Iiwib3B0aW9ucyI6e319)
+[テンプレートエクスプローラーで覗いてみる](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2IDpjbGFzcz1cInsgYWN0aXZlIH1cIj48L2Rpdj5cblxuPGlucHV0IDppZD1cImlkXCIgOnZhbHVlPVwidmFsdWVcIj5cblxuPGRpdj57eyBkeW5hbWljIH19PC9kaXY+Iiwib3B0aW9ucyI6e319)
 
-When generating the render function code for these elements, Vue encodes the type of update each of them needs directly in the vnode creation call:
+これらの要素のレンダー関数のコードを生成するとき、Vue は、各要素が必要とする更新の型を、vnode の作成呼び出しに直接エンコードします:
 
 ```js{3}
 createElementVNode("div", {
@@ -111,55 +111,55 @@ createElementVNode("div", {
 }, null, 2 /* CLASS */)
 ```
 
-The last argument, `2`, is a [patch flag](https://github.com/vuejs/core/blob/main/packages/shared/src/patchFlags.ts). An element can have multiple patch flags, which will be merged into a single number. The runtime renderer can then check against the flags using [bitwise operations](https://en.wikipedia.org/wiki/Bitwise_operation) to determine whether it needs to do certain work:
+最後の引数 `2` は[patch flag](https://github.com/vuejs/core/blob/main/packages/shared/src/patchFlags.ts) です。1 つの要素は複数のパッチフラグを持つことができ、1 つの数値にマージされます。ランタイムレンダラーは[ビット演算](https://en.wikipedia.org/wiki/Bitwise_operation)を使ってフラグをチェックし、特定の作業を行う必要があるかどうかを判断します:
 
 ```js
 if (vnode.patchFlag & PatchFlags.CLASS /* 2 */) {
-  // update the element's class
+  // 要素の class を更新
 }
 ```
 
-Bitwise checks are extremely fast. With the patch flags, Vue is able to do the least amount of work necessary when updating elements with dynamic bindings.
+ビット単位のチェックはとても高速です。パッチフラグにより、Vue は動的バインディングを持つ要素を更新する際に、必要最小限の作業を行うことができるようになりました。
 
-Vue also encodes the type of children a vnode has. For example, a template that has multiple root nodes is represented as a fragment. In most cases, we know for sure that the order of these root nodes will never change, so this information can also be provided to the runtime as a patch flag:
+Vue は、vnode が持つ子の型もエンコードします。例えば、複数のルートノードを持つテンプレートは、フラグメント（fragment）として表現されます。ほとんどの場合、これらのルートノードの順序が決して変わらないことが確実に分かっているため、この情報をパッチフラグとしてランタイムに提供することも可能です。
 
 ```js{4}
 export function render() {
   return (_openBlock(), _createElementBlock(_Fragment, null, [
-    /* children */
+    /* 子要素 */
   ], 64 /* STABLE_FRAGMENT */))
 }
 ```
 
-The runtime can thus completely skip child-order reconciliation for the root fragment.
+このため、ランタイムはルートフラグメントの子要素の順序照合を完全にスキップすることができます。
 
-### Tree Flattening
+### ツリーのフラット化
 
-Taking another look at the generated code from the previous example, you'll notice the root of the returned virtual DOM tree is created using a special `createElementBlock()` call:
+先ほどの例で生成されたコードをもう一度見てみると、返された仮想 DOM ツリーのルートは特別な `createElementBlock()` 呼び出しを使って作成されていることに気がつくかと思います:
 
 ```js{2}
 export function render() {
   return (_openBlock(), _createElementBlock(_Fragment, null, [
-    /* children */
+    /* 子要素 */
   ], 64 /* STABLE_FRAGMENT */))
 }
 ```
 
-Conceptually, a "block" is a part of the template that has stable inner structure. In this case, the entire template has a single block because it does not contain any structural directives like `v-if` and `v-for`.
+概念的には、"ブロック"は安定した内部構造を持つテンプレートの一部分です。この場合、`v-if` や `v-for` といったディレクティブを含まないため、テンプレート全体が 1 つのブロックになっています。
 
-Each block tracks any descendent nodes (not just direct children) that have patch flags. For example:
+各ブロックは、パッチフラグを持つ子孫ノード（直接の子ノードだけではありません）を追跡します。例えば:
 
 ```vue-html{3,5}
 <div> <!-- root block -->
-  <div>...</div>         <!-- not tracked -->
-  <div :id="id"></div>   <!-- tracked -->
-  <div>                  <!-- not tracked -->
-    <div>{{ bar }}</div> <!-- tracked -->
+  <div>...</div>         <!-- 追跡しない -->
+  <div :id="id"></div>   <!-- 追跡する -->
+  <div>                  <!-- 追跡しない -->
+    <div>{{ bar }}</div> <!-- 追跡する -->
   </div>
 </div>
 ```
 
-The result is a flattened array that contains only the dynamic descendent nodes:
+結果として、動的な子孫ノードのみを含むフラット化された配列ができあがります:
 
 ```
 div (block root)
@@ -167,26 +167,26 @@ div (block root)
 - div with {{ bar }} binding
 ```
 
-When this component needs to re-render, it only needs to traverse the flattened tree instead of the full tree. This is called **Tree Flattening**, and it greatly reduces the number of nodes that need to be traversed during virtual DOM reconciliation. Any static parts of the template are effectively skipped.
+このコンポーネントに再レンダリングが必要な場合、完全なツリーではなく、フラット化されたツリーを走査するだけでいいです。これは **ツリーのフラット化** と呼ばれ、仮想 DOM 照合時に走査する必要のあるノードの数を大幅に削減します。テンプレートの静的な部分は、すべて効果的にスキップされます。
 
-`v-if` and `v-for` directives will create new block nodes:
+`v-if` と `v-for` ディレクティブは新しいブロックノードを生成します:
 
 ```vue-html
-<div> <!-- root block -->
+<div> <!-- ルートブロック -->
   <div>
-    <div v-if> <!-- if block -->
+    <div v-if> <!-- if ブロック -->
       ...
     <div>
   </div>
 </div>
 ```
 
-A child block is tracked inside the parent block's array of dynamic descendants. This retains a stable structure for the parent block.
+子ブロックは、親ブロックの動的な子孫配列の内部で追跡されます。これにより、親ブロックの安定した構造が保たれます。
 
-### Impact on SSR Hydration
+### SSR ハイドレーションへの影響
 
-Both patch flags and tree flattening also greatly improve Vue's [SSR Hydration](/guide/scaling-up/ssr.html#client-hydration) performance:
+パッチフラグとツリーのフラット化により、Vue の[SSR ハイドレーション](/guide/scaling-up/ssr.html#client-hydration) のパフォーマンスが大幅に改善されます:
 
-- Single element hydration can take fast paths based on the corresponding vnode's patch flag.
+- 単一要素ハイドレーションは対応する vnode パッチフラグに基づき高速にパスを取得できます。
 
-- Only block nodes and their dynamic descendants need to be traversed during hydration, effectively achieving partial hydration at the template level.
+- ハイドレーション中は、ブロックノードとその動的な子孫ノードのみを走査すればよく、テンプレートレベルでの部分的なハイドレーションが効果的に実現されています。
