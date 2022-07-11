@@ -199,4 +199,4 @@ let open = $ref(false)
 **関連**
 
 - [`<Teleport>` API リファレンス](/api/built-in-components.html#teleport)
-- [SSR における Teleport の扱いについて](/api/ssr.html#handling-teleports)
+- [SSR における Teleport の扱いについて](/guide/scaling-up/ssr.html#teleports)
