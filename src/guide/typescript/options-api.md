@@ -238,6 +238,26 @@ declare module 'vue' {
 
 モジュール拡張を利用するためには、拡張が [TypeScript module](https://www.typescriptlang.org/docs/handbook/modules.html) に配置されている必要があります。つまり、そのファイルには少なくとも 1 つのトップレベルの `import` または `export` (単なる `export {}` であったとしても) が含まれている必要があります。もし拡張がモジュールの外に置かれた場合、元の型を拡張するのではなく、上書きしてしまいます !
 
+```ts
+// 動作せず、元の型を上書きします
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
+```ts
+// 正しく動作します
+export {}
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $translate: (key: string) => string
+  }
+}
+```
+
 ## カスタムオプションの拡張
 
 例えば `vue-router` のようなプラグインは `beforeRouteEnter` のようなカスタムコンポーネントオプションを提供します:
