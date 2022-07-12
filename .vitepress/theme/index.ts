@@ -10,6 +10,7 @@ import {
 import SponsorsAside from './components/SponsorsAside.vue'
 import VueSchoolLink from './components/VueSchoolLink.vue'
 import VueJobs from './components/VueJobs.vue'
+import VueSchoolLink from './components/VueSchoolLink.vue'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
