@@ -188,7 +188,7 @@ Chrome デベロッパー ツールでこの要素を検査し、Elements タブ
 
 #### `aria-label`
 
-[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) で入力欄にアクセシブルな名前を与えることもできます。
+[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) で入力欄にアクセシブルな名前を与えることもできます。
 
 ```vue-html
 <label for="name">Name</label>
@@ -209,7 +209,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 #### `aria-labelledby`
 
-[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) は `aria-label` と似ていますが、ラベルテキストが画面上に表示されている場合に使用されます。他の要素とは `id` で対になっており、複数の `id` をリンクさせることができます:
+[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) は `aria-label` と似ていますが、ラベルテキストが画面上に表示されている場合に使用されます。他の要素とは `id` で対になっており、複数の `id` をリンクさせることができます:
 
 ```vue-html
 <form
@@ -239,7 +239,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 #### `aria-describedby`
 
-[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) は `aria-labelledby` と同じように使われますが、ユーザーが必要とするかもしれない追加の情報を含む説明を提供します。これはどのような入力欄に対しても、その基準を記述するために使用することができます:
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) は `aria-labelledby` と同じように使われますが、ユーザーが必要とするかもしれない追加の情報を含む説明を提供します。これはどのような入力欄に対しても、その基準を記述するために使用することができます:
 
 ```vue-html
 <form
@@ -325,7 +325,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 ### インストラクション
 
 入力フィールドにインストラクションを追加する場合は、入力欄に正しくリンクさせるようにしてください。
-インストラクションを追加し、[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute) の中に複数の id をバインドすることができます。これにより、より柔軟なデザインが可能になります。
+インストラクションを追加し、[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) の中に複数の id をバインドすることができます。これにより、より柔軟なデザインが可能になります。
 
 ```vue-html
 <fieldset>
@@ -341,7 +341,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 </fieldset>
 ```
 
-または、[`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) で入力欄に説明文を付けることもできます:
+または、[`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) で入力欄に説明文を付けることもできます:
 
 ```vue-html
 <fieldset>
