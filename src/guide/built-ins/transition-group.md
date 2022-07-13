@@ -102,7 +102,7 @@ JavaScript のトランジションとデータ属性でやりとりすること
 </TransitionGroup>
 ```
 
-そして、JavaScript のフックで、data 属性に応じた遅延を持たせて要素をアニメーションさせます:
+そして、JavaScript のフックで、data 属性に応じた遅延を持たせて要素をアニメーションさせます。この例では、[GreenSock ライブラリー](https://greensock.com/)を使ってアニメーションを行います:
 
 ```js{5}
 function onEnter(el, done) {
