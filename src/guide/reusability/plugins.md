@@ -1,8 +1,8 @@
-﻿# Plugins
+﻿# プラグイン
 
-## Introduction
+## はじめに
 
-Plugins are self-contained code that usually add app-level functionality to Vue. This is how we install a plugin:
+プラグインは通常、 Vue にアプリケーションレベルの機能を追加する自己完結的なコードです。プラグインをインストールする方法は次の通りです:
 
 ```js
 import { createApp } from 'vue'
@@ -10,55 +10,55 @@ import { createApp } from 'vue'
 const app = createApp({})
 
 app.use(myPlugin, {
-  /* optional options */
+  /* 省略可能なオプション */
 })
 ```
 
-A plugin is defined as either an object that exposes an `install()` method, or simply a function that acts as the install function itself. The install function receives the [app instance](/api/application.html) along with additional options passed to `app.use()`, if any:
+プラグインの定義は `install()` メソッドを公開するオブジェクトか、あるいは単にインストール関数として動作する関数です。インストール関数は[アプリケーションインスタンス](/api/application.html)と、`app.use()` に渡された追加のオプション（もしあれば）を受け取ります:
 
 ```js
 const myPlugin = {
   install(app, options) {
-    // configure the app
+    // アプリの設定をする
   }
 }
 ```
 
-There is no strictly defined scope for a plugin, but common scenarios where plugins are useful include:
+厳密に定義されたプラグインの適用範囲はありませんが、プラグインが役立つ一般的なシナリオは以下の通りです:
 
-1. Register one or more global components or custom directives with [`app.component()`](/api/application.html#app-component) and [`app.directive()`](/api/application.html#app-directive).
+1. [`app.component()`](/api/application.html#app-component) や [`app.directive()`](/api/application.html#app-directive) を使って、1 つもしくは複数のグローバルなコンポーネントやカスタムディレクティブを登録する。
 
-2. Make a resource [injectable](/guide/components/provide-inject.html) throughout the app by calling [`app.provide()`](/api/application.html#app-provide).
+2. [`app.provide()`](/api/application.html#app-provide) を呼び出して、アプリケーション全体でリソースを[注入できる](/guide/components/provide-inject.html)ようにする。
 
-3. Add some global instance properties or methods by attaching them to [`app.config.globalProperties`](/api/application.html#app-config-globalproperties).
+3. [`app.config.globalProperties`](/api/application.html#app-config-globalproperties) にグローバルなインスタンスプロパティやメソッドを追加する。
 
-4. A library that needs to perform some combination of the above (e.g. [vue-router](https://github.com/vuejs/vue-router-next)).
+4. 上記のいくつかの組み合わせを実行する必要があるライブラリー（例: [vue-router](https://github.com/vuejs/vue-router-next)）。
 
-## Writing a Plugin
+## プラグインの書き方
 
-In order to better understand how to create your own Vue.js plugins, we will create a very simplified version of a plugin that displays `i18n` (short for [Internationalization](https://en.wikipedia.org/wiki/Internationalization_and_localization)) strings.
+独自の Vue.js プラグインの作り方をもっとよく理解するために、`i18n`（[Internationalization](https://en.wikipedia.org/wiki/Internationalization_and_localization) の略）文字列を表示するプラグインの非常に単純化したバージョンを作成します。
 
-Let's begin by setting up the plugin object. It is recommended to create it in a separate file and export it, as shown below to keep the logic contained and separate.
+まずはプラグインオブジェクトの設定から始めましょう。以下のように別のファイルに作ってエクスポートするのがおすすめです。ロジックを封じ込めて分離させるためです。
 
 ```js
 // plugins/i18n.js
 export default {
   install: (app, options) => {
-    // Plugin code goes here
+    // プラグインのコードが入る
   }
 }
 ```
 
-We want to make a function to translate keys available to the whole application, so we will expose it using `app.config.globalProperties`. This function will receive a dot-delimited `key` string, which we will use to look up the translated string in the user-provided options.
+キーを変換する関数をアプリケーション全体で利用できるようにしたいので、`app.config.globalProperties` を使って公開します。この関数はドットで区切られた `key` 文字列を受け取ります。これを使用して、ユーザーが提供したオプション内にある翻訳後の文字列をルックアップします。
 
 ```js{4-11}
 // plugins/i18n.js
 export default {
   install: (app, options) => {
-    // inject a globally available $translate() method
+    // グローバルに利用可能な $translate() メソッドを注入
     app.config.globalProperties.$translate = (key) => {
-      // retrieve a nested property in `options`
-      // using `key` as the path
+      // `key` をパスとして使用して
+      // `options` 内のネストしたプロパティを取得
       return key.split('.').reduce((o, i) => {
         if (o) return o[i]
       }, options)
@@ -67,7 +67,7 @@ export default {
 }
 ```
 
-The plugin expects users to pass in an object containing the translated keys via the options when they use the plugin, so it should be used like this:
+このプラグインは、ユーザーがプラグインを使用する際、翻訳済みのキーが入っているオブジェクトをオプションによって渡すことを想定しているので、次のように使う必要があります:
 
 ```js
 import i18nPlugin from './plugins/i18n'
@@ -79,21 +79,21 @@ app.use(i18nPlugin, {
 })
 ```
 
-Our `$translate` function will take a string such as `greetings.hello`, look inside the user provided configuration and return the translated value - in this case, `Bonjour!`:
+この `$translate` 関数は `greetings.hello` のような文字列を受け取り、ユーザーが提供した設定を探索し、翻訳された値（この場合は `Bonjour!`）を返します:
 
 ```vue-html
 <h1>{{ $translate('greetings.hello') }}</h1>
 ```
 
-See also: [Augmenting Global Properties](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
+参照: [グローバルなプロパティの拡張](/guide/typescript/options-api.html#グローバルなプロパティの拡張) <sup class="vt-badge ts" />
 
 :::tip
-Use global properties scarcely, since it can quickly become confusing if too many global properties injected by different plugins are used throughout an app.
+グローバルプロパティはほとんど使わないようにしてください。様々なプラグインから注入された多くのグローバルプロパティがアプリケーション全体で使われていると、すぐに混乱してしまいます。
 :::
 
-### Provide / Inject with Plugins
+### プラグインを使った Provide / Inject
 
-Plugins also allow us to use `inject` to provide a function or attribute to the plugin's users. For example, we can allow the application to have access to the `options` parameter to be able to use the translations object.
+プラグインは `inject` を使用して、ユーザーに関数や属性を提供することもできます。例えば、翻訳オブジェクトを使用できるようにするため、アプリケーションが `options` 引数へアクセスできるようにします。
 
 ```js{10}
 // plugins/i18n.js
@@ -110,7 +110,7 @@ export default {
 }
 ```
 
-Plugin users will now be able to inject the plugin options into their components using the `i18n` key:
+これでプラグインユーザーは `i18n` キーを使ってコンポーネント内にプラグインのオプションを注入できるようになりました:
 
 <div class="composition-api">
 

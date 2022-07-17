@@ -213,7 +213,7 @@ export const sidebar = {
           text: 'Custom Directives',
           link: '/guide/reusability/custom-directives'
         },
-        { text: 'Plugins', link: '/guide/reusability/plugins' }
+        { text: 'プラグイン', link: '/guide/reusability/plugins' }
       ]
     },
     {
