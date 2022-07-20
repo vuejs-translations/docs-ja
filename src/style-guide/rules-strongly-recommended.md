@@ -531,7 +531,7 @@ components/
 
 **プロパティ名は、定義の時は常にキャメルケース（camelCase）にするべきですが、テンプレートや[JSX](/guide/extras/render-function.html#jsx-tsx)ではケバブケース（kebab-case）にするべきです。**
 
-私たちは単純にこの慣習に従っています。JavaScript の中ではキャメルケースがより自然で、HTML の中ではケバブケースが自然です。
+私たちは単に各言語の慣習に従っているだけです。JavaScript の中ではキャメルケースがより自然で、HTML の中ではケバブケースが自然です。
 
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
