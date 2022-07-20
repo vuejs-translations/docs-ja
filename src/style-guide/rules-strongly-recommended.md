@@ -347,7 +347,7 @@ components/
 <h3>悪い例</h3>
 
 ```vue-html
-<!-- 単一ファイルコンポーネント、文字列テンプレート、JSXの中 -->
+<!-- 単一ファイルコンポーネント、文字列テンプレート、JSX の中 -->
 <MyComponent></MyComponent>
 ```
 
