@@ -367,7 +367,7 @@ components/
 ```
 
 ```vue-html
-<!-- DOMテンプレートの中 -->
+<!-- DOM テンプレートの中 -->
 <my-component></my-component>
 ```
 
