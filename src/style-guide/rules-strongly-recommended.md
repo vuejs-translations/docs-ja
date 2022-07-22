@@ -391,17 +391,17 @@ components/
 <h3>悪い例</h3>
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- 単一ファイルコンポーネント、文字列テンプレートの中 -->
 <mycomponent/>
 ```
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- 単一ファイルコンポーネント、文字列テンプレートの中 -->
 <myComponent/>
 ```
 
 ```vue-html
-<!-- In DOM templates -->
+<!-- DOMテンプレートの中 -->
 <MyComponent></MyComponent>
 ```
 
@@ -411,19 +411,19 @@ components/
 <h3>良い例</h3>
 
 ```vue-html
-<!-- In Single-File Components and string templates -->
+<!-- 単一ファイルコンポーネント、文字列テンプレートの中 -->
 <MyComponent/>
 ```
 
 ```vue-html
-<!-- In DOM templates -->
+<!-- DOMテンプレートの中 -->
 <my-component></my-component>
 ```
 
 または
 
 ```vue-html
-<!-- Everywhere -->
+<!-- どこでも -->
 <my-component></my-component>
 ```
 
