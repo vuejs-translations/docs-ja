@@ -422,12 +422,20 @@ defineEmits(['enlarge-text'])
 
 <div class="composition-api">
 
-`defineProps` と同様に `defineEmits` も `<script setup>` 内でのみ使用することができ、インポートする必要はありません。これは JavaScript コードでイベントを発行するために使用できる `emit` 関数を返します:
+`defineProps` と同様に `defineEmits` も `<script setup>` 内でのみ使用することができ、インポートする必要はありません。これはイベントを発行するために使用できる `emit` 関数を返します:
 
-```js
+```vue
+<!-- BlogPost.vue -->
+<script setup>
 const emit = defineEmits(['enlarge-text'])
-
-emit('enlarge-text')
+</script>
+  
+<template>
+  <div class="blog-post">
+    <h4>{{ title }}</h4>
+    <button @click="emit('enlarge-text')">Enlarge text</button>
+  </div>
+</template>
 ```
 
 参照:[コンポーネントの emit の型付け](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
