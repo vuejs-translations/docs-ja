@@ -61,7 +61,13 @@ Vue をビルドステップなしで使用する場合、コンポーネント�
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) も Vue SFC の素晴らしいサポートを提供しています。
 
-- [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP) をサポートする他の IDE も LSP を介して Volar のコア機能を利用できます。一例として、[coc-volar](https://github.com/yaegassy/coc-volar) は vim/Neovim に Vue SFC サポートを提供します。
+- [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP) をサポートする他の IDE も LSP を介して Volar のコア機能を利用できます。
+
+  - [LSP-Volar](https://github.com/sublimelsp/LSP-volar) による Sublime Text のサポート
+
+  - [coc-volar](https://github.com/yaegassy/coc-volar) による vim / Neovim のサポート
+
+  - [lsp-mode](https://emacs-lsp.github.io/lsp-mode/page/lsp-volar/) による emacs のサポート
 
 ## ブラウザーの開発者ツール
 

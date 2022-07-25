@@ -50,7 +50,7 @@ SFC を [StackBlitz](https://vite.new/vue) 上のオンラインで試してみ�
 
 あなたの初めての Vue プロジェクトが今実行されているはずです！　いくつか追加のヒントをどうぞ:
 
-- IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar) です。[WebStorm](https://www.jetbrains.com/ja-jp/webstorm/) も利用できます。
+- IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar) です。他のエディターを使用している場合は、[IDE のサポート](/guide/scaling-up/tooling.html#ide-のサポート)を確認してください。
 - バックエンドフレームワークとの統合を含む、ツールのさらなる詳細については、[ツールガイド](/guide/scaling-up/tooling.html) で説明しています。
 - 基礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://ja.vitejs.dev/) を確認しましょう。
 - もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview.html) を確認しましょう。
