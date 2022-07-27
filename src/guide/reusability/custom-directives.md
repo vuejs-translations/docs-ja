@@ -1,4 +1,4 @@
-# Custom Directives
+# カスタムディレクティブ
 
 <script setup>
 const vFocus = {
@@ -8,19 +8,19 @@ const vFocus = {
 }
 </script>
 
-## Introduction
+## はじめに
 
-In addition to the default set of directives shipped in core (like `v-model` or `v-show`), Vue also allows you to register your own custom directives.
+コアに設定されているデフォルトのディレクティブのセット（`v-model` や `v-show` など)に加え、Vue では独自のカスタムディレクティブを登録することができます。
 
-We have introduced two forms of code reuse in Vue: [components](/guide/essentials/component-basics.html) and [composables](./composables). Components are the main building blocks, while composables are focused on reusing stateful logic. Custom directives, on the other hand, are mainly intended for reusing logic that involves low-level DOM access on plain elements.
+Vue におけるコードの再利用として 2 つの方法を紹介してきました:[コンポーネント](/guide/essentials/component-basics.html)と[コンポーザブル](./composables)です。コンポーネントはメインブロックの構築、コンポーザブルはステートフルなロジックの再利用に重点を置いています。一方、カスタムディレクティブは主にプレーンな要素に対する低レベルの DOM アクセスを伴うロジックを再利用することを目的としています。
 
-A custom directive is defined as an object containing lifecycle hooks similar to those of a component. The hooks receive the element the directive is bound to. Here is an example of a directive that focuses an input when the element is inserted into the DOM by Vue:
+カスタムディレクティブは、コンポーネントと同様のライフサイクルフックを含むオブジェクトとして定義されます。フックは、ディレクティブがバインドされている要素を受け取ります。以下は Vue によって要素が DOM に挿入されたときに入力ら欄にフォーカスするディレクティブの例です:
 
 <div class="composition-api">
 
 ```vue
 <script setup>
-// enables v-focus in templates
+// テンプレート内で v-focus が有効になります
 const vFocus = {
   mounted: (el) => el.focus()
 }
@@ -42,7 +42,7 @@ const focus = {
 
 export default {
   directives: {
-    // enables v-focus in template
+    // テンプレート内で v-focus が有効になります
     focus
   }
 }
@@ -58,13 +58,13 @@ export default {
   <input v-focus placeholder="This should be focused" />
 </div>
 
-Assuming you haven't clicked elsewhere on the page, the input above should be auto-focused. This directive is more useful than the `autofocus` attribute because it works not just on page load - it also works when the element is dynamically inserted by Vue.
+ページの他の場所をクリックしていないと仮定すると、上の入力欄は自動的にフォーカスされるはずです。このディレクティブはページロード時だけでなく、Vue によって要素が動的に挿入されたときにも機能するため、`autofocus` 属性よりも便利です。
 
 <div class="composition-api">
 
-In `<script setup>`, any camelCase variable that starts with the `v` prefix can be used as a custom directive. In the example above, `vFocus` can be used in the template as `v-focus`.
+`<script setup>` では、接頭辞が `v` で始まるキャメルケースの変数をカスタムディレクティブとして使用することができます。上の例では、`vFocus` はテンプレート内で `v-focus` として使用できます。
 
-If not using `<script setup>`, custom directives can be registered using the `directives` option:
+`<script setup>` を使用しない場合、カスタムディレクティブは `directives` オプションを使用して登録することができます:
 
 ```js
 export default {
@@ -72,7 +72,7 @@ export default {
     /*...*/
   },
   directives: {
-    // enables v-focus in template
+    // テンプレート内で v-focus が有効になります
     focus: {
       /* ... */
     }
@@ -84,103 +84,103 @@ export default {
 
 <div class="options-api">
 
-Similar to components, custom directives must be registered so that they can be used in templates. In the example above, we are using local registration via the `directives` option.
+コンポーネントと同様に、カスタムディレクティブもテンプレートで使用できるように登録する必要があります。上の例では、 `directives` オプションを使用してローカル登録しています。
 
 </div>
 
-It is also common to globally register custom directives at the app level:
+また、カスタムディレクティブをアプリケーションレベルでグローバル登録することもよくあります:
 
 ```js
 const app = createApp({})
 
-// make v-focus usable in all components
+// 全てのコンポーネントで v-focus が使用可能
 app.directive('focus', {
   /* ... */
 })
 ```
 
 :::tip
-Custom directives should only be used when the desired functionality can only be achieved via direct DOM manipulation. Prefer declarative templating using built-in directives such as `v-bind` when possible because they are more efficient and server-rendering friendly.
+カスタムディレクティブは DOM を直接操作することでしか必要な機能を実現できない場合にのみ使用してください。`v-bind` のような組み込みディレクティブを使用した宣言的なテンプレートは、効率的かつサーバレンダリングフレンドリーです。可能なかぎり組み込みディレクティブを使用することをおすすめします。
 :::
 
-## Directive Hooks
+## ディレクティブフック
 
-A directive definition object can provide several hook functions (all optional):
+ディレクティブ定義オブジェクトは、いくつかのフック関数（すべて任意です）を提供することができます:
 
 ```js
 const myDirective = {
-  // called before bound element's attributes
-  // or event listeners are applied
+  // バインドされた要素の属性や
+  // イベントリスナーが適用される前に呼ばれます
   created(el, binding, vnode, prevVnode) {
-    // see below for details on arguments
+    // 引数の詳細については下を参照してください
   },
-  // called right before the element is inserted into the DOM.
+  // 要素が DOM に挿入される直前に呼ばれます
   beforeMount() {},
-  // called when the bound element's parent component
-  // and all its children are mounted.
+  // バインドされた要素の親コンポーネントと
+  // そのすべての子要素がマウントされたときに呼び出されます
   mounted() {},
-  // called before the parent component is updated
+  // 親コンポーネントが更新される前に呼ばれます
   beforeUpdate() {},
-  // called after the parent component and
-  // all of its children have updated
+  // 親コンポーネントとすべての子要素が
+  // 更新された後に呼ばれます
   updated() {},
-  // called before the parent component is unmounted
+  // 親コンポーネントがアンマウントされる前に呼ばれます
   beforeUnmount() {},
-  // called when the parent component is unmounted
+  // 親コンポーネントのアンマウント時に呼ばれます
   unmounted() {}
 }
 ```
 
-### Hook Arguments
+### フックの引数
 
-Directive hooks are passed these arguments:
+ディレクティブフックには以下の引数が渡されます:
 
-- `el`: the element the directive is bound to. This can be used to directly manipulate the DOM.
+- `el`: ディレクティブがバインドされている要素。DOM を直接操作するために使用されます。
 
-- `binding`: an object containing the following properties.
+- `binding`: 以下のプロパティを含むオブジェクト。
 
-  - `value`: The value passed to the directive. For example in `v-my-directive="1 + 1"`, the value would be `2`.
-  - `oldValue`: The previous value, only available in `beforeUpdate` and `updated`. It is available whether or not the value has changed.
-  - `arg`: The argument passed to the directive, if any. For example in `v-my-directive:foo`, the arg would be `"foo"`.
-  - `modifiers`: An object containing modifiers, if any. For example in `v-my-directive.foo.bar`, the modifiers object would be `{ foo: true, bar: true }`.
-  - `instance`: The instance of the component where the directive is used.
-  - `dir`: the directive definition object.
+  - `value`: ディレクティブに渡される値。例えば `v-my-directive="1 + 1"` の場合、値は `2` となります。
+  - `oldValue`: 更新前の値。 `beforeUpdate` と `updated` でのみ利用可能です。値が変更されているかどうかに関係なく利用できます。
+  - `arg`: ディレクティブに渡される引数がある場合に存在する引数。例えば `v-my-directive:foo` の場合、引数は `"foo"` となります。
+  - `modifiers`: 修飾子がある時に、それを含むオブジェクト。例えば `v-my-directive.foo.bar` の場合、修飾子オブジェクトは `{ foo: true, bar: true }` となります。
+  - `instance`: ディレクティブが使用されるコンポーネントのインスタンス。
+  - `dir`: ディレクティブ定義オブジェクト。
 
-- `vnode`: the underlying VNode representing the bound element.
-- `prevNode`: the VNode representing the bound element from the previous render. Only available in the `beforeUpdate` and `updated` hooks.
+- `vnode`: バインドされた要素を表す基礎となる VNode。
+- `prevNode`: 前のレンダリングからバインドされた要素を表す VNode。`beforeUpdate` と `updated` フックでのみ利用可能です。
 
-As an example, consider the following directive usage:
+例として、次のようなディレクティブの使い方を考えてみましょう:
 
 ```vue-html
 <div v-example:foo.bar="baz">
 ```
 
-The `binding` argument would be an object in the shape of:
+引数 `binding` は以下のような構造のオブジェクトになります:
 
 ```js
 {
   arg: 'foo',
   modifiers: { bar: true },
-  value: /* value of `baz` */,
-  oldValue: /* value of `baz` from previous update */
+  value: /* `baz` の値 */,
+  oldValue: /* 前回の更新による `baz` の値 */
 }
 ```
 
-Similar to built-in directives, custom directive arguments can be dynamic. For example:
+組み込みのディレクティブと同様に、カスタムディレクティブの引数も動的にできます。例えば:
 
 ```vue-html
 <div v-example:[arg]="value"></div>
 ```
 
-Here the directive argument will be reactively updated based on `arg` property in our component state.
+ここでは、ディレクティブの引数は、コンポーネントの状態にある `arg` プロパティに基づいてリアクティブに更新されます。
 
 :::tip Note
-Apart from `el`, you should treat these arguments as read-only and never modify them. If you need to share information across hooks, it is recommended to do so through element's [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset).
+`el` 以外のディレクティブの引数は、読み取り専用として扱い、決して変更しないようにしましょう。フック間で情報を共有する必要がある場合は、要素の [dataset](https://developer.mozilla.org/ja/docs/Web/API/HTMLElement/dataset) を通して行うことを推奨します。
 :::
 
-## Function Shorthand
+## 関数のショートハンド
 
-It's common for a custom directive to have the same behavior for `mounted` and `updated`, with no need for the other hooks. In such cases we can define the directive as a function:
+よくあることとして、カスタムディレクティブが `mounted` と `updated` に対して同じ動作をさせ、他のフックを必要としないことがあります。このような場合、ディレクティブを関数として定義することができます:
 
 ```vue-html
 <div v-color="color"></div>
@@ -188,14 +188,14 @@ It's common for a custom directive to have the same behavior for `mounted` and `
 
 ```js
 app.directive('color', (el, binding) => {
-  // this will be called for both `mounted` and `updated`
+  // `mounted` と `updated` の両方で呼ばれます
   el.style.color = binding.value
 })
 ```
 
-## Object Literals
+## オブジェクトリテラル
 
-If your directive needs multiple values, you can also pass in a JavaScript object literal. Remember, directives can take any valid JavaScript expression.
+ディレクティブが複数の値を必要とする場合、JavaScript のオブジェクトリテラルを渡すこともできます。ディレクティブは有効な JavaScript の式はなんでも引き受けられることを覚えておきましょう。
 
 ```vue-html
 <div v-demo="{ color: 'white', text: 'hello!' }"></div>
@@ -208,9 +208,9 @@ app.directive('demo', (el, binding) => {
 })
 ```
 
-## Usage on Components
+## コンポーネントでの使い方
 
-When used on components, custom directives will always apply to a component's root node, similar to [Fallthrough Attributes](/guide/components/attrs.html).
+コンポーネントで使用すると、[フォールスルー属性](/guide/components/attrs.html)と同様にカスタムディレクティブは常にコンポーネントのルートノードに適用されます。
 
 ```vue-html
 <MyComponent v-demo="test" />
@@ -224,4 +224,4 @@ When used on components, custom directives will always apply to a component's ro
 </div>
 ```
 
-Note that components can potentially have more than one root node. When applied to a multi-root component, a directive will be ignored and a warning will be thrown. Unlike attributes, directives can't be passed to a different element with `v-bind="$attrs"`. In general, it is **not** recommended to use custom directives on components.
+コンポーネントは潜在的に複数のルートノードを持つ可能性があることに注意してください。複数のルートを持つコンポーネントに適用された場合、ディレクティブは無視され、警告が投げられます。属性とは異なり、ディレクティブは `v-bind="$attrs"` で別の要素に渡すことができません。一般に、カスタムディレクティブをコンポーネントで使用することはお勧め**しません**。
