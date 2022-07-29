@@ -290,18 +290,18 @@ Vue に各ノードを一意に追跡するためのヒントを与え、既存�
 通常の要素と同様に、コンポーネントにも `v-for` を直接適用することができます (`key` を指定するのを忘れないでください):
 
 ```vue-html
-<my-component v-for="item in items" :key="item.id"></my-component>
+<MyComponent v-for="item in items" :key="item.id" />
 ```
 
 ただし、これだけではデータが自動的にコンポーネントに渡されるようにはなりません。なぜなら、コンポーネントはそれ自身の独立したスコープを持つからです。コンポーネントに反復処理対象のデータを渡すには、以下のようにプロパティを併用する必要があります:
 
 ```vue-html
-<my-component
+<MyComponent
   v-for="(item, index) in items"
   :item="item"
   :index="index"
   :key="item.id"
-></my-component>
+/>
 ```
 
 `item` が自動的に注入されないようになっている理由は、そうしてしまうと、コンポーネントが `v-for` の動作と密に結合してしまうためです。データの供給源を明示的に指定することにより、コンポーネントが別の場面でも再利用できるような作りになっています。

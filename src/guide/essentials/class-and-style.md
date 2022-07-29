@@ -192,7 +192,7 @@ data() {
 
 ルート要素が 1 つだけのコンポーネントで `class` 属性を使用すると、そこで指定したクラスがコンポーネントのルート要素に追加され、すでに指定されている既存のクラスとマージされます。
 
-例えば、`my-component` という名前のコンポーネントがあり、次のようなテンプレートになっているとします:
+例えば、`MyComponent` という名前のコンポーネントがあり、次のようなテンプレートになっているとします:
 
 ```vue-html
 <!-- 子コンポーネントのテンプレート -->
@@ -203,7 +203,7 @@ data() {
 
 ```vue-html
 <!-- コンポーネントを使用する時点 -->
-<my-component class="baz boo"></my-component>
+<MyComponent class="baz boo" />
 ```
 
 レンダリングされる HTML は次のようになります:
@@ -215,7 +215,7 @@ data() {
 クラスバインディングでも同様です:
 
 ```vue-html
-<my-component :class="{ active: isActive }"></my-component>
+<MyComponent :class="{ active: isActive }" />
 ```
 
 `isActive` が真値のとき、レンダリングされる HTML は次のようになります:
@@ -227,13 +227,13 @@ data() {
 コンポーネントに複数のルート要素を持たせているときは、どの要素にクラスを渡すか指定する必要があります。これは、以下のように `$attrs` コンポーネントプロパティを使って行います:
 
 ```vue-html
-<!-- $attrs を使った my-component のテンプレート -->
+<!-- $attrs を使った MyComponent のテンプレート -->
 <p :class="$attrs.class">Hi!</p>
 <span>This is a child component</span>
 ```
 
 ```vue-html
-<my-component class="baz"></my-component>
+<MyComponent class="baz" />
 ```
 
 レンダリング結果は次のようになります:
