@@ -28,23 +28,56 @@ const AsyncComp = defineAsyncComponent(() =>
 )
 ```
 
-結果的に得られる `AsyncComp` は、実際にページ上にレンダリングされるときにローダー関数を呼ぶだけのラッパーコンポーネントです。さらに、内側のコンポーネントに任意の props を渡せるため、非同期ラッパーを使用すると、コンポーネントをシームレスに置換するとともに、遅延読み込みも実現できます。
+結果的に得られる `AsyncComp` は、実際にページ上にレンダリングされるときにローダー関数を呼ぶだけのラッパーコンポーネントです。さらに、内側のコンポーネントに任意の props やスロットを渡せるため、非同期ラッパーを使用すると、コンポーネントをシームレスに置換するとともに、遅延読み込みも実現できます。
+
+通常のコンポーネントと同様に、非同期コンポーネントも `app.component()` を用いて[グローバルに登録](/guide/components/registration.html#グローバル登録)できます:
+
+```js
+app.component('MyComponent', defineAsyncComponent(() =>
+  import('./components/MyComponent.vue')
+))
+```
 
 <div class="options-api">
 
 [コンポーネントをローカルに登録する](/guide/components/registration.html#local-registration)ときには、`defineAsyncComponent` も利用できます:
 
-```js
+```vue
+<script>
 import { defineAsyncComponent } from 'vue'
 
 export default {
-  // ...
   components: {
-    AsyncComponent: defineAsyncComponent(() =>
-      import('./components/AsyncComponent.vue')
+    AdminPage: defineAsyncComponent(() =>
+      import('./components/AdminPageComponent.vue')
     )
   }
 }
+</script>
+
+<template>
+  <AdminPage />
+</template>
+```
+
+</div>
+
+<div class="composition-api">
+
+また、親コンポーネント内で直接定義できます:
+
+```vue
+<script setup>
+import { defineAsyncComponent } from 'vue'
+
+const AdminPage = defineAsyncComponent(() =>
+  import('./components/AdminPageComponent.vue')
+)
+</script>
+
+<template>
+  <AdminPage />
+</template>
 ```
 
 </div>
