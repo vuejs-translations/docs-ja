@@ -134,7 +134,7 @@ items.forEach((item, index) => {
 
 ## `v-for` をオブジェクトに適用する
 
-`v-for` は、オブジェクトの各プロパティを反復処理するのにも使用できます。
+`v-for` は、オブジェクトの各プロパティを反復処理するのにも使用できます。反復処理の順序は、オブジェクトに対して `Object.keys()` を呼び出した結果に基づきます:
 
 <div class="composition-api">
 
@@ -197,10 +197,6 @@ data() {
 [プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgZGF0YSgpIHtcbiAgXHRyZXR1cm4ge1xuXHQgICAgbXlPYmplY3Q6IHtcbiAgXHQgICAgdGl0bGU6ICdIb3cgdG8gZG8gbGlzdHMgaW4gVnVlJyxcblx0ICAgICAgYXV0aG9yOiAnSmFuZSBEb2UnLFxuICAgICAgXHRwdWJsaXNoZWRBdDogJzIwMTYtMDQtMTAnXG4gICAgXHR9XG4gIFx0fVxuXHR9XG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuXHQ8dWw+XG4gICAgPGxpIHYtZm9yPVwiKHZhbHVlLCBrZXksIGluZGV4KSBpbiBteU9iamVjdFwiPlxuXHRcdCAge3sgaW5kZXggfX0uIHt7IGtleSB9fToge3sgdmFsdWUgfX1cblx0XHQ8L2xpPlxuICA8L3VsPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
 
 </div>
-
-:::tip 注意
-オブジェクトを反復処理する際の順序は `Object.keys()` による列挙に基づきます。これは、ECMAScript の最近のバージョンでのみ明確に定義されており、古い JavaScript エンジンでは一貫性がない可能性があります。
-:::
 
 ## `v-for` で範囲を使用する
 
