@@ -284,6 +284,8 @@ Vue では、トランジションが終了したことを検知するために�
   transform: translateX(30px);
   opacity: 0;
 }
+
+/* ... その他の必要な CSS は省略 */
 ```
 
 さらに、enter の際にネストされた要素にトランジションの遅延を追加することで、交互の enter アニメーションシーケンスを作成することも可能です:
@@ -347,7 +349,7 @@ JavaScript で `<Transition>` コンポーネントのイベントを購読す�
 ```js
 // 要素が DOM に挿入される前に呼ばれる
 // 要素の "enter-from" 状態を設定するために使用する
-function onBeforeEnter(el) {},
+function onBeforeEnter(el) {}
 
 // 要素が DON に挿入された次のフレームで呼ばれる
 // アニメーションを開始するときに使用する
