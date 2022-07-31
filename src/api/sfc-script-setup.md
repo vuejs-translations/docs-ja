@@ -295,7 +295,7 @@ const emit = defineEmits<{
 型のみの `defineProps` 宣言の欠点は、props のデフォルト値を提供する方法がないことです。この問題を解決するために、`withDefaults` コンパイラーマクロも用意されています:
 
 ```ts
-interface Props {
+export interface Props {
   msg?: string
   labels?: string[]
 }
