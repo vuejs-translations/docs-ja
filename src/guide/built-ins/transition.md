@@ -378,7 +378,7 @@ function onLeave(el, done) {
 function onAfterLeave(el) {}
 
 // v-show トランジションでのみ有効
-function leaveCancelled(el) {}
+function onLeaveCancelled(el) {}
 ```
 
 </div>
@@ -421,7 +421,7 @@ export default {
     onAfterLeave(el) {},
 
     // v-show トランジションでのみ有効
-    leaveCancelled(el) {}
+    onLeaveCancelled(el) {}
   }
 }
 ```
