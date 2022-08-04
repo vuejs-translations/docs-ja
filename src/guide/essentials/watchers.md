@@ -19,7 +19,7 @@ export default {
   watch: {
     // 問題内容が変更されるたびに、関数が実行されます。
     question(newQuestion, oldQuestion) {
-      if (newQuestion.indexOf('?') > -1) {
+      if (newQuestion.includes('?')) {
         this.getAnswer()
       }
     }
