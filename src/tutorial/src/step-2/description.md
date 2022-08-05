@@ -2,7 +2,7 @@
 
 <div class="sfc">
 
-エディターに表示されているのは、Vue Single File Component (SFC) です。SFC は再利用可能な自己完結型のコードブロックであり、一緒に属する HTML、CSS、JavaScript をカプセル化して `.vue` ファイル内に記述します。
+エディターに表示されているのは、Vue の単一ファイルコンポーネント（SFC）です。SFC は再利用可能な自己完結型のコードブロックであり、一緒に属する HTML、CSS、JavaScript をカプセル化して `.vue` ファイル内に記述します。
 
 </div>
 
