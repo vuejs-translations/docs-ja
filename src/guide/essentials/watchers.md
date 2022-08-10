@@ -6,7 +6,7 @@
 
 <div class="options-api">
 
-Option API では、[`watch` オプション](/api/options-state.html#watch) を使って、リアクティブなプロパティが変更されるたびに関数を実行することができます:
+Options API では、[`watch` オプション](/api/options-state.html#watch) を使って、リアクティブなプロパティが変更されるたびに関数を実行することができます:
 
 ```js
 export default {
