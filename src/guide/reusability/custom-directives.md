@@ -115,19 +115,19 @@ const myDirective = {
     // 引数の詳細については下を参照してください
   },
   // 要素が DOM に挿入される直前に呼ばれます
-  beforeMount() {},
+  beforeMount(el, binding, vnode, prevVnode) {},
   // バインドされた要素の親コンポーネントと
   // そのすべての子要素がマウントされたときに呼び出されます
-  mounted() {},
+  mounted(el, binding, vnode, prevVnode) {},
   // 親コンポーネントが更新される前に呼ばれます
-  beforeUpdate() {},
+  beforeUpdate(el, binding, vnode, prevVnode) {},
   // 親コンポーネントとすべての子要素が
   // 更新された後に呼ばれます
-  updated() {},
+  updated(el, binding, vnode, prevVnode) {},
   // 親コンポーネントがアンマウントされる前に呼ばれます
-  beforeUnmount() {},
+  beforeUnmount(el, binding, vnode, prevVnode) {},
   // 親コンポーネントのアンマウント時に呼ばれます
-  unmounted() {}
+  unmounted(el, binding, vnode, prevVnode) {}
 }
 ```
 
