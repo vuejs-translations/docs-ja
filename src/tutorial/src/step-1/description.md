@@ -19,7 +19,7 @@ Vue 2 や他のフレームワークから来た経験豊富な開発者であ�
 
 - Vue には 2 つの API スタイルがあります : Options API と Composition API です。このチュートリアルは、両方で動作するように設計されています。上部にある **API Preference** スイッチを使って、好みのスタイルを選択することができます。 <a target="_blank" href="/guide/introduction.html#api-styles">API スタイルの詳細については、こちらをご覧ください</a> 。
 
-- また、 SFC モードと HTML モードの切り替えも可能です。前者は、 SFC（<a target="_blank" href="/guide/introduction.html#single-file-components">Single-File Component</a>）形式のコード例を表示します。これは、多くの開発者が Vue をビルドステップで使用するときに使用する形式です。HTML モードは、ビルドステップなしで使用する方法を示しています。
+- また、 SFC モードと HTML モードの切り替えも可能です。前者は<a target="_blank" href="/guide/introduction.html#single-file-components">単一ファイルコンポーネント</a>（SFC）形式のコード例を表示します。これは、多くの開発者が Vue をビルドステップで使用するときに使用する形式です。HTML モードは、ビルドステップなしで使用する方法を示しています。
 
 </details>
 
