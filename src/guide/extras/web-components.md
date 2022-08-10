@@ -173,7 +173,7 @@ document.body.appendChild(
 
 ### カスタム要素としての SFC
 
-`defineCustomElement` は、Vue の単一ファイルコンポーネント (SFC: Single File Components) でも動作します。しかしながら、デフォルトのツール設定では、SFC 内の `<style>` は、プロダクションビルド時に抽出され、単一の CSS ファイルにマージされます。SFC をカスタム要素として使用する場合は、代わりにカスタム要素の shadow root に `<style>` タグを注入するのが望ましいことが多いです。
+`defineCustomElement` は、Vue の単一ファイルコンポーネント (SFC: Single-File Components) でも動作します。しかしながら、デフォルトのツール設定では、SFC 内の `<style>` は、プロダクションビルド時に抽出され、単一の CSS ファイルにマージされます。SFC をカスタム要素として使用する場合は、代わりにカスタム要素の shadow root に `<style>` タグを注入するのが望ましいことが多いです。
 
 公式の SFC ツールは、"カスタム要素モード (custom element mode)" での SFC の読み込みをサポートしています (`@vitejs/plugin-vue@^1.4.0` または `vue-loader@^16.5.0` が必要)。カスタム要素モードで読み込まれた SFC は、その `<style>` タグを CSS の文字列としてインライン化し、コンポーネントの `styles` オプションで公開します。これは、`defineCustomElement` によってピックアップされ、インスタンス化されたときに要素の shadow root に注入されます。
 
