@@ -1,5 +1,13 @@
 # ルーティング
 
+## クライアントサイドとサーバーサイドのルーティングの比較
+
+サーバーサイドのルーティングとは、ユーザーがアクセスしている URL のパスに基づいて、サーバーがレスポンスを送信することを意味します。従来のサーバーレンダリングの Webb アプリでリンクをクリックすると、ブラウザーはサーバーから HTML レスポンスを受け取り、新しい HTML でページ全体を再読み込みします。
+
+しかし [Single-Page Application](https://developer.mozilla.org/ja/docs/Glossary/SPA)(SPA) では、クライアントサイドの JavaScript がナビゲーションを横取りし、動的に新しいデータを取得し、ページを完全に再読み込みすることなく現在のページを更新します。これは一般的に、ユーザーが長期間にわたって多くのインタラクションを実行することが期待される実際の「アプリケーション」にのようなユースケースで特に、より迅速なユーザーエクスペリエンスにつながります。
+
+このような SPA では「ルーティング」はクライアントサイド、つまりブラウザーで行われます。クライアントサイドのルーターは、[History API](https://developer.mozilla.org/ja/docs/Web/API/History) や [`hashchange` イベント](https://developer.mozilla.org/ja/docs/Web/API/Window/hashchange_event)などのブラウザー API を使用して、アプリケーションのレンダリングビューを管理する責任を負っています。
+
 ## 公式ルーター
 
 <!-- TODO update links -->
@@ -9,7 +17,7 @@
   </VueSchoolLink>
 </div>
 
-多くのシングルページアプリケーションで、公式がサポートする [vue-router ライブラリー](https://github.com/vuejs/router) を使うことを推奨します。詳細は、vue-router の [ドキュメント](https://router.vuejs.org/) を参照してください。
+Vue は SPA の構築に適しています。ほとんどの SPA では、公式がサポートする [Vue Router ライブラリー](https://github.com/vuejs/router) を使うことを推奨します。詳細は、Vue Router の [ドキュメント](https://router.vuejs.org/) を参照してください。
 
 ## スクラッチでのシンプルなルーティング
 
