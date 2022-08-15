@@ -18,7 +18,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 - 開発中は、すぐに型エラーのフィードバックを得るために、優れた [IDE セットアップ](#ide-のサポート) に頼ることを推奨します。
 
-- SFC を使用する場合、コマンドラインでの型チェックと型宣言の生成には [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) を使用します。`vue-tsc` は TypeScript 独自のコマンドラインインターフェースである `tsc` のラッパーです。TypeScript のファイルに加えて Vue SFC をサポートする以外は、`tsc` とほぼ同じように動作します。Vite の開発サーバーと並行して、`vue-tsc` をウォッチモードで実行できます。
+- SFC を使用する場合、コマンドラインでの型チェックと型宣言の生成には [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) を使用します。`vue-tsc` は TypeScript 独自のコマンドラインインターフェースである `tsc` のラッパーです。TypeScript のファイルに加えて Vue SFC をサポートする以外は、`tsc` とほぼ同じように動作します。Vite の開発サーバーと並行して、`vue-tsc` をウォッチモードで実行するか、別のワーカースレッドでチェックを実行する [vite-plugin-checker](https://vite-plugin-checker.netlify.app/) のような Vite プラグインを使用できます。
 
 - Vue CLI は TypeScript もサポートしていますが、推奨されなくなりました。[以下の注意](#vue-cli-と-ts-loader-に関する注意)を参照してください。
 
@@ -38,7 +38,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 ### `tsconfig.json` の構成
 
-`create-vue` を使ってセットアップしたプロジェクトには、構成済みの `tsconfig.json` が含まれます。ベースとなった構成は [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) パッケージにて抽象化されています。プロジェクト内部では、[Project References](https://www.typescriptlang.org/docs/handbook/project-references.html) を使って、異なる環境（例: アプリとテスト）で実行されるコードに対して正しい型を保証しています。
+`create-vue` を使ってセットアップしたプロジェクトには、構成済みの `tsconfig.json` が含まれます。ベースとなった構成は [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) パッケージにて抽象化されています。プロジェクト内部では、[Project References](https://www.typescriptlang.org/docs/handbook/project-references.html) を使って、異なる環境（例: アプリコードとテストコードで異なるグローバル変数を持つ必要がある）で実行されるコードに対して正しい型を保証しています。
 
 `tsconfig.json` を手動で構成する場合、いくつかの注目すべきオプションは以下の通りです:
 
@@ -53,7 +53,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 - [Official TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 - [esbuild TypeScript compilation caveats](https://esbuild.github.io/content-types/#typescript-caveats)
 
-### Takeover Mode
+### Volar Takeover Mode
 
 > このセクションは、VSCode + Volar の場合のみ該当します。
 

@@ -483,7 +483,7 @@ export default {
 - `required: true` が指定されていないすべてのプロパティは、デフォルトでオプションです。
 
 - `Boolean` 以外のオプションのプロパティは、値が指定されないと `undefined` 値になります。
-  
+
 - `Boolean` のプロパティは、値が指定されないと `false` に変換されます。望みの動作を得るためには、`default` の値を指定する必要があります。
 
 - `default` の値を指定すると、プロパティの値が `undefined` に解決される時、それが使用されます。プロパティが指定されなかった場合と、明示的に `undefined` 値が渡された場合も、これに含まれます。
@@ -492,7 +492,7 @@ export default {
 
 <div class="composition-api">
 
-[型のみのプロパティ宣言](/api/sfc-script-setup.html#typescript-only-features) を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
+[型のみのプロパティ宣言](/api/sfc-script-setup.html#typescript-only-features) <sup class="vt-badge ts" /> を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
 
 </div>
 <div class="options-api">
@@ -550,7 +550,7 @@ export default {
 
 </div>
 
-こうすると、`author` というプロパティの値が `new Person` で作成されたものであることをバリデーションで確かめることができます。
+Vue は `instanceof Person` を使って、`author` プロパティの値が本当に `Person` クラスのインスタンスであるかどうかを検証しています。
 
 ## ブール値の型変換
 

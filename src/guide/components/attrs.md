@@ -29,6 +29,8 @@ outline: deep
 <button class="large">click me</button>
 ```
 
+ここで、`<MyButton>` は `class` を受け入れ可能なプロパティとして宣言していません。そのため、`class` はフォールスルー属性として扱われ、自動的に `<MyButton>` のルート要素に追加されます。
+
 ### `class` と `style` のマージ
 
 もし、子コンポーネントのルート要素にすでに `class` や `style` 属性がある場合は、親から継承された `class` や `style` の値にマージされます。先ほどの例の `<MyButton>` のテンプレートを次のように変更するとします:

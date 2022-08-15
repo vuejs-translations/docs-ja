@@ -49,7 +49,13 @@ export default {
 }
 ```
 
-キーを翻訳する関数をアプリケーション全体で利用できるようにしたいので、`app.config.globalProperties` を使って公開します。この関数はドットで区切られた `key` 文字列を受け取ります。これを使用して、ユーザーが提供したオプション内にある翻訳後の文字列をルックアップします。
+翻訳関数を作りたいと思います。この関数はドット区切りの `key` 文字列を受け取り、それを使ってユーザーが提供するオプションの中から翻訳された文字列を検索します。これはテンプレートでの使用を想定しています:
+
+```vue-html
+<h1>{{ $translate('greetings.hello') }}</h1>
+```
+
+この関数はすべてのテンプレートでグローバルに利用できる必要があるので、プラグインの `app.config.globalProperties` にアタッチして、それを実現します:
 
 ```js{4-11}
 // plugins/i18n.js
@@ -67,7 +73,9 @@ export default {
 }
 ```
 
-このプラグインは、ユーザーがプラグインを使用する際、翻訳済みのキーが入っているオブジェクトをオプションによって渡すことを想定しているので、次のように使う必要があります:
+この `$translate` 関数は `greetings.hello` のような文字列を受け取り、ユーザーが提供した設定を調べて、翻訳された値を返します。
+
+翻訳されたキーを含むオブジェクトは、インストール時に `app.use()` の追加パラメーターとしてプラグインに渡す必要があります:
 
 ```js
 import i18nPlugin from './plugins/i18n'
@@ -79,11 +87,7 @@ app.use(i18nPlugin, {
 })
 ```
 
-この `$translate` 関数は `greetings.hello` のような文字列を受け取り、ユーザーが提供した設定を探索し、翻訳された値（この場合は `Bonjour!`）を返します:
-
-```vue-html
-<h1>{{ $translate('greetings.hello') }}</h1>
-```
+これで、最初の式 `$translate('greetings.hello')` は、実行時に `Bonjour!` に置き換えられます。
 
 参照: [グローバルなプロパティの拡張](/guide/typescript/options-api.html#グローバルなプロパティの拡張) <sup class="vt-badge ts" />
 
