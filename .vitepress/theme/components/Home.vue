@@ -52,7 +52,7 @@ onMounted(async () => {
           </picture>
           <img v-else :src="`${base}/images/${img}`" :alt="name" />
         </a>
-        <span v-if="description">{{ description }}</span>
+        <!-- <span v-if="description">{{ description }}</span> -->
       </template>
     </template>
   </section>
@@ -251,6 +251,9 @@ html:not(.dark) .accent,
 }
 
 @media (max-width: 768px) {
+  #special-sponsor span {
+    margin: 0;
+  }
   .tagline {
     font-size: 48px;
     letter-spacing: -0.5px;
