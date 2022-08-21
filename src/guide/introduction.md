@@ -10,7 +10,7 @@ footer: false
 - Vue 2 からの移行について詳しくは、[移行ガイド](https://v3-migration.vuejs.org/)を確認してください。
   :::
 
-<style src="/@theme/styles/vue-mastery.css"></style>
+<style src="@theme/styles/vue-mastery.css"></style>
 <div class="vue-mastery-link">
   <a href="https://www.vuemastery.com/courses-path/beginner" target="_blank">
     <div class="banner-wrapper">
