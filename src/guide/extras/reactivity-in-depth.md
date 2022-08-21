@@ -67,7 +67,7 @@ whenDepsChange(update)
 
 私たちは、この例のようなローカル変数の読み書きを実際に追跡することはできません。バニラ（素の）JavaScript にはそのような仕組みがないのです。**できる**のは、**オブジェクトのプロパティ**の読み書きを傍受(インターセプト)することです。
 
-JavaScript でプロパティにアクセスを傍受する方法は 2 つあります:[getter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get) / [setters](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set) と [Proxies](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) です。Vue 2 では、ブラウザのサポートの制限により、getter / setter のみを使用していました。Vue 3 では、Proxies はリアクティブオブジェクトに、getter/setters は refs に使用されています。以下は、動作を説明する疑似コードです:
+JavaScript でプロパティにアクセスを傍受する方法は 2 つあります:[getter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get) / [setters](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set) と [Proxies](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) です。Vue 2 では、ブラウザのサポートの制限により、getter / setter のみを使用していました。Vue 3 では、Proxies はリアクティブオブジェクトに、getter / setters は refs に使用されています。以下は、動作を説明する疑似コードです:
 
 ```js{4,9,17,22}
 function reactive(obj) {
@@ -202,7 +202,7 @@ count.value++
 
 <div class="options-api">
 
-`ref()`、`computed()` と `watchEffect()` API はすべて Composition API の一部です。これまで Vue で Options API だけを使用していた方は、Composition API が Vue のリアクティブシステムの仕組みに近いことに気がつくでしょう。実際、Vue 3 では、Options API は Composition API の上に実装されています。コンポーネントインスタンス（`this`）のすべてのプロパティへのアクセスは、リアクティビティ追跡のための getter/setter をトリガーし、`watch` や `computed` などのオプションは、内部的に Composition API と同等のものを呼び出します。
+`ref()`、`computed()` と `watchEffect()` API はすべて Composition API の一部です。これまで Vue で Options API だけを使用していた方は、Composition API が Vue のリアクティブシステムの仕組みに近いことに気がつくでしょう。実際、Vue 3 では、Options API は Composition API の上に実装されています。コンポーネントインスタンス（`this`）のすべてのプロパティへのアクセスは、リアクティビティ追跡のための getter / setter をトリガーし、`watch` や `computed` などのオプションは、内部的に Composition API と同等のものを呼び出します。
 
 </div>
 
