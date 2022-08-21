@@ -81,7 +81,7 @@ Options API では、リアクティブなデータは `data()` オプション�
 
 </div>
 
-もし状態の一部を複数のインスタンスで共有する必要が有る場合、[`reactive()`](/api/reactivity-core.html#reactive) でリアクティブなオブジェクトを作成し、複数のコンポーネントからそれをインポートすることができます:
+もし状態の一部を複数のインスタンスで共有する必要が有る場合、[`reactive()`](/api/reactivity-core.html#reactive) でリアクティブなオブジェクトを作成し、それを複数のコンポーネントにインポートすることができます:
 
 ```js
 // store.js
