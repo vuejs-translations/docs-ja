@@ -18,13 +18,13 @@ onMounted(async () => {
       <br />JavaScript Framework
     </h1>
     <p class="description">
-      An approachable, performant and versatile framework for building web
-      user interfaces.
+      Web ユーザーインターフェース構築のための、親しみやすく、パフォーマンスと汎用性の高いフレームワーク。
+
     </p>
     <p class="actions">
       <vue-mastery-modal />
       <a class="get-started" href="/guide/introduction.html">
-        Get Started
+        はじめる
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -37,12 +37,12 @@ onMounted(async () => {
           />
         </svg>
       </a>
-      <a class="setup" href="/guide/quick-start.html">Install</a>
+      <a class="setup" href="/guide/quick-start.html">インストール</a>
     </p>
   </section>
 
   <section id="special-sponsor">
-    <span>Special Sponsor</span>
+    <span>スペシャルスポンサー</span>
     <template v-if="data && data.special">
       <template v-for="{ url, img, name, description } of data.special">
         <a :href="url" target="_blank" rel="sponsored noopener">
@@ -59,32 +59,32 @@ onMounted(async () => {
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>Approachable</h2>
+      <h2>親しみやすい</h2>
       <p>
-        Builds on top of standard HTML, CSS and JavaScript with intuitive
-        API and world-class documentation.
+        直感的な API とワールドクラスのドキュメントを使用して、標準的な
+        HTML、CSS、JavaScript をもとに構築します。
       </p>
     </div>
     <div class="vt-box">
-      <h2>Performant</h2>
+      <h2>高パフォーマンス</h2>
       <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
+        手動での最適化をほとんど必要としない、真にリアクティブなコンパイラで最適化されたレンダリングシステム。
+
       </p>
     </div>
     <div class="vt-box">
-      <h2>Versatile</h2>
+      <h2>多用途</h2>
       <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
+        ライブラリーとフル機能のフレームワークの間でスケールする、リッチで段階的に採用可能なエコシステム。
+
       </p>
     </div>
   </section>
 
   <section id="sponsors">
-    <h2>Platinum Sponsors</h2>
+    <h2>プラチナスポンサー</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Gold Sponsors</h2>
+    <h2>ゴールドスポンサー</h2>
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 

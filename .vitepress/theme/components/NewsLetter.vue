@@ -5,7 +5,7 @@ import { VTLink } from '@vue/theme'
 <template>
   <section id="newsletter" class="NewsLetter">
     <div class="container">
-      <h2 class="title">Subscribe to our weekly newsletter.</h2>
+      <h2 class="title">毎週配信されるニュースレターを購読する。</h2>
 
       <div class="form">
         <form
@@ -32,21 +32,21 @@ import { VTLink } from '@vue/theme'
               id="member_submit"
               name="member[subscribe]"
               type="submit"
-              value="SUBSCRIBE"
+              value="購読する"
             />
           </div>
         </form>
       </div>
 
       <p class="help">
-        You can read the previous issues and listen to our podcast at
+
         <VTLink
           class="link"
           href="https://news.vuejs.org/"
           no-icon
-        >news.vuejs.org</VTLink>. You may also go social at
-        <VTLink class="link" href="https://twitter.com/vuejs" no-icon>Twitter</VTLink>, or join our home at
-        <VTLink class="link" href="https://chat.vuejs.org/" no-icon>Discord</VTLink>.
+        >news.vuejs.org</VTLink>で過去の号を読んだり、ポッドキャストを聴いたりできます。<br />
+        さらに、<VTLink class="link" href="https://twitter.com/vuejs" no-icon>Twitter</VTLink> で交流したり
+        <VTLink class="link" href="https://chat.vuejs.org/" no-icon>Discord</VTLink> で私たちのホームに参加したりできます。
       </p>
     </div>
   </section>
