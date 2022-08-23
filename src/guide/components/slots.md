@@ -4,7 +4,7 @@
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Free Vue.js Slots Lesson"/>
 
-## Slot Content と Slot Outlet
+## スロットコンテンツとスロットアウトレット
 
 これまでに、コンポーネントが props を受け取ることができること、そして props はどんな型の JavaScript の値でも取りうることを学びました。しかし、テンプレートのコンテンツについてはどうでしょうか？　場合によっては、テンプレートのフラグメントを子コンポーネントに渡して、子コンポーネントに自身のテンプレート内でそのフラグメントをレンダリングしてもらいたい場合があるかもしれません。
 
@@ -24,7 +24,7 @@
 </button>
 ```
 
-`<slot>` 要素は、親が提供した **slot content** をレンダリングすべき場所を示す **slot outlet** です。
+`<slot>` 要素は、親が提供した **スロットコンテンツ** をレンダリングすべき場所を示す **スロットアウトレット** です。
 
 ![slot diagram](./images/slots.png)
 
@@ -47,15 +47,15 @@
 
 </div>
 
-slots を利用することで、`<FancyButton>` は外側の `<button>` (およびファンシーなスタイル) をレンダリングする責務を持ちながらも、内側のコンテンツは親コンポーネントから提供できるようになります。
+スロットを利用することで、`<FancyButton>` は外側の `<button>` (およびファンシーなスタイル) をレンダリングする責務を持ちながらも、内側のコンテンツは親コンポーネントから提供できるようになります。
 
 slots を理解するもう 1 つの方法は、次のような JavaScript の関数と比べることです。
 
 ```js
-// 親コンポーネントが slot content を渡す
+// 親コンポーネントがスロットコンテンツを渡す
 FancyButton('Click me!')
 
-// FancyButton が slot content を自身のテンプレート内でレンダリングする
+// FancyButton がスロットコンテンツを自身のテンプレート内でレンダリングする
 function FancyButton(slotContent) {
   return `<button class="fancy-btn">
       ${slotContent}
@@ -63,7 +63,7 @@ function FancyButton(slotContent) {
 }
 ```
 
-slot content はテキストだけに限定されるわけではありません。任意の有効なテンプレートコンテンツを渡せます。たとえば、複数の要素を渡したり、さらに他のコンポーネントを渡すことさえできます。
+スロットコンテンツはテキストだけに限定されるわけではありません。任意の有効なテンプレートコンテンツを渡せます。たとえば、複数の要素を渡したり、さらに他のコンポーネントを渡すことさえできます。
 
 ```vue-html
 <FancyButton>
@@ -83,13 +83,13 @@ slot content はテキストだけに限定されるわけではありません�
 
 </div>
 
-slots を利用することで、`<FancyButton>` はより柔軟で再利用可能になりました。これで、他の場所で異なる内部コンテンツとともに利用できるようになり、すべてのコンテンツには同一のファンシーなスタイルが適用されます。
+スロットを利用することで、`<FancyButton>` はより柔軟で再利用可能になりました。これで、他の場所で異なる内部コンテンツとともに利用できるようになり、すべてのコンテンツには同一のファンシーなスタイルが適用されます。
 
-Vue コンポーネントの slot の仕組みは、[ネイティブの Web Component の `<slot>` 要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/slot)に着想を得たものですが、後で見るように追加の機能もあります。
+Vue コンポーネントのスロットの仕組みは、[ネイティブの Web Component の `<slot>` 要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/slot)に着想を得たものですが、後で見るように追加の機能もあります。
 
-## Render Scope
+## レンダースコープ
 
-slot content は親で定義されているため、親コンポーネントのデータスコープへアクセスできます。たとえば、次のような例があるとします:
+スロットコンテンツは親で定義されているため、親コンポーネントのデータスコープへアクセスできます。たとえば、次のような例があるとします:
 
 ```vue-html
 <span>{{ message }}</span>
@@ -98,13 +98,13 @@ slot content は親で定義されているため、親コンポーネントの�
 
 ここでは、両方の <span v-pre>`{{ message }}`</span> が同じコンテンツをレンダリングします。
 
-slot content は子コンポーネントのデータへはアクセス**できません**。Vue テンプレート内の式は、JavaScript のレキシカルスコープと同様に、その式が定義されたスコープ内のみアクセスできます。
+スロットコンテンツは子コンポーネントのデータへはアクセス**できません**。Vue テンプレート内の式は、JavaScript のレキシカルスコープと同様に、その式が定義されたスコープ内のみアクセスできます。
 
 > 親のテンプレート内のすべては親のスコープでコンパイルされ、子のテンプレート内のすべては子のスコープでコンパイルされます。
 
 ## フォールバックコンテンツ
 
-slot には、何もコンテンツが与えられなかった場合にのみレンダリングされるフォールバック (例: デフォルト) コンテンツを指定すると便利な場合があります。たとえば、次のような `<SubmitButton>` コンポーネント内で:
+スロットには、何もコンテンツが与えられなかった場合にのみレンダリングされるフォールバック (例: デフォルト) コンテンツを指定すると便利な場合があります。たとえば、次のような `<SubmitButton>` コンポーネント内で:
 
 ```vue-html
 <button type="submit">
@@ -112,7 +112,7 @@ slot には、何もコンテンツが与えられなかった場合にのみレ
 </button>
 ```
 
-slot content に何も与えなかった場合に `<button>` 内に "送信" というテキストをレンダリングしたくなるかもしれません。"送信" をフォールバックコンテンツにするには、そのテキストを `<slot>` タグの間に置きます。
+スロットコンテンツに何も与えなかった場合に `<button>` 内に "送信" というテキストをレンダリングしたくなるかもしれません。"送信" をフォールバックコンテンツにするには、そのテキストを `<slot>` タグの間に置きます。
 
 ```vue-html{3}
 <button type="submit">
@@ -122,7 +122,7 @@ slot content に何も与えなかった場合に `<button>` 内に "送信" と
 </button>
 ```
 
-これで、slot に何もコンテンツを提供せずに `<SubmitButton>` を親コンポーネント内で使用すると:
+これで、スロットに何もコンテンツを提供せずに `<SubmitButton>` を親コンポーネント内で使用すると:
 
 ```vue-html
 <SubmitButton />
@@ -157,9 +157,9 @@ slot content に何も与えなかった場合に `<button>` 内に "送信" と
 
 </div>
 
-## 名前付き slots
+## 名前付きスロット
 
-1 つのコンポーネント内に複数の slot outlet があると便利なときがあります。たとえば、次のようなテンプレートを持つ `<BaseLayout>` コンポーネントがあるとします:
+1 つのコンポーネント内に複数のスロットアウトレットがあると便利なときがあります。たとえば、次のようなテンプレートを持つ `<BaseLayout>` コンポーネントがあるとします:
 
 ```vue-html
 <div class="container">
@@ -175,7 +175,7 @@ slot content に何も与えなかった場合に `<button>` 内に "送信" と
 </div>
 ```
 
-このような場合のために、`<slot>` 要素には特別な属性 `name` があり、異なる slots にユニークな ID を割り当てて、コンテンツをレンダリングするべき場所を指定するために使用できます。
+このような場合のために、`<slot>` 要素には特別な属性 `name` があり、異なるスロットにユニークな ID を割り当てて、コンテンツをレンダリングするべき場所を指定するために使用できます。
 
 ```vue-html
 <div class="container">
@@ -191,23 +191,23 @@ slot content に何も与えなかった場合に `<button>` 内に "送信" と
 </div>
 ```
 
-`name` を持たない `<slot>` outlet は、暗黙的に "default" という name を持つものとされます。
+`name` を持たない `<slot>` アウトレットは、暗黙的に "default" という name を持つものとされます。
 
-`<BaseLayout>` を使用している親コンポーネント内では、それぞれが別の slot outlet をターゲットとする複数の slot コンテンツのフラグメントを渡す手段が必要です。これこそ **名前付き slots** が役に立つ場面です。
+`<BaseLayout>` を使用している親コンポーネント内では、それぞれが別のスロットアウトレットをターゲットとする複数の スロットコンテンツのフラグメントを渡す手段が必要です。これこそ **名前付きスロット** が役に立つ場面です。
 
-名前付き slot を渡すためには、`v-slot` ディレクティブを持つ `<template>` 要素を使い、`v-slot` に slot の名前を引数として渡す必要があります:
+名前付きスロットを渡すためには、`v-slot` ディレクティブを持つ `<template>` 要素を使い、`v-slot` にスロットの名前を引数として渡す必要があります:
 
 ```vue-html
 <BaseLayout>
   <template v-slot:header>
-    <!-- header slot のためのコンテンツ -->
+    <!-- header スロットのためのコンテンツ -->
   </template>
 </BaseLayout>
 ```
 
-`v-slot` には専用の省略表記 `#` があるため、`<template v-slot:header>` は単に短く `<template #header>` と書けます。これは「このテンプレートフラグメントを子コンポーネント内の 'header' slot 内にレンダリングする」という意味だと考えてください。
+`v-slot` には専用の省略表記 `#` があるため、`<template v-slot:header>` は単に短く `<template #header>` と書けます。これは「このテンプレートフラグメントを子コンポーネント内の 'header' スロット内にレンダリングする」という意味だと考えてください。
 
-![名前付き slots のダイアグラム](./images/named-slots.png)
+![名前付きスロットのダイアグラム](./images/named-slots.png)
 
 <!-- https://www.figma.com/file/2BhP8gVZevttBu9oUmUUyz/named-slot -->
 
@@ -230,7 +230,7 @@ slot content に何も与えなかった場合に `<button>` 内に "送信" と
 </BaseLayout>
 ```
 
-コンポーネントが default slot と名前付き slots の両方を受け入れる場合、すべてのトップレベルの `<template>` 以外のノードは暗黙的に default slot に対するコンテンツとして扱われます。そのため、上の例は次のようにも書けます。
+コンポーネントがデフォルトスロットと名前付きスロットの両方を受け入れる場合、すべてのトップレベルの `<template>` 以外のノードは暗黙的にデフォルトスロットに対するコンテンツとして扱われます。そのため、上の例は次のようにも書けます。
 
 ```vue-html
 <BaseLayout>
@@ -238,7 +238,7 @@ slot content に何も与えなかった場合に `<button>` 内に "送信" と
     <h1>Here might be a page title</h1>
   </template>
 
-  <!-- 暗黙的な default slot -->
+  <!-- 暗黙的なデフォルトスロット -->
   <p>A paragraph for the main content.</p>
   <p>And another one.</p>
 
@@ -248,7 +248,7 @@ slot content に何も与えなかった場合に `<button>` 内に "送信" と
 </BaseLayout>
 ```
 
-これで `<template>` 要素内のすべては対応する slots に渡されます。最終的にレンダリングされる HTML は次のようになります:
+これで `<template>` 要素内のすべては対応するスロットに渡されます。最終的にレンダリングされる HTML は次のようになります:
 
 ```html
 <div class="container">
@@ -276,10 +276,10 @@ slot content に何も与えなかった場合に `<button>` 内に "送信" と
 
 </div>
 
-繰り返しになりますが、JavaScript の関数と比べると、名前付き slots をよりよく理解する助けになるかもしれません:
+繰り返しになりますが、JavaScript の関数と比べると、名前付きスロットをよりよく理解する助けになるかもしれません:
 
 ```js
-// 複数の slot フラグメントを異なる名前で渡す
+// 複数のスロットフラグメントを異なる名前で渡す
 BaseLayout({
   header: `...`,
   default: `...`,
@@ -296,9 +296,9 @@ function BaseLayout(slots) {
 }
 ```
 
-## 動的な slot の名前
+## 動的なスロットの名前
 
-[動的なディレクティブの引数](/guide/essentials/template-syntax.md#dynamic-arguments)は `v-slot` でも機能します。これにより、動的な slot の名前の定義が可能になります。
+[動的なディレクティブの引数](/guide/essentials/template-syntax.md#dynamic-arguments)は `v-slot` でも機能します。これにより、動的なスロットの名前の定義が可能になります。
 
 ```vue-html
 <base-layout>
@@ -315,11 +315,11 @@ function BaseLayout(slots) {
 
 式は、動的なディレクティブの引数の[構文上の制約](/guide/essentials/template-syntax.html#directives)の対象となることに注意してください。
 
-## スコープ付き slots
+## スコープ付きスロット
 
-[Render Scope](#render-scope) で説明したように、slot のコンテンツは子コンポーネント内の状態にアクセスできません。
+[レンダースコープ](#render-scope) で説明したように、スロットのコンテンツは子コンポーネント内の状態にアクセスできません。
 
-しかし、slot のコンテンツが親のスコープと子のスコープの両方から来たデータを利用できると便利な場合があります。これを実現するためには、レンダリング時に子がデータを slot に渡す手段が必要です。
+しかし、スロットのコンテンツが親のスコープと子のスコープの両方から来たデータを利用できると便利な場合があります。これを実現するためには、レンダリング時に子がデータをスロットに渡す手段が必要です。
 
 実際、まさにその通りのことが可能で、props をコンポーネントに渡すときと同様に、属性を slot outlet に渡すことができます。
 
@@ -330,7 +330,7 @@ function BaseLayout(slots) {
 </div>
 ```
 
-slot props を受け取るのは、default slot と名前付き slots を使用するのとは少し異なります。子コンポーネントのタグ上で `v-slot` を直接使うことによって、単一の default slot を使って props を受け取る方法を最初に示します。
+スロット props を受け取るのは、デフォルトスロットと名前付きスロットを使用するのとは少し異なります。子コンポーネントのタグ上で `v-slot` を直接使うことによって、単一のデフォルトスロットを使って props を受け取る方法を最初に示します。
 
 ```vue-html
 <MyComponent v-slot="slotProps">
@@ -338,7 +338,7 @@ slot props を受け取るのは、default slot と名前付き slots を使用�
 </MyComponent>
 ```
 
-![scoped slots のダイアグラム](./images/scoped-slots.svg)
+![スコープ付きスロットのダイアグラム](./images/scoped-slots.svg)
 
 <!-- https://www.figma.com/file/QRneoj8eIdL1kw3WQaaEyc/scoped-slot -->
 
@@ -353,13 +353,13 @@ slot props を受け取るのは、default slot と名前付き slots を使用�
 
 </div>
 
-子によって slot に渡された props は、対応する `v-slot` ディレクティブの値として利用できます。この値は、slot 内の式からアクセスできます。
+子によってスロットに渡された props は、対応する `v-slot` ディレクティブの値として利用できます。この値は、スロット内の式からアクセスできます。
 
-スコープ付きの slot は、子コンポーネントに渡された関数として考えられます。その後、子コンポーネントはその関数を呼び、props を引数として渡します:
+スコープ付きスロットは、子コンポーネントに渡された関数として考えられます。その後、子コンポーネントはその関数を呼び、props を引数として渡します:
 
 ```js
 MyComponent({
-  // default slot を関数として渡す
+  // デフォルトスロットを関数として渡す
   default: (slotProps) => {
     return `${slotProps.text} ${slotProps.count}`
   }
@@ -368,15 +368,15 @@ MyComponent({
 function MyComponent(slots) {
   const greetingMessage = 'hello'
   return `<div>${
-    // slot 関数を props として呼ぶ！
+    // スロット関数を props として呼ぶ！
     slots.default({ text: greetingMessage, count: 1 })
   }</div>`
 }
 ```
 
-実際、これはスコープ付きの slots がコンパイルされる方法や、スコープ付きの slots を手動で [render 関数](/guide/extras/render-function.html)に渡す方法に非常に近いものです。
+実際、これはスコープ付きスロットがコンパイルされる方法や、スコープ付きスロットを手動で [render 関数](/guide/extras/render-function.html)に渡す方法に非常に近いものです。
 
-`v-slot="slotProps"` が slot 関数のシグネチャーにどのように対応しているかに注目してください。関数の引数のように、`v-slot` でもオブジェクトの分割が利用できます。
+`v-slot="slotProps"` がスロット関数のシグネチャーにどのように対応しているかに注目してください。関数の引数のように、`v-slot` でもオブジェクトの分割が利用できます。
 
 ```vue-html
 <MyComponent v-slot="{ text, count }">
@@ -384,9 +384,9 @@ function MyComponent(slots) {
 </MyComponent>
 ```
 
-### 名前およびスコープ付き slots
+### 名前およびスコープ付きスロット
 
-名前付き slots も同じように動作します。slot props は `v-slot` ディレクティブの値として `v-slot:name="slotProps"` のようにアクセスできます。省略表記を使うと、次のようになります:
+名前付きスロットも同じように動作します。スロット props は `v-slot` ディレクティブの値として `v-slot:name="slotProps"` のようにアクセスできます。省略表記を使うと、次のようになります:
 
 ```vue-html
 <MyComponent>
@@ -404,17 +404,17 @@ function MyComponent(slots) {
 </MyComponent>
 ```
 
-props は名前付き slot に次のように渡します:
+props は名前付きスロットに次のように渡します:
 
 ```vue-html
 <slot name="header" message="hello"></slot>
 ```
 
-slot の `name` は予約されているため、props 内には含まれないことに注意してください。そのため、`headerProps` は `{ message: 'hello' }` となります。
+スロットの `name` は予約されているため、props 内には含まれないことに注意してください。そのため、`headerProps` は `{ message: 'hello' }` となります。
 
 ### Fancy List の例
 
-スコープ付き slots のよいユースケースは何かと疑問に思うかもしれません。以下に例を示します: アイテムのリストをレンダリングする `<FancyList>` コンポーネントがあるとします。そのコンポーネントは、リストを表示するのに使用するリモートのデータを読み込むロジックや、ページネーションや無限スクロールのような発展的な機能をカプセル化しているかもしれません。そのため、期待される利用例は次のようになるかもしれません:
+スコープ付きスロットのよいユースケースは何かと疑問に思うかもしれません。以下に例を示します: アイテムのリストをレンダリングする `<FancyList>` コンポーネントがあるとします。そのコンポーネントは、リストを表示するのに使用するリモートのデータを読み込むロジックや、ページネーションや無限スクロールのような発展的な機能をカプセル化しているかもしれません。そのため、期待される利用例は次のようになるかもしれません:
 
 ```vue-html
 <FancyList :api-url="url" :per-page="10">
@@ -451,7 +451,7 @@ slot の `name` は予約されているため、props 内には含まれない�
 ### Renderless コンポーネント
 
 上で説明した `<FancyList>` のユースケースは、再利用可能なロジック (データフェッチやページネーションなど) と視覚的な出力の両方をカプセル化していますが、
-視覚的な出力の一部は、使用されるコンポーネント側にスコープ付き slots を介して移譲しています。
+視覚的な出力の一部は、使用されるコンポーネント側にスコープ付きスロットを介して移譲しています。
 
 この概念をさらに少し広げると、ロジックだけをカプセル化し、自身では何もレンダリングしないコンポーネントを考えることができます。つまり、視覚的な出力を利用する側のコンポーネントに完全に移譲したコンポーネントです。このような種類のコンポーネントを、**Renderless コンポーネント**と呼びます。
 
