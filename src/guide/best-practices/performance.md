@@ -71,7 +71,7 @@ function loadLazy() {
 }
 ```
 
-遅延ローディングは、最初のページロード後すぐに必要とされない機能で最もよく使用されます。Vue アプリケーションでは、これは通常、Vue の[非同期コンポーネント](/guide/components/async.html)機能と組み合わせて、コンポーネントツリーの分割チャンクを作成するために使用されます:
+遅延ローディングは、最初のページロード後すぐに必要とされない機能で最もよく使用されます。Vue アプリケーションでは、これは Vue の[非同期コンポーネント](/guide/components/async.html)機能と組み合わせて、コンポーネントツリーの分割チャンクを作成するために使用できます:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -82,7 +82,7 @@ import { defineAsyncComponent } from 'vue'
 const Foo = defineAsyncComponent(() => import('./Foo.vue'))
 ```
 
-Vue Router でクライアントサイドルーティングを使用する場合、ルートコンポーネントとして非同期コンポーネントを使用することが強く推奨されます。詳しくは [Lazy Loading Routes](https://router.vuejs.org/guide/advanced/lazy-loading.html) を参照してください。
+Vue Router を使用するアプリケーションでは、ルートコンポーネントに遅延ローディングを使用することが強く推奨されます。Vue Router は、`defineAsyncComponent` とは別に、遅延ローディングを明示的にサポートしています。詳しくは [Lazy Loading Routes](https://router.vuejs.org/guide/advanced/lazy-loading.html) を参照してください。
 
 ### SSR / SSG
 
