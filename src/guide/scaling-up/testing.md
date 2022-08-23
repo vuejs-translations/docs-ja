@@ -133,13 +133,11 @@ Vue アプリケーションでは、コンポーネントは UI の主要なビ
 <div class="testing-library-api">
 
 ```js
-render(Stepper, {
+const { getByText } = render(Stepper, {
   props: {
     max: 1
   }
 })
-
-const { getByText } = render(Component)
 
 getByText('0') // コンポーネント内に "0 "があることを暗黙のうちに評価します
 
