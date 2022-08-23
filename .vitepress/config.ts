@@ -529,7 +529,7 @@ export const sidebar = {
       text: 'Style Guide',
       items: [
         {
-          text: 'Overview',
+          text: '概要',
           link: '/style-guide/'
         },
         {
@@ -537,7 +537,7 @@ export const sidebar = {
           link: '/style-guide/rules-essential'
         },
         {
-          text: 'B - Strongly Recommended',
+          text: '優先度B: 強く推奨',
           link: '/style-guide/rules-strongly-recommended'
         },
         {
@@ -545,7 +545,7 @@ export const sidebar = {
           link: '/style-guide/rules-recommended'
         },
         {
-          text: 'D - Use with Caution',
+          text: '優先度D: 注意深く使用する',
           link: '/style-guide/rules-use-with-caution'
         }
       ]
