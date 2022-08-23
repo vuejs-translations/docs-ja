@@ -18,7 +18,7 @@ Composition API はオプションを宣言する代わりに関数をインポ�
 
 - [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` によって、 リアクティビティ API を使用しながら Vue の依存性注入システムを利用できます。
 
-Composition API は Vue 3 に組み込まれていて、現在は Vue 2 においても公式のプラグイン [`@vue/composition-api`](https://github.com/vuejs/composition-api)  で使うことができます。 Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup.html) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
+Composition API は Vue 3 と [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html) の組み込み機能です。Vue 2 の古いバージョンでは、公式にメンテナンスされている[`@vue/composition-api`](https://github.com/vuejs/composition-api)プラグインを使用してください。Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup.html) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
 
 ```vue
 <script setup>
