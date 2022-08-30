@@ -6,7 +6,7 @@ outline: deep
 
 Vue は、ほとんどの場合、アプリケーションを構築するためにテンプレートを使用することを推奨しています。しかし、JavaScript の完全なプログラムの力が必要な状況もあります。そこで、**render 関数** を使用します。
 
-> 仮想 DOM やrender 関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)の章を必ずお読みください。
+> 仮想 DOM や render 関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)の章を必ずお読みください。
 
 ## 基本的な使い方
 
