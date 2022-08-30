@@ -666,7 +666,7 @@ function MyComponent(props, { slots, emit, attrs }) {
 </div>
 <div class="options-api">
 
-関数型コンポーネントに `this` という参照はないので、Vue は最初の引数として `props` を渡します。
+関数型コンポーネントに `this` という参照はないので、Vue は最初の引数として `props` を渡します:
 
 ```js
 function MyComponent(props, context) {
