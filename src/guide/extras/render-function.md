@@ -452,7 +452,7 @@ function render() {
 
 <div class="composition-api">
 
-レンダーファンクションでは、スロットは `setup()` コンテキストからアクセスすることができます。`slots` オブジェクトの各スロットは、**vnodes の配列を返す関数** です。
+render 関数では、スロットは `setup()` コンテキストからアクセスすることができます。`slots` オブジェクトの各スロットは、**vnode の配列を返す関数** です:
 
 ```js
 export default {
