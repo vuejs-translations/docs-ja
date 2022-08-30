@@ -533,7 +533,7 @@ h(MyComponent, () => 'hello')
 
 // 名前付きスロット
 // スロットのオブジェクトが props として扱われるのを避けるために、
-// `null`が必要であることに注意してください。
+// `null` が必要であることに注意してください。
 h(MyComponent, null, {
   default: () => 'default slot',
   foo: () => h('div', 'foo'),
