@@ -678,7 +678,7 @@ function MyComponent(props, context) {
 
 </div>
 
-コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state.html#props) と [`emits`](/api/options-state.html#emits) はプロパティとして追加することで定義することが可能です。
+コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state.html#props) と [`emits`](/api/options-state.html#emits) はプロパティとして追加することで定義することが可能です:
 
 ```js
 MyComponent.props = ['value']
