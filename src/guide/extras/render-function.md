@@ -80,7 +80,7 @@ vnode.key // null
 
 <div class="composition-api">
 
-Composition API でテンプレートを使用する場合、`setup()` フックの戻り値はテンプレートにデータを公開するために使用されます。しかし、render 関数を使う場合は、代わりに render 関数を直接返すことができます。
+Composition API でテンプレートを使用する場合、`setup()` フックの戻り値はテンプレートにデータを公開するために使用されます。しかし、render 関数を使う場合は、代わりに render 関数を直接返すことができます:
 
 ```js
 import { ref, h } from 'vue'
