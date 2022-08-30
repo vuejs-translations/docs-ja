@@ -590,7 +590,7 @@ export default {
 
 ### `v-model`
 
-`v-model` ディレクティブは、テンプレートのコンパイル時に `modelValue` と `onUpdate:modelValue` プロパティに展開されます。
+`v-model` ディレクティブは、テンプレートのコンパイル時に `modelValue` と `onUpdate:modelValue` プロパティに展開されます:
 
 <div class="composition-api">
 
