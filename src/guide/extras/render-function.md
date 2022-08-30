@@ -628,7 +628,7 @@ export default {
 
 ### カスタムディレクティブ
 
-カスタムディレクティブは、[`withDirectives`](/api/render-function.html#withdirectives)を使って vnode に適用することが可能です。
+カスタムディレクティブは、[`withDirectives`](/api/render-function.html#withdirectives)を使って vnode に適用することが可能です:
 
 ```js
 import { h, withDirectives } from 'vue'
