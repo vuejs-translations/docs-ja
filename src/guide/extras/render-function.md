@@ -39,8 +39,8 @@ h('div', { id: 'foo' })
 // Vue は自動的に正しい割り当て方法を選択します
 h('div', { class: 'bar', innerHTML: 'hello' })
 
-// .propや.attrなどのprops修飾子には、
-// それぞれ'.'と`^'という接頭辞を付けることができます
+// .prop や .attr などの props 修飾子には、
+// それぞれ '.' と `^' という接頭辞を付けることができます
 h('div', { '.name': 'some-name', '^width': '100' })
 
 // class と style は、
