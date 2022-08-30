@@ -298,7 +298,7 @@ Template:
 ```js
 h(
   'ul',
-  // `items` が配列の値を持つ参照であると仮定する
+  // `items` が配列の値を持つ ref であると仮定する
   items.value.map(({ id, text }) => {
     return h('li', { key: id }, text)
   })
