@@ -47,7 +47,7 @@ h('div', { '.name': 'some-name', '^width': '100' })
 // テンプレートと同じオブジェクト / 配列 の値をサポートしています
 h('div', { class: [foo, { bar }], style: { color: 'red' } })
 
-// イベントリスナーはonXxxとして渡す必要があります
+// イベントリスナーは onXxx として渡す必要があります
 h('div', { onClick: () => {} })
 
 // children は文字列です
