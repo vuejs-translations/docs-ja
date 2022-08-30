@@ -224,7 +224,7 @@ function render() {
 const vnode = <div>hello</div>
 ```
 
-JSX 式の内部では、中括弧を使用して動的な値を埋め込みます。
+JSX 式の内部では、中括弧を使用して動的な値を埋め込みます:
 
 ```jsx
 const vnode = <div id={dynamicId}>hello, {userName}</div>
