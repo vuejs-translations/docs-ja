@@ -580,8 +580,8 @@ export default {
 import { h, KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 
 export default {
-  render() {
-    return h(Transition, { mode: 'out-in' } /* ... */)
+  render () {
+    return h(Transition, { mode: 'out-in' }, /* ... */)
   }
 }
 ```
