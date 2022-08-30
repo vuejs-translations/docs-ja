@@ -218,7 +218,7 @@ function render() {
 
 ## JSX / TSX
 
-[JSX](https://facebook.github.io/jsx/) は、JavaScript の XML 的な拡張機能で、こんなコードを書くことができるようになります。
+[JSX](https://facebook.github.io/jsx/) は、JavaScript の XML 的な拡張機能で、こんなコードを書くことができるようになります:
 
 ```jsx
 const vnode = <div>hello</div>
