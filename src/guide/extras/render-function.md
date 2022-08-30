@@ -61,7 +61,7 @@ h('div', [h('span', 'hello')])
 h('div', ['hello', h('span', 'hello')])
 ```
 
-出来上がった vnode は以下のようになります。
+出来上がった vnode は以下のようになります:
 
 ```js
 const vnode = h('div', { id: 'foo' }, [])
