@@ -35,8 +35,8 @@ const vnode = h(
 h('div')
 h('div', { id: 'foo' })
 
-// 属性とプロパティの両方がpropsで使用できます
-// Vueは自動的に正しい割り当て方法を選択します
+// 属性とプロパティの両方が props で使用できます
+// Vue は自動的に正しい割り当て方法を選択します
 h('div', { class: 'bar', innerHTML: 'hello' })
 
 // .propや.attrなどのprops修飾子には、
