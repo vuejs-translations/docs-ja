@@ -532,7 +532,7 @@ export default {
 h(MyComponent, () => 'hello')
 
 // 名前付きスロット
-// スロットのオブジェクトがプロップスとして扱われるのを避けるために、
+// スロットのオブジェクトが props として扱われるのを避けるために、
 // `null`が必要であることに注意してください。
 h(MyComponent, null, {
   default: () => 'default slot',
