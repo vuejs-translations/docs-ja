@@ -53,7 +53,7 @@ h('div', { onClick: () => {} })
 // children は文字列です
 h('div', { id: 'foo' }, 'hello')
 
-// propsがない場合は省略可能です
+// props がない場合は省略可能です
 h('div', 'hello')
 h('div', [h('span', 'hello')])
 
