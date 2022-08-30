@@ -132,7 +132,7 @@ export default {
 </div>
 <div class="options-api">
 
-render 関数は `render` オプションで宣言することができます。
+render 関数は `render` オプションで宣言することができます:
 
 ```js
 import { h } from 'vue'
