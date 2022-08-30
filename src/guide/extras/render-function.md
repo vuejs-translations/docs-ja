@@ -167,7 +167,7 @@ import { h } from 'vue'
 export default {
   render() {
     // 複数のルートノードを返すために配列を使用します。
-    return () => [
+    return [
       h('div'),
       h('div'),
       h('div')
