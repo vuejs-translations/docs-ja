@@ -655,7 +655,7 @@ const vnode = withDirectives(h('div'), [
 
 <div class="composition-api">
 
-関数型コンポーネントのシグネチャは `setup()` フックと同じです。
+関数型コンポーネントのシグネチャは `setup()` フックと同じです:
 
 ```js
 function MyComponent(props, { slots, emit, attrs }) {
