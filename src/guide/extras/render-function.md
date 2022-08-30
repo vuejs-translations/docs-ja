@@ -389,7 +389,7 @@ h('input', {
 />
 ```
 
-その他のイベントやキー修飾子については、[`withModifiers`](/api/render-function.html#withmodifiers) ヘルパーを使用することが可能です。
+その他のイベントやキー修飾子については、[`withModifiers`](/api/render-function.html#withmodifiers) ヘルパーを使用することが可能です:
 
 ```js
 import { withModifiers } from 'vue'
