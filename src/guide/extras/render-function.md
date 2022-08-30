@@ -567,8 +567,8 @@ render 関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<Tran
 import { h, KeepAlive, Teleport, Transition, TransitionGroup } from 'vue'
 
 export default {
-  setup() {
-    return () => h(Transition, { mode: 'out-in' } /* ... */)
+  setup () {
+    return () => h(Transition, { mode: 'out-in' }, /* ... */)
   }
 }
 ```
