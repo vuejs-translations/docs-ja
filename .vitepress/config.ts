@@ -642,8 +642,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
   markdown: {
     config(md) {
-      md.use(headerPlugin)
-        .use(jobsPlugin)
+      md.use(headerPlugin).use(jobsPlugin)
     }
   },
 
