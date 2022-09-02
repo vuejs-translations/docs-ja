@@ -2,17 +2,17 @@
 outline: deep
 ---
 
-# Render Functions & JSX
+# Render 関数と JSX
 
-Vue recommends using templates to build applications in the vast majority of cases. However, there are situations where we need the full programmatic power of JavaScript. That's where we can use the **render function**.
+Vue は、ほとんどの場合、アプリケーションを構築するためにテンプレートを使用することを推奨しています。しかし、JavaScript の完全なプログラムの力が必要な状況もあります。そこで、**render 関数** を使用します。
 
-> If you are new to the concept of virtual DOM and render functions, make sure to read the [Rendering Mechanism](/guide/extras/rendering-mechanism.html) chapter first.
+> 仮想 DOM や render 関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)の章を必ずお読みください。
 
-## Basic Usage
+## 基本的な使い方
 
-### Creating Vnodes
+### vnode の作成
 
-Vue provides an `h()` function for creating vnodes:
+Vue は、vnode を作成するための `h()` 関数を提供しています:
 
 ```js
 import { h } from 'vue'
@@ -26,42 +26,42 @@ const vnode = h(
 )
 ```
 
-`h()` is short for **hyperscript** - which means "JavaScript that produces HTML (hypertext markup language)". This name is inherited from conventions shared by many virtual DOM implementations. A more descriptive name could be `createVnode()`, but a shorter name helps when you have to call this function many times in a render function.
+`h()` 関数は **hyperscript** の略で、「HTML (hypertext markup language) を生成する JavaScript」という意味です。この名前は、多くの仮想 DOM 実装で共有されている慣習を継承しています。より分かりやすい名前としては `createVnode()` がありますが、render 関数の中でこの関数を何度も呼び出さなければならない場合には、短い名前の方が便利です。
 
-The `h()` function is designed to be very flexible:
+`h()` 関数は非常に柔軟に設計されています。
 
 ```js
-// all arguments except the type are optional
+// type 以外のすべての引数はオプションです
 h('div')
 h('div', { id: 'foo' })
 
-// both attributes and properties can be used in props
-// Vue automatically picks the right way to assign it
+// 属性とプロパティの両方が props で使用できます
+// Vue は自動的に正しい割り当て方法を選択します
 h('div', { class: 'bar', innerHTML: 'hello' })
 
-// props modifiers such as .prop and .attr can be added
-// with '.' and `^' prefixes respectively
+// .prop や .attr などの props 修飾子には、
+// それぞれ '.' と `^' という接頭辞を付けることができます
 h('div', { '.name': 'some-name', '^width': '100' })
 
-// class and style have the same object / array
-// value support that they have in templates
+// class と style は、
+// テンプレートと同じオブジェクト / 配列 の値をサポートしています
 h('div', { class: [foo, { bar }], style: { color: 'red' } })
 
-// event listeners should be passed as onXxx
+// イベントリスナーは onXxx として渡す必要があります
 h('div', { onClick: () => {} })
 
-// children can be a string
+// children は文字列です
 h('div', { id: 'foo' }, 'hello')
 
-// props can be omitted when there are no props
+// props がない場合は省略可能です
 h('div', 'hello')
 h('div', [h('span', 'hello')])
 
-// children array can contain mixed vnodes and strings
+// 子供の配列は、vnode と文字列を混在させることができます
 h('div', ['hello', h('span', 'hello')])
 ```
 
-The resulting vnode has the following shape:
+出来上がった vnode は以下のようになります:
 
 ```js
 const vnode = h('div', { id: 'foo' }, [])
@@ -72,15 +72,15 @@ vnode.children // []
 vnode.key // null
 ```
 
-:::warning Note
-The full `VNode` interface contains many other internal properties, but it is strongly recommended to avoid relying on any properties other than the ones listed here. This avoids unintended breakage in case the internal properties are changed.
+:::warning 備考
+完全な `VNode` インターフェースは他にも多くの内部プロパティを含んでいますが、ここに挙げた以外のプロパティに依存しないことを強く推奨します。これにより、内部プロパティが変更された場合に意図しない破損を避けることができます。
 :::
 
-### Declaring Render Functions
+### Render 関数の宣言
 
 <div class="composition-api">
 
-When using templates with Composition API, the return value of the `setup()` hook is used to expose data to the template. When using render functions, however, we can directly return the render function instead:
+Composition API でテンプレートを使用する場合、`setup()` フックの戻り値はテンプレートにデータを公開するために使用されます。しかし、render 関数を使う場合は、代わりに render 関数を直接返すことができます:
 
 ```js
 import { ref, h } from 'vue'
@@ -92,15 +92,15 @@ export default {
   setup(props) {
     const count = ref(1)
 
-    // return the render function
+    // render 関数を返します
     return () => h('div', props.msg + count.value)
   }
 }
 ```
 
-The render function is declared inside `setup()` so it naturally has access to the props and any reactive state declared in the same scope.
+render 関数は `setup()` の内部で宣言されているので、当然同じスコープで宣言された props やリアクティブなステートにアクセスすることができます。
 
-In addition to returning a single vnode, you can also return strings or arrays:
+単一の vnode を返すだけでなく、文字列や配列を返すこともできます:
 
 ```js
 export default {
@@ -115,7 +115,7 @@ import { h } from 'vue'
 
 export default {
   setup() {
-    // use an array to return multiple root nodes
+    // 複数のルートノードを返すために配列を使用します。
     return () => [
       h('div'),
       h('div'),
@@ -126,13 +126,13 @@ export default {
 ```
 
 :::tip
-Make sure to return a function instead of directly returning values! The `setup()` function is called only once per component, while the returned render function will be called multiple times.
+値を直接返すのではなく、必ず関数を返すようにしましょう！ `setup()` 関数はコンポーネントごとに一度だけ呼び出されますが、返される render 関数は複数回呼び出されることになります。
 :::
 
 </div>
 <div class="options-api">
 
-We can declare render functions using the `render` option:
+render 関数は `render` オプションで宣言することができます:
 
 ```js
 import { h } from 'vue'
@@ -149,9 +149,9 @@ export default {
 }
 ```
 
-The `render()` function has access to the component instance via `this`.
+`render()` 関数は、`this` を介してコンポーネントのインスタンスにアクセスできます。
 
-In addition to returning a single vnode, you can also return strings or arrays:
+単一の vnode を返すだけでなく、文字列や配列を返すこともできます:
 
 ```js
 export default {
@@ -166,7 +166,7 @@ import { h } from 'vue'
 
 export default {
   render() {
-    // use an array to return multiple root nodes
+    // 複数のルートノードを返すために配列を使用します。
     return [
       h('div'),
       h('div'),
@@ -178,7 +178,7 @@ export default {
 
 </div>
 
-If a render function component doesn't need any instance state, they can also be declared directly as a function for brevity:
+render 関数のコンポーネントがインスタンスの状態を必要としない場合、簡潔にするために、直接関数として宣言することもできます:
 
 ```js
 function Hello() {
@@ -186,24 +186,24 @@ function Hello() {
 }
 ```
 
-That's right, this is a valid Vue component! See [Functional Components](#functional-components) for more details on this syntax.
+そうです、これは有効な Vue コンポーネントなのです！この構文の詳細については、[関数型コンポーネント](#関数型コンポーネント) を参照してください。
 
-### Vnodes Must Be Unique
+### Vnode は一意でなければならない
 
-All vnodes in the component tree must be unique. That means the following render function is invalid:
+コンポーネントツリー内のすべての vnode は一意でなければなりません。つまり、以下の render 関数は無効です:
 
 ```js
 function render() {
   const p = h('p', 'hi')
   return h('div', [
-    // Yikes - duplicate vnodes!
+    // おっと - VNode が重複しています!
     p,
     p
   ])
 }
 ```
 
-If you really want to duplicate the same element/component many times, you can do so with a factory function. For example, the following render function is a perfectly valid way of rendering 20 identical paragraphs:
+どうしても同じ要素／コンポーネントを何度も複製したい場合は、ファクトリー関数を使用します。例えば、以下の render 関数は、20 個の同じ段落をレンダリングする方法として完全に有効です:
 
 ```js
 function render() {
@@ -218,30 +218,30 @@ function render() {
 
 ## JSX / TSX
 
-[JSX](https://facebook.github.io/jsx/) is an XML-like extension to JavaScript that allows us to write code like this:
+[JSX](https://facebook.github.io/jsx/) は、JavaScript の XML 的な拡張機能で、こんなコードを書くことができるようになります:
 
 ```jsx
 const vnode = <div>hello</div>
 ```
 
-Inside JSX expressions, use curly braces to embed dynamic values:
+JSX 式の内部では、中括弧を使用して動的な値を埋め込みます:
 
 ```jsx
 const vnode = <div id={dynamicId}>hello, {userName}</div>
 ```
 
-`create-vue` and Vue CLI both have options for scaffolding projects with pre-configured JSX support. If you are configuring JSX manually, please refer to the documentation of [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next) for details.
+`create-vue` と Vue CLI には、JSX のサポートが事前に設定されたプロジェクトをスキャフォールドするためのオプションがあります。JSX を手動で設定する場合は、[`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next) のドキュメントを参照すると詳細が分かるでしょう。
 
-Although first introduced by React, JSX actually has no defined runtime semantics and can be compiled into various different outputs. If you have worked with JSX before, do note that **Vue JSX transform is different from React's JSX transform**, so you can't use React's JSX transform in Vue applications. Some notable differences from React JSX include:
+React によって最初に導入されましたが、JSX は実際にはランタイムセマンティクスが定義されておらず、様々な異なる出力にコンパイルすることができます。JSX を扱ったことがある場合、**Vue JSX 変換は React の JSX 変換とは異なる** ので、Vue アプリケーションで React の JSX 変換を使用することはできないことに注意してください。React の JSX との顕著な違いとしては、以下のようなものがあります:
 
-- You can use HTML attributes such as `class` and `for` as props - no need to use `className` or `htmlFor`.
-- Passing children to components (i.e. slots) [works differently](#passing-slots).
+- `class` や `for` などの HTML 属性を props として使用できます - `className` や `htmlFor` を使用する必要はありません。
+- コンポーネントへの子要素の渡し方（スロットなど）が[異なります](#スロットの渡し方)。
 
-Vue's type definition also provides type inference for TSX usage. When using TSX, make sure to specify `"jsx": "preserve"` in `tsconfig.json` so that TypeScript leaves the JSX syntax intact for Vue JSX transform to process.
+Vue の型定義は、TSX を使用するための型推論も提供します。TSX を使用する場合は、Vue の JSX 変換が処理できるように、TypeScript が JSX の構文をそのまま残すように、必ず `tsconfig.json` で `"jsx": "preserve"` を指定してください。
 
-## Render Function Recipes
+## Render 関数のレシピ
 
-Below we will provide some common recipes for implementing template features as their equivalent render functions / JSX.
+以下では、テンプレート機能を同等の render 関数/JSX として実装するための一般的なレシピをいくつか紹介します。
 
 ### `v-if`
 
@@ -254,7 +254,7 @@ Template:
 </div>
 ```
 
-Equivalent render function / JSX:
+同等の render 関数／JSX:
 
 <div class="composition-api">
 
@@ -291,14 +291,14 @@ Template:
 </ul>
 ```
 
-Equivalent render function / JSX:
+同等の render 関数／JSX:
 
 <div class="composition-api">
 
 ```js
 h(
   'ul',
-  // assuming `items` is a ref with array value
+  // `items` が配列の値を持つ ref であると仮定する
   items.value.map(({ id, text }) => {
     return h('li', { key: id }, text)
   })
@@ -337,7 +337,7 @@ h(
 
 ### `v-on`
 
-Props with names that start with `on` followed by an uppercase letter are treated as event listeners. For example, `onClick` is the equivalent of `@click` in templates.
+`on` で始まり、大文字が続く名前の props は、イベントリスナーとして扱われます。例えば、 `onClick` はテンプレートでは `@click` に相当します。
 
 ```js
 h(
@@ -361,22 +361,22 @@ h(
 </button>
 ```
 
-#### Event Modifiers
+#### イベント修飾子
 
-For the `.passive`, `.capture`, and `.once` event modifiers, they can be concatenated after the event name using camelCase.
+イベント修飾子 `.passive`, `.capture`, `.once` については、イベント名の後にキャメルケースを用いて連結して記述することが可能です。
 
-For example:
+例えば:
 
 ```js
 h('input', {
   onClickCapture() {
-    /* listener in capture mode */
+    /* キャプチャモード時のリスナー */
   },
   onKeyupOnce() {
-    /* triggers only once */
+    /* 一度だけトリガーする */
   },
   onMouseoverOnceCapture() {
-    /* once + capture */
+    /* 一度だけ + キャプチャ */
   }
 })
 ```
@@ -389,7 +389,7 @@ h('input', {
 />
 ```
 
-For other event and key modifiers, the [`withModifiers`](/api/render-function.html#withmodifiers) helper can be used:
+その他のイベントやキー修飾子については、[`withModifiers`](/api/render-function.html#withmodifiers) ヘルパーを使用することが可能です:
 
 ```js
 import { withModifiers } from 'vue'
@@ -405,7 +405,7 @@ h('div', {
 
 ### Components
 
-To create a vnode for a component, the first argument passed to `h()` should be the component definition. This means when using render functions, it is unnecessary to register components - you can just use the imported components directly:
+コンポーネント用の vnode を作成するには、`h()` に渡される最初の引数はコンポーネントの定義でなければなりません。つまり、render 関数を使う場合、コンポーネントを登録する必要はなく、インポートされたコンポーネントを直接使えばいいのです:
 
 ```js
 import Foo from './Foo.vue'
@@ -427,9 +427,9 @@ function render() {
 }
 ```
 
-As we can see, `h` can work with components imported from any file format as long as it's a valid Vue component.
+このように、`h` は有効な Vue コンポーネントであれば、どんなファイルフォーマットからインポートしたコンポーネントでも動作させることができます。
 
-Dynamic components are straightforward with render functions:
+動的なコンポーネントは、render 関数を使えば簡単です:
 
 ```js
 import Foo from './Foo.vue'
@@ -446,24 +446,24 @@ function render() {
 }
 ```
 
-If a component is registered by name and cannot be imported directly (for example, globally registered by a library), it can be programmatically resolved by using the [`resolveComponent()`](/api/render-function.html#resolvecomponent) helper.
+コンポーネントが名前で登録されていて直接インポートできない場合 (例えば、ライブラリーによってグローバルに登録されている場合)、 [`resolveComponent()`](/api/render-function.html#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
 
-### Rendering Slots
+### レンダリングスロット
 
 <div class="composition-api">
 
-In render functions, slots can be accessed from the `setup()` context. Each slot on the `slots` object is a **function that returns an array of vnodes**:
+render 関数では、スロットは `setup()` コンテキストからアクセスすることができます。`slots` オブジェクトの各スロットは、**vnode の配列を返す関数** です:
 
 ```js
 export default {
   props: ['message'],
   setup(props, { slots }) {
     return () => [
-      // default slot:
+      // デフォルトスロット:
       // <div><slot /></div>
       h('div', slots.default()),
 
-      // named slot:
+      // 名前付きスロット:
       // <div><slot name="footer" :text="message" /></div>
       h(
         'div',
@@ -476,20 +476,20 @@ export default {
 }
 ```
 
-JSX equivalent:
+同等の JSX:
 
 ```jsx
-// default
+// デフォルト
 <div>{slots.default()}</div>
 
-// named
+// 名前付き
 <div>{slots.footer({ text: props.message })}</div>
 ```
 
 </div>
 <div class="options-api">
 
-In render functions, slots can be accessed from [`this.$slots`](/api/component-instance.html#slots):
+render 関数では、スロットは [`this.$slots`](/api/component-instance.html#slots) からアクセスすることができます。
 
 ```js
 export default {
@@ -511,7 +511,7 @@ export default {
 }
 ```
 
-JSX equivalent:
+同等の JSX:
 
 ```jsx
 // <div><slot /></div>
@@ -523,17 +523,17 @@ JSX equivalent:
 
 </div>
 
-### Passing Slots
+### スロットの渡し方
 
-Passing children to components works a bit differently from passing children to elements. Instead of an array, we need to pass either a slot function, or an object of slot functions. Slot functions can return anything a normal render function can return - which will always be normalized to arrays of vnodes when accessed in the child component.
+コンポーネントへの子の渡し方は、要素への子の渡し方と少し異なります。配列の代わりに、スロット関数か、スロット関数のオブジェクトを渡す必要があります。スロット関数は、通常の render 関数が返せるものなら何でも返せますが、子コンポーネントでアクセスするときは、常に vnode の配列に正規化されます。
 
 ```js
-// single default slot
+// 単一のデフォルトスロット
 h(MyComponent, () => 'hello')
 
-// named slots
-// notice the `null` is required to avoid
-// the slots object being treated as props
+// 名前付きスロット
+// スロットのオブジェクトが props として扱われるのを避けるために、
+// `null` が必要であることに注意してください。
 h(MyComponent, null, {
   default: () => 'default slot',
   foo: () => h('div', 'foo'),
@@ -541,13 +541,13 @@ h(MyComponent, null, {
 })
 ```
 
-JSX equivalent:
+同等の JSX:
 
 ```jsx
-// default
+// デフォルト
 <MyComponent>{() => 'hello'}</MyComponent>
 
-// named
+// 名前付き
 <MyComponent>{{
   default: () => 'default slot',
   foo: () => <div>foo</div>,
@@ -555,11 +555,11 @@ JSX equivalent:
 }}</MyComponent>
 ```
 
-Passing slots as functions allows them to be invoked lazily by the child component. This leads to the slot's dependencies being tracked by the child instead of the parent, which results in more accurate and efficient updates.
+スロットを関数として渡すことで、子コンポーネントがスロットを遅延的に呼び出すことができます。これにより、スロットの依存関係が親ではなく子によって追跡されるようになり、より正確で効率的な更新が行われるようになります。
 
-### Built-in Components
+### 組み込みコンポーネント
 
-[Built-in components](/api/built-in-components.html) such as `<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>` and `<Suspense>` must be imported for use in render functions:
+render 関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components.html) をインポートする必要があります。
 
 <div class="composition-api">
 
@@ -590,7 +590,7 @@ export default {
 
 ### `v-model`
 
-The `v-model` directive is expanded to `modelValue` and `onUpdate:modelValue` props during template compilation—we will have to provide these props ourselves:
+`v-model` ディレクティブは、テンプレートのコンパイル時に `modelValue` と `onUpdate:modelValue` プロパティに展開されます:
 
 <div class="composition-api">
 
@@ -626,14 +626,14 @@ export default {
 
 </div>
 
-### Custom Directives
+### カスタムディレクティブ
 
-Custom directives can be applied to a vnode using [`withDirectives`](/api/render-function.html#withdirectives):
+カスタムディレクティブは、[`withDirectives`](/api/render-function.html#withdirectives)を使って vnode に適用することが可能です:
 
 ```js
 import { h, withDirectives } from 'vue'
 
-// a custom directive
+// カスタムディレクティブ
 const pin = {
   mounted() { /* ... */ },
   updated() { /* ... */ }
@@ -645,17 +645,17 @@ const vnode = withDirectives(h('div'), [
 ])
 ```
 
-If the directive is registered by name and cannot be imported directly, it can be resolved using the [`resolveDirective`](/api/render-function.html#resolvedirective) helper.
+ディレクティブが名前で登録されていて、直接インポートできない場合は、[`resolveDirective`](/api/render-function.html#resolvedirective) ヘルパーを使って解決することが可能です。
 
-## Functional Components
+## 関数型コンポーネント
 
-Functional components are an alternative form of component that don't have any state of their own. They act like pure functions: props in, vnodes out. They are rendered without creating a component instance (i.e. no `this`), and without the usual component lifecycle hooks.
+関数型コンポーネントは、それ自身の状態を持たないコンポーネントの代替形態です。それらは純粋な関数のように動作します。 props を受け取り、vnode を返します。 コンポーネントのインスタンスを作成することなく（つまり、`this` はありません）、通常のコンポーネントのライフサイクルフックもなくレンダリングされます。
 
-To create a functional component we use a plain function, rather than an options object. The function is effectively the `render` function for the component.
+関数型コンポーネントを作成するには、オプションオブジェクトではなく、単純な関数を使用します。この関数は事実上、コンポーネントの `render` 関数です。
 
 <div class="composition-api">
 
-The signature of a functional component is the same as the `setup()` hook:
+関数型コンポーネントのシグネチャは `setup()` フックと同じです:
 
 ```js
 function MyComponent(props, { slots, emit, attrs }) {
@@ -666,7 +666,7 @@ function MyComponent(props, { slots, emit, attrs }) {
 </div>
 <div class="options-api">
 
-As there is no `this` reference for a functional component, Vue will pass in the `props` as the first argument:
+関数型コンポーネントに `this` という参照はないので、Vue は最初の引数として `props` を渡します:
 
 ```js
 function MyComponent(props, context) {
@@ -674,17 +674,17 @@ function MyComponent(props, context) {
 }
 ```
 
-The second argument, `context`, contains three properties: `attrs`, `emit`, and `slots`. These are equivalent to the instance properties [`$attrs`](/api/component-instance.html#attrs), [`$emit`](/api/component-instance.html#emit), and [`$slots`](/api/component-instance.html#slots) respectively.
+第二引数の `context` には、3 つのプロパティが含まれます。 `attrs` , `emit` , そして `slots` です。これらはそれぞれ、インスタンスのプロパティである [`$attrs`](/api/component-instance.html#attrs), [`$emit`](/api/component-instance.html#emit), および [`$slots`](/api/component-instance.html#slots) と同じです。
 
 </div>
 
-Most of the usual configuration options for components are not available for functional components. However, it is possible to define [`props`](/api/options-state.html#props) and [`emits`](/api/options-state.html#emits) by adding them as properties:
+コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state.html#props) と [`emits`](/api/options-state.html#emits) はプロパティとして追加することで定義することが可能です:
 
 ```js
 MyComponent.props = ['value']
 MyComponent.emits = ['click']
 ```
 
-If the `props` option is not specified, then the `props` object passed to the function will contain all attributes, the same as `attrs`. The prop names will not be normalized to camelCase unless the `props` option is specified.
+`props` オプションが指定されていない場合、関数に渡される `props` オブジェクトには、`attrs` と同じようにすべての属性が含まれます。`props` オプションが指定されない限り、prop の名前はキャメルケースに正規化されません。
 
-Functional components can be registered and consumed just like normal components. If you pass a function as the first argument to `h()`, it will be treated as a functional component.
+関数型コンポーネントは、通常のコンポーネントと同様に登録や使用ができます。もし、`h()` の第一引数に関数を渡した場合、それは関数型コンポーネントとして扱われます。
