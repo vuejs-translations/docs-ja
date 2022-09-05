@@ -164,13 +164,13 @@ Vue コンポーネントのスロットの仕組みは、[ネイティブの We
 ```vue-html
 <div class="container">
   <header>
-    <!-- We want header content here -->
+    <!-- ここに header コンテンツが必要 -->
   </header>
   <main>
-    <!-- We want main content here -->
+    <!-- ここに main コンテンツが必要 -->
   </main>
   <footer>
-    <!-- We want footer content here -->
+    <!-- ここに footer コンテンツが必要 -->
   </footer>
 </div>
 ```
