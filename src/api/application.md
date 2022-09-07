@@ -39,7 +39,7 @@
 
 ## createSSRApp()
 
-[SSR hydration (ハイドレーション) ](/guide/scaling-up/ssr.html#client-hydration)モードでアプリケーションインスタンスを作成します。使用法は `createApp()` と全く同じです。
+[SSR hydration (ハイドレーション) ](/guide/scaling-up/ssr.html#クライアント・ハイドレーション)モードでアプリケーションインスタンスを作成します。使用法は `createApp()` と全く同じです。
 
 ## app.mount()
 
@@ -59,7 +59,7 @@
 
   コンポーネントにテンプレートがあるか、render 関数を定義している場合、コンテナ内の既存の DOM ノードを置換します。それ以外の場合は、実行時コンパイラーが使用可能であれば、コンテナの `innerHTML` がテンプレートとして使用されます。
 
-  SSR ハイドレーションモードでは、コンテナ内の既存の DOM ノードをハイドレートします。[ミスマッチ](/guide/scaling-up/ssr.html#hydration-mismatch)があった場合、既存の DOM ノードは期待される結果に合うよう変化されます。
+  SSR ハイドレーションモードでは、コンテナ内の既存の DOM ノードをハイドレートします。[ミスマッチ](/guide/scaling-up/ssr.html#ハイドレーション・ミスマッチ)があった場合、既存の DOM ノードは期待される結果に合うよう変化されます。
 
   アプリケーションのインスタンス毎に、`mount()` は一度だけ呼び出すことができます。
 
@@ -80,7 +80,7 @@
 
 ## app.unmount()
 
-マウントしたアプリケーションインスタンスをアンマウトし、アプリケーションのコンポーネントツリーにあるすべてのコンポーネントに対して、ライフサイクルフックの unmount を呼び出します。
+マウントしたアプリケーションインスタンスをアンマウントし、アプリケーションのコンポーネントツリーにあるすべてのコンポーネントに対して、ライフサイクルフックの unmount を呼び出します。
 
 - **型**
 
@@ -146,7 +146,7 @@
 
 - **参照:**
   - [Provide / Inject](/guide/components/provide-inject.html)
-  - [アプリケーションレベルの Provide ](/guide/components/provide-inject.html#app-level-provide)
+  - [アプリケーションレベルの Provide](/guide/components/provide-inject.html#アプリケーションレベルの-provide)
 
 ## app.component()
 
@@ -257,7 +257,7 @@
 グローバルミックスイン (スコープがアプリケーション) を適用します。グローバルミックスインは、インクルードされたオプションをアプリケーションの全コンポーネントインスタンスに適用します。
 
 :::warning 非推奨
-ミックインはエコシステムのライブラリーで幅広く使用していることから、主に後方互換性ため、Vue 3 でサポートしています。ミックイン (特にグローバルミックスイン) はアプリケーションコードでは避けるべきです。
+ミックインはエコシステムのライブラリーで幅広く使用されていることから、主に後方互換性ため、Vue 3 でサポートしています。ミックイン (特にグローバルミックスイン) はアプリケーションコードでは避けるべきです。
 
 ロジックを再利用するには、代わりに[コンポーザブル](/guide/reusability/composables.html)を使用してください。
 :::
@@ -284,7 +284,7 @@
 
 - **例**
 
-  プラグイン内でバージョンチェックを行います。
+  プラグイン内でバージョンチェックを行います:
 
   ```js
   export default {
@@ -323,7 +323,7 @@ console.log(app.config)
       err: unknown,
       instance: ComponentPublicInstance | null,
       // `info` は Vue 特有のエラー情報です。
-      // 例 エラーがthrowされたのはどのライフサイクルフックか
+      // 例 エラーが throw されたのはどのライフサイクルフックか
       info: string
     ) => void
   }
@@ -333,7 +333,7 @@ console.log(app.config)
 
   エラーハンドラーは、エラー、エラーを起こしたコンポーネントインスタンス、エラーのソースの種類を指定した情報の文字列という 3 つの引数を受け取ります。
 
-  以下のソースから、エラーを捕捉することができます。
+  以下のソースから、エラーを捕捉することができます:
 
   - コンポーネントレンダラ
   - イベントハンドラ
@@ -369,7 +369,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 - **詳細**
 
-  警告ハンドラーは、第 1 引数として警告メッセージ、第 2 引数としてソースコンポーネントのインスタンス、第 3 引数としてコンポーネントトーレスの文字列を受け取ります。
+  警告ハンドラーは、第 1 引数として警告メッセージ、第 2 引数としてソースコンポーネントのインスタンス、第 3 引数としてコンポーネントトレースの文字列を受け取ります。
 
   特定の警告をフィルタリングし、コンソールの詳細度を下げるために、使用することもできます。すべての Vue の警告は開発中に対応すべきで、多くの警告の中で特定の警告に集中するのはデバッグ期間のみ推奨されており、デバッグ完了時には解除すべきです。
 
@@ -387,7 +387,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 ## app.config.performance
 
-これを `true` に設定することで、ブラウザーの開発ツールの performance/timeline パネルで、コンポーネントの初期化、コンパイル、レンダリング、パッチについてのパフォーマンスのトレースが有効となります。 開発モードおよび[ performance.mark ](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API をサポートするブラウザーでのみ動作します。
+これを `true` に設定することで、ブラウザーの開発ツールの performance/timeline パネルで、コンポーネントの初期化、コンパイル、レンダリング、パッチについてのパフォーマンスのトレースが有効となります。 開発モードおよび [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API をサポートするブラウザーでのみ動作します。
 
 - **型**: `boolean`
 
@@ -400,14 +400,14 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 ::: warning 重要
 フルビルド (則ち、ブラウザのテンプレートをコンパイルできるスタンドアロンの `vue.js`) 使用時のみ、この設定オプションが反映されます。ビルド設定で、実行時のみビルドを使用している場合は代わりに、ビルドツール設定により、`@vue/compiler-dom` にコンパイラオプションを渡さなければなりません。
 
-- `vue-loader` の場合: [`compilerOptions` ローダオプションによって渡す](https://vue-loader.vuejs.org/options.html#compileroptions). 参照 [`vue-cli` での設定方法](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+- `vue-loader` の場合: [`compilerOptions` ローダーオプションによって渡す](https://vue-loader.vuejs.org/options.html#compileroptions)。[`vue-cli` での設定方法](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)も参照してください。
 
 - `vite` の場合: [`@vitejs/plugin-vue` オプションによって渡す](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
   :::
 
 ### app.config.compilerOptions.isCustomElement
 
-ネイティブカスタム要素を認識するため、チェックメソッドを指定する。
+ネイティブカスタム要素を認識するためのチェックメソッドを指定する。
 
 - **型:** `(tag: string) => boolean`
 
@@ -513,7 +513,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   app.config.globalProperties.msg = 'hello'
   ```
 
-  これにより、アプリケーションのコンポーネントテンプレート内およびコンポーネントインスタンスの `this` でも、`msg` を使用できるようになります。
+  これにより、アプリケーションのコンポーネントテンプレート内およびコンポーネントインスタンスの `this` でも、`msg` を使用できるようになります:
 
   ```js
   export default {
@@ -549,7 +549,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
   ```js
   const app = createApp({
-    // self からのオプション
+    // 自身のオプション
     msg: 'Vue',
     // ミックスインからのオプション
     mixins: [
@@ -558,7 +558,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
       }
     ],
     mounted() {
-      // this.$options に公開されているマージオプション
+      // this.$options に公開されているマージされたオプション
       console.log(this.$options.msg)
     }
   })
