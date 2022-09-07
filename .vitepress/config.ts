@@ -8,20 +8,20 @@ import { jobsPlugin } from './jobsMdPlugin'
 
 const nav = [
   {
-    text: 'Docs',
+    text: 'ドキュメント',
     activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
     items: [
-      { text: 'Guide', link: '/guide/introduction' },
-      { text: 'Tutorial', link: '/tutorial/' },
-      { text: 'Examples', link: '/examples/' },
-      { text: 'Quick Start', link: '/guide/quick-start' },
+      { text: 'ガイド', link: '/guide/introduction' },
+      { text: 'チュートリアル', link: '/tutorial/' },
+      { text: '実装例', link: '/examples/' },
+      { text: 'クイックスタート', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
       {
-        text: 'Vue 2 Docs',
+        text: 'Vue 2 のドキュメント',
         link: 'https://v2.vuejs.org'
       },
       {
-        text: 'Migration from Vue 2',
+        text: 'Vue 2 からの移行',
         link: 'https://v3-migration.vuejs.org/'
       }
     ]
@@ -32,32 +32,32 @@ const nav = [
     link: '/api/'
   },
   {
-    text: 'Playground',
+    text: 'プレイグラウンド',
     link: 'https://sfc.vuejs.org'
   },
   {
-    text: 'Ecosystem',
+    text: 'エコシステム',
     activeMatch: `^/ecosystem/`,
     items: [
       {
-        text: 'Resources',
+        text: 'リソース',
         items: [
-          { text: 'Partners', link: '/partners/' },
-          { text: 'Themes', link: '/ecosystem/themes' },
-          { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
-          { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
+          { text: 'パートナー', link: '/partners/' },
+          { text: 'テーマ', link: '/ecosystem/themes' },
+          { text: '仕事', link: 'https://vuejobs.com/?ref=vuejs' },
+          { text: 'T シャツショップ', link: 'https://vue.threadless.com/' }
         ]
       },
       {
-        text: 'Official Libraries',
+        text: '公式ライブラリー',
         items: [
           { text: 'Vue Router', link: 'https://router.vuejs.org/' },
           { text: 'Pinia', link: 'https://pinia.vuejs.org/' },
-          { text: 'Tooling Guide', link: '/guide/scaling-up/tooling.html' }
+          { text: 'ツールガイド', link: '/guide/scaling-up/tooling.html' }
         ]
       },
       {
-        text: 'Video Courses',
+        text: '動画講座',
         items: [
           {
             text: 'Vue Mastery',
@@ -70,7 +70,7 @@ const nav = [
         ]
       },
       {
-        text: 'Help',
+        text: 'ヘルプ',
         items: [
           {
             text: 'Discord Chat',
@@ -84,40 +84,40 @@ const nav = [
         ]
       },
       {
-        text: 'News',
+        text: 'ニュース',
         items: [
-          { text: 'Blog', link: 'https://blog.vuejs.org/' },
+          { text: 'ブログ', link: 'https://blog.vuejs.org/' },
           { text: 'Twitter', link: 'https://twitter.com/vuejs' },
-          { text: 'Newsletter', link: 'https://news.vuejs.org/' },
-          { text: 'Events', link: 'https://events.vuejs.org/' }
+          { text: 'ニュースレター', link: 'https://news.vuejs.org/' },
+          { text: 'イベント', link: 'https://events.vuejs.org/' }
         ]
       }
     ]
   },
   {
-    text: 'About',
+    text: '情報',
     activeMatch: `^/about/`,
     items: [
       { text: 'FAQ', link: '/about/faq' },
-      { text: 'Team', link: '/about/team' },
-      { text: 'Releases', link: '/about/releases' },
+      { text: 'チーム', link: '/about/team' },
+      { text: 'リリース', link: '/about/releases' },
       {
-        text: 'Community Guide',
+        text: 'コミュニティガイド',
         link: '/about/community-guide'
       },
-      { text: 'Code of Conduct', link: '/about/coc' },
+      { text: '行動規範', link: '/about/coc' },
       {
-        text: 'The Documentary',
+        text: 'ドキュメンタリー',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
       }
     ]
   },
   {
-    text: 'Sponsor',
+    text: 'スポンサー',
     link: '/sponsor/'
   },
   {
-    text: 'Partners',
+    text: 'パートナー',
     link: '/partners/',
     activeMatch: `^/partners/`
   }
@@ -126,24 +126,24 @@ const nav = [
 export const sidebar = {
   '/guide/': [
     {
-      text: 'Getting Started',
+      text: '入門',
       items: [
-        { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'はじめに', link: '/guide/introduction' },
         {
-          text: 'Quick Start',
+          text: 'クイックスタート',
           link: '/guide/quick-start'
         }
       ]
     },
     {
-      text: 'Essentials',
+      text: '基本',
       items: [
         {
-          text: 'Creating an Application',
+          text: 'アプリケーションの作成',
           link: '/guide/essentials/application'
         },
         {
-          text: 'Template Syntax',
+          text: 'テンプレート構文',
           link: '/guide/essentials/template-syntax'
         },
         {
@@ -155,71 +155,71 @@ export const sidebar = {
           link: '/guide/essentials/computed'
         },
         {
-          text: 'Class and Style Bindings',
+          text: 'クラスとスタイルのバインディング',
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'Conditional Rendering',
+          text: '条件付きレンダリング',
           link: '/guide/essentials/conditional'
         },
-        { text: 'List Rendering', link: '/guide/essentials/list' },
+        { text: 'リストレンダリング', link: '/guide/essentials/list' },
         {
           text: 'イベントハンドリング',
           link: '/guide/essentials/event-handling'
         },
-        { text: 'Form Input Bindings', link: '/guide/essentials/forms' },
+        { text: 'フォーム入力バインディング', link: '/guide/essentials/forms' },
         {
-          text: 'Lifecycle Hooks',
+          text: 'ライフサイクルフック',
           link: '/guide/essentials/lifecycle'
         },
-        { text: 'Watchers', link: '/guide/essentials/watchers' },
-        { text: 'Template Refs', link: '/guide/essentials/template-refs' },
+        { text: 'ウォッチャー', link: '/guide/essentials/watchers' },
+        { text: 'テンプレート参照', link: '/guide/essentials/template-refs' },
         {
-          text: 'Components Basics',
+          text: 'コンポーネントの基礎',
           link: '/guide/essentials/component-basics'
         }
       ]
     },
     {
-      text: 'Components In-Depth',
+      text: 'コンポーネントの詳細',
       items: [
         {
-          text: 'Registration',
+          text: '登録',
           link: '/guide/components/registration'
         },
-        { text: 'Props', link: '/guide/components/props' },
-        { text: 'Events', link: '/guide/components/events' },
+        { text: 'プロパティ', link: '/guide/components/props' },
+        { text: 'イベント', link: '/guide/components/events' },
         {
-          text: 'Fallthrough Attributes',
+          text: 'フォールスルー属性',
           link: '/guide/components/attrs'
         },
-        { text: 'Slots', link: '/guide/components/slots' },
+        { text: 'スロット', link: '/guide/components/slots' },
         {
           text: 'Provide / inject',
           link: '/guide/components/provide-inject'
         },
         {
-          text: 'Async Components',
+          text: '非同期コンポーネント',
           link: '/guide/components/async'
         }
       ]
     },
     {
-      text: 'Reusability',
+      text: '再利用性',
       items: [
         {
-          text: 'Composables',
+          text: 'コンポーザブル',
           link: '/guide/reusability/composables'
         },
         {
-          text: 'Custom Directives',
+          text: 'カスタムディレクティブ',
           link: '/guide/reusability/custom-directives'
         },
         { text: 'プラグイン', link: '/guide/reusability/plugins' }
       ]
     },
     {
-      text: 'Built-in Components',
+      text: '組み込みコンポーネント',
       items: [
         { text: 'トランジション', link: '/guide/built-ins/transition' },
         {
@@ -232,19 +232,19 @@ export const sidebar = {
       ]
     },
     {
-      text: 'Scaling Up',
+      text: 'スケールアップ',
       items: [
         {
           text: '単一ファイルコンポーネント',
           link: '/guide/scaling-up/sfc'
         },
-        { text: 'ツールガイド', link: '/guide/scaling-up/tooling' },
+        { text: 'ツール', link: '/guide/scaling-up/tooling' },
         { text: 'ルーティング', link: '/guide/scaling-up/routing' },
         {
           text: '状態管理',
           link: '/guide/scaling-up/state-management'
         },
-        { text: 'Testing', link: '/guide/scaling-up/testing' },
+        { text: 'テスト', link: '/guide/scaling-up/testing' },
         {
           text: 'サーバーサイドレンダリング (SSR)',
           link: '/guide/scaling-up/ssr'
@@ -252,10 +252,10 @@ export const sidebar = {
       ]
     },
     {
-      text: 'Best Practices',
+      text: 'ベストプラクティス',
       items: [
         {
-          text: 'Production Deployment',
+          text: '本番デプロイ',
           link: '/guide/best-practices/production-deployment'
         },
         {
@@ -263,11 +263,11 @@ export const sidebar = {
           link: '/guide/best-practices/performance'
         },
         {
-          text: 'アクセシビリティ',
+          text: 'アクセシビリティー',
           link: '/guide/best-practices/accessibility'
         },
         {
-          text: 'Security',
+          text: 'セキュリティー',
           link: '/guide/best-practices/security'
         }
       ]
@@ -277,44 +277,44 @@ export const sidebar = {
       items: [
         { text: '概要', link: '/guide/typescript/overview' },
         {
-          text: 'Composition API とともに TypeScript を使用する',
+          text: 'Composition API と TypeScript',
           link: '/guide/typescript/composition-api'
         },
         {
-          text: 'Options API とともに TypeScript を使用する',
+          text: 'Options API と TypeScript',
           link: '/guide/typescript/options-api'
         }
       ]
     },
     {
-      text: 'Extra Topics',
+      text: '番外トピック',
       items: [
         {
-          text: 'Ways of Using Vue',
+          text: 'Vue のさまざまな活用方法',
           link: '/guide/extras/ways-of-using-vue'
         },
         {
-          text: 'Composition API FAQ',
+          text: 'Composition API の FAQ',
           link: '/guide/extras/composition-api-faq'
         },
         {
-          text: 'Reactivity in Depth',
+          text: 'リアクティビティの探求',
           link: '/guide/extras/reactivity-in-depth'
         },
         {
-          text: 'Rendering Mechanism',
+          text: 'レンダリングの仕組み',
           link: '/guide/extras/rendering-mechanism'
         },
         {
-          text: 'Render Functions & JSX',
+          text: 'Render 関数と JSX',
           link: '/guide/extras/render-function'
         },
         {
-          text: 'Vue and Web Components',
+          text: 'Vue と Web コンポーネント',
           link: '/guide/extras/web-components'
         },
         {
-          text: 'Animation Techniques',
+          text: 'アニメーションテクニック',
           link: '/guide/extras/animation'
         },
         {
