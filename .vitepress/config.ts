@@ -335,11 +335,11 @@ export const sidebar = {
   ],
   '/api/': [
     {
-      text: 'Global API',
+      text: 'グローバル API',
       items: [
-        { text: 'Application', link: '/api/application' },
+        { text: 'アプリケーション', link: '/api/application' },
         {
-          text: 'General',
+          text: '汎用',
           link: '/api/general'
         }
       ]
