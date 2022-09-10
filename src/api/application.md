@@ -1,32 +1,32 @@
-# Application API
+# アプリケーション API
 
 ## createApp()
 
-Creates an application instance.
+アプリケーションインスタンスを作成します。
 
-- **Type**
+- **型**
 
   ```ts
   function createApp(rootComponent: Component, rootProps?: object): App
   ```
 
-- **Details**
+- **詳細**
 
-  The first argument is the root component. The second optional argument is the props to be passed to the root component.
+  第 1 引数はルートコンポーネントです。第 2 引数 (省略可能) は、ルートコンポーネントに渡される props です。
 
-- **Example**
+- **例**
 
-  With inline root component:
+  インラインルートコンポーネントを用いる場合:
 
   ```js
   import { createApp } from 'vue'
 
   const app = createApp({
-    /* root component options */
+    /* ルートコンポーネントオプション */
   })
   ```
 
-  With imported component:
+  インポートしたコンポーネントを用いる場合:
 
   ```js
   import { createApp } from 'vue'
@@ -35,17 +35,17 @@ Creates an application instance.
   const app = createApp(App)
   ```
 
-- **See also:** [Guide - Creating a Vue Application](/guide/essentials/application.html)
+- **参照:** [ガイド - Vue アプリケーションの作成](/guide/essentials/application.html)
 
 ## createSSRApp()
 
-Creates an application instance in [SSR Hydration](/guide/scaling-up/ssr.html#client-hydration) mode. Usage is exactly the same as `createApp()`.
+[SSR hydration (ハイドレーション) ](/guide/scaling-up/ssr.html#クライアント・ハイドレーション)モードでアプリケーションインスタンスを作成します。使用法は `createApp()` と全く同じです。
 
 ## app.mount()
 
-Mounts the application instance in a container element.
+コンテナ要素にアプリケーションインスタンスをマウントします。
 
-- **Type**
+- **型**
 
   ```ts
   interface App {
@@ -53,17 +53,17 @@ Mounts the application instance in a container element.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The argument can either be an actual DOM element or a CSS selector (the first matched element will be used). Returns the root component instance.
+  引数は、実際の DOM 要素または CSS セレクターのいずれかにすることができます (最初にマッチした要素を使用します)。ルートコンポーネントのインスタンスを返します。
 
-  If the component has a template or a render function defined, it will replace any existing DOM nodes inside the container. Otherwise, if the runtime compiler is available, the `innerHTML` of the container will be used as the template.
+  コンポーネントにテンプレートがあるか、render 関数を定義している場合、コンテナ内の既存の DOM ノードを置換します。それ以外の場合は、実行時コンパイラーが使用可能であれば、コンテナの `innerHTML` がテンプレートとして使用されます。
 
-  In SSR hydration mode, it will hydrate the existing DOM nodes inside the container. If there are [mismatches](/guide/scaling-up/ssr.html#hydration-mismatch), the existing DOM nodes will be morphed to match the expected output.
+  SSR ハイドレーションモードでは、コンテナ内の既存の DOM ノードをハイドレートします。[ミスマッチ](/guide/scaling-up/ssr.html#ハイドレーション・ミスマッチ)があった場合、既存の DOM ノードは期待される結果に合うよう変化されます。
 
-  For each app instance, `mount()` can only be called once.
+  アプリケーションのインスタンス毎に、`mount()` は一度だけ呼び出すことができます。
 
-- **Example**
+- **例**
 
   ```js
   import { createApp } from 'vue'
@@ -72,7 +72,7 @@ Mounts the application instance in a container element.
   app.mount('#app')
   ```
 
-  Can also mount to an actual DOM element:
+  実際の DOM 要素にマウントすることもできます:
 
   ```js
   app.mount(document.body.firstChild)
@@ -80,9 +80,9 @@ Mounts the application instance in a container element.
 
 ## app.unmount()
 
-Unmounts a mounted application instance, triggering the unmount lifecycle hooks for all components in the application's component tree.
+マウントしたアプリケーションインスタンスをアンマウントし、アプリケーションのコンポーネントツリーにあるすべてのコンポーネントに対して、ライフサイクルフックの unmount を呼び出します。
 
-- **Type**
+- **型**
 
   ```ts
   interface App {
@@ -92,9 +92,9 @@ Unmounts a mounted application instance, triggering the unmount lifecycle hooks 
 
 ## app.provide()
 
-Provide a value that can be injected in all descendent components within the application.
+アプリケーション内のすべての子孫コンポーネントに注入できる値を提供します。
 
-- **Type**
+- **型**
 
   ```ts
   interface App {
@@ -102,11 +102,11 @@ Provide a value that can be injected in all descendent components within the app
   }
   ```
 
-- **Details**
+- **詳細**
 
-  Expects the injection key as the first argument, and the provided value as the second. Returns the application instance itself.
+  第 1 引数にはインジェクションキー、第 2 引数には提供される値を期待します。アプリケーションインスタンス自身を返します。
 
-- **Example**
+- **例**
 
   ```js
   import { createApp } from 'vue'
@@ -116,7 +116,7 @@ Provide a value that can be injected in all descendent components within the app
   app.provide('message', 'hello')
   ```
 
-  Inside a component in the application:
+  アプリケーションのコンポーネント内部:
 
   <div class="composition-api">
 
@@ -144,15 +144,15 @@ Provide a value that can be injected in all descendent components within the app
 
   </div>
 
-- **See also:**
+- **参照:**
   - [Provide / Inject](/guide/components/provide-inject.html)
-  - [App-level Provide](/guide/components/provide-inject.html#app-level-provide)
+  - [アプリケーションレベルの Provide](/guide/components/provide-inject.html#アプリケーションレベルの-provide)
 
 ## app.component()
 
-Registers a global component if passing both a name string and a component definition, or retrieves an already registered one if only the name is passed.
+名称文字列とコンポーネント定義を両方渡す場合、グローバルコンポーネントとして登録し、名称のみ渡す場合、登録済みのコンポーネントを取得します。
 
-- **Type**
+- **型**
 
   ```ts
   interface App {
@@ -161,29 +161,29 @@ Registers a global component if passing both a name string and a component defin
   }
   ```
 
-- **Example**
+- **例**
 
   ```js
   import { createApp } from 'vue'
 
   const app = createApp({})
 
-  // register an options object
+  // オプションオブジェクトを登録します。
   app.component('my-component', {
     /* ... */
   })
 
-  // retrieve a registered component
+  // 登録されたコンポーネントを取得します。
   const MyComponent = app.component('my-component')
   ```
 
-- **See also:** [Component Registration](/guide/components/registration.html)
+- **参照:** [コンポーネントの登録](/guide/components/registration.html)
 
 ## app.directive()
 
-Registers a global custom directive if passing both a name string and a directive definition, or retrieves an already registered one if only the name is passed.
+名称文字列およびディレクティブ定義を両方渡す場合、グローバルカスタムディレクティブを登録し、名称のみの場合は、登録済みのディレクティブを取得します。
 
-- **Type**
+- **型**
 
   ```ts
   interface App {
@@ -192,7 +192,7 @@ Registers a global custom directive if passing both a name string and a directiv
   }
   ```
 
-- **Example**
+- **例**
 
   ```js
   import { createApp } from 'vue'
@@ -201,27 +201,27 @@ Registers a global custom directive if passing both a name string and a directiv
     /* ... */
   })
 
-  // register (object directive)
+  // 登録 (オブジェクトディレクティブ)
   app.directive('my-directive', {
-    /* custom directive hooks */
+    /* カスタムディレクティブのフック */
   })
 
-  // register (function directive shorthand)
+  // 登録 (関数ディレクティブの省略記法)
   app.directive('my-directive', () => {
     /* ... */
   })
 
-  // retrieve a registered directive
+  // 登録済ディレクティブの取得
   const myDirective = app.directive('my-directive')
   ```
 
-- **See also:** [Custom Directives](/guide/reusability/custom-directives.html)
+- **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives.html)
 
 ## app.use()
 
-Installs a [plugin](/guide/reusability/plugins.html).
+[プラグイン](/guide/reusability/plugins.html)をインストールします。
 
-- **Type**
+- **型**
 
   ```ts
   interface App {
@@ -229,15 +229,15 @@ Installs a [plugin](/guide/reusability/plugins.html).
   }
   ```
 
-- **Details**
+- **詳細**
 
-  Expects the plugin as the first argument, and optional plugin options as the second argument.
+  第 1 引数にはプラグイン、第 2 引数には任意でプラグインのオプションを期待します。
 
-  The plugin can either be an object with an `install()` method, or just a function that will be used as the `install()` method. The options (second argument of `app.use()`) will be passed along to the plugin's `install()` method.
+  プラグインは、`install()` メソッドがあるオブジェクト、または単に `install()` メソッドとして使用される関数のいずれかにできます。オプション（`app.use()` の第 2 引数）はプラグインの `install()` メソッドに渡されます。
 
-  When `app.use()` is called on the same plugin multiple times, the plugin will be installed only once.
+  同じプラグインから `app.use()` が複数回呼び出される場合、プラグインは一度だけインストールされます。
 
-- **Example**
+- **例**
 
   ```js
   import { createApp } from 'vue'
@@ -250,19 +250,19 @@ Installs a [plugin](/guide/reusability/plugins.html).
   app.use(MyPlugin)
   ```
 
-- **See also:** [Plugins](/guide/reusability/plugins.html)
+- **参照:** [プラグイン](/guide/reusability/plugins.html)
 
 ## app.mixin()
 
-Applies a global mixin (scoped to the application). A global mixin applies its included options to every component instance in the application.
+グローバルミックスイン (スコープがアプリケーション) を適用します。グローバルミックスインは、インクルードされたオプションをアプリケーションの全コンポーネントインスタンスに適用します。
 
-:::warning Not Recommended
-Mixins are supported in Vue 3 mainly for backwards compatibility, due to their widespread use in ecosystem libraries. Use of mixins, especially global mixins, should be avoided in application code.
+:::warning 非推奨
+ミックインはエコシステムのライブラリーで幅広く使用されていることから、主に後方互換性のため、Vue 3 でサポートしています。ミックイン (特にグローバルミックスイン) はアプリケーションコードでは避けるべきです。
 
-For logic reuse, prefer [Composables](/guide/reusability/composables.html) instead.
+ロジックを再利用するには、代わりに[コンポーザブル](/guide/reusability/composables.html)を使用してください。
 :::
 
-- **Type**
+- **型**
 
   ```ts
   interface App {
@@ -272,9 +272,9 @@ For logic reuse, prefer [Composables](/guide/reusability/composables.html) inste
 
 ## app.version
 
-Provides the version of Vue that the application was created with. This is useful inside [plugins](/guide/reusability/plugins.html), where you might need conditional logic based on different Vue versions.
+アプリケーションを作成した Vue のバージョンを提供します。Vue のバージョンの違いに応じた条件付きロジックが必要となる[プラグイン](/guide/reusability/plugins.html)内で有用となります。
 
-- **Type**
+- **型**
 
   ```ts
   interface App {
@@ -282,9 +282,9 @@ Provides the version of Vue that the application was created with. This is usefu
   }
   ```
 
-- **Example**
+- **例**
 
-  Performing a version check inside a plugin:
+  プラグイン内でバージョンチェックを行います:
 
   ```js
   export default {
@@ -297,11 +297,11 @@ Provides the version of Vue that the application was created with. This is usefu
   }
   ```
 
-- **See also:** [Global API - version](/api/general.html#version)
+- **参照:** [グローバル API - バージョン](/api/general.html#version)
 
 ## app.config
 
-Every application instance exposes a `config` object that contains the configuration settings for that application. You can modify its properties (documented below) before mounting your application.
+すべてのアプリケーションインスタンスは、アプリケーションの構成設定を含む `config` オブジェクトを公開しています。アプリケーションをマウントする前であれば、プロパティ (以下で記載) を修正することができます。
 
 ```js
 import { createApp } from 'vue'
@@ -313,49 +313,49 @@ console.log(app.config)
 
 ## app.config.errorHandler
 
-Assign a global handler for uncaught errors propagating from within the application.
+アプリケーション内から伝播する未捕捉のエラーに対して、グローバルハンドラーを割り当てます。
 
-- **Type**
+- **型**
 
   ```ts
   interface AppConfig {
     errorHandler?: (
       err: unknown,
       instance: ComponentPublicInstance | null,
-      // `info` is a Vue-specific error info,
-      // e.g. which lifecycle hook the error was thrown in
+      // `info` は Vue 特有のエラー情報です。
+      // 例 エラーが throw されたのはどのライフサイクルフックか
       info: string
     ) => void
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The error handler receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+  エラーハンドラーは、エラー、エラーを起こしたコンポーネントインスタンス、エラーのソースの種類を指定した情報の文字列という 3 つの引数を受け取ります。
 
-  It can capture errors from the following sources:
+  以下のソースから、エラーを捕捉することができます:
 
-  - Component renders
-  - Event handlers
-  - Lifecycle hooks
-  - `setup()` function
-  - Watchers
-  - Custom directive hooks
-  - Transition hooks
+  - コンポーネントレンダラ
+  - イベントハンドラ
+  - ライフサイクルフック
+  - `setup()` 関数
+  - ウォッチャ
+  - カスタムディレクティブフック
+  - トランジションフック
 
-- **Example**
+- **例**
 
   ```js
   app.config.errorHandler = (err, instance, info) => {
-    // handle error, e.g. report to a service
+    // エラー処理(例 サービスに報告)
   }
   ```
 
 ## app.config.warnHandler
 
-Assign a custom handler for runtime warnings from Vue.
+Vue からの実行時警告に対して、カスタムハンドラーを割り当てます。
 
-- **Type**
+- **型**
 
   ```ts
   interface AppConfig {
@@ -367,86 +367,86 @@ Assign a custom handler for runtime warnings from Vue.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The warning handler receives the warning message as the first argument, the source component instance as the second argument, and a component trace string as the third.
+  警告ハンドラーは、第 1 引数として警告メッセージ、第 2 引数としてソースコンポーネントのインスタンス、第 3 引数としてコンポーネントトレースの文字列を受け取ります。
 
-  It can be used to filter out specific warnings to reduce console verbosity. All Vue warnings should be addressed during development, so this is only recommended during debug sessions to focus on specific warnings among many, and should be removed once the debugging is done.
+  特定の警告をフィルタリングし、コンソールの詳細度を下げるために、使用することもできます。すべての Vue の警告は開発中に対応すべきで、多くの警告の中で特定の警告に集中するのはデバッグ期間のみ推奨されており、デバッグ完了時には解除すべきです。
 
   :::tip
-  Warnings only work during development, so this config is ignored in production mode.
+  警告は開発環境でのみ動作しますので、この設定はプロダクションモードでは無視されます。
   :::
 
-- **Example**
+- **例**
 
   ```js
   app.config.warnHandler = (msg, instance, trace) => {
-    // `trace` is the component hierarchy trace
+    // `trace` はコンポーネント階層のトレースです。
   }
   ```
 
 ## app.config.performance
 
-Set this to `true` to enable component init, compile, render and patch performance tracing in the browser devtool performance/timeline panel. Only works in development mode and in browsers that support the [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API.
+これを `true` に設定することで、ブラウザーの開発ツールの performance/timeline パネルで、コンポーネントの初期化、コンパイル、レンダリング、パッチについてのパフォーマンスのトレースが有効となります。 開発モードおよび [performance.mark](https://developer.mozilla.org/ja/docs/Web/API/Performance/mark) API をサポートするブラウザーでのみ動作します。
 
-- **Type**: `boolean`
+- **型**: `boolean`
 
-- **See also:** [Guide - Performance](/guide/best-practices/performance.html)
+- **参照:** [ガイド - パフォーマンス](/guide/best-practices/performance.html)
 
 ## app.config.compilerOptions
 
-Configure runtime compiler options. Values set on this object will be passed to the in-browser template compiler and affect every component in the configured app. Note you can also override these options on a per-component basis using the [`compilerOptions` option](/api/options-rendering.html#compileroptions).
+実行時コンパイラーのオプションを設定します。このオブジェクトに設定される値はブラウザー内のテンプレートコンパイラーに渡され、設定されたアプリケーションのコンポーネントすべてに影響を与えます。[`compilerOptions` オプション](/api/options-rendering.html#compileroptions)を使用することで、コンポーネント毎のオプションを上書きすることも可能となることに注意してください。
 
-::: warning Important
-This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). If you are using the runtime-only build with a build setup, compiler options must be passed to `@vue/compiler-dom` via build tool configurations instead.
+::: warning 重要
+フルビルド (則ち、ブラウザのテンプレートをコンパイルできるスタンドアロンの `vue.js`) 使用時のみ、この設定オプションが反映されます。ビルド設定で、実行時のみビルドを使用している場合は代わりに、ビルドツール設定により、`@vue/compiler-dom` にコンパイラオプションを渡さなければなりません。
 
-- For `vue-loader`: [pass via the `compilerOptions` loader option](https://vue-loader.vuejs.org/options.html#compileroptions). Also see [how to configure it in `vue-cli`](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+- `vue-loader` の場合: [`compilerOptions` ローダーオプションによって渡す](https://vue-loader.vuejs.org/options.html#compileroptions)。[`vue-cli` での設定方法](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)も参照してください。
 
-- For `vite`: [pass via `@vitejs/plugin-vue` options](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
+- `vite` の場合: [`@vitejs/plugin-vue` オプションによって渡す](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
   :::
 
 ### app.config.compilerOptions.isCustomElement
 
-Specifies a check method to recognize native custom elements.
+ネイティブカスタム要素を認識するためのチェックメソッドを指定する。
 
-- **Type:** `(tag: string) => boolean`
+- **型:** `(tag: string) => boolean`
 
-- **Details**
+- **詳細**
 
-  Should return `true` if the tag should be treated as a native custom element. For a matched tag, Vue will render it as a native element instead of attempting to resolve it as a Vue component.
+  タグをネイティブカスタム要素として扱う必要がある場合は、`true` を返します。マッチしたタグについては、Vue は Vue コンポーネントとして解決しようとする代わりに、ネイティブ要素としてレンダリングします。
 
-  Native HTML and SVG tags don't need to be matched in this function - Vue's parser recognizes them automatically.
+  ネイティブ HTML および SVG は、この機能でマッチする必要はありません。Vue のパーサは自動的にこれらを認識します。
 
-- **Example**
+- **例**
 
   ```js
-  // treat all tags starting with 'ion-' as custom elements
+  // 'ion-'から始まるタグをすべて、カスタム要素として扱います。
   app.config.compilerOptions.isCustomElement = (tag) => {
     return tag.startsWith('ion-')
   }
   ```
 
-- **See also:** [Vue and Web Components](/guide/extras/web-components.html)
+- **参照:** [Vue および web コンポーネント](/guide/extras/web-components.html)
 
 ### app.config.compilerOptions.whitespace
 
-Adjusts template whitespace handling behavior.
+テンプレートの空白を扱う振る舞いを調整します。
 
-- **Type:** `'condense' | 'preserve'`
+- **型:** `'condense' | 'preserve'`
 
-- **Default:** `'condense'`
+- **デフォルト:** `'condense'`
 
-- **Details**
+- **詳細**
 
-  Vue removes / condenses whitespace characters in templates to produce more efficient compiled output. The default strategy is "condense", with the following behavior:
+  Vue では、より効率的なコンパイル結果を出力するよう、テンプレートの空白文字の除去・圧縮を行います。デフォルトの戦略は "condense" であり、以下の振る舞いとなります:
 
-  1. Leading / ending whitespace characters inside an element are condensed into a single space.
-  2. Whitespace characters between elements that contain newlines are removed.
-  3. Consecutive whitespace characters in text nodes are condensed into a single space.
+  1. 要素内の先頭および末尾の空白文字を 1 つの空白に圧縮します。
+  2. 改行を含む要素間の空白文字を除去します。
+  3. テキストノード内の連続した空白文字を 1 つの空白に圧縮します。
 
-  Setting this option to `'preserve'` will disable (2) and (3).
+  このオプションを `'preserve'` に設定することで、(2) および (3) を無効化します。
 
-- **Example**
+- **例**
 
   ```js
   app.config.compilerOptions.whitespace = 'preserve'
@@ -454,36 +454,36 @@ Adjusts template whitespace handling behavior.
 
 ### app.config.compilerOptions.delimiters
 
-Adjusts the delimiters used for text interpolation within the template.
+テンプレート内のテキスト補間に用いるデリミタを調整します。
 
-- **Type:** `[string, string]`
+- **型:** `[string, string]`
 
-- **Default:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
+- **デフォルト:** `{{ "['\u007b\u007b', '\u007d\u007d']" }}`
 
-- **Details**
+- **詳細**
 
-  This is typically used to avoid conflicting with server-side frameworks that also use mustache syntax.
+  これは通常、マスタッシュ記法も使用するサーバサイドのフレームワークとの衝突を回避するために使用します。
 
-- **Example**
+- **例**
 
   ```js
-  // Delimiters changed to ES6 template string style
+  // デリミタを、ES6 テンプレートの文字列スタイルに変更する。
   app.config.compilerOptions.delimiters = ['${', '}']
   ```
 
 ### app.config.compilerOptions.comments
 
-Adjusts treatment of HTML comments in templates.
+テンプレートの HTML コメントの扱い方を調整します。
 
-- **Type:** `boolean`
+- **型:** `boolean`
 
-- **Default:** `false`
+- **デフォルト:** `false`
 
-- **Details**
+- **詳細**
 
-  By default, Vue will remove the comments in production. Setting this option to `true` will force Vue to preserve comments even in production. Comments are always preserved during development. This option is typically used when Vue is used with other libraries that rely on HTML comments.
+  デフォルトでは、Vue はプロダクションでコメントを除去します。このオプションを `true` にすることで、プロダクションでもコメントを保持するよう Vue に強制することができます。開発ではコメントは常に保持されます。このオプションは通常、HTML コメントに依存するその他のライブラリーで Vue を使用する場合に使用します。
 
-- **Example**
+- **例**
 
   ```js
   app.config.compilerOptions.comments = true
@@ -491,9 +491,9 @@ Adjusts treatment of HTML comments in templates.
 
 ## app.config.globalProperties
 
-An object that can be used to register global properties that can be accessed on any component instance inside the application.
+アプリケーション内部のコンポーネントインスタンスにアクセス可能なグローバルプロパティを登録するのに使用することができるオブジェクトです。
 
-- **Type**
+- **型**
 
   ```ts
   interface AppConfig {
@@ -501,19 +501,19 @@ An object that can be used to register global properties that can be accessed on
   }
   ```
 
-- **Details**
+- **詳細**
 
-  This is a replacement of Vue 2's `Vue.prototype` which is no longer present in Vue 3. As with anything global, this should be used sparingly.
+  これは、Vue 3 でなくなった Vue 2 の `Vue.prototype` の代替です。グローバルなものについてはすべて、慎重に使用すべきです。
 
-  If a global property conflicts with a component’s own property, the component's own property will have higher priority.
+  グローバルプロパティがコンポーネント自身のプロパティと衝突する場合、コンポーネント自身のプロパティの方が優先度が高くなります。
 
-- **Usage**
+- **使用法**
 
   ```js
   app.config.globalProperties.msg = 'hello'
   ```
 
-  This makes `msg` available inside any component template in the application, and also on `this` of any component instance:
+  これにより、アプリケーションのコンポーネントテンプレート内およびコンポーネントインスタンスの `this` でも、`msg` を使用できるようになります:
 
   ```js
   export default {
@@ -525,9 +525,9 @@ An object that can be used to register global properties that can be accessed on
 
 ## app.config.optionMergeStrategies
 
-An object for defining merging strategies for custom component options.
+カスタムコンポーネントのオプションにおけるマージ戦略を定義するオブジェクトです。
 
-- **Type**
+- **型**
 
   ```ts
   interface AppConfig {
@@ -537,39 +537,39 @@ An object for defining merging strategies for custom component options.
   type OptionMergeFunction = (to: unknown, from: unknown) => any
   ```
 
-- **Details**
+- **詳細**
 
-  Some plugins / libraries add support for custom component options (by injecting global mixins). These options may require special merging logic when the same option needs to be "merged" from multiple sources (e.g. mixins or component inheritance).
+  プラグインやライブラリーには、(グローバルミックインを注入することにより) カスタムコンポーネントのオプションのサポートを追加しているものもあります。複数のソースから同じオプションを "マージ" する必要がある場合 (たとえば、ミックスインやコンポーネントの継承)、これらのオプションには特別なマージロジックが必要となる場合があります。
 
-  A merge strategy function can be registered for a custom option by assigning it on the `app.config.optionMergeStrategies` object using the option's name as the key.
+  オプション名をキーとして使用し、`app.config.optionMergeStrategies` オブジェクトを割り当てることで、カスタムオプションにマージ戦略関数を登録することができます。
 
-  The merge strategy function receives the value of that option defined on the parent and child instances as the first and second arguments, respectively.
+  マージ戦略関数は、第一引数と第二引数としてそれぞれ、親と子に定義されたオプションの値を受け取ります。
 
-- **Example**
+- **例**
 
   ```js
   const app = createApp({
-    // option from self
+    // 自身のオプション
     msg: 'Vue',
-    // option from a mixin
+    // ミックスインからのオプション
     mixins: [
       {
         msg: 'Hello '
       }
     ],
     mounted() {
-      // merged options exposed on this.$options
+      // this.$options に公開されているマージされたオプション
       console.log(this.$options.msg)
     }
   })
 
-  // define a custom merge strategy for `msg`
+  // `msg` に関するカスタムマージ戦略を定義します
   app.config.optionMergeStrategies.msg = (parent, child) => {
     return (parent || '') + (child || '')
   }
 
   app.mount('#app')
-  // logs 'Hello Vue'
+  // 'Hello Vue'をログに記録します
   ```
 
-- **See also:** [Component Instance - `$options`](/api/component-instance.html#options)
+- **参照:** [コンポーネントインスタンス - `$options`](/api/component-instance.html#options)
