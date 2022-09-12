@@ -6,7 +6,7 @@ const { x, y } = useMouse()
 </script>
 
 :::tip
-このセクションは Composition API の基本的な知識があることを前提としています。もし Vue を Options API のみで学んできた場合は、（左サイドバーの上部にあるトグルを使って）API Preference を Composition API に設定し、[Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html) と [Lifecycle Hooks](/guide/essentials/lifecycle.html) の章を読み直すとよいでしょう。
+このセクションは Composition API の基本的な知識があることを前提としています。もし Vue を Options API のみで学んできた場合は、（左サイドバーの上部にあるトグルを使って）API 選択を Composition API に設定し、[Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html) と [Lifecycle Hooks](/guide/essentials/lifecycle.html) の章を読み直すとよいでしょう。
 :::
 
 ## 「コンポーザブル」とは？
