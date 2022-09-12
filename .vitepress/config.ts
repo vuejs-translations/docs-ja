@@ -571,6 +571,10 @@ const i18n: ThemeConfig['i18n'] = {
     link: 'こちらのリンク',
     after: 'よりお知らせください。',
   },
+  footerLicense:{
+    before: '',
+    after: 'のもとで公開されています。',
+  },
 
   ariaAnnouner: {
     after: 'が読み込まれました'
@@ -663,7 +667,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     footer: {
       license: {
-        text: 'MIT License',
+        text: 'MIT ライセンス',
         link: 'https://opensource.org/licenses/MIT'
       },
       copyright: `Copyright © 2014-${new Date().getFullYear()} Evan You`
