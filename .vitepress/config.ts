@@ -554,10 +554,39 @@ export const sidebar = {
   ]
 }
 
+const i18n: ThemeConfig['i18n'] = {
+  search: '検索',
+  menu: 'メニュー',
+  toc: '目次',
+  returnToTop: '上に戻る',
+  appearance: '外観',
+  previous: '前のページ',
+  next: '次のページ',
+  pageNotFound: 'ページが見つかりません',
+  deadLink: {
+    before: '存在しないリンクです: ',
+  },
+  deadLinkReport: {
+    before: '修正しますので',
+    link: 'こちらのリンク',
+    after: 'よりお知らせください。',
+  },
+
+  ariaAnnouner: {
+    after: 'が読み込まれました'
+  },
+  ariaDarkMode: 'ダークモードの切り替え',
+  ariaSkipToContent: '本文へジャンプ',
+  ariaToC: '現在のページの目次',
+  ariaMainNav: 'メイン・ナビゲーション',
+  ariaMobileNav: 'モバイル・ナビゲーション',
+  ariaSidebarNav: 'サイドバー・ナビゲーション',
+}
+
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
 
-  lang: 'en-US',
+  lang: 'ja',
   title: 'Vue.js',
   description: 'Vue.js - The Progressive JavaScript Framework',
   srcDir: 'src',
@@ -604,6 +633,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   themeConfig: {
     nav,
     sidebar,
+    i18n,
 
     algolia: {
       indexName: 'vuejs',
@@ -627,8 +657,8 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'vuejs/docs',
-      text: 'Edit this page on GitHub'
+      repo: 'vuejs-translations/docs-ja',
+      text: 'このページを GitHub で編集'
     },
 
     footer: {
