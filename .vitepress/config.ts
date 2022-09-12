@@ -565,6 +565,8 @@ const i18n: ThemeConfig['i18n'] = {
   pageNotFound: 'ページが見つかりません',
   deadLink: {
     before: '存在しないリンクです: ',
+    link: '',
+    after: '',
   },
   deadLinkReport: {
     before: '修正しますので',
@@ -573,10 +575,13 @@ const i18n: ThemeConfig['i18n'] = {
   },
   footerLicense:{
     before: '',
+    link: '',
     after: 'のもとで公開されています。',
   },
 
   ariaAnnouner: {
+    before: '',
+    link: '',
     after: 'が読み込まれました'
   },
   ariaDarkMode: 'ダークモードの切り替え',
