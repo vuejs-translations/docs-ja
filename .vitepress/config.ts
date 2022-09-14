@@ -675,7 +675,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         text: 'MIT ライセンス',
         link: 'https://opensource.org/licenses/MIT'
       },
-      copyright: `Copyright © 2014-${new Date().getFullYear()} Evan You`
+      copyright: '日本語ドキュメントの内容の著作権は Vue 公式チームと翻訳協力者にあり、すべての権利は留保されています。'
     }
   },
 
