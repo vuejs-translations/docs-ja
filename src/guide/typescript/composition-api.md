@@ -79,20 +79,36 @@ defineProps<Props>()
 
 これは、Vue コンポーネントが単独でコンパイルされるためで、コンパイラーはソースコードの型を分析するために import されたファイルをクロールすることがありません。この制限は将来のリリースで削除される可能性があります。
 
-### props のデフォルト値 <sup class="vt-badge experimental" />
+### props のデフォルト値
 
-type-based declaration を使用すると、props のデフォルト値を宣言することができません。これは、現在実験的な機能である [Reactivity Transform](/guide/extras/reactivity-transform.html) で解決することができます:
+type-based declaration を使用すると、props のデフォルト値を宣言することができません。これは、`withDefaults` コンパイラマクロによって解決できます:
+
+```ts
+export interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  msg: 'hello',
+  labels: () => ['one', 'two']
+})
+```
+
+これは、実行時の props の `default` オプションと同等にコンパイルされます。さらに、`withDefaults` ヘルパーはデフォルト値の型チェックを提供し、戻り値の `props` の型からはデフォルト値が宣言されているプロパティのオプションフラグが削除されていることを保証します。
+
+また、現在実験的な機能である [Reactivity Transform](/guide/extras/reactivity-transform.html) を使用することもできます:
 
 ```vue
 <script setup lang="ts">
 interface Props {
-  foo: string
-  bar?: number
+  name: string
+  count?: number
 }
 
 // defineProps() のリアクティブな分割代入
 // デフォルト値は、同等の実行時オプションにコンパイルされる
-const { foo, bar = 100 } = defineProps<Props>()
+const { name, count = 100 } = defineProps<Props>()
 </script>
 ```
 
