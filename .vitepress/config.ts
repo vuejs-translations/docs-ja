@@ -554,10 +554,48 @@ export const sidebar = {
   ]
 }
 
+const i18n: ThemeConfig['i18n'] = {
+  search: '検索',
+  menu: 'メニュー',
+  toc: '目次',
+  returnToTop: '上に戻る',
+  appearance: '外観',
+  previous: '前のページ',
+  next: '次のページ',
+  pageNotFound: 'ページが見つかりません',
+  deadLink: {
+    before: '存在しないリンクです: ',
+    link: '',
+    after: '',
+  },
+  deadLinkReport: {
+    before: '修正しますので',
+    link: 'こちらのリンク',
+    after: 'よりお知らせください。',
+  },
+  footerLicense:{
+    before: '',
+    link: '',
+    after: 'のもとで公開されています。',
+  },
+
+  ariaAnnouner: {
+    before: '',
+    link: '',
+    after: 'が読み込まれました'
+  },
+  ariaDarkMode: 'ダークモードの切り替え',
+  ariaSkipToContent: '本文へジャンプ',
+  ariaToC: '現在のページの目次',
+  ariaMainNav: 'メイン・ナビゲーション',
+  ariaMobileNav: 'モバイル・ナビゲーション',
+  ariaSidebarNav: 'サイドバー・ナビゲーション',
+}
+
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
 
-  lang: 'en-US',
+  lang: 'ja',
   title: 'Vue.js',
   description: 'Vue.js - The Progressive JavaScript Framework',
   srcDir: 'src',
@@ -604,6 +642,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   themeConfig: {
     nav,
     sidebar,
+    i18n,
 
     algolia: {
       indexName: 'vuejs',
@@ -627,16 +666,16 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'vuejs/docs',
-      text: 'Edit this page on GitHub'
+      repo: 'vuejs-translations/docs-ja',
+      text: 'このページを GitHub で編集'
     },
 
     footer: {
       license: {
-        text: 'MIT License',
+        text: 'MIT ライセンス',
         link: 'https://opensource.org/licenses/MIT'
       },
-      copyright: `Copyright © 2014-${new Date().getFullYear()} Evan You`
+      copyright: '日本語ドキュメントの内容の著作権は Vue 公式チームと翻訳協力者にあり、すべての権利は留保されています。'
     }
   },
 

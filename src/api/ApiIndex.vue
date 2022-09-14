@@ -68,12 +68,12 @@ function slugify(text: string): string {
 <template>
   <div id="api-index">
     <div class="header">
-      <h1>API Reference</h1>
+      <h1>API リファレンス</h1>
       <div class="api-filter">
-        <label for="api-filter">Filter</label>
+        <label for="api-filter">フィルター</label>
         <input
           type="search"
-          placeholder="Enter keyword"
+          placeholder="キーワードを入力"
           id="api-filter"
           v-model="query"
         />

@@ -68,7 +68,7 @@ function useToggleFn(
       @mousedown="removeOutline"
       @blur="restoreOutline"
     >
-      <span>API Preference</span>
+      <span>API 選択</span>
       <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
@@ -89,8 +89,8 @@ function useToggleFn(
         >
         <a
           class="switch-link"
-          title="About API preference"
-          href="/guide/introduction.html#api-styles"
+          title="API 選択について"
+          href="/guide/introduction.html#_2-つの-api-スタイル"
           @click="closeSideBar"
           >?</a
         >
