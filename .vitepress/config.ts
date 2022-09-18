@@ -349,11 +349,11 @@ export const sidebar = {
       items: [
         { text: 'setup()', link: '/api/composition-api-setup' },
         {
-          text: 'Reactivity: Core',
+          text: 'リアクティビティー: コア',
           link: '/api/reactivity-core'
         },
         {
-          text: 'Reactivity: Utilities',
+          text: 'リアクティビティー: ユーティリティー',
           link: '/api/reactivity-utilities'
         },
         {
