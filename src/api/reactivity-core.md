@@ -1,9 +1,9 @@
 # リアクティビティ API: Core
 
 :::info See also
-よりリアクティビティ API を理解するために、ガイド内の次の章を読むことを推奨します:
+よりリアクティビティー API を理解するために、ガイド内の次の章を読むことを推奨します:
 
-- [リアクティビティの基礎](/guide/essentials/reactivity-fundamentals.html) (API 環境設定が Composition API に設定されている場合)
+- [リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html) (API 環境設定が Composition API に設定されている場合)
 - [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
   :::
 
@@ -125,11 +125,11 @@
 
 - **詳細**
 
-  リアクティブの変換は"深い"です: それは、全てのネストされたプロパティに対して影響を及ぼします。リアクティブオブジェクトは、リアクティビティを維持しながら、[refs](#ref) であるすべてのプロパティを深くアンラップします。
+  リアクティブの変換は"深い"です: それは、全てのネストされたプロパティに対して影響を及ぼします。リアクティブオブジェクトは、リアクティビティーを維持しながら、[refs](#ref) であるすべてのプロパティを深くアンラップします。
 
   また、ref がリアクティブな配列の要素や、`Map` のようなネイティブなコレクションタイプとしてアクセスされた場合、ref のアンラップは行われないことにも注意が必要です。
 
-  深い変換を避け、ルートレベルのリアクティビティのみを保持するためには、代わりに [shallowReactive()](./reactivity-advanced.html#shallowreactive) 使用します。
+  深い変換を避け、ルートレベルのリアクティビティーのみを保持するためには、代わりに [shallowReactive()](./reactivity-advanced.html#shallowreactive) 使用します。
 
   返されたオブジェクトとそのネストされたオブジェクトは [ES Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) でラップされ、元のオブジェクトと**等しくなりません**。元のオブジェクトに依存することを避け、リアクティブなプロキシのみを使用することが推奨されます。
 
@@ -216,7 +216,7 @@
   const copy = readonly(original)
 
   watchEffect(() => {
-    // リアクティビティの追跡に有効です
+    // リアクティビティーの追跡に有効です
     console.log(copy.count)
   })
 

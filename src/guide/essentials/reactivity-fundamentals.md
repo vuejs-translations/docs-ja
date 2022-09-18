@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# リアクティビティの基礎
+# リアクティビティーの基礎
 
 :::tip API の参照
 このページと、当ガイドの多くの章では、Options API と Composition API で異なる内容が含まれています。現在の設定は <span class="options-api">Options API</span> <span class="composition-api">Composition API</span> です。左サイドバーの上部にある「API の参照」スイッチで、API スタイルを切り替えることができます。
@@ -251,7 +251,7 @@ export default {
 
 </div>
 
-### ディープなリアクティビティ
+### ディープなリアクティビティー
 
 Vue では、デフォルトで状態がリアクティブになっています。つまり、ネストしたオブジェクトや配列を変化させた場合でも、変更が検出されることが期待できます：
 
@@ -298,7 +298,7 @@ function mutateDeeply() {
 
 </div>
 
-また、ルートレベルでのみリアクティビティを追跡する [shallow reactive object](/api/reactivity-advanced.html#shallowreactive) を明示的に作成することも可能ですが、これらは一般的に高度な使用例においてのみ必要とされるものとなります。
+また、ルートレベルでのみリアクティビティーを追跡する [shallow reactive object](/api/reactivity-advanced.html#shallowreactive) を明示的に作成することも可能ですが、これらは一般的に高度な使用例においてのみ必要とされるものとなります。
 
 <div class="composition-api">
 
@@ -326,7 +326,7 @@ console.log(reactive(raw) === proxy) // true
 console.log(reactive(proxy) === proxy) // true
 ```
 
-このルールは、ネストされたオブジェクトにも適用されます。深いリアクティビティを持つため、リアクティブなオブジェクトの中にあるネストされたオブジェクトもプロキシとなります。
+このルールは、ネストされたオブジェクトにも適用されます。深いリアクティビティーを持つため、リアクティブなオブジェクトの中にあるネストされたオブジェクトもプロキシとなります。
 
 ```js
 const proxy = reactive({})
@@ -343,7 +343,7 @@ console.log(proxy.nested === raw) // false
 
 1. オブジェクト型 (オブジェクト、配列、および `Map` や `Set` などの [コレクション型](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections)) に対してのみ機能します。文字列、数値、ブールなどの [プリミティブ型](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) を保持することはできません。
 
-2. Vue のリアクティビティ追跡はプロパティアクセス上で動作するため、リアクティブなオブジェクトへの参照を常に同じに保つ必要があります。つまり、最初の参照へのリアクティブな接続が失われるため、リアクティブなオブジェクトを簡単に「置き換える」ことはできません:
+2. Vue のリアクティビティー追跡はプロパティアクセス上で動作するため、リアクティブなオブジェクトへの参照を常に同じに保つ必要があります。つまり、最初の参照へのリアクティブな接続が失われるため、リアクティブなオブジェクトを簡単に「置き換える」ことはできません:
    ```js
    let state = reactive({ count: 0 })
 
@@ -407,7 +407,7 @@ const objectRef = ref({ count: 0 })
 objectRef.value = { count: 1 }
 ```
 
-また、Ref を関数に渡したり、プレーンオブジェクトから分解したりしても、リアクティビティが失われることはありません。
+また、Ref を関数に渡したり、プレーンオブジェクトから分解したりしても、リアクティビティーが失われることはありません。
 
 ```js
 const obj = {
@@ -417,14 +417,14 @@ const obj = {
 
 // ref を受け取るこの関数は、
 // .value を介して値にアクセスする必要がありますが、それは
-// リアクティビティを保持します。
+// リアクティビティーを保持します。
 callSomeFunction(obj.foo)
 
-// リアクティビティを保持しています。
+// リアクティビティーを保持しています。
 const { foo, bar } = obj
 ```
 
-つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティを失わずに受け渡しすることができます。この能力は、ロジックを [Composable Functions](/guide/reusability/composables.html) に抽出する際に頻繁に使用されるため、非常に重要となります。
+つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを [Composable Functions](/guide/reusability/composables.html) に抽出する際に頻繁に使用されるため、非常に重要となります。
 
 ### Ref Unwrapping in Templates \*\*
 
