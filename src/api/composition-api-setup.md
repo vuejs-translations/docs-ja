@@ -11,7 +11,7 @@
 
 ## 基本的な使い方
 
-[リアクティビティ API](./reactivity-core.html) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
+[リアクティビティー API](./reactivity-core.html) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
 
 ```vue
 <script>
@@ -38,7 +38,7 @@ export default {
 </template>
 ```
 
-`setup` から返された [refs](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals.html#ディープなリアクティビティ)ため、テンプレート内で `.value` を使用する必要はないことに注意してください。また、`this` でアクセスしたときも同様にアンラップされます。
+`setup` から返された [refs](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals.html#ディープなリアクティビティー)ため、テンプレート内で `.value` を使用する必要はないことに注意してください。また、`this` でアクセスしたときも同様にアンラップされます。
 
 :::tip
 `setup()` 自体はコンポーネントインスタンスにアクセスできません。- `this` は `setup()` 内では `undefined` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
@@ -59,9 +59,9 @@ export default {
 }
 ```
 
-もし、`props` オブジェクトを分割代入する場合は、分割代入された変数はリアクティビティを失うことに注意してください。 そのため、常に `props.xxx` の形で props にアクセスすることを推奨します。
+もし、`props` オブジェクトを分割代入する場合は、分割代入された変数はリアクティビティーを失うことに注意してください。 そのため、常に `props.xxx` の形で props にアクセスすることを推奨します。
 
-もし、本当に props を分割代入すること、もしくはリアクティビティを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー APIs である [toRefs()](./reactivity-utilities.html#torefs) や [toRef()](/api/reactivity-utilities.html#toref) を使用することで、行うことができます:
+もし、本当に props を分割代入すること、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー APIs である [toRefs()](./reactivity-utilities.html#torefs) や [toRef()](/api/reactivity-utilities.html#toref) を使用することで、行うことができます:
 
 ```js
 import { toRefs, toRef } from 'vue'

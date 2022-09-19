@@ -44,7 +44,7 @@ const multiSelected = ref([])
 - `<select>` は `value` プロパティと `change` イベントを使用します。
 
 ::: tip Note
-`v-model` はフォーム要素にある `value` 、 `checked` 、 `selected` 属性の初期値を無視します。 `v-model` は常に現在バインドされた JavaScript の状態を信頼できるソースとして扱います。初期値の宣言は JavaScript 側で、  <span class="options-api">`data` オプション</span><span class="composition-api">リアクティビティ API</span> を使用して行ってください。
+`v-model` はフォーム要素にある `value` 、 `checked` 、 `selected` 属性の初期値を無視します。 `v-model` は常に現在バインドされた JavaScript の状態を信頼できるソースとして扱います。初期値の宣言は JavaScript 側で、  <span class="options-api">`data` オプション</span><span class="composition-api">リアクティビティー API</span> を使用して行ってください。
 :::
 
 ## 基本的な使い方

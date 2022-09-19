@@ -230,7 +230,7 @@ export function useFetch(url) {
 
 ### 入力引数
 
-コンポーザブルはリアクティビティに依存しない場合でも ref の引数を受け取れます。もし他の開発者が使うかも知れないコンポーザブルを書くのなら、入力引数が生の値ではなく ref である場合にも対応するとよいでしょう。[`unref()`](/api/reactivity-utilities.html#unref) ユーティリティー関数はその用途に便利です:
+コンポーザブルはリアクティビティーに依存しない場合でも ref の引数を受け取れます。もし他の開発者が使うかも知れないコンポーザブルを書くのなら、入力引数が生の値ではなく ref である場合にも対応するとよいでしょう。[`unref()`](/api/reactivity-utilities.html#unref) ユーティリティー関数はその用途に便利です:
 
 ```js
 import { unref } from 'vue'
@@ -246,7 +246,7 @@ function useFeature(maybeRef) {
 
 ### 戻り値
 
-ここまで、コンポーザブル内で `reactive()` ではなく `ref()` だけを使っていることに気づいたでしょうか。コンポーザブルは常に複数の ref を含むプレーンでリアクティブでないオブジェクトを返すのが推奨される慣例です。これによりコンポーネントでリアクティビティを保ったまま分割代入できます:
+ここまで、コンポーザブル内で `reactive()` ではなく `ref()` だけを使っていることに気づいたでしょうか。コンポーザブルは常に複数の ref を含むプレーンでリアクティブでないオブジェクトを返すのが推奨される慣例です。これによりコンポーネントでリアクティビティーを保ったまま分割代入できます:
 
 ```js
 // x と y は ref
@@ -353,11 +353,11 @@ Vue 2 からのユーザーは、[mixins](/api/options-composition.html#mixins) 
 
 ### vs. React Hooks
 
-もし React の経験があるなら、React のカスタムフックによく似ていると気づくかも知れません。Composition API は React Hooks にインスパイアされた部分があり、Vue のコンポーザブルは、ロジックの合成機能という点では React Hooks と似ています。しかし、Vue のコンポーザブルは、React Hooks の実行モデルとは根本的に異なる Vue のきめ細やかなリアクティビティシステムに基づいています。詳細は [Composition API FAQ](/guide/extras/composition-api-faq#comparison-with-react-hooks) で説明しています。
+もし React の経験があるなら、React のカスタムフックによく似ていると気づくかも知れません。Composition API は React Hooks にインスパイアされた部分があり、Vue のコンポーザブルは、ロジックの合成機能という点では React Hooks と似ています。しかし、Vue のコンポーザブルは、React Hooks の実行モデルとは根本的に異なる Vue のきめ細やかなリアクティビティーシステムに基づいています。詳細は [Composition API FAQ](/guide/extras/composition-api-faq#comparison-with-react-hooks) で説明しています。
 
 ## 参考文献
 
-- [Reactivity In Depth](/guide/extras/reactivity-in-depth.html): Vue のリアクティビティシステムがどのように動作をするのかを、より具体的に理解する。
+- [Reactivity In Depth](/guide/extras/reactivity-in-depth.html): Vue のリアクティビティーシステムがどのように動作をするのかを、より具体的に理解する。
 - [State Management](/guide/scaling-up/state-management.html): 複数コンポーネントで共有する状態を管理するためのパターン。
 - [Testing Composables](/guide/scaling-up/testing.html#testing-composables): コンポーザブルをユニットテストするためのコツ。
 - [VueUse](https://vueuse.org/): 発展し続ける Vue コンポーザブル集。このソースコードも素晴らしい学習資料です。

@@ -147,7 +147,7 @@ export const sidebar = {
           link: '/guide/essentials/template-syntax'
         },
         {
-          text: 'リアクティビティの基礎',
+          text: 'リアクティビティーの基礎',
           link: '/guide/essentials/reactivity-fundamentals'
         },
         {
@@ -298,7 +298,7 @@ export const sidebar = {
           link: '/guide/extras/composition-api-faq'
         },
         {
-          text: 'リアクティビティの探求',
+          text: 'リアクティビティーの探求',
           link: '/guide/extras/reactivity-in-depth'
         },
         {

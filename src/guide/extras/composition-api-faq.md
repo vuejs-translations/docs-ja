@@ -12,11 +12,11 @@ outline: deep
 
 Composition API はオプションを宣言する代わりに関数をインポートすることで Vue コンポーネントを書くことができる API セットのことです。以下に記載する API を含む包括的な用語です:
 
-- [リアクティビティ API](/api/reactivity-core.html) 、例: `ref()` や `reactive()` で、リアクティブな状態、算出状態、ウォッチャーを直接作成できます。
+- [リアクティビティー API](/api/reactivity-core.html) 、例: `ref()` や `reactive()` で、リアクティブな状態、算出状態、ウォッチャーを直接作成できます。
 
 - [Lifecycle Hooks](/api/composition-api-lifecycle.html)、 例: `onMounted()` や `onUnmounted()` で、コンポーネントのライフサイクルにプログラム的なフックを設定します。
 
-- [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` によって、 リアクティビティ API を使用しながら Vue の依存性注入システムを利用できます。
+- [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` によって、 リアクティビティー API を使用しながら Vue の依存性注入システムを利用できます。
 
 Composition API は Vue 3 と [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html) の組み込み機能です。Vue 2 の古いバージョンでは、公式にメンテナンスされている[`@vue/composition-api`](https://github.com/vuejs/composition-api)プラグインを使用してください。Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup.html) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
 
