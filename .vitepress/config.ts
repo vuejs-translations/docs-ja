@@ -357,7 +357,7 @@ export const sidebar = {
           link: '/api/reactivity-utilities'
         },
         {
-          text: 'Reactivity: Advanced',
+          text: 'リアクティビティー: 上級編',
           link: '/api/reactivity-advanced'
         },
         {
