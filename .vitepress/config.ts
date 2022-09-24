@@ -361,7 +361,7 @@ export const sidebar = {
           link: '/api/reactivity-advanced'
         },
         {
-          text: 'Lifecycle Hooks',
+          text: 'ライフサイクルフック',
           link: '/api/composition-api-lifecycle'
         },
         {

@@ -1,34 +1,34 @@
-# Composition API: Lifecycle Hooks
+# Composition API: ライフサイクルフック
 
-:::info Usage Note
-All APIs listed on this page must be called synchronously during the `setup()` phase of a component. See [Guide - Lifecycle Hooks](/guide/essentials/lifecycle.html) for more details.
+:::info 使用上の注意
+このページに記載されているすべての API は、コンポーネントの `setup()` フェーズで同期的に呼び出される必要があります。詳細については、[ガイド - ライフサイクルフック](/guide/essentials/lifecycle.html)を参照してください。
 :::
 
 ## onMounted()
 
-Registers a callback to be called after the component has been mounted.
+コンポーネントがマウントされた後に呼び出されるコールバックを登録します。
 
-- **Type**
+- **型**
 
   ```ts
   function onMounted(callback: () => void): void
   ```
 
-- **Details**
+- **詳細**
 
-  A component is considered mounted after:
+  コンポーネントがマウントされたとみなされるのは次の場合です:
 
-  - All of its synchronous child components have been mounted (does not include async components or components inside `<Suspense>` trees).
+  - すべての同期的な子コンポーネントがマウントされた（非同期コンポーネントや `<Suspense>` ツリー内のコンポーネントは含まれません）。
 
-  - Its own DOM tree has been created and inserted into the parent container. Note it only guarantees that the component's DOM tree is in-document if the application's root container is also in-document.
+  - そのコンポーネント自身の DOM ツリーが作成され、親コンテナーに挿入された。アプリケーションのルートコンテナが document 内にある場合のみ、そのコンポーネントの DOM ツリーも document 内にあることを保証することに注意してください。
 
-  This hook is typically used for performing side effects that need access to the component's rendered DOM, or for limiting DOM-related code to the client in a [server-rendered application](/guide/scaling-up/ssr.html).
+  このフックは、通常、コンポーネントのレンダリングされた DOM にアクセスする必要がある副作用を実行する場合や、[サーバーレンダリングされるアプリケーション](/guide/scaling-up/ssr.html)において DOM 関連のコードをクライアントに限定する場合に使用されます。
 
-  **This hook is not called during server-side rendering.**
+  **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-- **Example**
+- **例**
 
-  Accessing an element via template ref:
+  テンプレート参照による要素へのアクセス:
 
   ```vue
   <script setup>
@@ -48,29 +48,29 @@ Registers a callback to be called after the component has been mounted.
 
 ## onUpdated()
 
-Registers a callback to be called after the component has updated its DOM tree due to a reactive state change.
+コンポーネントがリアクティブな状態変更によって DOM ツリーを更新した後に呼び出されるコールバックを登録します。
 
-- **Type**
+- **型**
 
   ```ts
   function onUpdated(callback: () => void): void
   ```
 
-- **Details**
+- **詳細**
 
-  A parent component's updated hook is called after that of its child components.
+  親コンポーネントの更新フックは、子コンポーネントの更新フックの後に呼び出されます。
 
-  This hook is called after any DOM update of the component, which can be caused by different state changes. If you need to access the updated DOM after a specific state change, use [nextTick()](/api/general.html#nexttick) instead.
+  このフックは、様々な状態変更によるコンポーネントの DOM 更新の後に呼び出されます。もし、特定の状態変更の後に更新された DOM へアクセスする必要がある場合は、代わりに [nextTick()](/api/general.html#nexttick) を使用してください。
 
-  **This hook is not called during server-side rendering.**
+  **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
   :::warning
-  Do not mutate component state in the updated hook - this will likely lead to an infinite update loop!
+  更新フックでコンポーネントの状態を変更しないでください - 無限更新ループになる可能性があります！
   :::
 
-- **Example**
+- **例**
 
-  Accessing updated DOM:
+  更新された DOM へのアクセス:
 
   ```vue
   <script setup>
@@ -79,7 +79,7 @@ Registers a callback to be called after the component has updated its DOM tree d
   const count = ref(0)
 
   onUpdated(() => {
-    // text content should be the same as current `count.value`
+    // テキストの内容は、現在の `count.value` と同じでしょう
     console.log(document.getElementById('count').textContent)
   })
   </script>
@@ -91,27 +91,27 @@ Registers a callback to be called after the component has updated its DOM tree d
 
 ## onUnmounted()
 
-Registers a callback to be called after the component has been unmounted.
+コンポーネントがアンマウントされた後に呼び出されるコールバックを登録します。
 
-- **Type**
+- **型**
 
   ```ts
   function onUnmounted(callback: () => void): void
   ```
 
-- **Details**
+- **詳細**
 
-  A component is considered unmounted after:
+  コンポーネントがアンマウントされたとみなされるのは次の場合です:
 
-  - All of its child components have been unmounted.
+  - 子コンポーネントがすべてアンマウントされた。
 
-  - All of its associated reactive effects (render effect and computed / watchers created during `setup()`) have been stopped.
+  - 関連するすべてのリアクティブエフェクト（レンダーエフェクトと `setup() ` で作成された computed とウォッチャー）が停止された。
 
-  Use this hook to clean up manually created side effects such as timers, DOM event listeners or server connections.
+  タイマー、DOM イベントリスナー、サーバー接続など、手動で作成した副作用をクリーンアップするためにこのフックを使用します。
 
-  **This hook is not called during server-side rendering.**
+  **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-- **Example**
+- **例**
 
   ```vue
   <script setup>
@@ -130,57 +130,57 @@ Registers a callback to be called after the component has been unmounted.
 
 ## onBeforeMount()
 
-Registers a hook to be called right before the component is to be mounted.
+コンポーネントがマウントされる直前に呼び出されるフックを登録します。
 
-- **Type**
+- **型**
 
   ```ts
   function onBeforeMount(callback: () => void): void
   ```
 
-- **Details**
+- **詳細**
 
-  When this hook is called, the component has finished setting up its reactive state, but no DOM nodes have been created yet. It is about to execute its DOM render effect for the first time.
+  このフックが呼ばれたとき、コンポーネントはリアクティブな状態のセットアップを終えていますが、DOM ノードはまだ作成されていません。コンポーネントが初めて DOM レンダー効果を実行しようとしているところです。
 
-  **This hook is not called during server-side rendering.**
+  **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
 ## onBeforeUpdate()
 
-Registers a hook to be called right before the component is about to update its DOM tree due to a reactive state change.
+コンポーネントがリアクティブな状態変更により DOM ツリーを更新しようとする直前に呼び出されるフックを登録します。
 
-- **Type**
+- **型**
 
   ```ts
   function onBeforeUpdate(callback: () => void): void
   ```
 
-- **Details**
+- **詳細**
 
-  This hook can be used to access the DOM state before Vue updates the DOM. It is also safe to modify component state inside this hook.
+  このフックは、Vue が DOM を更新する前に DOM の状態にアクセスするために使用できます。このフックの内部でコンポーネントの状態を変更することも安全です。
 
-  **This hook is not called during server-side rendering.**
+  **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
 ## onBeforeUnmount()
 
-Registers a hook to be called right before a component instance is to be unmounted.
+コンポーネントインスタンスがアンマウントされる直前に呼び出されるフックを登録します。
 
-- **Type**
+- **型**
 
   ```ts
   function onBeforeUnmount(callback: () => void): void
   ```
 
-- **Details**
+- **詳細**
 
-  When this hook is called, the component instance is still fully functional.
+  このフックが呼ばれたとき、コンポーネントインスタンスはまだ完全に機能しています。
 
-  **This hook is not called during server-side rendering.**
+  **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
 ## onErrorCaptured()
 
-Registers a hook to be called when an error propagating from a descendent component has been captured.
+子孫コンポーネントから伝搬するエラーをキャプチャーしたときに呼び出されるフックを登録します。
 
-- **Type**
+- **型**
 
   ```ts
   function onErrorCaptured(callback: ErrorCapturedHook): void
@@ -192,41 +192,41 @@ Registers a hook to be called when an error propagating from a descendent compon
   ) => boolean | void
   ```
 
-- **Details**
+- **詳細**
 
-  Errors can be captured from the following sources:
+  エラーは以下のソースからキャプチャーすることがあります:
 
-  - Component renders
-  - Event handlers
-  - Lifecycle hooks
-  - `setup()` function
-  - Watchers
-  - Custom directive hooks
-  - Transition hooks
+  - コンポーネントのレンダリング
+  - イベント ハンドラー
+  - ライフサイクル フック
+  - `setup()` 関数
+  - ウォッチャー
+  - カスタムディレクティブフック
+  - トランジションフック
 
-  The hook receives three arguments: the error, the component instance that triggered the error, and an information string specifying the error source type.
+  このフックは、エラー、エラーを引き起こしたコンポーネントのインスタンス、およびエラーソースタイプを指定する情報文字列の 3 つの引数を受け取ります。
 
-  You can modify component state in `errorCaptured()` to display an error state to the user. However, it is important that the error state should not render the original content that caused the error; otherwise the component will be thrown into an infinite render loop.
+  エラー状態をユーザーに表示するため、`errorCaptured()` でコンポーネントの状態を変更できます。しかし、エラー状態はエラーの原因となった元のコンテンツをレンダリングしないことが重要です。さもなければ、コンポーネントは無限レンダリングループに放り込まれるでしょう。
 
-  The hook can return `false` to stop the error from propagating further. See error propagation details below.
+  このフックは `false` を返すことで、エラーがそれ以上伝搬しないようにできます。エラーの伝播の詳細については、以下を参照してください。
 
-  **Error Propagation Rules**
+  **エラー伝搬のルール**
 
-  - By default, all errors are still sent to the application-level [`app.config.errorHandler`](/api/application.html#app-config-errorhandler) if it is defined, so that these errors can still be reported to an analytics service in a single place.
+  - アプリケーションレベルの [`app.config.errorHandler`](/api/application.html#app-config-errorhandler) が定義されていれば、デフォルトでそちらにもすべてのエラーが送られるので、これらのエラーを 1 箇所でアナリティクスサービスに報告できます。
 
-  - If multiple `errorCaptured` hooks exist on a component's inheritance chain or parent chain, all of them will be invoked on the same error, in the order of bottom to top. This is similar to the bubbling mechanism of native DOM events.
+  - コンポーネントの継承チェーンや親チェーンに複数の `errorCaptured` フックが存在する場合、同じエラーに対して、下から上への順番ですべてのフックが呼び出されます。これはネイティブ DOM イベントのバブリングの仕組みに似ています。
 
-  - If the `errorCaptured` hook itself throws an error, both this error and the original captured error are sent to `app.config.errorHandler`.
+  - もし `errorCaptured` フック自体がエラーをスローした場合、そのエラーと元のキャプチャーされたエラーの両方が `app.config.errorHandler` に送られます。
 
-  - An `errorCaptured` hook can return `false` to prevent the error from propagating further. This is essentially saying "this error has been handled and should be ignored." It will prevent any additional `errorCaptured` hooks or `app.config.errorHandler` from being invoked for this error.
+  - `errrorCaptured` フックで `false` を返すと、エラーがそれ以上伝搬しないようにできます。これは要するに「このエラーは処理済みなので無視してください」ということです。このエラーに対して、追加の `errorCaptured` フックや `app.config.errorHandler` が呼び出されるのを防ぎます。
 
 ## onRenderTracked() <sup class="vt-badge dev-only" />
 
-Registers a debug hook to be called when a reactive dependency has been tracked by the component's render effect.
+コンポーネントのレンダーエフェクトによってリアクティブな依存関係が追跡されたときに呼び出されるデバッグフックを登録します。
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**このフックは開発モード専用です。また、サーバーサイドレンダリング時には呼び出されません。**
 
-- **Type**
+- **型**
 
   ```ts
   function onRenderTracked(callback: DebuggerHook): void
@@ -241,15 +241,15 @@ Registers a debug hook to be called when a reactive dependency has been tracked 
   }
   ```
 
-- **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
 
 ## onRenderTriggered() <sup class="vt-badge dev-only" />
 
-Registers a debug hook to be called when a reactive dependency triggers the component's render effect to be re-run.
+リアクティブな依存関係がコンポーネントのレンダーエフェクトの再実行をトリガーしたときに呼び出されるデバッグフックを登録します。
 
-**This hook is development-mode-only and not called during server-side rendering.**
+**このフックは開発モード専用です。また、サーバーサイドレンダリング時には呼び出されません。**
 
-- **Type**
+- **型**
 
   ```ts
   function onRenderTriggered(callback: DebuggerHook): void
@@ -267,53 +267,53 @@ Registers a debug hook to be called when a reactive dependency triggers the comp
   }
   ```
 
-- **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
 
 ## onActivated()
 
-Registers a callback to be called after the component instance is inserted into the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components.html#keepalive).
+コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM に挿入された後に呼び出されるコールバックを登録します。
 
-**This hook is not called during server-side rendering.**
+**このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-- **Type**
+- **型**
 
   ```ts
   function onActivated(callback: () => void): void
   ```
 
-- **See also:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
 
 ## onDeactivated()
 
-Registers a callback to be called after the component instance is removed from the DOM as part of a tree cached by [`<KeepAlive>`](/api/built-in-components.html#keepalive).
+コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM から削除された後に呼び出されるコールバックを登録します。
 
-**This hook is not called during server-side rendering.**
+**このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-- **Type**
+- **型**
 
   ```ts
   function onDeactivated(callback: () => void): void
   ```
 
-- **See also:** [Guide - Lifecycle of Cached Instance](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
 
 ## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" />
 
-Registers an async function to be resolved before the component instance is to be rendered on the server.
+コンポーネントインスタンスがサーバーでレンダリングされる前に解決される非同期関数を登録します。
 
-- **Type**
+- **型**
 
   ```ts
   function onServerPrefetch(callback: () => Promise<any>): void
   ```
 
-- **Details**
+- **詳細**
 
-  If the callback returns a Promise, the server renderer will wait until the Promise is resolved before rendering the component.
+  コールバックが Promise を返す場合、サーバーレンダラーはコンポーネントをレンダリングする前に Promise が解決されるまで待機します。
 
-  This hook is only called during server-side rendering can be used to perform server-only data fetching.
+  このフックはサーバーサイドレンダリング時にのみ呼び出され、サーバーのみのデータ取得をするために使用できます。
 
-- **Example**
+- **例**
 
   ```vue
   <script setup>
@@ -322,20 +322,20 @@ Registers an async function to be resolved before the component instance is to b
   const data = ref(null)
 
   onServerPrefetch(async () => {
-    // component is rendered as part of the initial request
-    // pre-fetch data on server as it is faster than on the client
+    // コンポーネントは初期リクエストの一部としてレンダリングされます
+    // クライアントよりも高速なので、サーバーでデータをプリフェッチします
     data.value = await fetchOnServer(/* ... */)
   })
 
   onMounted(async () => {
     if (!data.value) {
-      // if data is null on mount, it means the component
-      // is dynamically rendered on the client. Perform a
-      // client-side fetch instead.
+      // マウント時に data が null の場合、コンポーネントは
+      // クライアントで動的にレンダリングされることを意味します。
+      // 代わりにクライアントサイドフェッチを実行します。
       data.value = await fetchOnClient(/* ... */)
     }
   })
   </script>
   ```
 
-- **See also:** [Server-Side Rendering](/guide/scaling-up/ssr.html)
+- **参照:** [サーバーサイドレンダリング](/guide/scaling-up/ssr.html)

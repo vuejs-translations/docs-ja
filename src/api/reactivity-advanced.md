@@ -281,7 +281,7 @@ Vue で作成されたプロキシの、未加工の元のオブジェクトを�
 
 ## effectScope()
 
-エフェクトスコープオブジェクトを作成し、その中に作成されたリアクティブエフェクト（すなわち、計算機とウォッチャー）をキャプチャーして、これらのエフェクトを一緒に廃棄できるようにします。この API の詳細な使用例については、対応する [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0041-reactivity-effect-scope.md) を参照してください。
+エフェクトスコープオブジェクトを作成し、その中に作成されたリアクティブエフェクト（すなわち、computed とウォッチャー）をキャプチャーして、これらのエフェクトを一緒に廃棄できるようにします。この API の詳細な使用例については、対応する [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0041-reactivity-effect-scope.md) を参照してください。
 
 - **型**
 
