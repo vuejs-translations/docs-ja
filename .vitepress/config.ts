@@ -376,7 +376,7 @@ export const sidebar = {
         { text: 'Options: State', link: '/api/options-state' },
         { text: 'Options: Rendering', link: '/api/options-rendering' },
         {
-          text: 'Options: Lifecycle',
+          text: 'Options: ライフサイクル',
           link: '/api/options-lifecycle'
         },
         {
