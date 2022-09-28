@@ -365,7 +365,7 @@ export const sidebar = {
           link: '/api/composition-api-lifecycle'
         },
         {
-          text: 'Dependency Injection',
+          text: '依存関係の注入',
           link: '/api/composition-api-dependency-injection'
         }
       ]
