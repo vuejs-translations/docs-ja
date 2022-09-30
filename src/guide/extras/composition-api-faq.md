@@ -16,7 +16,7 @@ Composition API はオプションを宣言する代わりに関数をインポ�
 
 - [Lifecycle Hooks](/api/composition-api-lifecycle.html)、 例: `onMounted()` や `onUnmounted()` で、コンポーネントのライフサイクルにプログラム的なフックを設定します。
 
-- [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` によって、 リアクティビティー API を使用しながら Vue の依存性注入システムを利用できます。
+- [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` によって、 リアクティビティー API を使用しながら Vue の依存関係注入システムを利用できます。
 
 Composition API は Vue 3 と [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html) の組み込み機能です。Vue 2 の古いバージョンでは、公式にメンテナンスされている[`@vue/composition-api`](https://github.com/vuejs/composition-api)プラグインを使用してください。Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup.html) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
 
@@ -82,7 +82,7 @@ Composition API のロジック再利用性は [VueUse](https://vueuse.org/) の
 
 ### より良い型推論
 
-ここ数年、多くのフロントエンドの開発者たちが [TypeScript](https://www.typescriptlang.org/) を取り入れ、より堅牢なコードを書き、より安心して変更を加えられるようにしていて、また IDE のサポートと共にすばらしい開発体験を提供してくれています。しかしながら、2013 年に Options API が生まれた当時、型推論の考慮がない状態でデザインされました。 Options API に型推論を取り入れるためには [とてもありえない複雑な型定義](https://github.com/vuejs/core/blob/44b95276f5c086e1d88fa3c686a5f39eb5bb7821/packages/runtime-core/src/componentPublicInstance.ts#L132-L165)をしなければなりませんでした。これだけの努力をしても、 Options API の型推論はミックスインや依存性の注入により壊れてしまいます。
+ここ数年、多くのフロントエンドの開発者たちが [TypeScript](https://www.typescriptlang.org/) を取り入れ、より堅牢なコードを書き、より安心して変更を加えられるようにしていて、また IDE のサポートと共にすばらしい開発体験を提供してくれています。しかしながら、2013 年に Options API が生まれた当時、型推論の考慮がない状態でデザインされました。 Options API に型推論を取り入れるためには [とてもありえない複雑な型定義](https://github.com/vuejs/core/blob/44b95276f5c086e1d88fa3c686a5f39eb5bb7821/packages/runtime-core/src/componentPublicInstance.ts#L132-L165)をしなければなりませんでした。これだけの努力をしても、 Options API の型推論はミックスインや依存関係の注入により壊れてしまいます。
 
 このため、 Vue を Typescript で使いたい多くの開発者が `vue-class-component` による Class API を使うようになりました。ですが、クラスベースの API は ES デコレータに重度に依存しているため、 機能的には Vue 3 が開発された 2019 年時点の、ステージ 2 のプロポーザル段階のものになっています。私たちは公式の API が不安定なプロポーザルベースに依存していることはリスキー過ぎると感じました。それ以降、デコレータのプロポーザルはまたも全面的に見直され、2022 年にようやくステージ 3 に到達しました。加えて、クラスベースの API は Options API と同様にロジックの再利用とコード整理の制限の悩みがあります。
 

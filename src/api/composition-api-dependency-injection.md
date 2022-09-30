@@ -1,60 +1,60 @@
-# Composition API: <br>Dependency Injection
+# Composition API: <br>依存関係の注入
 
 ## provide()
 
-Provides a value that can be injected by descendent components.
+子孫コンポーネントから注入可能な値を提供する。
 
-- **Type**
+- **型**
 
   ```ts
   function provide<T>(key: InjectionKey<T> | string, value: T): void
   ```
 
-- **Details**
+- **詳細**
 
-  `provide()` takes two arguments: the key, which can be a string or a symbol, and the value to be injected.
+  `provide()` はキー（文字列またはシンボル）と注入される値の 2 つの引数を取ります。
 
-  When using TypeScript, the key can be a symbol casted as `InjectionKey` - a Vue provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  TypeScript を使用する場合、キーは `InjectionKey` としてキャストされたシンボルにできます。これは `Symbol` を継承した Vue のユーティリティー型で、 `provide()` と `inject()` の間で値の型を同期するために使用されます。
 
-  Similar to lifecycle hook registration APIs, `provide()` must be called synchronously during a component's `setup()` phase.
+  ライフサイクルフック登録 API と同様に、`provide()` はコンポーネントの `setup()` フェーズで同期的に呼び出される必要があります。
 
-- **Example**
+- **例**
 
   ```vue
   <script setup>
   import { ref, provide } from 'vue'
   import { fooSymbol } from './injectionSymbols'
 
-  // provide static value
+  // 静的な値を提供
   provide('foo', 'bar')
 
-  // provide reactive value
+  // リアクティブな値を提供
   const count = ref(0)
   provide('count', count)
 
-  // provide with Symbol keys
+  // シンボルのキーを使って提供
   provide(fooSymbol, count)
   </script>
   ```
 
-- **See also**:
-  - [Guide - Provide / Inject](/guide/components/provide-inject.html)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
+- **参照**:
+  - [ガイド - Provide / Inject](/guide/components/provide-inject.html)
+  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#provide-inject-の型付け)
 
 ## inject()
 
-Injects a value provided by an ancestor component or the application (via `app.provide()`).
+祖先のコンポーネントや（`app.provide()` 経由で）アプリケーションから提供された値を注入します。
 
-- **Type**
+- **型**
 
   ```ts
-  // without default value
+  // デフォルト値なし
   function inject<T>(key: InjectionKey<T> | string): T | undefined
 
-  // with default value
+  // デフォルト値あり
   function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
 
-  // with factory
+  // ファクトリーを使用
   function inject<T>(
     key: InjectionKey<T> | string,
     defaultValue: () => T,
@@ -62,45 +62,45 @@ Injects a value provided by an ancestor component or the application (via `app.p
   ): T
   ```
 
-- **Details**
+- **詳細**
 
-  The first argument is the injection key. Vue will walk up the parent chain to locate a provided value with a matching key. If multiple components in the parent chain provides the same key, the one closest to the injecting component will "shadow" those higher up the chain. If no value with matching key was found, `inject()` returns `undefined` unless a default value is provided.
+  最初の引数は、注入キーです。Vue は、キーに一致する提供された値を見つけるために親チェーンを探索します。親チェーンにある複数のコンポーネントが同じキーを提供する場合、注入するコンポーネントに最も近いものが、より上位のコンポーネントを「シャドウ」します。キーに一致する値が見つからなかった場合、`inject()` はデフォルト値が提供されていない限り `undefined` を返します。
 
-  The second argument is optional and is the default value to be used when no matching value was found. It can also be a factory function to return values that are expensive to create. If the default value is a function, then `false` must be passed as the third argument to indicate that the function should be used as the value instead of the factory.
+  第 2 引数は省略可能で、一致する値が見つからなかった場合に使用されるデフォルト値です。また、作成に手間がかかる値を返すために、ファクトリー関数を指定できます。デフォルト値が関数の場合、ファクトリーの代わりに関数を値として使用することを示すために、3 番目の引数として `false` を渡す必要があります。
 
-  Similar to lifecycle hook registration APIs, `inject()` must be called synchronously during a component's `setup()` phase.
+  ライフサイクルフック登録 API と同様に、`inject()` はコンポーネントの `setup()` フェーズで同期的に呼び出される必要があります。
 
-  When using TypeScript, the key can be of type of `InjectionKey` - a Vue-provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  TypeScript を使用する場合、キーは `InjectionKey` 型にできます。これは `Symbol` を継承した Vue のユーティリティー型で、 `provide()` と `inject()` の間で値の型を同期するために使用されます。
 
-- **Example**
+- **例**
 
-  Assuming a parent component has provided values as shown in the previous `provide()` example:
+  前の `provide()` の例で示したように、親コンポーネントが値を提供したと仮定します:
 
   ```vue
   <script setup>
   import { inject } from 'vue'
   import { fooSymbol } from './injectionSymbols'
 
-  // inject static value with default
+  // デフォルトの静的な値を注入
   const foo = inject('foo')
 
-  // inject reactive value
+  // リアクティブな値を注入
   const count = inject('count')
 
-  // inject with Symbol keys
+  // シンボルのキーを使って注入
   const foo2 = inject(fooSymbol)
 
-  // inject with default value
+  // デフォルト値ありで注入
   const bar = inject('foo', 'default value')
 
-  // inject with default value factory
+  // デフォルト値のファクトリーを使って注入
   const baz = inject('foo', () => new Map())
 
-  // inject with function default value, by passing the 3rd argument
+  // 第 3 引数を渡して、関数のデフォルト値を使って注入
   const fn = inject('function', () => {}, false)
   </script>
   ```
 
-- **See also**:
-  - [Guide - Provide / Inject](/guide/components/provide-inject.html)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api.html#typing-provide-inject)
+- **参照**:
+  - [ガイド - Provide / Inject](/guide/components/provide-inject.html)
+  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#provide-inject-の型付け)
