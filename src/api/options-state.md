@@ -1,10 +1,10 @@
-# Options: State
+# オプション: 状態
 
 ## data
 
-A function that returns the initial reactive state for the component instance.
+コンポーネントインスタンスの最初のリアクティブステートを返す関数。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -15,17 +15,17 @@ A function that returns the initial reactive state for the component instance.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The function is expected to return a plain JavaScript object, which will be made reactive by Vue. After the instance is created, the reactive data object can be accessed as `this.$data`. The component instance also proxies all the properties found on the data object, so `this.a` will be equivalent to `this.$data.a`.
+  この関数はプレーンな JavaScript オブジェクトを返すことが期待されており、そのオブジェクトは Vue によってリアクティブにされます。インスタンスが生成された後、リアクティブなデータオブジェクトは `this.$data` としてアクセスできます。コンポーネントインスタンスは、データオブジェクトにあるすべてのプロパティをプロキシするので、`this.a` は `this.$data.a` と同じ意味になります。
 
-  All top-level data properties must be included in the returned data object. Adding new properties to `this.$data` is possible, but it is **not** recommended. If the desired value of a property is not yet available then an empty value such as `undefined` or `null` should be included as a placeholder to ensure that Vue knows that the property exists.
+  トップレベルのデータプロパティはすべて、返されるデータオブジェクトに含まれていなければなりません。`this.$data` に新しいプロパティを追加可能ですが、**お勧めしません**。もし、あるプロパティの値がまだ利用できない場合は、 `undefined` や `null` などの空の値をプレースホルダとして含めることで、Vue にそのプロパティが存在することを認識させる必要があります。
 
-  Properties that start with `_` or `$` will **not** be proxied on the component instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `this.$data._property`.
+  Vue の内部プロパティや API メソッドと競合する可能性があるため、`_` や `$` で始まるプロパティは、コンポーネントインスタンス上で**プロキシされません**。これらのプロパティには、`this.$data._property` としてアクセスしなければなりません。
 
-  It is **not** recommended to return objects with their own stateful behavior like browser API objects and prototype properties. The returned object should ideally be a plain object that only represents the state of the component.
+  ブラウザー API オブジェクトやプロトタイププロパティのように、独自のステートフルな振る舞いをするオブジェクトを返すことは**推奨されません**。返されるオブジェクトは、コンポーネントの状態を表すだけのプレーンなオブジェクトであることが理想的です。
 
-- **Example**
+- **例**
 
   ```js
   export default {
@@ -39,19 +39,19 @@ A function that returns the initial reactive state for the component instance.
   }
   ```
 
-  Note that if you use an arrow function with the `data` property, `this` won't be the component's instance, but you can still access the instance as the function's first argument:
+  `data` プロパティでアロー関数を使用する場合、`this` はコンポーネントのインスタンスにはなりませんが、関数の第一引数としてインスタンスにアクセスできることに注意してください:
 
   ```js
   data: (vm) => ({ a: vm.myProp })
   ```
 
-- **See also:** [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
 
 ## props
 
-Declare the props of a component.
+コンポーネントの props を宣言します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -74,30 +74,30 @@ Declare the props of a component.
   type PropType<T> = { new (): T } | { new (): T }[]
   ```
 
-  > Types are simplified for readability.
+  > 読みやすくするため、型は単純化されています。
 
-- **Details**
+- **詳細**
 
-  In Vue, all component props need to be explicitly declared. Component props can be declared in two forms:
+  Vue では、コンポーネントの props はすべて明示的に宣言する必要があります。コンポーネントの props は、2 つの形式で宣言できます:
 
-  - Simple form using an array of strings
-  - Full form using an object where each property key is the name of the prop, and the value is the prop's type (a constructor function) or advanced options.
+  - 文字列の配列を使用したシンプルな形式
+  - 各プロパティのキーが props の名前で、値が props の型（コンストラクタ関数）または詳細オプションになっているオブジェクトを使用した完全な形式
 
-  With object-based syntax, each prop can further define the following options:
+  オブジェクトベースの構文では、各 props はさらに以下のオプションを定義できます:
 
-  - **`type`**: Can be one of the following native constructors: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, any custom constructor function or an array of those. In development mode, Vue will check if a prop's value matches the declared type, and will throw a warning if it doesn't. See [Prop Validation](/guide/components/props.html#prop-validation) for more details.
+  - **`type`**: 以下のネイティブコンストラクターのいずれかを指定します: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, 任意のカスタムコンストラクタ関数、またはそれらの配列。開発モードでは、Vue はプロパティの値が宣言された型と一致するかどうかをチェックし、一致しない場合は警告を投げます。詳しくは [プロパティのバリデーション](/guide/components/props.html#プロパティのバリデーション) を参照してください。
 
-    Also note that a prop with `Boolean` type affects its value casting behavior in both development and production. See [Boolean Casting](/guide/components/props.html#boolean-casting) for more details.
+    また、`Boolean` 型のプロパティは、開発とプロダクションの両方で、値のキャスト動作に影響を与えることに注意してください。詳しくは[ブール値の型変換](/guide/components/props.html#ブール値の型変換)を参照してください。
 
-  - **`default`**: Specifies a default value for the prop when it is not passed by the parent or has `undefined` value. Object or array defaults must be returned using a factory function. The factory function also receives the raw props object as the argument.
+  - **`default`**: が親から渡されなかったり、値が `undefined` の場合のデフォルト値を指定します。オブジェクトや配列のデフォルト値は、ファクトリー関数を用いて返さなければなりません。ファクトリー関数は引数として加工前の props オブジェクトも受け取ります。
 
-  - **`required`**: Defines if the prop is required. In a non-production environment, a console warning will be thrown if this value is truthy and the prop is not passed.
+  - **`required`**: プロパティが必須かどうかを定義します。プロダクション以外の環境では、この値が truthy になっていてプロパティが渡されない場合、コンソールの警告が投げられます。
 
-  - **`validator`**: Custom validator function that takes the prop value as the sole argument. In development mode, a console warning will be thrown if this function returns a falsy value (i.e. the validation fails).
+  - **`validator`**: プロパティの値を唯一の引数として受け取るカスタムバリデータ関数。開発モードでは、この関数が falsy な値を返した場合（すなわちバリデーションが失敗した場合）、コンソールの警告が投げられます。
 
-- **Example**
+- **例**
 
-  Simple declaration:
+  シンプルな宣言:
 
   ```js
   export default {
@@ -105,14 +105,14 @@ Declare the props of a component.
   }
   ```
 
-  Object declaration with validations:
+  バリデーションつきオブジェクト宣言:
 
   ```js
   export default {
     props: {
-      // type check
+      // 型チェック
       height: Number,
-      // type check plus other validations
+      // 型チェックとその他のバリデーション
       age: {
         type: Number,
         default: 0,
@@ -125,13 +125,13 @@ Declare the props of a component.
   }
   ```
 
-- **See also:** [Props](/guide/components/props.html)
+- **参照:** [プロパティ](/guide/components/props.html)
 
 ## computed
 
-Declare computed properties to be exposed on the component instance.
+コンポーネントインスタンスに公開される算出プロパティを宣言します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -156,13 +156,13 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The option accepts an object where the key is the name of the computed property, and the value is either a computed getter, or an object with `get` and `set` methods (for writable computed properties).
+  このオプションは、キーが算出プロパティの名前、値が計算ゲッター、または `get` と `set` メソッドを持つオブジェクト（書き込み可能な算出プロパティの場合）であるオブジェクトを受け付けます。
 
-  All getters and setters have their `this` context automatically bound to the component instance.
+  すべてのゲッターとセッターの `this` コンテキストは、コンポーネントのインスタンスにバインドされます。
 
-  Note that if you use an arrow function with a computed property, `this` won't point to the component's instance, but you can still access the instance as the function's first argument:
+  算出プロパティでアロー関数を使用する場合、`this` はコンポーネントのインスタンスを指しませんが、関数の第一引数としてインスタンスにアクセスできることに注意してください:
 
   ```js
   export default {
@@ -172,7 +172,7 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **Example**
+- **例**
 
   ```js
   export default {
@@ -180,11 +180,11 @@ Declare computed properties to be exposed on the component instance.
       return { a: 1 }
     },
     computed: {
-      // readonly
+      // 読み取り専用
       aDouble() {
         return this.a * 2
       },
-      // writable
+      // 書き込み可能
       aPlus: {
         get() {
           return this.a + 1
@@ -205,13 +205,13 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **See also:** [Computed Properties](/guide/essentials/computed.html)
+- **参照:** [算出プロパティ](/guide/essentials/computed.html)
 
 ## methods
 
-Declare methods to be mixed into the component instance.
+コンポーネントインスタンスに混ぜ合わせるメソッドを宣言します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -221,13 +221,13 @@ Declare methods to be mixed into the component instance.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  Declared methods can be directly accessed on the component instance, or used in template expressions. All methods have their `this` context automatically bound to the component instance, even when passed around.
+  宣言されたメソッドは、コンポーネントインスタンスで直接アクセスしたり、テンプレート内の式で使用できます。すべてのメソッドの `this` コンテキストは、（外から渡されたとしても）コンポーネントのインスタンスにバインドされます。
 
-  Avoid using arrow functions when declaring methods, as they will not have access to the component instance via `this`.
+  アロー関数は `this` を介してコンポーネントのインスタンスにアクセスできないため、メソッドを宣言する際に使用することは避けてください。
 
-- **Example**
+- **例**
 
   ```js
   export default {
@@ -246,13 +246,13 @@ Declare methods to be mixed into the component instance.
   }
   ```
 
-- **See also:** [Event Handling](/guide/essentials/event-handling.html)
+- **参照:** [イベントハンドリング](/guide/essentials/event-handling.html)
 
 ## watch
 
-Declare watch callbacks to be invoked on data change.
+データ変更時に呼び出されるウォッチコールバックを宣言します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -279,24 +279,24 @@ Declare watch callbacks to be invoked on data change.
   }
   ```
 
-  > Types are simplified for readability.
+  > 読みやすくするため、型は単純化されています。
 
-- **Details**
+- **詳細**
 
-  The `watch` option expects an object where keys are the reactive component instance properties to watch (e.g. properties declared via `data` or `computed`) — and values are the corresponding callbacks. The callback receives the new value and the old value of the watched source.
+  `watch` オプションは、キーが監視対象のリアクティブコンポーネントのインスタンスのプロパティ（たとえば `data` や `computed` で宣言されたプロパティ）で、値が対応するコールバックであるオブジェクトを受け付けます。コールバックは、監視対象のソースの新しい値と古い値を受け取ります。
 
-  In addition to a root-level property, the key can also be a simple dot-delimited path, e.g. `a.b.c`. Note that this usage does **not** support complex expressions - only dot-delimited paths are supported. If you need to watch complex data sources, use the imperative [`$watch()`](/api/component-instance.html#watch) API instead.
+  ルートレベルのプロパティに加えて、キーはシンプルなドット区切りのパス、例えば `a.b.c` も使用できます。この使い方は、複雑な式をサポートして**いない**ことに注意してください - ドット区切りのパスのみがサポートされています。もし、複雑なデータソースを監視する必要がある場合は、代わりに命令型の [`$watch()`](/api/component-instance.html#watch) API を使ってください。
 
-  The value can also be a string of a method name (declared via `methods`), or an object that contains additional options. When using the object syntax, the callback should be declared under the `handler` field. Additional options include:
+  値は、（`methods` で宣言した）メソッド名の文字列や、追加のオプションを含むオブジェクトにもできます。オブジェクト構文を使用する場合、コールバックは `handler` フィールドの下で宣言する必要があります。追加のオプションは以下のとおりです:
 
-  - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
-  - **`deep`**: force deep traversal of the source if it is an object or an array, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers.html#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core.html#watcheffect).
-  - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging).
+  - **`immediate`**: ウォッチャーが作成されるとすぐにコールバックをトリガーします。最初の呼び出しでは、古い値は `undefined` になります。
+  - **`deep`**: ソースがオブジェクトまたは配列の場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers.html#ディープ・ウォッチャー)を参照してください。
+  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#コールバックが実行されるタイミング)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#ウォッチャーのデバッグ)を参照してください。
 
-  Avoid using arrow functions when declaring watch callbacks as they will not have access to the component instance via `this`.
+  アロー関数は `this` を介してコンポーネントのインスタンスにアクセスできないため、ウォッチコールバックを宣言する際に使用することは避けてください。
 
-- **Example**
+- **例**
 
   ```js
   export default {
@@ -312,31 +312,31 @@ Declare watch callbacks to be invoked on data change.
       }
     },
     watch: {
-      // watching top-level property
+      // トップレベルのプロパティを監視
       a(val, oldVal) {
         console.log(`new: ${val}, old: ${oldVal}`)
       },
-      // string method name
+      // 文字列のメソッド名
       b: 'someMethod',
-      // the callback will be called whenever any of the watched object properties change regardless of their nested depth
+      // ネストの深さに関係なく、監視対象オブジェクトのプロパティが変更されるたびにコールバックが呼び出されます
       c: {
         handler(val, oldVal) {
           console.log('c changed')
         },
         deep: true
       },
-      // watching a single nested property:
+      // 単一のネストされたプロパティを監視する:
       'c.d': function (val, oldVal) {
-        // do something
+        // 何かする
       },
-      // the callback will be called immediately after the start of the observation
+      // コールバックは、監視開始直後に呼び出されます
       e: {
         handler(val, oldVal) {
           console.log('e changed')
         },
         immediate: true
       },
-      // you can pass array of callbacks, they will be called one-by-one
+      // コールバックの配列を渡すことができ、それらは一つずつ呼び出されます
       f: [
         'handle1',
         function handle2(val, oldVal) {
@@ -364,13 +364,13 @@ Declare watch callbacks to be invoked on data change.
   }
   ```
 
-- **See also:** [Watchers](/guide/essentials/watchers.html)
+- **参照:** [ウォッチャー](/guide/essentials/watchers.html)
 
 ## emits
 
-Declare the custom events emitted by the component.
+コンポーネントによって発行されるカスタムイベントを宣言します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -384,20 +384,20 @@ Declare the custom events emitted by the component.
   type EmitValidator = (...args: unknown[]) => boolean
   ```
 
-- **Details**
+- **詳細**
 
-  Emitted events can be declared in two forms:
+  発行されるイベントは、次の 2 つの形式で宣言できます:
 
-  - Simple form using an array of strings
-  - Full form using an object where each property key is the name of the event, and the value is either `null` or a validator function.
+  - 文字列の配列を使用したシンプルな形式
+  - 各プロパティのキーがイベントの名前で、値が `null` またはバリデータ関数のいずれかであるオブジェクトを使用した完全な形式。
 
-  The validation function will receive the additional arguments passed to the component's `$emit` call. For example, if `this.$emit('foo', 1)` is called, the corresponding validator for `foo` will receive the argument `1`. The validator function should return a boolean to indicate whether the event arguments are valid.
+  バリデーション関数は、コンポーネントの `$emit` 呼び出しに渡された追加の引数を受け取ります。 たとえば、`this.$emit('foo', 1)` が呼び出された場合、対応する `foo` のバリデータは引数 `1` を受け取ります。バリデータ関数は、イベントの引数が妥当かどうかを示すブール値を返す必要があります。
 
-  Note that the `emits` option affects which event listeners are considered component event listeners, rather than native DOM event listeners. The listeners for declared events will be removed from the component's `$attrs` object, so they will not be passed through to the component's root element. See [Fallthrough Attributes](/guide/components/attrs.html) for more details.
+  `emits` オプションは、どのイベントリスナーが（ネイティブ DOM イベントリスナーではなく）コンポーネントイベントリスナーと見なされるかに影響することに注意してください。宣言されたイベントのリスナーは、コンポーネントの `$attrs` オブジェクトから削除されるため、コンポーネントのルート要素には渡されません。 詳細については、[フォールスルー属性](/guide/components/attrs.html) を参照してください。
 
-- **Example**
+- **例**
 
-  Array syntax:
+  配列の構文:
 
   ```js
   export default {
@@ -408,15 +408,15 @@ Declare the custom events emitted by the component.
   }
   ```
 
-  Object syntax:
+  オブジェクトの構文:
 
   ```js
   export default {
     emits: {
-      // no validation
+      // バリデーションなし
       click: null,
 
-      // with validation
+      // バリデーションあり
       submit: (payload) => {
         if (payload.email && payload.password) {
           return true
@@ -429,13 +429,13 @@ Declare the custom events emitted by the component.
   }
   ```
 
-* **See also:** [Fallthrough Attributes](/guide/components/attrs.html)
+* **参照:** [フォールスルー属性](/guide/components/attrs.html)
 
 ## expose
 
-Declare exposed public properties when the component instance is accessed by a parent via template refs.
+コンポーネントインスタンスがテンプレート参照を介して親からアクセスされるときに公開されるパブリックプロパティを宣言します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -443,19 +443,19 @@ Declare exposed public properties when the component instance is accessed by a p
   }
   ```
 
-- **Details**
+- **詳細**
 
-  By default, a component instance exposes all instance properties to the parent when accessed via `$parent`, `$root`, or template refs. This can be undesirable, since a component most likely has internal state or methods that should be kept private to avoid tight coupling.
+  デフォルトでは、コンポーネントインスタンスは `$parent` や `$root` 、テンプレート参照を介してアクセスしたときに、すべてのインスタンスプロパティを親に公開します。コンポーネントには、密結合を避けるために非公開にしておくべき内部状態またはメソッドが含まれている可能性が高いため、これは望ましくない場合があります。
 
-  The `expose` option expects a list of property name strings. When `expose` is used, only the properties explicitly listed will be exposed on the component's public instance.
+  `expose` オプションは、プロパティ名の文字列のリストを想定しています。`expose` を使用すると、明示的にリストアップされたプロパティのみが、コンポーネントのパブリックインスタンスで公開されます。
 
-  `expose` only affects user-defined properties - it does not filter out built-in component instance properties.
+  `expose` は、ユーザー定義のプロパティにのみ作用し、組み込みのコンポーネントインスタンスプロパティは除外しません。
 
-- **Example**
+- **例**
 
   ```js
   export default {
-    // only `publicMethod` will be available on the public instance
+    // パブリックインスタンスでは `publicMethod` だけが利用可能
     expose: ['publicMethod'],
     methods: {
       publicMethod() {
