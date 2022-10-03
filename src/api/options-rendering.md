@@ -1,10 +1,10 @@
-# Options: Rendering
+# オプション: レンダリング
 
 ## template
 
-A string template for the component.
+コンポーネントの文字列テンプレート。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -12,25 +12,25 @@ A string template for the component.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  A template provided via the `template` option will be compiled on-the-fly at runtime. It is only supported when using a build of Vue that includes the template compiler. The template compiler is **NOT** included in Vue builds that have the word `runtime` in their names, e.g. `vue.runtime.esm-bundler.js`. Consult the [dist file guide](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) for more details about the different builds.
+  `template` オプションで提供されたテンプレートは、実行時にオンザフライでコンパイルされます。これは、テンプレートコンパイラーを含んでいる Vue のビルドを使用する場合にのみサポートされます。`vue.runtime.esm-bundler.js` など、名前に `runtime` が入っている Vue のビルドにはテンプレートコンパイラーは含まれて**いません**。各ビルドの詳細については、[dist ファイルガイド](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use)を参照してください。
 
-  If the string starts with `#` it will be used as a `querySelector` and use the selected element's `innerHTML` as the template string. This allows the source template to be authored using native `<template>` elements.
+  文字列が `#` で始まる場合は `querySelector` として使用され、選択された要素の `innerHTML` がテンプレート文字列として使用されます。これにより、ネイティブの `<template>` 要素を使用してソーステンプレートを作成できます。
 
-  If the `render` option is also present in the same component, `template` will be ignored.
+  同じコンポーネントに `render` オプションがある場合、`template` は無視されます。
 
-  If the root component of your application doesn't have a `template` or `render` option specified, Vue will try to use the `innerHTML` of the mounted element as the template instead.
+  アプリケーションのルートコンポーネントに `template` や `render` オプションが指定されていない場合、Vue はマウントされた要素の `innerHTML` を代わりにテンプレートとして使用しようとします。
 
-  :::warning Security Note
-  Only use template sources that you can trust. Do not use user-provided content as your template. See [Security Guide](/guide/best-practices/security.html#rule-no-1-never-use-non-trusted-templates) for more details.
+  :::warning セキュリティーに関する注意
+  テンプレートのソースは信頼できるものだけを使用してください。ユーザーが提供したコンテンツをテンプレートとして使用しないでください。詳しくは[セキュリティーガイド](/guide/best-practices/security.html#ルール-no-1：-信頼できないテンプレートは使わない)を参照してください。
   :::
 
 ## render
 
-A function that programmatically returns the virtual DOM tree of the component.
+コンポーネントの仮想 DOM ツリーをプログラムで返す関数。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -51,21 +51,21 @@ A function that programmatically returns the virtual DOM tree of the component.
   type VNodeArrayChildren = (VNodeArrayChildren | VNodeChildAtom)[]
   ```
 
-- **Details:**
+- **詳細:**
 
-  `render` is an alternative to string templates that allows you to leverage the full programmatic power of JavaScript to declare the render output of the component.
+  `render` は文字列テンプレートに代わるもので、JavaScript のプログラミング能力をフルに活用してコンポーネントのレンダリング出力を宣言できます。
 
-  Pre-compiled templates, for example those in Single-File Components, are compiled into the `render` option at build time. If both `render` and `template` are present in a component, `render` will take higher priority.
+  単一ファイルコンポーネントのような、あらかじめコンパイルされたテンプレートは、ビルド時に `render` オプションにコンパイルされます。`render` と `template` の両方がコンポーネント内に存在する場合は `render` の方が優先されます。
 
-- **See also:**
-  - [Rendering Mechanism](/guide/extras/rendering-mechanism.html)
-  - [Render Functions](/guide/extras/render-function.html)
+- **参照:**
+  - [レンダリングの仕組み](/guide/extras/rendering-mechanism.html)
+  - [Render 関数](/guide/extras/render-function.html)
 
 ## compilerOptions
 
-Configure runtime compiler options for the component's template.
+コンポーネントのテンプレートのランタイムコンパイラーオプションを設定します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -78,8 +78,8 @@ Configure runtime compiler options for the component's template.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). It supports the same options as the app-level [app.config.compilerOptions](/api/application.html#app-config-compileroptions), and has higher priority for the current component.
+  この設定オプションは、フルビルド（つまり、ブラウザー上でテンプレートをコンパイルできるスタンドアロンの `vue.js`）を使っているときだけ反映されます。アプリケーションレベルの [app.config.compilerOptions](/api/application.html#app-config-compileroptions) と同じオプションをサポートし、現在のコンポーネントに対してより高い優先順位が設定されています。
 
-- **See also:** [app.config.compilerOptions](/api/application.html#app-config-compileroptions)
+- **参照:** [app.config.compilerOptions](/api/application.html#app-config-compileroptions)
