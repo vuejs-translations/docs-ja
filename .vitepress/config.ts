@@ -380,7 +380,7 @@ export const sidebar = {
           link: '/api/options-lifecycle'
         },
         {
-          text: 'Options: Composition',
+          text: 'オプション: 合成',
           link: '/api/options-composition'
         },
         { text: 'Options: Misc', link: '/api/options-misc' },

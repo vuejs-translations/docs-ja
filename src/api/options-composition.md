@@ -1,10 +1,10 @@
-# Options: Composition
+# オプション: 合成
 
 ## provide
 
-Provide values that can be injected by descendent components.
+子孫のコンポーネントによって注入できる値を提供します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -12,15 +12,15 @@ Provide values that can be injected by descendent components.
   }
   ```
 
-- **Details:**
+- **詳細:**
 
-  `provide` and [`inject`](#inject) are used together to allow an ancestor component to serve as a dependency injector for all its descendants, regardless of how deep the component hierarchy is, as long as they are in the same parent chain.
+  `provide` と [`inject`](#inject) を一緒に使うと、同じ親チェーンにある限り、コンポーネント階層の深さに関係なく、祖先コンポーネントがそのすべての子孫の依存関係インジェクターとして機能できるようになります。
 
-  The `provide` option should be either an object or a function that returns an object. This object contains the properties that are available for injection into its descendants. You can use Symbols as keys in this object.
+  `provide` オプションは、オブジェクトか、オブジェクトを返す関数のどちらかでなければなりません。このオブジェクトには、その子孫への注入に利用できるプロパティが含まれています。このオブジェクトではシンボルをキーとして使用できます。
 
-- **Example**
+- **例**
 
-  Basic usage:
+  基本的な使い方:
 
   ```js
   const s = Symbol()
@@ -33,7 +33,7 @@ Provide values that can be injected by descendent components.
   }
   ```
 
-  Using a function to provide per-component state:
+  関数を使用してコンポーネントごとの状態を提供する:
 
   ```js
   export default {
@@ -50,15 +50,15 @@ Provide values that can be injected by descendent components.
   }
   ```
 
-  Note in the above example, the provided `msg` will NOT be reactive. See [Working with Reactivity](/guide/components/provide-inject.html#working-with-reactivity) for more details.
+  上記の例では、提供された `msg` はリアクティブではないことに注意してください。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject.html#リアクティビティーと共に利用する)を参照してください。
 
-- **See also:** [Provide / Inject](/guide/components/provide-inject.html)
+- **参照:** [Provide / Inject](/guide/components/provide-inject.html)
 
 ## inject
 
-Declare properties to inject into the current component by locating them from ancestor providers.
+祖先プロバイダーを探し、現在のコンポーネントに注入するプロパティを宣言します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -75,24 +75,24 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The `inject` option should be either:
+  `inject` オプションは次のいずれかです:
 
-  - An array of strings, or
-  - An object where the keys are the local binding name and the value is either:
-    - The key (string or Symbol) to search for in available injections, or
-    - An object where:
-      - The `from` property is the key (string or Symbol) to search for in available injections, and
-      - The `default` property is used as fallback value. Similar to props default values, a factory function is needed for object types to avoid value sharing between multiple component instances.
+  - 文字列の配列、または
+  - キーがローカルバインディング名で、値が次のいずれかであるオブジェクト:
+    - 利用可能なインジェクションで検索するキー（文字列またはシンボル）、または
+    - 次のようなオブジェクト:
+      - `from` プロパティは、利用可能なインジェクションを検索するためのキー（文字列またはシンボル）になっている。さらに
+      - `default` プロパティは、フォールバック値として使用されます。props のデフォルト値と同様に、複数のコンポーネントインスタンス間での値の共有を避けるために、オブジェクトタイプにもファクトリ関数が必要です。
 
-  An injected property will be `undefined` if neither a matching property nor a default value was provided.
+  一致するプロパティもデフォルト値も提供されなかった場合、注入されたプロパティは `undefined` となります。
 
-  Note that injected bindings are NOT reactive. This is intentional. However, if the injected value is a reactive object, properties on that object do remain reactive. See [Working with Reactivity](/guide/components/provide-inject.html#working-with-reactivity) for more details.
+  注入されたバインディングは反応的で**ない**ことに注意してください。これは意図的なものです。ただし、注入された値がリアクティブなオブジェクトである場合、そのオブジェクトのプロパティはリアクティブなままです。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject.html#リアクティビティーと共に利用する)を参照してください。
 
-- **Example**
+- **例**
 
-  Basic usage:
+  基本的な使い方:
 
   ```js
   export default {
@@ -103,7 +103,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Using an injected value as the default for a prop:
+  注入された値を props のデフォルトとして使用する:
 
   ```js
   const Child = {
@@ -118,7 +118,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Using an injected value as data entry:
+  注入された値をデータとして使用する:
 
   ```js
   const Child = {
@@ -131,7 +131,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Injections can be optional with default value:
+  インジェクションはデフォルト値を使って省略可能にできます:
 
   ```js
   const Child = {
@@ -141,7 +141,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  If it needs to be injected from a property with a different name, use `from` to denote the source property:
+  異なる名前のプロパティから注入する必要がある場合は、`from` を使用して、注入元のプロパティを示します:
 
   ```js
   const Child = {
@@ -154,7 +154,7 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-  Similar to prop defaults, you need to use a factory function for non-primitive values:
+  props のデフォルトと同様に、プリミティブでない値にはファクトリー関数を使用する必要があります:
 
   ```js
   const Child = {
@@ -167,13 +167,13 @@ Declare properties to inject into the current component by locating them from an
   }
   ```
 
-- **See also:** [Provide / Inject](/guide/components/provide-inject.html)
+- **参照:** [Provide / Inject](/guide/components/provide-inject.html)
 
 ## mixins
 
-An array of option objects to be mixed into the current component.
+現在のコンポーネントに混合されるオプションオブジェクトの配列。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -181,17 +181,17 @@ An array of option objects to be mixed into the current component.
   }
   ```
 
-- **Details:**
+- **詳細:**
 
-  The `mixins` option accepts an array of mixin objects. These mixin objects can contain instance options like normal instance objects, and they will be merged against the eventual options using the certain option merging logic. For example, if your mixin contains a `created` hook and the component itself also has one, both functions will be called.
+  `mixins` オプションは、ミックスインオブジェクトの配列を受け取ります。これらのミックスインオブジェクトには、通常のインスタンスオブジェクトのようなインスタンスオプションを含めることができ、特定のオプションマージロジックを使用して、最終的なオプションに対してマージされます。例えば、ミックスインに `created` フックが含まれていて、コンポーネント自体もフックを持っている場合、両方の関数が呼ばれることになります。
 
-  Mixin hooks are called in the order they are provided, and called before the component's own hooks.
+  ミックスインフックは提供された順に呼び出され、コンポーネント自身のフックの前に呼び出されます。
 
-  :::warning No Longer Recommended
-  In Vue 2, mixins were the primary mechanism for creating reusable chunks of component logic. While mixins continue to be supported in Vue 3, [Composition API](/guide/reusability/composables.html) is now the preferred approach for code reuse between components.
+  :::warning もう推奨されていません
+  Vue 2 では、ミックスインはコンポーネントロジックの再利用可能なチャンクを作成するための主要なメカニズムでした。ミックスインは Vue 3 でも引き続きサポートされていますが、コンポーネント間でのコード再利用には、[Composition API](/guide/reusability/composables.html) が好ましいアプローチとなっています。
   :::
 
-- **Example:**
+- **例:**
 
   ```js
   const mixin = {
@@ -213,9 +213,9 @@ An array of option objects to be mixed into the current component.
 
 ## extends
 
-A "base class" component to extend from.
+拡張元となる「基底クラス」コンポーネント。
 
-- **Type:**
+- **型:**
 
   ```ts
   interface ComponentOptions {
@@ -223,17 +223,17 @@ A "base class" component to extend from.
   }
   ```
 
-- **Details:**
+- **詳細:**
 
-  Allows one component to extend another, inheriting its component options.
+  コンポーネントのオプションを継承し、あるコンポーネントが別のコンポーネントを拡張できるようにします。
 
-  From an implementation perspective, `extends` is almost identical to `mixins`. The component specified by `extends` will be treated as though it were the first mixin.
+  実装の観点からは、 `extends` は `mixins` とほとんど同じです。`extends` で指定されたコンポーネントは、最初のミックスインであるかのように扱われます。
 
-  However, `extends` and `mixins` express different intents. The `mixins` option is primarily used to compose chunks of functionality, whereas `extends` is primarily concerned with inheritance.
+  しかし、`extends` と `mixins` は異なる意図を表しています。`mixins` オプションは主に機能のチャンクを構成するために使用されるのに対し、`extends` は主に継承に関係しています。
 
-  As with `mixins`, any options will be merged using the relevant merge strategy.
+  `mixins` と同様に、すべてのオプションは、関連するマージ戦略を使用してマージされます。
 
-- **Example:**
+- **例:**
 
   ```js
   const CompA = { ... }
