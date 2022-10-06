@@ -383,7 +383,7 @@ export const sidebar = {
           text: 'オプション: 合成',
           link: '/api/options-composition'
         },
-        { text: 'Options: Misc', link: '/api/options-misc' },
+        { text: 'オプション: その他', link: '/api/options-misc' },
         {
           text: 'Component Instance',
           link: '/api/component-instance'

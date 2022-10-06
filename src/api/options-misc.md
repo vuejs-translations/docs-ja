@@ -1,10 +1,10 @@
-# Options: Misc
+# オプション: その他
 
 ## name
 
-Explicitly declare a display name for the component.
+コンポーネントの表示名を明示的に宣言します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -12,31 +12,31 @@ Explicitly declare a display name for the component.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The name of a component is used for the following:
+  コンポーネントの名称は以下のように使用されます:
 
-  - Recursive self-reference in the component's own template
-  - Display in Vue DevTools' component inspection tree
-  - Display in warning component traces
+  - コンポーネント自身のテンプレートで再帰的な自己参照
+  - Vue DevTools のコンポーネントインスペクションツリーでの表示
+  - 警告のコンポーネントトレースでの表示
 
-  When you use Single-File Components, the component already infers its own name from the filename. For example, a file named `MyComponent.vue` will have the inferred display name "MyComponent".
+  単一ファイルコンポーネントを使用する場合、コンポーネントはすでにファイル名から自身の名前を推測しています。例えば、`MyComponent.vue` という名前のファイルは、推測された表示名 "MyComponent" を持つことになります。
 
-  Another case is that when a component is registered globally with [`app.component`](/api/application.html#app-component), the global ID is automatically set as its name.
+  また、[`app.component`](/api/application.html#app-component) でコンポーネントをグローバル登録すると、グローバル ID が名前として自動的に設定されるケースもあります。
 
-  The `name` option allows you to override the inferred name, or to explicitly provide a name when no name can be inferred (e.g. when not using build tools, or an inlined non-SFC component).
+  `name` オプションは、推測された名前を上書きしたり、名前が推測できないとき（例: ビルドツールを使用していないときや、インラインの非 SFC コンポーネント）に明示的に名前を指定したりできます。
 
-  There is one case where `name` is explicitly necessary: when matching against cacheable components in [`<KeepAlive>`](/guide/built-ins/keep-alive.html) via its `include / exclude` props.
+  `name` が明示的に必要となるケースがひとつあります: [`<KeepAlive>`](/guide/built-ins/keep-alive.html) のキャッシュ可能なコンポーネントに対して、`include / exclude` プロパティでマッチングする場合です。
 
   :::tip
-  Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name even when used with `<KeepAlive>`.
+  バージョン 3.2.34 以降、`<script setup>` を使用した単一ファイルコンポーネントは、ファイル名から `name` オプションを自動的に推測します。これにより、`<KeepAlive>` と共に使用した場合でも、手動で名前を宣言する必要がなくなりました。
   :::
 
 ## inheritAttrs
 
-Controls whether the default component attribute fallthrough behavior should be enabled.
+デフォルトのコンポーネント属性のフォールスルー動作を有効にするかどうかを制御します。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -44,11 +44,11 @@ Controls whether the default component attribute fallthrough behavior should be 
   }
   ```
 
-- **Details**
+- **詳細**
 
-  By default, parent scope attribute bindings that are not recognized as props will "fallthrough". This means that when we have a single-root component, these bindings will be applied to the root element of the child component as normal HTML attributes. When authoring a component that wraps a target element or another component, this may not always be the desired behavior. By setting `inheritAttrs` to `false`, this default behavior can be disabled. The attributes are available via the `$attrs` instance property and can be explicitly bound to a non-root element using `v-bind`.
+  デフォルトでは、prop として認識されない親スコープ属性のバインディングは「フォールスルー」されます。つまり、単一ルートコンポーネントの場合、これらのバインディングは通常の HTML 属性として子コンポーネントのルート要素に適用されます。ターゲット要素や他のコンポーネントをラップするコンポーネントを作成する場合、これは必ずしも望ましい動作とは限りません。`inheritAttrs` を `false` に設定することで、このデフォルトの挙動を無効にできます。属性は `$attrs` インスタンスプロパティを介して利用でき、`v-bind` を使用して非ルート要素に明示的にバインドできます。
 
-- **Example**
+- **例**
 
   <div class="options-api">
 
@@ -76,7 +76,7 @@ Controls whether the default component attribute fallthrough behavior should be 
   </div>
   <div class="composition-api">
 
-  When declaring this option in a component that uses `<script setup>`, a separate `<script>` block is necessary:
+  `<script setup>` を使用するコンポーネントでこのオプションを宣言する場合、別の `<script>` ブロックが必要です:
 
   ```vue
   <script>
@@ -104,13 +104,13 @@ Controls whether the default component attribute fallthrough behavior should be 
 
   </div>
 
-- **See also:** [Fallthrough Attributes](/guide/components/attrs.html)
+- **参照:** [フォールスルー属性](/guide/components/attrs.html)
 
 ## components
 
-An object that registers components to be made available to the component instance.
+コンポーネントインスタンスで利用できるようにするコンポーネントを登録するオブジェクト。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -118,7 +118,7 @@ An object that registers components to be made available to the component instan
   }
   ```
 
-- **Example**
+- **例**
 
   ```js
   import Foo from './Foo.vue'
@@ -126,21 +126,21 @@ An object that registers components to be made available to the component instan
 
   export default {
     components: {
-      // shorthand
+      // ショートハンド
       Foo,
-      // register under a different name
+      // 別名で登録
       RenamedBar: Bar
     }
   }
   ```
 
-- **See also:** [Component Registration](/guide/components/registration.html)
+- **参照:** [コンポーネントの登録](/guide/components/registration.html)
 
 ## directives
 
-An object that registers directives to be made available to the component instance.
+コンポーネントインスタンスで利用できるようにするディレクティブを登録するオブジェクト。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentOptions {
@@ -148,12 +148,12 @@ An object that registers directives to be made available to the component instan
   }
   ```
 
-- **Example**
+- **例**
 
   ```js
   export default {
     directives: {
-      // enables v-focus in template
+      // テンプレート内で v-focus を有効化する
       focus: {
         mounted(el) {
           el.focus()
@@ -167,6 +167,6 @@ An object that registers directives to be made available to the component instan
   <input v-focus>
   ```
 
-  A hash of directives to be made available to the component instance.
+  コンポーネントインスタンスで使用可能なディレクティブのハッシュ。
 
-- **See also:** [Custom Directives](/guide/reusability/custom-directives.html)
+- **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives.html)
