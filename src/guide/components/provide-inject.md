@@ -1,6 +1,6 @@
 # Provide / Inject
 
-> このページは、[コンポーネントの基礎](/guide/essentials/component-basics)を既に読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらを読んでください。
+> このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
 ## Prop のバケツリレー（Prop Drilling）
 

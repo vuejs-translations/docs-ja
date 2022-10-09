@@ -1,6 +1,6 @@
 # スロット
 
-> このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提としています。コンポーネントを初めて使う場合は、先にページを読んでください。
+> このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Free Vue.js Slots Lesson"/>
 
