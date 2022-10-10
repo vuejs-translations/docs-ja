@@ -6,7 +6,7 @@
 
 ## Vue でカスタム要素を使う
 
-Vue は[カスタム要素の全てのテストにおいてスコアは 100% 完璧です]((https://custom-elements-everywhere.com/libraries/vue/results/results.html))。Vue アプリケーション内部でカスタム要素を使うことはネイティブ HTML 要素を使うこととほぼ同じですが、いくつか注意点があります:
+Vue は[カスタム要素の全てのテストにおいてスコアは 100% 完璧です](https://custom-elements-everywhere.com/libraries/vue/results/results.html)。Vue アプリケーション内部でカスタム要素を使うことはネイティブ HTML 要素を使うこととほぼ同じですが、いくつか注意点があります:
 
 ### コンポーネント解決のスキップ
 
