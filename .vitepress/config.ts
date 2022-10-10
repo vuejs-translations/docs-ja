@@ -632,7 +632,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       'script',
       {
         src: 'https://cdn.usefathom.com/script.js',
-        'data-site': 'XNOLWPLB',
+        'data-site': 'NJTQDIQA',
         'data-spa': 'auto',
         defer: ''
       }
