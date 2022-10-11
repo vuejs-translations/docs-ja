@@ -385,7 +385,7 @@ export const sidebar = {
         },
         { text: 'オプション: その他', link: '/api/options-misc' },
         {
-          text: 'Component Instance',
+          text: 'コンポーネントインスタンス',
           link: '/api/component-instance'
         }
       ]

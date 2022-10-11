@@ -448,7 +448,7 @@ function render() {
 
 コンポーネントが名前で登録されていて直接インポートできない場合 (例えば、ライブラリーによってグローバルに登録されている場合)、 [`resolveComponent()`](/api/render-function.html#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
 
-### レンダリングスロット
+### スロットのレンダリング
 
 <div class="composition-api">
 
