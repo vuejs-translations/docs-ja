@@ -4,7 +4,7 @@ aside: false
 
 # Translations
 
-## Available Languages
+## Available Languages <!-- textlint-disable vuejs-jp/ja-no-space-around-parentheses, vuejs-jp/3.3.かっこ類と隣接する文字の間のスペースの有無 -->
 
 - [English](https://vuejs.org/) [[source](https://github.com/vuejs/docs)]
 - [简体中文 / Simplified Chinese](https://cn.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-zh-cn)]
