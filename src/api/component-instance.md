@@ -1,16 +1,16 @@
-# Component Instance
+# コンポーネントインスタンス
 
 :::info
-This page documents the built-in properties and methods exposed on the component public instance, i.e. `this`.
+このページでは、コンポーネントのパブリックインスタンス、すなわち `this` で公開される組み込みのプロパティとメソッドについて説明します。
 
-All properties listed on this page are readonly (except nested properties in `$data`).
+このページに記載されているすべてのプロパティは読み取り専用です（`$data` にネストされたプロパティを除く）。
 :::
 
 ## $data
 
-The object returned from the [`data`](./options-state.html#data) option, made reactive by the component. The component instance proxies access to the properties on its data object.
+コンポーネントによってリアクティブにされた [`data`](./options-state.html#data) オプションから返されるオブジェクトです。コンポーネントインスタンスは、その data オブジェクトのプロパティへのアクセスをプロキシします。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -20,9 +20,9 @@ The object returned from the [`data`](./options-state.html#data) option, made re
 
 ## $props
 
-An object representing the component's current, resolved props.
+コンポーネントの現在の解決された props を表すオブジェクト。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -30,15 +30,15 @@ An object representing the component's current, resolved props.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  Only props declared via the [`props`](./options-state.html#props) option will be included. The component instance proxies access to the properties on its props object.
+  [`props`](./options-state.html#props) オプションで宣言された props のみが含まれます。コンポーネントインスタンスは、その props オブジェクトのプロパティへのアクセスをプロキシします。
 
 ## $el
 
-The root DOM node that the component instance is managing.
+コンポーネントインスタンスが管理しているルート DOM ノード。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -46,23 +46,23 @@ The root DOM node that the component instance is managing.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  `$el` will be `undefined` until the component is [mounted](./options-lifecycle#mounted).
+  コンポーネントが[マウント](./options-lifecycle#mounted)されるまで、`$el` は `undefined` となります。
 
-  - For components with a single root element, `$el` will point to that element.
-  - For components with text root, `$el` will point to the text node.
-  - For components with multiple root nodes, `$el` will be the placeholder DOM node that Vue uses to keep track of the component's position in the DOM (a text node, or a comment node in SSR hydration mode).
+  - 単一のルート要素を持つコンポーネントの場合、`$el` はその要素を指します。
+  - テキストをルートとするコンポーネントの場合、`$el` はテキストノードを指します。
+  - 複数のルートノードを持つコンポーネントの場合、`$el` は Vue が DOM 内のコンポーネントの位置を追跡するために使用するプレースホルダ DOM ノード（テキストノード、または SSR ハイドレーションモードではコメントノード）になります。
 
   :::tip
-  For consistency, it is recommended to use [template refs](/guide/essentials/template-refs.html) for direct access to elements instead of relying on `$el`.
+  一貫性を保つため、要素への直接アクセスは `$el` に頼らず、[テンプレート参照](/guide/essentials/template-refs.html)を使用することが推奨されます。
   :::
 
 ## $options
 
-The resolved component options used for instantiating the current component instance.
+現在のコンポーネントインスタンスをインスタンス化するために使用された解決済みのコンポーネントオプション。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -70,15 +70,15 @@ The resolved component options used for instantiating the current component inst
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The `$options` object exposes the resolved options for the current component and is the merge result of these possible sources:
+  `$options` オブジェクトは、現在のコンポーネントの解決されたオプションを公開し、以下の可能なソースのマージ結果です:
 
-  - Global mixins
-  - Component `extends` base
-  - Component mixins
+  - グローバルミックスイン
+  - コンポーネントの `extends` のベース
+  - コンポーネントのミックスイン
 
-  It is typically used to support custom component options:
+  通常、カスタムコンポーネントオプションをサポートするために使用されます:
 
   ```js
   const app = createApp({
@@ -89,13 +89,13 @@ The resolved component options used for instantiating the current component inst
   })
   ```
 
-- **See also:** [`app.config.optionMergeStrategies`](/api/application.html#app-config-optionmergestrategies)
+- **参照:** [`app.config.optionMergeStrategies`](/api/application.html#app-config-optionmergestrategies)
 
 ## $parent
 
-The parent instance, if the current instance has one. It will be `null` for the root instance itself.
+現在のインスタンスの親インスタンス（親がある場合）。ルートインスタンス自身の場合は `null` になります。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -105,9 +105,9 @@ The parent instance, if the current instance has one. It will be `null` for the 
 
 ## $root
 
-The root component instance of the current component tree. If the current instance has no parents this value will be itself.
+現在のコンポーネントツリーのルートコンポーネントインスタンス。現在のインスタンスに親がない場合、この値はそれ自身になります。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -117,9 +117,9 @@ The root component instance of the current component tree. If the current instan
 
 ## $slots
 
-An object representing the [slots](/guide/components/slots.html) passed by the parent component.
+親コンポーネントから渡された[スロット](/guide/components/slots.html)を表すオブジェクト。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -129,21 +129,21 @@ An object representing the [slots](/guide/components/slots.html) passed by the p
   type Slot = (...args: any[]) => VNode[]
   ```
 
-- **Details**
+- **詳細**
 
-  Typically used when manually authoring [render functions](/guide/extras/render-function.html), but can also be used to detect whether a slot is present.
+  通常、[Render 関数](/guide/extras/render-function.html) を手動で作成するときに使用しますが、スロットが存在するかどうかを検出するためにも使用できます。
 
-  Each slot is exposed on `this.$slots` as a function that returns an array of vnodes under the key corresponding to that slot's name. The default slot is exposed as `this.$slots.default`.
+  各スロットは、そのスロットの名前に対応するキーの下にある vnode の配列を返す関数として `this.$slots` で公開されます。デフォルトのスロットは `this.$slots.default` として公開されます。
 
-  If a slot is a [scoped slot](/guide/components/slots.html#scoped-slots), arguments passed to the slot functions are available to the slot as its slot props.
+  スロットが[スコープ付きスロット](/guide/components/slots.html#スコープ付きスロット)の場合、スロット関数に渡された引数はそのスロットの props として利用可能です。
 
-- **See also:** [Render Functions - Rendering Slots](/guide/extras/render-function.html#rendering-slots)
+- **参照:** [Render 関数 - スロットのレンダリング](/guide/extras/render-function.html#スロットのレンダリング)
 
 ## $refs
 
-An object of DOM elements and component instances, registered via [template refs](/guide/essentials/template-refs.html).
+[テンプレート参照](/guide/essentials/template-refs.html)を通じて登録された、DOM 要素およびコンポーネントインスタンスのオブジェクト。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -151,16 +151,16 @@ An object of DOM elements and component instances, registered via [template refs
   }
   ```
 
-- **See also:**
+- **参照:**
 
-  - [Template refs](/guide/essentials/template-refs.html)
-  - [Special Attributes - ref](./built-in-special-attributes.md#ref)
+  - [テンプレート参照](/guide/essentials/template-refs.html)
+  - [特別な属性 - ref](./built-in-special-attributes.md#ref)
 
 ## $attrs
 
-An object that contains the component's fallthrough attributes.
+コンポーネントのフォールスルー属性が入ったオブジェクト。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -168,21 +168,21 @@ An object that contains the component's fallthrough attributes.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  [Fallthrough Attributes](/guide/components/attrs.html) are attributes and event handlers passed by the parent component, but not declared as a prop or an emitted event by the child.
+  [フォールスルー属性](/guide/components/attrs.html)は、親コンポーネントから渡される属性やイベントハンドラーで、prop や子コンポーネントから発行されたイベントとして宣言されていないものです。
 
-  By default, everything in `$attrs` will be automatically inherited on the component's root element if there is only a single root element. This behavior is disabled if the component has multiple root nodes, and can be explicitly disabled with the [`inheritAttrs`](./options-misc.html#inheritattrs) option.
+  デフォルトでは、ルート要素が 1 つしかない場合は `$attrs` に含まれるすべての要素がコンポーネントのルート要素に自動的に継承されます。コンポーネントに複数のルートノードがある場合、この動作は無効になります。また、[`inheritAttrs`](./options-misc.html#inheritattrs) オプションを使って明示的に無効化できます。
 
-- **See also:**
+- **参照:**
 
-  - [Fallthrough Attributes](/guide/components/attrs.html)
+  - [フォールスルー属性](/guide/components/attrs.html)
 
 ## $watch()
 
-Imperative API for creating watchers.
+ウォッチャーを作成するための命令的 API。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -210,62 +210,62 @@ Imperative API for creating watchers.
   type StopHandle = () => void
   ```
 
-- **Details**
+- **詳細**
 
-  The first argument is the watch source. It can be a component property name string, a simple dot-delimited path string, or a getter function.
+  最初の引数は監視対象です。コンポーネントのプロパティ名の文字列、単純なドット区切りのパス文字列、または getter 関数を指定できます。
 
-  The second argument is the callback function. The callback receives the new value and the old value of the watched source.
+  第 2 引数はコールバック関数です。コールバックは監視対象の新しい値と古い値を受け取ります。
 
-  - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
-  - **`deep`**: force deep traversal of the source if it is an object, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers.html#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers.html#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core.html#watcheffect).
-  - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging).
+  - **`immediate`**: ウォッチャー作成時、すぐにコールバックをトリガーします。最初の呼び出しでは、古い値は `undefined` になります。
+  - **`deep`**: ソースがオブジェクトの場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers.html#deep-watchers)を参照してください。
+  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#コールバックが実行されるタイミング)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#ウォッチャーのデバッグ)を参照してください。
 
-- **Example**
+- **例**
 
-  Watch a property name:
+  プロパティ名を監視:
 
   ```js
   this.$watch('a', (newVal, oldVal) => {})
   ```
 
-  Watch a dot-delimited path:
+  ドット区切りのパスを監視:
 
   ```js
   this.$watch('a.b', (newVal, oldVal) => {})
   ```
 
-  Using getter for more complex expressions:
+  より複雑な表現にはゲッターを使用:
 
   ```js
   this.$watch(
-    // every time the expression `this.a + this.b` yields
-    // a different result, the handler will be called.
-    // It's as if we were watching a computed property
-    // without defining the computed property itself.
+    // `this.a + this.b` という式が異なる結果をもたらすたびに
+    // ハンドラーが呼び出されます。
+    // 算出プロパティそのものを定義することなく、算出プロパティを
+    // 監視しているようなものです。
     () => this.a + this.b,
     (newVal, oldVal) => {}
   )
   ```
 
-  Stopping the watcher:
+  ウォッチャーの停止:
 
   ```js
   const unwatch = this.$watch('a', cb)
 
-  // later...
+  // その後...
   unwatch()
   ```
 
-- **See also:**
-  - [Options - `watch`](/api/options-state.html#watch)
-  - [Guide - Watchers](/guide/essentials/watchers.html)
+- **参照:**
+  - [オプション - `watch`](/api/options-state.html#watch)
+  - [ガイド - ウォッチャー](/guide/essentials/watchers.html)
 
 ## $emit()
 
-Trigger a custom event on the current instance. Any additional arguments will be passed into the listener's callback function.
+現在のインスタンスでカスタムイベントをトリガーします。追加の引数は、リスナーのコールバック関数に渡されます。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -273,29 +273,29 @@ Trigger a custom event on the current instance. Any additional arguments will be
   }
   ```
 
-- **Example**
+- **例**
 
   ```js
   export default {
     created() {
-      // only event
+      // イベントのみ
       this.$emit('foo')
-      // with additional arguments
+      // 追加の引数あり
       this.$emit('bar', 1, 2, 3)
     }
   }
   ```
 
-- **See also:**
+- **参照:**
 
-  - [Component - Events](/guide/components/events.html)
-  - [`emits` option](./options-state.html#emits)
+  - [コンポーネント - イベント](/guide/components/events.html)
+  - [`emits` オプション](./options-state.html#emits)
 
 ## $forceUpdate()
 
-Force the component instance to re-render.
+コンポーネントのインスタンスを強制的に再レンダリングします。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -303,15 +303,15 @@ Force the component instance to re-render.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  This should be rarely needed given Vue's fully automatic reactivity system. The only cases where you may need it is when you have explicitly created non-reactive component state using advanced reactivity APIs.
+  Vue の完全に自動化されたリアクティビティーシステムを考えると、これが必要になることはほとんどありません。唯一必要なケースは、高度なリアクティビティー API を使ってリアクティブでないコンポーネントの状態を明示的に作成した場合です。
 
 ## $nextTick()
 
-Instance-bound version of the global [`nextTick()`](./general.html#nexttick).
+グローバルな [`nextTick()`](./general.html#nexttick) の、インスタンスにバインドされたバージョン。
 
-- **Type**
+- **型**
 
   ```ts
   interface ComponentPublicInstance {
@@ -319,8 +319,8 @@ Instance-bound version of the global [`nextTick()`](./general.html#nexttick).
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The only difference from the global version of `nextTick()` is that the callback passed to `this.$nextTick()` will have its `this` context bound to the current component instance.
+  グローバルバージョンの `nextTick()` との唯一の違いは、`this.$nextTick()` に渡されるコールバックの `this` コンテキストが現在のコンポーネントインスタンスにバインドされるということです。
 
-- **See also:** [`nextTick()`](./general.html#nexttick)
+- **参照:** [`nextTick()`](./general.html#nexttick)
