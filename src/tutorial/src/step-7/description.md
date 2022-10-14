@@ -53,4 +53,3 @@
 ここでは、シンプルな Todo リストを用意しています。`addTodo()` メソッドと `removeTodo()` メソッドのロジックを実装して、動作するようにしてみてください。
 
 `v-for` の詳細: <a target="_blank" href="/guide/essentials/list.html">ガイド - リストレンダリング</a>
-
