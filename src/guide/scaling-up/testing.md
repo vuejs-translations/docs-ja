@@ -310,7 +310,7 @@ TypeScript を使用している場合は、`tsconfig.json` の `types` フィ�
 // tsconfig.json
 
 {
- "compileroptions": {
+ "compilerOptions": {
     "types": ["vitest/globals"]
   }
 }
