@@ -6,7 +6,7 @@ import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
 import { jobsPlugin } from './jobsMdPlugin'
 
-const nav = [
+const nav: ThemeConfig['nav'] = [
   {
     text: 'ドキュメント',
     activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
@@ -123,7 +123,7 @@ const nav = [
   }
 ]
 
-export const sidebar = {
+export const sidebar: ThemeConfig['sidebar'] = {
   '/guide/': [
     {
       text: '入門',
@@ -234,10 +234,7 @@ export const sidebar = {
     {
       text: 'スケールアップ',
       items: [
-        {
-          text: '単一ファイルコンポーネント',
-          link: '/guide/scaling-up/sfc'
-        },
+        { text: '単一ファイルコンポーネント', link: '/guide/scaling-up/sfc' },
         { text: 'ツール', link: '/guide/scaling-up/tooling' },
         { text: 'ルーティング', link: '/guide/scaling-up/routing' },
         {
