@@ -138,6 +138,7 @@ Vue では、子コンポーネントは、受け取ったプロパティのう�
 
 - [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller)
 - [vue-virtual-scroll-grid](https://github.com/rocwang/vue-virtual-scroll-grid)
+- [vueuc/VVirtualList](https://github.com/07akioni/vueuc)
 
 ### 大きなイミュータブルな構造のリアクティビティーオーバーヘッドを減らす
 
