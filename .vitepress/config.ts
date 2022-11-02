@@ -388,9 +388,9 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Built-ins',
+      text: 'ビルトイン',
       items: [
-        { text: 'Directives', link: '/api/built-in-directives' },
+        { text: 'ディレクティブ', link: '/api/built-in-directives' },
         { text: 'Components', link: '/api/built-in-components' },
         {
           text: 'Special Elements',
