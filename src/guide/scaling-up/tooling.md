@@ -53,10 +53,10 @@ Vue をビルドステップなしで使用する場合、コンポーネント�
 
 ## IDE のサポート
 
-- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar) の拡張です。Volor は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネントの props の intellisense を提供します。
+- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar) の拡張です。Volar は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネントの props の intellisense を提供します。
 
   :::tip
-  Volor は Vue 2 用の以前の VSCode 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
+  Volar は Vue 2 用の以前の VSCode 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
   :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) も Vue SFC の素晴らしいサポートを提供しています。
