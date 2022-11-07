@@ -111,7 +111,7 @@ const awesome = ref(true)
 ## `v-if` と `v-for` {#v-if-with-v-for}
 
 ::: warning Note
-暗黙的な優先順位により、 `v-if` と `v-for` を同じ要素で利用することは **推奨されません**。 詳細については [スタイルガイド](/style-guide/rules-essential.html#v-for-と一緒に-v-if-を使うのを避ける-) を参照ください。
+暗黙的な優先順位により、 `v-if` と `v-for` を同じ要素で利用することは **推奨されません**。 詳細については [スタイルガイド](/style-guide/rules-essential.html#avoid-v-if-with-v-for) を参照ください。
 :::
 
 `v-if` と `v-for` が同じ要素に両方つかわれる場合、 `v-if` が先に評価されます。詳細については [リストレンダリングのガイド](list.html#v-for-と-v-if) を参照してください。

@@ -85,9 +85,9 @@
 
   オブジェクトベースの構文では、各 props はさらに以下のオプションを定義できます:
 
-  - **`type`**: 以下のネイティブコンストラクターのいずれかを指定します: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, 任意のカスタムコンストラクタ関数、またはそれらの配列。開発モードでは、Vue はプロパティの値が宣言された型と一致するかどうかをチェックし、一致しない場合は警告を投げます。詳しくは [プロパティのバリデーション](/guide/components/props.html#プロパティのバリデーション) を参照してください。
+  - **`type`**: 以下のネイティブコンストラクターのいずれかを指定します: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, 任意のカスタムコンストラクタ関数、またはそれらの配列。開発モードでは、Vue はプロパティの値が宣言された型と一致するかどうかをチェックし、一致しない場合は警告を投げます。詳しくは [プロパティのバリデーション](/guide/components/props.html#prop-validation) を参照してください。
 
-    また、`Boolean` 型のプロパティは、開発とプロダクションの両方で、値のキャスト動作に影響を与えることに注意してください。詳しくは[ブール値の型変換](/guide/components/props.html#ブール値の型変換)を参照してください。
+    また、`Boolean` 型のプロパティは、開発とプロダクションの両方で、値のキャスト動作に影響を与えることに注意してください。詳しくは[ブール値の型変換](/guide/components/props.html#boolean-casting)を参照してください。
 
   - **`default`**: が親から渡されなかったり、値が `undefined` の場合のデフォルト値を指定します。オブジェクトや配列のデフォルト値は、ファクトリー関数を用いて返さなければなりません。ファクトリー関数は引数として加工前の props オブジェクトも受け取ります。
 
@@ -290,9 +290,9 @@
   値は、（`methods` で宣言した）メソッド名の文字列や、追加のオプションを含むオブジェクトにもできます。オブジェクト構文を使用する場合、コールバックは `handler` フィールドの下で宣言する必要があります。追加のオプションは以下のとおりです:
 
   - **`immediate`**: ウォッチャーが作成されるとすぐにコールバックをトリガーします。最初の呼び出しでは、古い値は `undefined` になります。
-  - **`deep`**: ソースがオブジェクトまたは配列の場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers.html#ディープ・ウォッチャー)を参照してください。
-  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#コールバックが実行されるタイミング)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
-  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#ウォッチャーのデバッグ)を参照してください。
+  - **`deep`**: ソースがオブジェクトまたは配列の場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers.html#deep-watchers)を参照してください。
+  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)を参照してください。
 
   アロー関数は `this` を介してコンポーネントのインスタンスにアクセスできないため、ウォッチコールバックを宣言する際に使用することは避けてください。
 

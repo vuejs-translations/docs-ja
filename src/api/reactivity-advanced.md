@@ -33,8 +33,8 @@
   ```
 
 - **参照:**
-  - [ガイド - 大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす](/guide/best-practices/performance.html#大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす)
-  - [ガイド - 外部の状態システムとの統合](/guide/extras/reactivity-in-depth.html#外部の状態システムとの統合)
+  - [ガイド - 大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす](/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
+  - [ガイド - 外部の状態システムとの統合](/guide/extras/reactivity-in-depth.html#integration-with-external-state-systems)
 
 ## triggerRef() {#triggerref}
 

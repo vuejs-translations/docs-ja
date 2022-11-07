@@ -89,7 +89,7 @@ app.use(i18nPlugin, {
 
 これで、最初の式 `$translate('greetings.hello')` は、実行時に `Bonjour!` に置き換えられます。
 
-参照: [グローバルなプロパティの拡張](/guide/typescript/options-api.html#グローバルなプロパティの拡張) <sup class="vt-badge ts" />
+参照: [グローバルなプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
 
 :::tip
 グローバルプロパティはほとんど使わないようにしてください。様々なプラグインから注入された多くのグローバルプロパティがアプリケーション全体で使われていると、すぐに混乱してしまいます。

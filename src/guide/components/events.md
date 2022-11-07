@@ -43,7 +43,7 @@ export default {
 <MyComponent @some-event.once="callback" />
 ```
 
-コンポーネントや props と同様に、イベント名も自動的な大文字・小文字の変換を提供します。キャメルケースのイベントを発行しましたが、親ではケバブケースのリスナーを使用して購読できることに注意してください。[プロパティ名での大文字・小文字の使い分け](/guide/components/props.html#プロパティ名での大文字・小文字の使い分け)と同様に、テンプレートではケバブケースのイベントリスナーを使用することをお勧めします。
+コンポーネントや props と同様に、イベント名も自動的な大文字・小文字の変換を提供します。キャメルケースのイベントを発行しましたが、親ではケバブケースのリスナーを使用して購読できることに注意してください。[プロパティ名での大文字・小文字の使い分け](/guide/components/props.html#prop-name-casing)と同様に、テンプレートではケバブケースのイベントリスナーを使用することをお勧めします。
 
 :::tip
 ネイティブの DOM イベントとは異なり、コンポーネントから発行されたイベントはバブリング**しません**。直接の子コンポーネントから発行されたイベントのみを購読できます。兄弟コンポーネントや深くネストしたコンポーネント間で通信する必要がある場合は、外部のイベントバスや[グローバルな状態管理ソリューション](/guide/scaling-up/state-management.html)を使ってください。
@@ -183,7 +183,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-詳細: [コンポーネントの emit の型付け](/guide/typescript/composition-api.html#コンポーネントの-emit-の型付け) <sup class="vt-badge ts" />
+詳細: [コンポーネントの emit の型付け](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
@@ -199,11 +199,11 @@ export default {
 }
 ```
 
-参照: [コンポーネントの emit の型付け](/guide/typescript/options-api.html#コンポーネントの-emit-の型付け) <sup class="vt-badge ts" />
+参照: [コンポーネントの emit の型付け](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 
-任意ですが、コンポーネントがどのように動作すべきかをよりよく文書化するために、発行されるすべてのイベントを定義することが推奨されます。また、これにより Vue は既知のリスナーを[フォールスルー属性](/guide/components/attrs.html#v-on-リスナーの継承)から除外し、サードパーティのコードによって手動でディスパッチされた DOM イベントによって起こるエッジケースを回避できます。
+任意ですが、コンポーネントがどのように動作すべきかをよりよく文書化するために、発行されるすべてのイベントを定義することが推奨されます。また、これにより Vue は既知のリスナーを[フォールスルー属性](/guide/components/attrs.html#v-on-listener-inheritance)から除外し、サードパーティのコードによって手動でディスパッチされた DOM イベントによって起こるエッジケースを回避できます。
 
 :::tip
 ネイティブイベント（例: `click`）が `emits` オプションに定義されている場合、リスナーはコンポーネントが発行する `click` イベントのみを購読し、ネイティブの `click` イベントには反応しなくなります。
@@ -544,7 +544,7 @@ export default {
 
 ### `v-model` 修飾子の処理 {#handling-v-model-modifiers}
 
-フォームの入力バインディングについて学習しているときに、`v-model` には [組み込みの修飾子](/guide/essentials/forms.html#修飾子)（`.trim`, `.number`, `.lazy`）があることを確認しました。場合によっては、カスタム入力コンポーネントの `v-model` でカスタム修飾子をサポートしたいかもしれません。
+フォームの入力バインディングについて学習しているときに、`v-model` には [組み込みの修飾子](/guide/essentials/forms.html#modifiers)（`.trim`, `.number`, `.lazy`）があることを確認しました。場合によっては、カスタム入力コンポーネントの `v-model` でカスタム修飾子をサポートしたいかもしれません。
 
 カスタム修飾子の例として、`v-model` バインディングによって提供される文字列の最初の文字を大文字にする `capitalize` を作成してみましょう:
 

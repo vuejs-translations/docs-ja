@@ -206,6 +206,6 @@ Vue の現在のバージョンを公開します。
 
 - **参照:**
 
-  - [ガイド - Vue によるカスタム要素のビルド](/guide/extras/web-components.html#vue-によるカスタム要素のビルド)
+  - [ガイド - Vue によるカスタム要素のビルド](/guide/extras/web-components.html#building-custom-elements-with-vue)
 
-  - また、`defineCustomElement()` は単一ファイルコンポーネントで使用する場合、[特別な設定](/guide/extras/web-components.html#カスタム要素としての-sfc)が必要なので注意してください。
+  - また、`defineCustomElement()` は単一ファイルコンポーネントで使用する場合、[特別な設定](/guide/extras/web-components.html#sfc-as-custom-element)が必要なので注意してください。

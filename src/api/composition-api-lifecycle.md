@@ -281,7 +281,7 @@
   function onActivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## onDeactivated() {#ondeactivated}
 
@@ -295,7 +295,7 @@
   function onDeactivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" /> {#onserverprefetch}
 

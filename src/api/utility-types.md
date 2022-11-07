@@ -75,7 +75,7 @@
   拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
   :::
 
-- **参照:** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)
+- **参照:** [ガイド - カスタムオプションの拡張](/guide/typescript/options-api.html#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 

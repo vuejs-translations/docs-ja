@@ -272,7 +272,7 @@
   }
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## deactivated {#deactivated}
 
@@ -288,7 +288,7 @@
   }
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
 ## serverPrefetch <sup class="vt-badge" data-text="SSR only" /> {#serverprefetch}
 

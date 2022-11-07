@@ -135,9 +135,9 @@
 
   各スロットは、そのスロットの名前に対応するキーの下にある vnode の配列を返す関数として `this.$slots` で公開されます。デフォルトのスロットは `this.$slots.default` として公開されます。
 
-  スロットが[スコープ付きスロット](/guide/components/slots.html#スコープ付きスロット)の場合、スロット関数に渡された引数はそのスロットの props として利用可能です。
+  スロットが[スコープ付きスロット](/guide/components/slots.html#scoped-slots)の場合、スロット関数に渡された引数はそのスロットの props として利用可能です。
 
-- **参照:** [Render 関数 - スロットのレンダリング](/guide/extras/render-function.html#スロットのレンダリング)
+- **参照:** [Render 関数 - スロットのレンダリング](/guide/extras/render-function.html#rendering-slots)
 
 ## $refs {#refs}
 
@@ -218,8 +218,8 @@
 
   - **`immediate`**: ウォッチャー作成時、すぐにコールバックをトリガーします。最初の呼び出しでは、古い値は `undefined` になります。
   - **`deep`**: ソースがオブジェクトの場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers.html#deep-watchers)を参照してください。
-  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#コールバックが実行されるタイミング)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
-  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#ウォッチャーのデバッグ)を参照してください。
+  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)を参照してください。
 
 - **例**
 

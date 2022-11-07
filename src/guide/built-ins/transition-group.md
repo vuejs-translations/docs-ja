@@ -14,14 +14,14 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 - デフォルトでは、ラッパーの要素はレンダリングされません。しかし、`tag` プロパティでレンダリングする要素を指定することができます。
 
-- [トランジションモード](./transition.html#トランジションモード)は、排他的な要素同士を交互にトランジションすることがなくなったので、利用できません。
+- [トランジションモード](./transition.html#transition-modes)は、排他的な要素同士を交互にトランジションすることがなくなったので、利用できません。
 
 - 内部の要素は **常に** ユニークな `key` プロパティを設定する必要があります。
 
 - CSS トランジションクラスはグループ / コンテナ **ではなく**、リストの個々の要素に適用されます。
 
 :::tip
-[DOM テンプレート](/guide/essentials/component-basics.html#dom-テンプレート解析の注意点) で使用する場合、`<transition-group>` として参照する必要があります。
+[DOM テンプレート](/guide/essentials/component-basics.html#dom-template-parsing-caveats) で使用する場合、`<transition-group>` として参照する必要があります。
 :::
 
 ## Enter / Leave トランジション {#enter-leave-transitions}

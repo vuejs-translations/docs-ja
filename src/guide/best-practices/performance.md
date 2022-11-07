@@ -33,7 +33,7 @@ Vue は、手動で最適化する必要なく、ほとんどの一般的なユ�
 
 - [Chrome DevTools Performance パネル](https://developer.chrome.com/docs/devtools/evaluate-performance/)
   - [`app.config.performance`](/api/application.html#app-config-performance) は、Chrome DevTools のパフォーマンスタイムラインで、Vue 固有のパフォーマンスマーカーを有効にします。
-- [Vue DevTools 拡張](/guide/scaling-up/tooling.html#ブラウザーの開発者ツール)もまた、パフォーマンスプロファイリング機能を提供します。
+- [Vue DevTools 拡張](/guide/scaling-up/tooling.html#browser-devtools)もまた、パフォーマンスプロファイリング機能を提供します。
 
 ## ページロード最適化 {#page-load-optimizations}
 

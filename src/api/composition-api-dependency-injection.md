@@ -39,7 +39,7 @@
 
 - **参照**:
   - [ガイド - Provide / Inject](/guide/components/provide-inject.html)
-  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#provide-inject-の型付け)
+  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#typing-provide-inject)
 
 ## inject() {#inject}
 
@@ -103,4 +103,4 @@
 
 - **参照**:
   - [ガイド - Provide / Inject](/guide/components/provide-inject.html)
-  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#provide-inject-の型付け)
+  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#typing-provide-inject)

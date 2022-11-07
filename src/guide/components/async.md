@@ -30,7 +30,7 @@ const AsyncComp = defineAsyncComponent(() =>
 
 結果的に得られる `AsyncComp` は、実際にページ上にレンダリングされるときにローダー関数を呼ぶだけのラッパーコンポーネントです。さらに、内側のコンポーネントに任意の props やスロットを渡せるため、非同期ラッパーを使用すると、コンポーネントをシームレスに置換するとともに、遅延読み込みも実現できます。
 
-通常のコンポーネントと同様に、非同期コンポーネントも `app.component()` を用いて[グローバルに登録](/guide/components/registration.html#グローバル登録)できます:
+通常のコンポーネントと同様に、非同期コンポーネントも `app.component()` を用いて[グローバルに登録](/guide/components/registration.html#global-registration)できます:
 
 ```js
 app.component('MyComponent', defineAsyncComponent(() =>

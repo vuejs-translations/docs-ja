@@ -120,12 +120,12 @@ methods: {
 
 <div class="composition-api">
 
-参照: [イベントハンドラーの型付け](/guide/typescript/composition-api.html#イベントハンドラーの型付け) <sup class="vt-badge ts" />
+参照: [イベントハンドラーの型付け](/guide/typescript/composition-api.html#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
 
-参照: [イベントハンドラーの型付け](/guide/typescript/options-api.html#イベントハンドラーの型付け) <sup class="vt-badge ts" />
+参照: [イベントハンドラーの型付け](/guide/typescript/options-api.html#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 

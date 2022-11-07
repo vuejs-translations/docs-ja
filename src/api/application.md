@@ -39,7 +39,7 @@
 
 ## createSSRApp() {#createssrapp}
 
-[SSR hydration (ハイドレーション) ](/guide/scaling-up/ssr.html#クライアント・ハイドレーション)モードでアプリケーションインスタンスを作成します。使用法は `createApp()` と全く同じです。
+[SSR hydration (ハイドレーション) ](/guide/scaling-up/ssr.html#client-hydration)モードでアプリケーションインスタンスを作成します。使用法は `createApp()` と全く同じです。
 
 ## app.mount() {#app-mount}
 
@@ -59,7 +59,7 @@
 
   コンポーネントにテンプレートがあるか、render 関数を定義している場合、コンテナ内の既存の DOM ノードを置換します。それ以外の場合は、実行時コンパイラーが使用可能であれば、コンテナの `innerHTML` がテンプレートとして使用されます。
 
-  SSR ハイドレーションモードでは、コンテナ内の既存の DOM ノードをハイドレートします。[ミスマッチ](/guide/scaling-up/ssr.html#ハイドレーション・ミスマッチ)があった場合、既存の DOM ノードは期待される結果に合うよう変化されます。
+  SSR ハイドレーションモードでは、コンテナ内の既存の DOM ノードをハイドレートします。[ミスマッチ](/guide/scaling-up/ssr.html#hydration-mismatch)があった場合、既存の DOM ノードは期待される結果に合うよう変化されます。
 
   アプリケーションのインスタンス毎に、`mount()` は一度だけ呼び出すことができます。
 
@@ -146,7 +146,7 @@
 
 - **参照:**
   - [Provide / Inject](/guide/components/provide-inject.html)
-  - [アプリケーションレベルの Provide](/guide/components/provide-inject.html#アプリケーションレベルの-provide)
+  - [アプリケーションレベルの Provide](/guide/components/provide-inject.html#app-level-provide)
 
 ## app.component() {#app-component}
 
