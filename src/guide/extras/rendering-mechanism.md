@@ -48,7 +48,7 @@ const vnode = {
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 
-## テンプレート VS レンダー関数
+## テンプレート vs. レンダー関数
 
 Vue のテンプレートは、仮想 DOM レンダー関数にコンパイルされます。また、Vue はテンプレートのコンパイルステップをスキップしてレンダー関数を直接書ける API を提供しています。レンダー関数は、JavaScript のパワーすべてを使って vnode を操作できます。そのため、高度に動的なロジックを扱う場面において、テンプレートよりも柔軟性があります。
 
