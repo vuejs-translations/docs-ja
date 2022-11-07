@@ -1,6 +1,6 @@
-# 非同期コンポーネント
+# 非同期コンポーネント {#async-components}
 
-## 基本的な使い方
+## 基本的な使い方 {#basic-usage}
 
 大規模なアプリケーションでは、アプリを小さなチャンクに分割し、必要なときにのみサーバーからコンポーネントを読み込む必要があるかもしれません。これを実現するために、Vue には [`defineAsyncComponent`](/api/general.html#defineasynccomponent) 関数があります:
 
@@ -82,7 +82,7 @@ const AdminPage = defineAsyncComponent(() =>
 
 </div>
 
-## ローディングとエラーの状態
+## ローディングとエラーの状態 {#loading-and-error-states}
 
 非同期の操作は必然的にローディングとエラーの状態に関係してきます。そのため、`defineAsyncComponent()` ではこれらの状態のハンドリングを高度なオプションによりサポートしています。
 
@@ -108,6 +108,6 @@ const AsyncComp = defineAsyncComponent({
 
 エラーコンポーネントが与えられた場合、ローダー関数から返された Promise が reject されたときに表示されます。リクエストが長すぎる場合にエラーコンポーネントを表示するために、timeout を指定することもできます。
 
-## Suspense とともに使用する
+## Suspense とともに使用する {#using-with-suspense}
 
 非同期コンポーネントは、ビルトインコンポーネント `<Suspense>` とともに使用することもできます。`<Suspense>` と非同期コンポーネント間のインタラクションについては、[`<Suspense>` のページ](/guide/built-ins/suspense.html) にドキュメントがあります。

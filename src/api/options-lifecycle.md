@@ -1,10 +1,10 @@
-# オプション: ライフサイクル
+# オプション: ライフサイクル {#options-lifecycle}
 
 :::info 参照
 ライフサイクルフックの共通の使い方については、[ガイド - ライフサイクルフック](/guide/essentials/lifecycle.html) を参照してください
 :::
 
-## beforeCreate
+## beforeCreate {#beforecreate}
 
 インスタンスが初期化されるときに呼び出されます。
 
@@ -22,7 +22,7 @@
 
   Composition API の `setup()` フックは、`beforeCreate()` を含めた Options API のどんなフックよりも先に呼び出されることに注意してください。
 
-## created
+## created {#created}
 
 インスタンスがすべての状態関連オプションの処理を終了した後に呼び出されます。
 
@@ -38,7 +38,7 @@
 
   このフックが呼ばれたとき、リアクティブなデータ、算出プロパティ、メソッド、ウォッチャーがセットアップされています。しかし、マウントフェーズは開始されていないので、`$el` プロパティはまだ利用できません。
 
-## beforeMount
+## beforeMount {#beforemount}
 
 コンポーネントがマウントされる直前に呼び出されます。
 
@@ -56,7 +56,7 @@
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-## mounted
+## mounted {#mounted}
 
 コンポーネントがマウントされた後に呼び出されます。
 
@@ -80,7 +80,7 @@
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-## beforeUpdate
+## beforeUpdate {#beforeupdate}
 
 コンポーネントがリアクティブな状態変更により DOM ツリーを更新しようとする直前に呼び出されます。
 
@@ -98,7 +98,7 @@
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-## updated
+## updated {#updated}
 
 コンポーネントがリアクティブな状態変更によって DOM ツリーを更新した後に呼び出されます。
 
@@ -122,7 +122,7 @@
   更新フックでコンポーネントの状態を変更しないでください - 無限更新ループになる可能性があります！
   :::
 
-## beforeUnmount
+## beforeUnmount {#beforeunmount}
 
 コンポーネントインスタンスがアンマウントされる直前に呼び出されます。
 
@@ -140,7 +140,7 @@
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-## unmounted
+## unmounted {#unmounted}
 
 コンポーネントがアンマウントされた後に呼び出されます。
 
@@ -164,7 +164,7 @@
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-## errorCaptured
+## errorCaptured {#errorcaptured}
 
 子孫コンポーネントから伝搬するエラーをキャプチャーしたときに呼び出されます。
 
@@ -209,7 +209,7 @@
 
   - `errrorCaptured` フックで `false` を返すと、エラーがそれ以上伝搬しないようにできます。これは要するに「このエラーは処理済みなので無視してください」ということです。このエラーに対して、追加の `errorCaptured` フックや `app.config.errorHandler` が呼び出されるのを防ぎます。
 
-## renderTracked <sup class="vt-badge dev-only" />
+## renderTracked <sup class="vt-badge dev-only" /> {#rendertracked}
 
 コンポーネントのレンダーエフェクトによってリアクティブな依存関係が追跡されたときに呼び出されます。
 
@@ -232,7 +232,7 @@
 
 - **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
 
-## renderTriggered <sup class="vt-badge dev-only" />
+## renderTriggered <sup class="vt-badge dev-only" /> {#rendertriggered}
 
 リアクティブな依存関係がコンポーネントのレンダーエフェクトの再実行をトリガーしたときに呼び出されます。
 
@@ -258,7 +258,7 @@
 
 - **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
 
-## activated
+## activated {#activated}
 
 コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM に挿入された後に呼び出されます。
 
@@ -274,7 +274,7 @@
 
 - **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
 
-## deactivated
+## deactivated {#deactivated}
 
 コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM から削除された後に呼び出されます。
 
@@ -290,7 +290,7 @@
 
 - **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
 
-## serverPrefetch <sup class="vt-badge" data-text="SSR only" />
+## serverPrefetch <sup class="vt-badge" data-text="SSR only" /> {#serverprefetch}
 
 コンポーネントインスタンスがサーバーでレンダリングされる前に解決される非同期関数。
 

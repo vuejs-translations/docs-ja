@@ -1,6 +1,6 @@
-# ルーティング
+# ルーティング {#routing}
 
-## クライアントサイドとサーバーサイドのルーティングの比較
+## クライアントサイドとサーバーサイドのルーティングの比較 {#client-side-vs-server-side-routing}
 
 サーバーサイドのルーティングとは、ユーザーがアクセスしている URL のパスに基づいて、サーバーがレスポンスを送信することを意味します。従来のサーバーレンダリングの Webb アプリでリンクをクリックすると、ブラウザーはサーバーから HTML レスポンスを受け取り、新しい HTML でページ全体を再読み込みします。
 
@@ -8,7 +8,7 @@
 
 このような SPA では「ルーティング」はクライアントサイド、つまりブラウザーで行われます。クライアントサイドのルーターは、[History API](https://developer.mozilla.org/ja/docs/Web/API/History) や [`hashchange` イベント](https://developer.mozilla.org/ja/docs/Web/API/Window/hashchange_event)などのブラウザー API を使用して、アプリケーションのレンダリングビューを管理する責任を負っています。
 
-## 公式ルーター
+## 公式ルーター {#official-router}
 
 <!-- TODO update links -->
 <div>
@@ -19,7 +19,7 @@
 
 Vue は SPA の構築に適しています。ほとんどの SPA では、公式がサポートする [Vue Router ライブラリー](https://github.com/vuejs/router) を使うことを推奨します。詳細は、Vue Router の [ドキュメント](https://router.vuejs.org/) を参照してください。
 
-## スクラッチでのシンプルなルーティング
+## スクラッチでのシンプルなルーティング {#simple-routing-from-scratch}
 
 もしシンプルなルーティングのみ必要で、フル機能のルーターライブラリーを含めたくない場合は、[動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)を使って、ブラウザーの [`hashchange` イベント](https://developer.mozilla.org/ja/docs/Web/API/Window/hashchange_event) をリッスンしたり、 [History API](https://developer.mozilla.org/ja/docs/Web/API/History) を使うことで、現在のコンポーネントの状態を変更することができます。
 

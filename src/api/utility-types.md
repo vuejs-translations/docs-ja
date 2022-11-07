@@ -1,10 +1,10 @@
-# ユーティリティー型
+# ユーティリティー型 {#utility-types}
 
 :::info
 このページでは、一般的に使われるものの中から、使用法の説明が必要ないくつかのユーティリティー型のみがリストされています。export された型の完全なリストについては、[ソースコード](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131)を参照してください。
 :::
 
-## PropType\<T>
+## PropType\<T> {#proptype-t}
 
 ランタイムプロパティ宣言を使用する際、より具体的な型でプロパティに注釈を付けるために使われます。
 
@@ -32,7 +32,7 @@
 
 - **参照:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)
 
-## ComponentCustomProperties
+## ComponentCustomProperties {#componentcustomproperties}
 
 コンポーネントインスタンス型を拡張してカスタムグローバルプロパティのサポートするのに使われます。
 
@@ -55,7 +55,7 @@
 
 - **参照:** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)
 
-## ComponentCustomOptions
+## ComponentCustomOptions {#componentcustomoptions}
 
 コンポーネントオプション型を拡張してカスタムオプションをサポートするのに使われます。
 
@@ -77,7 +77,7 @@
 
 - **参照:** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)
 
-## ComponentCustomProps
+## ComponentCustomProps {#componentcustomprops}
 
 TSX 要素のプロパティとして宣言されていないプロパティを拡張して TSX プロパティとして使用します。
 
@@ -102,7 +102,7 @@ TSX 要素のプロパティとして宣言されていないプロパティを�
   拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
   :::
 
-## CSSProperties
+## CSSProperties {#cssproperties}
 
 スタイルプロパティに適用できる値を拡張します。
 

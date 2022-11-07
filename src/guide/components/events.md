@@ -1,4 +1,4 @@
-# コンポーネントのイベント
+# コンポーネントのイベント {#component-events}
 
 > このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
@@ -6,7 +6,7 @@
   <VueSchoolLink href="https://vueschool.io/lessons/defining-custom-events-emits" title="Free Vue.js Lesson on Defining Custom Events"/>
 </div>
 
-## イベントの発行と購読
+## イベントの発行と購読 {#emitting-and-listening-to-events}
 
 コンポーネントは、組み込みの `$emit` メソッドを使用して、テンプレート式（例: `v-on` ハンドラー内）で直接カスタムイベントを発行できます:
 
@@ -49,7 +49,7 @@ export default {
 ネイティブの DOM イベントとは異なり、コンポーネントから発行されたイベントはバブリング**しません**。直接の子コンポーネントから発行されたイベントのみを購読できます。兄弟コンポーネントや深くネストしたコンポーネント間で通信する必要がある場合は、外部のイベントバスや[グローバルな状態管理ソリューション](/guide/scaling-up/state-management.html)を使ってください。
 :::
 
-## イベントの引数
+## イベントの引数 {#event-arguments}
 
 イベントで特定の値を発行すると便利な場合があります。例えば、 `<BlogPost>` コンポーネントに、テキストをどれだけ拡大するかを担当させたい場合があります。そのような場合、`$emit` に追加の引数を渡して値を提供できます:
 
@@ -98,7 +98,7 @@ function increaseCount(n) {
 `$emit()` に渡されたイベント名の後にあるすべての追加の引数はリスナーに転送されます。たとえば `$emit('foo', 1, 2, 3)` とすると、リスナー関数は 3 つの引数を受け取ります。
 :::
 
-## 発行するイベントの宣言
+## 発行するイベントの宣言 {#declaring-emitted-events}
 
 発行するイベントは、<span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span><span class="options-api">[`emits`](/api/options-state.html#emits) オプション</span>によってコンポーネント上で明示的に宣言できます:
 
@@ -209,7 +209,7 @@ export default {
 ネイティブイベント（例: `click`）が `emits` オプションに定義されている場合、リスナーはコンポーネントが発行する `click` イベントのみを購読し、ネイティブの `click` イベントには反応しなくなります。
 :::
 
-## イベントのバリデーション
+## イベントのバリデーション {#events-validation}
 
 発行するイベントは、プロパティの型バリデーションと同様に、配列構文ではなくオブジェクト構文で定義されている場合にバリデーションできます。
 
@@ -269,7 +269,7 @@ export default {
 
 </div>
 
-## `v-model` での使用
+## `v-model` での使用 {#usage-with-v-model}
 
 カスタムイベントは `v-model` で動作するカスタム入力を作成するためにも使用できます。ここで、ネイティブ要素で `v-model` がどのように使われるかを再確認してみましょう:
 
@@ -414,7 +414,7 @@ const value = computed({
 
 </div>
 
-### `v-model` の引数
+### `v-model` の引数 {#v-model-arguments}
 
 デフォルトでは、コンポーネントの `v-model` は、プロパティとして `modelValue` を、イベントとして `update:modelValue` を使用します。これらの名前は、`v-model` に引数として渡すことで変更できます:
 
@@ -469,7 +469,7 @@ export default {
 
 </div>
 
-### 複数の `v-model` のバインディング
+### 複数の `v-model` のバインディング {#multiple-v-model-bindings}
 
 先ほど [`v-model` の引数](#v-model-の引数)で学んだように、特定のプロパティとイベントをターゲットにする機能を活用することで、1 つのコンポーネントインスタンスに複数の v-model バインディングを作成できるようになりました。
 
@@ -542,7 +542,7 @@ export default {
 
 </div>
 
-### `v-model` 修飾子の処理
+### `v-model` 修飾子の処理 {#handling-v-model-modifiers}
 
 フォームの入力バインディングについて学習しているときに、`v-model` には [組み込みの修飾子](/guide/essentials/forms.html#修飾子)（`.trim`, `.number`, `.lazy`）があることを確認しました。場合によっては、カスタム入力コンポーネントの `v-model` でカスタム修飾子をサポートしたいかもしれません。
 

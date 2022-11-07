@@ -1,6 +1,6 @@
-# オプション: 状態
+# オプション: 状態 {#options-state}
 
-## data
+## data {#data}
 
 コンポーネントインスタンスの最初のリアクティブステートを返す関数。
 
@@ -47,7 +47,7 @@
 
 - **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
 
-## props
+## props {#props}
 
 コンポーネントの props を宣言します。
 
@@ -127,7 +127,7 @@
 
 - **参照:** [プロパティ](/guide/components/props.html)
 
-## computed
+## computed {#computed}
 
 コンポーネントインスタンスに公開される算出プロパティを宣言します。
 
@@ -207,7 +207,7 @@
 
 - **参照:** [算出プロパティ](/guide/essentials/computed.html)
 
-## methods
+## methods {#methods}
 
 コンポーネントインスタンスに混ぜ合わせるメソッドを宣言します。
 
@@ -248,7 +248,7 @@
 
 - **参照:** [イベントハンドリング](/guide/essentials/event-handling.html)
 
-## watch
+## watch {#watch}
 
 データ変更時に呼び出されるウォッチコールバックを宣言します。
 
@@ -366,7 +366,7 @@
 
 - **参照:** [ウォッチャー](/guide/essentials/watchers.html)
 
-## emits
+## emits {#emits}
 
 コンポーネントによって発行されるカスタムイベントを宣言します。
 
@@ -431,7 +431,7 @@
 
 * **参照:** [フォールスルー属性](/guide/components/attrs.html)
 
-## expose
+## expose {#expose}
 
 コンポーネントインスタンスがテンプレート参照を介して親からアクセスされるときに公開されるパブリックプロパティを宣言します。
 

@@ -1,6 +1,6 @@
-# ビルトインのディレクティブ
+# ビルトインのディレクティブ {#built-in-directives}
 
-## v-text
+## v-text {#v-text}
 
 要素のテキスト内容を更新します。
 
@@ -20,7 +20,7 @@
 
 - **参照:** [テンプレート構文 - テキスト展開](/guide/essentials/template-syntax.html#テキスト展開)
 
-## v-html
+## v-html {#v-html}
 
 要素の [innerHTML](https://developer.mozilla.org/ja/docs/Web/API/Element/innerHTML) を更新します。
 
@@ -44,7 +44,7 @@
 
 - **参照:** [テンプレート構文 - 生の HTML](/guide/essentials/template-syntax.html#生の-html)
 
-## v-show
+## v-show {#v-show}
 
 式の値の真偽に基づいて、要素の可視性を切り替えます。
 
@@ -56,7 +56,7 @@
 
 - **参照:** [条件付きレンダリング - v-show](/guide/essentials/conditional.html#v-show)
 
-## v-if
+## v-if {#v-if}
 
 式の値の真偽に基づいて、要素またはテンプレートフラグメントを条件付きでレンダリングします。
 
@@ -74,7 +74,7 @@
 
 - **参照:** [条件付きレンダリング - v-if](/guide/essentials/conditional.html#v-if)
 
-## v-else
+## v-else {#v-else}
 
 `v-if` または `v-if` / `v-else-if` チェーンの「else ブロック」を表します。
 
@@ -99,7 +99,7 @@
 
 - **参照:** [条件付きレンダリング - v-else](/guide/essentials/conditional.html#v-else)
 
-## v-else-if
+## v-else-if {#v-else-if}
 
 `v-if` の「else if ブロック」を表します。連鎖させることができます。
 
@@ -130,7 +130,7 @@
 
 - **参照:** [条件付きレンダリング - v-else-if](/guide/essentials/conditional.html#v-else-if)
 
-## v-for
+## v-for {#v-for}
 
 元となるデータに基づいて、要素またはテンプレートブロックを複数回レンダリングします。
 
@@ -167,7 +167,7 @@
 - **参照:**
   - [リストレンダリング](/guide/essentials/list.html)
 
-## v-on
+## v-on {#v-on}
 
 要素にイベントリスナーを追加します。
 
@@ -253,7 +253,7 @@
   - [イベントハンドリング](/guide/essentials/event-handling.html)
   - [コンポーネント - カスタムイベント](/guide/essentials/component-basics.html#イベントの購読)
 
-## v-bind
+## v-bind {#v-bind}
 
 1 つ以上の属性やコンポーネントのプロパティを式に動的にバインドします。
 
@@ -340,7 +340,7 @@
   - [クラスとスタイルのバインディング](/guide/essentials/class-and-style.html)
   - [コンポーネント - プロパティ渡しの詳細](/guide/components/props.html#プロパティ渡しの詳細)
 
-## v-model
+## v-model {#v-model}
 
 フォーム入力要素またはコンポーネントに双方向バインディングを作成します。
 
@@ -364,7 +364,7 @@
   - [フォーム入力バインディング](/guide/essentials/forms.html)
   - [コンポーネントのイベント - `v-model` での使用](/guide/components/events.html#v-model-での使用)
 
-## v-slot
+## v-slot {#v-slot}
 
 props の受け取りを期待する名前付きスロットまたはスコープ付きスロットを表します。
 
@@ -415,7 +415,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
 - **参照:**
   - [コンポーネント - スロット](/guide/components/slots.html)
 
-## v-pre
+## v-pre {#v-pre}
 
 この要素とすべての子要素のコンパイルをスキップします。
 
@@ -431,7 +431,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
   <span v-pre>{{ this will not be compiled }}</span>
   ```
 
-## v-once
+## v-once {#v-once}
 
 要素やコンポーネントを一度だけレンダリングし、その後の更新はスキップします。
 
@@ -463,7 +463,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
   - [データバインディング構文 - 展開](/guide/essentials/template-syntax.html#テキスト展開)
   - [v-memo](#v-memo)
 
-## v-memo <sup class="vt-badge" data-text="3.2+" />
+## v-memo <sup class="vt-badge" data-text="3.2+" /> {#v-memo}
 
 - **期待する値:** `any[]`
 
@@ -503,7 +503,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
 - **参照:**
   - [v-once](#v-once)
 
-## v-cloak
+## v-cloak {#v-cloak}
 
 コンパイルされていないテンプレートを、準備が整うまで非表示にするために使用します。
 

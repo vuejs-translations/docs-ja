@@ -2,7 +2,7 @@
 footer: false
 ---
 
-# はじめに
+# はじめに {#introduction}
 
 :::info 今ここに表示されているのは、Vue 3 のドキュメントです！
 
@@ -23,7 +23,7 @@ footer: false
   </a>
 </div>
 
-## Vue とは？
+## Vue とは？ {#what-is-vue}
 
 Vue (発音は /vjuː/、**view** と同様) は、ユーザーインターフェースの構築のための JavaScript フレームワークです。標準的な HTML、CSS、JavaScript を土台とする、コンポーネントベースの宣言的なプログラミングモデルを提供します。シンプルなものから複雑なものまで、ユーザーインターフェースの開発を効率的に支えるフレームワークです。
 
@@ -74,7 +74,7 @@ const count = ref(0)
 このドキュメントの続きでは、HTML、CSS、そして JavaScript の基礎知識があることが前提となっています。もしフロントエンドの開発をまったく経験したことがなければ、最初の一歩で Vue のようなフレームワークにすぐに飛び込むのは最適な方針でないかもしれません。基本を習ってからここに戻ってくるのでも大丈夫です！　[この JavaScript の概要](https://developer.mozilla.org/ja/docs/Web/JavaScript/A_re-introduction_to_JavaScript)で、自分の知識レベルを確認することができます。ほかのフレームワークを使用した経験があれば、役立ちます。ただし、必須ではありません。
 :::
 
-## プログレッシブフレームワーク
+## プログレッシブフレームワーク {#the-progressive-framework}
 
 Vue は、フロントエンド開発に必要な一般的な機能のほとんどをカバーするフレームワークであり、エコシステムでもあります。しかし、Web はきわめて多様です。私たちが Web で構築するものは、形態の点でも規模の点でもそれぞれ大きく異なります。Vue はそのことを念頭に置いて、柔軟性を提供する設計、そして段階的に適用できる設計となっています。Vue はユースケースに応じて、以下のようにさまざまな方法で活用することができます:
 
@@ -91,7 +91,7 @@ Vue は、フロントエンド開発に必要な一般的な機能のほとん�
 
 柔軟性を備える一方で、Vue が動く仕組みについての中心的な知識は、上に挙げたすべてのユースケースで共通です。今はまだ初心者であっても、進みながら得てゆく知識は、今後もっと大きなプロジェクトに取り組むうえで常に役立つものであり続けます。ベテランであれば、解決したい問題に応じて、生産性を保ちながら Vue を適切に活用する方法を選定できるでしょう。Vue を「プログレッシブフレームワーク」と呼んでいる理由は、そこにあります。Vue は、皆さんとともに成長し、皆さんのニーズに適応するフレームワークなのです。
 
-## 単一ファイルコンポーネント
+## 単一ファイルコンポーネント {#single-file-components}
 
 ビルドツールが利用可能な Vue プロジェクトでは、**単一ファイルコンポーネント**と呼ばれる、HTML に似たファイル形式の Vue コンポーネントがよく利用されます (`*.vue` ファイルとしても知られ、「**SFC**」と略されます)。Vue の SFC は、その名前が示す通り、コンポーネントのロジック (JavaScript)、テンプレート (HTML)、およびスタイル (CSS) を単一のファイルに収めたものです。先ほどのサンプルコードを SFC 形式で書いたものを以下に示します:
 
@@ -119,11 +119,11 @@ button {
 
 SFC は、Vue を特徴付ける機能です。ビルドのセットアップが利用できるユースケースで**あれば**、Vue コンポーネントを作成していく方法がおすすめです。詳細を知りたい方は、[SFC の作成方法と用途](/guide/scaling-up/sfc)に特設のセクションがありますので、ぜひご覧ください。ここでは、ビルドツール全体のセットアップを Vue が手伝ってくれることだけ覚えておいてください。
 
-## 2 つの API スタイル
+## 2 つの API スタイル {#api-styles}
 
 Vue コンポーネントを作成する際は、**Options API**、そして **Composition API** と呼ばれる 2 種類の異なる API スタイルが利用できます。
 
-### Options API
+### Options API {#options-api}
 
 Options API では、`data`、`methods`、`mounted` といった数々のオプションからなる 1 つのオブジェクトを用いてコンポーネントのロジックを定義します。これらのオプションによって定義されたプロパティには、コンポーネントのインスタンスを指す `this` を使って、関数内から次のようにアクセスできます:
 
@@ -162,7 +162,7 @@ export default {
 
 [プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgLy8gcmVhY3RpdmUgc3RhdGVcbiAgZGF0YSgpIHtcbiAgICByZXR1cm4ge1xuICAgICAgY291bnQ6IDBcbiAgICB9XG4gIH0sXG5cbiAgLy8gZnVuY3Rpb25zIHRoYXQgbXV0YXRlIHN0YXRlIGFuZCB0cmlnZ2VyIHVwZGF0ZXNcbiAgbWV0aG9kczoge1xuICAgIGluY3JlbWVudCgpIHtcbiAgICAgIHRoaXMuY291bnQrK1xuICAgIH1cbiAgfSxcblxuICAvLyBsaWZlY3ljbGUgaG9va3NcbiAgbW91bnRlZCgpIHtcbiAgICBjb25zb2xlLmxvZyhgVGhlIGluaXRpYWwgY291bnQgaXMgJHt0aGlzLmNvdW50fS5gKVxuICB9XG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8YnV0dG9uIEBjbGljaz1cImluY3JlbWVudFwiPkNvdW50IGlzOiB7eyBjb3VudCB9fTwvYnV0dG9uPlxuPC90ZW1wbGF0ZT4ifQ==)
 
-### Composition API
+### Composition API {#composition-api}
 
 Composition API では、インポートした各種 API 関数を使ってコンポーネントのロジックを定義していきます。SFC において、Composition API は通常、[`<script setup>`](/api/sfc-script-setup) と組み合わせて使用します。`setup` という属性を付けることで、Vue にコンパイル時の変形操作を実行してほしいというヒントが伝えられます。これにより、定型的な書式の少ない Composition API を利用することができます。たとえば、`<script setup>` のなかで宣言したインポート、トップレベルの変数、トップレベルの関数は、テンプレート内で直接使うことができます。
 
@@ -193,7 +193,7 @@ onMounted(() => {
 
 [プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgb25Nb3VudGVkIH0gZnJvbSAndnVlJ1xuXG4vLyByZWFjdGl2ZSBzdGF0ZVxuY29uc3QgY291bnQgPSByZWYoMClcblxuLy8gZnVuY3Rpb25zIHRoYXQgbXV0YXRlIHN0YXRlIGFuZCB0cmlnZ2VyIHVwZGF0ZXNcbmZ1bmN0aW9uIGluY3JlbWVudCgpIHtcbiAgY291bnQudmFsdWUrK1xufVxuXG4vLyBsaWZlY3ljbGUgaG9va3Ncbm9uTW91bnRlZCgoKSA9PiB7XG4gIGNvbnNvbGUubG9nKGBUaGUgaW5pdGlhbCBjb3VudCBpcyAke2NvdW50LnZhbHVlfS5gKVxufSlcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxidXR0b24gQGNsaWNrPVwiaW5jcmVtZW50XCI+Q291bnQgaXM6IHt7IGNvdW50IH19PC9idXR0b24+XG48L3RlbXBsYXRlPiJ9)
 
-### どちらを選ぶか？
+### どちらを選ぶか？ {#which-to-choose}
 
 どちらのスタイルの API でも、よくあるユースケースは全面的にカバーされます。両者はインターフェースが異なるものの、それを支える基盤のシステムはまったく同じです。事実として、Options API は Composition API を土台にしています！Vue に関する基本的な考え方と必要な知識は、2 つのスタイル間で共通です。
 
@@ -215,11 +215,11 @@ Vue を初めて使う方に、一般的な推奨事項をお伝えします:
 
 学習を進める段階では、どちらか一方のスタイルにこだわる必要はありません。このドキュメントの続きの部分に登場するコードサンプルは、該当する場合、両方のスタイルで提供されます。左サイドバーの上部にある **API 選択スイッチ**を使って、いつでもスタイルを切り替えることができます。
 
-## さらに知りたいことはありますか？
+## さらに知りたいことはありますか？ {#still-got-questions}
 
 [よくある質問](/about/faq)をチェックしてみてください。
 
-## 学習方法を選びましょう
+## 学習方法を選びましょう {#pick-your-learning-path}
 
 学習の進め方は、開発者によってさまざまです。好みに合った学習方法を自由にお選びください。もし可能なら、すべてのコンテンツに目を通しておくのがおすすめです！
 

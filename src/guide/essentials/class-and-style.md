@@ -1,8 +1,8 @@
-# クラスとスタイルのバインディング
+# クラスとスタイルのバインディング {#class-and-style-bindings}
 
 データバインディングは、HTML 要素に持たせる CSS クラスのリストやインラインのスタイルを自在に操作したいという、よくあるニーズに応えます。`class` と `style` はどちらも属性なので、他の属性と同じように `v-bind` を使用して動的に文字列の値を割り当てることができます。しかし、文字列の連結を使ってこれらの値を生成しようとすると、手間がかかり、間違いが起きやすくなるものです。そこで、Vue では `class` や `style` に対して `v-bind` を用いるとき、特別な拡張が利用できるようになっています。文字列のほかに、オブジェクトまたは配列として評価される式も利用できます。
 
-## HTML クラスのバインディング
+## HTML クラスのバインディング {#binding-html-classes}
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3" title="Vue.js の動的 CSS クラスについて学ぶ無料レッスン"/>
@@ -12,7 +12,7 @@
   <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue" title="Vue.js の動的 CSS クラスについて学ぶ無料レッスン"/>
 </div>
 
-### オブジェクトへのバインディング
+### オブジェクトへのバインディング {#binding-to-objects}
 
 `:class` (`v-bind:class` の省略記法) では、オブジェクトを渡して CSS クラスを動的に切り替えることができます:
 
@@ -136,7 +136,7 @@ computed: {
 <div :class="classObject"></div>
 ```
 
-### 配列へのバインディング
+### 配列へのバインディング {#binding-to-arrays}
 
 次のように `:class` を配列にバインドすると、クラスのリストを適用することができます:
 
@@ -186,7 +186,7 @@ data() {
 <div :class="[{ active: isActive }, errorClass]"></div>
 ```
 
-### コンポーネントでの使用
+### コンポーネントでの使用 {#with-components}
 
 > このセクションは、[コンポーネント](/guide/essentials/component-basics)についての知識があることを前提にしています。読み飛ばして、後で戻ってくるのでも大丈夫です。
 
@@ -245,7 +245,7 @@ data() {
 
 コンポーネントの属性の継承については、[フォールスルー属性](/guide/components/attrs.html)のセクションで詳しく説明しています。
 
-## インラインスタイルのバインディング
+## インラインスタイルのバインディング {#binding-inline-styles}
 
 ### オブジェクトへのバインディング
 
@@ -325,11 +325,11 @@ data() {
 <div :style="[baseStyles, overridingStyles]"></div>
 ```
 
-### 自動プレフィックス
+### 自動プレフィックス {#auto-prefixing}
 
 `:style` で [ベンダープレフィックス](https://developer.mozilla.org/ja/docs/Glossary/Vendor_Prefix)を必要とする CSS プロパティを指定すると、Vue が適切なプレフィックスを自動的に追加します。Vue は、実行時にブラウザーでどのスタイルプロパティがサポートされているかをチェックして、適切なものを追加します。特定のプロパティがブラウザーでサポートされていない場合、Vue はさまざまなプレフィックスのバリエーションをテストし、サポートされているものを見つけようと試みます。
 
-### 複数の値
+### 複数の値 {#multiple-values}
 
 style プロパティには、プレフィックス付きを含む複数の値を、配列で指定することができます。例:
 

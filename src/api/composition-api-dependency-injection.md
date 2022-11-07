@@ -1,6 +1,6 @@
-# Composition API: <br>依存関係の注入
+# Composition API: <br>依存関係の注入 {#composition-api-dependency-injection}
 
-## provide()
+## provide() {#provide}
 
 子孫コンポーネントから注入可能な値を提供する。
 
@@ -41,7 +41,7 @@
   - [ガイド - Provide / Inject](/guide/components/provide-inject.html)
   - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#provide-inject-の型付け)
 
-## inject()
+## inject() {#inject}
 
 祖先のコンポーネントや（`app.provide()` 経由で）アプリケーションから提供された値を注入します。
 

@@ -1,20 +1,20 @@
-# Vue と Web コンポーネント
+# Vue と Web コンポーネント {#vue-and-web-components}
 
 [Web コンポーネント](https://developer.mozilla.org/ja/docs/Web/Web_Components) は、開発者が再利用可能なカスタム要素 (custom elements) を作成するための一連の Web ネイティブ API 群の総称です。
 
 私たちは Vue と Web コンポーネントを主に補完的な技術と考えています。Vue はカスタム要素の作成と使用することの両方に優れたサポートを提供します。既にある Vue アプリケーションにカスタム要素を統合する場合や、Vue を使ってビルドしそしてカスタム要素を配布する場合においても、良き仲間です。
 
-## Vue でカスタム要素を使う
+## Vue でカスタム要素を使う {#using-custom-elements-in-vue}
 
 Vue は[カスタム要素の全てのテストにおいてスコアは 100% 完璧です](https://custom-elements-everywhere.com/libraries/vue/results/results.html)。Vue アプリケーション内部でカスタム要素を使うことはネイティブ HTML 要素を使うこととほぼ同じですが、いくつか注意点があります:
 
-### コンポーネント解決のスキップ
+### コンポーネント解決のスキップ {#skipping-component-resolution}
 
 デフォルトで Vue はカスタム要素をレンダリングするためのフォールバックをする前に、ネイティブではない HTML タグを登録された Vue コンポーネントとして解決しようとします。これにより、開発中に Vue が "failed to resolve component" という警告を出す原因となります。特定の要素をカスタム要素として扱い、Vue にコンポーネントの解決をスキップすることを知らせるために、[`compilerOptions.isCustomElement` オプション](/api/application.html#app-config-compileroptions)を指定できます。
 
 もし Vue をビルドセットアップで使用している場合、このオプションはコンパイル時のオプションであるため、ビルド設定経由で渡す必要があります。
 
-#### ブラウザー内設定の例
+#### ブラウザー内設定の例 {#example-in-browser-config}
 
 ```js
 // ブラウザ内コンパイルを使っている場合のみ動作します。
@@ -22,7 +22,7 @@ Vue は[カスタム要素の全てのテストにおいてスコアは 100% 完
 app.config.compilerOptions.isCustomElement = (tag) => tag.includes('-')
 ```
 
-#### Vite 設定の例
+#### Vite 設定の例 {#example-vite-config}
 
 ```js
 // vite.config.js
@@ -42,7 +42,7 @@ export default {
 }
 ```
 
-#### Vue CLI 設定の例
+#### Vue CLI 設定の例 {#example-vue-cli-config}
 
 ```js
 // vue.config.js
@@ -62,7 +62,7 @@ module.exports = {
 }
 ```
 
-### DOM プロパティの受け渡し
+### DOM プロパティの受け渡し {#passing-dom-properties}
 
 DOM 属性は文字列のみしか扱えないため、複雑なデータをカスタム要素に DOM 要素として渡す必要があります。カスタム要素上に props が設定されるとき、Vue 3 では自動的に `in` 演算子を使って DOM プロパティの存在をチェックし、キーが存在する場合は DOM プロパティとして値を設定するよう優先します。これは、多くのケースではカスタム要素が[推奨されるベストプラクティス](https://web.dev/custom-elements-best-practices/)に従っている場合は、この点を考慮する必要はないことを意味します。
 
@@ -75,11 +75,11 @@ DOM 属性は文字列のみしか扱えないため、複雑なデータをカ�
 <my-element .user="{ name: 'jack' }"></my-element>
 ```
 
-## Vue によるカスタム要素のビルド
+## Vue によるカスタム要素のビルド {#building-custom-elements-with-vue}
 
 カスタム要素の最大の利点は、どんなフレームワークでも、あるいはフレームワークがなくても使用できるということです。そのため、利用者が同じフロントエンドスタックを使用していない場合にコンポーネントを配布する場合や、アプリケーションが使用するコンポーネントの実装の詳細から該当アプリケーションを隔離したい場合に最適です。
 
-### defineCustomElement
+### defineCustomElement {#definecustomelement}
 
 Vue は [`defineCustomElement`](/api/general.html#definecustomelement) メソッドを介したまったく同じ Vue コンポーネント API 群を使ってカスタム要素の作成をサポートします。このメソッドは [`defineComponent`](/api/general.html#definecomponent) と同じ引数を受け付けますが、代わりに `HTMLElement` を拡張したカスタム要素を返します:
 
@@ -114,7 +114,7 @@ document.body.appendChild(
 )
 ```
 
-#### ライフサイクル
+#### ライフサイクル {#lifecycle}
 
 - Vue のカスタム要素は、要素の [`connectedCallback`](https://developer.mozilla.org/ja/docs/Web/Web_Components/Using_custom_elements#%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%81%AE%E4%BD%BF%E7%94%A8) が初めて呼び出されたときに、その shadow root 内に内部の Vue コンポーネントインスタンスをマウントします。
 
@@ -124,7 +124,7 @@ document.body.appendChild(
 
   - もし、要素がドキュメントから切り離されている場合は、それは削除された状態であり、コンポーネントインスタンスはアンマウントされます。
 
-#### Props
+#### Props {#props}
 
 - `props` オプションを使って宣言されたすべての props は、カスタム要素にプロパティとして定義されます。Vue は必要に応じて、属性とプロパティの間のリフレクションを自動的に処理します。
 
@@ -149,11 +149,11 @@ document.body.appendChild(
 
   コンポーネントでは、`selected` は `true`（真偽値）に、 `index` は `1`（数値）にキャストされます。
 
-#### イベント
+#### イベント {#events}
 
 `this.$emit` や setup の `emit` を通じて発行されたイベントは、カスタム要素上でネイティブの[カスタムイベント (CustomEvents)](https://developer.mozilla.org/ja/docs/Web/Events/Creating_and_triggering_events#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%BF%BD%E5%8A%A0_%E2%80%93_customevent) としてディスパッチされます。追加のイベント引数(ペイロード)は、カスタムイベントオブジェクトの `detail` プロパティの配列として公開されます。
 
-#### スロット
+#### スロット {#slots}
 
 コンポーネント内部では、通常通り `<slot/>` 要素を使ってスロットをレンダリングすることができます。しかし、生成された要素を使うときは、[ネイティブのスロット構文](https://developer.mozilla.org/ja/docs/Web/Web_Components/Using_templates_and_slots)しか受け付けません。
 
@@ -167,11 +167,11 @@ document.body.appendChild(
   </my-element>
   ```
 
-#### Provide / Inject
+#### Provide / Inject {#provide-inject}
 
 [Provide / Inject API](/guide/components/provide-inject.html#provide-inject) と [Composition API](/api/composition-api-dependency-injection.html#provide) も、Vue で定義されたカスタム要素間で動作します。しかしながら、これは**カスタム要素間**のみ動作するということに注意してください。つまり、Vue で定義されたカスタム要素は、カスタム要素ではない Vue コンポーネントによってプロパティを注入することはできません。
 
-### カスタム要素としての SFC
+### カスタム要素としての SFC {#sfc-as-custom-element}
 
 `defineCustomElement` は、Vue の単一ファイルコンポーネント (SFC: Single-File Components) でも動作します。しかしながら、デフォルトのツール設定では、SFC 内の `<style>` は、プロダクションビルド時に抽出され、単一の CSS ファイルにマージされます。SFC をカスタム要素として使用する場合は、代わりにカスタム要素の shadow root に `<style>` タグを注入するのが望ましいことが多いです。
 
@@ -197,7 +197,7 @@ customElements.define('my-example', ExampleElement)
 - [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#using-vue-sfcs-as-custom-elements)
 - [vue-loader](https://github.com/vuejs/vue-loader/tree/next#v16-only-options)
 
-### Vue カスタム要素ライブラリー向けの秘訣
+### Vue カスタム要素ライブラリー向けの秘訣 {#tips-for-a-vue-custom-elements-library}
 
 Vue でカスタム要素をビルドする場合、要素は Vue のランタイムに依存します。使用する機能の数に応じて、ベースラインサイズが 16kb 程度になります。 つまり、単一のカスタム要素を提供する場合、Vue を使用することは理想的ではありません。vanilla JavaScript、[petite-vue](https://github.com/vuejs/petite-vue)、またはランタイムサイズの小ささに特化したフレームワークを使いたいかもしれません。しかしながら、複雑なロジックを持つカスタム要素の集合体を出荷する場合、Vue によって各コンポーネントがより少ないコードで作成されるため、基本サイズの大きさは正当化されます。一緒に出荷する要素が多ければ多いほど、トレードオフは良くなります。
 
@@ -224,7 +224,7 @@ export function register() {
 
 もし多くのコンポーネントがある場合、Vite の [glob import](https://vitejs.dev/guide/features.html#glob-import) や webpack の [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) のようなビルドツールの機能を利用して、ディレクトリーからすべてのコンポーネントを読み込むこともできます。
 
-## Web コンポーネント と Vue コンポーネントの比較
+## Web コンポーネント と Vue コンポーネントの比較 {#web-components-vs-vue-components}
 
 開発者の中には、フレームワークに依存した独自のコンポーネントモデルは避けるべきであり、カスタム要素のみを使用することでアプリケーションの「将来性」を確保できると考える人もいます。ここでは、この考え方が問題を単純化しすぎていると思われる理由を説明します。
 

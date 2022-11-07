@@ -1,6 +1,6 @@
-# 単一ファイルコンポーネント
+# 単一ファイルコンポーネント {#single-file-components}
 
-## はじめに
+## はじめに {#introduction}
 
 Vue 単一ファイルコンポーネント（別名 `*.vue` ファイル、 **SFC** と略記）は、Vue コンポーネントのテンプレート、ロジック、 **および** スタイルを 1 つのファイルにカプセル化できる特別なファイル形式です。SFC の例を以下に示します:
 
@@ -29,7 +29,7 @@ export default {
 
 ご覧のとおり、Vue SFC は、HTML、CSS、JavaScript という古典的な 3 つの自然な拡張です。`<template>`、`<script>` および `<style>` ブロックは、同じファイル内のコンポーネントのビュー、ロジック、およびスタイルをカプセル化してまとめます。完全な構文は、 [SFC 構文仕様](/api/sfc-spec)で定義されています。
 
-## なぜ SFC なのか
+## なぜ SFC なのか {#why-sfc}
 
 SFC にはビルドステップが必要ですが、その代わりに多くの利点があります:
 
@@ -50,7 +50,7 @@ SFC は、フレームワークとしての Vue を特徴付ける機能であ�
 
 そうは言っても、SFC がやり過ぎのように感じるシナリオがあることは認識しています。このため、Vue はビルドステップなしでプレーンな JavaScript で使用することができます。大部分が静的な HTML に軽いインタラクションを加える場合は、プログレッシブエンハンスメント用に最適化された Vue の 6 kB のサブセットである [petite-vue](https://github.com/vuejs/petite-vue) もご覧ください。
 
-## 仕組み
+## 仕組み {#how-it-works}
 
 Vue SFC はフレームワーク固有のファイル形式であり、[@vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc) によって標準の JavaScript と CSS に事前コンパイルする必要があります。コンパイルされた SFC は標準的な JavaScript（ES）モジュールです。つまり、適切なビルドセットアップを使用すると、モジュールのように SFC をインポートできます:
 
@@ -70,7 +70,7 @@ SFC 内の `<style>` タグは通常ホットアップデートをサポート�
 
 実際のプロジェクトでは、一般的に、SFC コンパイラーを [Vite](https://vitejs.dev/) や [Vue CLI](http://cli.vuejs.org/)（[webpack](https://webpack.js.org/)ベース）などのビルドツールと統合します。Vue では、SFC をできるだけ早く使い始めるための公式の scaffolding ツールを提供します。詳細については、[SFC ツール](/guide/scaling-up/tooling) をご覧ください。
 
-## 関心の分離についてはどうですか？
+## 関心の分離についてはどうですか？ {#what-about-separation-of-concerns}
 
 従来の Web 開発のバックグラウンドを持つ一部のユーザーは、SFC が HTML / CSS / JS が分離するはずの異なる関心を同じ場所に混在させているのではないか！という懸念を持つかもしれません。
 

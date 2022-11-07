@@ -2,15 +2,15 @@
 outline: deep
 ---
 
-# Render 関数と JSX
+# Render 関数と JSX {#render-functions-jsx}
 
 Vue は、ほとんどの場合、アプリケーションを構築するためにテンプレートを使用することを推奨しています。しかし、JavaScript の完全なプログラムの力が必要な状況もあります。そこで、**render 関数** を使用します。
 
 > 仮想 DOM や render 関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)の章を必ずお読みください。
 
-## 基本的な使い方
+## 基本的な使い方 {#basic-usage}
 
-### vnode の作成
+### vnode の作成 {#creating-vnodes}
 
 Vue は、vnode を作成するための `h()` 関数を提供しています:
 
@@ -76,7 +76,7 @@ vnode.key // null
 完全な `VNode` インターフェースは他にも多くの内部プロパティを含んでいますが、ここに挙げた以外のプロパティに依存しないことを強く推奨します。これにより、内部プロパティが変更された場合に意図しない破損を避けることができます。
 :::
 
-### Render 関数の宣言
+### Render 関数の宣言 {#declaring-render-functions}
 
 <div class="composition-api">
 
@@ -188,7 +188,7 @@ function Hello() {
 
 そうです、これは有効な Vue コンポーネントなのです！この構文の詳細については、[関数型コンポーネント](#関数型コンポーネント) を参照してください。
 
-### Vnode は一意でなければならない
+### Vnode は一意でなければならない {#vnodes-must-be-unique}
 
 コンポーネントツリー内のすべての vnode は一意でなければなりません。つまり、以下の render 関数は無効です:
 
@@ -216,7 +216,7 @@ function render() {
 }
 ```
 
-## JSX / TSX
+## JSX / TSX {#jsx-tsx}
 
 [JSX](https://facebook.github.io/jsx/) は、JavaScript の XML 的な拡張機能で、こんなコードを書くことができるようになります:
 
@@ -239,11 +239,11 @@ React によって最初に導入されましたが、JSX は実際にはラン�
 
 Vue の型定義は、TSX を使用するための型推論も提供します。TSX を使用する場合は、Vue の JSX 変換が処理できるように、TypeScript が JSX の構文をそのまま残すように、必ず `tsconfig.json` で `"jsx": "preserve"` を指定してください。
 
-## Render 関数のレシピ
+## Render 関数のレシピ {#render-function-recipes}
 
 以下では、テンプレート機能を同等の render 関数/JSX として実装するための一般的なレシピをいくつか紹介します。
 
-### `v-if`
+### `v-if` {#v-if}
 
 Template:
 
@@ -279,7 +279,7 @@ h('div', [this.ok ? h('div', 'yes') : h('span', 'no')])
 
 </div>
 
-### `v-for`
+### `v-for` {#v-for}
 
 Template:
 
@@ -335,7 +335,7 @@ h(
 
 </div>
 
-### `v-on`
+### `v-on` {#v-on}
 
 `on` で始まり、大文字が続く名前の props は、イベントリスナーとして扱われます。例えば、 `onClick` はテンプレートでは `@click` に相当します。
 
@@ -361,7 +361,7 @@ h(
 </button>
 ```
 
-#### イベント修飾子
+#### イベント修飾子 {#event-modifiers}
 
 イベント修飾子 `.passive`, `.capture`, `.once` については、イベント名の後にキャメルケースを用いて連結して記述することが可能です。
 
@@ -403,7 +403,7 @@ h('div', {
 <div onClick={withModifiers(() => {}, ['self'])} />
 ```
 
-### Components
+### Components {#components}
 
 コンポーネント用の vnode を作成するには、`h()` に渡される最初の引数はコンポーネントの定義でなければなりません。つまり、render 関数を使う場合、コンポーネントを登録する必要はなく、インポートされたコンポーネントを直接使えばいいのです:
 
@@ -448,7 +448,7 @@ function render() {
 
 コンポーネントが名前で登録されていて直接インポートできない場合 (例えば、ライブラリーによってグローバルに登録されている場合)、 [`resolveComponent()`](/api/render-function.html#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
 
-### スロットのレンダリング
+### スロットのレンダリング {#rendering-slots}
 
 <div class="composition-api">
 
@@ -523,7 +523,7 @@ export default {
 
 </div>
 
-### スロットの渡し方
+### スロットの渡し方 {#passing-slots}
 
 コンポーネントへの子の渡し方は、要素への子の渡し方と少し異なります。配列の代わりに、スロット関数か、スロット関数のオブジェクトを渡す必要があります。スロット関数は、通常の render 関数が返せるものなら何でも返せますが、子コンポーネントでアクセスするときは、常に vnode の配列に正規化されます。
 
@@ -557,7 +557,7 @@ h(MyComponent, null, {
 
 スロットを関数として渡すことで、子コンポーネントがスロットを遅延的に呼び出すことができます。これにより、スロットの依存関係が親ではなく子によって追跡されるようになり、より正確で効率的な更新が行われるようになります。
 
-### 組み込みコンポーネント
+### 組み込みコンポーネント {#built-in-components}
 
 render 関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components.html) をインポートする必要があります。
 
@@ -588,7 +588,7 @@ export default {
 
 </div>
 
-### `v-model`
+### `v-model` {#v-model}
 
 `v-model` ディレクティブは、テンプレートのコンパイル時に `modelValue` と `onUpdate:modelValue` プロパティに展開されます:
 
@@ -626,7 +626,7 @@ export default {
 
 </div>
 
-### カスタムディレクティブ
+### カスタムディレクティブ {#custom-directives}
 
 カスタムディレクティブは、[`withDirectives`](/api/render-function.html#withdirectives)を使って vnode に適用することが可能です:
 
@@ -647,7 +647,7 @@ const vnode = withDirectives(h('div'), [
 
 ディレクティブが名前で登録されていて、直接インポートできない場合は、[`resolveDirective`](/api/render-function.html#resolvedirective) ヘルパーを使って解決することが可能です。
 
-## 関数型コンポーネント
+## 関数型コンポーネント {#functional-components}
 
 関数型コンポーネントは、それ自身の状態を持たないコンポーネントの代替形態です。それらは純粋な関数のように動作します。 props を受け取り、vnode を返します。 コンポーネントのインスタンスを作成することなく（つまり、`this` はありません）、通常のコンポーネントのライフサイクルフックもなくレンダリングされます。
 

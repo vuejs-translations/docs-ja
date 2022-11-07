@@ -1,4 +1,4 @@
-# Composition API: setup()
+# Composition API: setup() {#composition-api-setup}
 
 :::info Note
 このページでは、`setup` コンポーネントオプションの使用方法を説明します。単一ファイルコンポーネントで Composition API を使用する場合は、より簡潔で人間工学的な構文である [`<script setup>`](/api/sfc-script-setup.html) を使用することを推奨します。
@@ -9,7 +9,7 @@
 1. ビルドステップなしでの Composition API の使用
 2. Options API コンポーネント内の Composition API に基づくコードの統合
 
-## 基本的な使い方
+## 基本的な使い方 {#basic-usage}
 
 [リアクティビティー API](./reactivity-core.html) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
 
@@ -44,7 +44,7 @@ export default {
 `setup()` 自体はコンポーネントインスタンスにアクセスできません。- `this` は `setup()` 内では `undefined` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
 :::
 
-## Props へのアクセス
+## Props へのアクセス {#accessing-props}
 
 `setup` 関数の第 1 引数は `props` 引数です。標準コンポーネントで期待するように、`setup` 関数内の `props` はリアクティブで、新しい `props` が渡されたら更新されます。
 
@@ -79,7 +79,7 @@ export default {
 }
 ```
 
-## Setup Context
+## Setup Context {#setup-context}
 
 `setup` 関数へ渡される第 2 引数は **Setup Context** オブジェクトです。context オブジェクトは `setup` 内で便利と思われる他の値を公開します:
 
@@ -113,7 +113,7 @@ export default {
 
 `attrs` と `slots` はステートフルなオブジェクトです。コンポーネント自身が更新されたとき、常に更新されます。つまり、分割代入の使用を避け、`attrs.x` や `slots.x` のようにプロパティを常に参照する必要があります。また、`props` とは異なり、`attrs` と `slots` のプロパティは **リアクティブではない** ということに注意してください。もし、`attrs` か `slots` の変更による副作用を適用したいのなら、`onBeforeUpdate` ライフサイクルフックの中で行うべきです。
 
-### パブリックプロパティの公開
+### パブリックプロパティの公開 {#exposing-public-properties}
 
 `expose` は、親コンポーネントから[テンプレート参照](/guide/essentials/template-refs.html#ref-on-component)でコンポーネントインスタンスにアクセスする際に、公開するプロパティを明示的に制限するために使用することができる関数です:
 
@@ -132,7 +132,7 @@ export default {
 }
 ```
 
-## Render 関数での使用
+## Render 関数での使用 {#usage-with-render-functions}
 
 `setup` は同じスコープで宣言されたリアクティブなステートを直接利用することができる [render 関数](/guide/extras/render-function.html)を返すこともできます:
 

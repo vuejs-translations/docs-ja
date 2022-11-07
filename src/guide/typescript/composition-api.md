@@ -1,10 +1,10 @@
-# Composition API とともに TypeScript を使用する
+# Composition API とともに TypeScript を使用する {#typescript-with-composition-api}
 
 > このページは [TypeScript で Vue を使用する](./overview) ページの内容をすでに読んでいることを前提にしています。
 
-## コンポーネントの props の型付け
+## コンポーネントの props の型付け {#typing-component-props}
 
-### `<script setup>` の使用
+### `<script setup>` の使用 {#using-script-setup}
 
 `<script setup>` を使用する場合、 `defineProps()` マクロは、引数に基づいて props の型を推論できます:
 
@@ -50,7 +50,7 @@ const props = defineProps<Props>()
 </script>
 ```
 
-#### 構文の制限
+#### 構文の制限 {#syntax-limitations}
 
 正しい実行時のコードが生成されるために、 `defineProps` の型引数は以下のいずれでなければなりません:
 
@@ -79,7 +79,7 @@ defineProps<Props>()
 
 これは、Vue コンポーネントが単独でコンパイルされるためで、コンパイラーはソースコードの型を分析するために import されたファイルをクロールすることがありません。この制限は将来のリリースで削除される可能性があります。
 
-### props のデフォルト値
+### props のデフォルト値 {#props-default-values}
 
 type-based declaration を使用すると、props のデフォルト値を宣言することができません。これは、`withDefaults` コンパイラマクロによって解決できます:
 
@@ -114,7 +114,7 @@ const { name, count = 100 } = defineProps<Props>()
 
 こちらの振る舞いを利用するには [明示的なオプトイン](/guide/extras/reactivity-transform.html#explicit-opt-in) が必要です。
 
-### `<script setup>` を使用しない場合
+### `<script setup>` を使用しない場合 {#without-script-setup}
 
 `<script setup>` を使用しない場合、 `defineComponent()` を使用して、props の型推論をする必要があります。`setup()` に渡された変数 props の型は、`props` オプションから推論されます。
 
@@ -131,7 +131,7 @@ export default defineComponent({
 })
 ```
 
-## コンポーネントの emit の型付け
+## コンポーネントの emit の型付け {#typing-component-emits}
 
 `<script setup>` では、`emit` 関数も runtime declaration もしくは type declaration (型宣言) のいずれかを使って型付けすることができます:
 
@@ -163,7 +163,7 @@ export default defineComponent({
 })
 ```
 
-## `ref()` の型付け
+## `ref()` の型付け {#typing-ref}
 
 ref は初期値から型推論されます:
 
@@ -204,7 +204,7 @@ year.value = 2020 // ok!
 const n = ref<number>()
 ```
 
-## `reactive()` の型付け
+## `reactive()` の型付け {#typing-reactive}
 
 `reactive()` も引数から暗黙に型を推論します:
 
@@ -232,7 +232,7 @@ const book: Book = reactive({ title: 'Vue 3 Guide' })
 `reactive()` の型引数を使用することは推奨されません、なぜなら reactive の戻り値の型は、ネストされた ref をアンラップする処理を含む為、型引数によって与えられる型と異なるからです。
 :::
 
-## `computed()` の型付け
+## `computed()` の型付け {#typing-computed}
 
 `computed()` は、getter の戻り値に基づいて型が推論されます:
 
@@ -256,7 +256,7 @@ const double = computed<number>(() => {
 })
 ```
 
-## イベントハンドラーの型付け
+## イベントハンドラーの型付け {#typing-event-handlers}
 
 ネイティブ DOM イベントを扱う場合、イベントハンドラーに渡す引数を正しく型付けしておくと便利な場合があります。次の例を見てみましょう:
 
@@ -281,7 +281,7 @@ function handleChange(event: Event) {
 }
 ```
 
-## Provide / Inject の型付け
+## Provide / Inject の型付け {#typing-provide-inject}
 
 provide (提供) と inject (注入) は通常、別々のコンポーネントで実行されます。注入された値を適切に型付けするために、Vue は `InjectionKey` インターフェースを提供します。これは、`Symbol` を継承したジェネリック型で、provider (値を提供する側) と consumer (値を利用する側) の間で注入された値の型を同期させるために使用できます:
 
@@ -318,7 +318,7 @@ const foo = inject<string>('foo', 'bar') // type: string
 const foo = inject('foo') as string
 ```
 
-## テンプレート参照の型付け
+## テンプレート参照の型付け {#typing-template-refs}
 
 テンプレート参照は、明示的な型引数と初期値 `null` を指定して作成されます:
 
@@ -340,7 +340,7 @@ onMounted(() => {
 
 厳密な型安全性のために、`el.value` にアクセスする際には、オプショナルチェーンもしくは type guards (型ガード) をする必要があります。なぜなら、コンポーネントがマウントされるまでは ref の初期値は `null` であり、参照されていた要素が `v-if` によってアンマウントされた場合にも `null` にセットされる可能性があるからです。
 
-## コンポーネントのテンプレート参照の型付け
+## コンポーネントのテンプレート参照の型付け {#typing-component-template-refs}
 
 時に、子コンポーネントのパブリックメソッドを呼ぶために、子コンポーネントのテンプレート参照に型づけする必要があるかもしれません。例えば、モーダルを開くメソッドを持つ `MyModal` という子コンポーネントがあるとします:
 

@@ -13,7 +13,7 @@ const selected = ref('')
 const multiSelected = ref([])
 </script>
 
-# フォーム入力バインディング
+# フォーム入力バインディング {#form-input-bindings}
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/user-inputs-vue-devtools-in-vue-3" title="Free Lesson on User Inputs with Vue.js"/>
@@ -47,9 +47,9 @@ const multiSelected = ref([])
 `v-model` はフォーム要素にある `value` 、 `checked` 、 `selected` 属性の初期値を無視します。 `v-model` は常に現在バインドされた JavaScript の状態を信頼できるソースとして扱います。初期値の宣言は JavaScript 側で、  <span class="options-api">`data` オプション</span><span class="composition-api">リアクティビティー API</span> を使用して行ってください。
 :::
 
-## 基本的な使い方
+## 基本的な使い方 {#basic-usage}
 
-### テキスト
+### テキスト {#text}
 
 ```vue-html
 <p>Message is: {{ message }}</p>
@@ -77,7 +77,7 @@ const multiSelected = ref([])
 [IME](https://en.wikipedia.org/wiki/Input_method) を必要とする言語 (中国語、日本語、韓国語など) では、IME による入力中に `v-model` が更新されないことに気づくでしょう。 もしこれらの更新にも対応したい場合は、 `v-model` の代わりに `input` イベントリスナーと `value` バインディングを使用してください。
 :::
 
-### 複数行テキスト
+### 複数行テキスト {#multiline-text}
 
 ```vue-html
 <span>Multiline message is:</span>
@@ -112,7 +112,7 @@ const multiSelected = ref([])
 <textarea v-model="text"></textarea>
 ```
 
-### チェックボックス
+### チェックボックス {#checkbox}
 
 単一のチェックボックス、 boolean 値:
 
@@ -199,7 +199,7 @@ export default {
 
 </div>
 
-### ラジオ
+### ラジオ {#radio}
 
 ```vue-html
 <div>Picked: {{ picked }}</div>
@@ -232,7 +232,7 @@ export default {
 
 </div>
 
-### セレクト
+### セレクト {#select}
 
 単一選択:
 
@@ -360,7 +360,7 @@ export default {
 
 </div>
 
-## 値のバインディング
+## 値のバインディング {#value-bindings}
 
 ラジオやチェックボックス、セレクトオプションにおいて、 `v-model` でバインディングされる値は通常は静的な文字列です (またチェックボックスでは真偽値も):
 
@@ -412,7 +412,7 @@ export default {
 
 `pick` には、 1 つ目のラジオがチェックされると  `first` の値がセットされ、 2 つ目のラジオがチェックされると `second` の値がセットされます。
 
-### セレクトオプション
+### セレクトオプション {#select-options}
 
 ```vue-html
 <select v-model="selected">
@@ -423,9 +423,9 @@ export default {
 
 `v-model` は文字列でない値のバインディングもサポートしています！　上記の例では、オプションが選択されると、 `selected` にはオブジェクトリテラル値である `{ number: 123 }` がセットされます。
 
-## 修飾子
+## 修飾子 {#modifiers}
 
-### `.lazy`
+### `.lazy` {#lazy}
 
 デフォルトでは、 `v-model` は各 `input` イベントの後に、入力とデータを同期します ([上記](#vmodel-ime-tip) の IME による入力は例外とします)。 代わりに `change` イベント後に同期する `lazy` 修飾子を追加することができます。
 
@@ -434,7 +434,7 @@ export default {
 <input v-model.lazy="msg" />
 ```
 
-### `.number`
+### `.number` {#number}
 
 ユーザー入力を自動で数値として型変換したい場合、 `v-model` で管理している入力に `number` 修飾子を追加することができます。
 
@@ -446,7 +446,7 @@ export default {
 
 input が `type="number"` を持つ場合は `number` 修飾子が自動で適用されます。
 
-### `.trim`
+### `.trim` {#trim}
 
 ユーザー入力から自動で空白を取り除きたい場合、 `v-model` で管理している入力に `trim` 修飾子を追加することができます。
 
@@ -454,7 +454,7 @@ input が `type="number"` を持つ場合は `number` 修飾子が自動で適�
 <input v-model.trim="msg" />
 ```
 
-## コンポーネントの `v-model`
+## コンポーネントの `v-model` {#v-model-with-components}
 
 > Vue のコンポーネントにまだ慣れていない場合、とりあえずはこのセクションをスキップすることができます。
 

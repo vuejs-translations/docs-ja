@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# Suspense
+# Suspense {#suspense}
 
 :::warning 実験的な機能
 `<Suspense>` は実験的な機能です。stable になることは保証されていませんし、stable になる前に API が変更される可能性もあります。
@@ -10,7 +10,7 @@ outline: deep
 
 `<Suspense>` は、コンポーネントツリーの非同期な依存関係をオーケストレーションするための組み込みコンポーネントです。コンポーネントツリーの下にある複数のネストされた非同期な依存関係が解決されるのを待つ間、ローディング状態をレンダリングすることができます。
 
-## 非同期な依存関係
+## 非同期な依存関係 {#async-dependencies}
 
 `<Suspense>` が解決しようとしている問題と、`<Suspense>` が非同期な依存関係と相互作用する方法について説明するために、以下のようなコンポーネント階層を想像してみましょう:
 
@@ -34,7 +34,7 @@ outline: deep
 
 2. [非同期コンポーネント](/guide/components/async.html).
 
-### `async setup()`
+### `async setup()` {#async-setup}
 
 Composition API のコンポーネントの `setup()` フックは非同期にすることができます:
 
@@ -63,13 +63,13 @@ const posts = await res.json()
 </template>
 ```
 
-### 非同期コンポーネント
+### 非同期コンポーネント {#async-components}
 
 非同期コンポーネントはデフォルトで **"suspensible"** です。これは、もし親のチェーンに `<Suspense>` が有る場合、その `<Suspense>` の非同期な依存コンポーネントとして扱われることを意味します。この場合、ローディング状態は親チェーンの `<Suspense>` によってコントロールされ、コンポーネント自身のローディング、エラー、遅延、タイムアウトのオプションは無視されます。
 
 非同期コンポーネントでは、`suspensible: false` をオプションで設定することで `suspense` の制御をオプトアウトして、コンポーネントが常に自身のローディング状態を制御できるようにすることができます。
 
-## ローディング状態
+## ローディング状態 {#loading-state}
 
 `<Suspense>` コンポーネントには `#default` と `#fallback` という 2 つのスロットがあります。どちらのスロットも直下の子ノードは **一つ** しか置けません。可能であればデフォルトのスロットのノードが表示されます。そうでない場合は、フォールバックスロットのノードが代わりに表示されます。
 
@@ -93,17 +93,17 @@ const posts = await res.json()
 
 pending 状態に戻った場合、フォールバックのコンテンツはすぐには表示されません。代わりに `<Suspense>` は新しいコンテンツとその非同期な依存関係が解決されるのを待つ間、以前の `#default` コンテンツを表示します。この動作は `timeout` プロパティで設定することができます: `<Suspense>` は新しいデフォルトコンテンツのレンダリングに `timeout` よりも時間がかかった場合、フォールバックコンテンツに切り替わります。`timeout` に `0` を指定すると、デフォルトのコンテンツが置き換わったときに、すぐにフォールバックコンテンツが表示されます。
 
-## イベント
+## イベント {#events}
 
 `<Suspense>` コンポーネントは `pending` `resolve` `fallback` の 3 種類のイベントを発行します。 `pending` イベントは pending 状態になったときに発行されます。`resolve` イベントは `default` スロットで新しいコンテンツの依存関係の解決が完了したときに発行されます。`fallback` イベントは `fallback` スロットのコンテンツが表示されたときに発行されます。
 
 これらのイベントは、例えば、新しいコンポーネントがロードされている間、古い DOM の前面にローディングの表示をするためなどに使用することができます。
 
-## エラーハンドリング
+## エラーハンドリング {#error-handling}
 
 `<Suspense>` は現在のところ、それ自身ではエラーハンドリングは提供していません。ただし、`<Suspense>` の親コンポーネントで [`errorCaptured`](/api/options-lifecycle.html#errorcaptured) オプションや [`onErrorCaptured()`](/api/composition-api-lifecycle.html#onerrorcaptured) フックを使って非同期なエラーを補足して処理することができます。
 
-## 他のコンポーネントとの組み合わせ
+## 他のコンポーネントとの組み合わせ {#combining-with-other-components}
 
 `<Suspense>` を [`<Transition>`](./transition) や [`<KeepAlive>`](./keep-alive) と組み合わせて使用したい場合はよくあります。これらのコンポーネントを正しく動作させるためには、ネストの順番が重要です。
 
