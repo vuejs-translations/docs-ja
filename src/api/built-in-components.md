@@ -2,18 +2,18 @@
 pageClass: api
 ---
 
-# Built-in Components
+# ビルトインのコンポーネント
 
-:::info Registration and Usage
-Built-in components can be used directly in templates without needing to be registered. They are also tree-shakeable: they are only included in the build when they are used.
+:::info 登録と使用
+組み込みコンポーネントは登録する必要なくテンプレート内で直接使用できます。ツリーシェイクも可能で、使用されたときだけビルドに含まれます。
 
-When using them in [render functions](/guide/extras/render-function.html), they need to be imported explicitly. For example:
+[render 関数](/guide/extras/render-function.html)で使用する場合は明示的にインポートする必要があります。例えば:
 
 ```js
 import { h, Transition } from 'vue'
 
 h(Transition, {
-  /* props */
+  /* プロパティ */
 })
 ```
 
@@ -21,50 +21,50 @@ h(Transition, {
 
 ## `<Transition>`
 
-Provides animated transition effects to a **single** element or component.
+**単一の**要素またはコンポーネントにアニメーションのトランジションを提供します。
 
-- **Props**
+- **プロパティ**
 
   ```ts
   interface TransitionProps {
     /**
-     * Used to automatically generate transition CSS class names.
-     * e.g. `name: 'fade'` will auto expand to `.fade-enter`,
-     * `.fade-enter-active`, etc.
+     * トランジションの CSS クラス名を自動生成するために使用します。
+     * 例: `name: 'fade'` は `.fade-enter` や `.fade-enter-active`
+     * などに自動展開されます。
      */
     name?: string
     /**
-     * Whether to apply CSS transition classes.
-     * Default: true
+     * CSS のトランジションクラスを適用するかどうか。
+     * デフォルト: true
      */
     css?: boolean
     /**
-     * Specifies the type of transition events to wait for to
-     * determine transition end timing.
-     * Default behavior is auto detecting the type that has
-     * longer duration.
+     * トランジション終了タイミングを決定するために待機する、
+     * トランジションイベントの種類を指定します。
+     * デフォルトの動作は、持続時間がより長い方のタイプを
+     * 自動検出します。
      */
     type?: 'transition' | 'animation'
     /**
-     * Specifies explicit durations of the transition.
-     * Default behavior is wait for the first `transitionend`
-     * or `animationend` event on the root transition element.
+     * トランジションの持続時間を明示的に指定します。
+     * デフォルトの動作は、ルートトランジション要素の最初の
+     * `transitionend` または `animationend` イベントを待ちます。
      */
     duration?: number | { enter: number; leave: number }
     /**
-     * Controls the timing sequence of leaving/entering transitions.
-     * Default behavior is simultaneous.
+     * leaving/entering トランジションのタイミングシーケンスを制御。
+     * デフォルトの動作は同時です。
      */
     mode?: 'in-out' | 'out-in' | 'default'
     /**
-     * Whether to apply transition on initial render.
-     * Default: false
+     * 初回レンダリング時にトランジションを適用するかどうか。
+     * デフォルト: false
      */
     appear?: boolean
 
     /**
-     * Props for customizing transition classes.
-     * Use kebab-case in templates, e.g. enter-from-class="xxx"
+     * トランジションクラスをカスタマイズするためのプロパティ。
+     * テンプレートでは kebab-case を使用（例: enter-from-class="xxx"）
      */
     enterFromClass?: string
     enterActiveClass?: string
@@ -78,7 +78,7 @@ Provides animated transition effects to a **single** element or component.
   }
   ```
 
-- **Events**
+- **イベント**
 
   - `@before-enter`
   - `@before-leave`
@@ -89,12 +89,12 @@ Provides animated transition effects to a **single** element or component.
   - `@after-leave`
   - `@after-appear`
   - `@enter-cancelled`
-  - `@leave-cancelled` (`v-show` only)
+  - `@leave-cancelled`（`v-show` のみ）
   - `@appear-cancelled`
 
-- **Example**
+- **例**
 
-  Simple element:
+  シンプルな要素:
 
   ```vue-html
   <Transition>
@@ -102,7 +102,7 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-  Dynamic component, with transition mode + animate on appear:
+  トランジションモードと出現時のアニメーションを備えているダイナミックコンポーネント:
 
   ```vue-html
   <Transition name="fade" mode="out-in" appear>
@@ -110,7 +110,7 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-  Listening to transition events:
+  トランジションイベントを購読する:
 
   ```vue-html
   <Transition @after-enter="onTransitionComplete">
@@ -118,43 +118,43 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-- **See also:** [`<Transition>` Guide](/guide/built-ins/transition.html)
+- **参照:** [`<Transition>` ガイド](/guide/built-ins/transition.html)
 
 ## `<TransitionGroup>`
 
-Provides transition effects for **multiple** elements or components in a list.
+リスト内の**複数**の要素またはコンポーネントにトランジション効果を提供する。
 
-- **Props**
+- **プロパティ**
 
-  `<TransitionGroup>` accepts the same props as `<Transition>` except `mode`, plus two additional props:
+  `<TransitionGroup>` は `<Transition>` と同じプロパティ（`mode` 以外）と追加の 2 つのプロパティを受け取ります:
 
   ```ts
   interface TransitionGroupProps extends Omit<TransitionProps, 'mode'> {
     /**
-     * If not defined, renders as a fragment.
+     * 未定義の場合はフラグメントとしてレンダリングされます。
      */
     tag?: string
     /**
-     * For customizing the CSS class applied during move transitions.
-     * Use kebab-case in templates, e.g. move-class="xxx"
+     * 移動のトランジション中に適用される CSS クラスのカスタマイズ。
+     * テンプレートでは kebab-case を使用（例: move-class="xxx"）
      */
     moveClass?: string
   }
   ```
 
-- **Events**
+- **イベント**
 
-  `<TransitionGroup>` emits the same events as `<Transition>`.
+  `<TransitionGroup>` は `<Transition>` と同じイベントを発行します。
 
-- **Details**
+- **詳細**
 
-  By default, `<TransitionGroup>` doesn't render a wrapper DOM element, but one can be defined via the `tag` prop.
+  デフォルトでは、`<TransitionGroup>` はラッパー DOM 要素をレンダリングしませんが、 `tag` プロパティによって定義できます。
 
-  Note that every child in a `<transition-group>` must be [**uniquely keyed**](/guide/essentials/list.html#maintaining-state-with-key) for the animations to work properly.
+  アニメーションが正しく動作するためには、`<transition-group>` 内のすべての子に[**一意なキーを指定**](/guide/essentials/list.html#maintaining-state-with-key)する必要があることに注意してください。
 
-  `<TransitionGroup>` supports moving transitions via CSS transform. When a child's position on screen has changed after an update, it will get applied a moving CSS class (auto generated from the `name` attribute or configured with the `move-class` prop). If the CSS `transform` property is "transition-able" when the moving class is applied, the element will be smoothly animated to its destination using the [FLIP technique](https://aerotwist.com/blog/flip-your-animations/).
+  `<TransitionGroup>` は CSS の transform による移動トランジションに対応しています。更新後に画面上の子の位置が変化した場合、移動用の CSS クラス（`name` 属性から自動生成されるか、`move-class` プロパティで設定）が適用されます。移動用のクラスが適用されたときに、CSS の `transform` プロパティが「トランジション可能」であれば、その要素は [FLIP テクニック](https://aerotwist.com/blog/flip-your-animations/)を使って移動先までスムーズにアニメーションします。
 
-- **Example**
+- **例**
 
   ```vue-html
   <TransitionGroup tag="ul" name="slide">
@@ -164,28 +164,28 @@ Provides transition effects for **multiple** elements or components in a list.
   </TransitionGroup>
   ```
 
-- **See also:** [Guide - TransitionGroup](/guide/built-ins/transition-group.html)
+- **参照:** [ガイド - TransitionGroup](/guide/built-ins/transition-group.html)
 
 ## `<KeepAlive>`
 
-Caches dynamically toggled components wrapped inside.
+動的に切り替えられる、内側のコンポーネントをキャッシュします。
 
-- **Props**
+- **プロパティ**
 
   ```ts
   interface KeepAliveProps {
     /**
-     * If specified, only components with names matched by
-     * `include` will be cached.
+     * 指定された場合、`include` でマッチした名前の
+     * コンポーネントのみがキャッシュされます。
      */
     include?: MatchPattern
     /**
-     * Any component with a name matched by `exclude` will
-     * not be cached.
+     * `exclude` でマッチした名前のコンポーネントは
+     * キャッシュされません。
      */
     exclude?: MatchPattern
     /**
-     * The maximum number of component instances to cache.
+     * キャッシュするコンポーネントインスタンスの最大数。
      */
     max?: number | string
   }
@@ -193,17 +193,17 @@ Caches dynamically toggled components wrapped inside.
   type MatchPattern = string | RegExp | (string | RegExp)[]
   ```
 
-- **Details**
+- **詳細**
 
-  When wrapped around a dynamic component, `<KeepAlive>` caches the inactive component instances without destroying them.
+  動的コンポーネントをラップすると、`<KeepAlive>` は非アクティブなコンポーネントインスタンスを破棄せずにキャッシュします。
 
-  There can only be one active component instance as the direct child of `<KeepAlive>` at any time.
+  `<KeepAlive>` の直接の子として、アクティブなコンポーネントのインスタンスは常に 1 つだけです。
 
-  When a component is toggled inside `<KeepAlive>`, its `activated` and `deactivated` lifecycle hooks will be invoked accordingly, providing an alternative to `mounted` and `unmounted`, which are not called. This applies to the direct child of `<KeepAlive>` as well as to all of its descendants.
+  `<KeepAlive>` の内部でコンポーネントが切り替えられると、その `activated` と `deactivated` ライフサイクルフックが呼び出されます（`mounted` と `unmounted` は呼び出されず、その代わりとして提供されています）。これは `<KeepAlive>` の直接の子だけでなく、そのすべての子孫にも適用されます。
 
-- **Example**
+- **例**
 
-  Basic usage:
+  基本的な使い方:
 
   ```vue-html
   <KeepAlive>
@@ -211,7 +211,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-  When used with `v-if` / `v-else` branches, there must be only one component rendered at a time:
+  `v-if` / `v-else` の分岐を使用する場合、一度にレンダリングされるコンポーネントは 1 つだけである必要があります:
 
   ```vue-html
   <KeepAlive>
@@ -220,7 +220,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-  Used together with `<Transition>`:
+  `<Transition>` と共に使用:
 
   ```vue-html
   <Transition>
@@ -230,26 +230,26 @@ Caches dynamically toggled components wrapped inside.
   </Transition>
   ```
 
-  Using `include` / `exclude`:
+  `include` / `exclude` の使用:
 
   ```vue-html
-  <!-- comma-delimited string -->
+  <!-- カンマ区切りの文字列 -->
   <KeepAlive include="a,b">
     <component :is="view"></component>
   </KeepAlive>
 
-  <!-- regex (use `v-bind`) -->
+  <!-- 正規表現（`v-bind` を使用） -->
   <KeepAlive :include="/a|b/">
     <component :is="view"></component>
   </KeepAlive>
 
-  <!-- Array (use `v-bind`) -->
+  <!-- 配列（`v-bind` を使用） -->
   <KeepAlive :include="['a', 'b']">
     <component :is="view"></component>
   </KeepAlive>
   ```
 
-  Usage with `max`:
+  `max` の使用:
 
   ```vue-html
   <KeepAlive :max="10">
@@ -257,33 +257,33 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-- **See also:** [Guide - KeepAlive](/guide/built-ins/keep-alive.html)
+- **参照:** [ガイド - KeepAlive](/guide/built-ins/keep-alive.html)
 
 ## `<Teleport>`
 
-Renders its slot content to another part of the DOM.
+スロットの内容を DOM の別の場所にレンダリングします。
 
-- **Props**
+- **プロパティ**
 
   ```ts
   interface TeleportProps {
     /**
-     * Required. Specify target container.
-     * Can either be a selector or an actual element.
+     * 必須。ターゲットコンテナーを指定します。
+     * セレクターまたは実際の要素のいずれかを指定できます。
      */
     to: string | HTMLElement
     /**
-     * When `true`, the content will remain in its original
-     * location instead of moved into the target container.
-     * Can be changed dynamically.
+     * `true` の場合、コンテンツはターゲットコンテナーに
+     * 移動せずに元の場所に残ります。
+     * 動的に変更できます。
      */
     disabled?: boolean
   }
   ```
 
-- **Example**
+- **例**
 
-  Specifying target container:
+  ターゲットコンテナーの指定:
 
   ```vue-html
   <teleport to="#some-id" />
@@ -291,7 +291,7 @@ Renders its slot content to another part of the DOM.
   <teleport to="[data-teleport]" />
   ```
 
-  Conditionally disabling:
+  条件によって無効化:
 
   ```vue-html
   <teleport to="#popup" :disabled="displayVideoInline">
@@ -299,13 +299,13 @@ Renders its slot content to another part of the DOM.
   </teleport>
   ```
 
-- **See also:** [Guide - Teleport](/guide/built-ins/teleport.html)
+- **参照:** [ガイド - Teleport](/guide/built-ins/teleport.html)
 
 ## `<Suspense>` <sup class="vt-badge experimental" />
 
-Used for orchestrating nested async dependencies in a component tree.
+コンポーネントツリー内のネストした非同期な依存関係を管理するために使用します。
 
-- **Props**
+- **プロパティ**
 
   ```ts
   interface SuspenseProps {
@@ -313,16 +313,16 @@ Used for orchestrating nested async dependencies in a component tree.
   }
   ```
 
-- **Events**
+- **イベント**
 
   - `@resolve`
   - `@pending`
   - `@fallback`
 
-- **Details**
+- **詳細**
 
-  `<Suspense>` accepts two slots: the `#default` slot and the `#fallback` slot. It will display the content of the fallback slot while rendering the default slot in memory.
+  `<Suspense>` は `#default` スロットと `#fallback` スロットの 2 つのスロットを受け付けます。default スロットをメモリー内にレンダリングする間、fallback スロットの内容を表示します。
 
-  If it encounters async dependencies ([Async Components](/guide/components/async.html) and components with [`async setup()`](/guide/built-ins/suspense.html#async-setup)) while rendering the default slot, it will wait until all of them are resolved before displaying the default slot.
+  デフォルトスロットのレンダリング中に非同期な依存関係（[非同期コンポーネント](/guide/components/async.html)や [`async setup()`](/guide/built-ins/suspense.html#async-setup) のコンポーネント）が発生すると、それらが全て解決するまで待ってからデフォルトスロットを表示します。
 
-- **See also:** [Guide - Suspense](/guide/built-ins/suspense.html)
+- **参照:** [ガイド - Suspense](/guide/built-ins/suspense.html)
