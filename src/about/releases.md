@@ -16,7 +16,7 @@ onMounted(async () => {
 # リリース
 
 <p v-if="version">
-現在の安定版の Vue の最新バージョンは <strong>{{ version }}</strong> です。
+現在の最新版の Vue の安定バージョンは <strong>{{ version }}</strong> です。
 </p>
 <p v-else>
 Checking latest version...
