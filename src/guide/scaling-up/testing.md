@@ -205,7 +205,7 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
   もしメソッドを徹底的にテストする必要があるなら、スタンドアローンのユーティリティー関数に抽出し、専用の単体テストを書くことを検討してください。きれいに抽出できない場合は、それをカバーするコンポーネントテスト、統合テスト、またはエンドツーエンドテストの一部としてテストすることができます。
 
-### 推奨事項
+### 推奨事項 {#recommendation-1}
 
 - [Vitest](https://vitest.dev/) はヘッドレスでレンダリングするコンポーネントやコンポーザブルのためのライブラリーです（例: VueUse の[`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon)関数など）。コンポーネントと DOM は [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro) を使うことでテストできます。
 
@@ -223,7 +223,7 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 アプリケーションのテストの優先順位と一致するため、アプリケーションのコンポーネントテストには `@testing-library/vue` を使用することをお勧めします。Vue 固有の内部機能をテストする必要があるような、高度なコンポーネントを構築する場合にのみ `@vue/test-utils` を使用してください。
 
-### その他の選択肢
+### その他の選択肢 {#other-options-1}
 
 - [Nightwatch](https://v2.nightwatchjs.org/) は、Vue コンポーネントテストをサポートする E2E テストランナーです。(Nightwatch バージョン 2 の[プロジェクトの例](https://github.com/nightwatchjs-community/todo-vue)）
 
@@ -263,13 +263,13 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 エンドツーエンド (E2E) テストが継続的インテグレーション / デプロイメントパイプラインで実行されるとき、しばしばヘッドレスブラウザーで実行されます（すなわち、ユーザーが見るためのブラウザーが開かれません）。最新の E2E テストフレームワークの重要な機能では、テスト中にアプリケーションのスナップショットやビデオを見て、エラーが発生した理由に対する何らかの洞察を得られる機能があります。歴史的に、これらの機能の統合を維持するのは面倒なことでした。
 
-### 推奨事項
+### 推奨事項 {#recommendation-2}
 
 - [Cypress](https://www.cypress.io/)
 
   全体的に見て Cypress は、有益なグラフィカルインターフェース、優れたデバッグ性、組み込みアサーションとスタブ、耐フレーク性、並列化、スナップショットなどの機能により、最も完成した E2E ソリューションを提供すると私たちは考えています。また、前述の通り[コンポーネントのテスト](https://docs.cypress.io/guides/component-testing/introduction)もサポートしています。ですが、サポートしているのは Chromium ベースのブラウザーと Firefox のみです。
 
-### その他の選択肢
+### その他の選択肢 {#other-options-2}
 
 - [Playwright](https://playwright.dev/) は、より幅広いブラウザー（主に WebKit）をサポートする、優れた E2E テストソリューションでもあります。詳しくは[なぜ Playwright なのか](https://playwright.dev/docs/why-playwright)をご覧ください。
 
