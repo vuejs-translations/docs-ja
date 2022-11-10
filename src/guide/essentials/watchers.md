@@ -244,7 +244,7 @@ export default {
 }
 ```
 
-The initial execution of the handler function will happen just before the `created` hook. Vue will have already processed the `data`, `computed`, and `methods` options, so those properties will be available on the first invocation.
+ハンドラー関数の初回実行は、`created` フックの直前で行われます。Vue は `data`、`computed`、`methods` オプションを処理済みなので、これらのプロパティは初回呼び出しの際に利用可能です。
 </div>
 
 <div class="composition-api">
