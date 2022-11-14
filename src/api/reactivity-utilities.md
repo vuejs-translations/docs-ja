@@ -183,7 +183,9 @@
 
 ## isReadonly()
 
-オブジェクトが [`readonly()`](./reactivity-core.html#readonly) または [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly) によって作られたプロキシかどうかをチェックします。
+渡された値が読み取り専用オブジェクトであるかどうかをチェックします。読み取り専用オブジェクトのプロパティは変更可能ですが、渡されたオブジェクトを経由して直接代入することはできません。
+
+[`readonly()`](./reactivity-core.html#readonly) と [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly) で作成したプロキシは、`set` 関数なしの [`computed()`](./reactivity-core.html#computed) ref と同様に読み取り専用と見なされます。
 
 - **型**
 
