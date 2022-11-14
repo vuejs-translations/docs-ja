@@ -393,7 +393,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         { text: 'ディレクティブ', link: '/api/built-in-directives' },
         { text: 'コンポーネント', link: '/api/built-in-components' },
         {
-          text: 'Special Elements',
+          text: '特別な要素',
           link: '/api/built-in-special-elements'
         },
         {

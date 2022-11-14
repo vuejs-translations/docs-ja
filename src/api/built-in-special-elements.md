@@ -1,14 +1,14 @@
-# Built-in Special Elements {#built-in-special-elements}
+# ビルトインの特別な要素 {#built-in-special-elements}
 
-:::info Not Components
-`<component>` and `<slot>` are component-like features and part of the template syntax. They are not true components and are compiled away during template compilation. As such, they are conventionally written with lowercase in templates.
+:::info コンポーネントではありません
+`<component>` と `<slot>` はコンポーネントのような機能であり、テンプレート構文の一部です。これらは真のコンポーネントではなく、テンプレートのコンパイル時に取り除かれます。そのため、テンプレート内では慣習的に小文字で記述されます。
 :::
 
 ## `<component>` {#component}
 
-A "meta component" for rendering dynamic components or elements.
+動的コンポーネントや動的な要素をレンダリングするための「メタ・コンポーネント」です。
 
-- **Props**
+- **プロパティ**
 
   ```ts
   interface DynamicComponentProps {
@@ -16,17 +16,17 @@ A "meta component" for rendering dynamic components or elements.
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The actual component to render is determined by the `is` prop.
+  実際にレンダリングするコンポーネントは `is` プロパティによって決定されます。
 
-  - When `is` is a string, it could be either an HTML tag name or a component's registered name.
+  - `is` が文字列の場合、HTML タグ名か、コンポーネントの登録名となります。
 
-  - Alternatively, `is` can also be directly bound to the definition of a component.
+  - また、`is` はコンポーネントの定義に直接バインドもできます。
 
-- **Example**
+- **例**
 
-  Rendering components by registered name (Options API):
+  登録名によるコンポーネントのレンダリング（Options API）:
 
   ```vue
   <script>
@@ -48,7 +48,7 @@ A "meta component" for rendering dynamic components or elements.
   </template>
   ```
 
-  Rendering components by definition (Composition API with `<script setup>`):
+  定義によるコンポーネントのレンダリング（`<script setup>` の Composition API）:
 
   ```vue
   <script setup>
@@ -61,13 +61,13 @@ A "meta component" for rendering dynamic components or elements.
   </template>
   ```
 
-  Rendering HTML elements:
+  HTML 要素のレンダリング:
 
   ```vue-html
   <component :is="href ? 'a' : 'span'"></component>
   ```
 
-  The [built-in components](./built-in-components.html) can all be passed to `is`, but you must register them if you want to pass them by name. For example:
+  [ビルトインのコンポーネント](./built-in-components.html)はすべて `is` に渡すことができますが、名前で渡したい場合は登録しなければなりません。例えば:
 
   ```vue
   <script>
@@ -88,9 +88,9 @@ A "meta component" for rendering dynamic components or elements.
   </template>
   ```
 
-  Registration is not required if you pass the component itself to `is` rather than its name, e.g. in `<script setup>`.
+  例えば `<script setup>` などで、コンポーネント名ではなく、コンポーネント自体を `is` に渡す場合は、登録は必要ありません。
 
-  If `v-model` is used on a `<component>` tag, the template compiler will expand it to a `modelValue` prop and `update:modelValue` event listener, much like it would for any other component. However, this won't be compatible with native HTML elements, such as `<input>` or `<select>`. As a result, using `v-model` with a dynamically created native element won't work: 
+  もし `v-model` が `<component>` タグで使用された場合、テンプレートコンパイラーは他のコンポーネントと同じように、`modelValue` プロパティと `update:modelValue` イベントリスナーに展開されます。しかし、これは `<input>` や `<select>` のようなネイティブ HTML 要素とは互換性がありません。そのため、動的に生成されるネイティブ要素に対して `v-model` を使用しても動作しません:
 
   ```vue
   <script setup>
@@ -101,41 +101,41 @@ A "meta component" for rendering dynamic components or elements.
   </script>
 
   <template>
-    <!-- This won't work as 'input' is a native HTML element -->
+    <!-- 'input' はネイティブ HTML 要素なので、動作しません -->
     <component :is="tag" v-model="username" />
   </template>
   ```
 
-  In practice, this edge case isn't common as native form fields are typically wrapped in components in real applications. If you do need to use a native element directly then you can split the `v-model` into an attribute and event manually.
+  実際のアプリケーションでは、ネイティブのフォームフィールドはコンポーネントでラップされるのが一般的なので、このようなエッジケースはあまりありません。もし、ネイティブ要素を直接使用する必要がある場合は、 `v-model` を属性とイベントに手動で分割できます。
 
-- **See also:** [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components)
+- **参照:** [動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)
 
 ## `<slot>` {#slot}
 
-Denotes slot content outlets in templates.
+テンプレート内でスロットコンテンツのアウトレットを表します。
 
-- **Props**
+- **プロパティ**
 
   ```ts
   interface SlotProps {
     /**
-     * Any props passed to <slot> to passed as arguments
-     * for scoped slots
+     * <slot> に渡されたすべてのプロパティは、スコープ付き
+     * スロットの引数として渡されます
      */
     [key: string]: any
     /**
-     * Reserved for specifying slot name.
+     * スロット名を指定するために予約済み。
      */
     name?: string
   }
   ```
 
-- **Details**
+- **詳細**
 
-  The `<slot>` element can use the `name` attribute to specify a slot name. When no `name` is specified, it will render the default slot. Additional attributes passed to the slot element will be passed as slot props to the scoped slot defined in the parent.
+  `<slot>` 要素では `name` 属性を使用してスロット名を指定できます。`name` が指定されない場合は、デフォルトのスロットがレンダリングされます。slot 要素に渡された追加の属性は、親で定義されたスコープ付きスロットにスロットプロパティとして渡されます。
 
-  The element itself will be replaced by its matched slot content.
+  この要素そのものは、一致したスロットの内容に置き換えられます。
 
-  `<slot>` elements in Vue templates are compiled into JavaScript, so they are not to be confused with [native `<slot>` elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot).
+  Vue テンプレートの `<slot>` 要素は JavaScript にコンパイルされているので、[ネイティブの `<slot>` 要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/slot)と混同しないように注意してください。
 
-- **See also:** [Component - Slots](/guide/components/slots.html)
+- **参照:** [コンポーネント - スロット](/guide/components/slots.html)
