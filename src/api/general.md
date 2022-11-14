@@ -1,6 +1,6 @@
-# グローバル API: 汎用
+# グローバル API: 汎用 {#global-api-general}
 
-## version
+## version {#version}
 
 Vue の現在のバージョンを公開します。
 
@@ -14,7 +14,7 @@ Vue の現在のバージョンを公開します。
   console.log(version)
   ```
 
-## nextTick()
+## nextTick() {#nexttick}
 
 次の DOM 更新処理を待つためのユーティリティーです。
 
@@ -94,7 +94,7 @@ Vue の現在のバージョンを公開します。
 
 - **参照:** [`this.$nextTick()`](/api/component-instance.html#nexttick)
 
-## defineComponent()
+## defineComponent() {#definecomponent}
 
 型推論つきの Vue コンポーネントを定義するための型ヘルパー。
 
@@ -136,7 +136,7 @@ Vue の現在のバージョンを公開します。
 
 - **参照:** [ガイド - TypeScript で Vue を使用する](/guide/typescript/overview.html#general-usage-notes)
 
-## defineAsyncComponent()
+## defineAsyncComponent() {#defineasynccomponent}
 
 レンダリング時にのみ遅延読み込みされる非同期コンポーネントを定義します。引数にはローダー関数か、読み込み動作をより詳細に制御するためのオプションオブジェクトを指定します。
 
@@ -167,7 +167,7 @@ Vue の現在のバージョンを公開します。
 
 - **参照:** [ガイド - 非同期コンポーネント](/guide/components/async.html)
 
-## defineCustomElement()
+## defineCustomElement() {#definecustomelement}
 
 このメソッドは [`defineComponent`](#definecomponent) と同じ引数を受け取りますが、代わりにネイティブの[カスタム要素](https://developer.mozilla.org/ja/docs/Web/Web_Components/Using_custom_elements)クラスのコンストラクタを返します。
 
@@ -206,6 +206,6 @@ Vue の現在のバージョンを公開します。
 
 - **参照:**
 
-  - [ガイド - Vue によるカスタム要素のビルド](/guide/extras/web-components.html#vue-によるカスタム要素のビルド)
+  - [ガイド - Vue によるカスタム要素のビルド](/guide/extras/web-components.html#building-custom-elements-with-vue)
 
-  - また、`defineCustomElement()` は単一ファイルコンポーネントで使用する場合、[特別な設定](/guide/extras/web-components.html#カスタム要素としての-sfc)が必要なので注意してください。
+  - また、`defineCustomElement()` は単一ファイルコンポーネントで使用する場合、[特別な設定](/guide/extras/web-components.html#sfc-as-custom-element)が必要なので注意してください。

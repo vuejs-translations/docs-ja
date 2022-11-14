@@ -1,6 +1,6 @@
-# オプション: レンダリング
+# オプション: レンダリング {#options-rendering}
 
-## template
+## template {#template}
 
 コンポーネントの文字列テンプレート。
 
@@ -23,10 +23,10 @@
   アプリケーションのルートコンポーネントに `template` や `render` オプションが指定されていない場合、Vue はマウントされた要素の `innerHTML` を代わりにテンプレートとして使用しようとします。
 
   :::warning セキュリティーに関する注意
-  テンプレートのソースは信頼できるものだけを使用してください。ユーザーが提供したコンテンツをテンプレートとして使用しないでください。詳しくは[セキュリティーガイド](/guide/best-practices/security.html#ルール-no-1：-信頼できないテンプレートは使わない)を参照してください。
+  テンプレートのソースは信頼できるものだけを使用してください。ユーザーが提供したコンテンツをテンプレートとして使用しないでください。詳しくは[セキュリティーガイド](/guide/best-practices/security.html#rule-no-1-never-use-non-trusted-templates)を参照してください。
   :::
 
-## render
+## render {#render}
 
 コンポーネントの仮想 DOM ツリーをプログラムで返す関数。
 
@@ -61,7 +61,7 @@
   - [レンダリングの仕組み](/guide/extras/rendering-mechanism.html)
   - [Render 関数](/guide/extras/render-function.html)
 
-## compilerOptions
+## compilerOptions {#compileroptions}
 
 コンポーネントのテンプレートのランタイムコンパイラーオプションを設定します。
 

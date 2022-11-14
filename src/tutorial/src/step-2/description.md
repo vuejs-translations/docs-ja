@@ -1,4 +1,4 @@
-# 宣言的レンダリング
+# 宣言的レンダリング {#declarative-rendering}
 
 <div class="sfc">
 

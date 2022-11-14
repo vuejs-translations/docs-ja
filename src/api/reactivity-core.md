@@ -1,4 +1,4 @@
-# リアクティビティー API: コア
+# リアクティビティー API: コア {#reactivity-api-core}
 
 :::info See also
 よりリアクティビティー API を理解するために、ガイド内の次の章を読むことを推奨します:
@@ -7,7 +7,7 @@
 - [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
   :::
 
-## ref()
+## ref() {#ref}
 
 内部値を受け取り、リアクティブでミュータブルな ref オブジェクトを返します。またそれは、内部値を示した単一プロパティである `.value` を持っています。
 
@@ -43,7 +43,7 @@
   - [Guide - Reactive Variables with `ref()`](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
   - [Guide - Typing `ref()`](/guide/typescript/composition-api.html#typing-ref)
 
-## computed()
+## computed() {#computed}
 
 ゲッター関数を受け取り、ゲッターからの戻り値に対して読み取り専用のリアクティブな [ref](#ref) オブジェクトを返します。また、`get` 関数と `set` 関数を持つオブジェクトを受け取り、書き込み可な ref オブジェクトを作成することができます。
 
@@ -113,7 +113,7 @@
   - [Guide - Computed Debugging](/guide/extras/reactivity-in-depth.html#computed-debugging)
   - [Guide - Typing `computed()`](/guide/typescript/composition-api.html#typing-computed)
 
-## reactive()
+## reactive() {#reactive}
 
 オブジェクトのリアクティブなプロキシを返します。
 
@@ -190,7 +190,7 @@
   - [Guide - Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html)
   - [Guide - Typing `reactive()`](/guide/typescript/composition-api.html#typing-reactive)
 
-## readonly()
+## readonly() {#readonly}
 
 オブジェクト(リアクティブ、もしくはプレーン)または [ref](#ref) を受け取り、元のオブジェクトへの読み取り専用なプロキシを返します。
 
@@ -227,7 +227,7 @@
   copy.count++ // warning!
   ```
 
-## watchEffect()
+## watchEffect() {#watcheffect}
 
 関数を即座に実行しながら、その依存関係をリアクティブに追跡し、依存関係が変更されるたびに再実行します。
 
@@ -256,7 +256,7 @@
 
   第 2 引数は省略可能なオプションオブジェクトで、エフェクトのフラッシュタイミングを調整したり、エフェクトの依存関係をデバッグするために使用することができます。
 
-  デフォルトでは、ウォッチャーはコンポーネントレンダリングの直前に実行されます。`flush: 'post'` を設定すると、コンポーネントのレンダリングが終わるまでウォッチャーを遅延させることができます。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers.html#コールバックが実行されるタイミング)を参照してください。まれに、キャッシュを無効にする目的などで、リアクティブな依存関係が変化したときにすぐにウォッチャーを起動させる必要がある場合があります。これは `flush: 'sync'` を使って実現することができます。ただし、この設定は、複数のプロパティが同時に更新される場合、パフォーマンスやデータの一貫性に問題が生じる可能性があるため、注意して使用する必要があります。
+  デフォルトでは、ウォッチャーはコンポーネントレンダリングの直前に実行されます。`flush: 'post'` を設定すると、コンポーネントのレンダリングが終わるまでウォッチャーを遅延させることができます。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)を参照してください。まれに、キャッシュを無効にする目的などで、リアクティブな依存関係が変化したときにすぐにウォッチャーを起動させる必要がある場合があります。これは `flush: 'sync'` を使って実現することができます。ただし、この設定は、複数のプロパティが同時に更新される場合、パフォーマンスやデータの一貫性に問題が生じる可能性があるため、注意して使用する必要があります。
 
   戻り値は、エフェクトの再実行を停止するために呼び出されるハンドル関数です。
 
@@ -312,15 +312,15 @@
   - [Guide - Watchers](/guide/essentials/watchers.html#watcheffect)
   - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging)
 
-## watchPostEffect()
+## watchPostEffect() {#watchposteffect}
 
 `flush: 'post'` オプションをつけた [`watchEffect()`](#watcheffect) のエイリアス
 
-## watchSyncEffect()
+## watchSyncEffect() {#watchsynceffect}
 
 `flush: 'sync'` オプションをつけた [`watchEffect()`](#watcheffect) のエイリアス
 
-## watch()
+## watch() {#watch}
 
 1 つ以上のリアクティブなデータソースを監視し、ソースが変更されたときにコールバック関数を呼び出します。
 
@@ -384,7 +384,7 @@
 
   - **`immediate`**: ウォッチャーが作成されたら、すぐにコールバックを起動します。最初の呼び出しでは、古い値は `undefined` になります。
   - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。詳しくは [Deep Watchers](/guide/essentials/watchers.html#deep-watchers) をご参照ください。
-  - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers.html#コールバックが実行されるタイミング)や [`watchEffect()`](/api/reactivity-core.html#watcheffect) をご参照ください。
+  - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core.html#watcheffect) をご参照ください。
   - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは [Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging) をご参照ください。
 
   [`watchEffect()`](#watcheffect) と比較すると、`watch()` は以下のことができます:

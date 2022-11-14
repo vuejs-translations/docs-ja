@@ -2,13 +2,13 @@
 outline: deep
 ---
 
-# リアクティビティーの基礎
+# リアクティビティーの基礎 {#reactivity-fundamentals}
 
 :::tip API の参照
 このページと、当ガイドの多くの章では、Options API と Composition API で異なる内容が含まれています。現在の設定は <span class="options-api">Options API</span> <span class="composition-api">Composition API</span> です。左サイドバーの上部にある「API の参照」スイッチで、API スタイルを切り替えることができます。
 :::
 
-## リアクティブな状態を宣言する
+## リアクティブな状態を宣言する {#declaring-reactive-state}
 
 <div class="options-api">
 
@@ -41,7 +41,7 @@ export default {
 
 Vue は、コンポーネントのインスタンスを介して自身の組み込み API を公開する際に、接頭辞として `$` を使用します。また、内部プロパティには `_` という接頭辞を予約します。トップレベルの `data` プロパティには、これらの文字で始まる名前を使用しないでください。
 
-### リアクティブプロキシ vs. 独自 \*
+### リアクティブプロキシ vs. 独自 \* {#reactive-proxy-vs-original}
 
 Vue 3 では、[JavaScript プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) を活用することで、データをリアクティブにすることができます。Vue 2 から来たユーザーは、以下のエッジケースに注意する必要があります：
 
@@ -131,7 +131,7 @@ export default {
 </button>
 ```
 
-### `<script setup>` \*\*
+### `<script setup>` \*\* {#script-setup}
 
 `setup()` 関数を使って手動で状態やメソッドを公開すると、冗長になることがあります。幸いなことに、これはビルドステップを使用しない場合にのみ必要です。単一ファイルコンポーネント (SFC) を使用する場合は、 `<script setup>` を使用することで大幅に簡略化することができます。
 
@@ -163,7 +163,7 @@ function increment() {
 
 <div class="options-api">
 
-## メソッドの宣言 \*
+## メソッドの宣言 \* {#declaring-methods}
 
 <VueSchoolLink href="https://vueschool.io/lessons/methods-in-vue-3" title="Vue School の無料動画レッスン"/>
 
@@ -212,7 +212,7 @@ export default {
 
 </div>
 
-### DOM 更新のタイミング
+### DOM 更新のタイミング {#dom-update-timing}
 
 リアクティブな状態を変化させると、DOM は自動的に更新されます。しかし、DOM の更新は同期的に適用されないことに注意する必要があります。その代わりに Vue は、更新サイクルの「next tick」まで更新をバッファリングし、どれだけ状態を変化させても、各コンポーネントは一度だけ更新する必要があることを保証しています。
 
@@ -251,7 +251,7 @@ export default {
 
 </div>
 
-### ディープなリアクティビティー
+### ディープなリアクティビティー {#deep-reactivity}
 
 Vue では、デフォルトで状態がリアクティブになっています。つまり、ネストしたオブジェクトや配列を変化させた場合でも、変更が検出されることが期待できます：
 
@@ -302,7 +302,7 @@ function mutateDeeply() {
 
 <div class="composition-api">
 
-### リアクティブプロキシ vs. 独自 \*\*
+### リアクティブプロキシ vs. 独自 \*\* {#reactive-proxy-vs-original-1}
 
 注意すべきは、`reactive()` の戻り値が、元のオブジェクトの [プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) であり、元のオブジェクトと等しくないということです：
 
@@ -337,7 +337,7 @@ proxy.nested = raw
 console.log(proxy.nested === raw) // false
 ```
 
-### `reactive()` の制限 \*\*
+### `reactive()` の制限 \*\* {#limitations-of-reactive}
 
 `reactive()` API には 2 つの制限があります：
 
@@ -373,7 +373,7 @@ console.log(proxy.nested === raw) // false
    callSomeFunction(state.count)
    ```
 
-## `ref()` と共に使うリアクティブな変数 \*\*
+## `ref()` と共に使うリアクティブな変数 \*\* {#reactive-variables-with-ref}
 
 Vue は、`reactive()` の制限に対処するため、[`ref()`](/api/reactivity-core.html#ref) という関数も提供しており、任意の値の型を保持できるリアクティブな **"refs "** を作成することができます：
 
@@ -427,7 +427,7 @@ const { foo, bar } = obj
 
 つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを [Composable Functions](/guide/reusability/composables.html) に抽出する際に頻繁に使用されるため、非常に重要となります。
 
-### Ref Unwrapping in Templates \*\*
+### Ref Unwrapping in Templates \*\* {#ref-unwrapping-in-templates}
 
 ref がテンプレートのトップレベルのプロパティとしてアクセスされた場合、それらは自動的に「アンラップ」されるので、`.value` を使用する必要はありません。以下は、先ほどのカウンターの例で、代わりに `ref()` を使用したものとなります：
 
@@ -453,7 +453,7 @@ function increment() {
 
 アンラップは、ref がテンプレートに描画されるコンテキスト上のトップレベルのプロパティである場合にのみ適用されることに注意してください。例として `foo` はトップレベルのプロパティですが、`object.foo` はトップレベルではありません。
 
-そこで、下記に示したようなオブジェクトが与えられた：
+そのため、下記に示したようなオブジェクトがあるとすると：
 
 ```js
 const object = { foo: ref(1) }
@@ -485,7 +485,7 @@ const { foo } = object
 
 これはテキスト補間の便利な機能に過ぎず、 <code v-pre>{{ object.foo.value }}</code> と等価になります。
 
-### リアクティブなオブジェクトにおける Ref のアンラッピング \*\*
+### リアクティブなオブジェクトにおける Ref のアンラッピング \*\* {#ref-unwrapping-in-reactive-objects}
 
 リアクティブなオブジェクトのプロパティとして `ref` にアクセスしたり変化させたりすると、自動的にアンラップされるので、通常のプロパティと同じように振る舞うことができます：
 
@@ -514,7 +514,7 @@ console.log(count.value) // 1
 
 Ref のアンラッピングは、より深いリアクティブなオブジェクトの内部にネストされている場合にのみ発生します。[浅いリアクティブなオブジェクト](/api/reactivity-advanced.html#shallowreactive) のプロパティとしてアクセスされた場合は適用されません。
 
-#### 配列とコレクションにおける Ref のアンラッピング
+### 配列とコレクションにおける Ref のアンラッピング {#ref-unwrapping-in-arrays-and-collections}
 
 リアクティブなオブジェクトと異なり、ref がリアクティブな配列の要素や、`Map` のようなネイティブコレクション型としてアクセスされた場合には、アンラップは行われません。
 
@@ -532,7 +532,7 @@ console.log(map.get('count').value)
 
 <div class="options-api">
 
-### ステートフルなメソッド \*
+### ステートフルなメソッド \* {#stateful-methods}
 
 場合によっては、デバウンスされたイベントハンドラーを作成するなど、下記に示すように、動的にメソッド関数を作成する必要があります：
 
@@ -576,7 +576,7 @@ export default {
 
 <div class="composition-api">
 
-## Reactivity Transform <sup class="vt-badge experimental" /> \*\*
+## Reactivity Transform <sup class="vt-badge experimental" /> \*\* {#reactivity-transform}
 
 Ref で `.value` を使わなければならないのは、JavaScript の言語的な制約による欠点です。しかし、コンパイル時の変換 (ここでいうコンパイル時とは SFC を JavaScript コードへ変換する時) を利用すれば、適切な場所に自動的に `.value` を追加して人間工学を改善することができます。Vue はコンパイル時の変換を提供しており、先ほどの「カウンター」の例をこのように記述することができます。
 

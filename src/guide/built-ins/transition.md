@@ -8,7 +8,7 @@ import BetweenElements from './transition-demos/BetweenElements.vue'
 import BetweenComponents from './transition-demos/BetweenComponents.vue'
 </script>
 
-# トランジション
+# トランジション {#transition}
 
 Vue には、状態の変化に応じてトランジションやアニメーションを扱うのに役立つ 2 つの組み込みコンポーネントがあります:
 
@@ -18,7 +18,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 この 2 つのコンポーネント以外にも、CSS クラスをトグルしたりスタイルバインディングによるステートドリブンアニメーションなど、Vue では他のテクニックを使ってアニメーションを適用することもできます。これらのテクニックは、[アニメーションテクニック](/guide/extras/animation.html) の章で説明されています。
 
-## `<Transition>` コンポーネント
+## `<Transition>` コンポーネント {#the-transition-component}
 
 `<Transition>` は組み込みコンポーネントです: つまり、どのコンポーネントのテンプレートでも、登録することなく利用することができます。これは、デフォルトのスロットで渡された要素やコンポーネントに対して、アニメーションを適用するために使用されます。enter と leave は次のいずれかによってトリガーされます:
 
@@ -73,9 +73,9 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 3. CSS によるトランジション / アニメーションが検出されず、JavaScript のフックも提供されない場合、ブラウザーの次のアニメーションフレームで挿入・削除のための DOM 操作が実行されます。
 
-## CSS でのトランジション
+## CSS でのトランジション {#css-based-transitions}
 
-### トランジションクラス
+### トランジションクラス {#transition-classes}
 
 以下は、enter/leave トランジションのために適用される 6 つのクラスです。
 
@@ -97,7 +97,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 後のセクションの例にもありますが、`v-enter-active` と `v-leave-active` を利用して、enter / leave トランジションに異なるイージング関数を設定できます。
 
-### 名前付きトランジション
+### 名前付きトランジション {#named-transitions}
 
 `name` props を設定することでトランジションに名前をつけられます:
 
@@ -121,7 +121,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 }
 ```
 
-### CSS トランジション
+### CSS トランジション {#css-transitions}
 
 `<Transition>` は、上記の基本的な例に見られるように、[ネィティブの CSS トランジション](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) と組み合わせて使用するのが最も一般的です。CSS プロパティ `transition` は、アニメーションを適用する CSS プロパティ、トランジションのの持続時間、[イージング関数](https://developer.mozilla.org/ja/docs/Web/CSS/easing-function) など、複数の設定を一括で指定することができるショートハンドです。
 
@@ -166,7 +166,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 </div>
 
-### CSS アニメーション
+### CSS アニメーション {#css-animations}
 
 [ネイティブの CSS アニメーション](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Animations/Using_CSS_animations) は CSS トランジションと同様に適用されますが、`*-enter-from` は要素が挿入された直後には削除されていませんが、`animationend` イベント時には削除されているという違いがあります。
 
@@ -213,7 +213,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 </div>
 
-### カスタムトランジションクラス
+### カスタムトランジションクラス {#custom-transition-classes}
 
 `<Transition>` に以下の props を渡すことで、カスタムトランジションクラスを指定できます:
 
@@ -248,7 +248,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 </div>
 
-### トランジションとアニメーションの併用
+### トランジションとアニメーションの併用 {#using-transitions-and-animations-together}
 
 Vue では、トランジションが終了したことを検知するために、イベントリスナーを登録する必要があります。イベントは、適用される CSS ルールに応じて、`transitionend` または `animationend` になります。どちらか一方だけを使用している場合、Vue は自動的に正しいタイプを検出できます。
 
@@ -258,7 +258,7 @@ Vue では、トランジションが終了したことを検知するために�
 <Transition type="animation">...</Transition>
 ```
 
-### ネストされたトランジションと明示的なトランジション期間の設定
+### ネストされたトランジションと明示的なトランジション期間の設定 {#nested-transitions-and-explicit-transition-durations}
 
 トランジションのクラスは `<Transiotion>` の直接の子要素のみに適用されますが、ネストされた CSS セレクターを使ってネストされた要素をトランジションできます:
 
@@ -315,7 +315,7 @@ Vue では、トランジションが終了したことを検知するために�
 <Transition :duration="{ enter: 500, leave: 800 }">...</Transition>
 ```
 
-### パフォーマンスに関する考慮事項
+### パフォーマンスに関する考慮事項 {#performance-considerations}
 
 上に示したアニメーションは、ほとんどが `transform` や `opacity` といったプロパティを使っていることにお気づきかもしれません。これらのプロパティはアニメーションを行うのに効率的です、なぜなら:
 
@@ -325,7 +325,7 @@ Vue では、トランジションが終了したことを検知するために�
 
 それに対して、`height` や `margin` といったプロパティは CSS レイアウトを引き起こすので、アニメーションさせるのにかなりコストがかかるため、注意して使用する必要があります。[CSS-Triggers](https://csstriggers.com/) のようなリソースで、どのプロパティがアニメーションするとレイアウトが引き起こされるかを確認できます。
 
-## JavaScript フック
+## JavaScript フック {#javascript-hooks}
 
 JavaScript で `<Transition>` コンポーネントのイベントを購読することで、トランジション処理にフックすることができます。
 
@@ -460,7 +460,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 
 </div>
 
-## トランジションの再利用
+## トランジションの再利用 {#reusable-transitions}
 
 トランジションは、Vue のコンポーネントシステムによって再利用できます。再利用可能なトランジションを作成するには、`<Transition>` コンポーネントをラップしたコンポーネントを作成し、スロットコンテンツを受け渡します:
 
@@ -497,7 +497,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 </MyTransition>
 ```
 
-## 出現時のトランジション
+## 出現時のトランジション {#transition-on-appear}
 
 ノードの初期レンダリング時にもトランジションを適用したい場合は、`appear` プロパティを追加します:
 
@@ -507,7 +507,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 </Transition>
 ```
 
-## 要素間のトランジション
+## 要素間のトランジション {#transition-between-elements}
 
 `v-if` / `v-show` による要素の切り替えに加えて、常に 1 つの要素のみ表示されるのを確信できる限り、`v-if` / `v-else` / `v-else-if` を使って 2 つの要素間を遷移させることもできます:
 
@@ -523,7 +523,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 
 [プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiB9IGZyb20gJ3Z1ZSdcblxuY29uc3QgZG9jU3RhdGUgPSByZWYoJ3NhdmVkJylcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG5cdDxzcGFuIHN0eWxlPVwibWFyZ2luLXJpZ2h0OiAyMHB4XCI+Q2xpY2sgdG8gY3ljbGUgdGhyb3VnaCBzdGF0ZXM6PC9zcGFuPlxuICA8ZGl2IGNsYXNzPVwiYnRuLWNvbnRhaW5lclwiPlxuXHRcdDxUcmFuc2l0aW9uIG5hbWU9XCJzbGlkZS11cFwiPlxuICAgICAgPGJ1dHRvbiB2LWlmPVwiZG9jU3RhdGUgPT09ICdzYXZlZCdcIlxuICAgICAgICAgICAgICBAY2xpY2s9XCJkb2NTdGF0ZSA9ICdlZGl0ZWQnXCI+RWRpdDwvYnV0dG9uPlxuICAgICAgPGJ1dHRvbiB2LWVsc2UtaWY9XCJkb2NTdGF0ZSA9PT0gJ2VkaXRlZCdcIlxuICAgICAgICAgICAgICBAY2xpY2s9XCJkb2NTdGF0ZSA9ICdlZGl0aW5nJ1wiPlNhdmU8L2J1dHRvbj5cbiAgICAgIDxidXR0b24gdi1lbHNlLWlmPVwiZG9jU3RhdGUgPT09ICdlZGl0aW5nJ1wiXG4gICAgICAgICAgICAgIEBjbGljaz1cImRvY1N0YXRlID0gJ3NhdmVkJ1wiPkNhbmNlbDwvYnV0dG9uPlxuICAgIDwvVHJhbnNpdGlvbj5cbiAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c3R5bGU+XG4uYnRuLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBoZWlnaHQ6IDFlbTtcbn1cblxuYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuXG4uc2xpZGUtdXAtZW50ZXItYWN0aXZlLFxuLnNsaWRlLXVwLWxlYXZlLWFjdGl2ZSB7XG4gIHRyYW5zaXRpb246IGFsbCAwLjI1cyBlYXNlLW91dDtcbn1cblxuLnNsaWRlLXVwLWVudGVyLWZyb20ge1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMzBweCk7XG59XG5cbi5zbGlkZS11cC1sZWF2ZS10byB7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtMzBweCk7XG59XG48L3N0eWxlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0ifQ==)
 
-## トランジションモード
+## トランジションモード {#transition-modes}
 
 上記の例では、enter と leave を同時にアニメーションさせ、両方の要素が DOM に同時に存在するときのレイアウトの問題を避けるために、それらの要素について `position: absolute` にする必要がありました。
 
@@ -541,9 +541,9 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 
 `<Transition>` では、あまり使われませんが `mode="in-out"` もサポートしています。
 
-## コンポーネント間のトランジション
+## コンポーネント間のトランジション {#transition-between-components}
 
-`<Transition>` は [動的コンポーネント](/guide/essentials/component-basics.html#動的コンポーネント) でも使用することができます:
+`<Transition>` は [動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components) でも使用することができます:
 
 ```vue-html
 <Transition name="fade" mode="out-in">
@@ -564,7 +564,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 
 </div>
 
-## 動的トランジション
+## 動的トランジション {#dynamic-transitions}
 
 `name` のような `<Transition>` のプロパティは動的にすることもできます ! これにより、状態の変化に応じて異なるトランジションを動的に適用することができます:
 

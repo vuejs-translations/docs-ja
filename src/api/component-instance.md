@@ -1,4 +1,4 @@
-# コンポーネントインスタンス
+# コンポーネントインスタンス {#component-instance}
 
 :::info
 このページでは、コンポーネントのパブリックインスタンス、すなわち `this` で公開される組み込みのプロパティとメソッドについて説明します。
@@ -6,7 +6,7 @@
 このページに記載されているすべてのプロパティは読み取り専用です（`$data` にネストされたプロパティを除く）。
 :::
 
-## $data
+## $data {#data}
 
 コンポーネントによってリアクティブにされた [`data`](./options-state.html#data) オプションから返されるオブジェクトです。コンポーネントインスタンスは、その data オブジェクトのプロパティへのアクセスをプロキシします。
 
@@ -18,7 +18,7 @@
   }
   ```
 
-## $props
+## $props {#props}
 
 コンポーネントの現在の解決された props を表すオブジェクト。
 
@@ -34,7 +34,7 @@
 
   [`props`](./options-state.html#props) オプションで宣言された props のみが含まれます。コンポーネントインスタンスは、その props オブジェクトのプロパティへのアクセスをプロキシします。
 
-## $el
+## $el {#el}
 
 コンポーネントインスタンスが管理しているルート DOM ノード。
 
@@ -58,7 +58,7 @@
   一貫性を保つため、要素への直接アクセスは `$el` に頼らず、[テンプレート参照](/guide/essentials/template-refs.html)を使用することが推奨されます。
   :::
 
-## $options
+## $options {#options}
 
 現在のコンポーネントインスタンスをインスタンス化するために使用された解決済みのコンポーネントオプション。
 
@@ -91,7 +91,7 @@
 
 - **参照:** [`app.config.optionMergeStrategies`](/api/application.html#app-config-optionmergestrategies)
 
-## $parent
+## $parent {#parent}
 
 現在のインスタンスの親インスタンス（親がある場合）。ルートインスタンス自身の場合は `null` になります。
 
@@ -103,7 +103,7 @@
   }
   ```
 
-## $root
+## $root {#root}
 
 現在のコンポーネントツリーのルートコンポーネントインスタンス。現在のインスタンスに親がない場合、この値はそれ自身になります。
 
@@ -115,7 +115,7 @@
   }
   ```
 
-## $slots
+## $slots {#slots}
 
 親コンポーネントから渡された[スロット](/guide/components/slots.html)を表すオブジェクト。
 
@@ -135,11 +135,11 @@
 
   各スロットは、そのスロットの名前に対応するキーの下にある vnode の配列を返す関数として `this.$slots` で公開されます。デフォルトのスロットは `this.$slots.default` として公開されます。
 
-  スロットが[スコープ付きスロット](/guide/components/slots.html#スコープ付きスロット)の場合、スロット関数に渡された引数はそのスロットの props として利用可能です。
+  スロットが[スコープ付きスロット](/guide/components/slots.html#scoped-slots)の場合、スロット関数に渡された引数はそのスロットの props として利用可能です。
 
-- **参照:** [Render 関数 - スロットのレンダリング](/guide/extras/render-function.html#スロットのレンダリング)
+- **参照:** [Render 関数 - スロットのレンダリング](/guide/extras/render-function.html#rendering-slots)
 
-## $refs
+## $refs {#refs}
 
 [テンプレート参照](/guide/essentials/template-refs.html)を通じて登録された、DOM 要素およびコンポーネントインスタンスのオブジェクト。
 
@@ -156,7 +156,7 @@
   - [テンプレート参照](/guide/essentials/template-refs.html)
   - [特別な属性 - ref](./built-in-special-attributes.md#ref)
 
-## $attrs
+## $attrs {#attrs}
 
 コンポーネントのフォールスルー属性が入ったオブジェクト。
 
@@ -178,7 +178,7 @@
 
   - [フォールスルー属性](/guide/components/attrs.html)
 
-## $watch()
+## $watch() {#watch}
 
 ウォッチャーを作成するための命令的 API。
 
@@ -218,8 +218,8 @@
 
   - **`immediate`**: ウォッチャー作成時、すぐにコールバックをトリガーします。最初の呼び出しでは、古い値は `undefined` になります。
   - **`deep`**: ソースがオブジェクトの場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers.html#deep-watchers)を参照してください。
-  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#コールバックが実行されるタイミング)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
-  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#ウォッチャーのデバッグ)を参照してください。
+  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)を参照してください。
 
 - **例**
 
@@ -261,7 +261,7 @@
   - [オプション - `watch`](/api/options-state.html#watch)
   - [ガイド - ウォッチャー](/guide/essentials/watchers.html)
 
-## $emit()
+## $emit() {#emit}
 
 現在のインスタンスでカスタムイベントをトリガーします。追加の引数は、リスナーのコールバック関数に渡されます。
 
@@ -291,7 +291,7 @@
   - [コンポーネント - イベント](/guide/components/events.html)
   - [`emits` オプション](./options-state.html#emits)
 
-## $forceUpdate()
+## $forceUpdate() {#forceupdate}
 
 コンポーネントのインスタンスを強制的に再レンダリングします。
 
@@ -307,7 +307,7 @@
 
   Vue の完全に自動化されたリアクティビティーシステムを考えると、これが必要になることはほとんどありません。唯一必要なケースは、高度なリアクティビティー API を使ってリアクティブでないコンポーネントの状態を明示的に作成した場合です。
 
-## $nextTick()
+## $nextTick() {#nexttick}
 
 グローバルな [`nextTick()`](./general.html#nexttick) の、インスタンスにバインドされたバージョン。
 

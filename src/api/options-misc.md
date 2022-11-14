@@ -1,6 +1,6 @@
-# オプション: その他
+# オプション: その他 {#options-misc}
 
-## name
+## name {#name}
 
 コンポーネントの表示名を明示的に宣言します。
 
@@ -32,7 +32,7 @@
   バージョン 3.2.34 以降、`<script setup>` を使用した単一ファイルコンポーネントは、ファイル名から `name` オプションを自動的に推測します。これにより、`<KeepAlive>` と共に使用した場合でも、手動で名前を宣言する必要がなくなりました。
   :::
 
-## inheritAttrs
+## inheritAttrs {#inheritattrs}
 
 デフォルトのコンポーネント属性のフォールスルー動作を有効にするかどうかを制御します。
 
@@ -106,7 +106,7 @@
 
 - **参照:** [フォールスルー属性](/guide/components/attrs.html)
 
-## components
+## components {#components}
 
 コンポーネントインスタンスで利用できるようにするコンポーネントを登録するオブジェクト。
 
@@ -136,7 +136,7 @@
 
 - **参照:** [コンポーネントの登録](/guide/components/registration.html)
 
-## directives
+## directives {#directives}
 
 コンポーネントインスタンスで利用できるようにするディレクティブを登録するオブジェクト。
 
