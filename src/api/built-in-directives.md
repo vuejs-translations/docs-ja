@@ -1,6 +1,6 @@
-# ビルトインのディレクティブ
+# ビルトインのディレクティブ {#built-in-directives}
 
-## v-text
+## v-text {#v-text}
 
 要素のテキスト内容を更新します。
 
@@ -8,7 +8,7 @@
 
 - **詳細**
 
-  `v-text` は要素の [textContent](https://developer.mozilla.org/ja/docs/Web/API/Node/textContent) プロパティをセットする動作なので、要素内の既存のコンテンツはすべて上書きされます。`textContent` の一部を更新する必要がある場合は、代わりに[マスタッシュ展開](/guide/essentials/template-syntax.html#テキスト展開)を使用します。
+  `v-text` は要素の [textContent](https://developer.mozilla.org/ja/docs/Web/API/Node/textContent) プロパティをセットする動作なので、要素内の既存のコンテンツはすべて上書きされます。`textContent` の一部を更新する必要がある場合は、代わりに[マスタッシュ展開](/guide/essentials/template-syntax.html#text-interpolation)を使用します。
 
 - **例**
 
@@ -18,9 +18,9 @@
   <span>{{msg}}</span>
   ```
 
-- **参照:** [テンプレート構文 - テキスト展開](/guide/essentials/template-syntax.html#テキスト展開)
+- **参照:** [テンプレート構文 - テキスト展開](/guide/essentials/template-syntax.html#text-interpolation)
 
-## v-html
+## v-html {#v-html}
 
 要素の [innerHTML](https://developer.mozilla.org/ja/docs/Web/API/Element/innerHTML) を更新します。
 
@@ -42,9 +42,9 @@
   <div v-html="html"></div>
   ```
 
-- **参照:** [テンプレート構文 - 生の HTML](/guide/essentials/template-syntax.html#生の-html)
+- **参照:** [テンプレート構文 - 生の HTML](/guide/essentials/template-syntax.html#raw-html)
 
-## v-show
+## v-show {#v-show}
 
 式の値の真偽に基づいて、要素の可視性を切り替えます。
 
@@ -56,7 +56,7 @@
 
 - **参照:** [条件付きレンダリング - v-show](/guide/essentials/conditional.html#v-show)
 
-## v-if
+## v-if {#v-if}
 
 式の値の真偽に基づいて、要素またはテンプレートフラグメントを条件付きでレンダリングします。
 
@@ -70,11 +70,11 @@
 
   このディレクティブは、条件が変化したときにトランジションをトリガーします。
 
-  一緒に使用した場合、 `v-if` は `v-for` よりも高い優先度を持ちます。この 2 つのディレクティブを 1 つの要素で同時に使うことはお勧めしません。詳しくは [リストレンダリングガイド](/guide/essentials/list.html#v-for-と-v-if-を組み合わせる場合) を参照してください。
+  一緒に使用した場合、 `v-if` は `v-for` よりも高い優先度を持ちます。この 2 つのディレクティブを 1 つの要素で同時に使うことはお勧めしません。詳しくは [リストレンダリングガイド](/guide/essentials/list.html#v-for-with-v-if) を参照してください。
 
 - **参照:** [条件付きレンダリング - v-if](/guide/essentials/conditional.html#v-if)
 
-## v-else
+## v-else {#v-else}
 
 `v-if` または `v-if` / `v-else-if` チェーンの「else ブロック」を表します。
 
@@ -99,7 +99,7 @@
 
 - **参照:** [条件付きレンダリング - v-else](/guide/essentials/conditional.html#v-else)
 
-## v-else-if
+## v-else-if {#v-else-if}
 
 `v-if` の「else if ブロック」を表します。連鎖させることができます。
 
@@ -130,7 +130,7 @@
 
 - **参照:** [条件付きレンダリング - v-else-if](/guide/essentials/conditional.html#v-else-if)
 
-## v-for
+## v-for {#v-for}
 
 元となるデータに基づいて、要素またはテンプレートブロックを複数回レンダリングします。
 
@@ -167,7 +167,7 @@
 - **参照:**
   - [リストレンダリング](/guide/essentials/list.html)
 
-## v-on
+## v-on {#v-on}
 
 要素にイベントリスナーを追加します。
 
@@ -251,9 +251,9 @@
 
 - **参照:**
   - [イベントハンドリング](/guide/essentials/event-handling.html)
-  - [コンポーネント - カスタムイベント](/guide/essentials/component-basics.html#イベントの購読)
+  - [コンポーネント - カスタムイベント](/guide/essentials/component-basics.html#listening-to-events)
 
-## v-bind
+## v-bind {#v-bind}
 
 1 つ以上の属性やコンポーネントのプロパティを式に動的にバインドします。
 
@@ -273,7 +273,7 @@
 
   `class` や `style` 属性をバインドする際に使用する `v-bind` は、Array や Object などの追加の値の型をサポートします。詳しくは、以下のリンク先のガイドを参照してください。
 
-  要素にバインディングを設定するとき、Vue はデフォルトで、`in` 演算子チェックを使用して、プロパティとして定義されたキーが要素にあるかどうかを確認します。プロパティが定義されている場合、Vue はその値を属性ではなく DOM プロパティとして設定します。これはほとんどの場合において有効ですが、`.prop` や `.attr` という修飾子を明示的に使用することでこの動作をオーバーライドできます。これは、特に[カスタム要素を扱う](/guide/extras/web-components.html#dom-プロパティの受け渡し)ときに必要になることがあります。
+  要素にバインディングを設定するとき、Vue はデフォルトで、`in` 演算子チェックを使用して、プロパティとして定義されたキーが要素にあるかどうかを確認します。プロパティが定義されている場合、Vue はその値を属性ではなく DOM プロパティとして設定します。これはほとんどの場合において有効ですが、`.prop` や `.attr` という修飾子を明示的に使用することでこの動作をオーバーライドできます。これは、特に[カスタム要素を扱う](/guide/extras/web-components.html#passing-dom-properties)ときに必要になることがあります。
 
   コンポーネントのプロパティをバインドするために使用する場合、そのプロパティは子コンポーネントで適切に宣言されている必要があります。
 
@@ -338,9 +338,9 @@
 
 - **参照:**
   - [クラスとスタイルのバインディング](/guide/essentials/class-and-style.html)
-  - [コンポーネント - プロパティ渡しの詳細](/guide/components/props.html#プロパティ渡しの詳細)
+  - [コンポーネント - プロパティ渡しの詳細](/guide/components/props.html#prop-passing-details)
 
-## v-model
+## v-model {#v-model}
 
 フォーム入力要素またはコンポーネントに双方向バインディングを作成します。
 
@@ -362,9 +362,9 @@
 - **参照:**
 
   - [フォーム入力バインディング](/guide/essentials/forms.html)
-  - [コンポーネントのイベント - `v-model` での使用](/guide/components/events.html#v-model-での使用)
+  - [コンポーネントのイベント - `v-model` での使用](/guide/components/events.html#usage-with-v-model)
 
-## v-slot
+## v-slot {#v-slot}
 
 props の受け取りを期待する名前付きスロットまたはスコープ付きスロットを表します。
 
@@ -377,7 +377,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
 - **以下に限定:**
 
   - `<template>`
-  - [コンポーネント](/guide/components/slots.html#スコープ付きスロット)（props ありの単独のデフォルトスロット用）
+  - [コンポーネント](/guide/components/slots.html#scoped-slots)（props ありの単独のデフォルトスロット用）
 
 - **例:**
 
@@ -415,7 +415,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
 - **参照:**
   - [コンポーネント - スロット](/guide/components/slots.html)
 
-## v-pre
+## v-pre {#v-pre}
 
 この要素とすべての子要素のコンパイルをスキップします。
 
@@ -431,7 +431,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
   <span v-pre>{{ this will not be compiled }}</span>
   ```
 
-## v-once
+## v-once {#v-once}
 
 要素やコンポーネントを一度だけレンダリングし、その後の更新はスキップします。
 
@@ -460,10 +460,10 @@ props の受け取りを期待する名前付きスロットまたはスコー�
   3.2 以降では、[`v-memo`](#v-memo) を使って、テンプレートの一部を無効化する条件付きでメモ化できます。
 
 - **参照:**
-  - [データバインディング構文 - 展開](/guide/essentials/template-syntax.html#テキスト展開)
+  - [データバインディング構文 - 展開](/guide/essentials/template-syntax.html#text-interpolation)
   - [v-memo](#v-memo)
 
-## v-memo <sup class="vt-badge" data-text="3.2+" />
+## v-memo <sup class="vt-badge" data-text="3.2+" /> {#v-memo}
 
 - **期待する値:** `any[]`
 
@@ -503,7 +503,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
 - **参照:**
   - [v-once](#v-once)
 
-## v-cloak
+## v-cloak {#v-cloak}
 
 コンパイルされていないテンプレートを、準備が整うまで非表示にするために使用します。
 

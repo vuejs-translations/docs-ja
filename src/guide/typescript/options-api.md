@@ -1,4 +1,4 @@
-# Options API とともに TypeScript を使用する
+# Options API とともに TypeScript を使用する {#typescript-with-options-api}
 
 > このページは [TypeScript で Vue を使用する](./overview) ページの内容をすでに読んでいることを前提にしています。
 
@@ -6,7 +6,7 @@
 Vue は Options API での TypeScript の使用をサポートしていますが、よりシンプルで効率的、かつ堅牢な型推論を提供するため、Composition API で TypeScript と一緒に Vue を使用することが推奨されます。
 :::
 
-## コンポーネントの props の型付け
+## コンポーネントの props の型付け {#typing-component-props}
 
 Options API における props の型推論は、コンポーネントを `defineComponent()` でラップする必要があります。そうすることで、Vue は `props` オプションを元に、`required: true` や、 `default` などの追加のオプションを考慮した上で、props の型を推論することができるようになります。
 
@@ -65,7 +65,7 @@ export default defineComponent({
 })
 ```
 
-### 注意事項
+### 注意事項 {#caveats}
 
 TypeScript のバージョンが `4.7` 未満の場合、`validator` と `default` の prop オプションに関数を使用する場合は注意が必要です - 必ずアロー関数を使うようにしてください:
 
@@ -94,7 +94,7 @@ export default defineComponent({
 
 これにより、TypeScript はこれらの関数内で `this` の型を推論する必要がなくなり、それによって、残念ながら型推論に失敗するかもしれません。これは以前の[設計上の制限](https://github.com/microsoft/TypeScript/issues/38845)であり、現在は [TypeScript 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods) で改善されています。
 
-## コンポーネントの emit の型付け
+## コンポーネントの emit の型付け {#typing-component-emits}
 
 `emits` オプションのオブジェクトシンタックスを使うことで、発行されたイベントに期待されるペイロードの型を宣言することができます。また、宣言されていないイベントの発行は、以下のように型エラーになります:
 
@@ -120,7 +120,7 @@ export default defineComponent({
 })
 ```
 
-## 算出プロパティの型付け
+## 算出プロパティの型付け {#typing-computed-properties}
 
 算出プロパティは、戻り値によって型が推論されます:
 
@@ -176,7 +176,7 @@ export default defineComponent({
 
 また、TypeScript が循環推論ループのために算出プロパティの型を推論できないようなエッジケースでも、明示的な型注釈が必要になる場合があります。
 
-## イベントハンドラーの型付け
+## イベントハンドラーの型付け {#typing-event-handlers}
 
 ネイティブ DOM イベントを扱う場合、イベントハンドラーに渡す引数を正しく型付けしておくと便利な場合があります。次の例を見てみましょう:
 
@@ -213,7 +213,7 @@ export default defineComponent({
 })
 ```
 
-## グローバルなプロパティの拡張
+## グローバルなプロパティの拡張 {#augmenting-global-properties}
 
 プラグインによっては、[`app.config.globalProperties`](/api/application.html#app-config-globalproperties) を通じて、すべてのコンポーネントインスタンスにグローバルに利用可能なプロパティを追加するものがあります。例えば、データ取得のために `this.$http` をインストールしたり、国際化のために `this.$translate` を追加したりすることができます。これを TypeScript とうまく連携させるために、Vue は [TypeScript のモジュール拡張 (TypeScript module augmentation)](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) で拡張できるように設計された `ComponentCustomProperties` インターフェイスを公開しています。
 
@@ -232,7 +232,7 @@ declare module 'vue' {
 
 - [コンポーネントの型拡張の TypeScript の単体テスト](https://github.com/vuejs/core/blob/main/test-dts/componentTypeExtensions.test-d.tsx)
 
-### 型拡張の配置
+### 型拡張の配置 {#type-augmentation-placement}
 
 この型拡張は `.ts` ファイルに入れるか、プロジェクト全体の `*.d.ts` ファイルに入れることができます。どちらにしても、必ず `tsconfig.json` でそのファイルが include されているようにしてください。ライブラリやプラグインの作者の場合、このファイルは `package.json` の `types` プロパティで指定されている必要があります。
 
@@ -258,7 +258,7 @@ declare module 'vue' {
 }
 ```
 
-## カスタムオプションの拡張
+## カスタムオプションの拡張 {#augmenting-custom-options}
 
 例えば `vue-router` のようなプラグインは `beforeRouteEnter` のようなカスタムコンポーネントオプションを提供します:
 

@@ -2,11 +2,11 @@
 outline: deep
 ---
 
-# フォールスルー属性
+# フォールスルー属性 {#fallthrough-attributes}
 
 > このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
-## 属性の継承
+## 属性の継承 {#attribute-inheritance}
 
 "フォールスルー属性"とは、あるコンポーネントに渡されたものの、受け取ったコンポーネントの [props](./props) や [emits](./events.html#declaring-emitted-events) で明確に宣言されていない属性、または `v-on` イベントリスナーを指します。よくある例としては、`class`、`style`、`id` 属性などがあります。
 
@@ -31,7 +31,7 @@ outline: deep
 
 ここで、`<MyButton>` は `class` を受け入れ可能なプロパティとして宣言していません。そのため、`class` はフォールスルー属性として扱われ、自動的に `<MyButton>` のルート要素に追加されます。
 
-### `class` と `style` のマージ
+### `class` と `style` のマージ {#class-and-style-merging}
 
 もし、子コンポーネントのルート要素にすでに `class` や `style` 属性がある場合は、親から継承された `class` や `style` の値にマージされます。先ほどの例の `<MyButton>` のテンプレートを次のように変更するとします:
 
@@ -46,7 +46,7 @@ outline: deep
 <button class="btn large">click me</button>
 ```
 
-### `v-on` リスナーの継承
+### `v-on` リスナーの継承 {#v-on-listener-inheritance}
 
 同じルールが `v-on` イベントリスナーにも適用されます:
 
@@ -56,7 +56,7 @@ outline: deep
 
 `click` リスナーは `<MyButton>` のルート要素、つまりネイティブの `<button>` 要素に追加されます。ネイティブの `<button>` がクリックされた時、親コンポーネントの `onClick` メソッドがトリガーされます。もし、ネイティブの `<button>` が既に `v-on` でバインドされた `click` リスナーを持っている場合、両方のリスナーがトリガーされます。
 
-### ネストされたコンポーネントの継承
+### ネストされたコンポーネントの継承 {#nested-component-inheritance}
 
 あるコンポーネントが他の 1 つのコンポーネントをルートノードとしてレンダリングする場合を考えてみましょう。例として、`<MyButton>` をルートとして `<BaseButton>` をレンダリングするようにリファクタリングしました:
 
@@ -73,7 +73,7 @@ outline: deep
 
 2. 転送された属性は、 `<BaseButton>` が宣言していれば、 props として受け取ることができます。
 
-## 属性の継承の無効化
+## 属性の継承の無効化 {#disabling-attribute-inheritance}
 
 コンポーネントに自動的な属性の継承をさせたく**ない**場合は、コンポーネントのオプションで `inheritAttrs: false` を設定することができます。
 
@@ -130,7 +130,7 @@ export default {
 
 [引数なしの `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) はオブジェクトのすべてのプロパティをターゲット要素の属性としてバインドすることを覚えておきましょう。
 
-## 複数のルートノードでの属性継承
+## 複数のルートノードでの属性継承 {#attribute-inheritance-on-multiple-root-nodes}
 
 ルートノードが 1 つのコンポーネントと異なり、複数のルートノードを持つコンポーネントは、自動的に属性をフォールスルーするふるまいがありません。 `$attrs` が明示的にバインドされていない場合は、実行時に警告が出ます。
 
@@ -154,7 +154,7 @@ export default {
 <footer>...</footer>
 ```
 
-## JavaScript 内でフォールスルー属性にアクセスする
+## JavaScript 内でフォールスルー属性にアクセスする {#accessing-fallthrough-attributes-in-javascript}
 
 <div class="composition-api">
 

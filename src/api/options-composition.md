@@ -1,6 +1,6 @@
-# オプション: 合成
+# オプション: 合成 {#options-composition}
 
-## provide
+## provide {#provide}
 
 子孫のコンポーネントによって注入できる値を提供します。
 
@@ -50,11 +50,11 @@
   }
   ```
 
-  上記の例では、提供された `msg` はリアクティブではないことに注意してください。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject.html#リアクティビティーと共に利用する)を参照してください。
+  上記の例では、提供された `msg` はリアクティブではないことに注意してください。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject.html#working-with-reactivity)を参照してください。
 
 - **参照:** [Provide / Inject](/guide/components/provide-inject.html)
 
-## inject
+## inject {#inject}
 
 祖先プロバイダーを探し、現在のコンポーネントに注入するプロパティを宣言します。
 
@@ -88,7 +88,7 @@
 
   一致するプロパティもデフォルト値も提供されなかった場合、注入されたプロパティは `undefined` となります。
 
-  注入されたバインディングは反応的で**ない**ことに注意してください。これは意図的なものです。ただし、注入された値がリアクティブなオブジェクトである場合、そのオブジェクトのプロパティはリアクティブなままです。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject.html#リアクティビティーと共に利用する)を参照してください。
+  注入されたバインディングは反応的で**ない**ことに注意してください。これは意図的なものです。ただし、注入された値がリアクティブなオブジェクトである場合、そのオブジェクトのプロパティはリアクティブなままです。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject.html#working-with-reactivity)を参照してください。
 
 - **例**
 
@@ -169,7 +169,7 @@
 
 - **参照:** [Provide / Inject](/guide/components/provide-inject.html)
 
-## mixins
+## mixins {#mixins}
 
 現在のコンポーネントに混合されるオプションオブジェクトの配列。
 
@@ -211,7 +211,7 @@
   // => 2
   ```
 
-## extends
+## extends {#extends}
 
 拡張元となる「基底クラス」コンポーネント。
 

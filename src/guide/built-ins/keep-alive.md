@@ -2,11 +2,11 @@
 import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </script>
 
-# KeepAlive
+# KeepAlive {#keepalive}
 
 `<KeepAlive>` は、複数のコンポーネント間を動的に切り替えるときに、コンポーネントインスタンスを条件付きでキャッシュ可能にするビルトインコンポーネントです。
 
-## 基本的な使い方
+## 基本的な使い方 {#basic-usage}
 
 「コンポーネントの基礎」の章で、特別な要素 `<component>` を使用する、[動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)のための構文を導入しました:
 
@@ -50,7 +50,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 [DOM テンプレート](/guide/essentials/component-basics.html#dom-template-parsing-caveats)内で使用する場合は `<keep-alive>` として参照する必要があります。
 :::
 
-## Include / Exclude
+## Include / Exclude {#include-exclude}
 
 デフォルトでは、`<KeepAlive>` はコンポーネント内のどんなコンポーネントでもキャッシュします。この動作は `include` と `exclude` props を使用してカスタマイズできます。どちらの props にも、カンマ区切りの文字列、`RegExp`、あるいは、そのいずれかの型を含む配列を指定できます:
 
@@ -77,7 +77,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 バージョン 3.2.34 以降、`<script setup>` を使った単一ファイルコンポーネントは、ファイル名から `name` オプションを自動的に推測し、手動で名前を宣言する必要がなくなりました。
 :::
 
-## キャッシュインスタンスの最大数
+## キャッシュインスタンスの最大数 {#max-cached-instances}
 
 `max` prop を使うと、キャッシュできるコンポーネントインスタンスの最大数を制限することができます。`max` が指定された場合、`<KeepAlive>` は [LRU キャッシュ](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>) のように動作します。つまり、キャッシュインスタンスの数が指定された最大数を越えようとした時点で、最も過去にアクセスされたキャッシュインスタンスが破棄され、新しいキャッシュ用のスペースが作られます。
 
@@ -87,7 +87,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </KeepAlive>
 ```
 
-## キャッシュされたインスタンスのライフサイクル
+## キャッシュされたインスタンスのライフサイクル {#lifecycle-of-cached-instance}
 
 コンポーネントインスタンスが DOM から削除されても `<KeepAlive>` によってコンポーネントツリーのキャッシュの一部である場合、コンポーネントインスタンスはアンマウントされる代わりに**非アクティブ化**状態に移行します。コンポーネントインスタンスが DOM にキャッシュツリーの一部として挿入されると、**アクティブ化**されます。
 

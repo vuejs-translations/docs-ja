@@ -1,4 +1,4 @@
-# Reactivity Transform
+# Reactivity Transform {#reactivity-transform}
 
 :::warning 実験的な機能
 Reactivity Transform は現在、実験的な機能です。デフォルトでは無効になっており、[明示的なオプトイン](#explicit-opt-in)が必要です。最終決定版になるまでに変更される可能性があります。最新の情報は、[GitHub でのプロポーザルと議論](https://github.com/vuejs/rfcs/discussions/369)に注目してください。
@@ -8,7 +8,7 @@ Reactivity Transform は現在、実験的な機能です。デフォルトで�
 Reactivity Transform は Composition API 固有の機能で、ビルド処理が必要です。
 :::
 
-## ref とリアクティブな変数との比較
+## ref とリアクティブな変数との比較 {#refs-vs-reactive-variables}
 
 Composition API が導入されてから、ref と reactive オブジェクトの使い分けは主要な未解決問題のひとつです。リアクティブなオブジェクトを分割代入するとリアクティビティーが失われやすく、一方、ref を使用する場合は `.value` をあらゆる場所で使用するのは面倒なことです。また、型システムを使用していない場合、`.value` を見落としがちです。
 
@@ -62,7 +62,7 @@ import { $ref } from 'vue/macros'
 let count = $ref(0)
 ```
 
-## `$()` を使った分割代入
+## `$()` を使った分割代入 {#destructuring-with}
 
 composition 関数からは ref のオブジェクトを返し、その ref を取得するために分割代入を使うのが一般的です。この目的のために Reactivity Transform は **`$()`** マクロを提供します:
 
@@ -91,7 +91,7 @@ console.log(x.value, y.value)
 
 `$()` での分割代入は、リアクティブなオブジェクトと ref を含むプレーンオブジェクトの **両方で** 動作します。
 
-## `$()` を使って既存の ref をリアクティブな変数に変換
+## `$()` を使って既存の ref をリアクティブな変数に変換 {#convert-existing-refs-to-reactive-variables-with}
 
 ref を返すラップされた関数を扱う場合があります。しかし、Vue コンパイラーは関数が ref を返すことを事前に知ることができません。こういう場合は `$()` マクロを使って、既存の ref をリアクティブな変数に変換することもできます:
 
@@ -103,7 +103,7 @@ function myCreateRef() {
 let count = $(myCreateRef())
 ```
 
-## リアクティブな props の分割代入
+## リアクティブな props の分割代入 {#reactive-props-destructure}
 
 現在、`<script setup>` での `defineProps()` の使用には 2 つの難点があります:
 
@@ -154,11 +154,11 @@ export default {
 }
 ```
 
-## 関数の境界を超えてリアクティビティーを維持する
+## 関数の境界を超えてリアクティビティーを維持する {#retaining-reactivity-across-function-boundaries}
 
 リアクティブな変数は、すべての箇所で `.value` を使う必要性から解放してくれますが、関数の境界を超えてリアクティブな変数を渡したときに「リアクティビティーの喪失」問題を起こします。これは 2 つのケースで起こります:
 
-### 引数として関数に渡した時
+### 引数として関数に渡した時 {#passing-into-function-as-argument}
 
 引数として ref を期待する関数があるとして、例えば:
 
@@ -199,7 +199,7 @@ trackChange(count)
 
 ご覧のとおり、`$$()` は **エスケープのヒント** を提供するマクロで、`$$()` の中のリアクティブな変数は `.value` が付加されません。
 
-### 関数スコープ内で return する時
+### 関数スコープ内で return する時 {#returning-inside-function-scope}
 
 return される式の中で直接リアクティブな変数を使用した場合も、リアクティビティーは失われます:
 
@@ -246,7 +246,7 @@ function useMouse() {
 }
 ```
 
-### 分割代入された props に `$$()` を使う
+### 分割代入された props に `$$()` を使う {#using-on-destructured-props}
 
 分割代入された props もリアクティブな変数なので `$$()` が動作します。コンパイラーは効率のため `toRef` に変換します:
 
@@ -265,7 +265,7 @@ setup(props) {
 }
 ```
 
-## TypeScript 統合 <sup class="vt-badge ts" />
+## TypeScript 統合 <sup class="vt-badge ts" /> {#typescript-integration}
 
 Vue はこれらのマクロの（グローバルに使える）型付けを提供しており、すべての型は期待通りに動作します。標準的な TypeScript のセマンティクスと完全に互換があるので、その構文はすべての既存のツールで動作します。
 
@@ -279,11 +279,11 @@ Vue の SFC 内だけでなく、有効な JS / TS を書くことのできる�
 
 マクロを `vue/macros` から明示的にインポートする場合、型をグローバルに宣言しなくても動作します。
 
-## 明示的なオプトイン
+## 明示的なオプトイン {#explicit-opt-in}
 
 Reactivity Transform は現在デフォルトでは無効になっており、明示的なオプトインが必要です。さらに、以下の設定にはすべて `vue@^3.2.25` が必要です。
 
-### Vite
+### Vite {#vite}
 
 - `@vitejs/plugin-vue@>=2.0.0` が必要
 - SFC と js(x)/ts(x) ファイルに適用されます。変換を適用する前に、ファイルの高速使用チェックが行われるので、マクロを使用していないファイルに対するパフォーマンスコストは発生しないはずです。
@@ -300,7 +300,7 @@ export default {
 }
 ```
 
-### `vue-cli`
+### `vue-cli` {#vue-cli}
 
 - 現在は SFC のみ
 - `vue-loader@>=17.0.0` が必要
@@ -322,7 +322,7 @@ module.exports = {
 }
 ```
 
-### 素の `webpack` + `vue-loader`
+### 素の `webpack` + `vue-loader` {#plain-webpack-vue-loader}
 
 - 現在は SFC のみ
 - `vue-loader@>=17.0.0` が必要

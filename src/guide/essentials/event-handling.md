@@ -1,4 +1,4 @@
-# イベントハンドリング
+# イベントハンドリング {#event-handling}
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/user-events-in-vue-3" title="Vue School のイベントハンドリングの無料動画レッスン"/>
@@ -8,7 +8,7 @@
   <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-user-events-in-vue-3" title="Vue School のイベントハンドリングの無料動画レッスン"/>
 </div>
 
-## イベントの購読
+## イベントの購読 {#listening-to-events}
 
 `v-on` ディレクティブを使用することで、 DOM イベントの購読やイベント発火時にいくつかの JavaScript を実行します。これは通常 @ に省略することができます。使い方は `v-on:click="handler"`、あるいは省略して `@click="handler"` として使用します。
 
@@ -18,7 +18,7 @@
 
 2. **メソッドハンドラー:** コンポーネント上で定義されたメソッドを示すプロパティ名またはパス
 
-## インラインハンドラー
+## インラインハンドラー {#inline-handlers}
 
 インラインハンドラーは、通常、次のような単純なケースで使用されます:
 
@@ -57,7 +57,7 @@ data() {
 
 </div>
 
-## メソッドハンドラー
+## メソッドハンドラー {#method-handlers}
 
 しかしながら、多くのイベントハンドラーのロジックはより複雑で、インラインハンドラーでは実行できない可能性があります。だからこそ、`v-on` は呼び出したいコンポーネントメソッドの名前やパスで使用することができます。
 
@@ -120,20 +120,20 @@ methods: {
 
 <div class="composition-api">
 
-参照: [イベントハンドラーの型付け](/guide/typescript/composition-api.html#イベントハンドラーの型付け) <sup class="vt-badge ts" />
+参照: [イベントハンドラーの型付け](/guide/typescript/composition-api.html#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
 
-参照: [イベントハンドラーの型付け](/guide/typescript/options-api.html#イベントハンドラーの型付け) <sup class="vt-badge ts" />
+参照: [イベントハンドラーの型付け](/guide/typescript/options-api.html#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 
-### メソッド 対 インライン検出
+### メソッド 対 インライン検出 {#method-vs-inline-detection}
 
 テンプレートコンパイラーは `v-on` は、文字列値が JavaScript identifier、あるいはプロパティのアクセスパスか適切などうかを検証することで、メソッドハンドラーを検出します。例えば、`foo`、 `foo.bar` さらには `foo['bar']` がメソッドハンドラーとして扱われる一方、`foo()` and `count++` はインラインハンドラーとして扱われます。
 
-## インラインハンドラー下でのメソッドの呼び出し
+## インラインハンドラー下でのメソッドの呼び出し {#calling-methods-in-inline-handlers}
 
 メソッドネームに直接束縛する代わりに、インラインハンドラーのメソッドを呼び出すこともできます。これにより、ネイティブイベントの代わりにカスタムの引数をメソッドに渡すことができます。
 
@@ -174,7 +174,7 @@ methods: {
 
 </div>
 
-## インラインハンドラーのイベント引数へのアクセス
+## インラインハンドラーのイベント引数へのアクセス {#accessing-event-argument-in-inline-handlers}
 
 ときどき、インラインハンドラーでオリジナルの DOM イベントへアクセスする必要な場合もあります。その場合、特別な `$event` 変数を使用するメソッドに渡したり、あるいはインライン上でアロー関数を使用します:
 
@@ -219,7 +219,7 @@ methods: {
 
 </div>
 
-## イベント修飾子
+## イベント修飾子 {#event-modifiers}
 
 イベントハンドラーの中で `event.preventDefault()` あるいは `event.stopPropagation()` を呼び出す必要があるのはよくあることです。たとえメソッド内で簡単に扱うことができるかどうかにかかわらず、メソッドが DOM イベントの詳細を扱うのではなく、純粋にデータロジックに特化したメソッドがより最適です。
 
@@ -276,7 +276,7 @@ methods: {
 `.passive` と `.prevent` を一緒に使わないでください。なぜなら、`.passive` はブラウザーですでにイベントのデフォルト動作を干渉「しない」ことを示しているからです。それにより、もしそうした場合においてブラウザーが警告を出す可能性が高いからです。
 :::
 
-## キー修飾子
+## キー修飾子 {#key-modifiers}
 
 キーボードイベントを購読しているとき、特定のキーをチェックする必要がある場合があります。キーイベントを受信しているとき、Vue は `v-on` あるいは `@` にキー修飾子を加えることができます:
 
@@ -293,7 +293,7 @@ methods: {
 
 上記の例では、`$event.key` が `'PageDown'` が等しい場合にのみハンドラーは呼ばれます。
 
-### キーのエリアス
+### キーのエリアス {#key-aliases}
 
 Vue はもっともよく使われるキーのためにエリアスが提供されます:
 
@@ -307,7 +307,7 @@ Vue はもっともよく使われるキーのためにエリアスが提供さ�
 - `.left`
 - `.right`
 
-### システムの修飾子
+### システムの修飾子 {#system-modifier-keys}
 
 以下の修飾子を使用すると、対応する修飾子が押されたときにのみ、マウスやキーボードのイベントがが発火することができます:
 
@@ -334,7 +334,7 @@ Mac キーボードでは、メタキーはコマンドキー (⌘) が使われ
 修飾子キーは通常のキーとは異なり、`keyup` イベントと一緒に使用する時は、イベントが発生した時に押されているる必要があることに注意してください。言い換えると、`ctrl` キーを押し続けている間は `keyup.ctrl` はキーを離した時にのみ発火されます。`ctrl` キーだけをを解放したとしてもイベントは発火しません。
 :::
 
-### `.exact` 修飾子
+### `.exact` 修飾子 {#exact-modifier}
 
 `.exact` 修飾子は、イベントを発火するのに必要なシステム修飾子との正確な組み合わせのコントロールを可能にします。
 
@@ -349,7 +349,7 @@ Mac キーボードでは、メタキーはコマンドキー (⌘) が使われ
 <button @click.exact="onClick">A</button>
 ```
 
-## マウスボタン修飾子
+## マウスボタン修飾子 {#mouse-button-modifiers}
 
 - `.left`
 - `.right`

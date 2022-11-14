@@ -2,7 +2,7 @@
 pageClass: api
 ---
 
-# ビルトインのコンポーネント
+# ビルトインのコンポーネント {#built-in-components}
 
 :::info 登録と使用
 組み込みコンポーネントは登録する必要なくテンプレート内で直接使用できます。ツリーシェイクも可能で、使用されたときだけビルドに含まれます。
@@ -19,7 +19,7 @@ h(Transition, {
 
 :::
 
-## `<Transition>`
+## `<Transition>` {#transition}
 
 **単一の**要素またはコンポーネントにアニメーションのトランジションを提供します。
 
@@ -120,7 +120,7 @@ h(Transition, {
 
 - **参照:** [`<Transition>` ガイド](/guide/built-ins/transition.html)
 
-## `<TransitionGroup>`
+## `<TransitionGroup>` {#transitiongroup}
 
 リスト内の**複数**の要素またはコンポーネントにトランジション効果を提供する。
 
@@ -166,7 +166,7 @@ h(Transition, {
 
 - **参照:** [ガイド - TransitionGroup](/guide/built-ins/transition-group.html)
 
-## `<KeepAlive>`
+## `<KeepAlive>` {#keepalive}
 
 動的に切り替えられる、内側のコンポーネントをキャッシュします。
 
@@ -259,7 +259,7 @@ h(Transition, {
 
 - **参照:** [ガイド - KeepAlive](/guide/built-ins/keep-alive.html)
 
-## `<Teleport>`
+## `<Teleport>` {#teleport}
 
 スロットの内容を DOM の別の場所にレンダリングします。
 
@@ -301,7 +301,7 @@ h(Transition, {
 
 - **参照:** [ガイド - Teleport](/guide/built-ins/teleport.html)
 
-## `<Suspense>` <sup class="vt-badge experimental" />
+## `<Suspense>` <sup class="vt-badge experimental" /> {#suspense}
 
 コンポーネントツリー内のネストした非同期な依存関係を管理するために使用します。
 

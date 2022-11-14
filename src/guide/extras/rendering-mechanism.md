@@ -2,13 +2,13 @@
 outline: deep
 ---
 
-# レンダリングの仕組み
+# レンダリングの仕組み {#rendering-mechanism}
 
 Vue はどのようにしてテンプレートを取得して実際の DOM に変換しているのでしょうか？　Vue はどうやって DOM ノードを効率的に更新しているのでしょうか？ここでは Vue 内部のレンダリングのメカニズムに踏み込んで、これらの疑問に光を当ててみたいと思います。
 
-## 仮想 DOM
+## 仮想 DOM {#virtual-dom}
 
-Vue のレンダリングシステムがベースとしている仮想 DOM という言葉を聞いたことはあるかと思います。
+Vue のレンダリングシステムがベースとしている「仮想 DOM」という言葉を聞いたことはあるかと思います。
 
 仮想 DOM（VDOM）とは、UI の理想的な、または"仮想"表現をメモリー内に保持し、"実際の" DOM と同期させるというプログラミングの概念です。このコンセプトは [React](https://reactjs.org/) によって開拓され、Vue を含む他の多くのフレームワークで、異なる実装で適応されています。
 
@@ -34,7 +34,7 @@ const vnode = {
 
 仮想 DOM の主な利点は、DOM の直接的な操作はレンダラーに任せ、開発者は宣言的な方法で希望する UI 構造をプログラム的に作成、検査、合成できることです。
 
-## レンダーパイプライン
+## レンダーパイプライン {#render-pipeline}
 
 大まかには、Vue のコンポーネントがマウントされると、以下のようなことが起こります:
 
@@ -48,7 +48,7 @@ const vnode = {
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 
-## テンプレート VS レンダー関数
+## テンプレート vs. レンダー関数 {#templates-vs-render-functions}
 
 Vue のテンプレートは、仮想 DOM レンダー関数にコンパイルされます。また、Vue はテンプレートのコンパイルステップをスキップしてレンダー関数を直接書ける API を提供しています。レンダー関数は、JavaScript のパワーすべてを使って vnode を操作できます。そのため、高度に動的なロジックを扱う場面において、テンプレートよりも柔軟性があります。
 
@@ -60,7 +60,7 @@ Vue のテンプレートは、仮想 DOM レンダー関数にコンパイル�
 
 実際、アプリケーションのほとんどのユースケースはテンプレートで十分です。通常、レンダー関数は高度に動的なレンダリングロジックを扱う必要がある再利用可能なコンポーネントでのみ使用されます。レンダー関数の使用法については、[レンダー関数と JSX](./render-function) で詳しく説明しています。
 
-## コンパイラー情報に基づく仮想 DOM
+## コンパイラー情報に基づく仮想 DOM {#compiler-informed-virtual-dom}
 
 React の仮想 DOM 実装や他のほとんどの仮想 DOM 実装は完全にランタイムです:照合アルゴリズムは入力される仮想 DOM ツリーを予想できないため、正確さの確保のためにツリー全体をトラバースして、すべての vnode のプロパティの差分を比較する必要があります。加えて、ツリーの一部が変更されない場合でも再レンダリングのたびに新しい vnode が作成されるため、不要なメモリー負荷が発生します。これは仮想 DOM の最も批判される点の 1 つです:やや強引な照合プロセスは、宣言性と正確さと引き換えに効率を犠牲にしているのです。
 
@@ -68,7 +68,7 @@ React の仮想 DOM 実装や他のほとんどの仮想 DOM 実装は完全に�
 
 以下では、Vue テンプレートコンパイラーが仮想 DOM の実行時パフォーマンスを向上させるために行った、主要な最適化についていくつか解説します。
 
-### 静的ホイスティング
+### 静的ホイスティング {#static-hoisting}
 
 テンプレートには、動的バインディングを含まない部分がよくあります:
 
@@ -86,7 +86,7 @@ React の仮想 DOM 実装や他のほとんどの仮想 DOM 実装は完全に�
 
 加えて、連続する静的要素が十分にある場合、これらのノードのプレーンな HTML 文字列を含む単一の "静的 vnode" に凝縮されます ([例](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=))。これらの静的 vnode は、`innerHTML` を直接設定してマウントされます。また、初期マウント時に対応する DOM ノードをキャッシュします。アプリケーション内の他の場所で同じコンテンツが再利用される場合、ネイティブの `cloneNode()` を使用して新しい DOM ノードが作成されるため、非常に効率的です。
 
-### パッチフラグ
+### パッチフラグ {#patch-flags}
 
 動的バインディングを持つ単一の要素については、コンパイル時にそこから多くの情報を推論することもできます:
 
@@ -133,7 +133,7 @@ export function render() {
 
 このため、ランタイムはルートフラグメントの子要素の順序照合を完全にスキップすることができます。
 
-### ツリーのフラット化
+### ツリーのフラット化 {#tree-flattening}
 
 先ほどの例で生成されたコードをもう一度見てみると、返された仮想 DOM ツリーのルートは特別な `createElementBlock()` 呼び出しを使って作成されていることに気がつくかと思います:
 
@@ -183,7 +183,7 @@ div (block root)
 
 子ブロックは、親ブロックの動的な子孫配列の内部で追跡されます。これにより、親ブロックの安定した構造が保たれます。
 
-### SSR ハイドレーションへの影響
+### SSR ハイドレーションへの影響 {#impact-on-ssr-hydration}
 
 パッチフラグとツリーのフラット化により、Vue の[SSR ハイドレーション](/guide/scaling-up/ssr.html#client-hydration) のパフォーマンスが大幅に改善されます:
 

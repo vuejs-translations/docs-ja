@@ -1,6 +1,6 @@
-# ウォッチャー
+# ウォッチャー {#watchers}
 
-## 基本の例
+## 基本の例 {#basic-example}
 
 算出プロパティを使うと、派生した値を宣言的に算出することができるようになります。しかしながら、状態の変更に応じて「副作用」を実行する必要とする場合があります。たとえば、DOM が変化する、あるいは非同期処理の結果に基づいて、別の状態に変更した場合といったものです。
 
@@ -99,7 +99,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 
 [プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgd2F0Y2ggfSBmcm9tICd2dWUnXG5cbmNvbnN0IHF1ZXN0aW9uID0gcmVmKCcnKVxuY29uc3QgYW5zd2VyID0gcmVmKCdRdWVzdGlvbnMgdXN1YWxseSBjb250YWluIGEgcXVlc3Rpb24gbWFyay4gOy0pJylcblxud2F0Y2gocXVlc3Rpb24sIGFzeW5jIChuZXdRdWVzdGlvbikgPT4ge1xuICBpZiAobmV3UXVlc3Rpb24uaW5kZXhPZignPycpID4gLTEpIHtcbiAgICBhbnN3ZXIudmFsdWUgPSAnVGhpbmtpbmcuLi4nXG4gICAgdHJ5IHtcbiAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKCdodHRwczovL3llc25vLnd0Zi9hcGknKVxuICAgICAgYW5zd2VyLnZhbHVlID0gKGF3YWl0IHJlcy5qc29uKCkpLmFuc3dlclxuICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICBhbnN3ZXIudmFsdWUgPSAnRXJyb3IhIENvdWxkIG5vdCByZWFjaCB0aGUgQVBJLiAnICsgZXJyb3JcbiAgICB9XG4gIH1cbn0pXG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBBc2sgYSB5ZXMvbm8gcXVlc3Rpb246XG4gICAgPGlucHV0IHYtbW9kZWw9XCJxdWVzdGlvblwiIC8+XG4gIDwvcD5cbiAgPHA+e3sgYW5zd2VyIH19PC9wPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59In0=)
 
-### 監視ソースの種類
+### 監視ソースの種類 {#watch-source-types}
 
 `watch` の第一引数は、リアクティブな「ソース」のさまざまな型に対応しています: その引数には ref（算出 ref も含む）やリアクティブなオブジェクト、getter 関数、あるいは複数のソースの配列といったものです:
 
@@ -151,7 +151,7 @@ watch(
 
 </div>
 
-## ディープ・ウォッチャー
+## ディープ・ウォッチャー {#deep-watchers}
 
 <div class="options-api">
 
@@ -222,7 +222,7 @@ deep watch は、監視対象のオブジェクトのネストされた全ての
 
 <div class="options-api">
 
-## 即時ウォッチャー \*
+## 即時ウォッチャー \* {#eager-watchers}
 
 `watch` は、デフォルトでは、遅延して実行されます: 監視対象の値が変更するまでコールバックは実行されません。しかし、同様のコールバックのロジックを先に実行したい場合もあります。- たとえば、初期値のデータを読み込み、関連する状態が変更されるたび、再びデータを読み込みたいときです。
 
@@ -244,12 +244,12 @@ export default {
 }
 ```
 
-The initial execution of the handler function will happen just before the `created` hook. Vue will have already processed the `data`, `computed`, and `methods` options, so those properties will be available on the first invocation.
+ハンドラー関数の初回実行は、`created` フックの直前で行われます。Vue は `data`、`computed`、`methods` オプションを処理済みなので、これらのプロパティは初回呼び出しの際に利用可能です。
 </div>
 
 <div class="composition-api">
 
-## `watchEffect()` \*\*
+## `watchEffect()` \*\* {#watcheffect}
 
 `watch()` は遅延して実行されます: 監視対象の値が変更するまでコールバックは実行されません。しかし、同様のコールバックのロジックを先に実行したい場合もあります。- たとえば、初期値のデータを読み込み、関連する状態が変更されるたび、再びデータを読み込みたいときです。気づいたら次のようにしているかもしれません:
 
@@ -285,7 +285,7 @@ watchEffect(async () => {
 `watchEffect` は**同期的な**処理中のみ依存先を追跡します。非同期のコールバックで使用する場合、最初の `await` の前にアクセスされたプロパティのみが追跡されます。
 :::
 
-### `watch` 対 `watchEffect`
+### `watch` 対 `watchEffect` {#watch-vs-watcheffect}
 
 `watch` と `watchEffect` は、どちらとも副作用をリアクティブに処理することができます。両者の主な違いはリアクティブの依存先の監視方法にあります:
 
@@ -295,7 +295,7 @@ watchEffect(async () => {
 
 </div>
 
-## コールバックが実行されるタイミング
+## コールバックが実行されるタイミング {#callback-flush-timing}
 
 リアクティブな状態が変更されるとき、Vue コンポーネントの更新と生成されたウォッチャーコールバックを実行します。
 
@@ -345,7 +345,7 @@ watchPostEffect(() => {
 
 <div class="options-api">
 
-## `this.$watch()` \*
+## `this.$watch()` \* {#this-watch}
 
 また、[`$watch()  インスタンスメソッド`](/api/component-instance.html#watch) を使用してウォッチャーを強制的に作成することが可能です:
 
@@ -363,7 +363,7 @@ export default {
 
 </div>
 
-## ウォッチャーの停止
+## ウォッチャーの停止 {#stopping-a-watcher}
 
 <div class="options-api">
 
