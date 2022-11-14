@@ -4,27 +4,27 @@ import ListMove from './transition-demos/ListMove.vue'
 import ListStagger from './transition-demos/ListStagger.vue'
 </script>
 
-# トランジショングループ
+# トランジショングループ {#transitiongroup}
 
 `<TransitionGroup>` は、リスト内にレンダリングされた要素およびコンポーネントの挿入、削除、順序の変更などをアニメーション化するために設計された組み込みコンポーネントです。
 
-## `<Transition>` との違い
+## `<Transition>` との違い {#differences-from-transition}
 
 `<TransitionGroup>` は `<Transition>` と同じプロパティ、CSS トランジションクラス、JavaScript フックをサポートしますが、以下の違いがあります:
 
 - デフォルトでは、ラッパーの要素はレンダリングされません。しかし、`tag` プロパティでレンダリングする要素を指定することができます。
 
-- [トランジションモード](./transition.html#トランジションモード)は、排他的な要素同士を交互にトランジションすることがなくなったので、利用できません。
+- [トランジションモード](./transition.html#transition-modes)は、排他的な要素同士を交互にトランジションすることがなくなったので、利用できません。
 
 - 内部の要素は **常に** ユニークな `key` プロパティを設定する必要があります。
 
 - CSS トランジションクラスはグループ / コンテナ **ではなく**、リストの個々の要素に適用されます。
 
 :::tip
-[DOM テンプレート](/guide/essentials/component-basics.html#dom-テンプレート解析の注意点) で使用する場合、`<transition-group>` として参照する必要があります。
+[DOM テンプレート](/guide/essentials/component-basics.html#dom-template-parsing-caveats) で使用する場合、`<transition-group>` として参照する必要があります。
 :::
 
-## Enter / Leave トランジション
+## Enter / Leave トランジション {#enter-leave-transitions}
 
 以下は `<TransitionGroup>` を用いて、`v-for` リストに enter / leave トランジションを適用する例です:
 
@@ -50,7 +50,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 <ListBasic />
 
-## 移動のトランジション
+## 移動のトランジション {#move-transitions}
 
 上のデモには明らかな欠陥があります: 項目を挿入または削除すると、上下の項目がスムーズに移動するのではなく、即座に "ジャンプ" して移動します。これを解決するには、いくつかの CSS ルールを追加します:
 
@@ -80,7 +80,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 [完全な例](/examples/#list-transition)
 
-## 時差をもたせたリストのトランジション
+## 時差をもたせたリストのトランジション {#staggering-list-transitions}
 
 JavaScript のトランジションとデータ属性でやりとりすることで、リスト内のトランジションをずらすこともできます。まず、項目のインデックスを DOM 要素の data 属性としてレンダリングします:
 

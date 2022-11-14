@@ -5,11 +5,11 @@ import Colors from './demos/Colors.vue'
 import AnimateWatcher from './demos/AnimateWatcher.vue'
 </script>
 
-# アニメーションテクニック
+# アニメーションテクニック {#animation-techniques}
 
 Vue には、enter (挿入) / leave (削除) とリストのトランジションを処理するための[`<Transition>`](/guide/built-ins/transition.html) と [`<TransitionGroup>`](/guide/built-ins/transition-group.html)というコンポーネントがあります。しかし、Vue のアプリケーションであっても、Web 上でアニメーションを使用する方法は他にもたくさんあります。ここでは、いくつかの追加のテクニックについて説明します。
 
-## クラスベースのアニメーション
+## クラスベースのアニメーション {#class-based-animations}
 
 DOM に entering (挿入) / leaving (削除) しない要素については、CSS のクラスを動的に追加することで、アニメーションを起動することができます。
 
@@ -88,7 +88,7 @@ export default {
 
 <DisabledButton />
 
-## 状態駆動アニメーション
+## 状態駆動アニメーション {#state-driven-animations}
 
 トランジション効果の中には、値を補間して適用できるものがあります。例えば、インタラクションが発生している間、要素にスタイルをバインドすることで適用できます。例えばこのような例を見てみましょう。
 
@@ -145,7 +145,7 @@ export default {
 
 <ElasticHeader />
 
-## ウォッチャーを使ったアニメーション
+## ウォッチャーを使ったアニメーション {#animating-with-watchers}
 
 工夫次第で、ウォッチャーを使って、数値の状態に応じたアニメーションを作成することができます。例えば、数値そのものをアニメーションさせることができます。
 

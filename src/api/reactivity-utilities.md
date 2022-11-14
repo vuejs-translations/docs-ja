@@ -1,6 +1,6 @@
-# リアクティビティー API: ユーティリティー
+# リアクティビティー API: ユーティリティー {#reactivity-api-utilities}
 
-## isRef()
+## isRef() {#isref}
 
 値が ref オブジェクトかどうかをチェックします。
 
@@ -20,7 +20,7 @@
   }
   ```
 
-## unref()
+## unref() {#unref}
 
 引数が ref であればその内部の値を返し、そうでなければ引数そのものを返します。これは `val = isRef(val) ? val.value : val` に対するシュガー関数です。
 
@@ -39,7 +39,7 @@
   }
   ```
 
-## toRef()
+## toRef() {#toref}
 
 ソースとなるリアクティブオブジェクトのプロパティの ref を作成するために使用できます。作成された ref はそのソースのプロパティと同期されます。ソースのプロパティを変更すると ref も更新され、その逆も同様です。
 
@@ -100,7 +100,7 @@
 
   `toRef()` はソースプロパティが現在存在しない場合でも、利用可能な ref を返します。これにより [`toRefs`](#torefs) では取得できないオプショナルなプロパティを扱えるようになります。
 
-## toRefs()
+## toRefs() {#torefs}
 
 リアクティブオブジェクトをプレーンオブジェクトに変換します。変換後のオブジェクトの各プロパティは、元のオブジェクトの対応するプロパティを指す ref です。個々の ref は [`toRef()`](#toref) を用いて生成されます。
 
@@ -161,7 +161,7 @@
 
   `toRefs` は呼び出した時のソースオブジェクトにある列挙可能なプロパティに対する ref だけを生成します。存在しないかも知れないプロパティに対する ref を作るには、代わりに [`toRef`](#toref) を使用してください。
 
-## isProxy()
+## isProxy() {#isproxy}
 
 オブジェクトが [`reactive()`](./reactivity-core.html#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](./reactivity-advanced.html#shallowreactive), [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly) によって作られたプロキシかどうかをチェックします。
 
@@ -171,7 +171,7 @@
   function isProxy(value: unknown): boolean
   ```
 
-## isReactive()
+## isReactive() {#isreactive}
 
 オブジェクトが [`reactive()`](./reactivity-core.html#reactive) または [`shallowReactive()`](./reactivity-advanced.html#shallowreactive) によって作られたプロキシかどうかをチェックします。
 
@@ -181,7 +181,7 @@
   function isReactive(value: unknown): boolean
   ```
 
-## isReadonly()
+## isReadonly() {#isreadonly}
 
 渡された値が読み取り専用オブジェクトであるかどうかをチェックします。読み取り専用オブジェクトのプロパティは変更可能ですが、渡されたオブジェクトを経由して直接代入することはできません。
 

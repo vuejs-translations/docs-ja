@@ -1,17 +1,17 @@
-# 本番デプロイ
+# 本番デプロイ {#production-deployment}
 
-## 開発と本番の違い
+## 開発と本番の違い {#development-vs-production}
 
 開発時において、Vue は開発体験を向上させるための様々な機能を提供します:
 
 - よくあるエラーや落とし穴に対する警告
 - Props や events に対するバリデーション
-- [リアクティビティーのデバックのためのフック](/guide/extras/reactivity-in-depth.html#リアクティビティーのデバッグ)
+- [リアクティビティーのデバックのためのフック](/guide/extras/reactivity-in-depth.html#reactivity-debugging)
 - 開発者ツールとの連携
 
 しかし、これらの機能は本番では役に立ちません。警告の検査の中には、わずかなパフォーマンスのオーバーヘッドを発生させるものもあります。本番へのデプロイ時には、ペイロードサイズを小さくしてパフォーマンスを向上させるために、使用されていない開発専用のコードブランチをすべて削除する必要があります。
 
-## ビルドツールなし
+## ビルドツールなし {#without-build-tools}
 
 CDN やセルフホストのスクリプトからロードして、ビルドツールなしで Vue を使用している場合、本番にデプロイする時は必ず本番向けビルド (末尾が `.prod.js` である dist ファイル) を使用して下さい。本番向けビルドは、開発専用のコードブランチがすべて削除され事前に最小化されています。
 
@@ -20,7 +20,7 @@ CDN やセルフホストのスクリプトからロードして、ビルドツ�
 
 詳しくは、[dist ファイルガイド](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use)をご覧ください。
 
-## ビルドツールあり
+## ビルドツールあり {#with-build-tools}
 
 `create-vue` (Vite ベース) または Vue CLI (webpack ベース) で生成されたプロジェクトは、本番ビルド用にあらかじめ設定がされています。
 
@@ -36,7 +36,7 @@ CDN やセルフホストのスクリプトからロードして、ビルドツ�
 - [Vite デプロイガイド](https://ja.vitejs.dev/guide/static-deploy.html)
 - [Vue CLI デプロイガイド](https://cli.vuejs.org/guide/deployment.html)
 
-## ランタイムエラーの追跡
+## ランタイムエラーの追跡 {#tracking-runtime-errors}
 
 [アプリケーションレベルのエラーハンドラー](/api/application.html#app-config-errorhandler) は、トラッキングサービスへエラーを報告するために使用できます:
 

@@ -1,4 +1,4 @@
-# アクセシビリティー
+# アクセシビリティー {#accessibility}
 
 Web アクセシビリティー（a11y としても知られます）とは、障害のある人、回線速度が遅い人、古かったり壊れたハードウェアを使用している人、単に芳しくない環境にいる人など、誰でも利用できる Web サイトを作成することを指します。例えば、ビデオに字幕をつければ、耳の不自由なユーザーも、大音量の中で電話の音が聞こえないユーザーも、どちらも便利になります。同様に、テキストのコントラストが低すぎないようにすることで、弱視のユーザーにも、明るい日光の下で携帯電話を使おうとしているユーザーにも役立ちます。
 
@@ -6,7 +6,7 @@ Web アクセシビリティー（a11y としても知られます）とは、�
 
 [World Wide Web Consortium (W3C)](https://www.w3.org/) が提供する [Web アクセシビリティーの計画と管理ガイド](https://www.w3.org/WAI/planning-and-managing/)を確認してください。
 
-## スキップリンク
+## スキップリンク {#skip-link}
 
 各ページの上部にメインコンテンツに直接アクセスできるリンクを設け、ユーザーが複数の Web ページで繰り返されるコンテンツを読み飛ばせるようにする必要があります。
 
@@ -80,11 +80,11 @@ watch(
 
 [メインコンテンツへのスキップリンクに関するドキュメントを読む](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
-## コンテンツ構成
+## コンテンツ構成 {#content-structure}
 
 アクセシビリティーの最も重要な要素のひとつは、デザインがアクセシブルな実装をサポートできることを確認することです。デザインは、色のコントラスト、フォントの選択、テキストサイズ、言語だけでなく、アプリケーションの中でコンテンツがどのように構成されているかも考慮する必要があります。
 
-### 見出し
+### 見出し {#headings}
 
 ユーザーは、見出しを頼りにアプリケーションを移動することができます。アプリケーションの各セクションに説明的な見出しがあれば、ユーザーは各セクションの内容を容易に予測することができます。見出しに関しては、推奨されるアクセシビリティーの実践方法がいくつかあります:
 
@@ -112,7 +112,7 @@ watch(
 </main>
 ```
 
-### ランドマーク
+### ランドマーク {#landmarks}
 
 [ランドマーク](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)は、アプリケーション内のセクションへのプログラムによるアクセスを提供します。アシスティブ・テクノロジー（支援技術）に依存するユーザーは、アプリケーションの各セクションに移動し、コンテンツをスキップすることができます。これを実現するために、[ARIA ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles)を使用できます。
 
@@ -133,7 +133,7 @@ watch(
 
 [ランドマークについてもっと読む](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
-## セマンティックなフォーム
+## セマンティックなフォーム {#semantic-forms}
 
 フォームを作成する際、次の要素を使うことができます: `<form>`、 `<label>`、 `<input>`、 `<textarea>`、 `<button>`
 
@@ -158,7 +158,7 @@ watch(
 
 form 要素に `autocomplete='on'` を記述すると、フォーム内のすべての入力欄に適用されることに注意してください。各入力欄に対して異なる [autocomplete 属性の値](https://developer.mozilla.org/ja/docs/Web/HTML/Attributes/autocomplete) を設定することもできます。
 
-### ラベル
+### ラベル {#labels}
 
 すべてのフォームコントロールの目的を説明するため、ラベルを用意しましょう。`for` と `id` をリンクします:
 
@@ -186,7 +186,7 @@ Chrome デベロッパー ツールでこの要素を検査し、Elements タブ
 一致する id を持つラベルを明示的に設定する方が、アシスティブ・テクノロジーでより良くサポートされます。
 :::
 
-#### `aria-label`
+#### `aria-label` {#aria-label}
 
 [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) で入力欄にアクセシブルな名前を与えることもできます。
 
@@ -207,7 +207,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 ![Chrome デベロッパー ツールが、入力欄が aria-label から得たアクセシブルな名前を表示している](./images/AccessibleARIAlabelDevTools.png)
 
-#### `aria-labelledby`
+#### `aria-labelledby` {#aria-labelledby}
 
 [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) は `aria-label` と似ていますが、ラベルテキストが画面上に表示されている場合に使用されます。他の要素とは `id` で対になっており、複数の `id` をリンクさせることができます:
 
@@ -237,7 +237,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 ![Chrome デベロッパー ツールが、入力欄が aria-labelledby から得たアクセシブルな名前を表示している](./images/AccessibleARIAlabelledbyDevTools.png)
 
-#### `aria-describedby`
+#### `aria-describedby` {#aria-describedby}
 
 [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) は `aria-labelledby` と同じように使われますが、ユーザーが必要とするかもしれない追加の情報を含む説明を提供します。これはどのような入力欄に対しても、その基準を記述するために使用することができます:
 
@@ -271,7 +271,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 ![Chrome デベロッパー ツールが、入力欄に設定された aria-labelledby のアクセシブルな名前と、aria-describedby の説明文を表示している](./images/AccessibleARIAdescribedby.png)
 
-### プレースホルダー
+### プレースホルダー {#placeholder}
 
 多くのユーザーを混乱させる可能性があるため、プレースホルダーの使用は避けてください。
 
@@ -322,7 +322,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 ユーザーがフォームを入力するのに必要な情報は、入力欄外で提供するとよいでしょう。
 
-### インストラクション
+### インストラクション {#instructions}
 
 入力フィールドにインストラクションを追加する場合は、入力欄に正しくリンクさせるようにしてください。
 インストラクションを追加し、[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) の中に複数の id をバインドすることができます。これにより、より柔軟なデザインが可能になります。
@@ -354,7 +354,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 <!-- <common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-### コンテンツの非表示
+### コンテンツの非表示 {#hiding-content}
 
 通常、たとえ入力欄がアクセシブルな名前を持っていても、ラベルを視覚的に非表示にすることは推奨されません。しかし、入力欄の機能が周囲の内容から理解できるのであれば、視覚的にラベルを非表示にすることができます。
 
@@ -388,7 +388,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 <!-- <common-codepen-snippet title="Form Search" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-#### `aria-hidden="true"`
+#### `aria-hidden="true"` {#aria-hidden-true}
 
 `aria-hidden="true"` を追加すると、アシスティブ・テクノロジーから要素を隠しますが、その他のユーザーは視覚的に利用できます。フォーカス可能な要素には使用せず、純粋に装飾的なコンテンツ、複製されたコンテンツ、画面外のコンテンツに使用してください。
 
@@ -397,7 +397,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 <p aria-hidden="true">This is hidden from screen readers.</p>
 ```
 
-### ボタン
+### ボタン {#buttons}
 
 フォーム内で button を使用する場合、フォームを送信しないようにするため type を設定する必要があります。
 またはボタンを作成するために input を使用することもできます:
@@ -416,7 +416,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 <!-- <common-codepen-snippet title="Form Buttons" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-### 機能的な画像
+### 機能的な画像 {#functional-images}
 
 このテクニックを使って、機能的な画像を作ることができます。
 
@@ -452,7 +452,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 <!-- <common-codepen-snippet title="Functional Images" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-## 標準規格
+## 標準規格 {#standards}
 
 World Wide Web Consortium (W3C) の Web Accessibility Initiative (WAI) は、さまざまなコンポーネントの Web アクセシビリティー規格を策定しています:
 
@@ -463,11 +463,11 @@ World Wide Web Consortium (W3C) の Web Accessibility Initiative (WAI) は、さ
 - [Web コンテンツアクセシビリティーガイドライン (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
   - Web コンテンツ - 開発者や、オーサリングツール、アクセシビリティー評価ツールが使用する
 
-### Web コンテンツアクセシビリティーガイドライン (WCAG)
+### Web コンテンツアクセシビリティーガイドライン (WCAG) {#web-content-accessibility-guidelines-wcag}
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/) は、[WCAG 2.0](https://www.w3.org/TR/WCAG20/) を拡張し、Web の変化に対応することで、新しい技術の実装を可能にするものです。W3C は、Web アクセシビリティー方針を策定又は更新する際に、最新版の WCAG を使用することを推奨しています。
 
-#### WCAG 2.1 四つの原則:
+#### WCAG 2.1 四つの原則: {#wcag-2-1-four-main-guiding-principles-abbreviated-as-pour}
 
 - [知覚可能](https://www.w3.org/TR/WCAG21/#perceivable)
   - 表示されている情報は、利用者が知覚できなければならない
@@ -478,23 +478,23 @@ World Wide Web Consortium (W3C) の Web Accessibility Initiative (WAI) は、さ
 - [堅牢](https://www.w3.org/TR/WCAG21/#robust)
   - テクノロジーが進歩しても、利用者はコンテンツにアクセスできなければならない
 
-#### Web Accessibility Initiative – Accessible Rich Internet Applications (WAI-ARIA)
+#### Web Accessibility Initiative – Accessible Rich Internet Applications (WAI-ARIA) {#web-accessibility-initiative-–-accessible-rich-internet-applications-wai-aria}
 
 W3C の WAI-ARIA は、動的コンテンツや高度なユーザーインターフェイスコントロールの構築方法に関するガイダンスを提供しています。
 
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA オーサリングプラクティス 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
-## リソース
+## リソース {#resources}
 
-### 資料
+### 資料 {#documentation}
 
 - [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/)
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 - [WAI-ARIA オーサリングプラクティス 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
-### アシスティブ・テクノロジー
+### アシスティブ・テクノロジー {#assistive-technologies}
 
 - スクリーンリーダー
   - [NVDA](https://www.nvaccess.org/download/)
@@ -506,7 +506,7 @@ W3C の WAI-ARIA は、動的コンテンツや高度なユーザーインター
   - [ZoomText](https://www.zoomtext.com/)
   - [Magnifier](https://support.microsoft.com/en-us/help/11542/windows-use-magnifier-to-make-things-easier-to-see)
 
-### テスト
+### テスト {#testing}
 
 - 自動化ツール
   - [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
@@ -520,7 +520,7 @@ W3C の WAI-ARIA は、動的コンテンツや高度なユーザーインター
   - [Focus Indicator](https://chrome.google.com/webstore/detail/focus-indicator/heeoeadndnhebmfebjccbhmccmaoedlf?hl=en-US…)
   - [NerdeFocus](https://chrome.google.com/webstore/detail/nerdefocus/lpfiljldhgjecfepfljnbjnbjfhennpd?hl=en-US…)
 
-### ユーザー
+### ユーザー {#users}
 
 世界保健機関 (WHO) は、世界人口の 15% が何らかの障害を持ち、そのうち 2-4% が重度であると推定しています。これは全世界で 10 億人と推定され、障害者は世界最大のマイノリティーグループとなっています。
 

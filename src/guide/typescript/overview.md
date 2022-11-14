@@ -2,17 +2,17 @@
 outline: deep
 ---
 
-# TypeScript で Vue を使用する
+# TypeScript で Vue を使用する {#using-vue-with-typescript}
 
 TypeScript のような型システムは、ビルド時に静的解析で多くの一般的なエラーを検出できます。これにより、本番環境でのランタイムエラーの確率を下げ、より自信を持って大規模アプリケーションのコードをリファクタリングできるようになります。TypeScript は、IDE における型ベースの自動補完により、開発者の人間工学も改善します。
 
 Vue 自体が TypeScript で書かれており、第一級の TypeScript のサポートを提供します。全ての公式 Vue パッケージには型定義が付属されているため、すぐに利用することができます。
 
-## プロジェクトのセットアップ
+## プロジェクトのセットアップ {#project-setup}
 
 [`create-vue`](https://github.com/vuejs/create-vue) は公式のプロジェクトセットアップツールで、[Vite](https://vitejs.dev/) を用いた TypeScript 対応の Vue プロジェクトをセットアップするためのオプションを提供します。
 
-### 概要
+### 概要 {#overview}
 
 Vite ベースのセットアップでは、開発サーバーとそのバンドラーはトラインスパイルのみ行い、型チェックは行いません。これにより、Vite の開発サーバーは TypeScript を使用していても超高速に動作し続けることが保証されます。
 
@@ -22,7 +22,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 - Vue CLI は TypeScript もサポートしていますが、推奨されなくなりました。[以下の注意](#vue-cli-と-ts-loader-に関する注意)を参照してください。
 
-### IDE のサポート
+### IDE のサポート {#ide-support}
 
 - [Visual Studio Code](https://code.visualstudio.com/) (VSCode) は、すぐに利用できる TypeScript サポートを提供しているため、強く推奨されます。
 
@@ -36,7 +36,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) は TypeScript と Vue の両方をすぐに利用できるようサポートしています。他の JetBrains IDE も最初から、または [この無料プラグイン](https://plugins.jetbrains.com/plugin/9442-vue-js) で、これらをサポートしています。
 
-### `tsconfig.json` の構成
+### `tsconfig.json` の構成 {#configuring-tsconfig-json}
 
 `create-vue` を使ってセットアップしたプロジェクトには、構成済みの `tsconfig.json` が含まれます。ベースとなった構成は [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) パッケージにて抽象化されています。プロジェクト内部では、[Project References](https://www.typescriptlang.org/docs/handbook/project-references.html) を使って、異なる環境（例: アプリコードとテストコードで異なるグローバル変数を持つ必要がある）で実行されるコードに対して正しい型を保証しています。
 
@@ -53,7 +53,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 - [Official TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 - [esbuild TypeScript compilation caveats](https://esbuild.github.io/content-types/#typescript-caveats)
 
-### Volar Takeover Mode
+### Volar Takeover Mode {#volar-takeover-mode}
 
 > このセクションは、VSCode + Volar の場合のみ該当します。
 
@@ -71,7 +71,7 @@ Takeover Mode を有効にするには以下の手順に従って、VSCode の�
 
 <img src="./images/takeover-mode.png" width="590" height="426" style="margin:0px auto;border-radius:8px">
 
-### Vue CLI と `ts-loader` に関する注意
+### Vue CLI と `ts-loader` に関する注意 {#note-on-vue-cli-and-ts-loader}
 
 Vue CLI など、webpack ベースのセットアップでは、モジュールの変換パイプラインの一部で、例えば `ts-loader` を使って型チェックを行うことが一般的です。しかし、これは型チェックを行うためにモジュールグラフ全体の知識が必要となるので、クリーンな解決法とは言えません。個々のモジュールの変換ステップは、単にこのタスクを行うための良い方法ではないのです。これは、以下のような問題を引き起こします:
 
@@ -83,9 +83,9 @@ Vue CLI など、webpack ベースのセットアップでは、モジュール�
 
 現在、Vue CLI 経由で Vue 3 + TypeScript を使っている場合、Vite への移行を強く推奨します。トランスパイルのみでの TS サポートを有効にする CLI オプションにも取り組んでいるので、型チェックのために `vue-tsc` に切り替えることができます。
 
-## 一般的な使用上の注意
+## 一般的な使用上の注意 {#general-usage-notes}
 
-### `defineComponent()`
+### `defineComponent()` {#definecomponent}
 
 TypeScript がコンポーネントオプション内の型を適切に推論できるようにするには、[`defineComponent()`](/api/general.html#definecomponent) を使ってコンポーネントを定義する必要があります:
 
@@ -136,7 +136,7 @@ export default defineComponent({
 `defineComponent()` は、プレーンな JavaScript で定義されたコンポーネントに対しても型推論を行うことができます。
 :::
 
-### 単一ファイルコンポーネントでの使用法
+### 単一ファイルコンポーネントでの使用法 {#usage-in-single-file-components}
 
 SFC で TypeScript を使用する場合、`<script>` タグに `lang="ts"` 属性を追加してください。`lang="ts"` が存在する場合、全てのテンプレート内の式に対してもより厳格な型チェックを利用できます。
 
@@ -175,7 +175,7 @@ const count = ref(1)
 </template>
 ```
 
-### テンプレート内での TypeScript
+### テンプレート内での TypeScript {#typescript-in-templates}
 
 `<template>` は、`<script lang="ts">` や `<script setup lang="ts">` が使われている場合、バインディング式について、TypeScript をサポートします。これは、テンプレート内の式で型キャストを行う必要がある場合に便利です。
 
@@ -208,7 +208,7 @@ let x: string | number = 1
 Vue CLI または webpack ベースのセットアップを使用する場合、テンプレート内の式での TypeScript の使用には `vue-loader@^16.8.0` が必要になります。
 :::
 
-## API 固有のレシピ
+## API 固有のレシピ {#api-specific-recipes}
 
 - [Composition API とともに TypeScript を使用する](./composition-api)
 - [Options API とともに TypeScript を使用する](./options-api)

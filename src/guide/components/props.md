@@ -1,4 +1,4 @@
-# プロパティ
+# プロパティ {#props}
 
 > このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
@@ -6,7 +6,7 @@
   <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="プロパティについて学ぶ Vue.js の無料レッスン"/>
 </div>
 
-## プロパティの宣言
+## プロパティの宣言 {#props-declaration}
 
 Vue のコンポーネントでは、明示的な props (プロパティ) の宣言が必要です。これにより Vue は、外部からコンポーネントに渡された props を fallthrough 属性（[専用のセクション](/guide/components/attrs)で説明します）として扱うべきかを知ることができます。
 
@@ -117,9 +117,9 @@ defineProps<{
 
 </div>
 
-## プロパティ渡しの詳細
+## プロパティ渡しの詳細 {#prop-passing-details}
 
-### プロパティ名での大文字・小文字の使い分け
+### プロパティ名での大文字・小文字の使い分け {#prop-name-casing}
 
 長いプロパティ名は、camelCase (キャメルケース) で宣言します。そうすると、プロパティのキーとして使うときに引用符を使わなくて済みます。camelCase は JavaScript の有効な識別子であるため、以下のようにテンプレート内の式で直接参照することができます:
 
@@ -156,7 +156,7 @@ export default {
 
 [コンポーネントのタグには、可能な限り PascalCase を用いる](/guide/components/registration.html#component-name-casing)ことが推奨されます。これは Vue コンポーネントとネイティブ要素の区別が付き、テンプレートの可読性が高まるためです。しかし、プロパティを渡すときに camelCase を用いることには、それほど実用的なメリットがありません。そのため、Vue では各言語の規約に従うことが推奨されます。
 
-### 静的なプロパティと動的なプロパティ
+### 静的なプロパティと動的なプロパティ {#static-vs-dynamic-props}
 
 ここまでで、静的な値として渡すプロパティを見てきました。例:
 
@@ -174,11 +174,11 @@ export default {
 <BlogPost :title="post.title + ' by ' + post.author.name" />
 ```
 
-### いろいろな種類の値を渡す
+### いろいろな種類の値を渡す {#passing-different-value-types}
 
 上の 2 つは、たまたま文字列の値を渡す例ですが、プロパティには _どんな_ 種類の値も渡すことができます。
 
-#### 数値
+#### 数値 {#number}
 
 ```vue-html
 <!-- `42` は静的な値ですが、これが文字列ではなく JavaScript の        -->
@@ -189,7 +189,7 @@ export default {
 <BlogPost :likes="post.likes" />
 ```
 
-#### ブール値
+#### ブール値 {#boolean}
 
 ```vue-html
 <!-- 値なしでプロパティを指定すると、暗黙で `true` を指定したことになります。 -->
@@ -203,7 +203,7 @@ export default {
 <BlogPost :is-published="post.isPublished" />
 ```
 
-#### 配列
+#### 配列 {#array}
 
 ```vue-html
 <!-- 静的な配列でも、これが文字列ではなく JavaScript の         -->
@@ -214,7 +214,7 @@ export default {
 <BlogPost :comment-ids="post.commentIds" />
 ```
 
-#### オブジェクト
+#### オブジェクト {#object}
 
 ```vue-html
 <!-- 静的なオブジェクトでも、これが文字列ではなく JavaScript の -->
@@ -230,7 +230,7 @@ export default {
 <BlogPost :author="post.author" />
 ```
 
-### オブジェクトを利用した複数のプロパティのバインディング
+### オブジェクトを利用した複数のプロパティのバインディング {#binding-multiple-properties-using-an-object}
 
 オブジェクトに含まれるすべてのプロパティを props として渡したい場合には、[引数なしの `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) を使用します (`:プロパティ名` の代わりに `v-bind`)。例えば、以下のような `post` オブジェクトがあるとします:
 
@@ -273,7 +273,7 @@ const post = {
 <BlogPost :id="post.id" :title="post.title" />
 ```
 
-## 一方向のデータフロー
+## 一方向のデータフロー {#one-way-data-flow}
 
 すべてのプロパティでは、子のプロパティと親のプロパティとの間に**一方向バインディング**が形成されます。親のプロパティが更新されたときには子にも流れますが、その逆はありません。これにより、親の状態が誤って子コンポーネントによって変更されてアプリのデータフローが把握しにくくなる、といった事態が防がれます。
 
@@ -363,13 +363,13 @@ export default {
 
    </div>
 
-### オブジェクト/配列のプロップを変更する
+### オブジェクト/配列のプロップを変更する {#mutating-object-array-props}
 
 オブジェクトや配列をプロパティとして渡した場合、子コンポーネントがプロパティのバインディングを変更することはできませんが、オブジェクトや配列のネストされたプロパティを変更することは**可能です**。これは、JavaScript ではオブジェクトや配列が参照渡しであり、Vue がそのような変更を防ぐのにかかるコストが現実的でないためです。
 
 このような変更の主な欠点は、親コンポーネントにとって明瞭でない方法で子コンポーネントが親の状態に影響を与えることを許してしまい、後からデータの流れを見極めるのが難しくなる可能性があることです。親と子を密に結合させる設計でない限り、ベストプラクティスとしてはそのような変更を避けるべきです。ほとんどの場合、子コンポーネントは[イベントを発行](/guide/components/events.html)して、変更を親コンポーネントに実行してもらう必要があります。
 
-## プロパティのバリデーション
+## プロパティのバリデーション {#prop-validation}
 
 先ほど見た型のように、コンポーネントではプロパティに対する要件を指定することができます。要件が合わないと、Vue がブラウザーの JavaScript コンソールで警告を発します。他の人に使ってもらうことを想定したコンポーネントを開発する場合、これはとても便利です。
 
@@ -503,7 +503,7 @@ export default {
 
 </div>
 
-### 実行時の型チェック
+### 実行時の型チェック {#runtime-type-checks}
 
 `type` には、以下のネイティブコンストラクターを指定することができます:
 
@@ -552,7 +552,7 @@ export default {
 
 Vue は `instanceof Person` を使って、`author` プロパティの値が本当に `Person` クラスのインスタンスであるかどうかを検証しています。
 
-## ブール値の型変換
+## ブール値の型変換 {#boolean-casting}
 
 `Boolean` 型のプロパティは、ネイティブのブール値の属性が振る舞う様子を模倣するために、特殊な型変換の規則を持っています。次のような宣言を含む `<MyComponent>` があるとします:
 

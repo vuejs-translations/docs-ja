@@ -1,10 +1,10 @@
-# Composition API: ライフサイクルフック
+# Composition API: ライフサイクルフック {#composition-api-lifecycle-hooks}
 
 :::info 使用上の注意
 このページに記載されているすべての API は、コンポーネントの `setup()` フェーズで同期的に呼び出される必要があります。詳細については、[ガイド - ライフサイクルフック](/guide/essentials/lifecycle.html)を参照してください。
 :::
 
-## onMounted()
+## onMounted() {#onmounted}
 
 コンポーネントがマウントされた後に呼び出されるコールバックを登録します。
 
@@ -46,7 +46,7 @@
   </template>
   ```
 
-## onUpdated()
+## onUpdated() {#onupdated}
 
 コンポーネントがリアクティブな状態変更によって DOM ツリーを更新した後に呼び出されるコールバックを登録します。
 
@@ -89,7 +89,7 @@
   </template>
   ```
 
-## onUnmounted()
+## onUnmounted() {#onunmounted}
 
 コンポーネントがアンマウントされた後に呼び出されるコールバックを登録します。
 
@@ -128,7 +128,7 @@
   </script>
   ```
 
-## onBeforeMount()
+## onBeforeMount() {#onbeforemount}
 
 コンポーネントがマウントされる直前に呼び出されるフックを登録します。
 
@@ -144,7 +144,7 @@
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-## onBeforeUpdate()
+## onBeforeUpdate() {#onbeforeupdate}
 
 コンポーネントがリアクティブな状態変更により DOM ツリーを更新しようとする直前に呼び出されるフックを登録します。
 
@@ -160,7 +160,7 @@
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-## onBeforeUnmount()
+## onBeforeUnmount() {#onbeforeunmount}
 
 コンポーネントインスタンスがアンマウントされる直前に呼び出されるフックを登録します。
 
@@ -176,7 +176,7 @@
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
-## onErrorCaptured()
+## onErrorCaptured() {#onerrorcaptured}
 
 子孫コンポーネントから伝搬するエラーをキャプチャーしたときに呼び出されるフックを登録します。
 
@@ -220,7 +220,7 @@
 
   - `errrorCaptured` フックで `false` を返すと、エラーがそれ以上伝搬しないようにできます。これは要するに「このエラーは処理済みなので無視してください」ということです。このエラーに対して、追加の `errorCaptured` フックや `app.config.errorHandler` が呼び出されるのを防ぎます。
 
-## onRenderTracked() <sup class="vt-badge dev-only" />
+## onRenderTracked() <sup class="vt-badge dev-only" /> {#onrendertracked}
 
 コンポーネントのレンダーエフェクトによってリアクティブな依存関係が追跡されたときに呼び出されるデバッグフックを登録します。
 
@@ -243,7 +243,7 @@
 
 - **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
 
-## onRenderTriggered() <sup class="vt-badge dev-only" />
+## onRenderTriggered() <sup class="vt-badge dev-only" /> {#onrendertriggered}
 
 リアクティブな依存関係がコンポーネントのレンダーエフェクトの再実行をトリガーしたときに呼び出されるデバッグフックを登録します。
 
@@ -269,7 +269,7 @@
 
 - **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
 
-## onActivated()
+## onActivated() {#onactivated}
 
 コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM に挿入された後に呼び出されるコールバックを登録します。
 
@@ -281,9 +281,9 @@
   function onActivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
-## onDeactivated()
+## onDeactivated() {#ondeactivated}
 
 コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM から削除された後に呼び出されるコールバックを登録します。
 
@@ -295,9 +295,9 @@
   function onDeactivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#キャッシュされたインスタンスのライフサイクル)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
 
-## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" />
+## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" /> {#onserverprefetch}
 
 コンポーネントインスタンスがサーバーでレンダリングされる前に解決される非同期関数を登録します。
 

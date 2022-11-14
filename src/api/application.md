@@ -1,6 +1,6 @@
-# アプリケーション API
+# アプリケーション API {#application-api}
 
-## createApp()
+## createApp() {#createapp}
 
 アプリケーションインスタンスを作成します。
 
@@ -37,11 +37,11 @@
 
 - **参照:** [ガイド - Vue アプリケーションの作成](/guide/essentials/application.html)
 
-## createSSRApp()
+## createSSRApp() {#createssrapp}
 
-[SSR hydration (ハイドレーション) ](/guide/scaling-up/ssr.html#クライアント・ハイドレーション)モードでアプリケーションインスタンスを作成します。使用法は `createApp()` と全く同じです。
+[SSR hydration (ハイドレーション) ](/guide/scaling-up/ssr.html#client-hydration)モードでアプリケーションインスタンスを作成します。使用法は `createApp()` と全く同じです。
 
-## app.mount()
+## app.mount() {#app-mount}
 
 コンテナ要素にアプリケーションインスタンスをマウントします。
 
@@ -59,7 +59,7 @@
 
   コンポーネントにテンプレートがあるか、render 関数を定義している場合、コンテナ内の既存の DOM ノードを置換します。それ以外の場合は、実行時コンパイラーが使用可能であれば、コンテナの `innerHTML` がテンプレートとして使用されます。
 
-  SSR ハイドレーションモードでは、コンテナ内の既存の DOM ノードをハイドレートします。[ミスマッチ](/guide/scaling-up/ssr.html#ハイドレーション・ミスマッチ)があった場合、既存の DOM ノードは期待される結果に合うよう変化されます。
+  SSR ハイドレーションモードでは、コンテナ内の既存の DOM ノードをハイドレートします。[ミスマッチ](/guide/scaling-up/ssr.html#hydration-mismatch)があった場合、既存の DOM ノードは期待される結果に合うよう変化されます。
 
   アプリケーションのインスタンス毎に、`mount()` は一度だけ呼び出すことができます。
 
@@ -78,7 +78,7 @@
   app.mount(document.body.firstChild)
   ```
 
-## app.unmount()
+## app.unmount() {#app-unmount}
 
 マウントしたアプリケーションインスタンスをアンマウントし、アプリケーションのコンポーネントツリーにあるすべてのコンポーネントに対して、ライフサイクルフックの unmount を呼び出します。
 
@@ -90,7 +90,7 @@
   }
   ```
 
-## app.provide()
+## app.provide() {#app-provide}
 
 アプリケーション内のすべての子孫コンポーネントに注入できる値を提供します。
 
@@ -146,9 +146,9 @@
 
 - **参照:**
   - [Provide / Inject](/guide/components/provide-inject.html)
-  - [アプリケーションレベルの Provide](/guide/components/provide-inject.html#アプリケーションレベルの-provide)
+  - [アプリケーションレベルの Provide](/guide/components/provide-inject.html#app-level-provide)
 
-## app.component()
+## app.component() {#app-component}
 
 名称文字列とコンポーネント定義を両方渡す場合、グローバルコンポーネントとして登録し、名称のみ渡す場合、登録済みのコンポーネントを取得します。
 
@@ -179,7 +179,7 @@
 
 - **参照:** [コンポーネントの登録](/guide/components/registration.html)
 
-## app.directive()
+## app.directive() {#app-directive}
 
 名称文字列およびディレクティブ定義を両方渡す場合、グローバルカスタムディレクティブを登録し、名称のみの場合は、登録済みのディレクティブを取得します。
 
@@ -217,7 +217,7 @@
 
 - **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives.html)
 
-## app.use()
+## app.use() {#app-use}
 
 [プラグイン](/guide/reusability/plugins.html)をインストールします。
 
@@ -252,7 +252,7 @@
 
 - **参照:** [プラグイン](/guide/reusability/plugins.html)
 
-## app.mixin()
+## app.mixin() {#app-mixin}
 
 グローバルミックスイン (スコープがアプリケーション) を適用します。グローバルミックスインは、インクルードされたオプションをアプリケーションの全コンポーネントインスタンスに適用します。
 
@@ -270,7 +270,7 @@
   }
   ```
 
-## app.version
+## app.version {#app-version}
 
 アプリケーションを作成した Vue のバージョンを提供します。Vue のバージョンの違いに応じた条件付きロジックが必要となる[プラグイン](/guide/reusability/plugins.html)内で有用となります。
 
@@ -299,7 +299,7 @@
 
 - **参照:** [グローバル API - バージョン](/api/general.html#version)
 
-## app.config
+## app.config {#app-config}
 
 すべてのアプリケーションインスタンスは、アプリケーションの構成設定を含む `config` オブジェクトを公開しています。アプリケーションをマウントする前であれば、プロパティ (以下で記載) を修正することができます。
 
@@ -311,7 +311,7 @@ const app = createApp(/* ... */)
 console.log(app.config)
 ```
 
-## app.config.errorHandler
+## app.config.errorHandler {#app-config-errorhandler}
 
 アプリケーション内から伝播する未捕捉のエラーに対して、グローバルハンドラーを割り当てます。
 
@@ -351,7 +351,7 @@ console.log(app.config)
   }
   ```
 
-## app.config.warnHandler
+## app.config.warnHandler {#app-config-warnhandler}
 
 Vue からの実行時警告に対して、カスタムハンドラーを割り当てます。
 
@@ -385,7 +385,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   }
   ```
 
-## app.config.performance
+## app.config.performance {#app-config-performance}
 
 これを `true` に設定することで、ブラウザーの開発ツールの performance/timeline パネルで、コンポーネントの初期化、コンパイル、レンダリング、パッチについてのパフォーマンスのトレースが有効となります。 開発モードおよび [performance.mark](https://developer.mozilla.org/ja/docs/Web/API/Performance/mark) API をサポートするブラウザーでのみ動作します。
 
@@ -393,7 +393,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 - **参照:** [ガイド - パフォーマンス](/guide/best-practices/performance.html)
 
-## app.config.compilerOptions
+## app.config.compilerOptions {#app-config-compileroptions}
 
 実行時コンパイラーのオプションを設定します。このオブジェクトに設定される値はブラウザー内のテンプレートコンパイラーに渡され、設定されたアプリケーションのコンポーネントすべてに影響を与えます。[`compilerOptions` オプション](/api/options-rendering.html#compileroptions)を使用することで、コンポーネント毎のオプションを上書きすることも可能となることに注意してください。
 
@@ -405,7 +405,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 - `vite` の場合: [`@vitejs/plugin-vue` オプションによって渡す](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
   :::
 
-### app.config.compilerOptions.isCustomElement
+### app.config.compilerOptions.isCustomElement {#app-config-compileroptions-iscustomelement}
 
 ネイティブカスタム要素を認識するためのチェックメソッドを指定する。
 
@@ -428,7 +428,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 - **参照:** [Vue および web コンポーネント](/guide/extras/web-components.html)
 
-### app.config.compilerOptions.whitespace
+### app.config.compilerOptions.whitespace {#app-config-compileroptions-whitespace}
 
 テンプレートの空白を扱う振る舞いを調整します。
 
@@ -452,7 +452,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   app.config.compilerOptions.whitespace = 'preserve'
   ```
 
-### app.config.compilerOptions.delimiters
+### app.config.compilerOptions.delimiters {#app-config-compileroptions-delimiters}
 
 テンプレート内のテキスト補間に用いるデリミタを調整します。
 
@@ -471,7 +471,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   app.config.compilerOptions.delimiters = ['${', '}']
   ```
 
-### app.config.compilerOptions.comments
+### app.config.compilerOptions.comments {#app-config-compileroptions-comments}
 
 テンプレートの HTML コメントの扱い方を調整します。
 
@@ -489,7 +489,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   app.config.compilerOptions.comments = true
   ```
 
-## app.config.globalProperties
+## app.config.globalProperties {#app-config-globalproperties}
 
 アプリケーション内部のコンポーネントインスタンスにアクセス可能なグローバルプロパティを登録するのに使用することができるオブジェクトです。
 
@@ -523,7 +523,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   }
   ```
 
-## app.config.optionMergeStrategies
+## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
 カスタムコンポーネントのオプションにおけるマージ戦略を定義するオブジェクトです。
 

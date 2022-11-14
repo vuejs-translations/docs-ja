@@ -1,6 +1,6 @@
-# リアクティビティー API: 上級編
+# リアクティビティー API: 上級編 {#reactivity-api-advanced}
 
-## shallowRef()
+## shallowRef() {#shallowref}
 
 [`ref()`](./reactivity-core.html#ref) の shallow（浅い）バージョン。
 
@@ -33,10 +33,10 @@
   ```
 
 - **参照:**
-  - [ガイド - 大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす](/guide/best-practices/performance.html#大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす)
-  - [ガイド - 外部の状態システムとの統合](/guide/extras/reactivity-in-depth.html#外部の状態システムとの統合)
+  - [ガイド - 大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす](/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
+  - [ガイド - 外部の状態システムとの統合](/guide/extras/reactivity-in-depth.html#integration-with-external-state-systems)
 
-## triggerRef()
+## triggerRef() {#triggerref}
 
 [浅い ref](#shallowref) に依存する作用を強制的にトリガーします。これは通常、浅い ref の内部値に対して深い変更を加えた後に使用されます。
 
@@ -65,7 +65,7 @@
   triggerRef(shallow)
   ```
 
-## customRef()
+## customRef() {#customref}
 
 依存関係の追跡と更新のトリガーを明示的に制御して、カスタマイズされた ref を作成します。
 
@@ -131,7 +131,7 @@
 
   [プレイグラウンドで試す](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHVzZURlYm91bmNlZFJlZiB9IGZyb20gJy4vZGVib3VuY2VkUmVmLmpzJ1xuY29uc3QgdGV4dCA9IHVzZURlYm91bmNlZFJlZignaGVsbG8nLCAxMDAwKVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPHA+XG4gICAgVGhpcyB0ZXh0IG9ubHkgdXBkYXRlcyAxIHNlY29uZCBhZnRlciB5b3UndmUgc3RvcHBlZCB0eXBpbmc6XG4gIDwvcD5cbiAgPHA+e3sgdGV4dCB9fTwvcD5cbiAgPGlucHV0IHYtbW9kZWw9XCJ0ZXh0XCIgLz5cbjwvdGVtcGxhdGU+IiwiaW1wb3J0LW1hcC5qc29uIjoie1xuICBcImltcG9ydHNcIjoge1xuICAgIFwidnVlXCI6IFwiaHR0cHM6Ly9zZmMudnVlanMub3JnL3Z1ZS5ydW50aW1lLmVzbS1icm93c2VyLmpzXCJcbiAgfVxufSIsImRlYm91bmNlZFJlZi5qcyI6ImltcG9ydCB7IGN1c3RvbVJlZiB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZURlYm91bmNlZFJlZih2YWx1ZSwgZGVsYXkgPSAyMDApIHtcbiAgbGV0IHRpbWVvdXRcbiAgcmV0dXJuIGN1c3RvbVJlZigodHJhY2ssIHRyaWdnZXIpID0+IHtcbiAgICByZXR1cm4ge1xuICAgICAgZ2V0KCkge1xuICAgICAgICB0cmFjaygpXG4gICAgICAgIHJldHVybiB2YWx1ZVxuICAgICAgfSxcbiAgICAgIHNldChuZXdWYWx1ZSkge1xuICAgICAgICBjbGVhclRpbWVvdXQodGltZW91dClcbiAgICAgICAgdGltZW91dCA9IHNldFRpbWVvdXQoKCkgPT4ge1xuICAgICAgICAgIHZhbHVlID0gbmV3VmFsdWVcbiAgICAgICAgICB0cmlnZ2VyKClcbiAgICAgICAgfSwgZGVsYXkpXG4gICAgICB9XG4gICAgfVxuICB9KVxufSJ9)
 
-## shallowReactive()
+## shallowReactive() {#shallowreactive}
 
 [`reactive()`](./reactivity-core.html#reactive) の shallow（浅い）バージョン。
 
@@ -169,7 +169,7 @@
   state.nested.bar++
   ```
 
-## shallowReadonly()
+## shallowReadonly() {#shallowreadonly}
 
 [`readonly()`](./reactivity-core.html#readonly) の shallow（浅い）バージョン。
 
@@ -207,7 +207,7 @@
   state.nested.bar++
   ```
 
-## toRaw()
+## toRaw() {#toraw}
 
 Vue で作成されたプロキシの、未加工の元のオブジェクトを返します。
 
@@ -232,7 +232,7 @@ Vue で作成されたプロキシの、未加工の元のオブジェクトを�
   console.log(toRaw(reactiveFoo) === foo) // true
   ```
 
-## markRaw()
+## markRaw() {#markraw}
 
 プロキシに変換されないようにオブジェクトをマークします。オブジェクト自体を返します。
 
@@ -279,7 +279,7 @@ Vue で作成されたプロキシの、未加工の元のオブジェクトを�
 
   :::
 
-## effectScope()
+## effectScope() {#effectscope}
 
 エフェクトスコープオブジェクトを作成し、その中に作成されたリアクティブエフェクト（すなわち、computed とウォッチャー）をキャプチャーして、これらのエフェクトを一緒に廃棄できるようにします。この API の詳細な使用例については、対応する [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0041-reactivity-effect-scope.md) を参照してください。
 
@@ -311,7 +311,7 @@ Vue で作成されたプロキシの、未加工の元のオブジェクトを�
   scope.stop()
   ```
 
-## getCurrentScope()
+## getCurrentScope() {#getcurrentscope}
 
 現在アクティブな[エフェクトスコープ](#effectscope)がある場合、それを返します。
 
@@ -321,7 +321,7 @@ Vue で作成されたプロキシの、未加工の元のオブジェクトを�
   function getCurrentScope(): EffectScope | undefined
   ```
 
-## onScopeDispose()
+## onScopeDispose() {#onscopedispose}
 
 現在アクティブな[エフェクトスコープ](#effectscope)に破棄のコールバックを登録します。このコールバックは、関連するエフェクトスコープが停止されたときに呼び出されます。
 

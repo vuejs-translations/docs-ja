@@ -1,8 +1,8 @@
-# Provide / Inject
+# Provide / Inject {#provide-inject}
 
 > このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
 
-## Prop のバケツリレー（Prop Drilling）
+## Prop のバケツリレー（Prop Drilling） {#prop-drilling}
 
 通常、親コンポーネントから子コンポーネントにデータを渡す必要がある場合、[props](/guide/components/props) を使用します。ですが、大きなコンポーネントツリーがあり、深くネストされたコンポーネントが遠い祖先のコンポーネントから何かしらを必要とするケースを想像してみてください。props だけだと、親コンポーネントのチェーン全体に同じ prop を渡さなければなりません:
 
@@ -18,7 +18,7 @@ props のバケツリレーは `provide` と `inject` で解決できます。�
 
 <!-- https://www.figma.com/file/PbTJ9oXis5KUawEOWdy2cE/provide-inject -->
 
-## Provide
+## Provide {#provide}
 
 <div class="composition-api">
 
@@ -95,7 +95,7 @@ export default {
 
 </div>
 
-## アプリケーションレベルの Provide
+## アプリケーションレベルの Provide {#app-level-provide}
 
 コンポーネント内だけでなく、アプリケーションレベルでデータを提供することも可能です:
 
@@ -109,7 +109,7 @@ app.provide(/* key */ 'message', /* value */ 'hello!')
 
 アプリケーションレベルの Provide は、アプリケーションでレンダリングされるすべてのコンポーネントで利用可能です。これは特に[プラグイン](/guide/reusability/plugins.html)を書くときに便利です。プラグインは通常、コンポーネントを使って値を提供することができないからです。
 
-## Inject
+## Inject {#inject}
 
 <div class="composition-api">
 
@@ -171,7 +171,7 @@ export default {
 
 [provide と inject の完全なサンプル](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBDaGlsZCBmcm9tICcuL0NoaWxkLnZ1ZSdcblxuZXhwb3J0IGRlZmF1bHQge1xuICBjb21wb25lbnRzOiB7IENoaWxkIH0sXG4gIHByb3ZpZGUoKSB7XG4gICAgcmV0dXJuIHtcbiAgICAgIG1lc3NhZ2U6ICdoZWxsbydcbiAgICB9XG4gIH1cbn1cbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIDxDaGlsZCAvPlxuPC90ZW1wbGF0ZT4iLCJpbXBvcnQtbWFwLmpzb24iOiJ7XG4gIFwiaW1wb3J0c1wiOiB7XG4gICAgXCJ2dWVcIjogXCJodHRwczovL3NmYy52dWVqcy5vcmcvdnVlLnJ1bnRpbWUuZXNtLWJyb3dzZXIuanNcIlxuICB9XG59IiwiQ2hpbGQudnVlIjoiPHNjcmlwdD5cbmltcG9ydCBHcmFuZENoaWxkIGZyb20gJy4vR3JhbmRDaGlsZC52dWUnXG5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgY29tcG9uZW50czoge1xuICAgIEdyYW5kQ2hpbGRcbiAgfVxufVxuPC9zY3JpcHQ+XG5cbjx0ZW1wbGF0ZT5cbiAgPEdyYW5kQ2hpbGQgLz5cbjwvdGVtcGxhdGU+IiwiR3JhbmRDaGlsZC52dWUiOiI8c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuICBpbmplY3Q6IFsnbWVzc2FnZSddXG59XG48L3NjcmlwdD5cblxuPHRlbXBsYXRlPlxuICA8cD5cbiAgICBNZXNzYWdlIHRvIGdyYW5kIGNoaWxkOiB7eyBtZXNzYWdlIH19XG4gIDwvcD5cbjwvdGVtcGxhdGU+In0=)
 
-### Injection エイリアス \*
+### Injection エイリアス \* {#injection-aliasing}
 
 配列構文で `inject` を使用した場合、注入されたプロパティは同じキーを使用してコンポーネントインスタンス上で公開されます。上の例では、プロパティは `"message"` というキーで提供され、`this.message` という名前で注入されます。ローカルのキーは、インジェクションキーと同じです。
 
@@ -191,7 +191,7 @@ export default {
 
 </div>
 
-### インジェクションのデフォルト値
+### インジェクションのデフォルト値 {#injection-default-values}
 
 デフォルトでは、`inject` は注入されるキーが親チェーンのどこかで提供されることを想定しています。キーが提供されていない場合、実行時に警告が表示されます。
 
@@ -235,7 +235,7 @@ export default {
 
 </div>
 
-## リアクティビティーと共に利用する
+## リアクティビティーと共に利用する {#working-with-reactivity}
 
 <div class="composition-api">
 
@@ -319,7 +319,7 @@ export default {
 
 </div>
 
-## シンボルキーと共に利用する
+## シンボルキーと共に利用する {#working-with-symbol-keys}
 
 今までの例では、文字列のインジェクションキーを使っていました。もしあなたが多くの依存関係を提供するプロバイダーを持つ大規模なアプリケーションで作業していたり、他の開発者が使用する予定のコンポーネントを作成している場合は、衝突の危険性を避けるためにシンボルインジェクションキーを使用するのがベストです。
 
