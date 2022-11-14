@@ -13,7 +13,7 @@ onMounted(async () => {
 })
 </script>
 
-# リリース
+# リリース {#releases}
 
 <p v-if="version">
 現在の最新版の Vue の安定バージョンは <strong>{{ version }}</strong> です。
