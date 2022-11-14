@@ -8,7 +8,7 @@ Vue はどのようにしてテンプレートを取得して実際の DOM に�
 
 ## 仮想 DOM {#virtual-dom}
 
-Vue のレンダリングシステムがベースとしている仮想 DOM という言葉を聞いたことはあるかと思います。
+Vue のレンダリングシステムがベースとしている「仮想 DOM」という言葉を聞いたことはあるかと思います。
 
 仮想 DOM（VDOM）とは、UI の理想的な、または"仮想"表現をメモリー内に保持し、"実際の" DOM と同期させるというプログラミングの概念です。このコンセプトは [React](https://reactjs.org/) によって開拓され、Vue を含む他の多くのフレームワークで、異なる実装で適応されています。
 
@@ -48,7 +48,7 @@ const vnode = {
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 
-## テンプレート VS レンダー関数 {#templates-vs-render-functions}
+## テンプレート vs. レンダー関数 {#templates-vs-render-functions}
 
 Vue のテンプレートは、仮想 DOM レンダー関数にコンパイルされます。また、Vue はテンプレートのコンパイルステップをスキップしてレンダー関数を直接書ける API を提供しています。レンダー関数は、JavaScript のパワーすべてを使って vnode を操作できます。そのため、高度に動的なロジックを扱う場面において、テンプレートよりも柔軟性があります。
 

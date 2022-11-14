@@ -138,7 +138,7 @@ const publishedBooksMessage = computed(() => {
 
 </div>
 
-## 算出プロパティ vs メソッド {#computed-caching-vs-methods}
+## 算出プロパティ vs. メソッド {#computed-caching-vs-methods}
 
 こういった式を持つメソッドを呼び出すことで、同じ結果が実現できることに気付いたかもしれません:
 

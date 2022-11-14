@@ -98,7 +98,7 @@ const awesome = ref(true)
 
 `v-show` は `<template>` 要素をサポートせず、`v-else` とも連動しないということに注意してください。
 
-## `v-if` vs `v-show` {#v-if-vs-v-show}
+## `v-if` vs. `v-show` {#v-if-vs-v-show}
 
 `v-if` は、イベントリスナと子コンポーネント内部の条件ブロックが適切に破棄され、そして切り替えられるまでの間再作成されるため、”リアル”な条件レンダリングです。
 
