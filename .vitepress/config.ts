@@ -397,7 +397,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/api/built-in-special-elements'
         },
         {
-          text: 'Special Attributes',
+          text: '特別な属性',
           link: '/api/built-in-special-attributes'
         }
       ]
