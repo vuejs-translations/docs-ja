@@ -576,6 +576,10 @@ const i18n: ThemeConfig['i18n'] = {
     after: 'のもとで公開されています。',
   },
 
+  // aria labels
+  // TODO:
+  // update the key to `ariaAnnouncer` after new `@vue/theme` released
+  // https://github.com/vuejs/theme/issues/75
   ariaAnnouner: {
     before: '',
     link: '',
