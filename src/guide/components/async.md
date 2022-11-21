@@ -18,7 +18,7 @@ const AsyncComp = defineAsyncComponent(() => {
 
 このように、`defineAsyncComponent` は Promise を返すローダー関数を受け取ります。Promise の `resolve` コールバックは、コンポーネントの定義をサーバーから取得したときに呼ばれます。読み込みが失敗したことを示すために、`reject(reason)` を呼ぶこともできます。 
 
-[ES モジュールの動的インポート](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports) も Promise を返すため、ほとんどの場合には `defineAsyncComponent` と合わせて使用します。Vite や webpack などのバンドラーもこの構文をサポートしているため（バンドル分割ポイントとして使用されます）、Vue SFC をインポートするためにも使用できます。
+[ES モジュールの動的インポート](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import)<!-- TODO: 日本語版のページが出来たら URL 差し替え -->も Promise を返すため、ほとんどの場合には `defineAsyncComponent` と合わせて使用します。Vite や webpack などのバンドラーもこの構文をサポートしているため（バンドル分割ポイントとして使用されます）、Vue SFC をインポートするためにも使用できます。
 
 ```js
 import { defineAsyncComponent } from 'vue'
