@@ -1,18 +1,18 @@
-# Built-in Special Attributes {#built-in-special-attributes}
+# ビルトインの特別な属性 {#built-in-special-attributes}
 
 ## key {#key}
 
-The `key` special attribute is primarily used as a hint for Vue's virtual DOM algorithm to identify vnodes when diffing the new list of nodes against the old list.
+特別な属性 `key` は、主に Vue の仮想 DOM アルゴリズムが新しいノードリストを古いリストに対して差分する際に、vnode を識別するためのヒントとして使用されます。
 
-- **Expects:** `number | string | symbol`
+- **期待する値:** `number | string | symbol`
 
-- **Details**
+- **詳細**
 
-  Without keys, Vue uses an algorithm that minimizes element movement and tries to patch/reuse elements of the same type in-place as much as possible. With keys, it will reorder elements based on the order change of keys, and elements with keys that are no longer present will always be removed / destroyed.
+  キーがない場合、Vue は要素の移動を最小限に抑え、同じタイプの要素をできるだけその場でパッチ/再利用しようとするアルゴリズムを使用します。キーがある場合は、キーの順序変更に基づいて要素を並べ替え、存在しなくなったキーを持つ要素は常に削除/破棄されます。
 
-  Children of the same common parent must have **unique keys**. Duplicate keys will cause render errors.
+  共通の同じ親を持つ子は、**ユニークなキー**を持つ必要があります。キーが重複するとレンダリングエラーになります。
 
-  The most common use case is combined with `v-for`:
+  `v-for` と組み合わせるのが最も一般的な使用例です:
 
   ```vue-html
   <ul>
@@ -20,12 +20,12 @@ The `key` special attribute is primarily used as a hint for Vue's virtual DOM al
   </ul>
   ```
 
-  It can also be used to force replacement of an element/component instead of reusing it. This can be useful when you want to:
+  また、要素/コンポーネントを再利用するのではなく、強制的に置き換えるためにも使用できます。これは、次のような場合に便利です:
 
-  - Properly trigger lifecycle hooks of a component
-  - Trigger transitions
+  - コンポーネントのライフサイクルフックを適切にトリガーする
+  - トランジションをトリガーする
 
-  For example:
+  例えば:
 
   ```vue-html
   <transition>
@@ -33,28 +33,28 @@ The `key` special attribute is primarily used as a hint for Vue's virtual DOM al
   </transition>
   ```
 
-  When `text` changes, the `<span>` will always be replaced instead of patched, so a transition will be triggered.
+  `text` が変更されると、`<span>` はパッチされるのではなく、常に置き換えられるので、トランジションがトリガーされます。
 
-- **See also:** [Guide - List Rendering - Maintaining State with `key`](/guide/essentials/list.html#maintaining-state-with-key)
+- **参照:** [ガイド - リストレンダリング - `key` による状態管理](/guide/essentials/list.html#maintaining-state-with-key)
 
 ## ref {#ref}
 
-Denotes a [template ref](/guide/essentials/template-refs.html).
+[テンプレート参照](/guide/essentials/template-refs.html)を表します。
 
-- **Expects:** `string | Function`
+- **期待する値:** `string | Function`
 
-- **Details**
+- **詳細**
 
-  `ref` is used to register a reference to an element or a child component.
+  `ref` は、要素や子コンポーネントへの参照を登録するために使用します。
 
-  In Options API, the reference will be registered under the component's `this.$refs` object:
+  Options API では、この参照はコンポーネントの `this.$refs` オブジェクトの下に登録されます:
 
   ```vue-html
-  <!-- stored as this.$refs.p -->
+  <!-- this.$refs.p として格納される -->
   <p ref="p">hello</p>
   ```
 
-  In Composition API, the reference will be stored in a ref with matching name:
+  Composition API では、一致する名前の ref に参照が格納されます:
 
   ```vue
   <script setup>
@@ -68,31 +68,31 @@ Denotes a [template ref](/guide/essentials/template-refs.html).
   </template>
   ```
 
-  If used on a plain DOM element, the reference will be that element; if used on a child component, the reference will be the child component instance.
+  もしプレーンな DOM 要素で使用された場合、その要素への参照になります。もし子コンポーネントで使用された場合は、そのコンポーネントのインスタンスへの参照になります。
 
-  Alternatively `ref` can accept a function value which provides full control over where to store the reference:
+  また、`ref` には関数も受け付けるので、参照を保存する場所を完全に制御できます:
 
   ```vue-html
   <ChildComponent :ref="(el) => child = el" />
   ```
 
-  An important note about the ref registration timing: because the refs themselves are created as a result of the render function, you must wait until the component is mounted before accessing them.
+  ref の登録タイミングに関する重要な注意点として、ref 自体は render 関数の結果として作成されるので、コンポーネントがマウントされるまで待ってからアクセスする必要があります。
 
-  `this.$refs` is also non-reactive, therefore you should not attempt to use it in templates for data-binding.
+  `this.$refs` はリアクティブではないので、テンプレート内でデータバインディングのために使わないでください。
 
-- **See also:** [Template Refs](/guide/essentials/template-refs.html)
+- **参照:** [テンプレート参照](/guide/essentials/template-refs.html)
 
 ## is {#is}
 
-Used for binding [dynamic components](/guide/essentials/component-basics.html#dynamic-components).
+[動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)のバインディングに使用します。
 
-- **Expects:** `string | Component`
+- **期待する値:** `string | Component`
 
-- **Usage on native elements** <sup class="vt-badge">3.1+</sup>
+- **ネイティブ要素での使用** <sup class="vt-badge">3.1+</sup>
 
-  When the `is` attribute is used on a native HTML element, it will be interpreted as a [Customized built-in element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example), which is a native web platform feature.
+  ネイティブの HTML 要素で `is` 属性が使われている場合、[Customized built-in element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) として解釈されます。これは、ネイティブの Web プラットフォームの機能です。
 
-  There is, however, a use case where you may need Vue to replace a native element with a Vue component, as explained in [DOM Template Parsing Caveats](/guide/essentials/component-basics.html#dom-template-parsing-caveats). You can prefix the value of the `is` attribute with `vue:` so that Vue will render the element as a Vue component instead:
+  しかし、[DOM テンプレート解析の注意点](/guide/essentials/component-basics.html#dom-template-parsing-caveats)で説明したように、ネイティブ要素を Vue コンポーネントに置き換えるためには Vue が必要になる場合があります。`is` 属性の値の前に `vue:` を付けると、Vue はその要素を Vue コンポーネントとしてレンダリングします:
 
   ```vue-html
   <table>
@@ -100,7 +100,7 @@ Used for binding [dynamic components](/guide/essentials/component-basics.html#dy
   </table>
   ```
 
-- **See also:**
+- **参照:**
 
-  - [Built-in Special Element - `<component>`](/api/built-in-special-elements.html#component)
-  - [Dynamic Components](/guide/essentials/component-basics.html#dynamic-components)
+  - [ビルトインの特別な要素 - `<component>`](/api/built-in-special-elements.html#component)
+  - [動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)
