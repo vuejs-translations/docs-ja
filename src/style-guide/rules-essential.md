@@ -289,7 +289,7 @@ computed: {
   <button class="button button-close">×</button>
 </template>
 
-<!-- `scoped`属性の使用 -->
+<!-- `scoped` 属性の使用 -->
 <style scoped>
 .button {
   border: none;

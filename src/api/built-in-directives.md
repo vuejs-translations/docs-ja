@@ -34,7 +34,7 @@
   ウェブサイト上で任意の HTML を動的にレンダリングすることは、[XSS 攻撃](https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0)につながりやすいため、非常に危険です。信頼できるコンテンツにのみ `v-html` を使用し、ユーザーが提供するコンテンツには**絶対に**使用しないでください。
   :::
 
-  [単一ファイルコンポーネント](/guide/scaling-up/sfc)では、`scoped` スタイルは `v-html` 内のコンテンツには適用されません。これは、その HTML が Vue のテンプレートコンパイラーによって処理されないからです。もし `v-html` のコンテンツに scoped CSS を適用したい場合は、代わりに [CSS modules](./sfc-css-features.html#css-modules) を使ったり、BEM などの手動スコープ戦略を持つ追加のグローバル `<style>` 要素を使用可能です。
+  [単一ファイルコンポーネント](/guide/scaling-up/sfc)では、`scoped` スタイルは `v-html` 内のコンテンツには適用されません。これは、その HTML が Vue のテンプレートコンパイラーによって処理されないからです。もし `v-html` のコンテンツにスコープ付き CSS を適用したい場合は、代わりに [CSS modules](./sfc-css-features.html#css-modules) を使ったり、BEM などの手動スコープ戦略を持つ追加のグローバル `<style>` 要素を使用可能です。
 
 - **例:**
 
