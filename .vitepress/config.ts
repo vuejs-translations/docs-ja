@@ -403,9 +403,9 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Single-File Component',
+      text: '単一ファイルコンポーネント',
       items: [
-        { text: 'Syntax Specification', link: '/api/sfc-spec' },
+        { text: '構文仕様', link: '/api/sfc-spec' },
         { text: '<script setup>', link: '/api/sfc-script-setup' },
         { text: 'CSS Features', link: '/api/sfc-css-features' }
       ]
