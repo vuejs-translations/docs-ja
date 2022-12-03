@@ -407,7 +407,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: '構文仕様', link: '/api/sfc-spec' },
         { text: '<script setup>', link: '/api/sfc-script-setup' },
-        { text: 'CSS Features', link: '/api/sfc-css-features' }
+        { text: 'CSS 機能', link: '/api/sfc-css-features' }
       ]
     },
     {
