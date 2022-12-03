@@ -577,10 +577,7 @@ const i18n: ThemeConfig['i18n'] = {
   },
 
   // aria labels
-  // TODO:
-  // update the key to `ariaAnnouncer` after new `@vue/theme` released
-  // https://github.com/vuejs/theme/issues/75
-  ariaAnnouner: {
+  ariaAnnouncer: {
     before: '',
     link: '',
     after: 'が読み込まれました'
@@ -647,18 +644,18 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     localeLinks: [
       {
+        link: 'https://vuejs.org',
+        text: 'English',
+        repo: 'https://github.com/vuejs/docs'
+      },
+      {
         link: 'https://cn.vuejs.org',
         text: '简体中文',
         repo: 'https://github.com/vuejs-translations/docs-zh-cn'
       },
       {
-        link: 'https://ja.vuejs.org',
-        text: '日本語',
-        repo: 'https://github.com/vuejs-translations/docs-ja'
-      },
-      {
         link: '/translations/',
-        text: 'Help Us Translate!',
+        text: '翻訳にご協力ください！',
         isTranslationsDesc: true
       }
     ],
