@@ -194,7 +194,7 @@ customElements.define('my-example', ExampleElement)
 
 もし、カスタム要素モード（例えば、_すべて_ の SFC をカスタム要素として扱う場合）でどのファイルをインポートするかをカスタマイズしたい場合、それぞれのビルドプラグインに `customElement` オプションを渡すことができます:
 
-- [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#using-vue-sfcs-as-custom-elements)
+- [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#using-vue-sfcs-as-custom-elements)
 - [vue-loader](https://github.com/vuejs/vue-loader/tree/next#v16-only-options)
 
 ### Vue カスタム要素ライブラリー向けの秘訣 {#tips-for-a-vue-custom-elements-library}
