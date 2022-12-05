@@ -26,7 +26,7 @@ Vite + Vue で始めるには、以下を実行するだけです:
 このコマンドは、Vue 公式の雛形作成 (scaffolding) ツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。
 
 - Vite の詳細については、[Vite ドキュメント](https://ja.vitejs.dev) を参照してください。
-- Vite のプロジェクトで Vue のコンパイラーにオプションを渡すなどの、Vue 固有の設定をするには、[@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#readme) のドキュメントを参照してください。
+- Vite のプロジェクトで Vue のコンパイラーにオプションを渡すなどの、Vue 固有の設定をするには、[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme) のドキュメントを参照してください。
 
 上記のオンラインプレイグラウンドはいずれも Vite プロジェクトとしてのファイルのダウンロードにも対応しています。
 
@@ -124,7 +124,7 @@ Vue CLI を使用していたユーザーは、webpack ローダーを介して�
 
 カスタムブロックは、異なるリクエストクエリを持つ同じ Vue ファイルへのインポートにコンパイルされます。これらのインポートリクエストを処理するのは、ビルドツールに任されています。
 
-- Vite を使用する場合、カスタム Vite プラグインを使用して、マッチしたカスタムブロックを実行可能な JavaScript に変換する必要があります。[例](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
+- Vite を使用する場合、カスタム Vite プラグインを使用して、マッチしたカスタムブロックを実行可能な JavaScript に変換する必要があります。[例](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
 
 - Vue CLI またはプレーンな webpack を使用している場合、マッチしたブロックを変換するために webpack ローダーを設定する必要があります。[例](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
@@ -144,7 +144,7 @@ Vue のランタイムと同期したバージョンであることを保証す�
 
 ### `@vitejs/plugin-vue` {#vitejs-plugin-vue}
 
-- [ドキュメント](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
+- [ドキュメント](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
 
 Vite で Vue SFC のサポートを提供するための公式プラグインです。
 
