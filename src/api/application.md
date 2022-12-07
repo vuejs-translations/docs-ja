@@ -402,7 +402,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 - `vue-loader` の場合: [`compilerOptions` ローダーオプションによって渡す](https://vue-loader.vuejs.org/options.html#compileroptions)。[`vue-cli` での設定方法](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader)も参照してください。
 
-- `vite` の場合: [`@vitejs/plugin-vue` オプションによって渡す](https://github.com/vitejs/vite/tree/main/packages/plugin-vue#options).
+- `vite` の場合: [`@vitejs/plugin-vue` オプションによって渡す](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#options).
   :::
 
 ### app.config.compilerOptions.isCustomElement {#app-config-compileroptions-iscustomelement}
