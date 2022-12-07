@@ -33,7 +33,7 @@ SEO や表示速度が重要なアプリの場合、純粋なクライアント�
 
 Vue は、Vue アプリをサーバー上の HTML 文字列に「レンダリング」するための一流の API を提供します。これにより、サーバーはすでにレンダリングされた HTML を送り返し、エンドユーザーは JavaScript をダウンロードしている間、コンテンツをすぐに見ることができるようになります。そして Vue は、クライアント側でアプリケーションを「ハイドレート」して、インタラクティブなものにします。これは [サーバーサイドレンダリング (SSR)](/guide/scaling-up/ssr) と呼ばれ、 [Largest Contentful Paint (LCP)](https://web.dev/lcp/) などの Core Web Vital のメトリクスを大きく向上させます。
 
-このパラダイムの上に構築された Vue ベースの上位フレームワークとして[Nuxt](https://v3.nuxtjs.org/)などがあり、Vue と JavaScript を使ってフルスタックアプリケーションを開発することが可能です。
+このパラダイムの上に構築された Vue ベースの上位フレームワークとして[Nuxt](https://nuxt.com/)などがあり、Vue と JavaScript を使ってフルスタックアプリケーションを開発することが可能です。
 
 ## JAMStack / 静的サイトジェネレーション (SSG) {#jamstack-ssg}
 
@@ -47,7 +47,7 @@ SSG にはシングルページとマルチページの 2 種類があります�
 
 シングルページの SSG は、簡易でないインタラクティビティ、深いセッションの長さ、あるいはナビゲーションをまたぐ要素や状態の持続を期待する場合に適しています。そうでなければ、マルチページ SSG がより適しています。
 
-Vue チームは、[VitePress](https://vitepress.vuejs.org/) と呼ばれる静的サイトジェネレータもメンテナンスしており、今あなたが読んでいるこの Web サイトを動かしています！　VitePress は SSG の両方の種類をサポートしています。[Nuxt](https://v3.nuxtjs.org/) もまた SSG をサポートしています。同じ Nuxt アプリの異なるルートで SSR と SSG を混在させることもできます。
+Vue チームは、[VitePress](https://vitepress.vuejs.org/) と呼ばれる静的サイトジェネレータもメンテナンスしており、今あなたが読んでいるこの Web サイトを動かしています！　VitePress は SSG の両方の種類をサポートしています。[Nuxt](https://nuxt.com/) もまた SSG をサポートしています。同じ Nuxt アプリの異なるルートで SSR と SSG を混在させることもできます。
 
 ## Web 以外 {#beyond-the-web}
 
