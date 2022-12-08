@@ -38,11 +38,11 @@ export default {
 </template>
 ```
 
-`setup` から返された [refs](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals.html#deep-reactivity)ため、テンプレート内で `.value` を使用する必要はないことに注意してください。また、`this` でアクセスしたときも同様にアンラップされます。
+`setup` から返された [refs](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals.html#deep-reactivity)ため、テンプレート内で `.value` を使用する必要はありません。また、`this` でアクセスしたときも同様にアンラップされます。
 
-:::tip
 `setup()` 自体はコンポーネントインスタンスにアクセスできません。- `this` は `setup()` 内では `undefined` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
-:::
+
+`setup()` は**同期的**にオブジェクトを返さなければなりません。`async setup()` が使用できるのは、そのコンポーネントが [Suspense](../guide/built-ins/suspense.html) コンポーネントの子孫であるときだけです。
 
 ## Props へのアクセス {#accessing-props}
 
