@@ -415,8 +415,8 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: 'レンダー関数', link: '/api/render-function' },
         { text: 'Server-Side Rendering', link: '/api/ssr' },
-        { text: 'TypeScript Utility Types', link: '/api/utility-types' },
-        { text: 'Custom Renderer', link: '/api/custom-renderer' }
+        { text: 'TypeScript ユーティリティー型', link: '/api/utility-types' },
+        { text: 'カスタムレンダラー', link: '/api/custom-renderer' }
       ]
     }
   ],
