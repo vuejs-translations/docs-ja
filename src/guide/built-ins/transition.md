@@ -123,7 +123,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 ### CSS トランジション {#css-transitions}
 
-`<Transition>` は、上記の基本的な例に見られるように、[ネィティブの CSS トランジション](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) と組み合わせて使用するのが最も一般的です。CSS プロパティ `transition` は、アニメーションを適用する CSS プロパティ、トランジションのの持続時間、[イージング関数](https://developer.mozilla.org/ja/docs/Web/CSS/easing-function) など、複数の設定を一括で指定することができるショートハンドです。
+`<Transition>` は、上記の基本的な例に見られるように、[ネイティブの CSS トランジション](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) と組み合わせて使用するのが最も一般的です。CSS プロパティ `transition` は、アニメーションを適用する CSS プロパティ、トランジションのの持続時間、[イージング関数](https://developer.mozilla.org/ja/docs/Web/CSS/easing-function) など、複数の設定を一括で指定することができるショートハンドです。
 
 以下は、より高度な例として、複数のプロパティをトランジションさせ、enter と leave で異なる持続時間とイージング関数を設定した例です:
 
