@@ -1,10 +1,10 @@
-# Custom Renderer API {#custom-renderer-api}
+# カスタムレンダラー API {#custom-renderer-api}
 
 ## createRenderer() {#createrenderer}
 
-Creates a custom renderer. By providing platform-specific node creation and manipulation APIs, you can leverage Vue's core runtime to target non-DOM environments.
+カスタムレンダラーを作成します。プラットフォーム固有のノード作成・操作 API を提供することで、Vue のコアランタイムを活用して非 DOM 環境をターゲットにできます。
 
-- **Type**
+- **型**
 
   ```ts
   function createRenderer<HostNode, HostElement>(
@@ -22,7 +22,7 @@ Creates a custom renderer. By providing platform-specific node creation and mani
       key: string,
       prevValue: any,
       nextValue: any,
-      // the rest is unused for most custom renderers
+      // 残りはほとんどのカスタムレンダラーで使用されません
       isSVG?: boolean,
       prevChildren?: VNode<HostNode, HostElement>[],
       parentComponent?: ComponentInternalInstance | null,
@@ -48,7 +48,7 @@ Creates a custom renderer. By providing platform-specific node creation and mani
     parentNode(node: HostNode): HostElement | null
     nextSibling(node: HostNode): HostNode | null
 
-    // optional, DOM-specific
+    // 省略可能、DOM 固有のもの
     querySelector?(selector: string): HostElement | null
     setScopeId?(el: HostElement, id: string): void
     cloneNode?(node: HostNode): HostNode
@@ -61,7 +61,7 @@ Creates a custom renderer. By providing platform-specific node creation and mani
   }
   ```
 
-- **Example**
+- **例**
 
   ```js
   import { createRenderer } from '@vue/runtime-core'
@@ -74,12 +74,12 @@ Creates a custom renderer. By providing platform-specific node creation and mani
     // ...
   })
 
-  // `render` is the low-level API
-  // `createApp` returns an app instance
+  // `render` は低レベルの API
+  // `createApp` はアプリのインスタンスを返す
   export { render, createApp }
 
-  // re-export Vue core APIs
+  // Vue のコア API を再エクスポート
   export * from '@vue/runtime-core'
   ```
 
-  Vue's own `@vue/runtime-dom` is [implemented using the same API](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). For a simpler implementation, check out [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts) which is a private package for Vue's own unit testing.
+  Vue 独自の `@vue/runtime-dom` は [同じAPIを使って実装されています](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts)。よりシンプルな実装については、Vue 自体のユニットテスト用のプライベートパッケージである [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts) を確認してください。
