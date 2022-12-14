@@ -148,7 +148,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-type declaration の場合、引数は、[Call Signatures](https://www.typescriptlang.org/docs/handbook/2/functions.html#call-signatures) を持つ型リテラルでなければなりません。この型リテラルは、返される `emit` 関数の型として使用されます。見れば分かるとおり、型ベースの宣言をすることで emit されるイベントの型をより細かく制御することができます。
+type declaration の場合、引数は、[Call Signatures](https://www.typescriptlang.org/docs/handbook/2/functions.html#call-signatures) を持つ型リテラルでなければなりません。この型リテラルは、返される `emit` 関数の型として使用されます。見れば分かるとおり、型ベースの宣言をすることで発行されるイベントの型をより細かく制御することができます。
 
 `<script setup>` を使用しない場合は、`defineComponent()` は setup コンテキスト内で `emit` 関数のイベント名を推論できます:
 

@@ -86,13 +86,13 @@ export default {
 ```js
 export default {
   setup(props, context) {
-    // Attributes (非リアクティブオブジェクト、$attrs と同等です)
+    // 属性 (非リアクティブオブジェクト、$attrs と同等です)
     console.log(context.attrs)
 
-    // Slots (非リアクティブオブジェクト、$slots と同等です)
+    // スロット (非リアクティブオブジェクト、$slots と同等です)
     console.log(context.slots)
 
-    // Emit events (関数、$emit と同等です)
+    // イベントの発行 (関数、$emit と同等です)
     console.log(context.emit)
 
     // パブリックプロパティの公開 (関数)
