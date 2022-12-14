@@ -357,7 +357,7 @@ const postFontSize = ref(1)
 </template>
 ```
 
-ボタンはまだ何もしません。クリックするとすべての投稿のテキストを拡大表示するように親に伝達したいです。この問題を解決するために、コンポーネントはカスタムイベントシステムを提供します。親は子コンポーネントインスタンス上の任意のイベントを、ちょうどネィティブの DOM イベントのように `v-on` または `@` で、リッスンするよう選択できます:
+ボタンはまだ何もしません。クリックするとすべての投稿のテキストを拡大表示するように親に伝達したいです。この問題を解決するために、コンポーネントはカスタムイベントシステムを提供します。親は子コンポーネントインスタンス上の任意のイベントを、ちょうどネイティブの DOM イベントのように `v-on` または `@` で購読できます:
 
 ```vue-html{3}
 <BlogPost
@@ -391,7 +391,7 @@ const postFontSize = ref(1)
 
 </div>
 
-オプションとして <span class="options-api">[`emits`](/api/options-state.html#emits) オプション</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span>を使って emit イベントを宣言することができます:
+オプションとして <span class="options-api">[`emits`](/api/options-state.html#emits) オプション</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span>を使って発行するイベントを宣言することができます:
 
 <div class="options-api">
 
@@ -422,7 +422,7 @@ defineEmits(['enlarge-text'])
 
 <div class="composition-api">
 
-`defineProps` と同様に `defineEmits` も `<script setup>` 内でのみ使用することができ、インポートする必要はありません。これは、`$emit` メソッドと同等の `emit` 関数を返します。これは、コンポーネントの `<script setup>` セクション（`$emit` に直接アクセスできない）で、イベントを発生させるために使用します:
+`defineProps` と同様に `defineEmits` も `<script setup>` 内でのみ使用することができ、インポートする必要はありません。これは、`$emit` メソッドと同等の `emit` 関数を返します。これは、コンポーネントの `<script setup>` セクション（`$emit` に直接アクセスできない）で、イベントを発行させるために使用します:
 
 ```vue
 <script setup>

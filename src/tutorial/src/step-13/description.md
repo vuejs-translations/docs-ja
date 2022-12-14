@@ -1,16 +1,16 @@
 # エミット {#emits}
 
-props を受け取るだけでなく、子コンポーネントは親コンポーネントにイベントを発することもできます:
+props を受け取るだけでなく、子コンポーネントは親コンポーネントにイベントを発行することもできます:
 
 <div class="composition-api">
 <div class="sfc">
 
 ```vue
 <script setup>
-// エミットされるイベントを宣言します
+// 発行されるイベントを宣言します
 const emit = defineEmits(['response'])
 
-// 引数を伴うエミット
+// 引数つきで発行
 emit('response', 'hello from child')
 </script>
 ```
@@ -21,10 +21,10 @@ emit('response', 'hello from child')
 
 ```js
 export default {
-  // エミットされるイベントを宣言します
+  // 発行されるイベントを宣言します
   emits: ['response'],
   setup(props, { emit }) {
-    // 引数を伴うエミット
+    // 引数つきで発行
     emit('response', 'hello from child')
   }
 }
@@ -38,10 +38,10 @@ export default {
 
 ```js
 export default {
-  // エミットされるイベントを宣言します
+  // 発行されるイベントを宣言します
   emits: ['response'],
   created() {
-    // 引数を伴うエミット
+    // 引数つきで発行
     this.$emit('response', 'hello from child')
   }
 }
@@ -51,7 +51,7 @@ export default {
 
 <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> の第一引数はイベント名です。追加の引数は、イベントリスナーに渡されます。
 
-親は `v-on` を使って子が発するイベントをリッスンすることができます。ここでは、ハンドラーは子の emit 呼び出しから追加の引数を受け取り、それをローカルステートに割り当てています:
+親は `v-on` を使って子が発行するイベントを購読できます。ここでは、ハンドラーは子の emit 呼び出しから追加の引数を受け取り、それをローカルステートに割り当てています:
 
 <div class="sfc">
 
