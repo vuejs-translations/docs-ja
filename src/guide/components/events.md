@@ -213,7 +213,7 @@ export default {
 
 発行するイベントは、プロパティの型バリデーションと同様に、配列構文ではなくオブジェクト構文で定義されている場合にバリデーションできます。
 
-バリデーションを追加するには、「<span class="options-api">`this.$emit`</span><span class="composition-api">`emit`</span> の呼び出しに渡された引数」を受け取り、「イベントが正当かどうかを示すブール値」を返す関数をイベントに割り当てます。
+バリデーションを追加するには、「<span class="options-api">`this.$emit`</span><span class="composition-api">`emit`</span> の呼び出しに渡された引数」を受け取り、「イベントが正当かどうかを示す真偽値」を返す関数をイベントに割り当てます。
 
 <div class="composition-api">
 

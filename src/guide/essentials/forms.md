@@ -114,7 +114,7 @@ const multiSelected = ref([])
 
 ### チェックボックス {#checkbox}
 
-単一のチェックボックス、 boolean 値:
+単一のチェックボックス、真偽値:
 
 ```vue-html
 <input type="checkbox" id="checkbox" v-model="checked" />

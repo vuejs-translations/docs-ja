@@ -341,7 +341,7 @@ console.log(proxy.nested === raw) // false
 
 `reactive()` API には 2 つの制限があります：
 
-1. オブジェクト型 (オブジェクト、配列、および `Map` や `Set` などの [コレクション型](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections)) に対してのみ機能します。文字列、数値、ブールなどの [プリミティブ型](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) を保持することはできません。
+1. オブジェクト型 (オブジェクト、配列、および `Map` や `Set` などの [コレクション型](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections)) に対してのみ機能します。文字列、数値、真偽値などの [プリミティブ型](https://developer.mozilla.org/ja/docs/Glossary/Primitive) を保持することはできません。
 
 2. Vue のリアクティビティー追跡はプロパティアクセス上で動作するため、リアクティブなオブジェクトへの参照を常に同じに保つ必要があります。つまり、最初の参照へのリアクティブな接続が失われるため、リアクティブなオブジェクトを簡単に「置き換える」ことはできません:
 
