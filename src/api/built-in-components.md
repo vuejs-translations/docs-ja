@@ -7,7 +7,7 @@ pageClass: api
 :::info 登録と使用
 組み込みコンポーネントは登録する必要なくテンプレート内で直接使用できます。ツリーシェイクも可能で、使用されたときだけビルドに含まれます。
 
-[render 関数](/guide/extras/render-function.html)で使用する場合は明示的にインポートする必要があります。例えば:
+[レンダー関数](/guide/extras/render-function.html)で使用する場合は明示的にインポートする必要があります。例えば:
 
 ```js
 import { h, Transition } from 'vue'

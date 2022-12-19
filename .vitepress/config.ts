@@ -303,7 +303,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/extras/rendering-mechanism'
         },
         {
-          text: 'Render 関数と JSX',
+          text: 'レンダー関数と JSX',
           link: '/guide/extras/render-function'
         },
         {

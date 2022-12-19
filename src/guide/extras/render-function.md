@@ -2,11 +2,11 @@
 outline: deep
 ---
 
-# Render 関数と JSX {#render-functions-jsx}
+# レンダー関数と JSX {#render-functions-jsx}
 
-Vue は、ほとんどの場合、アプリケーションを構築するためにテンプレートを使用することを推奨しています。しかし、JavaScript の完全なプログラムの力が必要な状況もあります。そこで、**render 関数** を使用します。
+Vue は、ほとんどの場合、アプリケーションを構築するためにテンプレートを使用することを推奨しています。しかし、JavaScript の完全なプログラムの力が必要な状況もあります。そこで、**レンダー関数** を使用します。
 
-> 仮想 DOM や render 関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)の章を必ずお読みください。
+> 仮想 DOM やレンダー関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)の章を必ずお読みください。
 
 ## 基本的な使い方 {#basic-usage}
 
@@ -26,7 +26,7 @@ const vnode = h(
 )
 ```
 
-`h()` 関数は **hyperscript** の略で、「HTML (hypertext markup language) を生成する JavaScript」という意味です。この名前は、多くの仮想 DOM 実装で共有されている慣習を継承しています。より分かりやすい名前としては `createVnode()` がありますが、render 関数の中でこの関数を何度も呼び出さなければならない場合には、短い名前の方が便利です。
+`h()` 関数は **hyperscript** の略で、「HTML (hypertext markup language) を生成する JavaScript」という意味です。この名前は、多くの仮想 DOM 実装で共有されている慣習を継承しています。より分かりやすい名前としては `createVnode()` がありますが、レンダー関数の中でこの関数を何度も呼び出さなければならない場合には、短い名前の方が便利です。
 
 `h()` 関数は非常に柔軟に設計されています。
 
@@ -76,11 +76,11 @@ vnode.key // null
 完全な `VNode` インターフェースは他にも多くの内部プロパティを含んでいますが、ここに挙げた以外のプロパティに依存しないことを強く推奨します。これにより、内部プロパティが変更された場合に意図しない破損を避けることができます。
 :::
 
-### Render 関数の宣言 {#declaring-render-functions}
+### レンダー関数の宣言 {#declaring-render-functions}
 
 <div class="composition-api">
 
-Composition API でテンプレートを使用する場合、`setup()` フックの戻り値はテンプレートにデータを公開するために使用されます。しかし、render 関数を使う場合は、代わりに render 関数を直接返すことができます:
+Composition API でテンプレートを使用する場合、`setup()` フックの戻り値はテンプレートにデータを公開するために使用されます。しかし、レンダー関数を使う場合は、代わりにレンダー関数を直接返すことができます:
 
 ```js
 import { ref, h } from 'vue'
@@ -92,13 +92,13 @@ export default {
   setup(props) {
     const count = ref(1)
 
-    // render 関数を返します
+    // レンダー関数を返します
     return () => h('div', props.msg + count.value)
   }
 }
 ```
 
-render 関数は `setup()` の内部で宣言されているので、当然同じスコープで宣言された props やリアクティブなステートにアクセスすることができます。
+レンダー関数は `setup()` の内部で宣言されているので、当然同じスコープで宣言された props やリアクティブなステートにアクセスすることができます。
 
 単一の vnode を返すだけでなく、文字列や配列を返すこともできます:
 
@@ -126,13 +126,13 @@ export default {
 ```
 
 :::tip
-値を直接返すのではなく、必ず関数を返すようにしましょう！ `setup()` 関数はコンポーネントごとに一度だけ呼び出されますが、返される render 関数は複数回呼び出されることになります。
+値を直接返すのではなく、必ず関数を返すようにしましょう！ `setup()` 関数はコンポーネントごとに一度だけ呼び出されますが、返されるレンダー関数は複数回呼び出されることになります。
 :::
 
 </div>
 <div class="options-api">
 
-render 関数は `render` オプションで宣言することができます:
+レンダー関数は `render` オプションで宣言することができます:
 
 ```js
 import { h } from 'vue'
@@ -178,7 +178,7 @@ export default {
 
 </div>
 
-render 関数のコンポーネントがインスタンスの状態を必要としない場合、簡潔にするために、直接関数として宣言することもできます:
+レンダー関数のコンポーネントがインスタンスの状態を必要としない場合、簡潔にするために、直接関数として宣言することもできます:
 
 ```js
 function Hello() {
@@ -190,7 +190,7 @@ function Hello() {
 
 ### Vnode は一意でなければならない {#vnodes-must-be-unique}
 
-コンポーネントツリー内のすべての vnode は一意でなければなりません。つまり、以下の render 関数は無効です:
+コンポーネントツリー内のすべての vnode は一意でなければなりません。つまり、以下のレンダー関数は無効です:
 
 ```js
 function render() {
@@ -203,7 +203,7 @@ function render() {
 }
 ```
 
-どうしても同じ要素／コンポーネントを何度も複製したい場合は、ファクトリー関数を使用します。例えば、以下の render 関数は、20 個の同じ段落をレンダリングする方法として完全に有効です:
+どうしても同じ要素／コンポーネントを何度も複製したい場合は、ファクトリー関数を使用します。例えば、以下のレンダー関数は、20 個の同じ段落をレンダリングする方法として完全に有効です:
 
 ```js
 function render() {
@@ -239,9 +239,9 @@ React によって最初に導入されましたが、JSX は実際にはラン�
 
 Vue の型定義は、TSX を使用するための型推論も提供します。TSX を使用する場合は、Vue の JSX 変換が処理できるように、TypeScript が JSX の構文をそのまま残すように、必ず `tsconfig.json` で `"jsx": "preserve"` を指定してください。
 
-## Render 関数のレシピ {#render-function-recipes}
+## レンダー関数のレシピ {#render-function-recipes}
 
-以下では、テンプレート機能を同等の render 関数/JSX として実装するための一般的なレシピをいくつか紹介します。
+以下では、テンプレート機能を同等のレンダー関数/JSX として実装するための一般的なレシピをいくつか紹介します。
 
 ### `v-if` {#v-if}
 
@@ -254,7 +254,7 @@ Template:
 </div>
 ```
 
-同等の render 関数／JSX:
+同等のレンダー関数／JSX:
 
 <div class="composition-api">
 
@@ -291,7 +291,7 @@ Template:
 </ul>
 ```
 
-同等の render 関数／JSX:
+同等のレンダー関数／JSX:
 
 <div class="composition-api">
 
@@ -405,7 +405,7 @@ h('div', {
 
 ### コンポーネント {#components}
 
-コンポーネント用の vnode を作成するには、`h()` に渡される最初の引数はコンポーネントの定義でなければなりません。つまり、render 関数を使う場合、コンポーネントを登録する必要はなく、インポートされたコンポーネントを直接使えばいいのです:
+コンポーネント用の vnode を作成するには、`h()` に渡される最初の引数はコンポーネントの定義でなければなりません。つまり、レンダー関数を使う場合、コンポーネントを登録する必要はなく、インポートされたコンポーネントを直接使えばいいのです:
 
 ```js
 import Foo from './Foo.vue'
@@ -429,7 +429,7 @@ function render() {
 
 このように、`h` は有効な Vue コンポーネントであれば、どんなファイルフォーマットからインポートしたコンポーネントでも動作させることができます。
 
-動的なコンポーネントは、render 関数を使えば簡単です:
+動的なコンポーネントは、レンダー関数を使えば簡単です:
 
 ```js
 import Foo from './Foo.vue'
@@ -452,7 +452,7 @@ function render() {
 
 <div class="composition-api">
 
-render 関数では、スロットは `setup()` コンテキストからアクセスすることができます。`slots` オブジェクトの各スロットは、**vnode の配列を返す関数** です:
+レンダー関数では、スロットは `setup()` コンテキストからアクセスすることができます。`slots` オブジェクトの各スロットは、**vnode の配列を返す関数** です:
 
 ```js
 export default {
@@ -489,7 +489,7 @@ export default {
 </div>
 <div class="options-api">
 
-render 関数では、スロットは [`this.$slots`](/api/component-instance.html#slots) からアクセスすることができます。
+レンダー関数では、スロットは [`this.$slots`](/api/component-instance.html#slots) からアクセスすることができます。
 
 ```js
 export default {
@@ -525,7 +525,7 @@ export default {
 
 ### スロットの渡し方 {#passing-slots}
 
-コンポーネントへの子の渡し方は、要素への子の渡し方と少し異なります。配列の代わりに、スロット関数か、スロット関数のオブジェクトを渡す必要があります。スロット関数は、通常の render 関数が返せるものなら何でも返せますが、子コンポーネントでアクセスするときは、常に vnode の配列に正規化されます。
+コンポーネントへの子の渡し方は、要素への子の渡し方と少し異なります。配列の代わりに、スロット関数か、スロット関数のオブジェクトを渡す必要があります。スロット関数は、通常のレンダー関数が返せるものなら何でも返せますが、子コンポーネントでアクセスするときは、常に vnode の配列に正規化されます。
 
 ```js
 // 単一のデフォルトスロット
@@ -559,7 +559,7 @@ h(MyComponent, null, {
 
 ### 組み込みコンポーネント {#built-in-components}
 
-render 関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components.html) をインポートする必要があります。
+レンダー関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components.html) をインポートする必要があります。
 
 <div class="composition-api">
 

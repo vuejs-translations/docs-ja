@@ -132,9 +132,9 @@ export default {
 }
 ```
 
-## Render 関数での使用 {#usage-with-render-functions}
+## レンダー関数での使用 {#usage-with-render-functions}
 
-`setup` は同じスコープで宣言されたリアクティブなステートを直接利用することができる [render 関数](/guide/extras/render-function.html)を返すこともできます:
+`setup` は同じスコープで宣言されたリアクティブなステートを直接利用することができる [レンダー関数](/guide/extras/render-function.html)を返すこともできます:
 
 ```js{6}
 import { h, ref } from 'vue'
@@ -147,7 +147,7 @@ export default {
 }
 ```
 
-render 関数を返すことで、他のものを返すことができなくなります。内部的には問題ありませんが、このコンポーネントのメソッドをテンプレート参照から親コンポーネントに公開したい場合には、問題となります。
+レンダー関数を返すことで、他のものを返すことができなくなります。内部的には問題ありませんが、このコンポーネントのメソッドをテンプレート参照から親コンポーネントに公開したい場合には、問題となります。
 
 [`expose()`](#exposing-public-properties) を呼び出すことによって、この問題を解決することができます:
 
