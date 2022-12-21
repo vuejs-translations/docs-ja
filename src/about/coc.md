@@ -1,45 +1,45 @@
-# Code Of Conduct {#code-of-conduct}
+# 行動規範 {#code-of-conduct}
 
-## Our Pledge {#our-pledge}
+## 私たちの誓い {#our-pledge}
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, political party, or sexual identity and orientation. Note, however, that religion, political party, or other ideological affiliation provide no exemptions for the behavior we outline as unacceptable in this Code of Conduct.
+オープンで歓迎される環境を育むために、私たち貢献者と管理者は、年齢、体格、障害、民族性、性的特徴、性自認と表現、経験レベル、教育、社会経済的な地位、国籍、個人の外見、人種、宗教、政党、性的自認と指向にかかわらず、すべての人にとってプロジェクトとコミュニティーへの参加をハラスメントのない経験とすることを誓約します。ただし、宗教、政党、その他のイデオロギー的な所属は、この行動規範で容認できない行動として概説していることを免除するものではありません。
 
-## Our Standards {#our-standards}
+## 私たちの基準 {#our-standards}
 
-Examples of behavior that contributes to creating a positive environment include:
+ポジティブな環境づくりに貢献する行動の例としては、次のようなものがあります:
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
+- 歓迎的で非排他的な言葉の使用
+- 異なる視点や経験を尊重すること
+- 建設的な批評を潔く受け止める
+- コミュニティーにとって何が最善であるかに焦点を当てる
+- 他のコミュニティのメンバーに対して共感を示す
 
-Examples of unacceptable behavior by participants include:
+参加者による容認できない行為の例は次のとおりです:
 
-- The use of sexualized language or imagery and unwelcome sexual attention or advances
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+- 性的な言葉や画像の使用、歓迎されない性的な注目や誘いかけ
+- 荒らし、侮辱的/中傷的なコメント、個人的または政治的な攻撃
+- 公然または私的なハラスメント
+- 明示的な許可なく、物理的または電子的なアドレスなど、他人の個人情報を公開すること
+- その他、職業上不適切であると合理的にみなされるような行為
 
-## Our Responsibilities {#our-responsibilities}
+## 私たちの責任 {#our-responsibilities}
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+プロジェクトのメンテナーは、許容される行動の基準を明確にする責任があり、許容されない行動の事例に対して適切かつ公正な是正措置をとることが期待されます。
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+プロジェクトのメンテナーは、この行動規範に沿わないコメント、コミット、コード、Wiki の編集、issue、その他の貢献を削除、編集、拒否する権利と責任があります。また、不適切、脅迫的、不快、または有害とみなされるその他の行為をしたコントリビューターを一時的または永久に禁止する権利があります。
 
-## Scope {#scope}
+## 範囲 {#scope}
 
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+この行動規範は、個人がプロジェクトまたはコミュニティーを代表している場合、プロジェクトのスペース内と公共のスペースの両方に適用されます。プロジェクトやコミュニティーを代表する例としては、プロジェクトの公式メールアドレスの使用、ソーシャルメディアの公式アカウントによる投稿、オンラインまたはオフラインのイベントで任命された代表者として行動することなどが挙げられます。プロジェクトを代表することについては、プロジェクトのメンテナーがさらに定義し、明確化される場合があります。
 
-## Enforcement {#enforcement}
+## 執行 {#enforcement}
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at community@vuejs.org. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+虐待、ハラスメント、その他容認できない行為があった場合は、プロジェクトチーム（community@vuejs.org）までご報告ください。すべての苦情は検討、調査され、その状況に応じて必要かつ適切と思われる対応が取られます。プロジェクトチームは、インシデントの報告者に関して秘密を保持する義務があります。具体的な執行方針の詳細については、別途掲載することがあります。
 
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+行動規範を誠実に守らない、あるいは実施しないプロジェクトメンテナーは、プロジェクトのリーダーシップの他のメンバーの判断により、一時的あるいは恒久的な措置を受ける可能性があります。
 
-## Attribution {#attribution}
+## 帰属 {#attribution}
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+この行動規範は、https://www.contributor-covenant.org/version/1/4/code-of-conduct.html にある [Contributor Covenant][homepage] のバージョン 1.4 を基にしています。
 
 [homepage]: https://www.contributor-covenant.org
