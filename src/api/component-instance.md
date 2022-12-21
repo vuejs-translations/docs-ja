@@ -131,13 +131,13 @@
 
 - **詳細**
 
-  通常、[Render 関数](/guide/extras/render-function.html) を手動で作成するときに使用しますが、スロットが存在するかどうかを検出するためにも使用できます。
+  通常、[レンダー関数](/guide/extras/render-function.html) を手動で作成するときに使用しますが、スロットが存在するかどうかを検出するためにも使用できます。
 
   各スロットは、そのスロットの名前に対応するキーの下にある vnode の配列を返す関数として `this.$slots` で公開されます。デフォルトのスロットは `this.$slots.default` として公開されます。
 
   スロットが[スコープ付きスロット](/guide/components/slots.html#scoped-slots)の場合、スロット関数に渡された引数はそのスロットの props として利用可能です。
 
-- **参照:** [Render 関数 - スロットのレンダリング](/guide/extras/render-function.html#rendering-slots)
+- **参照:** [レンダー関数 - スロットのレンダリング](/guide/extras/render-function.html#rendering-slots)
 
 ## $refs {#refs}
 

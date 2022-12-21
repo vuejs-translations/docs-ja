@@ -374,7 +374,7 @@ function MyComponent(slots) {
 }
 ```
 
-実際、これはスコープ付きスロットがコンパイルされる方法や、スコープ付きスロットを手動で [render 関数](/guide/extras/render-function.html)に渡す方法に非常に近いものです。
+実際、これはスコープ付きスロットがコンパイルされる方法や、スコープ付きスロットを手動で [レンダー関数](/guide/extras/render-function.html)に渡す方法に非常に近いものです。
 
 `v-slot="slotProps"` がスロット関数のシグネチャーにどのように対応しているかに注目してください。関数の引数のように、`v-slot` でもオブジェクトの分割が利用できます:
 

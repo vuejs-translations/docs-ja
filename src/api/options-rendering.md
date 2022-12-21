@@ -59,7 +59,7 @@
 
 - **参照:**
   - [レンダリングの仕組み](/guide/extras/rendering-mechanism.html)
-  - [Render 関数](/guide/extras/render-function.html)
+  - [レンダー関数](/guide/extras/render-function.html)
 
 ## compilerOptions {#compileroptions}
 

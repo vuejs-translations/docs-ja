@@ -22,7 +22,7 @@ Vue のテンプレートは JavaScript にコンパイルされ、テンプレ�
 
 ### HTML コンテンツ {#html-content}
 
-テンプレートと Render 関数のどちらを使用しても、コンテンツは自動的にエスケープされます。つまり、このテンプレートで:
+テンプレートとレンダー関数のどちらを使用しても、コンテンツは自動的にエスケープされます。つまり、このテンプレートで:
 
 ```vue-html
 <h1>{{ userProvidedString }}</h1>
@@ -82,7 +82,7 @@ Vue のテンプレートは JavaScript にコンパイルされ、テンプレ�
   <div v-html="userProvidedHtml"></div>
   ```
 
-- Render 関数の使用:
+- レンダー関数の使用:
 
   ```js
   h('div', {
@@ -90,7 +90,7 @@ Vue のテンプレートは JavaScript にコンパイルされ、テンプレ�
   })
   ```
 
-- JSX と Render 関数の使用:
+- JSX とレンダー関数の使用:
 
   ```jsx
   <div innerHTML={this.userProvidedHtml}></div>
@@ -149,7 +149,7 @@ URL が `javascript:` を使って JavaScript を実行できないように "sa
 
 ### JavaScript の注入 {#javascript-injection}
 
-テンプレートや Render 関数に副作用があってはならないので、Vue で `<script>` 要素をレンダリングすることは控えてください。しかし、実行時に JavaScript として評価される文字列を含める方法は、これだけではありません。
+テンプレートやレンダー関数に副作用があってはならないので、Vue で `<script>` 要素をレンダリングすることは控えてください。しかし、実行時に JavaScript として評価される文字列を含める方法は、これだけではありません。
 
 すべての HTML 要素には、`onclick` 、`onfocus` 、`onmouseenter` のような JavaScript の文字列を受け入れる値を持つ属性があります。これらのイベント属性のいずれかにユーザーが提供した JavaScript をバインドすることは、潜在的なセキュリティーリスクとなるため避けるべきです。
 

@@ -38,7 +38,7 @@ export default {
 
 - 各 `*.vue` ファイルには、一度に最大 1 つのトップレベル `<template>` ブロックを含めることができます。
 
-- コンテンツは抽出されて `@vue/compiler-dom` に渡され、JavaScript の render 関数に事前コンパイルされ、エクスポートされたコンポーネントに `render` オプションとしてアタッチされます。
+- コンテンツは抽出されて `@vue/compiler-dom` に渡され、JavaScript のレンダー関数に事前コンパイルされ、エクスポートされたコンポーネントに `render` オプションとしてアタッチされます。
 
 ### `<script>` {#script}
 
