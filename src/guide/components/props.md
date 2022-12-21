@@ -189,7 +189,7 @@ export default {
 <BlogPost :likes="post.likes" />
 ```
 
-#### ブール値 {#boolean}
+#### 真偽値 {#boolean}
 
 ```vue-html
 <!-- 値なしでプロパティを指定すると、暗黙で `true` を指定したことになります。 -->
@@ -484,7 +484,7 @@ export default {
 
 - `Boolean` 以外のオプションのプロパティは、値が指定されないと `undefined` 値になります。
 
-- `Boolean` のプロパティは、値が指定されないと `false` に変換されます。これは `default` を設定すると変更できます。例えば `default: undefined` とすると、非ブール値のプロパティとして振る舞います。
+- `Boolean` のプロパティは、値が指定されないと `false` に変換されます。これは `default` を設定すると変更できます。例えば `default: undefined` とすると、非真偽値のプロパティとして振る舞います。
 
 - `default` の値を指定すると、プロパティの値が `undefined` に解決される時、それが使用されます。プロパティが指定されなかった場合と、明示的に `undefined` 値が渡された場合も、これに含まれます。
 
@@ -552,9 +552,9 @@ export default {
 
 Vue は `instanceof Person` を使って、`author` プロパティの値が本当に `Person` クラスのインスタンスであるかどうかを検証しています。
 
-## ブール値の型変換 {#boolean-casting}
+## 真偽値の型変換 {#boolean-casting}
 
-`Boolean` 型のプロパティは、ネイティブのブール値の属性が振る舞う様子を模倣するために、特殊な型変換の規則を持っています。次のような宣言を含む `<MyComponent>` があるとします:
+`Boolean` 型のプロパティは、ネイティブの真偽値の属性が振る舞う様子を模倣するために、特殊な型変換の規則を持っています。次のような宣言を含む `<MyComponent>` があるとします:
 
 <div class="composition-api">
 
