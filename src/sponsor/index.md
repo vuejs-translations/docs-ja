@@ -9,52 +9,52 @@ sponsors: false
 import SponsorsGroup from '@theme/components/SponsorsGroup.vue'
 </script>
 
-# Become a Vue.js Sponsor {#become-a-vue-js-sponsor}
+# Vue.js のスポンサーになる {#become-a-vue-js-sponsor}
 
-Vue.js is an MIT licensed open source project and completely free to use.
-The tremendous amount of effort needed to maintain such a large ecosystem and develop new features for the project is only made sustainable thanks to the generous financial backing of our sponsors.
+Vue.js は、MIT ライセンスのオープンソースプロジェクトで、完全に無料で使用できます。
+このような大規模なエコシステムを維持し、プロジェクトの新機能を開発するために必要な膨大な労力は、スポンサーの寛大な財政的支援によってのみ持続可能なものとなっています。
 
-## How to Sponsor {#how-to-sponsor}
+## 支援方法 {#how-to-sponsor}
 
-Sponsorships can be done via [GitHub Sponsors](https://github.com/sponsors/yyx990803) or [OpenCollective](https://opencollective.com/vuejs). Invoices can be obtained via GitHub's payment system. Both monthly-recurring sponsorships and one-time donations are accepted. Recurring sponsorships are entitled to logo placements as specified in [Sponsorship Tiers](#tier-benefits).
+スポンサーシップは [GitHub Sponsors](https://github.com/sponsors/yyx990803) または [OpenCollective](https://opencollective.com/vuejs) から行えます。請求書は、GitHub の支払いシステムから入手できます。毎月の継続的なスポンサーシップと、一度だけの寄付の両方を受け付けています。定期的なスポンサーシップの場合、[スポンサーシップのティア](#tier-benefits)で指定されているように、ロゴを配置する権利があります。
 
-## Sponsoring Vue as a Business {#sponsoring-vue-as-a-business}
+## 企業として Vue を支援する {#sponsoring-vue-as-a-business}
 
-Sponsoring Vue gives you great exposure to over **1.7 million** Vue developers around the world through our website and GitHub project READMEs. In addition, supporting OSS improves the reputation of your brand, which is an important asset for any company that interacts with developers.
+Vue のスポンサーになると、Web サイトや GitHub プロジェクトの README を通じて、世界中の**170万人**を超える Vue 開発者に大きく露出できます。また、OSS をサポートすることは、開発者と交流するすべての企業にとって重要な資産であるブランドの評判を向上させることになります。
 
-If you are using Vue to build a revenue-generating product, it makes business sense to sponsor Vue's development: **it ensures the project that your product relies on stays healthy and actively maintained.** The exposure and positive brand image in the Vue community also makes it easier to attract and recruit Vue developers.
+Vue を使用して収益を上げる製品を構築している場合、Vue の開発を後援することはビジネス上理にかなっています。**これにより、あなたの製品が依存しているプロジェクトが健全で活発に維持されることが保証されます。**また、Vue コミュニティーでの露出と肯定的なブランドイメージにより、Vue の開発者を引き付け、採用することが容易になります。
 
-If you are building a product where your target customers are developers, you will gain high quality traffic through the sponsorship exposure, since all our visitors are developers. The sponsorship also builds brand recognition and improves conversion.
+私たちの訪問者はすべて開発者であるため、ターゲット顧客が開発者である製品を作っている場合はスポンサーシップによる露出を通じて質の高いトラフィックを獲得できます。また、スポンサーシップはブランドの認知度を高め、コンバージョンを向上させます。
 
-## Sponsoring Vue as an Individual {#sponsoring-vue-as-an-individual}
+## 個人として Vue を支援する {#sponsoring-vue-as-an-individual}
 
-If you are an individual user and have enjoyed the productivity of using Vue, consider donating as a sign of appreciation - like buying us coffee once in a while. Many of our team members accept sponsorships and donations via GitHub Sponsors. Look for the "Sponsor" button on each team member's profile on our [team page](/about/team).
+もしあなたが個人ユーザーで、Vue を使用して生産性を楽しんでいるのであれば、感謝のしるしとして（たまにコーヒーをおごるような感じで）寄付を検討してみてください。私たちのチームメンバーの多くは、GitHub Sponsors を通じてスポンサーシップや寄付を受け付けています。[チームページ](/about/team)の各メンバーのプロフィールにある "Sponsor" ボタンを探してみてください。
 
-You can also try to convince your employer to sponsor Vue as a business. This may not be easy, but business sponsorships typically make a much larger impact on the sustainability of OSS projects than individual donations, so you will help us much more if you succeed.
+また、企業として Vue のスポンサーになるよう雇用主を説得できます。これは簡単にはいかないでしょうが、企業によるスポンサーシップは通常、個人の寄付よりも OSS プロジェクトの持続可能性に大きな影響を与えるので、成功すればより多くの恩恵を受けられます。
 
-## Tier Benefits {#tier-benefits}
+## ティアごとの特典 {#tier-benefits}
 
 - **Global Special**:
-  - Limited to one sponsor globally (currently filled).
-  - Exclusive above the fold logo placement on the front page of [vuejs.org](/).
-  - Most prominent logo placement in all locations from tiers below.
-- **Platinum (USD$2,000/mo)**:
-  - Prominent logo placement on the front page of [vuejs.org](/).
-  - Prominent logo placement in sidebar of all content pages.
-  - Prominent logo placement in the README of [`vuejs/core`](https://github.com/vuejs/core) and [`vuejs/vue`](https://github.com/vuejs/core).
-- **Gold (USD$500/mo)**:
-  - Large logo placement on the front page of [vuejs.org](/).
-  - Large logo placement in the README of `vuejs/core` and `vuejs/vue`.
-- **Silver (USD$250/mo)**:
-  - Medium logo placement in the `BACKERS.md` file of `vuejs/core` and `vuejs/vue`.
-- **Bronze (USD$100/mo)**:
-  - Small logo placement in the `BACKERS.md` file of `vuejs/core` and `vuejs/vue`.
-- **Generous Backer (USD$50/mo)**:
-  - Name listed in the `BACKERS.md` file of `vuejs/core` and `vuejs/vue`, above other individual backers.
-- **Individual Backer (USD$5/mo)**:
-  - Name listed in the `BACKERS.md` file of `vuejs/core` and `vuejs/vue`.
+  - 全世界で 1 つのスポンサー限定（現在満席）。
+  - [vuejs.org](/) のトップページで、スクロールしないで見える範囲にロゴを独占的に掲載。
+  - すべての場所で、以下のティアよりも最も目立つロゴを掲載。
+- **Platinum（USD$2,000/月）**:
+  - [vuejs.org](/) のトップページに目立つロゴを掲載。
+  - すべてのコンテンツページのサイドバーに目立つロゴを掲載。
+  - [`vuejs/core`](https://github.com/vuejs/core) と [`vuejs/vue`](https://github.com/vuejs/core) の README に目立つロゴを掲載。
+- **Gold（USD$500/月）**:
+  - [vuejs.org](/) のトップページに大きなロゴを掲載。
+  - `vuejs/core` と `vuejs/vue` の README に大きなロゴを掲載。
+- **Silver（USD$250/月）**:
+  - `vuejs/core` と `vuejs/vue` の `BACKERS.md` ファイルに、中くらいのロゴを掲載。
+- **Bronze（USD$100/月）**:
+  - `vuejs/core` と `vuejs/vue` の `BACKERS.md` ファイルに、小さなロゴを掲載。
+- **Generous Backer（USD$50/月）**:
+  - `vuejs/core` と `vuejs/vue` の `BACKERS.md` ファイルに、名前を掲載（Individual Backer より上）。
+- **Individual Backer（USD$5/月）**:
+  - `vuejs/core` と `vuejs/vue` の `BACKERS.md` ファイルに、名前を掲載。
 
-## Current Sponsors {#current-sponsors}
+## 現在のスポンサー {#current-sponsors}
 
 ### Special Global Sponsor {#special-global-sponsor}
 
@@ -64,7 +64,7 @@ You can also try to convince your employer to sponsor Vue as a business. This ma
 
 <SponsorsGroup tier="platinum" placement="page" />
 
-### Platinum (China) {#platinum-china}
+### Platinum（中国） {#platinum-china}
 
 <SponsorsGroup tier="platinum_china" placement="page" />
 
