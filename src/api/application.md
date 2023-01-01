@@ -522,6 +522,8 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
     }
   }
   ```
+  
+- **See also:** [Guide - Augmenting Global Properties](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
 
 ## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
