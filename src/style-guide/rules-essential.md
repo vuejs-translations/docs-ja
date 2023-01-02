@@ -43,6 +43,7 @@
 - 開発では、コンポーネントが不適切な形式の props を提供された場合に Vue が警告を発し、潜在的なエラー源を捕らえるのに役立ちます。
   :::
 
+<div class="options-api">
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
 
@@ -81,6 +82,47 @@ props: {
 }
 ```
 
+</div>
+</div>
+
+<div class="composition-api">
+<div class="style-example style-example-bad">
+<h3>悪い例</h3>
+
+```js
+// これはプロトタイピングの時だけ OK です
+const props = defineProps(['status'])
+```
+
+</div>
+
+<div class="style-example style-example-good">
+<h3>良い例</h3>
+
+```js
+const props = defineProps({
+  status: String
+})
+```
+
+```js
+// さらに良くなりました!
+
+const props = defineProps({
+  status: {
+    type: String,
+    required: true,
+
+    validator: (value) => {
+      return ['syncing', 'synced', 'version-conflict', 'error'].includes(
+        value
+      )
+    }
+  }
+})
+```
+
+</div>
 </div>
 
 ## キー付きの `v-for` を使用する {#use-keyed-v-for}
@@ -336,102 +378,6 @@ computed: {
   background-color: red;
 }
 </style>
-```
-
-</div>
-
-## mixin でプライベート関数の公開を避ける {#avoid-exposing-private-functions-in-mixins}
-
-プラグインや mixin など、パブリック API とは見なされないカスタムのプライベートプロパティには、常に `$_` というプレフィックスを使用します。また、他の作者のコードとの衝突を避けるために、名前付きスコープ (例: `$_yourPluginName_`) を含めてください。
-
-::: details 詳しい説明
-Vue では、`_` というプレフィックスを使って独自のプライベートプロパティを定義しているので、同じプレフィックス（`_update` など）を使うと、インスタンスのプロパティが上書きされてしまうリスクがあります。確認した結果、Vue が現在特定のプロパティ名を使っていなかったとしても、後のバージョンで衝突が起きないという保証はありません。
-
-プレフィックス `$` については、Vue のエコシステム内での用途は、ユーザーに公開される特別なインスタンスプロパティです。したがって、_プライベート_プロパティに使用することは適切ではありません。
-
-その代わりに、Vue との衝突がないことを保証する、ユーザー定義のプライベートプロパティの規約として、2 つの接頭辞を `$_` に結合することをお勧めします。
-:::
-
-<div class="style-example style-example-bad">
-<h3>悪い例</h3>
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    update() {
-      // ...
-    }
-  }
-}
-```
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    _update() {
-      // ...
-    }
-  }
-}
-```
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    $update() {
-      // ...
-    }
-  }
-}
-```
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    $_update() {
-      // ...
-    }
-  }
-}
-```
-
-</div>
-
-<div class="style-example style-example-good">
-<h3>良い例</h3>
-
-```js
-const myGreatMixin = {
-  // ...
-  methods: {
-    $_myGreatMixin_update() {
-      // ...
-    }
-  }
-}
-```
-
-```js
-// Even better!
-const myGreatMixin = {
-  // ...
-  methods: {
-    publicMethod() {
-      // ...
-      myPrivateFunction()
-    }
-  }
-}
-
-function myPrivateFunction() {
-  // ...
-}
-
-export default myGreatMixin
 ```
 
 </div>
