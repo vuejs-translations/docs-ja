@@ -15,7 +15,7 @@ Web アクセシビリティー（a11y としても知られます）とは、�
 ```vue-html
 <ul class="skip-links">
   <li>
-    <a href="#main" ref="skipLink">Skip to main content</a>
+    <a href="#main" ref="skipLink" class="skip-link">Skip to main content</a>
   </li>
 </ul>
 ```
@@ -23,7 +23,7 @@ Web アクセシビリティー（a11y としても知られます）とは、�
 フォーカスされない限りリンクを非表示にするには、以下のようなスタイルを追加します:
 
 ```css
-.skipLink {
+.skip-link {
   white-space: nowrap;
   margin: 1em auto;
   top: 0;
@@ -32,7 +32,7 @@ Web アクセシビリティー（a11y としても知られます）とは、�
   margin-left: -72px;
   opacity: 0;
 }
-.skipLink:focus {
+.skip-link:focus {
   opacity: 1;
   background-color: white;
   padding: 0.5em;
