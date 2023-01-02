@@ -523,6 +523,8 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   }
   ```
 
+- **参照:** [ガイド - グローバルなプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
+
 ## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
 カスタムコンポーネントのオプションにおけるマージ戦略を定義するオブジェクトです。
