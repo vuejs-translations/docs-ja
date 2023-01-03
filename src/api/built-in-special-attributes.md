@@ -80,7 +80,10 @@
 
   `this.$refs` はリアクティブではないので、テンプレート内でデータバインディングのために使わないでください。
 
-- **参照:** [テンプレート参照](/guide/essentials/template-refs.html)
+- **参照:**
+  - [ガイド - テンプレート参照](/guide/essentials/template-refs.html)
+  - [ガイド - テンプレート参照の型付け](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
+  - [ガイド - コンポーネントのテンプレート参照の型付け](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
 
 ## is {#is}
 
