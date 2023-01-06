@@ -102,7 +102,7 @@ const nav: ThemeConfig['nav'] = [
       { text: 'チーム', link: '/about/team' },
       { text: 'リリース', link: '/about/releases' },
       {
-        text: 'コミュニティガイド',
+        text: 'コミュニティーガイド',
         link: '/about/community-guide'
       },
       { text: '行動規範', link: '/about/coc' },
