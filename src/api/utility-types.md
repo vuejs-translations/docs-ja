@@ -11,7 +11,7 @@
 - **例**
 
   ```ts
-  import { PropType } from 'vue'
+  import type { PropType } from 'vue'
 
   interface Book {
     title: string
