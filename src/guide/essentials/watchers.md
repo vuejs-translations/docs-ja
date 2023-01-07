@@ -65,7 +65,7 @@ export default {
 
 <div class="composition-api">
 
-Composition API では、[`watch` 関数](/api/reactivity-core.html#watch) を使用することでリアクティブな状態の一部が変更されるたびにコールバックが実行することができます:
+Composition API では、[`watch` 関数](/api/reactivity-core.html#watch) を使用することでリアクティブな状態の一部が変更されるたびにコールバックを実行することができます:
 
 ```vue
 <script setup>
