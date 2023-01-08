@@ -94,7 +94,7 @@ const awesome = ref(true)
 <h1 v-show="ok">Hello!</h1>
 ```
 
-違いは `v-show` による要素は常レンダリングされて DOM に残るということです。`v-show` はシンプルに要素の `display` CSS プロパティを切り替えます。
+違いは `v-show` による要素は常にレンダリングされて DOM に残るということです。`v-show` はシンプルに要素の `display` CSS プロパティを切り替えます。
 
 `v-show` は `<template>` 要素をサポートせず、`v-else` とも連動しないということに注意してください。
 
