@@ -125,7 +125,9 @@
   }
   ```
 
-- **参照:** [プロパティ](/guide/components/props.html)
+- **参照:**
+  - [ガイド - プロパティ](/guide/components/props.html)
+  - [ガイド - コンポーネントの props の型付け](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
 
 ## computed {#computed}
 
@@ -205,7 +207,9 @@
   }
   ```
 
-- **参照:** [算出プロパティ](/guide/essentials/computed.html)
+- **参照:**
+  - [ガイド - 算出プロパティ](/guide/essentials/computed.html)
+  - [ガイド - 算出プロパティの型付け](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
 
 ## methods {#methods}
 
@@ -429,7 +433,9 @@
   }
   ```
 
-* **参照:** [フォールスルー属性](/guide/components/attrs.html)
+* **参照:**
+  - [ガイド - フォールスルー属性](/guide/components/attrs.html)
+  - [ガイド - コンポーネントの emits の型付け](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
 ## expose {#expose}
 

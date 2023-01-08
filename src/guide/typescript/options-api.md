@@ -94,7 +94,7 @@ export default defineComponent({
 
 これにより、TypeScript はこれらの関数内で `this` の型を推論する必要がなくなり、それによって、残念ながら型推論に失敗するかもしれません。これは以前の[設計上の制限](https://github.com/microsoft/TypeScript/issues/38845)であり、現在は [TypeScript 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods) で改善されています。
 
-## コンポーネントの emit の型付け {#typing-component-emits}
+## コンポーネントの emits の型付け {#typing-component-emits}
 
 `emits` オプションのオブジェクトシンタックスを使うことで、発行されたイベントに期待されるペイロードの型を宣言することができます。また、宣言されていないイベントの発行は、以下のように型エラーになります:
 
