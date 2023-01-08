@@ -309,7 +309,7 @@ const { qux } = useFeatureC(baz)
 
 ## Options API でコンポーザブルを使う {#using-composables-in-options-api}
 
-もし Options API を使っている場合、コンポーザブルは `setup()` の中で呼び出す必要があり、その戻り値を `setup()` からを返して `this` やテンプレートに公開する必要があります:
+もし Options API を使っている場合、コンポーザブルは `setup()` の中で呼び出す必要があり、その戻り値を `setup()` から返して `this` やテンプレートに公開する必要があります:
 
 ```js
 import { useMouse } from './mouse.js'
