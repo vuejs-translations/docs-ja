@@ -81,7 +81,7 @@ defineProps<Props>()
 
 ### props のデフォルト値 {#props-default-values}
 
-type-based declaration を使用すると、props のデフォルト値を宣言することができません。これは、`withDefaults` コンパイラマクロによって解決できます:
+type-based declaration を使用すると、props のデフォルト値を宣言することができません。これは、`withDefaults` コンパイラーマクロによって解決できます:
 
 ```ts
 export interface Props {

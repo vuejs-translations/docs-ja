@@ -227,6 +227,7 @@ import { ref } from 'vue'
 const a = 1
 const b = ref(2)
 
+// defineExpose などのコンパイラーマクロはインポートする必要はありません
 defineExpose({
   a,
   b
