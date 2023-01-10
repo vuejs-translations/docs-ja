@@ -96,7 +96,7 @@
   </script>
   ```
 
-  コンポーネントの props に `toRefs` を使用する場合、props の変更に関するいつも通りの制限が適用されます。ref に新しい値を代入しようとするのは、props を直接変更しようとすることと同等であり、許可されていません。そのようなシナリオでは `get` と `set` を持つ [`computed`](./reactivity-core.html#computed) を使うことを検討するとよいでしょう。詳しくは、[コンポーネントで `v-model` を使う](/guide/components/events.html#usage-with-v-model)ためのガイドを参照してください。
+  コンポーネントの props に `toRefs` を使用する場合、props の変更に関するいつも通りの制限が適用されます。ref に新しい値を代入しようとするのは、props を直接変更しようとすることと同等であり、許可されていません。そのようなシナリオでは `get` と `set` を持つ [`computed`](./reactivity-core.html#computed) を使うことを検討するとよいでしょう。詳しくは、[コンポーネントで `v-model` を使う](/guide/components/v-model.html)ためのガイドを参照してください。
 
   `toRef()` はソースプロパティが現在存在しない場合でも、利用可能な ref を返します。これにより [`toRefs`](#torefs) では取得できないオプショナルなプロパティを扱えるようになります。
 

@@ -188,6 +188,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'プロパティ', link: '/guide/components/props' },
         { text: 'イベント', link: '/guide/components/events' },
+        { text: 'コンポーネントの v-model', link: '/guide/components/v-model' },
         {
           text: 'フォールスルー属性',
           link: '/guide/components/attrs'

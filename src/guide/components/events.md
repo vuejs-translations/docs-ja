@@ -1,3 +1,22 @@
+<script setup>
+import { onMounted } from 'vue'
+
+if (typeof window !== 'undefined') {
+  const hash = window.location.hash
+
+  // The docs for v-model used to be part of this page. Attempt to redirect outdated links.
+  if ([
+    '#usage-with-v-model',
+    '#v-model-arguments',
+    '#multiple-v-model-bindings',
+    '#handling-v-model-modifiers'
+  ].includes(hash)) {
+    onMounted(() => {
+      window.location = './v-model.html' + hash
+    })
+  }
+}
+</script>
 # コンポーネントのイベント {#component-events}
 
 > このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
