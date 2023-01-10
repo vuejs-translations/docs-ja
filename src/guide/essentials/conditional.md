@@ -72,7 +72,7 @@ const awesome = ref(true)
 
 `v-else` と同様に、`v-else-if` 要素は `v-if` 要素または `v-else-if` 要素の直後になければなりません。
 
-## `<template>` での `v-if` {#v-if-on-template}
+## `<template>` に `v-if` を適用する {#v-if-on-template}
 
 `v-if` はディレクティブなので、単一の要素に付加する必要があります。しかし、1 要素よりも多くの要素と切り替えたい場合はどうでしょうか？このケースでは、非表示ラッパー (wrapper) として提供される、`<template>` 要素で `v-if` を使用できます。最終的にレンダリングされる結果は、`<template>` 要素は含まれません。
 
