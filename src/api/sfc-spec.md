@@ -88,7 +88,7 @@ SFC は以下の場合、コンポーネントの名前を**ファイル名**か
 </script>
 ```
 
-`lang` はどのブロックにも適用できます - 例えば、`<style>` で [SASS](https://sass-lang.com/) を使用したり、`<template>` で [Pug](https://pugjs.org/api/getting-started.html) を使用できます:
+`lang` はどのブロックにも適用できます - 例えば、`<style>` で [Sass](https://sass-lang.com/) を使用したり、`<template>` で [Pug](https://pugjs.org/api/getting-started.html) を使用できます:
 
 ```vue-html
 <template lang="pug">
