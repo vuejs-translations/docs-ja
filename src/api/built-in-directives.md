@@ -362,7 +362,7 @@
 - **参照:**
 
   - [フォーム入力バインディング](/guide/essentials/forms.html)
-  - [コンポーネントのイベント - `v-model` での使用](/guide/components/events.html#usage-with-v-model)
+  - [コンポーネントのイベント - `v-model` での使用](/guide/components/v-model.html)
 
 ## v-slot {#v-slot}
 
