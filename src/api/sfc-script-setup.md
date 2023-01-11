@@ -239,6 +239,13 @@ export default {
 </script>
 ```
 
+同じコンポーネント内で `<script setup>` と `<script>` を組み合わせることは、上記のシナリオに限定してサポートします。具体的には:
+
+- `props` や `emits` のような `<script setup>` で定義できるオプションは、`<script>` セクションで定義**しない**でください。
+- `<script setup>` 内で作成された変数は、コンポーネントインスタンスのプロパティとして追加されないので、Options API からはアクセスできません。このように API を混在させることは、強くお勧めしません。
+
+もし、サポートされていないシナリオに遭遇した場合は、`<script setup>` の代わりに、明示的な [`setup()`](/api/composition-api-setup.html) 関数に切り替えることを検討する必要があります。
+
 ## トップレベルの `await` {#top-level-await}
 
 `<script setup>` の中ではトップレベルの `await` を使うことができます。その結果、コードは `async setup()` としてコンパイルされます:
