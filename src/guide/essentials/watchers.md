@@ -220,11 +220,11 @@ watch(
 deep watch は、監視対象のオブジェクトのネストされた全てのプロパティをトラバースする必要があるため、大きなデータ構造で使用するときにはコストが高くなります。使用するときは、どうしても必要なときにだけ使用し、パフォーマンスへの影響に注意しましょう。
 :::
 
-<div class="options-api">
-
-## 即時ウォッチャー \* {#eager-watchers}
+## 即時ウォッチャー {#eager-watchers}
 
 `watch` は、デフォルトでは、遅延して実行されます: 監視対象の値が変更するまでコールバックは実行されません。しかし、同様のコールバックのロジックを先に実行したい場合もあります。- たとえば、初期値のデータを読み込み、関連する状態が変更されるたび、再びデータを読み込みたいときです。
+
+<div class="options-api">
 
 `handler` 関数と `immediate: true` オプションを設定したオブジェクトを利用して宣言することで、監視対象のコールバック関数をすぐ実行させることができます:
 
@@ -245,41 +245,57 @@ export default {
 ```
 
 ハンドラー関数の初回実行は、`created` フックの直前で行われます。Vue は `data`、`computed`、`methods` オプションを処理済みなので、これらのプロパティは初回呼び出しの際に利用可能です。
+
+</div>
+
+<div class="composition-api">
+
+`immediate: true` オプションを渡すと、ウォッチャーのコールバックを強制的に即時実行させられます:
+
+```js
+watch(source, (newValue, oldValue) => {
+  // ...
+}, { immediate: true })
+```
+
 </div>
 
 <div class="composition-api">
 
 ## `watchEffect()` \*\* {#watcheffect}
 
-`watch()` は遅延して実行されます: 監視対象の値が変更するまでコールバックは実行されません。しかし、同様のコールバックのロジックを先に実行したい場合もあります。- たとえば、初期値のデータを読み込み、関連する状態が変更されるたび、再びデータを読み込みたいときです。気づいたら次のようにしているかもしれません:
+ウォッチャーのコールバックは、ソースと全く同じリアクティブな状態を使用するのが一般的です。例えば、次のコードでは `todoId` の ref が変更されるたびに、ウォッチャーを使ってリモートのリソースを読み込んでいます:
 
 ```js
-const url = ref('https://...')
+const todoId = ref(1)
 const data = ref(null)
 
-async function fetchData() {
-  const response = await fetch(url.value)
+watch(todoId, async () => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
   data.value = await response.json()
-}
-
-// 読み込みがすぐに実行されます。
-fetchData()
-// そして、url の変更を監視します。
-watch(url, fetchData)
+}, { immediate: true })
 ```
 
-これは、[`watchEffect()`](/api/reactivity-core.html#watcheffect) によって簡略化できます。`watchEffect()` によって、effect のリアクティブな依存先を自動的に追跡しつつ、副作用をすぐに実行してくれるようになります。上記の例を次のように書き直すことができます:
+特に、ウォッチャーが `todoId` を 2 回使用していることに注目してください。1 回目はソースとして、2 回目はコールバック内で使用しています。
+
+これは、[`watchEffect()`](/api/reactivity-core.html#watcheffect) によって簡略化できます。`watchEffect()` によって、コールバックのリアクティブな依存関係を自動的に追跡できます。上記のウォッチャーは次のように書き換えられます:
 
 ```js
 watchEffect(async () => {
-  const response = await fetch(url.value)
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
   data.value = await response.json()
 })
 ```
 
-これで、コールバックはすぐに実行されます。実行している間、依存先（算出プロパティに似たもの）としての `url.value` を自動的に追跡してくれます。`url.value` が変更されるたびに、コールバックは再実行されます。
+コールバックは即時実行されるので、`immediate: true` を指定する必要はありません。実行中は、自動的に `todoId.value` を依存関係として追跡します（算出プロパティと同様）。`todoId.value` が変更されるたびに、コールバックが再実行されます。`watchEffect()` を使用すると、ソース値として明示的に `todoId` を渡す必要がなくなります。
 
 [この例](/examples/#fetching-data)では、`watchEffect` と実際にデータの読み込みがリアクティブに行われている様子をチェックすることができます。
+
+このような、依存関係が 1 つしかない例では、`watchEffect()` のメリットは比較的小さいです。しかし、複数の依存関係があるウォッチャーでは、`watchEffect()` を使うことで、依存関係のリストを手動で管理する負担がなくなります。さらに、ネストしたデータ構造内の複数のプロパティをウォッチする必要がある場合、`watchEffect()` は、すべてのプロパティを再帰的に追跡するのではなく、コールバックで使用されるプロパティのみを追跡するので、ディープ・ウォッチャーよりも効率的であることがわかるでしょう。
 
 :::tip
 `watchEffect` は**同期的な**処理中のみ依存先を追跡します。非同期のコールバックで使用する場合、最初の `await` の前にアクセスされたプロパティのみが追跡されます。
