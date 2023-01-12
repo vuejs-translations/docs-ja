@@ -254,7 +254,7 @@ export default {
 
 ```js
 watch(source, (newValue, oldValue) => {
-  // ...
+  // すぐに実行され、`source` が変更されると再び実行される
 }, { immediate: true })
 ```
 
