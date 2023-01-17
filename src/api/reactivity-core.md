@@ -453,7 +453,31 @@
     flush: 'post',
     onTrack(e) {
       debugger
+    },
+    onTrigger(e) {
+      debugger
     }
+  })
+  ```
+
+  ウォッチャーの停止:
+
+  ```js
+  const stop = watch(source, callback)
+
+  // ウォッチャーが不要になったときに:
+  stop()
+  ```
+
+  副作用のクリーンアップ:
+
+  ```js
+  watch(id, async (newId, oldId, onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `id` が変更されると `cancel` が呼ばれ、前のリクエストが
+    // まだ完了していない場合はキャンセルされます
+    onCleanup(cancel)
+    data.value = await response
   })
   ```
 
