@@ -131,7 +131,7 @@
 
   深い変換を避け、ルートレベルのリアクティビティーのみを保持するためには、代わりに [shallowReactive()](./reactivity-advanced.html#shallowreactive) 使用します。
 
-  返されたオブジェクトとそのネストされたオブジェクトは [ES Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) でラップされ、元のオブジェクトと**等しくなりません**。元のオブジェクトに依存することを避け、リアクティブなプロキシのみを使用することが推奨されます。
+  返されたオブジェクトとそのネストされたオブジェクトは [ES Proxy](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) でラップされ、元のオブジェクトと**等しくなりません**。元のオブジェクトに依存することを避け、リアクティブなプロキシのみを使用することが推奨されます。
 
 - **例**
 

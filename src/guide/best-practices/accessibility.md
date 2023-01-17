@@ -114,7 +114,7 @@ watch(
 
 ### ランドマーク {#landmarks}
 
-[ランドマーク](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)は、アプリケーション内のセクションへのプログラムによるアクセスを提供します。アシスティブ・テクノロジー（支援技術）に依存するユーザーは、アプリケーションの各セクションに移動し、コンテンツをスキップすることができます。これを実現するために、[ARIA ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles)を使用できます。
+[ランドマーク](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role)<!-- TODO: 日本語版のページが出来たら URL 差し替え -->は、アプリケーション内のセクションへのプログラムによるアクセスを提供します。アシスティブ・テクノロジー（支援技術）に依存するユーザーは、アプリケーションの各セクションに移動し、コンテンツをスキップすることができます。これを実現するために、[ARIA ロール](https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles)を使用できます。
 
 | HTML            | ARIA ロール            | ランドマークの目的                                                                                                 |
 | --------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -188,7 +188,7 @@ Chrome デベロッパー ツールでこの要素を検査し、Elements タブ
 
 #### `aria-label` {#aria-label}
 
-[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label) で入力欄にアクセシブルな名前を与えることもできます。
+[`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)<!-- TODO: 日本語版のページが出来たら URL 差し替え --> で入力欄にアクセシブルな名前を与えることもできます。
 
 ```vue-html
 <label for="name">Name</label>
@@ -209,7 +209,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 #### `aria-labelledby` {#aria-labelledby}
 
-[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) は `aria-label` と似ていますが、ラベルテキストが画面上に表示されている場合に使用されます。他の要素とは `id` で対になっており、複数の `id` をリンクさせることができます:
+[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby)<!-- TODO: 日本語版のページが出来たら URL 差し替え --> は `aria-label` と似ていますが、ラベルテキストが画面上に表示されている場合に使用されます。他の要素とは `id` で対になっており、複数の `id` をリンクさせることができます:
 
 ```vue-html
 <form
@@ -239,7 +239,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 
 #### `aria-describedby` {#aria-describedby}
 
-[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) は `aria-labelledby` と同じように使われますが、ユーザーが必要とするかもしれない追加の情報を含む説明を提供します。これはどのような入力欄に対しても、その基準を記述するために使用することができます:
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby)<!-- TODO: 日本語版のページが出来たら URL 差し替え --> は `aria-labelledby` と同じように使われますが、ユーザーが必要とするかもしれない追加の情報を含む説明を提供します。これはどのような入力欄に対しても、その基準を記述するために使用することができます:
 
 ```vue-html
 <form
@@ -325,7 +325,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 ### インストラクション {#instructions}
 
 入力フィールドにインストラクションを追加する場合は、入力欄に正しくリンクさせるようにしてください。
-インストラクションを追加し、[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) の中に複数の id をバインドすることができます。これにより、より柔軟なデザインが可能になります。
+インストラクションを追加し、[`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby)<!-- TODO: 日本語版のページが出来たら URL 差し替え --> の中に複数の id をバインドすることができます。これにより、より柔軟なデザインが可能になります。
 
 ```vue-html
 <fieldset>
@@ -341,7 +341,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 </fieldset>
 ```
 
-または、[`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) で入力欄に説明文を付けることもできます:
+または、[`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby)<!-- TODO: 日本語版のページが出来たら URL 差し替え --> で入力欄に説明文を付けることもできます:
 
 ```vue-html
 <fieldset>
