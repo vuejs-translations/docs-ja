@@ -129,8 +129,8 @@ export default defineComponent({
 
 参照:
 
-- [Note on webpack Treeshaking](/api/general.html#note-on-webpack-treeshaking)
-- [type tests for `defineComponent`](https://github.com/vuejs/core/blob/main/test-dts/defineComponent.test-d.tsx)
+- [webpack のツリーシェイキングに関する注意](/api/general.html#note-on-webpack-treeshaking)
+- [`defineComponent` の型テスト](https://github.com/vuejs/core/blob/main/test-dts/defineComponent.test-d.tsx)
 
 :::tip
 `defineComponent()` は、プレーンな JavaScript で定義されたコンポーネントに対しても型推論を行うことができます。

@@ -14,9 +14,9 @@ Composition API はオプションを宣言する代わりに関数をインポ�
 
 - [リアクティビティー API](/api/reactivity-core.html) 、例: `ref()` や `reactive()` で、リアクティブな状態、算出状態、ウォッチャーを直接作成できます。
 
-- [Lifecycle Hooks](/api/composition-api-lifecycle.html)、 例: `onMounted()` や `onUnmounted()` で、コンポーネントのライフサイクルにプログラム的なフックを設定します。
+- [ライフサイクルフック](/api/composition-api-lifecycle.html)、 例: `onMounted()` や `onUnmounted()` で、コンポーネントのライフサイクルにプログラム的なフックを設定します。
 
-- [Dependency Injection](/api/composition-api-dependency-injection.html) 、すなわち `provide()` と `inject()` によって、 リアクティビティー API を使用しながら Vue の依存関係注入システムを利用できます。
+- [依存関係の注入](/api/composition-api-dependency-injection.html)、すなわち `provide()` と `inject()` によって、 リアクティビティー API を使用しながら Vue の依存関係注入システムを利用できます。
 
 Composition API は Vue 3 と [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html) の組み込み機能です。Vue 2 の古いバージョンでは、公式にメンテナンスされている[`@vue/composition-api`](https://github.com/vuejs/composition-api)プラグインを使用してください。Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup.html) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
 
@@ -47,13 +47,13 @@ onMounted(() => {
 
 Vue の Composition API の使い方について興味があるようでしたら、左サイドメニューの一番上にある　API 選択トグルを Composition API に切り替えて、最初からガイドを読み進めることができます。
 
-## なぜ Composition APIなのか? {#why-composition-api}
+## なぜ Composition API なのか? {#why-composition-api}
 
 ### より良いロジックの再利用 {#better-logic-reuse}
 
-Composition API の最大の利点は [Composable functions](/guide/reusability/composables.html) 形式で、クリーンかつ効率的にロジックを再利用できることです。これは Options API の主要なロジック再利用メカニズムであった[ミックスインの欠点を全て](/guide/reusability/composables.html#vs-mixins)解決しています。
+Composition API の最大の利点は [コンポーザブル関数](/guide/reusability/composables.html)の形式で、クリーンかつ効率的にロジックを再利用できることです。これは Options API の主要なロジック再利用メカニズムであった[ミックスインの欠点を全て](/guide/reusability/composables.html#vs-mixins)解決しています。
 
-Composition API のロジック再利用性は [VueUse](https://vueuse.org/) のようなすばらしいコミュニティプロジェクトを生み出し、コンポーザブルの利便性を広める存在を増やし続けています。クリーンなメカニズムによってサードパーティーサービス・ライブラリーと Vue のリアクティブ機能との安定した統合も容易にしてくれています、例えば [immutable data](/guide/extras/reactivity-in-depth.html#immutable-data) 、 [state machines](/guide/extras/reactivity-in-depth.html#state-machines) 、そして [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs) などです。
+Composition API のロジック再利用性は [VueUse](https://vueuse.org/) のようなすばらしいコミュニティプロジェクトを生み出し、コンポーザブルの利便性を広める存在を増やし続けています。クリーンなメカニズムによってサードパーティーサービス・ライブラリーと Vue のリアクティブ機能との安定した統合も容易にしてくれています、例えば[イミュータブルなデータ](/guide/extras/reactivity-in-depth.html#immutable-data)、[ステートマシン](/guide/extras/reactivity-in-depth.html#state-machines)、そして [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs) などです。
 
 ### より柔軟なコード整理 {#more-flexible-code-organization}
 

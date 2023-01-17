@@ -4,7 +4,7 @@
 よりリアクティビティー API を理解するために、ガイド内の次の章を読むことを推奨します:
 
 - [リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html) (API 環境設定が Composition API に設定されている場合)
-- [Reactivity in Depth](/guide/extras/reactivity-in-depth.html)
+- [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
   :::
 
 ## ref() {#ref}
@@ -40,8 +40,8 @@
   ```
 
 - **参照:**
-  - [Guide - Reactive Variables with `ref()`](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
-  - [Guide - Typing `ref()`](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
+  - [ガイド - `ref()` と共に使うリアクティブな変数](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
+  - [ガイド - `ref()` の型付け](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
 
 ## computed() {#computed}
 
@@ -109,9 +109,9 @@
   ```
 
 - **参照:**
-  - [Guide - Computed Properties](/guide/essentials/computed.html)
-  - [Guide - Computed Debugging](/guide/extras/reactivity-in-depth.html#computed-debugging)
-  - [Guide - Typing `computed()`](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+  - [ガイド - 算出プロパティ](/guide/essentials/computed.html)
+  - [ガイド - 算出プロパティのデバッグ](/guide/extras/reactivity-in-depth.html#computed-debugging)
+  - [ガイド - `computed()` の型付け](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
 
 ## reactive() {#reactive}
 
@@ -187,8 +187,8 @@
   ```
 
 - **参照:**
-  - [Guide - Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html)
-  - [Guide - Typing `reactive()`](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
+  - [ガイド - リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html)
+  - [ガイド - `reactive()` の型付け](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
 
 ## readonly() {#readonly}
 
@@ -309,8 +309,8 @@
   ```
 
 - **参照**:
-  - [Guide - Watchers](/guide/essentials/watchers.html#watcheffect)
-  - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [ガイド - ウォッチャー](/guide/essentials/watchers.html#watcheffect)
+  - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)
 
 ## watchPostEffect() {#watchposteffect}
 
@@ -383,9 +383,9 @@
   省略可能な第 3 引数は、以下のオプションをサポートするオプションオブジェクトです:
 
   - **`immediate`**: ウォッチャーが作成されたら、すぐにコールバックを起動します。最初の呼び出しでは、古い値は `undefined` になります。
-  - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。詳しくは [Deep Watchers](/guide/essentials/watchers.html#deep-watchers) をご参照ください。
+  - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。詳しくは[ディープ・ウォッチャー](/guide/essentials/watchers.html#deep-watchers)をご参照ください。
   - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core.html#watcheffect) をご参照ください。
-  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは [Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging) をご参照ください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)をご参照ください。
 
   [`watchEffect()`](#watcheffect) と比較すると、`watch()` は以下のことができます:
 
@@ -459,5 +459,5 @@
 
 - **参照**:
 
-  - [Guide - Watchers](/guide/essentials/watchers.html)
-  - [Guide - Watcher Debugging](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [ガイド - ウォッチャー](/guide/essentials/watchers.html)
+  - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)

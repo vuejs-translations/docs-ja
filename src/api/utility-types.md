@@ -132,5 +132,5 @@ TSX 要素のプロパティとして宣言されていないプロパティを�
 :::info 参照
 SFC `<style>` タグは、`v-bind` CSS 関数を使って、CSS の値を動的コンポーネントの状態にリンクすることをサポートしています。これにより、型を拡張することなく、カスタムプロパティを使用することができます。
 
-- [v-bind() in CSS](/api/sfc-css-features.html#v-bind-in-css)
+- [CSS の v-bind()](/api/sfc-css-features.html#v-bind-in-css)
   :::

@@ -97,7 +97,7 @@ export default {
 
 通常のプロパティと同じように、テンプレート内の算出プロパティにデータバインドすることもできます。Vue は `this.publishedBooksMessage` が `this.author.books` に依存していることを知っているので、`this.author.books` が変わると `this.publishedBooksMessage` に依存する全てのバインディングを更新します。
 
-参照: [Typing Computed Properties](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
+参照: [算出プロパティの型付け](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
 
 </div>
 
@@ -134,7 +134,7 @@ const publishedBooksMessage = computed(() => {
 
 算出プロパティは、自動的にリアクティブな依存関係を追跡します。Vue は `publishedBooksMessage` の算出が `author.books` に依存することを知っているので、`author.books` が変わると `publishedBooksMessage` に依存する全てのバインディングを更新します。
 
-参考: [Typing Computed](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+参照: [`computed()` の型付け](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
 
 </div>
 
