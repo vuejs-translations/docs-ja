@@ -131,6 +131,49 @@ export default defineComponent({
 })
 ```
 
+### 複合型
+
+型ベースの宣言では、プロパティは他の型と同様に複合型を使用できます:
+
+```vue
+<script setup lang="ts">
+interface Book {
+  title: string
+  author: string
+  year: number
+}
+
+const props = defineProps<{
+  book: Book
+}>()
+</script>
+```
+
+実行時の宣言では、`PropType` ユーティリティタイプを使用します:
+
+```ts
+import type { PropType } from 'vue'
+
+const props = defineProps({
+  book: Object as PropType<Book>
+})
+```
+
+これは、`props` オプションを直接指定した場合とほぼ同じように動作します:
+
+```ts
+import { defineComponent } from 'vue'
+import type { PropType } from 'vue'
+
+export default defineComponent({
+  props: {
+    book: Object as PropType<Book>
+  }
+})
+```
+
+`props` オプションは Options API でより一般的に使用されるため、[Options API とともに TypeScript を使用する](/guide/typescript/options-api.html#typing-component-props)のガイドでさらに詳しい例を見つけることができます。これらの例で示されているテクニックは、`defineProps()` を使った実行時の宣言にも適用されます。
+
 ## コンポーネントの emit の型付け {#typing-component-emits}
 
 `<script setup>` では、`emit` 関数も runtime declaration もしくは type declaration (型宣言) のいずれかを使って型付けすることができます:
