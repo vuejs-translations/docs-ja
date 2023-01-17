@@ -274,7 +274,7 @@ const { location, updateLocation } = inject('location')
 </template>
 ```
 
-最後に、`provide` を通して渡されたデータが注入されたコンポーネントによって変更されないようにしたい場合は、提供された値を [`readonly()`](/api/reactivity-core.html#readonly) でラップすることができます。
+最後に、`provide` を通して渡されたデータがインジェクターコンポーネントによって変更されないようにしたい場合は、提供された値を [`readonly()`](/api/reactivity-core.html#readonly) でラップすることができます。
 
 ```vue
 <script setup>
