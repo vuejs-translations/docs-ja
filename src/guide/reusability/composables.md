@@ -6,7 +6,7 @@ const { x, y } = useMouse()
 </script>
 
 :::tip
-このセクションは Composition API の基本的な知識があることを前提としています。もし Vue を Options API のみで学んできた場合は、（左サイドバーの上部にあるトグルを使って）API 選択を Composition API に設定し、[Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals.html) と [Lifecycle Hooks](/guide/essentials/lifecycle.html) の章を読み直すとよいでしょう。
+このセクションは Composition API の基本的な知識があることを前提としています。もし Vue を Options API のみで学んできた場合は、（左サイドバーの上部にあるトグルを使って）API 選択を Composition API に設定し、[リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html)と[ライフサイクルフック](/guide/essentials/lifecycle.html)の章を読み直すとよいでしょう。
 :::
 
 ## 「コンポーザブル」とは？ {#what-is-a-composable}
@@ -125,7 +125,7 @@ export function useMouse() {
 ```
 
 :::tip
-`useMouse()` を呼び出すコンポーネントの各インスタンスは、`x` と `y` の状態のコピーを独自に作成するので、互いに干渉することはありません。もしコンポーネント間で共有する状態を管理したい場合は、[State Management](/guide/scaling-up/state-management.html) の章を読んでください。
+`useMouse()` を呼び出すコンポーネントの各インスタンスは、`x` と `y` の状態のコピーを独自に作成するので、互いに干渉することはありません。もしコンポーネント間で共有する状態を管理したい場合は、[状態管理](/guide/scaling-up/state-management.html)の章を読んでください。
 :::
 
 ## 非同期の状態の例 {#async-state-example}
@@ -271,7 +271,7 @@ Mouse position is at: {{ mouse.x }}, {{ mouse.y }}
 
 コンポーザブルで副作用（例: DOM イベントリスナーの登録やデータの取得）を起こすことは問題ありませんが、次のルールに注意してください:
 
-- [Server-Side Rendering](/guide/scaling-up/ssr.html) (SSR) を利用したアプリケーションで作業している場合、DOM 固有の副作用は必ず `onMounted()` のようなマウント後のライフサイクルフック内で実行するようにしてください。これらのフックはブラウザーでしか呼び出されないので、そのコード内では DOM にアクセスできることが保証されます。
+- [サーバーサイドレンダリング](/guide/scaling-up/ssr.html) (SSR) を利用したアプリケーションで作業している場合、DOM 固有の副作用は必ず `onMounted()` のようなマウント後のライフサイクルフック内で実行するようにしてください。これらのフックはブラウザーでしか呼び出されないので、そのコード内では DOM にアクセスできることが保証されます。
 
 - `onUnmounted()` で副作用をクリーンアップすることを忘れないでください。例えば、コンポーザブルが DOM イベントリスナーを登録したなら、`useMouse()` の例で見てきたように `onUnmounted()` でそのリスナーを削除しないといけません。`useEventListener()` の例のように、自動的にそれをやってくれるコンポーザブルを使うのもよいでしょう。
 
@@ -353,11 +353,11 @@ Vue 2 からのユーザーは、[mixins](/api/options-composition.html#mixins) 
 
 ### vs. React Hooks {#vs-react-hooks}
 
-もし React の経験があるなら、React のカスタムフックによく似ていると気づくかも知れません。Composition API は React Hooks にインスパイアされた部分があり、Vue のコンポーザブルは、ロジックの合成機能という点では React Hooks と似ています。しかし、Vue のコンポーザブルは、React Hooks の実行モデルとは根本的に異なる Vue のきめ細やかなリアクティビティーシステムに基づいています。詳細は [Composition API FAQ](/guide/extras/composition-api-faq#comparison-with-react-hooks) で説明しています。
+もし React の経験があるなら、React のカスタムフックによく似ていると気づくかも知れません。Composition API は React Hooks にインスパイアされた部分があり、Vue のコンポーザブルは、ロジックの合成機能という点では React Hooks と似ています。しかし、Vue のコンポーザブルは、React Hooks の実行モデルとは根本的に異なる Vue のきめ細やかなリアクティビティーシステムに基づいています。詳細は [Composition API の FAQ](/guide/extras/composition-api-faq#comparison-with-react-hooks) で説明しています。
 
 ## 参考文献 {#further-reading}
 
-- [Reactivity In Depth](/guide/extras/reactivity-in-depth.html): Vue のリアクティビティーシステムがどのように動作をするのかを、より具体的に理解する。
-- [State Management](/guide/scaling-up/state-management.html): 複数コンポーネントで共有する状態を管理するためのパターン。
-- [Testing Composables](/guide/scaling-up/testing.html#testing-composables): コンポーザブルをユニットテストするためのコツ。
+- [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html): Vue のリアクティビティーシステムがどのように動作をするのかを、より具体的に理解する。
+- [状態管理](/guide/scaling-up/state-management.html): 複数コンポーネントで共有する状態を管理するためのパターン。
+- [コンポーザブルのテスト](/guide/scaling-up/testing.html#testing-composables): コンポーザブルをユニットテストするためのコツ。
 - [VueUse](https://vueuse.org/): 発展し続ける Vue コンポーザブル集。このソースコードも素晴らしい学習資料です。

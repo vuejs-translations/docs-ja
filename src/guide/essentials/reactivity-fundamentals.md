@@ -75,9 +75,9 @@ import { reactive } from 'vue'
 const state = reactive({ count: 0 })
 ```
 
-リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[Reactivity in Depth](/guide/extras/reactivity-in-depth.html) で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
+リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
 
-こちらもご参照ください。[Typing Reactive](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />。
+参照: [`reactive()` の型付け](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />。
 
 コンポーネントのテンプレートでリアクティブな状態を使うには、下記に示すように、コンポーネントの `setup()` 関数で宣言し、それを返します：
 
@@ -298,7 +298,7 @@ function mutateDeeply() {
 
 </div>
 
-また、ルートレベルでのみリアクティビティーを追跡する [shallow reactive object](/api/reactivity-advanced.html#shallowreactive) を明示的に作成することも可能ですが、これらは一般的に高度な使用例においてのみ必要とされるものとなります。
+また、ルートレベルでのみリアクティビティーを追跡する[浅いリアクティブオブジェクト](/api/reactivity-advanced.html#shallowreactive)を明示的に作成することも可能ですが、これらは一般的に高度な使用例においてのみ必要とされるものとなります。
 
 <div class="composition-api">
 
@@ -395,7 +395,7 @@ count.value++
 console.log(count.value) // 1
 ```
 
-こちらもご覧ください。[Typing Refs](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />。
+参照: [`ref()` の型付け](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />。
 
 リアクティブなオブジェクトのプロパティと同様に、ref の `.value` プロパティはリアクティブとなります。また、オブジェクト型を保持する場合、ref は `.value` を `reactive()` で自動的に変換します。
 
@@ -425,7 +425,7 @@ callSomeFunction(obj.foo)
 const { foo, bar } = obj
 ```
 
-つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを [Composable Functions](/guide/reusability/composables.html) に抽出する際に頻繁に使用されるため、非常に重要となります。
+つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを[コンポーザブル関数](/guide/reusability/composables.html)に抽出する際に頻繁に使用されるため、非常に重要となります。
 
 ### Ref Unwrapping in Templates \*\* {#ref-unwrapping-in-templates}
 

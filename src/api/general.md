@@ -122,7 +122,7 @@ Vue の現在のバージョンを公開します。
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### webpack のツリーシェイキングに関する注意
+  ### webpack のツリーシェイキングに関する注意 {#note-on-webpack-treeshaking}
 
   `defineComponent()` は関数呼び出しなので、webpack などのビルドツールでは副作用が発生するように見えるかもしれません。これは、コンポーネントが一度も使われていないときでも、コンポーネントがツリーシェイクされるのを防ぐことができます。
 
