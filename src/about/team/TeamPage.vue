@@ -70,10 +70,10 @@ shuffleMembers(membersPartnerData as Member[])
     </TeamList>
 
     <TeamList :members="membersPartnerData as Member[]">
-      <template #title>コミュニティパートナー</template>
+      <template #title>コミュニティーパートナー</template>
       <template #lead
-        >一部の Vue コミュニティメンバーは
-        コミュニティを発展させたため、特筆します。
+        >一部の Vue コミュニティーメンバーは
+        コミュニティーを発展させたため、特筆します。
         私達は主要なパートナーとより親密に開発し、
         頻繁に今後の機能やニュースを決定しています。</template
       >
