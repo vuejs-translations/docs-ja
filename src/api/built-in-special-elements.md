@@ -152,7 +152,7 @@ DOM に要素をレンダリングせずに組み込みディレクティブを�
   - `v-for`
   - `v-slot`
 
-  これらのディレクティブが存在しない場合は、代わりに[ネイティブの `<template>` 要素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)としてレンダリングされます。
+  これらのディレクティブが存在しない場合は、代わりに[ネイティブの `<template>` 要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/template)としてレンダリングされます。
 
   `v-for` を持つ `<template>` は [`key` 属性](/api/built-in-special-attributes.html#key)を持たせることができます。それ以外の属性やディレクティブは、対応する要素がなければ意味をなさないので、すべて破棄されます。
 

@@ -254,7 +254,7 @@ methods: {
 関連するコードが同じの順番で生成されるため、修飾子を使用するときには順番は重要です。したがって、`@click.prevent.self` を使うと **要素自身とその子要素に対するクリックのデフォルトアクション** に干渉するのに対して、`@click.self.prevent` は要素自身のクリックのデフォルトアクションにのみに干渉します。
 :::
 
-`.capture`、 `.once`、 さらには `.passive` 修飾子は [ネイティブ  `addEventListener` メソッドのオプション](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options) を反映します:
+`.capture`、 `.once`、 さらには `.passive` 修飾子は[ネイティブ  `addEventListener` メソッドのオプション](https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener#options)を反映します:
 
 ```vue-html
 <!-- イベントリスナーを加えるときはキャプチャーモードを使用してください。 -->
@@ -270,7 +270,7 @@ methods: {
 <div @scroll.passive="onScroll">...</div>
 ```
 
-`.passive` 修飾子は通常、[モバイル機器のパフォーマンスの改善](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners) のためのタッチイベントリスナーで使用します。
+`.passive` 修飾子は通常、[モバイル機器のパフォーマンスの改善](https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener#%E3%83%91%E3%83%83%E3%82%B7%E3%83%96%E3%83%AA%E3%82%B9%E3%83%8A%E3%83%BC%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%AE%E6%80%A7%E8%83%BD%E6%94%B9%E5%96%84)のためのタッチイベントリスナーで使用します。
 
 ::: tip
 `.passive` と `.prevent` を一緒に使わないでください。なぜなら、`.passive` はブラウザーですでにイベントのデフォルト動作を干渉「しない」ことを示しているからです。それにより、もしそうした場合においてブラウザーが警告を出す可能性が高いからです。
@@ -285,7 +285,7 @@ methods: {
 <input @keyup.enter="submit" />
 ```
 
-[`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) を介して公開されている有効なキーネームをケバブケースに変換されることで、直接修飾子として使用することができます。
+[`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)<!-- TODO: 日本語版のページが出来たら URL 差し替え --> を介して公開されている有効なキーネームをケバブケースに変換されることで、直接修飾子として使用することができます。
 
 ```vue-html
 <input @keyup.page-down="onPageDown" />

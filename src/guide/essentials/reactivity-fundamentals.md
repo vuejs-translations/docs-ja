@@ -43,7 +43,7 @@ Vue は、コンポーネントのインスタンスを介して自身の組み�
 
 ### リアクティブプロキシ vs. 独自 \* {#reactive-proxy-vs-original}
 
-Vue 3 では、[JavaScript プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) を活用することで、データをリアクティブにすることができます。Vue 2 から来たユーザーは、以下のエッジケースに注意する必要があります：
+Vue 3 では、[JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)を活用することで、データをリアクティブにすることができます。Vue 2 から来たユーザーは、以下のエッジケースに注意する必要があります：
 
 ```js
 export default {
@@ -75,7 +75,7 @@ import { reactive } from 'vue'
 const state = reactive({ count: 0 })
 ```
 
-リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
+リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
 
 参照: [`reactive()` の型付け](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />。
 
@@ -304,7 +304,7 @@ function mutateDeeply() {
 
 ### リアクティブプロキシ vs. 独自 \*\* {#reactive-proxy-vs-original-1}
 
-注意すべきは、`reactive()` の戻り値が、元のオブジェクトの [プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) であり、元のオブジェクトと等しくないということです：
+注意すべきは、`reactive()` の戻り値が、元のオブジェクトの[プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)であり、元のオブジェクトと等しくないということです：
 
 ```js
 const raw = {}

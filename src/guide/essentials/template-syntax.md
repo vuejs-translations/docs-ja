@@ -66,7 +66,7 @@ HTML 属性の中ではマスタッシュ構文が使えません。代わりに
 
 ### ブーリアン属性 {#boolean-attributes}
 
-[ブーリアン属性](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes)は、要素に含まれるかどうかによって「真」または「偽」の値を表す属性です。例えば、[`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) は最も一般的に用いられるブーリアン属性の 1 つです。
+[ブーリアン属性](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes)は、要素に含まれるかどうかによって「真」または「偽」の値を表す属性です。例えば、[`disabled`](https://developer.mozilla.org/ja/docs/Web/HTML/Attributes/disabled) は最も一般的に用いられるブーリアン属性の 1 つです。
 
 以下のケースでは、`v-bind` は少し特別な動作をします:
 

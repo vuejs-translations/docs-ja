@@ -84,7 +84,7 @@ renderToString(app).then((html) => {
 <button>1</button>
 ```
 
-[`renderToString()`](/api/ssr.html#rendertostring) は Vue アプリケーションのインスタンスを受け取り、アプリケーションでレンダリングされる HTML を解決する Promise を返します。また、[Node.js Stream API](https://nodejs.org/api/stream.html) や [Web Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) を用いて、ストリームレンダリングもできます。詳しくは [SSR API リファレンス](/api/ssr.html)を参照してください。
+[`renderToString()`](/api/ssr.html#rendertostring) は Vue アプリケーションのインスタンスを受け取り、アプリケーションでレンダリングされる HTML を解決する Promise を返します。また、[Node.js Stream API](https://nodejs.org/api/stream.html) や [Web Streams API](https://developer.mozilla.org/ja/docs/Web/API/Streams_API) を用いて、ストリームレンダリングもできます。詳しくは [SSR API リファレンス](/api/ssr.html)を参照してください。
 
 そして、Vue SSR のコードをサーバーのリクエストハンドラーに移動させ、アプリケーションのマークアップをフルページの HTML でラップすることができます。次のステップでは [`express`](https://expressjs.com/) を使用します:
 
