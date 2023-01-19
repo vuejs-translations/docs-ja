@@ -131,7 +131,7 @@ export default defineComponent({
 })
 ```
 
-### 複合型
+### 複合型 {#complex-prop-types}
 
 型ベースの宣言では、プロパティは他の型と同様に複合型を使用できます:
 
