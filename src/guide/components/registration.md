@@ -134,7 +134,7 @@ export default {
 
 1. PascalCase の名前は JavaScript の識別子として有効です。そのため、JavaScript でコンポーネントをインポートしたり登録したりするのが容易になります。また、IDE のオートコンプリートも働きやすくなります。
 
-2. テンプレートで `<PascalCase />` を用いると、これがネイティブの HTML 要素ではなく、Vue のコンポーネントであることがより明確になります。また、Vue コンポーネントとカスタムの要素 (Web Components) を区別することも可能になります。
+2. テンプレートで `<PascalCase />` を用いると、これがネイティブの HTML 要素ではなく、Vue のコンポーネントであることがより明確になります。また、Vue コンポーネントとカスタム要素（Web コンポーネント）を区別することも可能になります。
 
 このスタイルは、SFC や文字列テンプレートを合わせて使う時に推奨されるスタイルです。ただし、[DOM テンプレート解析の注意点](/guide/essentials/component-basics.html#dom-template-parsing-caveats) で説明しているように、DOM テンプレート内では PascalCase のタグが使えません。
 
