@@ -40,14 +40,12 @@ type-base declaration と runtime declaration の両方を同時に使用する�
 props の型をインターフェースとして分離することもできます:
 
 ```vue
-<script lang="ts">
+<script setup lang="ts">
 interface Props {
   foo: string
   bar?: number
 }
-</script>
 
-<script setup lang="ts">
 const props = defineProps<Props>()
 </script>
 ```
