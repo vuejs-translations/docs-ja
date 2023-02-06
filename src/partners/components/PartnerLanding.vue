@@ -29,7 +29,7 @@ onMounted(() => {
 
     <div class="featured">
       <h2>注目のパートナー</h2>
-      <PartnerList :filter="(p) => p.platinum" />
+      <PartnerList :filter="(p) => p.platinum" showLinkToAll />
       <a class="browse-all" href="./all.html">全てのパートナーを見る</a>
     </div>
 
