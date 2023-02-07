@@ -10,6 +10,8 @@ outline: deep
 
 ## Composition API とは? {#what-is-composition-api}
 
+<VueSchoolLink href="[https://vueschool.io/lessons/computed-properties-in-vue-3](https://vueschool.io/lessons/introduction-to-the-vue-js-3-composition-api)" title="Composition API の無料レッスン"/>
+
 Composition API はオプションを宣言する代わりに関数をインポートすることで Vue コンポーネントを書くことができる API セットのことです。以下に記載する API を含む包括的な用語です:
 
 - [リアクティビティー API](/api/reactivity-core.html) 、例: `ref()` や `reactive()` で、リアクティブな状態、算出状態、ウォッチャーを直接作成できます。
