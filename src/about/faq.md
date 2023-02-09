@@ -1,102 +1,102 @@
-# Frequently Asked Questions {#frequently-asked-questions}
+# よくある質問 {#frequently-asked-questions}
 
-## Who maintains Vue? {#who-maintains-vue}
+## Vue をメンテナンスしているのは誰ですか？ {#who-maintains-vue}
 
-Vue is an independent, community-driven project. It was created by [Evan You](https://twitter.com/youyuxi) in 2014 as a personal side project. Today, Vue is actively maintained by [a team of both full-time and volunteer members from all around the world](/about/team), where Evan serves as the project lead. You can learn more about the story of Vue in this [documentary](https://www.youtube.com/watch?v=OrxmtDw4pVI).
+Vue は、独立した、コミュニティー主導のプロジェクトです。2014 年に [Evan You](https://twitter.com/youyuxi) によって個人のサイドプロジェクトとして作成されました。現在、Vue は[世界中のフルタイムおよびボランティアのメンバーからなるチーム](/about/team)によって活発にメンテナンスされており、Evan がプロジェクトのリーダーを務めています。Vue のストーリーについては、こちらの[ドキュメンタリー](https://www.youtube.com/watch?v=OrxmtDw4pVI)で詳しくご紹介しています。
 
-Vue's development is primarily funded through sponsorships and we have been financially sustainable since 2016. If you or your business benefit from Vue, consider [sponsoring us](/sponsor/) to support Vue's development!
+Vue の開発は主にスポンサーシップを通じて資金提供されており、2016 年以降、財政的に持続可能な状態にあります。もしあなたやあなたのビジネスが Vue から利益を得ているのであれば、Vue の開発を支援するため[スポンサーになること](/sponsor/)をご検討ください！
 
-## What's the difference between Vue 2 and Vue 3? {#what-s-the-difference-between-vue-2-and-vue-3}
+## Vue 2 と Vue 3 の違いは何ですか？ {#what-s-the-difference-between-vue-2-and-vue-3}
 
-Vue 3 is the current, latest major version of Vue. It contains new features that are not present in Vue 2, such as Teleport, Suspense, and multiple root elements per template. It also contains breaking changes that make it incompatible with Vue 2. Full details are documented in the [Vue 3 Migration Guide](https://v3-migration.vuejs.org/).
+Vue 3 は、Vue の現在の最新メジャーバージョンです。Teleport、Suspense、テンプレートの複数ルート要素など、Vue 2 にはない新しい機能が含まれています。また、Vue 2 と互換性のない破壊的な変更も含まれています。詳細については、[Vue 3 移行ガイド](https://v3-migration.vuejs.org/)に記載されています。
 
-Despite the differences, the majority of Vue APIs are shared between the two major versions, so most of your Vue 2 knowledge will continue to work in Vue 3. Notably, Composition API was originally a Vue-3-only feature, but has now been backported to Vue 2 and is available in [Vue 2.7](https://github.com/vuejs/vue/blob/main/CHANGELOG.md#270-2022-07-01).
+違いはあるものの、Vue API の大部分は 2 つのメジャーバージョン間で共有されているため、Vue 2 の知識のほとんどは Vue 3 でも引き続き使用できます。特に、Composition API はもともと Vue 3 のみの機能でしたが、現在は Vue 2 にバックポートされ、[Vue 2.7](https://github.com/vuejs/vue/blob/main/CHANGELOG.md#270-2022-07-01) で利用可能になっています。
 
-In general, Vue 3 provides smaller bundle sizes, better performance, better scalability, and better TypeScript / IDE support. If you are starting a new project today, Vue 3 is the recommended choice. There are only a few reasons for you to consider Vue 2 as of now:
+一般的に、Vue 3 は、バンドルサイズが小さくなり、パフォーマンスが向上し、スケーラビリティが向上し、TypeScript / IDE のサポートが向上します。現在、新しいプロジェクトを開始する場合、Vue 3 をお勧めします。現時点で、Vue 2 を検討する理由はほんの少ししかありません:
 
-- You need to support IE11. Vue 3 leverages modern JavaScript features and does not support IE11.
+- IE11 をサポートする必要がある場合。Vue 3 はモダンな JavaScript の機能を活用しているため、IE11 をサポートしていません。
 
-- You are still waiting for major ecosystem projects like Nuxt or Vuetify to release stable versions for Vue 3. This is reasonable if you do not wish to use beta-stage software. However, do note there are other already stable Vue 3 component libraries such as [Quasar](https://quasar.dev/), [Naive UI](https://www.naiveui.com/) and [Element Plus](https://element-plus.org/).
+- Nuxt や Vuetify などの大きいエコシステムプロジェクトが、Vue 3 向けの安定版をリリースするのをまだ待っている場合。ベータ段階のソフトウェアを使いたくないのであればこれは妥当なことです。しかし、[Quasar](https://quasar.dev/)、[Naive UI](https://www.naiveui.com/)、[Element Plus](https://element-plus.org/) など、すでに安定した Vue 3 コンポーネントライブラリーが他にもあることは知っておいてください。
 
-If you intend to migrate an existing Vue 2 app to Vue 3, consult the [migration guide](https://v3-migration.vuejs.org/).
+既存の Vue 2 アプリを Vue 3 に移行する場合は、[移行ガイド](https://v3-migration.vuejs.org/)を参照してください。
 
-## Is Vue 2 Still Supported? {#is-vue-2-still-supported}
+## Vue 2 はまだサポートされているのでしょうか？ {#is-vue-2-still-supported}
 
-Vue 2.7, which was shipped in July 2022, is the final minor release of the Vue 2 version range. Vue 2 has now entered maintenance mode: it will no longer ship new features, but will continue to receive critical bug fixes and security updates for 18 months starting from the 2.7 release date. This means **Vue 2 will reach End of Life on December 31st, 2023**.
+2022 年 7 月に出荷された Vue 2.7 は、Vue 2 のバージョン範囲における最後のマイナーリリースとなります。Vue 2 は現在メンテナンスモードに移行しており、新しい機能は出荷されませんが、2.7 のリリース日から 18 か月間、重要なバグ修正とセキュリティアップデートが継続されます。これは、**Vue 2 が 2023 年 12 月 31 日に End of Life に到達することを意味します**。
 
-We believe this should provide plenty of time for most of the ecosystem to migrate over to Vue 3. However, we also understand that there could be teams or projects that cannot upgrade by this timeline while still needing to fulfill security and compliance requirements. We are partnering with industry experts to provide extended support for Vue 2 for teams with such needs - if your team expects to be using Vue 2 beyond the end of 2023, make sure to plan ahead and learn more about [Vue 2 Extended LTS](https://v2.vuejs.org/lts/).
+これは、ほとんどのエコシステムが Vue 3 に移行するための十分な時間を提供するものだと考えています。しかし、セキュリティーおよびコンプライアンス要件を満たす必要がありながら、このスケジュールまでにアップグレードできないチームやプロジェクトがあることも理解しています。私たちは業界の専門家と提携し、そのようなニーズを持つチームのために Vue 2 の拡張サポートを提供しています。もしあなたのチームが 2023 年末以降も Vue 2 を使用する予定であれば、前もって計画を立て、[Vue 2 Extended LTS](https://v2.vuejs.org/lts/) について詳細を学んでください。
 
-## What license does Vue use? {#what-license-does-vue-use}
+## Vueはどのようなライセンスを使用していますか？ {#what-license-does-vue-use}
 
-Vue is a free and open source project released under the [MIT License](https://opensource.org/licenses/MIT).
+Vue は、[MIT License](https://opensource.org/licenses/MIT) のもとで公開されている無料のオープンソースのプロジェクトです。
 
-## What browsers does Vue support? {#what-browsers-does-vue-support}
+## Vueはどのブラウザーをサポートしていますか？ {#what-browsers-does-vue-support}
 
-The latest version of Vue (3.x) only supports [browsers with native ES2015 support](https://caniuse.com/es6). This excludes IE11. Vue 3.x uses ES2015 features that cannot be polyfilled in legacy browsers, so if you need to support legacy browsers, you will need to use Vue 2.x instead.
+Vue の最新バージョン（3.x）は、[ES2015 をネイティブにサポートしているブラウザー](https://caniuse.com/es6)のみをサポートしています。これには IE11 は含まれません。Vue 3.x はレガシーブラウザーでポリフィルできない ES2015 の機能を使用しているので、レガシーブラウザーをサポートする必要がある場合は、Vue 2.x を代わりに使用する必要があります。
 
-## Is Vue reliable? {#is-vue-reliable}
+## Vue は信頼できますか？ {#is-vue-reliable}
 
-Vue is a mature and battle-tested framework. It is one of the most widely used JavaScript frameworks in production today, with over 1.5 million users worldwide, and is downloaded close to 10 million times a month on npm.
+Vue は、実戦でテスト済みの成熟したフレームワークです。現在、プロダクション環境で最も広く使われている JavaScript フレームワークの 1 つで、世界中に 150 万人以上のユーザーがおり、npm では毎月 1,000 万回近くダウンロードされています。
 
-Vue is used in production by renowned organizations in varying capacities all around the world, including Wikimedia Foundation, NASA, Apple, Google, Microsoft, GitLab, Zoom, Tencent, Weibo, Bilibili, Kuaishou, and many more.
+Vue は、Wikimedia Foundation、NASA、Apple、Google、Microsoft、GitLab、Zoom、Tencent、Weibo、Bilibili、Kuaishou など、世界中の有名企業によってさまざまな用途でプロダクション運用に使用されています。
 
-## Is Vue fast? {#is-vue-fast}
+## Vue は速いですか？ {#is-vue-fast}
 
-Vue 3 is one of the most performant mainstream frontend frameworks, and handles most web application use cases with ease, without the need for manual optimizations.
+Vue 3 は、最もパフォーマンスの高い主流のフロントエンドフレームワークの 1 つであり、手動で最適化することなく、ほとんどの Web アプリケーションのユースケースを簡単に処理します。
 
-In stress-testing scenarios, Vue outperforms React and Angular by a decent margin in the [js-framework-benchmark](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts-results/table.html). It also goes neck-and-neck against some of the fastest production-level non-Virtual-DOM frameworks in the benchmark.
+ストレステストのシナリオでは、Vue は [js-framework-benchmark](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts-results/table.html) で React と Angular をかなりの差で上回ります。また、このベンチマークでは、最速のプロダクションレベルの非仮想 DOM フレームワークのいくつかと接戦状態です。
 
-Do note that synthetic benchmarks like the above focus on raw rendering performance with dedicated optimizations and may not be fully representative of real-world performance results. If you care more about page load performance, you are welcome to audit this very website using [WebPageTest](https://www.webpagetest.org/lighthouse) or [PageSpeed Insights](https://pagespeed.web.dev/). This website is powered by Vue itself, with SSG pre-rendering, full page hydration and SPA client-side navigation. It scores 100 in performance on an emulated Moto G4 with 4x CPU throttling over slow 4G networks.
+上記のような統合的なベンチマークは、専用の最適化による未加工のレンダリングパフォーマンスに焦点を当てており、実際のパフォーマンス結果を完全には表していない可能性があることに注意してください。ページ読み込みのパフォーマンスがさらに気になる場合は、[WebPageTest](https://www.webpagetest.org/lighthouse) や [PageSpeed Insights](https://pagespeed.web.dev/) を使用して、今見ているこの Web サイトを検査してみてください。このウェブサイトは、SSG プリレンダリング、ページ全体のハイドレーション、SPA クライアントサイドナビゲーションなど、Vue そのものを使用しています。低速の 4G ネットワークと 4 倍の CPU スロットリングのエミュレートされた Moto G4 で、100 点のパフォーマンスを記録しています。
 
-You can learn more about how Vue automatically optimizes runtime performance in the [Rendering Mechanism](/guide/extras/rendering-mechanism.html) section, and how to optimize a Vue app in particularly demanding cases in the [Performance Optimization Guide](/guide/best-practices/performance.html).
+[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)のセクションでは Vue が自動的に実行時のパフォーマンスを最適化する方法、[パフォーマンス最適化ガイド](/guide/best-practices/performance.html)では特に要求の厳しいケースで Vue アプリを最適化する方法については詳しく説明されています。
 
-## Is Vue lightweight? {#is-vue-lightweight}
+## Vue は軽量ですか？ {#is-vue-lightweight}
 
-When you use a build tool, many of Vue's APIs are ["tree-shakable"](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking). For example, if you don't use the built-in `<Transition>` component, it won't be included in the final production bundle.
+ビルドツールを使用する場合、Vue の API の多くは[「ツリーシェイク可能」](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)です。例えば、組み込みの `<Transition>` コンポーネントを使用しない場合、最終的なプロダクションバンドルには含まれません。
 
-A hello world Vue app that only uses the absolutely minimal APIs has a baseline size of only around **16kb**, with minification and brotli compression. The actual size of the application will depend on how many optional features you use from the framework. In the unlikely case where an app uses every single feature that Vue provides, the total runtime size is around **27kb**.
+最小限の API のみを使用する Hello World の Vue アプリのベースラインサイズは、ミニファイと brotli 圧縮を使用すると、わずか約 **16kb** になります。アプリケーションの実際のサイズは、フレームワークのオプション機能をどれだけ使用するかに依存します。Vue が提供するすべての機能を使用するアプリの場合、実行時の合計サイズは約 **27kb** になります。
 
-When using Vue without a build tool, we not only lose tree-shaking, but also have to ship the template compiler to the browser. This bloats up the size to around **41kb**. Therefore, if you are using Vue primarily for progressive enhancement without a build step, consider using [petite-vue](https://github.com/vuejs/petite-vue) (only **6kb**) instead.
+ビルドツールなしで Vue を使用する場合、ツリーシェイキングされないだけでなく、テンプレートコンパイラをブラウザーに送信する必要があります。このため、サイズが約 **41kb** にまで肥大化します。したがって、Vue を主にプログレッシブエンハンスメントのためにビルドステップなしで使用している場合は、代わりに [petite-vue](https://github.com/vuejs/petite-vue)（わずか **6kb**）を使用することを検討してください。
 
-Some frameworks, such as Svelte, use a compilation strategy that produces extremely lightweight output in single-component scenarios. However, [our research](https://github.com/yyx990803/vue-svelte-size-analysis) shows that the size difference heavily depends on the number of components in the application. While Vue has a heavier baseline size, it generates less code per component. In real-world scenarios, a Vue app may very well end up being lighter.
+Svelte のような一部のフレームワークは、単一コンポーネントのシナリオで非常に軽量な出力を生成するコンパイル戦略を使用しています。しかし、[私たちの研究](https://github.com/yyx990803/vue-svelte-size-analysis)では、サイズの違いはアプリケーション内のコンポーネント数に大きく依存することが分かっています。Vue は、ベースラインサイズが重い一方で、コンポーネントごとに生成されるコードは少なくなります。実際のシナリオでは、Vue のアプリの方が軽量になる可能性が非常に高いのです。
 
-## Does Vue scale? {#does-vue-scale}
+## Vue はスケールしますか？ {#does-vue-scale}
 
-Yes. Despite a common misconception that Vue is only suitable for simple use cases, Vue is perfectly capable of handling large scale applications:
+はい。Vue は単純なユースケースにしか適していないというよくある誤解にもかかわらず、Vue は大規模なアプリケーションを扱うのに完全に適しています。
 
-- [Single-File Components](/guide/scaling-up/sfc) provide a modularized development model that allows different parts of an application to be developed in isolation.
+- [単一ファイルコンポーネント](/guide/scaling-up/sfc)は、アプリケーションのさまざまな部分を分離して開発することを可能にするモジュール化された開発モデルを提供します。
 
-- [Composition API](/guide/reusability/composables) provides first-class TypeScript integration and enables clean patterns for organizing, extracting and reusing complex logic.
+- [Composition API](/guide/reusability/composables) は、ファーストクラスの TypeScript 統合を提供し、複雑なロジックを整理、抽出、再利用するためのクリーンなパターンを可能にします。
 
-- [Comprehensive tooling support](/guide/scaling-up/tooling.html) ensures a smooth development experience as the application grows.
+- [包括的なツールサポート](/guide/scaling-up/tooling.html)により、アプリケーションの成長に伴うスムーズな開発体験を保証します。
 
-- Lower barrier to entry and excellent documentation translate to lower onboarding and training costs for new developers.
+- 参入障壁の低さと優れたドキュメントにより、新しい開発者のためのオンボーディングとトレーニングのコストが削減されます。
 
-## How do I contribute to Vue? {#how-do-i-contribute-to-vue}
+## Vue に貢献するにはどうすればよいですか？ {#how-do-i-contribute-to-vue}
 
-We appreciate your interest! Please check out our [Community Guide](/about/community-guide.html).
+ご興味をお持ちいただき、ありがとうございます！　[コミュニティーガイド](/about/community-guide.html)をご覧ください。
 
-## Should I use Options API or Composition API? {#should-i-use-options-api-or-composition-api}
+## Options API と Composition API のどちらを使うべきですか？ {#should-i-use-options-api-or-composition-api}
 
-If you are new to Vue, we provide a high-level comparison between the two styles [here](/guide/introduction.html#which-to-choose).
+Vue を初めて使用する場合は、[こちら](/guide/introduction.html#which-to-choose)で 2 つのスタイルの高いレベルでの比較をご紹介しています。
 
-If you have previously used Options API and are currently evaluating Composition API, check out [this FAQ](/guide/extras/composition-api-faq).
+Options API を使用したことがあり、現在 Composition API を試している場合は、[この FAQ](/guide/extras/composition-api-faq) をチェックしてください。
 
-## Should I use JavaScript or TypeScript with Vue? {#should-i-use-javascript-or-typescript-with-vue}
+## Vue では、JavaScript と TypeScriptの どちらを使うべきですか？ {#should-i-use-javascript-or-typescript-with-vue}
 
-While Vue itself is implemented in TypeScript and provides first-class TypeScript support, it does not enforce an opinion on whether you should use TypeScript as a user.
+Vue 自体は TypeScript で実装されており、ファーストクラスの TypeScript サポートを提供していますが、ユーザーとして TypeScript を使うべきかどうかという意見を強制するものではありません。
 
-TypeScript support is an important consideration when new features are added to Vue. APIs that are designed with TypeScript in mind are typically easier for IDEs and linters to understand, even if you aren't using TypeScript yourself. Everybody wins. Vue APIs are also designed to work the same way in both JavaScript and TypeScript as much as possible.
+Vue に新機能が追加されるとき、TypeScript のサポートは重要な考慮事項です。TypeScript を念頭に設計された API は一般的に、たとえ自分が TypeScript を使っていなくても、IDE やリンターが理解しやすくなります。誰もが得をするのです。Vue の API は、JavaScript と TypeScript の両方で可能な限り同じように動作するようにも設計されています。
 
-Adopting TypeScript involves a trade-off between onboarding complexity and long-term maintainability gains. Whether such a trade-off can be justified can vary depending on your team's background and project scale, but Vue isn't really an influencing factor in making that decision.
+TypeScript を採用することは、オンボーディングの複雑さと長期的な保守性の向上とのトレードオフを伴います。そのようなトレードオフが正当化されるかどうかは、チームの背景やプロジェクトの規模によって異なりますが、Vue はその決定をする上で影響を与える要因ではありません。
 
-## How does Vue compare to Web Components? {#how-does-vue-compare-to-web-components}
+## Vue は Web コンポーネントと比べてどうですか？ {#how-does-vue-compare-to-web-components}
 
-Vue was created before Web Components were natively available, and some aspects of Vue's design (e.g. slots) were inspired by the Web Components model.
+Vue は、Web コンポーネントがネイティブで利用可能になる前に作成され、Vue の設計のいくつかの側面（スロットなど）は、Web コンポーネントのモデルに触発されたものです。
 
-The Web Components specs are relatively low-level, as they are centered around defining custom elements. As a framework, Vue addresses additional higher-level concerns such as efficient DOM rendering, reactive state management, tooling, client-side routing, and server-side rendering.
+Web コンポーネントの仕様は、カスタム要素の定義が中心であるため、比較的低レベルです。フレームワークとしての Vue は、効率的な DOM レンダリング、リアクティブな状態管理、ツール、クライアントサイドルーティング、サーバーサイドレンダリングなど、より高いレベルの関心事に対処しています。
 
-Vue also fully supports consuming or exporting to native custom elements - check out the [Vue and Web Components Guide](/guide/extras/web-components) for more details.
+また、Vue は、ネイティブのカスタム要素の使用やエクスポートも完全にサポートしています。詳細は、[Vue と Web コンポーネントのガイド](/guide/extras/web-components)を参照してください。
 
 <!-- ## TODO How does Vue compare to React? -->
 
