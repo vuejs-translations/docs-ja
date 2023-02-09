@@ -1,17 +1,17 @@
 <template>
   <div class="divider"></div>
   <div class="join-container">
-    <h2>Grow your business with Vue</h2>
+    <h2>Vue でビジネスを成長させる</h2>
     <p>
-      Generate leads for new projects, boost your credibility to your
-      clients, and support the long term sustainability of Vue.js and its
-      ecosystem.
+      新しいプロジェクトの優位性を生み出し、クライアントへの信頼を高め、
+      Vue.js とそのエコシステムの長期的な持続可能性を
+      サポートできます。
     </p>
     <a
       class="join"
       href="https://airtable.com/shrCQhat57SApJI2l"
       target="_blank"
-      >Become a partner</a
+      >パートナーになる</a
     >
   </div>
 </template>
