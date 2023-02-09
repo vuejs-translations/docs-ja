@@ -529,12 +529,12 @@ components/
 
 ## プロパティ名の型式 {#prop-name-casing}
 
-**プロパティ名は、定義の時は常にキャメルケース（camelCase）にするべきですが、テンプレートや[JSX](/guide/extras/render-function.html#jsx-tsx)ではケバブケース（kebab-case）にするべきです。**
-
-私たちは単に各言語の慣習に従っているだけです。JavaScript の中ではキャメルケースがより自然で、HTML の中ではケバブケースが自然です。
+**プロパティ名は、定義の時は常にキャメルケース（camelCase）を使用する必要があります。DOM 内テンプレート内で使用する場合、プロパティはケバブケース（kebab-case）を使用する必要があります。単一ファイルコンポーネントのテンプレートと [JSX](/guide/extras/render-function.html#jsx-tsx) では、ケバブケースまたはキャメルケースのどちらかのプロパティを使用できます。ケーシングは一貫している必要があります - キャメルケースのプロパティを使用することにした場合、そのアプリケーション内ではケバブケースを使用しないでください**
 
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
+
+<div class="options-api">
 
 ```js
 props: {
@@ -542,8 +542,21 @@ props: {
 }
 ```
 
+</div>
+
+<div class="composition-api">
+
+```js
+const props = defineProps({
+  'greeting-text': String
+})
+```
+
+</div>
+
 ```vue-html
-<WelcomeMessage greetingText="hi"/>
+// DOM 内テンプレートの場合
+<welcome-message greetingText="hi"></welcome-message>
 ```
 
 </div>
@@ -551,14 +564,37 @@ props: {
 <div class="style-example style-example-good">
 <h3>良い例</h3>
 
+<div class="options-api">
+
 ```js
 props: {
   greetingText: String
 }
 ```
 
+</div>
+
+<div class="composition-api">
+
+```js
+const props = defineProps({
+  greetingText: String
+})
+```
+
+</div>
+
 ```vue-html
+// SFC の場合 - ケーシングはプロジェクト全体で統一してください
+// どちらを使っても構いませんが、2つの異なるケーシングスタイルを混在させることはお勧めしません
 <WelcomeMessage greeting-text="hi"/>
+// もしくは
+<WelcomeMessage greetingText="hi"/>
+```
+
+```vue-html
+// DOM 内テンプレートの場合
+<welcome-message greeting-text="hi"></welcome-message>
 ```
 
 </div>
@@ -629,6 +665,8 @@ JavaScript では、複数のプロパティをもつ要素を複数の行に分
 {{ normalizedFullName }}
 ```
 
+<div class="options-api">
+
 ```js
 // 複雑な式を算出プロパティに移動
 computed: {
@@ -639,6 +677,22 @@ computed: {
   }
 }
 ```
+
+</div>
+
+<div class="composition-api">
+
+```js
+// 複雑な式を算出プロパティに移動
+const normalizedFullName = computed(() =>
+  fullName.value
+    .split(' ')
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ')
+)
+```
+
+</div>
 
 </div>
 
@@ -667,6 +721,8 @@ computed: {
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
 
+<div class="options-api">
+
 ```js
 computed: {
   price() {
@@ -681,8 +737,23 @@ computed: {
 
 </div>
 
+<div class="composition-api">
+
+```js
+const price = computed(() => {
+  const basePrice = manufactureCost.value / (1 - profitMargin.value)
+  return basePrice - basePrice * (discountPercent.value || 0)
+})
+```
+
+</div>
+
+</div>
+
 <div class="style-example style-example-good">
 <h3>良い例</h3>
+
+<div class="options-api">
 
 ```js
 computed: {
@@ -699,6 +770,24 @@ computed: {
   }
 }
 ```
+
+</div>
+
+<div class="composition-api">
+
+```js
+const basePrice = computed(
+  () => manufactureCost.value / (1 - profitMargin.value)
+)
+
+const discount = computed(
+  () => basePrice.value * (discountPercent.value || 0)
+)
+
+const finalPrice = computed(() => basePrice.value - discount.value)
+```
+
+</div>
 
 </div>
 
