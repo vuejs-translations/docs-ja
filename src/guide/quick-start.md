@@ -165,7 +165,7 @@ import { createApp } from 'vue'
 :::tip インポートマップのブラウザサポート
 インポートマップは Chromium ベースのブラウザーでデフォルトでサポートされているため、学習過程の間は Chrome または Edge の使用を推奨します。
 
-Firefox を使用している場合、バージョン 102+ でのみサポートされており、現在は `about:config` にある `dom.importMaps.enabled` オプションで有効にする必要があります。
+Firefox を使用している場合、バージョン 108+ ではデフォルトでサポートされ、バージョン 102+ では `about:config` で `dom.importMaps.enabled` オプションを true に設定することでサポートされます。
 
 あなたの好むブラウザーがまだインポートマップに対応していなくとも、[es-module-shims](https://github.com/guybedford/es-module-shims) でポリフィル (polyfill) できます。
 :::
