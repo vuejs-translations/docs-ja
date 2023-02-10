@@ -18,5 +18,11 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/v2/:path*",
+      "destination": "https://v2.ja.vuejs.org/v2/:path*"
+    }
   ]
 }
