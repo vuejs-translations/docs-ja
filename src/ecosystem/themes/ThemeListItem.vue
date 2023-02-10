@@ -34,7 +34,7 @@ const description = computed(() => {
 
     <div class="action">
       <VTLink class="action-link" :href="provider.seeMoreUrl" no-icon>
-        See More Themes from {{ provider.name }}
+        {{ provider.name }} のテーマをもっと見る
       </VTLink>
     </div>
   </section>
