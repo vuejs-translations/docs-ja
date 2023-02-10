@@ -18,6 +18,8 @@ Vue.js は、MIT ライセンスのオープンソースプロジェクトで、
 
 スポンサーシップは [GitHub Sponsors](https://github.com/sponsors/yyx990803) または [OpenCollective](https://opencollective.com/vuejs) から行えます。請求書は、GitHub の支払いシステムから入手できます。毎月の継続的なスポンサーシップと、一度だけの寄付の両方を受け付けています。定期的なスポンサーシップの場合、[スポンサーシップのティア](#tier-benefits)で指定されているように、ロゴを配置する権利があります。
 
+ティア、決済ロジスティックス、スポンサー公開データに関するご質問は、[sponsor@vuejs.org](mailto:sponsor@vuejs.org) までお問い合わせください。
+
 ## 企業として Vue を支援する {#sponsoring-vue-as-a-business}
 
 Vue のスポンサーになると、Web サイトや GitHub プロジェクトの README を通じて、世界中の**170万人**を超える Vue 開発者に大きく露出できます。また、OSS をサポートすることは、開発者と交流するすべての企業にとって重要な資産であるブランドの評判を向上させることになります。
