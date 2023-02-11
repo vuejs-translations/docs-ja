@@ -7,7 +7,7 @@ footer: false
 :::info 今ここに表示されているのは、Vue 3 のドキュメントです！
 
 - Vue 2 のサポートは 2023 年 12 月 31 日に終了します。詳細は [Vue 2 Extended LTS](https://v2.vuejs.org/lts/) をご覧ください。
-- Vue 2 のドキュメントは [jp.vuejs.org](https://jp.vuejs.org/) に移動しました。
+- Vue 2 のドキュメントは [jp.vuejs.org](https://v2.ja.vuejs.org/) に移動しました。
 - Vue 2 からの移行について詳しくは、[移行ガイド](https://v3-migration.vuejs.org/)を確認してください。
   :::
 
