@@ -180,6 +180,8 @@ Firefox を使用している場合、バージョン 108+ ではデフォルト
 
 ```html
 <!-- index.html -->
+<div id="app"></div>
+
 <script type="module">
   import { createApp } from 'vue'
   import MyComponent from './my-component.js'
