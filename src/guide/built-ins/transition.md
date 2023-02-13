@@ -99,7 +99,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 ### 名前付きトランジション {#named-transitions}
 
-`name` props を設定することでトランジションに名前をつけられます:
+`name` プロパティを設定することでトランジションに名前をつけられます:
 
 ```vue-html
 <Transition name="fade">
@@ -215,7 +215,7 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 ### カスタムトランジションクラス {#custom-transition-classes}
 
-`<Transition>` に以下の props を渡すことで、カスタムトランジションクラスを指定できます:
+`<Transition>` に以下のプロパティを渡すことで、カスタムトランジションクラスを指定できます:
 
 - `enter-from-class`
 - `enter-active-class`
