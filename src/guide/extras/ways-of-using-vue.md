@@ -56,4 +56,4 @@ Vue は主に Web アプリケーションを構築するために設計され�
 - [Electron](https://www.electronjs.org/) や [Tauri](https://tauri.studio/en/) を使ってデスクトップアプリケーションを構築する
 - [Ionic Vue](https://ionicframework.com/docs/vue/overview) でモバイルアプリを構築する
 - [Quasar](https://quasar.dev/) で、同じコードベースからデスクトップとモバイルのアプリをビルドする
-- Vue の [Custom Renderer API](/api/custom-renderer) を使って [WebGL](https://troisjs.github.io/) や [the terminal](https://github.com/ycmjason/vuminal) を対象としたカスタムレンダラーをビルドできます！
+- Vue の [Custom Renderer API](/api/custom-renderer) を使って [WebGL](https://troisjs.github.io/) や [the terminal](https://github.com/vue-terminal/vue-termui) を対象としたカスタムレンダラーをビルドできます！
