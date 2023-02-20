@@ -209,7 +209,7 @@ data() {
 レンダリングされる HTML は次のようになります:
 
 ```vue-html
-<p class="foo bar baz boo">Hi</p>
+<p class="foo bar baz boo">Hi!</p>
 ```
 
 クラスバインディングでも同様です:
@@ -221,7 +221,7 @@ data() {
 `isActive` が真値のとき、レンダリングされる HTML は次のようになります:
 
 ```vue-html
-<p class="foo bar active">Hi</p>
+<p class="foo bar active">Hi!</p>
 ```
 
 コンポーネントに複数のルート要素を持たせているときは、どの要素にクラスを渡すか指定する必要があります。これは、以下のように `$attrs` コンポーネントプロパティを使って行います:
