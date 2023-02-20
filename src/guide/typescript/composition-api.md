@@ -401,14 +401,15 @@ defineExpose({
 </script>
 ```
 
-`MyModal` のインスタンスの型を得るために、まず `typeof` によって型を取得し、次に TypeScript の組み込みユーティリティーの `InstanceType` を使って型を抽出する必要があります:
+`MyModal` のインスタンスの型を得るために、まず `typeof` によって型を取得し、次に Vue の `ComponentPublicInstance` ユーティリティーを使って型を抽出する必要があります:
 
 ```vue{5}
 <!-- App.vue -->
 <script setup lang="ts">
+import { ComponentPublicInstance } from 'vue';
 import MyModal from './MyModal.vue'
 
-const modal = ref<InstanceType<typeof MyModal> | null>(null)
+const modal = ref<ComponentPublicInstance<typeof MyModal> | null>(null)
 
 const openModal = () => {
   modal.value?.open()
