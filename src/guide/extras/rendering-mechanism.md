@@ -80,11 +80,11 @@ React の仮想 DOM 実装や他のほとんどの仮想 DOM 実装は完全に�
 </div>
 ```
 
-[テンプレートエクスプローラーで観察する](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PlxuICA8ZGl2PmJhcjwvZGl2PlxuICA8ZGl2Pnt7IGR5bmFtaWMgfX08L2Rpdj5cbjwvZGl2PiIsInNzciI6ZmFsc2UsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[テンプレートエクスプローラーで観察する](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
 
 `foo` と `bar` の div たちは静的なので、再レンダリングのたびに vnode を再作成して差分を取ることは不要です。Vue コンパイラーは、vnode の作成呼び出しをレンダー関数から自動的に巻き上げ（ホイスティング）、レンダリングのたびに同じ vnode を再利用します。また、レンダラーは、古い vnode と新しい vnode が同じものであることに気づいたときに、それらの差分比較を完全にスキップすることができます。
 
-加えて、連続する静的要素が十分にある場合、これらのノードのプレーンな HTML 文字列を含む単一の "静的 vnode" に凝縮されます ([例](https://vue-next-template-explorer.netlify.app/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=))。これらの静的 vnode は、`innerHTML` を直接設定してマウントされます。また、初期マウント時に対応する DOM ノードをキャッシュします。アプリケーション内の他の場所で同じコンテンツが再利用される場合、ネイティブの `cloneNode()` を使用して新しい DOM ノードが作成されるため、非常に効率的です。
+加えて、連続する静的要素が十分にある場合、これらのノードのプレーンな HTML 文字列を含む単一の "静的 vnode" に凝縮されます（[例](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)）。これらの静的 vnode は、`innerHTML` を直接設定してマウントされます。また、初期マウント時に対応する DOM ノードをキャッシュします。アプリケーション内の他の場所で同じコンテンツが再利用される場合、ネイティブの `cloneNode()` を使用して新しい DOM ノードが作成されるため、非常に効率的です。
 
 ### パッチフラグ {#patch-flags}
 
