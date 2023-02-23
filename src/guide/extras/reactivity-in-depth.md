@@ -410,3 +410,94 @@ export function useMachine(options) {
 ### RxJS {#rxjs}
 
 [RxJS](https://rxjs.dev/) は、非同期イベントストリームを扱うためのライブラリーです。[VueUse](https://vueuse.org/) ライブラリーは、RxJS ストリームと Vue のリアクティブシステムを接続するための [`@vueuse/rxjs`](https://vueuse.org/rxjs/readme.html) アドオンを提供します。
+
+## シグナルとの関連
+
+他のたくさんのフレームワークでも、Vue の ref に似たリアクティビティープリミティブを「シグナル」という用語で導入しています:
+
+- [Solid のシグナル](https://www.solidjs.com/docs/latest/api#createsignal)
+- [Angular のシグナル](https://github.com/angular/angular/discussions/49090)
+- [Preact のシグナル](https://preactjs.com/guide/v10/signals/)
+- [Qwik のシグナル](https://qwik.builder.io/docs/components/state/#usesignal)
+
+基本的に、シグナルは Vue の ref と同じ種類のリアクティビティープリミティブです。これは、アクセス時の依存関係の追跡と、変更時の作用のトリガーを提供する値コンテナです。コンテキストによっては、シグナルは、きめ細かいサブスクリプションを通じて更新が実行されるレンダリングモデルにも関連していますが、シグナルと呼ばれるものに必要な特性ではありません。
+
+これらの実装のうち、Preact と Qwik のシグナルの設計は Vue の [shallowRef](/api/reactivity-advanced.html#shallowref) に非常に似ています。3 つとも `.value` プロパティを介してミュータブルなインターフェースを提供しています。
+
+### Solid のシグナル
+
+Solid の `useSignal()` API 設計は、読み取りと書き込みの分離に重点を置いています。シグナルは読み取り専用のゲッターと、独立したセッターとして公開されます:
+
+```js
+const [count, setCount] = createSignal(0)
+
+count() // 値にアクセス
+setCount(1) // 値を更新
+```
+
+`count` シグナルはセッターなしでも受け渡せることに注意してください。これは、セッターが明示的に公開されない限り、状態が決して変更されないことを保証しています。この安全性の保証が、より冗長な構文を正当化するかどうかは、プロジェクトの要件や個人の好みによりますが、この API スタイルを好む場合は、Vue でも簡単に再現できます:
+
+```js
+import { shallowRef, triggerRef } from 'vue'
+
+export function createSignal(value, options) {
+  const r = shallowRef(value)
+  const get = () => r.value
+  const set = (v) => {
+    r.value = typeof v === 'function' ? v(r.value) : v
+    if (options?.equals === false) triggerRef(r)
+  }
+  return [get, set]
+}
+```
+
+[Playground で試す](https://sfc.vuejs.org/#eNp9UsFu2zAM/RVCl9iYY63XwE437A+2Y9WD69KOOlvSKNndEPjfR8lOsnZAbxTfIx/Jp7P46lw5TygOovItaRfAY5jcURk9OksBztASNgF/6N40AyzQkR1hV0pvB/289yldvvidMsq01vgAD62dTChip28xeoT6TZPsc65MJVc9VuJHwNENTOAXQHW6O55ZN9ZmOSxLJTmTkKcpBGvgSzvo9metxEUim6E+wgyf4C5XInEBtGHVEU1IpXKtZaySVzlRiHXP/dg43sIavsQ58tUGeCUOkDIxx6eKbyVOITh/kNJ3bbzfiy8t9ZKjkngcPWKJftw/kX31SNxYieKfHpKTM9Ke0DwjIX3U8x31v76x7aLMwqu8s4RXuZroT80w2Nfv2BUQSPc9EsdXO1kuGYi/E7+bTBs0H/qNbXMzTFiAdRHy+XqV1XJii28SK5NNvsA9Biawl2wSlQm9gexhBOeEbpfeSJwPfxzajq2t6xp2l8F2cA9ztrFyOMC8Wd5Bts13X+KvqRl8Kuw4YN5t84zSeHw4FuMfTwYeeMr0aR/jNZe/yX4QHw==)
+
+### Angular のシグナル
+
+Angular はダーティーチェックを廃止し、リアクティビティープリミティブの独自の実装を導入することで、いくつかの根本的な変化を遂げようとしています。Angular のシグナル API は以下のような感じです。
+
+```js
+const count = signal(0)
+
+count() // 値にアクセス
+count.set(1) // 新しい値を設定
+count.update((v) => v + 1) // 前回の値を元に更新
+
+// 同一のディープオブジェクトを変更
+const state = signal({ count: 0 })
+state.mutate((o) => {
+  o.count++
+})
+```
+
+この API も、Vue で簡単に再現できます:
+
+```js
+import { shallowRef, triggerRef } from 'vue'
+
+export function signal(initialValue) {
+  const r = shallowRef(initialValue)
+  const s = () => r.value
+  s.set = (value) => {
+    r.value = value
+  }
+  s.update = (updater) => {
+    r.value = updater(r.value)
+  }
+  s.mutate = (mutator) => {
+    mutator(r.value)
+    triggerRef(r)
+  }
+  return s
+}
+```
+
+[Playground で試す](https://sfc.vuejs.org/#eNp9U8uO2zAM/BVCl3XaxO72mCZBi/YLeuhJQOE4jKOtLRmU5C1g+N9LWbI3j2JvEjkckqPRIL51Xd57FFuxsxWpzoFF57uD1KrtDDkYwKpal80aKtN23uEJRjiTaeEpL0pd+6akTYTkL/ZJaqkro61juNcO9qk8+7SaEyfjjw1yZibMshXsD7GAjx/gM2N3RZyHJ+GLw7ZrSod8A9hdng/fJ3ZltzAMS+U47grOzZgfsVECxbZ3qKN3zmj4WjWq+rOXYmLKfXfiXlkfpurhIzyvpJjwAEpXhC1qN5UXsf49LpYz7D7XE3LgrnZXLOuJtYi6b9qyYz2N5pcZAl6mhJWC14lkUvDThbsUF+c6uy0Ke67Ce77Y3FBd8CknnkK1mKNtN0cyrxaJiaVYX3EUHOyRNoT6hIT0Hucd9IE30I5Sj7zKgz14mTdbXcqmMa8/8bwGR6qukabzYrPSwu8Hz/Eck8fw70Rz9rpyilVPLlNaOVU2v8rG4yrKFE1HwYlLx1vcG8oyKpqR8j7kQsqGN+TEFAi5Yc4uQd434KJvOBoP3PMWnMJZirAVY13rXaybDibVpcuC/nIlU0apmPi3Eq/Pgv9PluWL1ei4840kFTdcBJ4BV5zpV85CjGL8B7sPb9o=)
+
+Vue の ref と比較して、Solid や Angular のゲッターベースの API スタイルは、Vue のコンポーネント内で使用する場合にいくつかの興味深いトレードオフを提供します:
+
+- `()` は `.value` よりわずかに簡潔ですが、値を更新する場合は冗長になります。
+- ref のアンラップはないので、値にアクセスするには常に `()` が必要です。これにより、値へのアクセスはどこでも一貫したものになります。これはまた、シグナルをそのままコンポーネントのプロパティとして渡せることを意味します。
+
+これらの API スタイルが自分に合うかどうかは、ある程度主観的なものです。ここでの目標は、これらの異なる API 設計間の根本的な類似性とトレードオフを示すことです。また、Vue は柔軟であり、既存の API に縛られないことも示したいです。必要であれば、より具体的なニーズに合わせて独自のリアクティビティープリミティブ API を作成できます。
