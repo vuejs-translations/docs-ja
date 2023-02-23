@@ -1,7 +1,9 @@
 # Reactivity Transform {#reactivity-transform}
 
-:::warning 実験的な機能
-Reactivity Transform は現在、実験的な機能です。デフォルトでは無効になっており、[明示的なオプトイン](#explicit-opt-in)が必要です。最終決定版になるまでに変更される可能性があります。最新の情報は、[GitHub でのプロポーザルと議論](https://github.com/vuejs/rfcs/discussions/369)に注目してください。
+:::danger 非推奨の実験的な機能
+Reactivity Transform は実験的な機能でしたが、非推奨となりました。[理由についてはこちら](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028)をお読みください。
+
+最終的には、将来のマイナーリリースで Vue のコアから削除される予定です。まだ使用したい場合は、[Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) というプラグインで利用できるようになりました。
 :::
 
 :::tip Composition API 固有
@@ -281,7 +283,9 @@ Vue の SFC 内だけでなく、有効な JS / TS を書くことのできる�
 
 ## 明示的なオプトイン {#explicit-opt-in}
 
-Reactivity Transform は現在デフォルトでは無効になっており、明示的なオプトインが必要です。さらに、以下の設定にはすべて `vue@^3.2.25` が必要です。
+:::warning
+下記は、Vue バージョン 3.3 以下のみに適用されます。コアのサポートは 3.4 以降では削除されます。引き続き transform を使用する場合は、代わりに [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) に移行してください。
+:::
 
 ### Vite {#vite}
 
