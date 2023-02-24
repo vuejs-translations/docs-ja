@@ -5,7 +5,7 @@
 開発時において、Vue は開発体験を向上させるための様々な機能を提供します:
 
 - よくあるエラーや落とし穴に対する警告
-- Props や events に対するバリデーション
+- プロパティやイベントに対するバリデーション
 - [リアクティビティーのデバックのためのフック](/guide/extras/reactivity-in-depth.html#reactivity-debugging)
 - 開発者ツールとの連携
 

@@ -52,7 +52,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## Include / Exclude {#include-exclude}
 
-デフォルトでは、`<KeepAlive>` はコンポーネント内のどんなコンポーネントでもキャッシュします。この動作は `include` と `exclude` props を使用してカスタマイズできます。どちらの props にも、カンマ区切りの文字列、`RegExp`、あるいは、そのいずれかの型を含む配列を指定できます:
+デフォルトでは、`<KeepAlive>` はコンポーネント内のどんなコンポーネントでもキャッシュします。この動作は `include` と `exclude` プロパティを使用してカスタマイズできます。どちらのプロパティにも、カンマ区切りの文字列、`RegExp`、あるいは、そのいずれかの型を含む配列を指定できます:
 
 ```vue-html
 <!-- カンマ区切りの文字列 -->

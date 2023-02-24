@@ -8,7 +8,7 @@
 
 ## プロパティの宣言 {#props-declaration}
 
-Vue のコンポーネントでは、明示的な props (プロパティ) の宣言が必要です。これにより Vue は、外部からコンポーネントに渡された props を fallthrough 属性（[専用のセクション](/guide/components/attrs)で説明します）として扱うべきかを知ることができます。
+Vue のコンポーネントでは、明示的なプロパティの宣言が必要です。これにより Vue は、外部からコンポーネントに渡されたプロパティをフォールスルー属性（[専用のセクション](/guide/components/attrs)で説明します）として扱うべきかを知ることができます。
 
 <div class="composition-api">
 
@@ -22,7 +22,7 @@ console.log(props.foo)
 </script>
 ```
 
-`<script setup>` を用いないコンポーネントの場合、[`props`](/api/options-state.html#props) オプションを使って props を宣言します:
+`<script setup>` を用いないコンポーネントの場合、[`props`](/api/options-state.html#props) オプションを使ってプロパティを宣言します:
 
 ```js
 export default {
@@ -96,7 +96,7 @@ export default {
 
 <div class="options-api">
 
-[コンポーネントのプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)も合わせて参照してください。<sup class="vt-badge ts" />
+[コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)も合わせて参照してください。<sup class="vt-badge ts" />
 
 </div>
 
@@ -113,7 +113,7 @@ defineProps<{
 </script>
 ```
 
-詳細: [コンポーネントのプロパティの型付け](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+詳細: [コンポーネントプロパティの型付け](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
