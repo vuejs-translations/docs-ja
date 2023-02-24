@@ -1,15 +1,15 @@
 # Composition API: setup() {#composition-api-setup}
 
-:::info Note
-このページでは、`setup` コンポーネントオプションの使用方法を説明します。単一ファイルコンポーネントで Composition API を使用する場合は、より簡潔で人間工学的な構文である [`<script setup>`](/api/sfc-script-setup.html) を使用することを推奨します。
-:::
+## 基本的な使い方 {#basic-usage}
 
 `setup()` フックは、次のような場合にコンポーネントで Composition API を使用するのためのエントリーポイントとして機能します:
 
 1. ビルドステップなしでの Composition API の使用
 2. Options API コンポーネント内の Composition API に基づくコードの統合
 
-## 基本的な使い方 {#basic-usage}
+:::info Note
+単一ファイルコンポーネントで Composition API を使用する場合は、より簡潔で人間工学的な構文のために、[`<script setup>`](/api/sfc-script-setup.html) を強くお勧めします。
+:::
 
 [リアクティビティー API](./reactivity-core.html) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
 
