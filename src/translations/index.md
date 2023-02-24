@@ -2,21 +2,21 @@
 aside: false
 ---
 
-# Translations {#translations}
+# 翻訳 {#translations}
 
-## Available Languages {#available-languages}
+## 利用可能な言語 {#available-languages}
 <!-- textlint-disable vuejs-jp/ja-no-space-around-parentheses, vuejs-jp/3.3.かっこ類と隣接する文字の間のスペースの有無 -->
-- [English](https://vuejs.org/) [[source](https://github.com/vuejs/docs)]
-- [简体中文 / Simplified Chinese](https://cn.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-zh-cn)]
-- [日本語 / Japanese](https://ja.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ja)]
+- [English / 英語](https://vuejs.org/) [[ソース](https://github.com/vuejs/docs)]
+- [简体中文 / 簡体字中国語](https://cn.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-zh-cn)]
+- [日本語](https://ja.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-ja)]
 
-## Work in Progress Languages {#work-in-progress-languages}
+## 作業中の言語 {#work-in-progress-languages}
 
-- [Українська / Ukrainian](https://ua.vuejs.org) [[source](https://github.com/vuejs-translations/docs-ua)]
-- [Français / French](https://fr.vuejs.org) [[source](https://github.com/vuejs-translations/docs-fr)]
+- [Українська / ウクライナ語](https://ua.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-ua)]
+- [Français / フランス語](https://fr.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-fr)]
 
-## Starting a new Translation {#starting-a-new-translation}
+## 新しい翻訳の開始 {#starting-a-new-translation}
 
-The Vue documentation has recently undergone a major revision, so translations in other languages are still missing or work-in-progress.
+Vue のドキュメントは最近大幅に改訂されたため、他の言語での翻訳はまだ不足しているか、または作業中です。
 
-We welcome community efforts to provide more translations. Translation efforts are managed in the [vuejs-translations](https://github.com/vuejs-translations/) GitHub organization. If you are interested in contributing, please check out the [Translation Guidelines](https://github.com/vuejs-translations/guidelines/blob/main/README.md) to get started.
+私たちは、より多くの翻訳を提供するためのコミュニティーの取り組みを歓迎します。翻訳作業は、[vuejs-translations](https://github.com/vuejs-translations/) という GitHub organization で管理されています。もしあなたが貢献することに興味があるなら、[翻訳ガイドライン](https://github.com/vuejs-translations/guidelines/blob/main/README.md)をチェックして、開始してください。
