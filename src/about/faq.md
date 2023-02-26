@@ -26,11 +26,11 @@ Vue 3 は、Vue の現在の最新メジャーバージョンです。Teleport�
 
 これは、ほとんどのエコシステムが Vue 3 に移行するための十分な時間を提供するものだと考えています。しかし、セキュリティーおよびコンプライアンス要件を満たす必要がありながら、このスケジュールまでにアップグレードできないチームやプロジェクトがあることも理解しています。私たちは業界の専門家と提携し、そのようなニーズを持つチームのために Vue 2 の拡張サポートを提供しています。もしあなたのチームが 2023 年末以降も Vue 2 を使用する予定であれば、前もって計画を立て、[Vue 2 Extended LTS](https://v2.vuejs.org/lts/) について詳細を学んでください。
 
-## Vueはどのようなライセンスを使用していますか？ {#what-license-does-vue-use}
+## Vue はどのようなライセンスを使用していますか？ {#what-license-does-vue-use}
 
 Vue は、[MIT License](https://opensource.org/licenses/MIT) のもとで公開されている無料のオープンソースのプロジェクトです。
 
-## Vueはどのブラウザーをサポートしていますか？ {#what-browsers-does-vue-support}
+## Vue はどのブラウザーをサポートしていますか？ {#what-browsers-does-vue-support}
 
 Vue の最新バージョン（3.x）は、[ES2015 をネイティブにサポートしているブラウザー](https://caniuse.com/es6)のみをサポートしています。これには IE11 は含まれません。Vue 3.x はレガシーブラウザーでポリフィルできない ES2015 の機能を使用しているので、レガシーブラウザーをサポートする必要がある場合は、Vue 2.x を代わりに使用する必要があります。
 
@@ -82,7 +82,7 @@ Vue を初めて使用する場合は、[こちら](/guide/introduction.html#whi
 
 Options API を使用したことがあり、現在 Composition API を試している場合は、[この FAQ](/guide/extras/composition-api-faq) をチェックしてください。
 
-## Vue では、JavaScript と TypeScriptの どちらを使うべきですか？ {#should-i-use-javascript-or-typescript-with-vue}
+## Vue では、JavaScript と TypeScript の どちらを使うべきですか？ {#should-i-use-javascript-or-typescript-with-vue}
 
 Vue 自体は TypeScript で実装されており、ファーストクラスの TypeScript サポートを提供していますが、ユーザーとして TypeScript を使うべきかどうかという意見を強制するものではありません。
 
