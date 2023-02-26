@@ -6,9 +6,9 @@
 Vue は Options API での TypeScript の使用をサポートしていますが、よりシンプルで効率的、かつ堅牢な型推論を提供するため、Composition API で TypeScript と一緒に Vue を使用することが推奨されます。
 :::
 
-## コンポーネントの props の型付け {#typing-component-props}
+## コンポーネントプロパティの型付け {#typing-component-props}
 
-Options API における props の型推論は、コンポーネントを `defineComponent()` でラップする必要があります。そうすることで、Vue は `props` オプションを元に、`required: true` や、 `default` などの追加のオプションを考慮した上で、props の型を推論することができるようになります。
+Options API におけるプロパティの型推論は、コンポーネントを `defineComponent()` でラップする必要があります。そうすることで、Vue は `props` オプションを元に、`required: true` や、 `default` などの追加のオプションを考慮した上で、プロパティの型を推論することができるようになります。
 
 ```ts
 import { defineComponent } from 'vue'
@@ -32,7 +32,7 @@ export default defineComponent({
 
 しかし、ランタイムの `props` オプションは、prop の型としてコンストラクタを使用することのみをサポートしており、ネストされたプロパティや function call signature を持つオブジェクトなどのような複雑な型を指定する方法はありません。
 
-それらの複雑な props の型注釈をつけるには、`PropType` ユーティリティーを使用します:
+それらの複雑なプロパティの型注釈をつけるには、`PropType` ユーティリティーを使用します:
 
 ```ts
 import { defineComponent } from 'vue'
