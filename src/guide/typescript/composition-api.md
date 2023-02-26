@@ -2,11 +2,11 @@
 
 > このページは [TypeScript で Vue を使用する](./overview) ページの内容をすでに読んでいることを前提にしています。
 
-## コンポーネントの props の型付け {#typing-component-props}
+## コンポーネントプロパティの型付け {#typing-component-props}
 
 ### `<script setup>` の使用 {#using-script-setup}
 
-`<script setup>` を使用する場合、 `defineProps()` マクロは、引数に基づいて props の型を推論できます:
+`<script setup>` を使用する場合、 `defineProps()` マクロは、引数に基づいてプロパティの型を推論できます:
 
 ```vue
 <script setup lang="ts">
@@ -22,7 +22,7 @@ props.bar // number | undefined
 
 これは "runtime declaration" (実行時宣言) と呼ばれます、なぜなら `defineProps()` に渡された引数は、実行時に `props` のオプションとして使用されるためです。
 
-しかし、通常は型引数で props の型を定義するほうがより単純です:
+しかし、通常は型引数でプロパティの型を定義するほうがより単純です:
 
 ```vue
 <script setup lang="ts">
@@ -37,7 +37,7 @@ const props = defineProps<{
 
 type-base declaration と runtime declaration の両方を同時に使用することはできません。
 
-props の型をインターフェースとして分離することもできます:
+プロパティの型をインターフェースとして分離することもできます:
 
 ```vue
 <script setup lang="ts">
@@ -79,9 +79,9 @@ defineProps<Props>()
 
 これは、Vue コンポーネントが単独でコンパイルされるためで、コンパイラーはソースコードの型を分析するために import されたファイルをクロールすることがありません。この制限は将来のリリースで削除される可能性があります。
 
-### props のデフォルト値 {#props-default-values}
+### プロパティのデフォルト値 {#props-default-values}
 
-type-based declaration を使用すると、props のデフォルト値を宣言することができません。これは、`withDefaults` コンパイラーマクロによって解決できます:
+type-based declaration を使用すると、プロパティのデフォルト値を宣言することができません。これは、`withDefaults` コンパイラーマクロによって解決できます:
 
 ```ts
 export interface Props {
@@ -95,7 +95,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 ```
 
-これは、実行時の props の `default` オプションと同等にコンパイルされます。さらに、`withDefaults` ヘルパーはデフォルト値の型チェックを提供し、戻り値の `props` の型からはデフォルト値が宣言されているプロパティのオプションフラグが削除されていることを保証します。
+これは、実行時のプロパティの `default` オプションと同等にコンパイルされます。さらに、`withDefaults` ヘルパーはデフォルト値の型チェックを提供し、戻り値の `props` の型からはデフォルト値が宣言されているプロパティのオプションフラグが削除されていることを保証します。
 
 また、現在実験的な機能である [Reactivity Transform](/guide/extras/reactivity-transform.html) を使用することもできます:
 
@@ -116,7 +116,7 @@ const { name, count = 100 } = defineProps<Props>()
 
 ### `<script setup>` を使用しない場合 {#without-script-setup}
 
-`<script setup>` を使用しない場合、 `defineComponent()` を使用して、props の型推論をする必要があります。`setup()` に渡された変数 props の型は、`props` オプションから推論されます。
+`<script setup>` を使用しない場合、 `defineComponent()` を使用して、プロパティの型推論をする必要があります。`setup()` に渡された変数 props の型は、`props` オプションから推論されます。
 
 ```ts
 import { defineComponent } from 'vue'

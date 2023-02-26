@@ -28,13 +28,13 @@ console.log(props.foo)
 export default {
   props: ['foo'],
   setup(props) {
-    // setup() は第 1 引数に props を受け取ります。
+    // setup() は第 1 引数にプロパティを受け取ります。
     console.log(props.foo)
   }
 }
 ```
 
-`defineProps()` に渡している引数と、Options API の `props` オプションに渡している値が同じであることに注目してください。同じ props オプションの API が、2 つの宣言スタイル間で共有されています。
+`defineProps()` に渡している引数と、`props` オプションに渡している値が同じであることに注目してください。同じプロパティオプションの API が、2 つの宣言スタイル間で共有されています。
 
 </div>
 
@@ -46,7 +46,7 @@ export default {
 export default {
   props: ['foo'],
   created() {
-    // props は `this` 上で公開されます。
+    // プロパティは `this` 上で公開されます。
     console.log(this.foo)
   }
 }

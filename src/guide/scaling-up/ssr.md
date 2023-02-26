@@ -327,7 +327,7 @@ const myDirective = {
   },
   getSSRProps(binding) {
     // サーバー側の実装:
-    // レンダーのための props を返します。
+    // レンダーのためのプロパティを返します。
     // getSSRProps はディレクトティブバインドだけを受け付けます。
     return {
       id: binding.value

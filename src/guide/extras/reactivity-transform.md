@@ -105,13 +105,13 @@ function myCreateRef() {
 let count = $(myCreateRef())
 ```
 
-## リアクティブな props の分割代入 {#reactive-props-destructure}
+## リアクティブなプロパティの分割代入 {#reactive-props-destructure}
 
 現在、`<script setup>` での `defineProps()` の使用には 2 つの難点があります:
 
-1. `.value` と同様、リアクティビティーを維持するために常に `props.x` で props にアクセスする必要があります。分割代入された変数はリアクティブではなく更新されないため、`defineProps` は分割代入できないのです。
+1. `.value` と同様、リアクティビティーを維持するために常に `props.x` でプロパティにアクセスする必要があります。分割代入された変数はリアクティブではなく更新されないため、`defineProps` は分割代入できないのです。
 
-2. [型のみの props 宣言](/api/sfc-script-setup.html#typescript-only-features)を使う場合、props のデフォルト値を宣言するための簡単な方法はありません。この目的のために `withDefaults()` を導入しましたが、まだ使い勝手が悪いです。
+2. [型のみのプロパティ宣言](/api/sfc-script-setup.html#typescript-only-features)を使う場合、プロパティのデフォルト値を宣言するための簡単な方法はありません。この目的のために `withDefaults()` を導入しましたが、まだ使い勝手が悪いです。
 
 これまで見てきた `$()` の事例と同様に、`defineProps` が分割代入された場合にはコンパイル時の変換を適用することで、この問題を処理できます:
 
@@ -133,7 +133,7 @@ let count = $(myCreateRef())
   } = defineProps<Props>()
 
   watchEffect(() => {
-    // props が変更されるたびにログに出力されます
+    // プロパティが変更されるたびにログに出力されます
     console.log(msg, count, bar)
   })
 </script>
@@ -248,9 +248,9 @@ function useMouse() {
 }
 ```
 
-### 分割代入された props に `$$()` を使う {#using-on-destructured-props}
+### 分割代入されたプロパティに `$$()` を使う {#using-on-destructured-props}
 
-分割代入された props もリアクティブな変数なので `$$()` が動作します。コンパイラーは効率のため `toRef` に変換します:
+分割代入されたプロパティもリアクティブな変数なので `$$()` が動作します。コンパイラーは効率のため `toRef` に変換します:
 
 ```ts
 const { count } = defineProps<{ count: number }>()
