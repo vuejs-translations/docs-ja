@@ -1,8 +1,8 @@
 # コンポーネントの登録 {#component-registration}
 
-<VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="コンポーネントの登録について学ぶ Vue.js の無料レッスン"/>
-
 > このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
+
+<VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="コンポーネントの登録について学ぶ Vue.js の無料レッスン"/>
 
 Vue のコンポーネントをテンプレートで使用する時は、それがどこで実装されているかを Vue に知らせるため、「登録」を行う必要があります。コンポーネントの登録方法には、グローバルとローカルの 2 つがあります。
 
