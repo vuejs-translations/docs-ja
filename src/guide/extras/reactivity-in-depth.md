@@ -398,22 +398,26 @@ export function useMachine(options) {
 
 [RxJS](https://rxjs.dev/) は、非同期イベントストリームを扱うためのライブラリーです。[VueUse](https://vueuse.org/) ライブラリーは、RxJS ストリームと Vue のリアクティブシステムを接続するための [`@vueuse/rxjs`](https://vueuse.org/rxjs/readme.html) アドオンを提供します。
 
-## シグナルとの関連
+## シグナルとの関連 {#connection-to-signals}
 
-他のたくさんのフレームワークでも、Vue の ref に似たリアクティビティープリミティブを「シグナル」という用語で導入しています:
+他のたくさんのフレームワークでも、Vue の Composition API の ref に似たリアクティビティープリミティブを「シグナル」という用語で導入しています:
 
 - [Solid のシグナル](https://www.solidjs.com/docs/latest/api#createsignal)
 - [Angular のシグナル](https://github.com/angular/angular/discussions/49090)
 - [Preact のシグナル](https://preactjs.com/guide/v10/signals/)
 - [Qwik のシグナル](https://qwik.builder.io/docs/components/state/#usesignal)
 
-基本的に、シグナルは Vue の ref と同じ種類のリアクティビティープリミティブです。これは、アクセス時の依存関係の追跡と、変更時の作用のトリガーを提供する値コンテナです。コンテキストによっては、シグナルは、きめ細かいサブスクリプションを通じて更新が実行されるレンダリングモデルにも関連していますが、シグナルと呼ばれるものに必要な特性ではありません。
+基本的に、シグナルは Vue の ref と同じ種類のリアクティビティープリミティブです。これは、アクセス時の依存関係の追跡と、変更時の副作用のトリガーを提供する値コンテナーです。このリアクティビティープリミティブベースのパラダイムは、フロントエンドの世界においては特に新しい概念ではなく、10 年以上前の [Knockout observables](https://knockoutjs.com/documentation/observables.html) や [Meteor Tracker](https://docs.meteor.com/api/tracker.html) のような実装に遡ることができます。Vue の Options API や React の状態管理ライブラリーである [MobX](https://mobx.js.org/) も同じ原理に基づいていますが、オブジェクトプロパティの裏側にあるプリミティブを隠しています。
 
-これらの実装のうち、Preact と Qwik のシグナルの設計は Vue の [shallowRef](/api/reactivity-advanced.html#shallowref) に非常に似ています。3 つとも `.value` プロパティを介してミュータブルなインターフェースを提供しています。
+シグナルとして認定されるために必要な特性ではありませんが、今日、この概念はきめ細かいサブスクリプションを通じて更新が実行されるレンダリングモデルと一緒に議論されることがよくあります。仮想 DOM を使用しているため、Vue は現在、[コンパイラーに依存して同様の最適化を実現しています](/guide/extras/rendering-mechanism.html#compiler-informed-virtual-dom)。しかし、仮想 DOM に依存せず、Vue の組み込みのリアクティビティーシステムをより活用する、Solid にインスパイアされた新しいコンパイル戦略（Vapor モード）も模索しています。
 
-### Solid のシグナル
+### API 設計のトレードオフ {#api-design-trade-offs}
 
-Solid の `useSignal()` API 設計は、読み取りと書き込みの分離に重点を置いています。シグナルは読み取り専用のゲッターと、独立したセッターとして公開されます:
+Preact と Qwik のシグナルの設計は Vue の [shallowRef](/api/reactivity-advanced.html#shallowref) に非常に似ています。3 つとも `.value` プロパティを介してミュータブルなインターフェースを提供しています。Solid と Angular のシグナルについて考察してみます。
+
+#### Solid のシグナル {#solid-signals}
+
+Solid の `createSignal()` API 設計は、読み取りと書き込みの分離に重点を置いています。シグナルは読み取り専用のゲッターと、独立したセッターとして公開されます:
 
 ```js
 const [count, setCount] = createSignal(0)
@@ -440,7 +444,7 @@ export function createSignal(value, options) {
 
 [Playground で試す](https://sfc.vuejs.org/#eNp9UsFu2zAM/RVCl9iYY63XwE437A+2Y9WD69KOOlvSKNndEPjfR8lOsnZAbxTfIx/Jp7P46lw5TygOovItaRfAY5jcURk9OksBztASNgF/6N40AyzQkR1hV0pvB/289yldvvidMsq01vgAD62dTChip28xeoT6TZPsc65MJVc9VuJHwNENTOAXQHW6O55ZN9ZmOSxLJTmTkKcpBGvgSzvo9metxEUim6E+wgyf4C5XInEBtGHVEU1IpXKtZaySVzlRiHXP/dg43sIavsQ58tUGeCUOkDIxx6eKbyVOITh/kNJ3bbzfiy8t9ZKjkngcPWKJftw/kX31SNxYieKfHpKTM9Ke0DwjIX3U8x31v76x7aLMwqu8s4RXuZroT80w2Nfv2BUQSPc9EsdXO1kuGYi/E7+bTBs0H/qNbXMzTFiAdRHy+XqV1XJii28SK5NNvsA9Biawl2wSlQm9gexhBOeEbpfeSJwPfxzajq2t6xp2l8F2cA9ztrFyOMC8Wd5Bts13X+KvqRl8Kuw4YN5t84zSeHw4FuMfTwYeeMr0aR/jNZe/yX4QHw==)
 
-### Angular のシグナル
+#### Angular のシグナル {#angular-signals}
 
 Angular はダーティーチェックを廃止し、リアクティビティープリミティブの独自の実装を導入することで、いくつかの根本的な変化を遂げようとしています。Angular のシグナル API は以下のような感じです。
 
