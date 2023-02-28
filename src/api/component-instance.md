@@ -20,7 +20,7 @@
 
 ## $props {#props}
 
-コンポーネントの現在の解決された props を表すオブジェクト。
+コンポーネントの現在の解決済みプロパティを表すオブジェクト。
 
 - **型**
 
@@ -32,7 +32,7 @@
 
 - **詳細**
 
-  [`props`](./options-state.html#props) オプションで宣言された props のみが含まれます。コンポーネントインスタンスは、その props オブジェクトのプロパティへのアクセスをプロキシします。
+  [`props`](./options-state.html#props) オプションで宣言されたプロパティのみが含まれます。コンポーネントインスタンスは、その props オブジェクトのプロパティへのアクセスをプロキシします。
 
 ## $el {#el}
 
@@ -135,7 +135,7 @@
 
   各スロットは、そのスロットの名前に対応するキーの下にある vnode の配列を返す関数として `this.$slots` で公開されます。デフォルトのスロットは `this.$slots.default` として公開されます。
 
-  スロットが[スコープ付きスロット](/guide/components/slots.html#scoped-slots)の場合、スロット関数に渡された引数はそのスロットの props として利用可能です。
+  スロットが[スコープ付きスロット](/guide/components/slots.html#scoped-slots)の場合、スロット関数に渡された引数はそのスロットのプロパティとして利用可能です。
 
 - **参照:** [レンダー関数 - スロットのレンダリング](/guide/extras/render-function.html#rendering-slots)
 

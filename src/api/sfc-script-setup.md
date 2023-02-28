@@ -297,9 +297,9 @@ const emit = defineEmits<{
 
   現在、複雑な型や他のファイルからの型のインポートはサポートされていません。将来的には型のインポートをサポートする可能性があります。
 
-### 型宣言を使用時のデフォルトの props 値 {#default-props-values-when-using-type-declaration}
+### 型宣言を使用時のデフォルトのプロパティ値 {#default-props-values-when-using-type-declaration}
 
-型のみの `defineProps` 宣言の欠点は、props のデフォルト値を提供する方法がないことです。この問題を解決するために、`withDefaults` コンパイラーマクロも用意されています:
+型のみの `defineProps` 宣言の欠点は、プロパティのデフォルト値を提供する方法がないことです。この問題を解決するために、`withDefaults` コンパイラーマクロも用意されています:
 
 ```ts
 export interface Props {
@@ -313,7 +313,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 ```
 
-これは、同等な実行時の props の `default` オプションにコンパイルされます。さらに、`withDefaults` ヘルパーは、デフォルト値の型チェックを行います。また、返される `props` の型が、デフォルト値が宣言されているプロパティに対して、省略可能フラグが削除されていることを保証します。
+これは、同等な実行時のプロパティの `default` オプションにコンパイルされます。さらに、`withDefaults` ヘルパーは、デフォルト値の型チェックを行います。また、返される `props` の型が、デフォルト値が宣言されているプロパティに対して、省略可能フラグが削除されていることを保証します。
 
 ## 制限 {#restrictions}
 
