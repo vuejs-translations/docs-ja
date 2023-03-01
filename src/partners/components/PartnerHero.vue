@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const { title = 'Vue パートナー' } = defineProps<{ title?: string }>()
+defineProps<{ title?: string }>()
 </script>
 
 <template>
   <div class="PartnerHero">
-    <h1 class="title">{{ title }}</h1>
+    <h1 class="title">{{ title || 'Vue パートナー' }}</h1>
     <p class="lead">
       Vue パートナーは、一流の Vue コンサルティングおよび
       開発サービスを提供する、Vue チーム推奨の代理店です。

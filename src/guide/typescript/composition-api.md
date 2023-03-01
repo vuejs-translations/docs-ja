@@ -97,23 +97,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 これは、実行時のプロパティの `default` オプションと同等にコンパイルされます。さらに、`withDefaults` ヘルパーはデフォルト値の型チェックを提供し、戻り値の `props` の型からはデフォルト値が宣言されているプロパティのオプションフラグが削除されていることを保証します。
 
-また、現在実験的な機能である [Reactivity Transform](/guide/extras/reactivity-transform.html) を使用することもできます:
-
-```vue
-<script setup lang="ts">
-interface Props {
-  name: string
-  count?: number
-}
-
-// defineProps() のリアクティブな分割代入
-// デフォルト値は、同等の実行時オプションにコンパイルされる
-const { name, count = 100 } = defineProps<Props>()
-</script>
-```
-
-こちらの振る舞いを利用するには [明示的なオプトイン](/guide/extras/reactivity-transform.html#explicit-opt-in) が必要です。
-
 ### `<script setup>` を使用しない場合 {#without-script-setup}
 
 `<script setup>` を使用しない場合、 `defineComponent()` を使用して、プロパティの型推論をする必要があります。`setup()` に渡された変数 props の型は、`props` オプションから推論されます。
