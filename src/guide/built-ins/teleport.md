@@ -116,7 +116,8 @@ export default {
 下のボタンをクリックして、ブラウザーの devtools で `<body>` タグを検査できます:
 
 <script setup>
-let open = $ref(false)
+import { ref } from 'vue'
+const open = ref(false)
 </script>
 
 <div class="demo">
