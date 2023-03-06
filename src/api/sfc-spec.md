@@ -42,11 +42,11 @@ export default {
 
 ### `<script>` {#script}
 
-- 各 `*.vue` ファイルには、一度に最大 1 つの `<script>` ブロックを含めることができます（[`<script setup>`](/api/sfc-script-setup.html) は除く）。
+- 各 `*.vue` ファイルには、一度に最大 1 つの `<script>` ブロックを含めることができます（[`<script setup>`](/api/sfc-script-setup) は除く）。
 
 - スクリプトは、ES モジュールとして実行されます。
 
-- **default export** は、プレーンオブジェクトか [defineComponent](/api/general.html#definecomponent) の戻り値のどちらかで、Vue のコンポーネントオプションオブジェクトになっている必要があります。
+- **default export** は、プレーンオブジェクトか [defineComponent](/api/general#definecomponent) の戻り値のどちらかで、Vue のコンポーネントオプションオブジェクトになっている必要があります。
 
 ### `<script setup>` {#script-setup}
 
@@ -68,7 +68,7 @@ export default {
 - [vite-plugin-vue-gql: `<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
 - [vue-i18n: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n#i18n-custom-block)
 
-カスタムブロックの扱いはツールに依存します - 独自のカスタムブロック統合を構築したい場合は、[関連するツールのセクション](/guide/scaling-up/tooling.html#sfc-custom-block-integrations)で詳細を確認してください。
+カスタムブロックの扱いはツールに依存します - 独自のカスタムブロック統合を構築したい場合は、[関連するツールのセクション](/guide/scaling-up/tooling#sfc-custom-block-integrations)で詳細を確認してください。
 
 ## 自動名前推論 {#automatic-name-inference}
 

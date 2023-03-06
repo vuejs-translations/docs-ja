@@ -10,7 +10,7 @@ Vue は[カスタム要素の全てのテストにおいてスコアは 100% 完
 
 ### コンポーネント解決のスキップ {#skipping-component-resolution}
 
-デフォルトで Vue はカスタム要素をレンダリングするためのフォールバックをする前に、ネイティブではない HTML タグを登録された Vue コンポーネントとして解決しようとします。これにより、開発中に Vue が "failed to resolve component" という警告を出す原因となります。特定の要素をカスタム要素として扱い、Vue にコンポーネントの解決をスキップすることを知らせるために、[`compilerOptions.isCustomElement` オプション](/api/application.html#app-config-compileroptions)を指定できます。
+デフォルトで Vue はカスタム要素をレンダリングするためのフォールバックをする前に、ネイティブではない HTML タグを登録された Vue コンポーネントとして解決しようとします。これにより、開発中に Vue が "failed to resolve component" という警告を出す原因となります。特定の要素をカスタム要素として扱い、Vue にコンポーネントの解決をスキップすることを知らせるために、[`compilerOptions.isCustomElement` オプション](/api/application#app-config-compileroptions)を指定できます。
 
 もし Vue をビルドセットアップで使用している場合、このオプションはコンパイル時のオプションであるため、ビルド設定経由で渡す必要があります。
 
@@ -81,7 +81,7 @@ DOM 属性は文字列のみしか扱えないため、複雑なデータをカ�
 
 ### defineCustomElement {#definecustomelement}
 
-Vue は [`defineCustomElement`](/api/general.html#definecustomelement) メソッドを介したまったく同じ Vue コンポーネント API 群を使ってカスタム要素の作成をサポートします。このメソッドは [`defineComponent`](/api/general.html#definecomponent) と同じ引数を受け付けますが、代わりに `HTMLElement` を拡張したカスタム要素を返します:
+Vue は [`defineCustomElement`](/api/general#definecustomelement) メソッドを介したまったく同じ Vue コンポーネント API 群を使ってカスタム要素の作成をサポートします。このメソッドは [`defineComponent`](/api/general#definecomponent) と同じ引数を受け付けますが、代わりに `HTMLElement` を拡張したカスタム要素を返します:
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -157,7 +157,7 @@ document.body.appendChild(
 
 コンポーネント内部では、通常通り `<slot/>` 要素を使ってスロットをレンダリングすることができます。しかし、生成された要素を使うときは、[ネイティブのスロット構文](https://developer.mozilla.org/ja/docs/Web/Web_Components/Using_templates_and_slots)しか受け付けません。
 
-- [スコープ付きスロット](/guide/components/slots.html#scoped-slots)はサポートされていません。
+- [スコープ付きスロット](/guide/components/slots#scoped-slots)はサポートされていません。
 
 - 名前付きスロットを渡すときは、`v-slot` ディレクティブの代わりに `slot` 属性を使用します:
 
@@ -169,7 +169,7 @@ document.body.appendChild(
 
 #### Provide / Inject {#provide-inject}
 
-[Provide / Inject API](/guide/components/provide-inject.html#provide-inject) と [Composition API](/api/composition-api-dependency-injection.html#provide) も、Vue で定義されたカスタム要素間で動作します。しかしながら、これは**カスタム要素間**のみ動作するということに注意してください。つまり、Vue で定義されたカスタム要素は、カスタム要素ではない Vue コンポーネントによってプロパティを注入することはできません。
+[Provide / Inject API](/guide/components/provide-inject#provide-inject) と [Composition API](/api/composition-api-dependency-injection#provide) も、Vue で定義されたカスタム要素間で動作します。しかしながら、これは**カスタム要素間**のみ動作するということに注意してください。つまり、Vue で定義されたカスタム要素は、カスタム要素ではない Vue コンポーネントによってプロパティを注入することはできません。
 
 ### カスタム要素としての SFC {#sfc-as-custom-element}
 
@@ -244,8 +244,8 @@ Vue のコンポーネントモデルは、これらのニーズを考慮して�
 
 また、カスタム要素では限界があると感じる部分もあります:
 
-- スロットの評価時間が長いと、コンポーネントの構成を妨げます。Vue の[スコープ付きスロット](/guide/components/slots.html#scoped-slots)は、コンポーネント構成における強力なメカニズムですが、ネイティブスロットの先行性質のため、カスタム要素はサポートされません。先行スロットは、受信側のコンポーネントがスロットコンテンツの一部をレンダリングするタイミングやその有無を制御できないことを意味します。
+- スロットの評価時間が長いと、コンポーネントの構成を妨げます。Vue の[スコープ付きスロット](/guide/components/slots#scoped-slots)は、コンポーネント構成における強力なメカニズムですが、ネイティブスロットの先行性質のため、カスタム要素はサポートされません。先行スロットは、受信側のコンポーネントがスロットコンテンツの一部をレンダリングするタイミングやその有無を制御できないことを意味します。
 
-- 現在、shadow DOM にスコープされた CSS を持つカスタム要素を配布するには、実行時に shadow root に注入できるように、JavaScript 内に CSS を埋め込む必要があります。また、SSR のシナリオでは、マークアップに重複したスタイルが発生します。この分野は、[プラットフォーム機能](https://github.com/whatwg/html/pull/4898/)としての開発が進められていますが、現時点ではまだ一般的にサポートされているわけではなく、パフォーマンスや SSR の面でも解決すべき問題があります。一方で、Vue の SFC は、スタイルをプレーンな CSS ファイルに抽出することをサポートする [CSS スコープ化するメカニズム](/api/sfc-css-features.html)を提供しています。
+- 現在、shadow DOM にスコープされた CSS を持つカスタム要素を配布するには、実行時に shadow root に注入できるように、JavaScript 内に CSS を埋め込む必要があります。また、SSR のシナリオでは、マークアップに重複したスタイルが発生します。この分野は、[プラットフォーム機能](https://github.com/whatwg/html/pull/4898/)としての開発が進められていますが、現時点ではまだ一般的にサポートされているわけではなく、パフォーマンスや SSR の面でも解決すべき問題があります。一方で、Vue の SFC は、スタイルをプレーンな CSS ファイルに抽出することをサポートする [CSS スコープ化するメカニズム](/api/sfc-css-features)を提供しています。
 
 Vue は常に Web プラットフォームの最新の規格に対応しており、みなさんが開発しやすくなるのであれば、プラットフォームが提供するものを喜んで活用していきます。しかしながら、私たちの目標は今日でも十分に機能するソリューションを提供することです。つまり、批判的な考え方で新しいプラットフォームの機能を取り入れなければなりません。そのためには、今のうちに規格では不十分な部分を埋めておく必要があります。

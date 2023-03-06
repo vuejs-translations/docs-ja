@@ -155,7 +155,7 @@ export default defineComponent({
 })
 ```
 
-`props` オプションは Options API でより一般的に使用されるため、[Options API とともに TypeScript を使用する](/guide/typescript/options-api.html#typing-component-props)のガイドでさらに詳しい例を見つけることができます。これらの例で示されているテクニックは、`defineProps()` を使った実行時の宣言にも適用されます。
+`props` オプションは Options API でより一般的に使用されるため、[Options API とともに TypeScript を使用する](/guide/typescript/options-api#typing-component-props)のガイドでさらに詳しい例を見つけることができます。これらの例で示されているテクニックは、`defineProps()` を使った実行時の宣言にも適用されます。
 
 ## コンポーネントの emit の型付け {#typing-component-emits}
 
@@ -399,4 +399,4 @@ const openModal = () => {
 </script>
 ```
 
-この方法を Vue SFC ではなく、TypeScript ファイルで使いたい場合は、 Volar の [Takeover Mode](./overview.html#volar-takeover-mode) を有効にする必要があることに注意してください。
+この方法を Vue SFC ではなく、TypeScript ファイルで使いたい場合は、 Volar の [Takeover Mode](./overview#volar-takeover-mode) を有効にする必要があることに注意してください。

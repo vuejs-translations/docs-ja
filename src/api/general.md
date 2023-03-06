@@ -92,7 +92,7 @@ Vue の現在のバージョンを公開します。
 
   </div>
 
-- **参照:** [`this.$nextTick()`](/api/component-instance.html#nexttick)
+- **参照:** [`this.$nextTick()`](/api/component-instance#nexttick)
 
 ## defineComponent() {#definecomponent}
 
@@ -134,7 +134,7 @@ Vue の現在のバージョンを公開します。
 
   これは Vite を使っている場合には必要ないことに注意してください。Rollup（Vite が使用するプロダクションのバンドラー）は賢いので、手動でアノテーションを付けなくても `defineComponent()` が実際には副作用がないことを判断できます。
 
-- **参照:** [ガイド - TypeScript で Vue を使用する](/guide/typescript/overview.html#general-usage-notes)
+- **参照:** [ガイド - TypeScript で Vue を使用する](/guide/typescript/overview#general-usage-notes)
 
 ## defineAsyncComponent() {#defineasynccomponent}
 
@@ -165,7 +165,7 @@ Vue の現在のバージョンを公開します。
   }
   ```
 
-- **参照:** [ガイド - 非同期コンポーネント](/guide/components/async.html)
+- **参照:** [ガイド - 非同期コンポーネント](/guide/components/async)
 
 ## defineCustomElement() {#definecustomelement}
 
@@ -206,6 +206,6 @@ Vue の現在のバージョンを公開します。
 
 - **参照:**
 
-  - [ガイド - Vue によるカスタム要素のビルド](/guide/extras/web-components.html#building-custom-elements-with-vue)
+  - [ガイド - Vue によるカスタム要素のビルド](/guide/extras/web-components#building-custom-elements-with-vue)
 
-  - また、`defineCustomElement()` は単一ファイルコンポーネントで使用する場合、[特別な設定](/guide/extras/web-components.html#sfc-as-custom-element)が必要なので注意してください。
+  - また、`defineCustomElement()` は単一ファイルコンポーネントで使用する場合、[特別な設定](/guide/extras/web-components#sfc-as-custom-element)が必要なので注意してください。

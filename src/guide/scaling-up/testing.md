@@ -82,7 +82,7 @@ Vue 固有の機能を単体テストする場合、2 つのケースがあり�
 
 ### コンポーザブル {#composables}
 
-Vue アプリケーションに特有の関数のカテゴリーの 1 つに[コンポーザブル](/guide/reusability/composables.html)があり、こちらはテスト時に特別な処理を必要とする場合があります。
+Vue アプリケーションに特有の関数のカテゴリーの 1 つに[コンポーザブル](/guide/reusability/composables)があり、こちらはテスト時に特別な処理を必要とする場合があります。
 詳細は、以下の[Composablesのテスト](#testing-composables)を参照してください。
 
 ### コンポーネントの単体テスト {#unit-testing-components}
@@ -353,7 +353,7 @@ test('it should work', () => {
 
 ### コンポーザブルのテスト {#testing-composables}
 
-> このセクションは[コンポーザブル](/guide/reusability/composables.html)セクションを既に読んでいることを想定しています。
+> このセクションは[コンポーザブル](/guide/reusability/composables)セクションを既に読んでいることを想定しています。
 
 コンポーザブルをテストする場合、2 つのカテゴリーに分割することができます: ホストコンポーネントのインスタンスに依存しないコンポーザブルと、依存するコンポーザブルです。
 

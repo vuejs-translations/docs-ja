@@ -6,7 +6,7 @@
 
 - よくあるエラーや落とし穴に対する警告
 - プロパティやイベントに対するバリデーション
-- [リアクティビティーのデバックのためのフック](/guide/extras/reactivity-in-depth.html#reactivity-debugging)
+- [リアクティビティーのデバックのためのフック](/guide/extras/reactivity-in-depth#reactivity-debugging)
 - 開発者ツールとの連携
 
 しかし、これらの機能は本番では役に立ちません。警告の検査の中には、わずかなパフォーマンスのオーバーヘッドを発生させるものもあります。本番へのデプロイ時には、ペイロードサイズを小さくしてパフォーマンスを向上させるために、使用されていない開発専用のコードブランチをすべて削除する必要があります。
@@ -38,7 +38,7 @@ CDN やセルフホストのスクリプトからロードして、ビルドツ�
 
 ## ランタイムエラーの追跡 {#tracking-runtime-errors}
 
-[アプリケーションレベルのエラーハンドラー](/api/application.html#app-config-errorhandler) は、トラッキングサービスへエラーを報告するために使用できます:
+[アプリケーションレベルのエラーハンドラー](/api/application#app-config-errorhandler) は、トラッキングサービスへエラーを報告するために使用できます:
 
 ```js
 import { createApp } from 'vue'

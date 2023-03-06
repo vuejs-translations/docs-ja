@@ -275,7 +275,7 @@ export default {
 
 ## `v-model` 修飾子の処理 {#handling-v-model-modifiers}
 
-フォームの入力バインディングについて学習しているときに、`v-model` には [組み込みの修飾子](/guide/essentials/forms.html#modifiers)（`.trim`, `.number`, `.lazy`）があることを確認しました。場合によっては、カスタム入力コンポーネントの `v-model` でカスタム修飾子をサポートしたいかもしれません。
+フォームの入力バインディングについて学習しているときに、`v-model` には [組み込みの修飾子](/guide/essentials/forms#modifiers)（`.trim`, `.number`, `.lazy`）があることを確認しました。場合によっては、カスタム入力コンポーネントの `v-model` でカスタム修飾子をサポートしたいかもしれません。
 
 カスタム修飾子の例として、`v-model` バインディングによって提供される文字列の最初の文字を大文字にする `capitalize` を作成してみましょう:
 

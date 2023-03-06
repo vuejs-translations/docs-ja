@@ -8,10 +8,10 @@
 2. Options API コンポーネント内の Composition API に基づくコードの統合
 
 :::info Note
-単一ファイルコンポーネントで Composition API を使用する場合は、より簡潔で人間工学的な構文のために、[`<script setup>`](/api/sfc-script-setup.html) を強くお勧めします。
+単一ファイルコンポーネントで Composition API を使用する場合は、より簡潔で人間工学的な構文のために、[`<script setup>`](/api/sfc-script-setup) を強くお勧めします。
 :::
 
-[リアクティビティー API](./reactivity-core.html) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
+[リアクティビティー API](./reactivity-core) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
 
 ```vue
 <script>
@@ -38,11 +38,11 @@ export default {
 </template>
 ```
 
-`setup` から返された [ref](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals.html#deep-reactivity)ため、テンプレート内で `.value` を使用する必要はありません。また、`this` でアクセスしたときも同様にアンラップされます。
+`setup` から返された [ref](/api/reactivity-core#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals#deep-reactivity)ため、テンプレート内で `.value` を使用する必要はありません。また、`this` でアクセスしたときも同様にアンラップされます。
 
 `setup()` 自体はコンポーネントインスタンスにアクセスできません。- `this` は `setup()` 内では `undefined` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
 
-`setup()` は**同期的**にオブジェクトを返さなければなりません。`async setup()` が使用できるのは、そのコンポーネントが [Suspense](../guide/built-ins/suspense.html) コンポーネントの子孫であるときだけです。
+`setup()` は**同期的**にオブジェクトを返さなければなりません。`async setup()` が使用できるのは、そのコンポーネントが [Suspense](../guide/built-ins/suspense) コンポーネントの子孫であるときだけです。
 
 ## プロパティへのアクセス {#accessing-props}
 
@@ -61,7 +61,7 @@ export default {
 
 もし、`props` オブジェクトを分割代入する場合は、分割代入された変数はリアクティビティーを失うことに注意してください。 そのため、常に `props.xxx` の形でプロパティにアクセスすることを推奨します。
 
-もし、本当にプロパティを分割代入すること、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー API である [toRefs()](./reactivity-utilities.html#torefs) や [toRef()](/api/reactivity-utilities.html#toref) を使用することで、行うことができます:
+もし、本当にプロパティを分割代入すること、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー API である [toRefs()](./reactivity-utilities#torefs) や [toRef()](/api/reactivity-utilities#toref) を使用することで、行うことができます:
 
 ```js
 import { toRefs, toRef } from 'vue'
@@ -115,7 +115,7 @@ export default {
 
 ### パブリックプロパティの公開 {#exposing-public-properties}
 
-`expose` は、親コンポーネントから[テンプレート参照](/guide/essentials/template-refs.html#ref-on-component)でコンポーネントインスタンスにアクセスする際に、公開するプロパティを明示的に制限するために使用することができる関数です:
+`expose` は、親コンポーネントから[テンプレート参照](/guide/essentials/template-refs#ref-on-component)でコンポーネントインスタンスにアクセスする際に、公開するプロパティを明示的に制限するために使用することができる関数です:
 
 ```js{5,10}
 export default {
@@ -134,7 +134,7 @@ export default {
 
 ## レンダー関数での使用 {#usage-with-render-functions}
 
-`setup` は同じスコープで宣言されたリアクティブなステートを直接利用することができる [レンダー関数](/guide/extras/render-function.html)を返すこともできます:
+`setup` は同じスコープで宣言されたリアクティブなステートを直接利用することができる [レンダー関数](/guide/extras/render-function)を返すこともできます:
 
 ```js{6}
 import { h, ref } from 'vue'

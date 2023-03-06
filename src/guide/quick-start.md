@@ -20,7 +20,7 @@ footer: false
 - [Node.js](https://nodejs.org/ja/) のバージョン 16.0 以上をインストールすること
   :::
 
-このセクションでは、ローカルマシン上で Vue の[シングルページアプリケーション](/guide/extras/ways-of-using-vue.html#single-page-application-spa)を生成する方法を紹介します。作成されたプロジェクトは、[Vite](https://ja.vitejs.dev/) に基づいたビルド設定を使用し、Vue の単一ファイルコンポーネント（SFC）を使用できるようにします。
+このセクションでは、ローカルマシン上で Vue の[シングルページアプリケーション](/guide/extras/ways-of-using-vue#single-page-application-spa)を生成する方法を紹介します。作成されたプロジェクトは、[Vite](https://ja.vitejs.dev/) に基づいたビルド設定を使用し、Vue の単一ファイルコンポーネント（SFC）を使用できるようにします。
 
 [Node.js](https://nodejs.org/) の最新バージョンがインストールされていることを確認してから、コマンドラインで次のコマンドを（`>` 記号なしで）実行します:
 
@@ -48,19 +48,19 @@ footer: false
 <span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run dev</span></span>
 <span class="line"></span></code></pre></div>
 
-あなたの初めての Vue プロジェクトが今実行されているはずです！　なお、生成されたプロジェクトのサンプルコンポーネントは、[Options API](/guide/introduction.html#options-api) ではなく、[Composition API](/guide/introduction.html#composition-api) と `<script setup>` で書かれていることに注意してください。いくつか追加のヒントをどうぞ:
+あなたの初めての Vue プロジェクトが今実行されているはずです！　なお、生成されたプロジェクトのサンプルコンポーネントは、[Options API](/guide/introduction#options-api) ではなく、[Composition API](/guide/introduction#composition-api) と `<script setup>` で書かれていることに注意してください。いくつか追加のヒントをどうぞ:
 
-- IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar) です。他のエディターを使用している場合は、[IDE のサポート](/guide/scaling-up/tooling.html#ide-support)を確認してください。
-- バックエンドフレームワークとの統合を含む、ツールのさらなる詳細については、[ツールガイド](/guide/scaling-up/tooling.html) で説明しています。
+- IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar) です。他のエディターを使用している場合は、[IDE のサポート](/guide/scaling-up/tooling#ide-support)を確認してください。
+- バックエンドフレームワークとの統合を含む、ツールのさらなる詳細については、[ツールガイド](/guide/scaling-up/tooling) で説明しています。
 - 基礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://ja.vitejs.dev/) を確認しましょう。
-- もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview.html) を確認しましょう。
+- もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview) を確認しましょう。
 
 あなたのアプリをプロダクション環境に出す準備ができたら、以下を実行してください:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run build</span></span>
 <span class="line"></span></code></pre></div>
 
-これであなたのアプリのプロダクション向けビルドがプロジェクトの `./dist` ディレクトリーに作成されます。プロダクション環境への出荷についてさらに学ぶには [プロダクション環境への配信](/guide/best-practices/production-deployment.html) を確認してください。
+これであなたのアプリのプロダクション向けビルドがプロジェクトの `./dist` ディレクトリーに作成されます。プロダクション環境への出荷についてさらに学ぶには [プロダクション環境への配信](/guide/best-practices/production-deployment) を確認してください。
 
 [次のステップ ＞](#次のステップ)
 
@@ -171,7 +171,7 @@ Firefox を使用している場合、バージョン 108+ ではデフォルト
 :::
 
 :::warning プロダクション使用の注意
-ここまでの例では、Vue の開発ビルドを使用しています。プロダクションで CDN から Vue を使用する場合は、[プロダクション環境への配信](/guide/best-practices/production-deployment.html#without-build-tools)を確認してください。
+ここまでの例では、Vue の開発ビルドを使用しています。プロダクションで CDN から Vue を使用する場合は、[プロダクション環境への配信](/guide/best-practices/production-deployment#without-build-tools)を確認してください。
 :::
 
 ### モジュールの分割 {#splitting-up-the-modules}
@@ -208,7 +208,7 @@ ES モジュールは `file://` プロトコルでは動作しないため、上
 
 ### ビルドステップなしで Composition API を使用する {#using-composition-api-without-a-build-step}
 
-Composition API の例の多くは `<script setup>` 構文を使用しています。Composition API をビルドなしで使用する場合は、[`setup()` オプション](/api/composition-api-setup.html)の使用方法を参照してください。
+Composition API の例の多くは `<script setup>` 構文を使用しています。Composition API をビルドなしで使用する場合は、[`setup()` オプション](/api/composition-api-setup)の使用方法を参照してください。
 
 ## 次のステップ {#next-steps}
 

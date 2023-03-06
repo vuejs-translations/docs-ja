@@ -31,7 +31,7 @@ export default {
 
 </div>
 
-インスタンスのライフサイクルのさまざまな段階で呼び出されるフックは他にもあり、最も一般的に使用されるのは <span class="composition-api">[`onMounted`](/api/composition-api-lifecycle.html#onmounted)、 [`onUpdated`](/api/composition-api-lifecycle.html#onupdated) および [`onUnmounted`](/api/composition-api-lifecycle.html#onunmounted)</span><span class="options-api">[`mounted`](/api/options-lifecycle.html#mounted)、 [`updated`](/api/options-lifecycle.html#updated) および [`unmounted`](/api/options-lifecycle.html#unmounted)</span> です。
+インスタンスのライフサイクルのさまざまな段階で呼び出されるフックは他にもあり、最も一般的に使用されるのは <span class="composition-api">[`onMounted`](/api/composition-api-lifecycle#onmounted)、 [`onUpdated`](/api/composition-api-lifecycle#onupdated) および [`onUnmounted`](/api/composition-api-lifecycle#onunmounted)</span><span class="options-api">[`mounted`](/api/options-lifecycle#mounted)、 [`updated`](/api/options-lifecycle#updated) および [`unmounted`](/api/options-lifecycle#unmounted)</span> です。
 
 <div class="options-api">
 
@@ -63,4 +63,4 @@ setTimeout(() => {
 
 <!-- https://www.figma.com/file/Xw3UeNMOralY6NV7gSjWdS/Vue-Lifecycle -->
 
-すべてのライフサイクルフックとそれぞれのユースケースの詳細については、<span class="composition-api">[ライフサイクルフック API リファレンス](/api/composition-api-lifecycle.html)</span><span class="options-api">[ライフサイクルフック API リファレンス](/api/options-lifecycle.html)</span> を参照してください。
+すべてのライフサイクルフックとそれぞれのユースケースの詳細については、<span class="composition-api">[ライフサイクルフック API リファレンス](/api/composition-api-lifecycle)</span><span class="options-api">[ライフサイクルフック API リファレンス](/api/options-lifecycle)</span> を参照してください。

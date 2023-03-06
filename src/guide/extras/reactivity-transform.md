@@ -50,11 +50,11 @@ function increment() {
 
 ref を返す各リアクティビティー API に `$` で始まるマクロに相当するものがあります。これらの API には次のものが含まれます:
 
-- [`ref`](/api/reactivity-core.html#ref) -> `$ref`
-- [`computed`](/api/reactivity-core.html#computed) -> `$computed`
-- [`shallowRef`](/api/reactivity-advanced.html#shallowref) -> `$shallowRef`
-- [`customRef`](/api/reactivity-advanced.html#customref) -> `$customRef`
-- [`toRef`](/api/reactivity-utilities.html#toref) -> `$toRef`
+- [`ref`](/api/reactivity-core#ref) -> `$ref`
+- [`computed`](/api/reactivity-core#computed) -> `$computed`
+- [`shallowRef`](/api/reactivity-advanced#shallowref) -> `$shallowRef`
+- [`customRef`](/api/reactivity-advanced#customref) -> `$customRef`
+- [`toRef`](/api/reactivity-utilities#toref) -> `$toRef`
 
 これらのマクロは Reactivity Transform が有効であればグローバルに利用可能でインポート不要ですが、より明示的にしたい場合は任意で `vue/macros` からインポートできます:
 
@@ -111,7 +111,7 @@ let count = $(myCreateRef())
 
 1. `.value` と同様、リアクティビティーを維持するために常に `props.x` でプロパティにアクセスする必要があります。分割代入された変数はリアクティブではなく更新されないため、`defineProps` は分割代入できないのです。
 
-2. [型のみのプロパティ宣言](/api/sfc-script-setup.html#typescript-only-features)を使う場合、プロパティのデフォルト値を宣言するための簡単な方法はありません。この目的のために `withDefaults()` を導入しましたが、まだ使い勝手が悪いです。
+2. [型のみのプロパティ宣言](/api/sfc-script-setup#typescript-only-features)を使う場合、プロパティのデフォルト値を宣言するための簡単な方法はありません。この目的のために `withDefaults()` を導入しましたが、まだ使い勝手が悪いです。
 
 これまで見てきた `$()` の事例と同様に、`defineProps` が分割代入された場合にはコンパイル時の変換を適用することで、この問題を処理できます:
 

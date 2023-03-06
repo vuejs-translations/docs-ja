@@ -102,7 +102,7 @@ function ref(value) {
 ここと以下のコードスニペットは、核となるコンセプトをできるだけシンプルに説明することを目的としているため、多くの詳細は省略され、エッジケースも無視されています。
 :::
 
-これは基礎のセクションで説明したいくつかの[リアクティブオブジェクトの制限](/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive)を説明するものです:
+これは基礎のセクションで説明したいくつかの[リアクティブオブジェクトの制限](/guide/essentials/reactivity-fundamentals#limitations-of-reactive)を説明するものです:
 
 - リアクティブオブジェクトのプロパティをローカル変数に割り当てたり分割代入した場合、ローカル変数へのアクセスはプロキシーが仕込んだ get/set をトリガーしなくなるため、リアクティビティーが"切断"されます。
 
@@ -151,7 +151,7 @@ function whenDepsChange(update) {
 
 この時点で、依存関係を自動的に追跡し、依存関係が変更されるたびに再実行する作用が作成しました。これを **リアクティブ作用（Reactive Effect）** と呼びます。
 
-Vue はリアクティブ作用を作成するための API を提供しています: [`watchEffect()`](/api/reactivity-core.html#watcheffect)。実際、この例にある魔法のような `whenDepsChange()` とかなり似た動きをすることに気づくかもしれません。これで、実際の Vue の API を使って最初のサンプルを作り直すことができます:
+Vue はリアクティブ作用を作成するための API を提供しています: [`watchEffect()`](/api/reactivity-core#watcheffect)。実際、この例にある魔法のような `whenDepsChange()` とかなり似た動きをすることに気づくかもしれません。これで、実際の Vue の API を使って最初のサンプルを作り直すことができます:
 
 ```js
 import { ref, watchEffect } from 'vue'
@@ -212,7 +212,7 @@ Vue のリアクティビティーシステムは、主にランタイムベー�
 
 [Svelte](https://svelte.dev/) のような一部のフレームワークは、コンパイル時のリアクティビティーを実装することで、そのような制限を克服することを選択しています。リアクティビティーをシミュレートするためにコードを分析および変換します。コンパイルステップにより、フレームワークは JavaScript 自体のセマンティクスを変更できます。例えば、依存関係の解析やローカル定義された変数へのアクセスに関する作用トリガーを実行するコードを暗黙のうちに注入できます。欠点は、このような変換にはビルドステップが必要であり、また JavaScript のセマンティクスを変更するということは、本質的には「JavaScript のように見えるが別のものにコンパイルされる言語を作成すること」になります。
 
-Vue チームは、[Reactivity Transform](/guide/extras/reactivity-transform.html) という実験的な機能を通じてこの方向性を模索しましたが、最終的には[こういった理由](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028)で、このプロジェクトには適していないだろうと判断しました。
+Vue チームは、[Reactivity Transform](/guide/extras/reactivity-transform) という実験的な機能を通じてこの方向性を模索しましたが、最終的には[こういった理由](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028)で、このプロジェクトには適していないだろうと判断しました。
 
 ## リアクティビティーのデバッグ {#reactivity-debugging}
 
@@ -344,7 +344,7 @@ watchEffect(callback, {
 
 Vue のリアクティビティーシステムは、プレーンな JavaScript オブジェクトをリアクティブなプロキシーに綿密に変換することで機能します。外部の状態管理システムと統合する場合（例えば、外部のソリューションもプロキシーを使用する場合）、この変換は不要になることがあり、時には望ましくないことになります。
 
-Vue のリアクティビティーシステムを外部の状態管理ソリューションと統合する一般的な方法は、外部の状態を [`shallowRef`](/api/reactivity-advanced.html#shallowref) で保持することです。shallow ref は `.value` プロパティにアクセスしたときのみリアクティブになり、内部の値はそのまま残されます。外部の状態が変化したら、更新をトリガーするために ref の値を置き換えます。
+Vue のリアクティビティーシステムを外部の状態管理ソリューションと統合する一般的な方法は、外部の状態を [`shallowRef`](/api/reactivity-advanced#shallowref) で保持することです。shallow ref は `.value` プロパティにアクセスしたときのみリアクティブになり、内部の値はそのまま残されます。外部の状態が変化したら、更新をトリガーするために ref の値を置き換えます。
 
 ### イミュータブルなデータ {#immutable-data}
 
@@ -409,11 +409,11 @@ export function useMachine(options) {
 
 基本的に、シグナルは Vue の ref と同じ種類のリアクティビティープリミティブです。これは、アクセス時の依存関係の追跡と、変更時の副作用のトリガーを提供する値コンテナーです。このリアクティビティープリミティブベースのパラダイムは、フロントエンドの世界においては特に新しい概念ではなく、10 年以上前の [Knockout observables](https://knockoutjs.com/documentation/observables.html) や [Meteor Tracker](https://docs.meteor.com/api/tracker.html) のような実装に遡ることができます。Vue の Options API や React の状態管理ライブラリーである [MobX](https://mobx.js.org/) も同じ原理に基づいていますが、オブジェクトプロパティの裏側にあるプリミティブを隠しています。
 
-シグナルとして認定されるために必要な特性ではありませんが、今日、この概念はきめ細かいサブスクリプションを通じて更新が実行されるレンダリングモデルと一緒に議論されることがよくあります。仮想 DOM を使用しているため、Vue は現在、[コンパイラーに依存して同様の最適化を実現しています](/guide/extras/rendering-mechanism.html#compiler-informed-virtual-dom)。しかし、仮想 DOM に依存せず、Vue の組み込みのリアクティビティーシステムをより活用する、Solid にインスパイアされた新しいコンパイル戦略（Vapor モード）も模索しています。
+シグナルとして認定されるために必要な特性ではありませんが、今日、この概念はきめ細かいサブスクリプションを通じて更新が実行されるレンダリングモデルと一緒に議論されることがよくあります。仮想 DOM を使用しているため、Vue は現在、[コンパイラーに依存して同様の最適化を実現しています](/guide/extras/rendering-mechanism#compiler-informed-virtual-dom)。しかし、仮想 DOM に依存せず、Vue の組み込みのリアクティビティーシステムをより活用する、Solid にインスパイアされた新しいコンパイル戦略（Vapor モード）も模索しています。
 
 ### API 設計のトレードオフ {#api-design-trade-offs}
 
-Preact と Qwik のシグナルの設計は Vue の [shallowRef](/api/reactivity-advanced.html#shallowref) に非常に似ています。3 つとも `.value` プロパティを介してミュータブルなインターフェースを提供しています。Solid と Angular のシグナルについて考察してみます。
+Preact と Qwik のシグナルの設計は Vue の [shallowRef](/api/reactivity-advanced#shallowref) に非常に似ています。3 つとも `.value` プロパティを介してミュータブルなインターフェースを提供しています。Solid と Angular のシグナルについて考察してみます。
 
 #### Solid のシグナル {#solid-signals}
 

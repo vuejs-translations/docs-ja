@@ -3,8 +3,8 @@
 :::info See also
 よりリアクティビティー API を理解するために、ガイド内の次の章を読むことを推奨します:
 
-- [リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html) (API 環境設定が Composition API に設定されている場合)
-- [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
+- [リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals) (API 環境設定が Composition API に設定されている場合)
+- [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
   :::
 
 ## ref() {#ref}
@@ -27,7 +27,7 @@
 
   ref の値としてオブジェクトが代入された場合、[reactive()](#reactive) でそのオブジェクトは深いリアクティブになります。これはオブジェクトがネストした ref を含む場合、それが深くアンラップされることも意味します。
 
-  深い変換を避けるためには、代わりに [`shallowRef()`](./reactivity-advanced.html#shallowref) 使用します。
+  深い変換を避けるためには、代わりに [`shallowRef()`](./reactivity-advanced#shallowref) 使用します。
 
 - **例**
 
@@ -40,8 +40,8 @@
   ```
 
 - **参照:**
-  - [ガイド - `ref()` と共に使うリアクティブな変数](/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref)
-  - [ガイド - `ref()` の型付け](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />
+  - [ガイド - `ref()` と共に使うリアクティブな変数](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
+  - [ガイド - `ref()` の型付け](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
 ## computed() {#computed}
 
@@ -109,9 +109,9 @@
   ```
 
 - **参照:**
-  - [ガイド - 算出プロパティ](/guide/essentials/computed.html)
-  - [ガイド - 算出プロパティのデバッグ](/guide/extras/reactivity-in-depth.html#computed-debugging)
-  - [ガイド - `computed()` の型付け](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
+  - [ガイド - 算出プロパティ](/guide/essentials/computed)
+  - [ガイド - 算出プロパティのデバッグ](/guide/extras/reactivity-in-depth#computed-debugging)
+  - [ガイド - `computed()` の型付け](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
 
 ## reactive() {#reactive}
 
@@ -129,7 +129,7 @@
 
   また、ref がリアクティブな配列の要素や、`Map` のようなネイティブなコレクションタイプとしてアクセスされた場合、ref のアンラップは行われないことにも注意が必要です。
 
-  深い変換を避け、ルートレベルのリアクティビティーのみを保持するためには、代わりに [shallowReactive()](./reactivity-advanced.html#shallowreactive) 使用します。
+  深い変換を避け、ルートレベルのリアクティビティーのみを保持するためには、代わりに [shallowReactive()](./reactivity-advanced#shallowreactive) 使用します。
 
   返されたオブジェクトとそのネストされたオブジェクトは [ES Proxy](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) でラップされ、元のオブジェクトと**等しくなりません**。元のオブジェクトに依存することを避け、リアクティブなプロキシのみを使用することが推奨されます。
 
@@ -187,8 +187,8 @@
   ```
 
 - **参照:**
-  - [ガイド - リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html)
-  - [ガイド - `reactive()` の型付け](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
+  - [ガイド - リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals)
+  - [ガイド - `reactive()` の型付け](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
 ## readonly() {#readonly}
 
@@ -206,7 +206,7 @@
 
   読み取り専用プロキシは深く、アクセスされた、ネストされたプロパティも読み取り専用になります。また、`reactive()` と同様にアンラップすることができますが、アンラップされた値も読み取り専用になります。
 
-  深い変換を避けるためには、代わりに [shallowReadonly()](./reactivity-advanced.html#shallowreadonly) を使用します。
+  深い変換を避けるためには、代わりに [shallowReadonly()](./reactivity-advanced#shallowreadonly) を使用します。
 
 - **例**
 
@@ -256,7 +256,7 @@
 
   第 2 引数は省略可能なオプションオブジェクトで、エフェクトのフラッシュタイミングを調整したり、エフェクトの依存関係をデバッグするために使用することができます。
 
-  デフォルトでは、ウォッチャーはコンポーネントレンダリングの直前に実行されます。`flush: 'post'` を設定すると、コンポーネントのレンダリングが終わるまでウォッチャーを遅延させることができます。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)を参照してください。まれに、キャッシュを無効にする目的などで、リアクティブな依存関係が変化したときにすぐにウォッチャーを起動させる必要がある場合があります。これは `flush: 'sync'` を使って実現することができます。ただし、この設定は、複数のプロパティが同時に更新される場合、パフォーマンスやデータの一貫性に問題が生じる可能性があるため、注意して使用する必要があります。
+  デフォルトでは、ウォッチャーはコンポーネントレンダリングの直前に実行されます。`flush: 'post'` を設定すると、コンポーネントのレンダリングが終わるまでウォッチャーを遅延させることができます。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)を参照してください。まれに、キャッシュを無効にする目的などで、リアクティブな依存関係が変化したときにすぐにウォッチャーを起動させる必要がある場合があります。これは `flush: 'sync'` を使って実現することができます。ただし、この設定は、複数のプロパティが同時に更新される場合、パフォーマンスやデータの一貫性に問題が生じる可能性があるため、注意して使用する必要があります。
 
   戻り値は、エフェクトの再実行を停止するために呼び出されるハンドル関数です。
 
@@ -309,8 +309,8 @@
   ```
 
 - **参照**:
-  - [ガイド - ウォッチャー](/guide/essentials/watchers.html#watcheffect)
-  - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [ガイド - ウォッチャー](/guide/essentials/watchers#watcheffect)
+  - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)
 
 ## watchPostEffect() {#watchposteffect}
 
@@ -383,9 +383,9 @@
   省略可能な第 3 引数は、以下のオプションをサポートするオプションオブジェクトです:
 
   - **`immediate`**: ウォッチャーが作成されたら、すぐにコールバックを起動します。最初の呼び出しでは、古い値は `undefined` になります。
-  - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。詳しくは[ディープ・ウォッチャー](/guide/essentials/watchers.html#deep-watchers)をご参照ください。
-  - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core.html#watcheffect) をご参照ください。
-  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)をご参照ください。
+  - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。詳しくは[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)をご参照ください。
+  - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core#watcheffect) をご参照ください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)をご参照ください。
 
   [`watchEffect()`](#watcheffect) と比較すると、`watch()` は以下のことができます:
 
@@ -483,5 +483,5 @@
 
 - **参照**:
 
-  - [ガイド - ウォッチャー](/guide/essentials/watchers.html)
-  - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)
+  - [ガイド - ウォッチャー](/guide/essentials/watchers)
+  - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)

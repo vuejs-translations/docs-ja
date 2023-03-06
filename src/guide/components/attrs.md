@@ -8,7 +8,7 @@ outline: deep
 
 ## 属性の継承 {#attribute-inheritance}
 
-"フォールスルー属性"とは、あるコンポーネントに渡されたものの、受け取ったコンポーネントの [props](./props) や [emits](./events.html#declaring-emitted-events) で明確に宣言されていない属性、または `v-on` イベントリスナーを指します。よくある例としては、`class`、`style`、`id` 属性などがあります。
+"フォールスルー属性"とは、あるコンポーネントに渡されたものの、受け取ったコンポーネントの [props](./props) や [emits](./events#declaring-emitted-events) で明確に宣言されていない属性、または `v-on` イベントリスナーを指します。よくある例としては、`class`、`style`、`id` 属性などがあります。
 
 コンポーネントが単一のルート要素をレンダリングする時、フォールスルー属性は自動的にルート要素の属性に追加されます。例えば、次のようなテンプレートを持つ `<MyButton>` コンポーネントがあったとします:
 
@@ -128,7 +128,7 @@ export default {
 </div>
 ```
 
-[引数なしの `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) はオブジェクトのすべてのプロパティをターゲット要素の属性としてバインドすることを覚えておきましょう。
+[引数なしの `v-bind`](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) はオブジェクトのすべてのプロパティをターゲット要素の属性としてバインドすることを覚えておきましょう。
 
 ## 複数のルートノードでの属性継承 {#attribute-inheritance-on-multiple-root-nodes}
 

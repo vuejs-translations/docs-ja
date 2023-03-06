@@ -67,7 +67,7 @@ export default {
 
 <div class="composition-api">
 
-リアクティブなオブジェクトや配列を作るには、[`reactive()`](/api/reactivity-core.html#reactive) 関数を使用します。
+リアクティブなオブジェクトや配列を作るには、[`reactive()`](/api/reactivity-core#reactive) 関数を使用します。
 
 ```js
 import { reactive } from 'vue'
@@ -75,9 +75,9 @@ import { reactive } from 'vue'
 const state = reactive({ count: 0 })
 ```
 
-リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
+リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[リアクティビティーの探求](/guide/extras/reactivity-in-depth)で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
 
-参照: [`reactive()` の型付け](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />。
+参照: [`reactive()` の型付け](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />。
 
 コンポーネントのテンプレートでリアクティブな状態を使うには、下記に示すように、コンポーネントの `setup()` 関数で宣言し、それを返します：
 
@@ -216,7 +216,7 @@ export default {
 
 リアクティブな状態を変化させると、DOM は自動的に更新されます。しかし、DOM の更新は同期的に適用されないことに注意する必要があります。その代わりに Vue は、更新サイクルの「next tick」まで更新をバッファリングし、どれだけ状態を変化させても、各コンポーネントは一度だけ更新することを保証しています。
 
-状態変化後の DOM 更新が完了するのを待つため、[nextTick()](/api/general.html#nexttick) というグローバル API を使用することができます：
+状態変化後の DOM 更新が完了するのを待つため、[nextTick()](/api/general#nexttick) というグローバル API を使用することができます：
 
 <div class="composition-api">
 
@@ -298,7 +298,7 @@ function mutateDeeply() {
 
 </div>
 
-また、ルートレベルでのみリアクティビティーを追跡する[浅いリアクティブオブジェクト](/api/reactivity-advanced.html#shallowreactive)を明示的に作成することも可能ですが、これらは一般的に高度な使用例においてのみ必要とされるものとなります。
+また、ルートレベルでのみリアクティビティーを追跡する[浅いリアクティブオブジェクト](/api/reactivity-advanced#shallowreactive)を明示的に作成することも可能ですが、これらは一般的に高度な使用例においてのみ必要とされるものとなります。
 
 <div class="composition-api">
 
@@ -375,7 +375,7 @@ console.log(proxy.nested === raw) // false
 
 ## `ref()` と共に使うリアクティブな変数 \*\* {#reactive-variables-with-ref}
 
-Vue は、`reactive()` の制限に対処するため、[`ref()`](/api/reactivity-core.html#ref) という関数も提供しており、任意の値の型を保持できるリアクティブな **"refs "** を作成することができます：
+Vue は、`reactive()` の制限に対処するため、[`ref()`](/api/reactivity-core#ref) という関数も提供しており、任意の値の型を保持できるリアクティブな **"refs "** を作成することができます：
 
 ```js
 import { ref } from 'vue'
@@ -395,7 +395,7 @@ count.value++
 console.log(count.value) // 1
 ```
 
-参照: [`ref()` の型付け](/guide/typescript/composition-api.html#typing-ref) <sup class="vt-badge ts" />。
+参照: [`ref()` の型付け](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />。
 
 リアクティブなオブジェクトのプロパティと同様に、ref の `.value` プロパティはリアクティブとなります。また、オブジェクト型を保持する場合、ref は `.value` を `reactive()` で自動的に変換します。
 
@@ -425,7 +425,7 @@ callSomeFunction(obj.foo)
 const { foo, bar } = obj
 ```
 
-つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを[コンポーザブル関数](/guide/reusability/composables.html)に抽出する際に頻繁に使用されるため、非常に重要となります。
+つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを[コンポーザブル関数](/guide/reusability/composables)に抽出する際に頻繁に使用されるため、非常に重要となります。
 
 ### Ref Unwrapping in Templates \*\* {#ref-unwrapping-in-templates}
 
@@ -512,7 +512,7 @@ console.log(state.count) // 2
 console.log(count.value) // 1
 ```
 
-Ref のアンラッピングは、より深いリアクティブなオブジェクトの内部にネストされている場合にのみ発生します。[浅いリアクティブなオブジェクト](/api/reactivity-advanced.html#shallowreactive) のプロパティとしてアクセスされた場合は適用されません。
+Ref のアンラッピングは、より深いリアクティブなオブジェクトの内部にネストされている場合にのみ発生します。[浅いリアクティブなオブジェクト](/api/reactivity-advanced#shallowreactive) のプロパティとしてアクセスされた場合は適用されません。
 
 ### 配列とコレクションにおける Ref のアンラッピング {#ref-unwrapping-in-arrays-and-collections}
 

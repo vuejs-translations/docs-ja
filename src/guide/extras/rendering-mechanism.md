@@ -185,7 +185,7 @@ div (block root)
 
 ### SSR ハイドレーションへの影響 {#impact-on-ssr-hydration}
 
-パッチフラグとツリーのフラット化により、Vue の[SSR ハイドレーション](/guide/scaling-up/ssr.html#client-hydration) のパフォーマンスが大幅に改善されます:
+パッチフラグとツリーのフラット化により、Vue の[SSR ハイドレーション](/guide/scaling-up/ssr#client-hydration) のパフォーマンスが大幅に改善されます:
 
 - 単一要素ハイドレーションは対応する vnode パッチフラグに基づき高速にパスを取得できます。
 

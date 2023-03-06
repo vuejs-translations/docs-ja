@@ -6,7 +6,7 @@ outline: deep
 
 Vue は、ほとんどの場合、アプリケーションを構築するためにテンプレートを使用することを推奨しています。しかし、JavaScript の完全なプログラムの力が必要な状況もあります。そこで、**レンダー関数** を使用します。
 
-> 仮想 DOM やレンダー関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)の章を必ずお読みください。
+> 仮想 DOM やレンダー関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism)の章を必ずお読みください。
 
 ## 基本的な使い方 {#basic-usage}
 
@@ -389,7 +389,7 @@ h('input', {
 />
 ```
 
-その他のイベントやキー修飾子については、[`withModifiers`](/api/render-function.html#withmodifiers) ヘルパーを使用することが可能です:
+その他のイベントやキー修飾子については、[`withModifiers`](/api/render-function#withmodifiers) ヘルパーを使用することが可能です:
 
 ```js
 import { withModifiers } from 'vue'
@@ -446,7 +446,7 @@ function render() {
 }
 ```
 
-コンポーネントが名前で登録されていて直接インポートできない場合 (例えば、ライブラリーによってグローバルに登録されている場合)、 [`resolveComponent()`](/api/render-function.html#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
+コンポーネントが名前で登録されていて直接インポートできない場合 (例えば、ライブラリーによってグローバルに登録されている場合)、 [`resolveComponent()`](/api/render-function#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
 
 ### スロットのレンダリング {#rendering-slots}
 
@@ -489,7 +489,7 @@ export default {
 </div>
 <div class="options-api">
 
-レンダー関数では、スロットは [`this.$slots`](/api/component-instance.html#slots) からアクセスすることができます。
+レンダー関数では、スロットは [`this.$slots`](/api/component-instance#slots) からアクセスすることができます。
 
 ```js
 export default {
@@ -559,7 +559,7 @@ h(MyComponent, null, {
 
 ### 組み込みコンポーネント {#built-in-components}
 
-レンダー関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components.html) をインポートする必要があります。
+レンダー関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components) をインポートする必要があります。
 
 <div class="composition-api">
 
@@ -628,7 +628,7 @@ export default {
 
 ### カスタムディレクティブ {#custom-directives}
 
-カスタムディレクティブは、[`withDirectives`](/api/render-function.html#withdirectives)を使って vnode に適用することが可能です:
+カスタムディレクティブは、[`withDirectives`](/api/render-function#withdirectives)を使って vnode に適用することが可能です:
 
 ```js
 import { h, withDirectives } from 'vue'
@@ -645,7 +645,7 @@ const vnode = withDirectives(h('div'), [
 ])
 ```
 
-ディレクティブが名前で登録されていて、直接インポートできない場合は、[`resolveDirective`](/api/render-function.html#resolvedirective) ヘルパーを使って解決することが可能です。
+ディレクティブが名前で登録されていて、直接インポートできない場合は、[`resolveDirective`](/api/render-function#resolvedirective) ヘルパーを使って解決することが可能です。
 
 ## 関数型コンポーネント {#functional-components}
 
@@ -674,11 +674,11 @@ function MyComponent(props, context) {
 }
 ```
 
-第二引数の `context` には、3 つのプロパティが含まれます。 `attrs` , `emit` , そして `slots` です。これらはそれぞれ、インスタンスのプロパティである [`$attrs`](/api/component-instance.html#attrs), [`$emit`](/api/component-instance.html#emit), および [`$slots`](/api/component-instance.html#slots) と同じです。
+第二引数の `context` には、3 つのプロパティが含まれます。 `attrs` , `emit` , そして `slots` です。これらはそれぞれ、インスタンスのプロパティである [`$attrs`](/api/component-instance#attrs), [`$emit`](/api/component-instance#emit), および [`$slots`](/api/component-instance#slots) と同じです。
 
 </div>
 
-コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state.html#props) と [`emits`](/api/options-state.html#emits) はプロパティとして追加することで定義することが可能です:
+コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state#props) と [`emits`](/api/options-state#emits) はプロパティとして追加することで定義することが可能です:
 
 ```js
 MyComponent.props = ['value']
@@ -687,7 +687,7 @@ MyComponent.emits = ['click']
 
 `props` オプションが指定されていない場合、関数に渡される `props` オブジェクトには、`attrs` と同じようにすべての属性が含まれます。`props` オプションが指定されない限り、prop の名前はキャメルケースに正規化されません。
 
-明示的に `props` を指定した関数型コンポーネントの場合、[属性のフォールスルー](/guide/components/attrs.html)は通常のコンポーネントとほぼ同じように動作します。しかし、`props` を明示的に指定しない関数型コンポーネントの場合は、`class`、`style`、`onXxx` イベントリスナーのみがデフォルトで `attrs` から継承されます。どちらの場合でも、 `inheritAttrs` を `false` に設定することで、属性の継承を無効化できます。
+明示的に `props` を指定した関数型コンポーネントの場合、[属性のフォールスルー](/guide/components/attrs)は通常のコンポーネントとほぼ同じように動作します。しかし、`props` を明示的に指定しない関数型コンポーネントの場合は、`class`、`style`、`onXxx` イベントリスナーのみがデフォルトで `attrs` から継承されます。どちらの場合でも、 `inheritAttrs` を `false` に設定することで、属性の継承を無効化できます。
 
 ```js
 MyComponent.inheritAttrs = false

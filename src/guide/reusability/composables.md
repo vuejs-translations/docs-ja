@@ -6,7 +6,7 @@ const { x, y } = useMouse()
 </script>
 
 :::tip
-このセクションは Composition API の基本的な知識があることを前提としています。もし Vue を Options API のみで学んできた場合は、（左サイドバーの上部にあるトグルを使って）API 選択を Composition API に設定し、[リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html)と[ライフサイクルフック](/guide/essentials/lifecycle.html)の章を読み直すとよいでしょう。
+このセクションは Composition API の基本的な知識があることを前提としています。もし Vue を Options API のみで学んできた場合は、（左サイドバーの上部にあるトグルを使って）API 選択を Composition API に設定し、[リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals)と[ライフサイクルフック](/guide/essentials/lifecycle)の章を読み直すとよいでしょう。
 :::
 
 ## 「コンポーザブル」とは？ {#what-is-a-composable}
@@ -125,7 +125,7 @@ export function useMouse() {
 ```
 
 :::tip
-`useMouse()` を呼び出すコンポーネントの各インスタンスは、`x` と `y` の状態のコピーを独自に作成するので、互いに干渉することはありません。もしコンポーネント間で共有する状態を管理したい場合は、[状態管理](/guide/scaling-up/state-management.html)の章を読んでください。
+`useMouse()` を呼び出すコンポーネントの各インスタンスは、`x` と `y` の状態のコピーを独自に作成するので、互いに干渉することはありません。もしコンポーネント間で共有する状態を管理したい場合は、[状態管理](/guide/scaling-up/state-management)の章を読んでください。
 :::
 
 ## 非同期の状態の例 {#async-state-example}
@@ -218,7 +218,7 @@ export function useFetch(url) {
 }
 ```
 
-このバージョンの `useFetch()` は静的な URL 文字列と、URL 文字列の ref のどちらも受け付けるようになりました。[`isRef()`](/api/reactivity-utilities.html#isref) を使って URL が動的な ref だと判別した場合、[`watchEffect()`](/api/reactivity-core.html#watcheffect) を使ってリアクティブな副作用をセットアップします。この副作用は即時に実行され、URL の ref を依存関係として追跡します。URL の ref が変更されるたび、データをリセットし再度取得します。
+このバージョンの `useFetch()` は静的な URL 文字列と、URL 文字列の ref のどちらも受け付けるようになりました。[`isRef()`](/api/reactivity-utilities#isref) を使って URL が動的な ref だと判別した場合、[`watchEffect()`](/api/reactivity-core#watcheffect) を使ってリアクティブな副作用をセットアップします。この副作用は即時に実行され、URL の ref を依存関係として追跡します。URL の ref が変更されるたび、データをリセットし再度取得します。
 
 これが [`useFetch()` の更新バージョン](https://sfc.vuejs.org/#eyJBcHAudnVlIjoiPHNjcmlwdCBzZXR1cD5cbmltcG9ydCB7IHJlZiwgY29tcHV0ZWQgfSBmcm9tICd2dWUnXG5pbXBvcnQgeyB1c2VGZXRjaCB9IGZyb20gJy4vdXNlRmV0Y2guanMnXG5cbmNvbnN0IGJhc2VVcmwgPSAnaHR0cHM6Ly9qc29ucGxhY2Vob2xkZXIudHlwaWNvZGUuY29tL3RvZG9zLydcbmNvbnN0IGlkID0gcmVmKCcxJylcbmNvbnN0IHVybCA9IGNvbXB1dGVkKCgpID0+IGJhc2VVcmwgKyBpZC52YWx1ZSlcblxuY29uc3QgeyBkYXRhLCBlcnJvciwgcmV0cnkgfSA9IHVzZUZldGNoKHVybClcbjwvc2NyaXB0PlxuXG48dGVtcGxhdGU+XG4gIExvYWQgcG9zdCBpZDpcbiAgPGJ1dHRvbiB2LWZvcj1cImkgaW4gNVwiIEBjbGljaz1cImlkID0gaVwiPnt7IGkgfX08L2J1dHRvbj5cblxuXHQ8ZGl2IHYtaWY9XCJlcnJvclwiPlxuICAgIDxwPk9vcHMhIEVycm9yIGVuY291bnRlcmVkOiB7eyBlcnJvci5tZXNzYWdlIH19PC9wPlxuICAgIDxidXR0b24gQGNsaWNrPVwicmV0cnlcIj5SZXRyeTwvYnV0dG9uPlxuICA8L2Rpdj5cbiAgPGRpdiB2LWVsc2UtaWY9XCJkYXRhXCI+RGF0YSBsb2FkZWQ6IDxwcmU+e3sgZGF0YSB9fTwvcHJlPjwvZGl2PlxuICA8ZGl2IHYtZWxzZT5Mb2FkaW5nLi4uPC9kaXY+XG48L3RlbXBsYXRlPiIsImltcG9ydC1tYXAuanNvbiI6IntcbiAgXCJpbXBvcnRzXCI6IHtcbiAgICBcInZ1ZVwiOiBcImh0dHBzOi8vc2ZjLnZ1ZWpzLm9yZy92dWUucnVudGltZS5lc20tYnJvd3Nlci5qc1wiXG4gIH1cbn0iLCJ1c2VGZXRjaC5qcyI6ImltcG9ydCB7IHJlZiwgaXNSZWYsIHVucmVmLCB3YXRjaEVmZmVjdCB9IGZyb20gJ3Z1ZSdcblxuZXhwb3J0IGZ1bmN0aW9uIHVzZUZldGNoKHVybCkge1xuICBjb25zdCBkYXRhID0gcmVmKG51bGwpXG4gIGNvbnN0IGVycm9yID0gcmVmKG51bGwpXG5cbiAgYXN5bmMgZnVuY3Rpb24gZG9GZXRjaCgpIHtcbiAgICAvLyByZXNldCBzdGF0ZSBiZWZvcmUgZmV0Y2hpbmcuLlxuICAgIGRhdGEudmFsdWUgPSBudWxsXG4gICAgZXJyb3IudmFsdWUgPSBudWxsXG4gICAgXG4gICAgLy8gcmVzb2x2ZSB0aGUgdXJsIHZhbHVlIHN5bmNocm9ub3VzbHkgc28gaXQncyB0cmFja2VkIGFzIGFcbiAgICAvLyBkZXBlbmRlbmN5IGJ5IHdhdGNoRWZmZWN0KClcbiAgICBjb25zdCB1cmxWYWx1ZSA9IHVucmVmKHVybClcbiAgICBcbiAgICB0cnkge1xuICAgICAgLy8gYXJ0aWZpY2lhbCBkZWxheSAvIHJhbmRvbSBlcnJvclxuICBcdCAgYXdhaXQgdGltZW91dCgpXG4gIFx0ICAvLyB1bnJlZigpIHdpbGwgcmV0dXJuIHRoZSByZWYgdmFsdWUgaWYgaXQncyBhIHJlZlxuXHQgICAgLy8gb3RoZXJ3aXNlIHRoZSB2YWx1ZSB3aWxsIGJlIHJldHVybmVkIGFzLWlzXG4gICAgXHRjb25zdCByZXMgPSBhd2FpdCBmZXRjaCh1cmxWYWx1ZSlcblx0ICAgIGRhdGEudmFsdWUgPSBhd2FpdCByZXMuanNvbigpXG4gICAgfSBjYXRjaCAoZSkge1xuICAgICAgZXJyb3IudmFsdWUgPSBlXG4gICAgfVxuICB9XG5cbiAgaWYgKGlzUmVmKHVybCkpIHtcbiAgICAvLyBzZXR1cCByZWFjdGl2ZSByZS1mZXRjaCBpZiBpbnB1dCBVUkwgaXMgYSByZWZcbiAgICB3YXRjaEVmZmVjdChkb0ZldGNoKVxuICB9IGVsc2Uge1xuICAgIC8vIG90aGVyd2lzZSwganVzdCBmZXRjaCBvbmNlXG4gICAgZG9GZXRjaCgpXG4gIH1cblxuICByZXR1cm4geyBkYXRhLCBlcnJvciwgcmV0cnk6IGRvRmV0Y2ggfVxufVxuXG4vLyBhcnRpZmljaWFsIGRlbGF5XG5mdW5jdGlvbiB0aW1lb3V0KCkge1xuICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuICAgIHNldFRpbWVvdXQoKCkgPT4ge1xuICAgICAgaWYgKE1hdGgucmFuZG9tKCkgPiAwLjMpIHtcbiAgICAgICAgcmVzb2x2ZSgpXG4gICAgICB9IGVsc2Uge1xuICAgICAgICByZWplY3QobmV3IEVycm9yKCdSYW5kb20gRXJyb3InKSlcbiAgICAgIH1cbiAgICB9LCAzMDApXG4gIH0pXG59In0=)で、デモ用に人工的な遅延とランダムなエラーが発生します。
 
@@ -230,7 +230,7 @@ export function useFetch(url) {
 
 ### 入力引数 {#input-arguments}
 
-コンポーザブルはリアクティビティーに依存しない場合でも ref の引数を受け取れます。もし他の開発者が使うかも知れないコンポーザブルを書くのなら、入力引数が生の値ではなく ref である場合にも対応するとよいでしょう。[`unref()`](/api/reactivity-utilities.html#unref) ユーティリティー関数はその用途に便利です:
+コンポーザブルはリアクティビティーに依存しない場合でも ref の引数を受け取れます。もし他の開発者が使うかも知れないコンポーザブルを書くのなら、入力引数が生の値ではなく ref である場合にも対応するとよいでしょう。[`unref()`](/api/reactivity-utilities#unref) ユーティリティー関数はその用途に便利です:
 
 ```js
 import { unref } from 'vue'
@@ -271,7 +271,7 @@ Mouse position is at: {{ mouse.x }}, {{ mouse.y }}
 
 コンポーザブルで副作用（例: DOM イベントリスナーの登録やデータの取得）を起こすことは問題ありませんが、次のルールに注意してください:
 
-- [サーバーサイドレンダリング](/guide/scaling-up/ssr.html) (SSR) を利用したアプリケーションで作業している場合、DOM 固有の副作用は必ず `onMounted()` のようなマウント後のライフサイクルフック内で実行するようにしてください。これらのフックはブラウザーでしか呼び出されないので、そのコード内では DOM にアクセスできることが保証されます。
+- [サーバーサイドレンダリング](/guide/scaling-up/ssr) (SSR) を利用したアプリケーションで作業している場合、DOM 固有の副作用は必ず `onMounted()` のようなマウント後のライフサイクルフック内で実行するようにしてください。これらのフックはブラウザーでしか呼び出されないので、そのコード内では DOM にアクセスできることが保証されます。
 
 - `onUnmounted()` で副作用をクリーンアップすることを忘れないでください。例えば、コンポーザブルが DOM イベントリスナーを登録したなら、`useMouse()` の例で見てきたように `onUnmounted()` でそのリスナーを削除しないといけません。`useEventListener()` の例のように、自動的にそれをやってくれるコンポーザブルを使うのもよいでしょう。
 
@@ -333,7 +333,7 @@ export default {
 
 ### vs. ミックスイン {#vs-mixins}
 
-Vue 2 からのユーザーは、[mixins](/api/options-composition.html#mixins) オプションに慣れ親しんでいるかも知れません。これもコンポーネントのロジックを再利用可能なユニットに抽出することができます。ミックスインには 3 つの主要な欠点があります:
+Vue 2 からのユーザーは、[mixins](/api/options-composition#mixins) オプションに慣れ親しんでいるかも知れません。これもコンポーネントのロジックを再利用可能なユニットに抽出することができます。ミックスインには 3 つの主要な欠点があります:
 
 1. **プロパティの発生元が不明確**: 多くのミックスインを使うと、インスタンスのプロパティがどのミックスインから注入されたのが不明確になり、実装を追ったりコンポーネントの動作を理解するのが難しくなります。このことはコンポーザブルに ref + 分割代入のパターンをおすすめする理由でもあり、利用するコンポーネント内でプロパティの発生元が明確になります。
 
@@ -345,7 +345,7 @@ Vue 2 からのユーザーは、[mixins](/api/options-composition.html#mixins) 
 
 ### vs. レンダーレスコンポーネント {#vs-renderless-components}
 
-コンポーネントスロットの章で、スコープ付きスロットに基づく[レンダーレスコンポーネント](/guide/components/slots.html#renderless-components)パターンについて検討しました。またレンダーレスコンポーネントを使って、同じマウストラッキングのデモを実装しました。
+コンポーネントスロットの章で、スコープ付きスロットに基づく[レンダーレスコンポーネント](/guide/components/slots#renderless-components)パターンについて検討しました。またレンダーレスコンポーネントを使って、同じマウストラッキングのデモを実装しました。
 
 レンダーレスコンポーネントに対するコンポーザブルの利点は、余分なコンポーネントインスタンスのオーバーヘッドがないことです。アプリケーション全体に渡って使われる場合、レンダーレスコンポーネントのパターンで余計に作られるコンポーネントインスタンスの量は、顕著なパフォーマンスのオーバーヘッドになりえます。
 
@@ -357,7 +357,7 @@ Vue 2 からのユーザーは、[mixins](/api/options-composition.html#mixins) 
 
 ## 参考文献 {#further-reading}
 
-- [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html): Vue のリアクティビティーシステムがどのように動作をするのかを、より具体的に理解する。
-- [状態管理](/guide/scaling-up/state-management.html): 複数コンポーネントで共有する状態を管理するためのパターン。
-- [コンポーザブルのテスト](/guide/scaling-up/testing.html#testing-composables): コンポーザブルをユニットテストするためのコツ。
+- [リアクティビティーの探求](/guide/extras/reactivity-in-depth): Vue のリアクティビティーシステムがどのように動作をするのかを、より具体的に理解する。
+- [状態管理](/guide/scaling-up/state-management): 複数コンポーネントで共有する状態を管理するためのパターン。
+- [コンポーザブルのテスト](/guide/scaling-up/testing#testing-composables): コンポーザブルをユニットテストするためのコツ。
 - [VueUse](https://vueuse.org/): 発展し続ける Vue コンポーザブル集。このソースコードも素晴らしい学習資料です。

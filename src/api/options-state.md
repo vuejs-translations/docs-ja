@@ -45,7 +45,7 @@
   data: (vm) => ({ a: vm.myProp })
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## props {#props}
 
@@ -85,9 +85,9 @@
 
   オブジェクトベースの構文では、各プロパティはさらに以下のオプションを定義できます:
 
-  - **`type`**: 以下のネイティブコンストラクターのいずれかを指定します: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, 任意のカスタムコンストラクタ関数、またはそれらの配列。開発モードでは、Vue はプロパティの値が宣言された型と一致するかどうかをチェックし、一致しない場合は警告を投げます。詳しくは [プロパティのバリデーション](/guide/components/props.html#prop-validation) を参照してください。
+  - **`type`**: 以下のネイティブコンストラクターのいずれかを指定します: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, 任意のカスタムコンストラクタ関数、またはそれらの配列。開発モードでは、Vue はプロパティの値が宣言された型と一致するかどうかをチェックし、一致しない場合は警告を投げます。詳しくは [プロパティのバリデーション](/guide/components/props#prop-validation) を参照してください。
 
-    また、`Boolean` 型のプロパティは、開発とプロダクションの両方で、値のキャスト動作に影響を与えることに注意してください。詳しくは[真偽値の型変換](/guide/components/props.html#boolean-casting)を参照してください。
+    また、`Boolean` 型のプロパティは、開発とプロダクションの両方で、値のキャスト動作に影響を与えることに注意してください。詳しくは[真偽値の型変換](/guide/components/props#boolean-casting)を参照してください。
 
   - **`default`**: が親から渡されなかったり、値が `undefined` の場合のデフォルト値を指定します。オブジェクトや配列のデフォルト値は、ファクトリー関数を用いて返さなければなりません。ファクトリー関数は引数として加工前のプロパティオブジェクトも受け取ります。
 
@@ -126,8 +126,8 @@
   ```
 
 - **参照:**
-  - [ガイド - プロパティ](/guide/components/props.html)
-  - [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
+  - [ガイド - プロパティ](/guide/components/props)
+  - [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
 
 ## computed {#computed}
 
@@ -208,8 +208,8 @@
   ```
 
 - **参照:**
-  - [ガイド - 算出プロパティ](/guide/essentials/computed.html)
-  - [ガイド - 算出プロパティの型付け](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
+  - [ガイド - 算出プロパティ](/guide/essentials/computed)
+  - [ガイド - 算出プロパティの型付け](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
 ## methods {#methods}
 
@@ -250,7 +250,7 @@
   }
   ```
 
-- **参照:** [イベントハンドリング](/guide/essentials/event-handling.html)
+- **参照:** [イベントハンドリング](/guide/essentials/event-handling)
 
 ## watch {#watch}
 
@@ -289,14 +289,14 @@
 
   `watch` オプションは、キーが監視対象のリアクティブコンポーネントのインスタンスのプロパティ（たとえば `data` や `computed` で宣言されたプロパティ）で、値が対応するコールバックであるオブジェクトを受け付けます。コールバックは、監視対象のソースの新しい値と古い値を受け取ります。
 
-  ルートレベルのプロパティに加えて、キーはシンプルなドット区切りのパス、例えば `a.b.c` も使用できます。この使い方は、複雑な式をサポートして**いない**ことに注意してください - ドット区切りのパスのみがサポートされています。もし、複雑なデータソースを監視する必要がある場合は、代わりに命令型の [`$watch()`](/api/component-instance.html#watch) API を使ってください。
+  ルートレベルのプロパティに加えて、キーはシンプルなドット区切りのパス、例えば `a.b.c` も使用できます。この使い方は、複雑な式をサポートして**いない**ことに注意してください - ドット区切りのパスのみがサポートされています。もし、複雑なデータソースを監視する必要がある場合は、代わりに命令型の [`$watch()`](/api/component-instance#watch) API を使ってください。
 
   値は、（`methods` で宣言した）メソッド名の文字列や、追加のオプションを含むオブジェクトにもできます。オブジェクト構文を使用する場合、コールバックは `handler` フィールドの下で宣言する必要があります。追加のオプションは以下のとおりです:
 
   - **`immediate`**: ウォッチャーが作成されるとすぐにコールバックをトリガーします。最初の呼び出しでは、古い値は `undefined` になります。
-  - **`deep`**: ソースがオブジェクトまたは配列の場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers.html#deep-watchers)を参照してください。
-  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
-  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)を参照してください。
+  - **`deep`**: ソースがオブジェクトまたは配列の場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)を参照してください。
+  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core#watcheffect) を参照してください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)を参照してください。
 
   アロー関数は `this` を介してコンポーネントのインスタンスにアクセスできないため、ウォッチコールバックを宣言する際に使用することは避けてください。
 
@@ -368,7 +368,7 @@
   }
   ```
 
-- **参照:** [ウォッチャー](/guide/essentials/watchers.html)
+- **参照:** [ウォッチャー](/guide/essentials/watchers)
 
 ## emits {#emits}
 
@@ -397,7 +397,7 @@
 
   バリデーション関数は、コンポーネントの `$emit` 呼び出しに渡された追加の引数を受け取ります。 たとえば、`this.$emit('foo', 1)` が呼び出された場合、対応する `foo` のバリデータは引数 `1` を受け取ります。バリデータ関数は、イベントの引数が妥当かどうかを示す真偽値を返す必要があります。
 
-  `emits` オプションは、どのイベントリスナーが（ネイティブ DOM イベントリスナーではなく）コンポーネントイベントリスナーと見なされるかに影響することに注意してください。宣言されたイベントのリスナーは、コンポーネントの `$attrs` オブジェクトから削除されるため、コンポーネントのルート要素には渡されません。 詳細については、[フォールスルー属性](/guide/components/attrs.html) を参照してください。
+  `emits` オプションは、どのイベントリスナーが（ネイティブ DOM イベントリスナーではなく）コンポーネントイベントリスナーと見なされるかに影響することに注意してください。宣言されたイベントのリスナーは、コンポーネントの `$attrs` オブジェクトから削除されるため、コンポーネントのルート要素には渡されません。 詳細については、[フォールスルー属性](/guide/components/attrs) を参照してください。
 
 - **例**
 
@@ -434,8 +434,8 @@
   ```
 
 * **参照:**
-  - [ガイド - フォールスルー属性](/guide/components/attrs.html)
-  - [ガイド - コンポーネントの emits の型付け](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
+  - [ガイド - フォールスルー属性](/guide/components/attrs)
+  - [ガイド - コンポーネントの emits の型付け](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
 
 ## expose {#expose}
 

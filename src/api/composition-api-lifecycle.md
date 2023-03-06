@@ -1,7 +1,7 @@
 # Composition API: ライフサイクルフック {#composition-api-lifecycle-hooks}
 
 :::info 使用上の注意
-このページに記載されているすべての API は、コンポーネントの `setup()` フェーズで同期的に呼び出される必要があります。詳細については、[ガイド - ライフサイクルフック](/guide/essentials/lifecycle.html)を参照してください。
+このページに記載されているすべての API は、コンポーネントの `setup()` フェーズで同期的に呼び出される必要があります。詳細については、[ガイド - ライフサイクルフック](/guide/essentials/lifecycle)を参照してください。
 :::
 
 ## onMounted() {#onmounted}
@@ -22,7 +22,7 @@
 
   - そのコンポーネント自身の DOM ツリーが作成され、親コンテナーに挿入された時。アプリケーションのルートコンテナが document 内にある場合のみ、そのコンポーネントの DOM ツリーも document 内にあることを保証することに注意してください。
 
-  このフックは、通常、コンポーネントのレンダリングされた DOM にアクセスする必要がある副作用を実行する場合や、[サーバーレンダリングされるアプリケーション](/guide/scaling-up/ssr.html)において DOM 関連のコードをクライアントに限定する場合に使用されます。
+  このフックは、通常、コンポーネントのレンダリングされた DOM にアクセスする必要がある副作用を実行する場合や、[サーバーレンダリングされるアプリケーション](/guide/scaling-up/ssr)において DOM 関連のコードをクライアントに限定する場合に使用されます。
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
@@ -60,7 +60,7 @@
 
   親コンポーネントの更新フックは、子コンポーネントの更新フックの後に呼び出されます。
 
-  このフックは、様々な状態変更によるコンポーネントの DOM 更新の後に呼び出されます。もし、特定の状態変更の後に更新された DOM へアクセスする必要がある場合は、代わりに [nextTick()](/api/general.html#nexttick) を使用してください。
+  このフックは、様々な状態変更によるコンポーネントの DOM 更新の後に呼び出されます。もし、特定の状態変更の後に更新された DOM へアクセスする必要がある場合は、代わりに [nextTick()](/api/general#nexttick) を使用してください。
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
@@ -212,7 +212,7 @@
 
   **エラー伝搬のルール**
 
-  - アプリケーションレベルの [`app.config.errorHandler`](/api/application.html#app-config-errorhandler) が定義されていれば、デフォルトでそちらにもすべてのエラーが送られるので、これらのエラーを 1 箇所でアナリティクスサービスに報告できます。
+  - アプリケーションレベルの [`app.config.errorHandler`](/api/application#app-config-errorhandler) が定義されていれば、デフォルトでそちらにもすべてのエラーが送られるので、これらのエラーを 1 箇所でアナリティクスサービスに報告できます。
 
   - コンポーネントの継承チェーンや親チェーンに複数の `errorCaptured` フックが存在する場合、同じエラーに対して、下から上への順番ですべてのフックが呼び出されます。これはネイティブ DOM イベントのバブリングの仕組みに似ています。
 
@@ -241,7 +241,7 @@
   }
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## onRenderTriggered() <sup class="vt-badge dev-only" /> {#onrendertriggered}
 
@@ -267,11 +267,11 @@
   }
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## onActivated() {#onactivated}
 
-コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM に挿入された後に呼び出されるコールバックを登録します。
+コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components#keepalive) によってキャッシュされたツリーの一部として DOM に挿入された後に呼び出されるコールバックを登録します。
 
 **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
@@ -281,11 +281,11 @@
   function onActivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onDeactivated() {#ondeactivated}
 
-コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM から削除された後に呼び出されるコールバックを登録します。
+コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components#keepalive) によってキャッシュされたツリーの一部として DOM から削除された後に呼び出されるコールバックを登録します。
 
 **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
@@ -295,7 +295,7 @@
   function onDeactivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" /> {#onserverprefetch}
 
@@ -338,4 +338,4 @@
   </script>
   ```
 
-- **参照:** [サーバーサイドレンダリング](/guide/scaling-up/ssr.html)
+- **参照:** [サーバーサイドレンダリング](/guide/scaling-up/ssr)

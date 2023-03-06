@@ -22,11 +22,11 @@
 
   単一ファイルコンポーネントを使用する場合、コンポーネントはすでにファイル名から自身の名前を推測しています。例えば、`MyComponent.vue` という名前のファイルは、推測された表示名 "MyComponent" を持つことになります。
 
-  また、[`app.component`](/api/application.html#app-component) でコンポーネントをグローバル登録すると、グローバル ID が名前として自動的に設定されるケースもあります。
+  また、[`app.component`](/api/application#app-component) でコンポーネントをグローバル登録すると、グローバル ID が名前として自動的に設定されるケースもあります。
 
   `name` オプションは、推測された名前を上書きしたり、名前が推測できないとき（例: ビルドツールを使用していないときや、インラインの非 SFC コンポーネント）に明示的に名前を指定したりできます。
 
-  `name` が明示的に必要となるケースがひとつあります: [`<KeepAlive>`](/guide/built-ins/keep-alive.html) のキャッシュ可能なコンポーネントに対して、`include / exclude` プロパティでマッチングする場合です。
+  `name` が明示的に必要となるケースがひとつあります: [`<KeepAlive>`](/guide/built-ins/keep-alive) のキャッシュ可能なコンポーネントに対して、`include / exclude` プロパティでマッチングする場合です。
 
   :::tip
   バージョン 3.2.34 以降、`<script setup>` を使用した単一ファイルコンポーネントは、ファイル名から `name` オプションを自動的に推測します。これにより、`<KeepAlive>` と共に使用した場合でも、手動で名前を宣言する必要がなくなりました。
@@ -104,7 +104,7 @@
 
   </div>
 
-- **参照:** [フォールスルー属性](/guide/components/attrs.html)
+- **参照:** [フォールスルー属性](/guide/components/attrs)
 
 ## components {#components}
 
@@ -134,7 +134,7 @@
   }
   ```
 
-- **参照:** [コンポーネントの登録](/guide/components/registration.html)
+- **参照:** [コンポーネントの登録](/guide/components/registration)
 
 ## directives {#directives}
 
@@ -169,4 +169,4 @@
 
   コンポーネントインスタンスで使用可能なディレクティブのハッシュ。
 
-- **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives.html)
+- **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives)
