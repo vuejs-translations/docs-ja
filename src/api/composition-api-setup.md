@@ -38,7 +38,7 @@ export default {
 </template>
 ```
 
-`setup` から返された [ref](/api/reactivity-core.html#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals.html#deep-reactivity)ため、テンプレート内で `.value` を使用する必要はありません。また、`this` でアクセスしたときも同様にアンラップされます。
+`setup` から返された [ref](/api/reactivity-core#ref) は、テンプレート内でアクセスされたときに[自動的に浅くアンラップされる](/guide/essentials/reactivity-fundamentals#deep-reactivity)ため、テンプレート内で `.value` を使用する必要はありません。また、`this` でアクセスしたときも同様にアンラップされます。
 
 `setup()` 自体はコンポーネントインスタンスにアクセスできません。- `this` は `setup()` 内では `undefined` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
 
@@ -61,7 +61,7 @@ export default {
 
 もし、`props` オブジェクトを分割代入する場合は、分割代入された変数はリアクティビティーを失うことに注意してください。 そのため、常に `props.xxx` の形でプロパティにアクセスすることを推奨します。
 
-もし、本当にプロパティを分割代入すること、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー API である [toRefs()](./reactivity-utilities.html#torefs) や [toRef()](/api/reactivity-utilities.html#toref) を使用することで、行うことができます:
+もし、本当にプロパティを分割代入すること、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー API である [toRefs()](./reactivity-utilities#torefs) や [toRef()](/api/reactivity-utilities.html#toref) を使用することで、行うことができます:
 
 ```js
 import { toRefs, toRef } from 'vue'
@@ -115,7 +115,7 @@ export default {
 
 ### パブリックプロパティの公開 {#exposing-public-properties}
 
-`expose` は、親コンポーネントから[テンプレート参照](/guide/essentials/template-refs.html#ref-on-component)でコンポーネントインスタンスにアクセスする際に、公開するプロパティを明示的に制限するために使用することができる関数です:
+`expose` は、親コンポーネントから[テンプレート参照](/guide/essentials/template-refs#ref-on-component)でコンポーネントインスタンスにアクセスする際に、公開するプロパティを明示的に制限するために使用することができる関数です:
 
 ```js{5,10}
 export default {

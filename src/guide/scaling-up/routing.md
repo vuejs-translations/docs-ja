@@ -21,7 +21,7 @@ Vue は SPA の構築に適しています。ほとんどの SPA では、公式
 
 ## スクラッチでのシンプルなルーティング {#simple-routing-from-scratch}
 
-もしシンプルなルーティングのみ必要で、フル機能のルーターライブラリーを含めたくない場合は、[動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)を使って、ブラウザーの [`hashchange` イベント](https://developer.mozilla.org/ja/docs/Web/API/Window/hashchange_event) を購読したり、 [History API](https://developer.mozilla.org/ja/docs/Web/API/History) を使うことで、現在のコンポーネントの状態を変更することができます。
+もしシンプルなルーティングのみ必要で、フル機能のルーターライブラリーを含めたくない場合は、[動的コンポーネント](/guide/essentials/component-basics#dynamic-components)を使って、ブラウザーの [`hashchange` イベント](https://developer.mozilla.org/ja/docs/Web/API/Window/hashchange_event) を購読したり、 [History API](https://developer.mozilla.org/ja/docs/Web/API/History) を使うことで、現在のコンポーネントの状態を変更することができます。
 
 以下は、最小構成の例です:
 

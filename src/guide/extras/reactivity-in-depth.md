@@ -102,7 +102,7 @@ function ref(value) {
 ここと以下のコードスニペットは、核となるコンセプトをできるだけシンプルに説明することを目的としているため、多くの詳細は省略され、エッジケースも無視されています。
 :::
 
-これは基礎のセクションで説明したいくつかの[リアクティブオブジェクトの制限](/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive)を説明するものです:
+これは基礎のセクションで説明したいくつかの[リアクティブオブジェクトの制限](/guide/essentials/reactivity-fundamentals#limitations-of-reactive)を説明するものです:
 
 - リアクティブオブジェクトのプロパティをローカル変数に割り当てたり分割代入した場合、ローカル変数へのアクセスはプロキシーが仕込んだ get/set をトリガーしなくなるため、リアクティビティーが"切断"されます。
 
@@ -151,7 +151,7 @@ function whenDepsChange(update) {
 
 この時点で、依存関係を自動的に追跡し、依存関係が変更されるたびに再実行する作用が作成しました。これを **リアクティブ作用（Reactive Effect）** と呼びます。
 
-Vue はリアクティブ作用を作成するための API を提供しています: [`watchEffect()`](/api/reactivity-core.html#watcheffect)。実際、この例にある魔法のような `whenDepsChange()` とかなり似た動きをすることに気づくかもしれません。これで、実際の Vue の API を使って最初のサンプルを作り直すことができます:
+Vue はリアクティブ作用を作成するための API を提供しています: [`watchEffect()`](/api/reactivity-core#watcheffect)。実際、この例にある魔法のような `whenDepsChange()` とかなり似た動きをすることに気づくかもしれません。これで、実際の Vue の API を使って最初のサンプルを作り直すことができます:
 
 ```js
 import { ref, watchEffect } from 'vue'
@@ -344,7 +344,7 @@ watchEffect(callback, {
 
 Vue のリアクティビティーシステムは、プレーンな JavaScript オブジェクトをリアクティブなプロキシーに綿密に変換することで機能します。外部の状態管理システムと統合する場合（例えば、外部のソリューションもプロキシーを使用する場合）、この変換は不要になることがあり、時には望ましくないことになります。
 
-Vue のリアクティビティーシステムを外部の状態管理ソリューションと統合する一般的な方法は、外部の状態を [`shallowRef`](/api/reactivity-advanced.html#shallowref) で保持することです。shallow ref は `.value` プロパティにアクセスしたときのみリアクティブになり、内部の値はそのまま残されます。外部の状態が変化したら、更新をトリガーするために ref の値を置き換えます。
+Vue のリアクティビティーシステムを外部の状態管理ソリューションと統合する一般的な方法は、外部の状態を [`shallowRef`](/api/reactivity-advanced#shallowref) で保持することです。shallow ref は `.value` プロパティにアクセスしたときのみリアクティブになり、内部の値はそのまま残されます。外部の状態が変化したら、更新をトリガーするために ref の値を置き換えます。
 
 ### イミュータブルなデータ {#immutable-data}
 
@@ -413,7 +413,7 @@ export function useMachine(options) {
 
 ### API 設計のトレードオフ {#api-design-trade-offs}
 
-Preact と Qwik のシグナルの設計は Vue の [shallowRef](/api/reactivity-advanced.html#shallowref) に非常に似ています。3 つとも `.value` プロパティを介してミュータブルなインターフェースを提供しています。Solid と Angular のシグナルについて考察してみます。
+Preact と Qwik のシグナルの設計は Vue の [shallowRef](/api/reactivity-advanced#shallowref) に非常に似ています。3 つとも `.value` プロパティを介してミュータブルなインターフェースを提供しています。Solid と Angular のシグナルについて考察してみます。
 
 #### Solid のシグナル {#solid-signals}
 

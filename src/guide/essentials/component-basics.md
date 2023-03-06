@@ -179,7 +179,7 @@ SFC では、ネイティブの HTML 要素と区別するために、子コン�
 
 ブログを構築する場合、ブログの記事を表示するコンポーネントが必要になるかと思います。すべてのブログ記事が同じレイアウトで表示されるようにしたいのですが、コンテンツは異なっています。このようなコンポーネントは、表示したい特定の記事のタイトルや内容などのデータを渡すことができない限り役に立ちません。そこでプロパティの出番です。
 
-プロパティはコンポーネントに登録できるカスタム属性のことです。ブログ記事コンポーネントにタイトルを渡すには、<span class="options-api">[`props`](/api/options-state.html#props) オプション</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span>を使って、このコンポーネントが受け取るプロパティのリストを宣言する必要があります:
+プロパティはコンポーネントに登録できるカスタム属性のことです。ブログ記事コンポーネントにタイトルを渡すには、<span class="options-api">[`props`](/api/options-state#props) オプション</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span>を使って、このコンポーネントが受け取るプロパティのリストを宣言する必要があります:
 
 <div class="options-api">
 
@@ -219,7 +219,7 @@ const props = defineProps(['title'])
 console.log(props.title)
 ```
 
-参照:[コンポーネントプロパティの型付け](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+参照:[コンポーネントプロパティの型付け](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
 
 `<script setup>` を使わない場合、プロパティは `props` オプションで宣言する必要があり、props オブジェクトは `setup()` の第 1 引数として渡されます:
 
@@ -366,7 +366,7 @@ const postFontSize = ref(1)
  />
 ```
 
-そして、子コンポーネントは組み込みの [**`$emit`** メソッド](/api/component-instance.html#emit)を呼び出し、イベント名を渡すことによって自身のイベントを発行することができます:
+そして、子コンポーネントは組み込みの [**`$emit`** メソッド](/api/component-instance#emit)を呼び出し、イベント名を渡すことによって自身のイベントを発行することができます:
 
 ```vue{5}
 <!-- BlogPost.vue, omitting <script> -->
@@ -391,7 +391,7 @@ const postFontSize = ref(1)
 
 </div>
 
-オプションとして <span class="options-api">[`emits`](/api/options-state.html#emits) オプション</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span>を使って発行するイベントを宣言することができます:
+オプションとして <span class="options-api">[`emits`](/api/options-state#emits) オプション</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span>を使って発行するイベントを宣言することができます:
 
 <div class="options-api">
 
@@ -418,7 +418,7 @@ defineEmits(['enlarge-text'])
 
 </div>
 
-コンポーネントが発行する全てのイベントをドキュメント化することで、必要に応じてそれらを[バリデーション](/guide/components/events.html#events-validation)しています。また、これは Vue が暗黙的に子コンポーネントのルート要素にイベントをネイティブリスナーとして適用するのを避けることにもなります。
+コンポーネントが発行する全てのイベントをドキュメント化することで、必要に応じてそれらを[バリデーション](/guide/components/events#events-validation)しています。また、これは Vue が暗黙的に子コンポーネントのルート要素にイベントをネイティブリスナーとして適用するのを避けることにもなります。
 
 <div class="composition-api">
 
@@ -432,7 +432,7 @@ emit('enlarge-text')
 </script>
 ```
 
-参照:[コンポーネントの emit の型付け](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
+参照:[コンポーネントの emit の型付け](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
 
 `<script setup>` を使用していない時は `emits` オプションを使用してイベント発行を宣言することができます。setup コンテキスト (`setup()` に第 2 引数として渡されます) のプロパティとして `emit` 関数にアクセスすることができます:
 
@@ -615,7 +615,7 @@ const BlogPost = {
 </table>
 ```
 
-カスタムコンポーネント `<blog-post-row>` は無効なコンテンツとして巻き上げられ、最終的なレンダリング出力でエラーが発生します。回避策として、特別な [`is` 属性](/api/built-in-special-attributes.html#is) を使用することができます:
+カスタムコンポーネント `<blog-post-row>` は無効なコンテンツとして巻き上げられ、最終的なレンダリング出力でエラーが発生します。回避策として、特別な [`is` 属性](/api/built-in-special-attributes#is) を使用することができます:
 
 ```vue-html
 <table>

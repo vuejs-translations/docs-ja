@@ -60,7 +60,7 @@
 
   親コンポーネントの更新フックは、子コンポーネントの更新フックの後に呼び出されます。
 
-  このフックは、様々な状態変更によるコンポーネントの DOM 更新の後に呼び出されます。もし、特定の状態変更の後に更新された DOM へアクセスする必要がある場合は、代わりに [nextTick()](/api/general.html#nexttick) を使用してください。
+  このフックは、様々な状態変更によるコンポーネントの DOM 更新の後に呼び出されます。もし、特定の状態変更の後に更新された DOM へアクセスする必要がある場合は、代わりに [nextTick()](/api/general#nexttick) を使用してください。
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
@@ -212,7 +212,7 @@
 
   **エラー伝搬のルール**
 
-  - アプリケーションレベルの [`app.config.errorHandler`](/api/application.html#app-config-errorhandler) が定義されていれば、デフォルトでそちらにもすべてのエラーが送られるので、これらのエラーを 1 箇所でアナリティクスサービスに報告できます。
+  - アプリケーションレベルの [`app.config.errorHandler`](/api/application#app-config-errorhandler) が定義されていれば、デフォルトでそちらにもすべてのエラーが送られるので、これらのエラーを 1 箇所でアナリティクスサービスに報告できます。
 
   - コンポーネントの継承チェーンや親チェーンに複数の `errorCaptured` フックが存在する場合、同じエラーに対して、下から上への順番ですべてのフックが呼び出されます。これはネイティブ DOM イベントのバブリングの仕組みに似ています。
 
@@ -271,7 +271,7 @@
 
 ## onActivated() {#onactivated}
 
-コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM に挿入された後に呼び出されるコールバックを登録します。
+コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components#keepalive) によってキャッシュされたツリーの一部として DOM に挿入された後に呼び出されるコールバックを登録します。
 
 **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
@@ -281,11 +281,11 @@
   function onActivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onDeactivated() {#ondeactivated}
 
-コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components.html#keepalive) によってキャッシュされたツリーの一部として DOM から削除された後に呼び出されるコールバックを登録します。
+コンポーネントインスタンスが [`<KeepAlive>`](/api/built-in-components#keepalive) によってキャッシュされたツリーの一部として DOM から削除された後に呼び出されるコールバックを登録します。
 
 **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
@@ -295,7 +295,7 @@
   function onDeactivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive.html#lifecycle-of-cached-instance)
+- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" /> {#onserverprefetch}
 

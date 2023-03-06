@@ -543,7 +543,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 
 ## コンポーネント間のトランジション {#transition-between-components}
 
-`<Transition>` は [動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components) でも使用することができます:
+`<Transition>` は [動的コンポーネント](/guide/essentials/component-basics#dynamic-components) でも使用することができます:
 
 ```vue-html
 <Transition name="fade" mode="out-in">
@@ -582,4 +582,4 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 
 **関連**
 
-- [`<Transition>` API リファレンス](/api/built-in-components.html#transition)
+- [`<Transition>` API リファレンス](/api/built-in-components#transition)

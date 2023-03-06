@@ -2,7 +2,7 @@
 
 ## 基本的な使い方 {#basic-usage}
 
-大規模なアプリケーションでは、アプリを小さなチャンクに分割し、必要なときにのみサーバーからコンポーネントを読み込む必要があるかもしれません。これを実現するために、Vue には [`defineAsyncComponent`](/api/general.html#defineasynccomponent) 関数があります:
+大規模なアプリケーションでは、アプリを小さなチャンクに分割し、必要なときにのみサーバーからコンポーネントを読み込む必要があるかもしれません。これを実現するために、Vue には [`defineAsyncComponent`](/api/general#defineasynccomponent) 関数があります:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -30,7 +30,7 @@ const AsyncComp = defineAsyncComponent(() =>
 
 結果的に得られる `AsyncComp` は、実際にページ上にレンダリングされるときにローダー関数を呼ぶだけのラッパーコンポーネントです。さらに、内側のコンポーネントに任意のプロパティやスロットを渡せるため、非同期ラッパーを使用すると、コンポーネントをシームレスに置換するとともに、遅延読み込みも実現できます。
 
-通常のコンポーネントと同様に、非同期コンポーネントも `app.component()` を用いて[グローバルに登録](/guide/components/registration.html#global-registration)できます:
+通常のコンポーネントと同様に、非同期コンポーネントも `app.component()` を用いて[グローバルに登録](/guide/components/registration#global-registration)できます:
 
 ```js
 app.component('MyComponent', defineAsyncComponent(() =>
@@ -40,7 +40,7 @@ app.component('MyComponent', defineAsyncComponent(() =>
 
 <div class="options-api">
 
-[コンポーネントをローカルに登録する](/guide/components/registration.html#local-registration)ときには、`defineAsyncComponent` も利用できます:
+[コンポーネントをローカルに登録する](/guide/components/registration#local-registration)ときには、`defineAsyncComponent` も利用できます:
 
 ```vue
 <script>

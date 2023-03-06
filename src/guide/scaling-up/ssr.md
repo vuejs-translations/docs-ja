@@ -84,7 +84,7 @@ renderToString(app).then((html) => {
 <button>1</button>
 ```
 
-[`renderToString()`](/api/ssr.html#rendertostring) は Vue アプリケーションのインスタンスを受け取り、アプリケーションでレンダリングされる HTML を解決する Promise を返します。また、[Node.js Stream API](https://nodejs.org/api/stream.html) や [Web Streams API](https://developer.mozilla.org/ja/docs/Web/API/Streams_API) を用いて、ストリームレンダリングもできます。詳しくは [SSR API リファレンス](/api/ssr)を参照してください。
+[`renderToString()`](/api/ssr#rendertostring) は Vue アプリケーションのインスタンスを受け取り、アプリケーションでレンダリングされる HTML を解決する Promise を返します。また、[Node.js Stream API](https://nodejs.org/api/stream.html) や [Web Streams API](https://developer.mozilla.org/ja/docs/Web/API/Streams_API) を用いて、ストリームレンダリングもできます。詳しくは [SSR API リファレンス](/api/ssr)を参照してください。
 
 そして、Vue SSR のコードをサーバーのリクエストハンドラーに移動させ、アプリケーションのマークアップをフルページの HTML でラップすることができます。次のステップでは [`express`](https://expressjs.com/) を使用します:
 
@@ -134,7 +134,7 @@ server.listen(3000, () => {
 
 クライアントサイドのアプリケーションをインタラクティブにするために、Vue は **hydration（ハイドレーション）** ステップを踏まえる必要があります。ハイドレーションでは、サーバー上で実行されたのと同じ Vue アプリケーションを作成し、各コンポーネントを制御する DOM ノードにマッチさせ、DOM イベントリスナーをアタッチします。
 
-ハイドレーションモードでアプリケーションをマウントするには、`createApp()` の代わりに [`createSSRApp()`](/api/application.html#createssrapp) を使用する必要があります:
+ハイドレーションモードでアプリケーションをマウントするには、`createApp()` の代わりに [`createSSRApp()`](/api/application#createssrapp) を使用する必要があります:
 
 ```js{2}
 // これはブラウザー内で実行されます
@@ -265,7 +265,7 @@ SSR では、各リクエストの URL はアプリケーションにとって�
 
 技術的には、ブラウザーで行うように、リクエストごとにすべての JavaScript モジュールを再初期化することも可能です。しかし、JavaScript モジュールの初期化にはコストがかかるため、サーバーのパフォーマンスに大きな影響を与えることになります。
 
-推奨される解決策は、ルーターやグローバルストアを含むアプリケーション全体の新しいインスタンスを、リクエストごとに作成することです。それから、コンポーネントで直接インポートするのではなく、[アプリケーションレベルの Provide](/guide/components/provide-inject.html#app-level-provide) を使って共有する状態を提供し、それを必要とするコンポーネントでインジェクトすることです:
+推奨される解決策は、ルーターやグローバルストアを含むアプリケーション全体の新しいインスタンスを、リクエストごとに作成することです。それから、コンポーネントで直接インポートするのではなく、[アプリケーションレベルの Provide](/guide/components/provide-inject#app-level-provide) を使って共有する状態を提供し、それを必要とするコンポーネントでインジェクトすることです:
 
 ```js
 // app.js （サーバーとクライアントで共有されます）

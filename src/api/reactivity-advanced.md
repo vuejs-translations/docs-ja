@@ -2,7 +2,7 @@
 
 ## shallowRef() {#shallowref}
 
-[`ref()`](./reactivity-core.html#ref) の shallow（浅い）バージョン。
+[`ref()`](./reactivity-core#ref) の shallow（浅い）バージョン。
 
 - **型**
 
@@ -33,8 +33,8 @@
   ```
 
 - **参照:**
-  - [ガイド - 大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす](/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
-  - [ガイド - 外部の状態システムとの統合](/guide/extras/reactivity-in-depth.html#integration-with-external-state-systems)
+  - [ガイド - 大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす](/guide/best-practices/performance#reduce-reactivity-overhead-for-large-immutable-structures)
+  - [ガイド - 外部の状態システムとの統合](/guide/extras/reactivity-in-depth#integration-with-external-state-systems)
 
 ## triggerRef() {#triggerref}
 
@@ -133,7 +133,7 @@
 
 ## shallowReactive() {#shallowreactive}
 
-[`reactive()`](./reactivity-core.html#reactive) の shallow（浅い）バージョン。
+[`reactive()`](./reactivity-core#reactive) の shallow（浅い）バージョン。
 
 - **型**
 
@@ -171,7 +171,7 @@
 
 ## shallowReadonly() {#shallowreadonly}
 
-[`readonly()`](./reactivity-core.html#readonly) の shallow（浅い）バージョン。
+[`readonly()`](./reactivity-core#readonly) の shallow（浅い）バージョン。
 
 - **型**
 
@@ -219,7 +219,7 @@ Vue で作成されたプロキシの、未加工の元のオブジェクトを�
 
 - **詳細**
 
-  `toRaw()` は [`reactive()`](./reactivity-core.html#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](#shallowreactive), [`shallowReadonly()`](#shallowreadonly) で生成したプロキシから元のオブジェクトを返せるようにします。
+  `toRaw()` は [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](#shallowreactive), [`shallowReadonly()`](#shallowreadonly) で生成したプロキシから元のオブジェクトを返せるようにします。
 
   これは、プロキシのアクセスやトラッキングのオーバーヘッドを発生させずに一時的に読み込んだり、変更をトリガーせずに書き込んだりするために使用できる緊急避難口です。元のオブジェクトへの永続的な参照を保持することは推奨**されません**。注意して使用してください。
 

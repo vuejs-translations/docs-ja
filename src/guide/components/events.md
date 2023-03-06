@@ -62,7 +62,7 @@ export default {
 <MyComponent @some-event.once="callback" />
 ```
 
-コンポーネントやプロパティと同様に、イベント名も自動的な大文字・小文字の変換を提供します。キャメルケースのイベントを発行しましたが、親ではケバブケースのリスナーを使用して購読できることに注意してください。[プロパティ名での大文字・小文字の使い分け](/guide/components/props.html#prop-name-casing)と同様に、テンプレートではケバブケースのイベントリスナーを使用することをお勧めします。
+コンポーネントやプロパティと同様に、イベント名も自動的な大文字・小文字の変換を提供します。キャメルケースのイベントを発行しましたが、親ではケバブケースのリスナーを使用して購読できることに注意してください。[プロパティ名での大文字・小文字の使い分け](/guide/components/props#prop-name-casing)と同様に、テンプレートではケバブケースのイベントリスナーを使用することをお勧めします。
 
 :::tip
 ネイティブの DOM イベントとは異なり、コンポーネントから発行されたイベントはバブリング**しません**。直接の子コンポーネントから発行されたイベントのみを購読できます。兄弟コンポーネントや深くネストしたコンポーネント間で通信する必要がある場合は、外部のイベントバスや[グローバルな状態管理ソリューション](/guide/scaling-up/state-management)を使ってください。
@@ -119,7 +119,7 @@ function increaseCount(n) {
 
 ## 発行するイベントの宣言 {#declaring-emitted-events}
 
-<span class="composition-api">[`defineEmits()`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span><span class="options-api">[`emits`](/api/options-state.html#emits) オプション</span>を使用して、コンポーネントが発行するイベントを明示的に宣言できます:
+<span class="composition-api">[`defineEmits()`](/api/sfc-script-setup#defineprops-defineemits) マクロ</span><span class="options-api">[`emits`](/api/options-state.html#emits) オプション</span>を使用して、コンポーネントが発行するイベントを明示的に宣言できます:
 
 <div class="composition-api">
 
@@ -143,7 +143,7 @@ function buttonClick() {
 
 `defineEmits()` マクロは関数の中では使用**できません**。上記の例のように、`<script setup>` 内に直接記述する必要があります。
 
-`<script setup>` の代わりに明示的な `setup` 関数を使う場合は、イベントは [`emits`](/api/options-state.html#emits) オプションを使って宣言する必要があり、`emit` 関数は `setup()` コンテキスト上で公開されます:
+`<script setup>` の代わりに明示的な `setup` 関数を使う場合は、イベントは [`emits`](/api/options-state#emits) オプションを使って宣言する必要があり、`emit` 関数は `setup()` コンテキスト上で公開されます:
 
 ```js
 export default {
@@ -202,7 +202,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-詳細: [コンポーネントの emit の型付け](/guide/typescript/composition-api.html#typing-component-emits) <sup class="vt-badge ts" />
+詳細: [コンポーネントの emit の型付け](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
@@ -218,11 +218,11 @@ export default {
 }
 ```
 
-参照: [コンポーネントの emit の型付け](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
+参照: [コンポーネントの emit の型付け](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 
-任意ですが、コンポーネントがどのように動作すべきかをよりよく文書化するために、発行されるすべてのイベントを定義することが推奨されます。また、これにより Vue は既知のリスナーを[フォールスルー属性](/guide/components/attrs.html#v-on-listener-inheritance)から除外し、サードパーティのコードによって手動でディスパッチされた DOM イベントによって起こるエッジケースを回避できます。
+任意ですが、コンポーネントがどのように動作すべきかをよりよく文書化するために、発行されるすべてのイベントを定義することが推奨されます。また、これにより Vue は既知のリスナーを[フォールスルー属性](/guide/components/attrs#v-on-listener-inheritance)から除外し、サードパーティのコードによって手動でディスパッチされた DOM イベントによって起こるエッジケースを回避できます。
 
 :::tip
 ネイティブイベント（例: `click`）が `emits` オプションに定義されている場合、リスナーはコンポーネントが発行する `click` イベントのみを購読し、ネイティブの `click` イベントには反応しなくなります。

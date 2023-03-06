@@ -389,7 +389,7 @@ h('input', {
 />
 ```
 
-その他のイベントやキー修飾子については、[`withModifiers`](/api/render-function.html#withmodifiers) ヘルパーを使用することが可能です:
+その他のイベントやキー修飾子については、[`withModifiers`](/api/render-function#withmodifiers) ヘルパーを使用することが可能です:
 
 ```js
 import { withModifiers } from 'vue'
@@ -446,7 +446,7 @@ function render() {
 }
 ```
 
-コンポーネントが名前で登録されていて直接インポートできない場合 (例えば、ライブラリーによってグローバルに登録されている場合)、 [`resolveComponent()`](/api/render-function.html#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
+コンポーネントが名前で登録されていて直接インポートできない場合 (例えば、ライブラリーによってグローバルに登録されている場合)、 [`resolveComponent()`](/api/render-function#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
 
 ### スロットのレンダリング {#rendering-slots}
 
@@ -489,7 +489,7 @@ export default {
 </div>
 <div class="options-api">
 
-レンダー関数では、スロットは [`this.$slots`](/api/component-instance.html#slots) からアクセスすることができます。
+レンダー関数では、スロットは [`this.$slots`](/api/component-instance#slots) からアクセスすることができます。
 
 ```js
 export default {
@@ -628,7 +628,7 @@ export default {
 
 ### カスタムディレクティブ {#custom-directives}
 
-カスタムディレクティブは、[`withDirectives`](/api/render-function.html#withdirectives)を使って vnode に適用することが可能です:
+カスタムディレクティブは、[`withDirectives`](/api/render-function#withdirectives)を使って vnode に適用することが可能です:
 
 ```js
 import { h, withDirectives } from 'vue'
@@ -645,7 +645,7 @@ const vnode = withDirectives(h('div'), [
 ])
 ```
 
-ディレクティブが名前で登録されていて、直接インポートできない場合は、[`resolveDirective`](/api/render-function.html#resolvedirective) ヘルパーを使って解決することが可能です。
+ディレクティブが名前で登録されていて、直接インポートできない場合は、[`resolveDirective`](/api/render-function#resolvedirective) ヘルパーを使って解決することが可能です。
 
 ## 関数型コンポーネント {#functional-components}
 
@@ -674,11 +674,11 @@ function MyComponent(props, context) {
 }
 ```
 
-第二引数の `context` には、3 つのプロパティが含まれます。 `attrs` , `emit` , そして `slots` です。これらはそれぞれ、インスタンスのプロパティである [`$attrs`](/api/component-instance.html#attrs), [`$emit`](/api/component-instance.html#emit), および [`$slots`](/api/component-instance.html#slots) と同じです。
+第二引数の `context` には、3 つのプロパティが含まれます。 `attrs` , `emit` , そして `slots` です。これらはそれぞれ、インスタンスのプロパティである [`$attrs`](/api/component-instance#attrs), [`$emit`](/api/component-instance.html#emit), および [`$slots`](/api/component-instance.html#slots) と同じです。
 
 </div>
 
-コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state.html#props) と [`emits`](/api/options-state.html#emits) はプロパティとして追加することで定義することが可能です:
+コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state#props) と [`emits`](/api/options-state.html#emits) はプロパティとして追加することで定義することが可能です:
 
 ```js
 MyComponent.props = ['value']

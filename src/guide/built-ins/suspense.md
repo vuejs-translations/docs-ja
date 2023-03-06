@@ -101,7 +101,7 @@ pending 状態に戻った場合、フォールバックのコンテンツはす
 
 ## エラーハンドリング {#error-handling}
 
-`<Suspense>` は現在のところ、それ自身ではエラーハンドリングは提供していません。ただし、`<Suspense>` の親コンポーネントで [`errorCaptured`](/api/options-lifecycle.html#errorcaptured) オプションや [`onErrorCaptured()`](/api/composition-api-lifecycle.html#onerrorcaptured) フックを使って非同期なエラーを補足して処理することができます。
+`<Suspense>` は現在のところ、それ自身ではエラーハンドリングは提供していません。ただし、`<Suspense>` の親コンポーネントで [`errorCaptured`](/api/options-lifecycle#errorcaptured) オプションや [`onErrorCaptured()`](/api/composition-api-lifecycle.html#onerrorcaptured) フックを使って非同期なエラーを補足して処理することができます。
 
 ## 他のコンポーネントとの組み合わせ {#combining-with-other-components}
 

@@ -87,7 +87,7 @@ Vue CLI など、webpack ベースのセットアップでは、モジュール�
 
 ### `defineComponent()` {#definecomponent}
 
-TypeScript がコンポーネントオプション内の型を適切に推論できるようにするには、[`defineComponent()`](/api/general.html#definecomponent) を使ってコンポーネントを定義する必要があります:
+TypeScript がコンポーネントオプション内の型を適切に推論できるようにするには、[`defineComponent()`](/api/general#definecomponent) を使ってコンポーネントを定義する必要があります:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -129,7 +129,7 @@ export default defineComponent({
 
 参照:
 
-- [webpack のツリーシェイキングに関する注意](/api/general.html#note-on-webpack-treeshaking)
+- [webpack のツリーシェイキングに関する注意](/api/general#note-on-webpack-treeshaking)
 - [`defineComponent` の型テスト](https://github.com/vuejs/core/blob/main/packages/dts-test/defineComponent.test-d.tsx)
 
 :::tip

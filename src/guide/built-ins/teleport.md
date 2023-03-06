@@ -199,5 +199,5 @@ const open = ref(false)
 
 **関連**
 
-- [`<Teleport>` API リファレンス](/api/built-in-components.html#teleport)
-- [SSR における Teleport の扱いについて](/guide/scaling-up/ssr.html#teleports)
+- [`<Teleport>` API リファレンス](/api/built-in-components#teleport)
+- [SSR における Teleport の扱いについて](/guide/scaling-up/ssr#teleports)

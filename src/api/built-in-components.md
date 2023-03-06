@@ -150,7 +150,7 @@ h(Transition, {
 
   デフォルトでは、`<TransitionGroup>` はラッパー DOM 要素をレンダリングしませんが、 `tag` プロパティによって定義できます。
 
-  アニメーションが正しく動作するためには、`<transition-group>` 内のすべての子に[**一意なキーを指定**](/guide/essentials/list.html#maintaining-state-with-key)する必要があることに注意してください。
+  アニメーションが正しく動作するためには、`<transition-group>` 内のすべての子に[**一意なキーを指定**](/guide/essentials/list#maintaining-state-with-key)する必要があることに注意してください。
 
   `<TransitionGroup>` は CSS の transform による移動トランジションに対応しています。更新後に画面上の子の位置が変化した場合、移動用の CSS クラス（`name` 属性から自動生成されるか、`move-class` プロパティで設定）が適用されます。移動用のクラスが適用されたときに、CSS の `transform` プロパティが「トランジション可能」であれば、その要素は [FLIP テクニック](https://aerotwist.com/blog/flip-your-animations/)を使って移動先までスムーズにアニメーションします。
 
@@ -323,6 +323,6 @@ h(Transition, {
 
   `<Suspense>` は `#default` スロットと `#fallback` スロットの 2 つのスロットを受け付けます。default スロットをメモリー内にレンダリングする間、fallback スロットの内容を表示します。
 
-  デフォルトスロットのレンダリング中に非同期な依存関係（[非同期コンポーネント](/guide/components/async)や [`async setup()`](/guide/built-ins/suspense.html#async-setup) のコンポーネント）が発生すると、それらが全て解決するまで待ってからデフォルトスロットを表示します。
+  デフォルトスロットのレンダリング中に非同期な依存関係（[非同期コンポーネント](/guide/components/async)や [`async setup()`](/guide/built-ins/suspense#async-setup) のコンポーネント）が発生すると、それらが全て解決するまで待ってからデフォルトスロットを表示します。
 
 - **参照:** [ガイド - Suspense](/guide/built-ins/suspense)

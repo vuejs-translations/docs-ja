@@ -35,7 +35,7 @@
 
   `text` が変更されると、`<span>` はパッチされるのではなく、常に置き換えられるので、トランジションがトリガーされます。
 
-- **参照:** [ガイド - リストレンダリング - `key` による状態管理](/guide/essentials/list.html#maintaining-state-with-key)
+- **参照:** [ガイド - リストレンダリング - `key` による状態管理](/guide/essentials/list#maintaining-state-with-key)
 
 ## ref {#ref}
 
@@ -82,12 +82,12 @@
 
 - **参照:**
   - [ガイド - テンプレート参照](/guide/essentials/template-refs)
-  - [ガイド - テンプレート参照の型付け](/guide/typescript/composition-api.html#typing-template-refs) <sup class="vt-badge ts" />
-  - [ガイド - コンポーネントのテンプレート参照の型付け](/guide/typescript/composition-api.html#typing-component-template-refs) <sup class="vt-badge ts" />
+  - [ガイド - テンプレート参照の型付け](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+  - [ガイド - コンポーネントのテンプレート参照の型付け](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 ## is {#is}
 
-[動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)のバインディングに使用します。
+[動的コンポーネント](/guide/essentials/component-basics#dynamic-components)のバインディングに使用します。
 
 - **期待する値:** `string | Component`
 
@@ -95,7 +95,7 @@
 
   ネイティブの HTML 要素で `is` 属性が使われている場合、[Customized built-in element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) として解釈されます。これは、ネイティブの Web プラットフォームの機能です。
 
-  しかし、[DOM テンプレート解析の注意点](/guide/essentials/component-basics.html#dom-template-parsing-caveats)で説明したように、ネイティブ要素を Vue コンポーネントに置き換えるためには Vue が必要になる場合があります。`is` 属性の値の前に `vue:` を付けると、Vue はその要素を Vue コンポーネントとしてレンダリングします:
+  しかし、[DOM テンプレート解析の注意点](/guide/essentials/component-basics#dom-template-parsing-caveats)で説明したように、ネイティブ要素を Vue コンポーネントに置き換えるためには Vue が必要になる場合があります。`is` 属性の値の前に `vue:` を付けると、Vue はその要素を Vue コンポーネントとしてレンダリングします:
 
   ```vue-html
   <table>
@@ -105,5 +105,5 @@
 
 - **参照:**
 
-  - [ビルトインの特別な要素 - `<component>`](/api/built-in-special-elements.html#component)
-  - [動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)
+  - [ビルトインの特別な要素 - `<component>`](/api/built-in-special-elements#component)
+  - [動的コンポーネント](/guide/essentials/component-basics#dynamic-components)

@@ -39,7 +39,7 @@
 
 - **参照**:
   - [ガイド - Provide / Inject](/guide/components/provide-inject)
-  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
+  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 ## inject() {#inject}
 
@@ -103,4 +103,4 @@
 
 - **参照**:
   - [ガイド - Provide / Inject](/guide/components/provide-inject)
-  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api.html#typing-provide-inject) <sup class="vt-badge ts" />
+  - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />

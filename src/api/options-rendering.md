@@ -23,7 +23,7 @@
   アプリケーションのルートコンポーネントに `template` や `render` オプションが指定されていない場合、Vue はマウントされた要素の `innerHTML` を代わりにテンプレートとして使用しようとします。
 
   :::warning セキュリティーに関する注意
-  テンプレートのソースは信頼できるものだけを使用してください。ユーザーが提供したコンテンツをテンプレートとして使用しないでください。詳しくは[セキュリティーガイド](/guide/best-practices/security.html#rule-no-1-never-use-non-trusted-templates)を参照してください。
+  テンプレートのソースは信頼できるものだけを使用してください。ユーザーが提供したコンテンツをテンプレートとして使用しないでください。詳しくは[セキュリティーガイド](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates)を参照してください。
   :::
 
 ## render {#render}
@@ -80,6 +80,6 @@
 
 - **詳細**
 
-  この設定オプションは、フルビルド（つまり、ブラウザー上でテンプレートをコンパイルできるスタンドアロンの `vue.js`）を使っているときだけ反映されます。アプリケーションレベルの [app.config.compilerOptions](/api/application.html#app-config-compileroptions) と同じオプションをサポートし、現在のコンポーネントに対してより高い優先順位が設定されています。
+  この設定オプションは、フルビルド（つまり、ブラウザー上でテンプレートをコンパイルできるスタンドアロンの `vue.js`）を使っているときだけ反映されます。アプリケーションレベルの [app.config.compilerOptions](/api/application#app-config-compileroptions) と同じオプションをサポートし、現在のコンポーネントに対してより高い優先順位が設定されています。
 
-- **参照:** [app.config.compilerOptions](/api/application.html#app-config-compileroptions)
+- **参照:** [app.config.compilerOptions](/api/application#app-config-compileroptions)

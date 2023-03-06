@@ -313,7 +313,7 @@ function BaseLayout(slots) {
 </base-layout>
 ```
 
-式は、動的なディレクティブの引数の[構文上の制約](/guide/essentials/template-syntax.html#directives)の対象となることに注意してください。
+式は、動的なディレクティブの引数の[構文上の制約](/guide/essentials/template-syntax#directives)の対象となることに注意してください。
 
 ## スコープ付きスロット {#scoped-slots}
 

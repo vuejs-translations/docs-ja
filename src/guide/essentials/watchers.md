@@ -6,7 +6,7 @@
 
 <div class="options-api">
 
-Options API では、[`watch` オプション](/api/options-state.html#watch) を使って、リアクティブなプロパティが変更されるたびに関数を実行することができます:
+Options API では、[`watch` オプション](/api/options-state#watch) を使って、リアクティブなプロパティが変更されるたびに関数を実行することができます:
 
 ```js
 export default {
@@ -65,7 +65,7 @@ export default {
 
 <div class="composition-api">
 
-Composition API では、[`watch` 関数](/api/reactivity-core.html#watch) を使用することでリアクティブな状態の一部が変更されるたびにコールバックを実行することができます:
+Composition API では、[`watch` 関数](/api/reactivity-core#watch) を使用することでリアクティブな状態の一部が変更されるたびにコールバックを実行することができます:
 
 ```vue
 <script setup>
@@ -280,7 +280,7 @@ watch(todoId, async () => {
 
 特に、ウォッチャーが `todoId` を 2 回使用していることに注目してください。1 回目はソースとして、2 回目はコールバック内で使用しています。
 
-これは、[`watchEffect()`](/api/reactivity-core.html#watcheffect) によって簡略化できます。`watchEffect()` によって、コールバックのリアクティブな依存関係を自動的に追跡できます。上記のウォッチャーは次のように書き換えられます:
+これは、[`watchEffect()`](/api/reactivity-core#watcheffect) によって簡略化できます。`watchEffect()` によって、コールバックのリアクティブな依存関係を自動的に追跡できます。上記のウォッチャーは次のように書き換えられます:
 
 ```js
 watchEffect(async () => {
@@ -363,7 +363,7 @@ watchPostEffect(() => {
 
 ## `this.$watch()` \* {#this-watch}
 
-また、[`$watch()  インスタンスメソッド`](/api/component-instance.html#watch) を使用してウォッチャーを強制的に作成することが可能です:
+また、[`$watch()  インスタンスメソッド`](/api/component-instance#watch) を使用してウォッチャーを強制的に作成することが可能です:
 
 ```js
 export default {

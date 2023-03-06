@@ -30,7 +30,7 @@
   }
   ```
 
-- **参照:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)
+- **参照:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props)
 
 ## ComponentCustomProperties {#componentcustomproperties}
 
@@ -50,10 +50,10 @@
   ```
 
   :::tip
-  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
+  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)を参照してください。
   :::
 
-- **参照:** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)
+- **参照:** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
@@ -72,10 +72,10 @@
   ```
 
   :::tip
-  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
+  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)を参照してください。
   :::
 
-- **参照:** [ガイド - カスタムオプションの拡張](/guide/typescript/options-api.html#augmenting-custom-options)
+- **参照:** [ガイド - カスタムオプションの拡張](/guide/typescript/options-api#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 
@@ -99,7 +99,7 @@ TSX 要素のプロパティとして宣言されていないプロパティを�
   ```
 
   :::tip
-  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
+  拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)を参照してください。
   :::
 
 ## CSSProperties {#cssproperties}
@@ -126,11 +126,11 @@ TSX 要素のプロパティとして宣言されていないプロパティを�
   ```
 
 :::tip
-拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties)を参照してください。
+拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)を参照してください。
 :::
 
 :::info 参照
 SFC `<style>` タグは、`v-bind` CSS 関数を使って、CSS の値を動的コンポーネントの状態にリンクすることをサポートしています。これにより、型を拡張することなく、カスタムプロパティを使用することができます。
 
-- [CSS の v-bind()](/api/sfc-css-features.html#v-bind-in-css)
+- [CSS の v-bind()](/api/sfc-css-features#v-bind-in-css)
   :::

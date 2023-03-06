@@ -8,7 +8,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## 基本的な使い方 {#basic-usage}
 
-「コンポーネントの基礎」の章で、特別な要素 `<component>` を使用する、[動的コンポーネント](/guide/essentials/component-basics.html#dynamic-components)のための構文を導入しました:
+「コンポーネントの基礎」の章で、特別な要素 `<component>` を使用する、[動的コンポーネント](/guide/essentials/component-basics#dynamic-components)のための構文を導入しました:
 
 ```vue-html
 <component :is="activeComponent" />
@@ -47,7 +47,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </div>
 
 :::tip
-[DOM テンプレート](/guide/essentials/component-basics.html#dom-template-parsing-caveats)内で使用する場合は `<keep-alive>` として参照する必要があります。
+[DOM テンプレート](/guide/essentials/component-basics#dom-template-parsing-caveats)内で使用する場合は `<keep-alive>` として参照する必要があります。
 :::
 
 ## Include / Exclude {#include-exclude}
@@ -71,7 +71,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 </KeepAlive>
 ```
 
-一致するかどうかは、コンポーネントの [`name`](/api/options-misc.html#name) オプションに対してチェックされます。よって、`KeepAlive` により条件付きでキャッシュされるコンポーネントには、明示的に `name` オプションを宣言する必要があります。
+一致するかどうかは、コンポーネントの [`name`](/api/options-misc#name) オプションに対してチェックされます。よって、`KeepAlive` により条件付きでキャッシュされるコンポーネントには、明示的に `name` オプションを宣言する必要があります。
 
 :::tip
 バージョン 3.2.34 以降、`<script setup>` を使った単一ファイルコンポーネントは、ファイル名から `name` オプションを自動的に推測し、手動で名前を宣言する必要がなくなりました。
@@ -93,7 +93,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 <div class="composition-api">
 
-kept-alive コンポーネントは、これら 2 つの状態に対して、[`onActivated()`](/api/composition-api-lifecycle.html#onactivated) と [`onDeactivated()`](/api/composition-api-lifecycle.html#ondeactivated) を使用してライフサイクルフックを登録できます:
+kept-alive コンポーネントは、これら 2 つの状態に対して、[`onActivated()`](/api/composition-api-lifecycle#onactivated) と [`onDeactivated()`](/api/composition-api-lifecycle.html#ondeactivated) を使用してライフサイクルフックを登録できます:
 
 ```vue
 <script setup>
@@ -114,7 +114,7 @@ onDeactivated(() => {
 </div>
 <div class="options-api">
 
-kept-alive コンポーネントは、これら 2 つの状態に対して、[`activated`](/api/options-lifecycle.html#activated) と [`deactivated`](/api/options-lifecycle.html#deactivated) のフックを使用してライフサイクルフックを登録できます:
+kept-alive コンポーネントは、これら 2 つの状態に対して、[`activated`](/api/options-lifecycle#activated) と [`deactivated`](/api/options-lifecycle.html#deactivated) のフックを使用してライフサイクルフックを登録できます:
 
 ```js
 export default {
@@ -141,4 +141,4 @@ export default {
 
 **関連ページ**
 
-- [`<KeepAlive>` API リファレンス](/api/built-in-components.html#keepalive)
+- [`<KeepAlive>` API リファレンス](/api/built-in-components#keepalive)

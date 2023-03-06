@@ -8,7 +8,7 @@
 
 ## $data {#data}
 
-コンポーネントによってリアクティブにされた [`data`](./options-state.html#data) オプションから返されるオブジェクトです。コンポーネントインスタンスは、その data オブジェクトのプロパティへのアクセスをプロキシします。
+コンポーネントによってリアクティブにされた [`data`](./options-state#data) オプションから返されるオブジェクトです。コンポーネントインスタンスは、その data オブジェクトのプロパティへのアクセスをプロキシします。
 
 - **型**
 
@@ -32,7 +32,7 @@
 
 - **詳細**
 
-  [`props`](./options-state.html#props) オプションで宣言されたプロパティのみが含まれます。コンポーネントインスタンスは、その props オブジェクトのプロパティへのアクセスをプロキシします。
+  [`props`](./options-state#props) オプションで宣言されたプロパティのみが含まれます。コンポーネントインスタンスは、その props オブジェクトのプロパティへのアクセスをプロキシします。
 
 ## $el {#el}
 
@@ -89,7 +89,7 @@
   })
   ```
 
-- **参照:** [`app.config.optionMergeStrategies`](/api/application.html#app-config-optionmergestrategies)
+- **参照:** [`app.config.optionMergeStrategies`](/api/application#app-config-optionmergestrategies)
 
 ## $parent {#parent}
 
@@ -135,9 +135,9 @@
 
   各スロットは、そのスロットの名前に対応するキーの下にある vnode の配列を返す関数として `this.$slots` で公開されます。デフォルトのスロットは `this.$slots.default` として公開されます。
 
-  スロットが[スコープ付きスロット](/guide/components/slots.html#scoped-slots)の場合、スロット関数に渡された引数はそのスロットのプロパティとして利用可能です。
+  スロットが[スコープ付きスロット](/guide/components/slots#scoped-slots)の場合、スロット関数に渡された引数はそのスロットのプロパティとして利用可能です。
 
-- **参照:** [レンダー関数 - スロットのレンダリング](/guide/extras/render-function.html#rendering-slots)
+- **参照:** [レンダー関数 - スロットのレンダリング](/guide/extras/render-function#rendering-slots)
 
 ## $refs {#refs}
 
@@ -172,7 +172,7 @@
 
   [フォールスルー属性](/guide/components/attrs)は、親コンポーネントから渡される属性やイベントハンドラーで、prop や子コンポーネントから発行されたイベントとして宣言されていないものです。
 
-  デフォルトでは、ルート要素が 1 つしかない場合は `$attrs` に含まれるすべての要素がコンポーネントのルート要素に自動的に継承されます。コンポーネントに複数のルートノードがある場合、この動作は無効になります。また、[`inheritAttrs`](./options-misc.html#inheritattrs) オプションを使って明示的に無効化できます。
+  デフォルトでは、ルート要素が 1 つしかない場合は `$attrs` に含まれるすべての要素がコンポーネントのルート要素に自動的に継承されます。コンポーネントに複数のルートノードがある場合、この動作は無効になります。また、[`inheritAttrs`](./options-misc#inheritattrs) オプションを使って明示的に無効化できます。
 
 - **参照:**
 
@@ -217,9 +217,9 @@
   第 2 引数はコールバック関数です。コールバックは監視対象の新しい値と古い値を受け取ります。
 
   - **`immediate`**: ウォッチャー作成時、すぐにコールバックをトリガーします。最初の呼び出しでは、古い値は `undefined` になります。
-  - **`deep`**: ソースがオブジェクトの場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers.html#deep-watchers)を参照してください。
-  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers.html#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
-  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)を参照してください。
+  - **`deep`**: ソースがオブジェクトの場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)を参照してください。
+  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
+  - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)を参照してください。
 
 - **例**
 
@@ -258,7 +258,7 @@
   ```
 
 - **参照:**
-  - [オプション - `watch`](/api/options-state.html#watch)
+  - [オプション - `watch`](/api/options-state#watch)
   - [ガイド - ウォッチャー](/guide/essentials/watchers)
 
 ## $emit() {#emit}
@@ -289,7 +289,7 @@
 - **参照:**
 
   - [コンポーネント - イベント](/guide/components/events)
-  - [`emits` オプション](./options-state.html#emits)
+  - [`emits` オプション](./options-state#emits)
 
 ## $forceUpdate() {#forceupdate}
 
@@ -309,7 +309,7 @@
 
 ## $nextTick() {#nexttick}
 
-グローバルな [`nextTick()`](./general.html#nexttick) の、インスタンスにバインドされたバージョン。
+グローバルな [`nextTick()`](./general#nexttick) の、インスタンスにバインドされたバージョン。
 
 - **型**
 
@@ -323,4 +323,4 @@
 
   グローバルバージョンの `nextTick()` との唯一の違いは、`this.$nextTick()` に渡されるコールバックの `this` コンテキストが現在のコンポーネントインスタンスにバインドされるということです。
 
-- **参照:** [`nextTick()`](./general.html#nexttick)
+- **参照:** [`nextTick()`](./general#nexttick)

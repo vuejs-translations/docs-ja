@@ -22,7 +22,7 @@ console.log(props.foo)
 </script>
 ```
 
-`<script setup>` を用いないコンポーネントの場合、[`props`](/api/options-state.html#props) オプションを使ってプロパティを宣言します:
+`<script setup>` を用いないコンポーネントの場合、[`props`](/api/options-state#props) オプションを使ってプロパティを宣言します:
 
 ```js
 export default {
@@ -40,7 +40,7 @@ export default {
 
 <div class="options-api">
 
-プロパティは、以下のように [`props`](/api/options-state.html#props) オプションを使って宣言します:
+プロパティは、以下のように [`props`](/api/options-state#props) オプションを使って宣言します:
 
 ```js
 export default {
@@ -96,7 +96,7 @@ export default {
 
 <div class="options-api">
 
-[コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props)も合わせて参照してください。<sup class="vt-badge ts" />
+[コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props)も合わせて参照してください。<sup class="vt-badge ts" />
 
 </div>
 
@@ -113,7 +113,7 @@ defineProps<{
 </script>
 ```
 
-詳細: [コンポーネントプロパティの型付け](/guide/typescript/composition-api.html#typing-component-props) <sup class="vt-badge ts" />
+詳細: [コンポーネントプロパティの型付け](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
@@ -148,13 +148,13 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-技術的には、子コンポーネントにプロパティを渡すときにも camelCase を用いることができます (ただし [DOM テンプレート](/guide/essentials/component-basics.html#dom-template-parsing-caveats)内を除く)。しかし、常に kebab-case (ケバブケース) を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
+技術的には、子コンポーネントにプロパティを渡すときにも camelCase を用いることができます (ただし [DOM テンプレート](/guide/essentials/component-basics#dom-template-parsing-caveats)内を除く)。しかし、常に kebab-case (ケバブケース) を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
 
 ```vue-html
 <MyComponent greeting-message="hello" />
 ```
 
-[コンポーネントのタグには、可能な限り PascalCase を用いる](/guide/components/registration.html#component-name-casing)ことが推奨されます。これは Vue コンポーネントとネイティブ要素の区別が付き、テンプレートの可読性が高まるためです。しかし、プロパティを渡すときに camelCase を用いることには、それほど実用的なメリットがありません。そのため、Vue では各言語の規約に従うことが推奨されます。
+[コンポーネントのタグには、可能な限り PascalCase を用いる](/guide/components/registration#component-name-casing)ことが推奨されます。これは Vue コンポーネントとネイティブ要素の区別が付き、テンプレートの可読性が高まるためです。しかし、プロパティを渡すときに camelCase を用いることには、それほど実用的なメリットがありません。そのため、Vue では各言語の規約に従うことが推奨されます。
 
 ### 静的なプロパティと動的なプロパティ {#static-vs-dynamic-props}
 
@@ -232,7 +232,7 @@ export default {
 
 ### オブジェクトを利用した複数のプロパティのバインディング {#binding-multiple-properties-using-an-object}
 
-オブジェクトに含まれるすべてのプロパティをコンポーネントプロパティとして渡したい場合には、[引数なしの `v-bind`](/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes) を使用します (`:プロパティ名` の代わりに `v-bind`)。例えば、以下のような `post` オブジェクトがあるとします:
+オブジェクトに含まれるすべてのプロパティをコンポーネントプロパティとして渡したい場合には、[引数なしの `v-bind`](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) を使用します (`:プロパティ名` の代わりに `v-bind`)。例えば、以下のような `post` オブジェクトがあるとします:
 
 <div class="options-api">
 
@@ -492,7 +492,7 @@ export default {
 
 <div class="composition-api">
 
-[型のみのプロパティ宣言](/api/sfc-script-setup.html#typescript-only-features) <sup class="vt-badge ts" /> を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
+[型のみのプロパティ宣言](/api/sfc-script-setup#typescript-only-features) <sup class="vt-badge ts" /> を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
 
 </div>
 <div class="options-api">

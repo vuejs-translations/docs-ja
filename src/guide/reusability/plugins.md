@@ -26,11 +26,11 @@ const myPlugin = {
 
 厳密に定義されたプラグインの適用範囲はありませんが、プラグインが役立つ一般的なシナリオは以下の通りです:
 
-1. [`app.component()`](/api/application.html#app-component) や [`app.directive()`](/api/application.html#app-directive) を使って、1 つもしくは複数のグローバルなコンポーネントやカスタムディレクティブを登録する。
+1. [`app.component()`](/api/application#app-component) や [`app.directive()`](/api/application.html#app-directive) を使って、1 つもしくは複数のグローバルなコンポーネントやカスタムディレクティブを登録する。
 
-2. [`app.provide()`](/api/application.html#app-provide) を呼び出して、アプリケーション全体でリソースを[注入できる](/guide/components/provide-inject)ようにする。
+2. [`app.provide()`](/api/application#app-provide) を呼び出して、アプリケーション全体でリソースを[注入できる](/guide/components/provide-inject)ようにする。
 
-3. [`app.config.globalProperties`](/api/application.html#app-config-globalproperties) にグローバルなインスタンスプロパティやメソッドを追加する。
+3. [`app.config.globalProperties`](/api/application#app-config-globalproperties) にグローバルなインスタンスプロパティやメソッドを追加する。
 
 4. 上記のいくつかの組み合わせを実行する必要があるライブラリー（例: [vue-router](https://github.com/vuejs/vue-router-next)）。
 
@@ -89,7 +89,7 @@ app.use(i18nPlugin, {
 
 これで、最初の式 `$translate('greetings.hello')` は、実行時に `Bonjour!` に置き換えられます。
 
-参照: [グローバルなプロパティの拡張](/guide/typescript/options-api.html#augmenting-global-properties) <sup class="vt-badge ts" />
+参照: [グローバルなプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
 :::tip
 グローバルプロパティはほとんど使わないようにしてください。様々なプラグインから注入された多くのグローバルプロパティがアプリケーション全体で使われていると、すぐに混乱してしまいます。

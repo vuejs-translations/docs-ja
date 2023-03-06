@@ -133,7 +133,7 @@ URL が `javascript:` を使って JavaScript を実行できないように "sa
 <style>{{ userProvidedStyles }}</style>
 ```
 
-クリックジャックからユーザーを完全に保護するために、サンドボックス化された iframe 内でのみ CSS の完全な制御を許可することをお勧めします。また、ユーザーにスタイルバインディングのコントロールを提供する場合は、[オブジェクト構文](/guide/essentials/class-and-style.html#binding-to-objects-1)を使用し、以下のように安全に制御できる特定のプロパティにのみ値を提供できるようにすることをお勧めします:
+クリックジャックからユーザーを完全に保護するために、サンドボックス化された iframe 内でのみ CSS の完全な制御を許可することをお勧めします。また、ユーザーにスタイルバインディングのコントロールを提供する場合は、[オブジェクト構文](/guide/essentials/class-and-style#binding-to-objects-1)を使用し、以下のように安全に制御できる特定のプロパティにのみ値を提供できるようにすることをお勧めします:
 
 ```vue-html
 <a

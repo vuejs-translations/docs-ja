@@ -18,7 +18,7 @@ Vue では、HTML ベースのテンプレート構文を使用します。テ�
 
 ## 生の HTML {#raw-html}
 
-マスタッシュの中では、データが HTML ではなくプレーンテキストとして解釈されます。本来の HTML を出力したい場合は、次のように [`v-html` ディレクティブ](/api/built-in-directives.html#v-html)を用いる必要があります:
+マスタッシュの中では、データが HTML ではなくプレーンテキストとして解釈されます。本来の HTML を出力したい場合は、次のように [`v-html` ディレクティブ](/api/built-in-directives#v-html)を用いる必要があります:
 
 ```vue-html
 <p>Using text interpolation: {{ rawHtml }}</p>
@@ -44,7 +44,7 @@ Vue では、HTML ベースのテンプレート構文を使用します。テ�
 
 ## 属性バインディング {#attribute-bindings}
 
-HTML 属性の中ではマスタッシュ構文が使えません。代わりに、以下の [`v-bind` ディレクティブ](/api/built-in-directives.html#v-bind)を使用します:
+HTML 属性の中ではマスタッシュ構文が使えません。代わりに、以下の [`v-bind` ディレクティブ](/api/built-in-directives#v-bind)を使用します:
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
@@ -164,13 +164,13 @@ Vue のテンプレートでは、以下の場所で JavaScript の式を使用�
 
 テンプレートで用いる式はサンドボックス内で実行され、[限定的なグローバルのリスト](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)にのみアクセスできます。このリストには、`Math` や `Date` などのよく使われる組み込みグローバルが含まれています。
 
-ユーザーが `window` に付与したプロパティなど、このリストに明示的に含まれていないグローバルには、テンプレート内の式からアクセスすることができません。ただし、[`app.config.globalProperties`](/api/application.html#app-config-globalproperties) に追加することにより、Vue のあらゆる式で利用できるグローバルを明示的に定義することができます。
+ユーザーが `window` に付与したプロパティなど、このリストに明示的に含まれていないグローバルには、テンプレート内の式からアクセスすることができません。ただし、[`app.config.globalProperties`](/api/application#app-config-globalproperties) に追加することにより、Vue のあらゆる式で利用できるグローバルを明示的に定義することができます。
 
 ## ディレクティブ {#directives}
 
 ディレクティブは、`v-` という接頭辞を持つ特別な属性です。Vue では、上で紹介した `v-html` や `v-bind` をはじめ、数々の[組み込みディレクティブ](/api/built-in-directives)が用意されています。
 
-ディレクティブの属性値は、JavaScript の単一の式であることが期待されます (ただし `v-for`、`v-on`、`v-slot` は例外であり、後ほどそれぞれのセクションで説明します)。ディレクティブの役割は、式が示す値が変化したとき、リアクティブに更新を DOM に適用することです。例えば、[`v-if`](/api/built-in-directives.html#v-if) を取り上げてみます:
+ディレクティブの属性値は、JavaScript の単一の式であることが期待されます (ただし `v-for`、`v-on`、`v-slot` は例外であり、後ほどそれぞれのセクションで説明します)。ディレクティブの役割は、式が示す値が変化したとき、リアクティブに更新を DOM に適用することです。例えば、[`v-if`](/api/built-in-directives#v-if) を取り上げてみます:
 
 ```vue-html
 <p v-if="seen">Now you see me</p>
@@ -261,7 +261,7 @@ Vue のテンプレートでは、以下の場所で JavaScript の式を使用�
 <form @submit.prevent="onSubmit">...</form>
 ```
 
-この後、[`v-on` 向け](./event-handling.html#event-modifiers)や [`v-model` 向け](./forms.html#modifiers)の修飾子の例を、その機能のページで見ることになるでしょう。
+この後、[`v-on` 向け](./event-handling#event-modifiers)や [`v-model` 向け](./forms.html#modifiers)の修飾子の例を、その機能のページで見ることになるでしょう。
 
 最後に、ディレクティブの構文の全容をこちらの図にまとめました:
 

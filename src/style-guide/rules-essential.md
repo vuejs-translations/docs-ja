@@ -37,7 +37,7 @@
 コミットされたコードでは、プロパティの定義は可能な限り詳細に、少なくとも型は指定する必要があります。
 
 ::: details 詳しい説明
-詳細な[プロパティ定義](/guide/components/props.html#prop-validation)には、2 つの利点があります。
+詳細な[プロパティ定義](/guide/components/props#prop-validation)には、2 つの利点があります。
 
 - それらはコンポーネントの API を文書化し、コンポーネントがどのように使用されることを意図しているかを容易に理解できるようにします。
 - 開発では、コンポーネントが不適切な形式のプロパティを提供された場合に Vue が警告を発し、潜在的なエラー源を捕らえるのに役立ちます。
@@ -294,7 +294,7 @@ computed: {
 
 アプリケーションの場合、トップレベルの `App` コンポーネントとレイアウトコンポーネントのスタイルはグローバルであってもかまいませんが、その他のコンポーネントは常にスコープされるべきです。
 
-これは、[単一ファイルコンポーネント](/guide/scaling-up/sfc.html) にのみ関連しています。これは、[`scoped` 属性](https://vue-loader.vuejs.org/en/features/scoped-css.html) を使用することを必要としません。スコープは、[CSS モジュール](https://vue-loader.vuejs.org/en/features/css-modules) や [BEM](http://getbem.com/) のようなクラスベースの戦略、あるいは他のライブラリーや規約を利用することができます。
+これは、[単一ファイルコンポーネント](/guide/scaling-up/sfc) にのみ関連しています。これは、[`scoped` 属性](https://vue-loader.vuejs.org/en/features/scoped-css.html) を使用することを必要としません。スコープは、[CSS モジュール](https://vue-loader.vuejs.org/en/features/css-modules.html) や [BEM](http://getbem.com/) のようなクラスベースの戦略、あるいは他のライブラリーや規約を利用することができます。
 
 **しかし、コンポーネントライブラリーは `scoped` 属性を使用する代わりに、クラスベースの戦略を取るべきです。**
 
