@@ -63,4 +63,4 @@ setTimeout(() => {
 
 <!-- https://www.figma.com/file/Xw3UeNMOralY6NV7gSjWdS/Vue-Lifecycle -->
 
-すべてのライフサイクルフックとそれぞれのユースケースの詳細については、<span class="composition-api">[ライフサイクルフック API リファレンス](/api/composition-api-lifecycle.html)</span><span class="options-api">[ライフサイクルフック API リファレンス](/api/options-lifecycle.html)</span> を参照してください。
+すべてのライフサイクルフックとそれぞれのユースケースの詳細については、<span class="composition-api">[ライフサイクルフック API リファレンス](/api/composition-api-lifecycle.html)</span><span class="options-api">[ライフサイクルフック API リファレンス](/api/options-lifecycle)</span> を参照してください。

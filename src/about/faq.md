@@ -48,7 +48,7 @@ Vue 3 は、最もパフォーマンスの高い主流のフロントエンド�
 
 上記のような統合的なベンチマークは、専用の最適化による未加工のレンダリングパフォーマンスに焦点を当てており、実際のパフォーマンス結果を完全には表していない可能性があることに注意してください。ページ読み込みのパフォーマンスがさらに気になる場合は、[WebPageTest](https://www.webpagetest.org/lighthouse) や [PageSpeed Insights](https://pagespeed.web.dev/) を使用して、今見ているこの Web サイトを検査してみてください。このウェブサイトは、SSG プリレンダリング、ページ全体のハイドレーション、SPA クライアントサイドナビゲーションなど、Vue そのものを使用しています。低速の 4G ネットワークと 4 倍の CPU スロットリングのエミュレートされた Moto G4 で、100 点のパフォーマンスを記録しています。
 
-[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)のセクションでは Vue が自動的に実行時のパフォーマンスを最適化する方法、[パフォーマンス最適化ガイド](/guide/best-practices/performance.html)では特に要求の厳しいケースで Vue アプリを最適化する方法については詳しく説明されています。
+[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)のセクションでは Vue が自動的に実行時のパフォーマンスを最適化する方法、[パフォーマンス最適化ガイド](/guide/best-practices/performance)では特に要求の厳しいケースで Vue アプリを最適化する方法については詳しく説明されています。
 
 ## Vue は軽量ですか？ {#is-vue-lightweight}
 
@@ -68,13 +68,13 @@ Svelte のような一部のフレームワークは、単一コンポーネン�
 
 - [Composition API](/guide/reusability/composables) は、ファーストクラスの TypeScript 統合を提供し、複雑なロジックを整理、抽出、再利用するためのクリーンなパターンを可能にします。
 
-- [包括的なツールサポート](/guide/scaling-up/tooling.html)により、アプリケーションの成長に伴うスムーズな開発体験を保証します。
+- [包括的なツールサポート](/guide/scaling-up/tooling)により、アプリケーションの成長に伴うスムーズな開発体験を保証します。
 
 - 参入障壁の低さと優れたドキュメントにより、新しい開発者のためのオンボーディングとトレーニングのコストが削減されます。
 
 ## Vue に貢献するにはどうすればよいですか？ {#how-do-i-contribute-to-vue}
 
-ご興味をお持ちいただき、ありがとうございます！　[コミュニティーガイド](/about/community-guide.html)をご覧ください。
+ご興味をお持ちいただき、ありがとうございます！　[コミュニティーガイド](/about/community-guide)をご覧ください。
 
 ## Options API と Composition API のどちらを使うべきですか？ {#should-i-use-options-api-or-composition-api}
 

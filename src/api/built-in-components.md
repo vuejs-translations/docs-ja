@@ -7,7 +7,7 @@ pageClass: api
 :::info 登録と使用
 組み込みコンポーネントは登録する必要なくテンプレート内で直接使用できます。ツリーシェイクも可能で、使用されたときだけビルドに含まれます。
 
-[レンダー関数](/guide/extras/render-function.html)で使用する場合は明示的にインポートする必要があります。例えば:
+[レンダー関数](/guide/extras/render-function)で使用する場合は明示的にインポートする必要があります。例えば:
 
 ```js
 import { h, Transition } from 'vue'
@@ -118,7 +118,7 @@ h(Transition, {
   </Transition>
   ```
 
-- **参照:** [`<Transition>` ガイド](/guide/built-ins/transition.html)
+- **参照:** [`<Transition>` ガイド](/guide/built-ins/transition)
 
 ## `<TransitionGroup>` {#transitiongroup}
 
@@ -164,7 +164,7 @@ h(Transition, {
   </TransitionGroup>
   ```
 
-- **参照:** [ガイド - TransitionGroup](/guide/built-ins/transition-group.html)
+- **参照:** [ガイド - TransitionGroup](/guide/built-ins/transition-group)
 
 ## `<KeepAlive>` {#keepalive}
 
@@ -257,7 +257,7 @@ h(Transition, {
   </KeepAlive>
   ```
 
-- **参照:** [ガイド - KeepAlive](/guide/built-ins/keep-alive.html)
+- **参照:** [ガイド - KeepAlive](/guide/built-ins/keep-alive)
 
 ## `<Teleport>` {#teleport}
 
@@ -299,7 +299,7 @@ h(Transition, {
   </teleport>
   ```
 
-- **参照:** [ガイド - Teleport](/guide/built-ins/teleport.html)
+- **参照:** [ガイド - Teleport](/guide/built-ins/teleport)
 
 ## `<Suspense>` <sup class="vt-badge experimental" /> {#suspense}
 
@@ -323,6 +323,6 @@ h(Transition, {
 
   `<Suspense>` は `#default` スロットと `#fallback` スロットの 2 つのスロットを受け付けます。default スロットをメモリー内にレンダリングする間、fallback スロットの内容を表示します。
 
-  デフォルトスロットのレンダリング中に非同期な依存関係（[非同期コンポーネント](/guide/components/async.html)や [`async setup()`](/guide/built-ins/suspense.html#async-setup) のコンポーネント）が発生すると、それらが全て解決するまで待ってからデフォルトスロットを表示します。
+  デフォルトスロットのレンダリング中に非同期な依存関係（[非同期コンポーネント](/guide/components/async)や [`async setup()`](/guide/built-ins/suspense.html#async-setup) のコンポーネント）が発生すると、それらが全て解決するまで待ってからデフォルトスロットを表示します。
 
-- **参照:** [ガイド - Suspense](/guide/built-ins/suspense.html)
+- **参照:** [ガイド - Suspense](/guide/built-ins/suspense)

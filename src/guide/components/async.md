@@ -110,4 +110,4 @@ const AsyncComp = defineAsyncComponent({
 
 ## Suspense とともに使用する {#using-with-suspense}
 
-非同期コンポーネントは、ビルトインコンポーネント `<Suspense>` とともに使用することもできます。`<Suspense>` と非同期コンポーネント間のインタラクションについては、[`<Suspense>` のページ](/guide/built-ins/suspense.html) にドキュメントがあります。
+非同期コンポーネントは、ビルトインコンポーネント `<Suspense>` とともに使用することもできます。`<Suspense>` と非同期コンポーネント間のインタラクションについては、[`<Suspense>` のページ](/guide/built-ins/suspense) にドキュメントがあります。

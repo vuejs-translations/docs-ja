@@ -243,7 +243,7 @@ data() {
 <span>This is a child component</span>
 ```
 
-コンポーネントの属性の継承については、[フォールスルー属性](/guide/components/attrs.html)のセクションで詳しく説明しています。
+コンポーネントの属性の継承については、[フォールスルー属性](/guide/components/attrs)のセクションで詳しく説明しています。
 
 ## インラインスタイルのバインディング {#binding-inline-styles}
 

@@ -3,8 +3,8 @@
 :::info See also
 よりリアクティビティー API を理解するために、ガイド内の次の章を読むことを推奨します:
 
-- [リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html) (API 環境設定が Composition API に設定されている場合)
-- [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
+- [リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals) (API 環境設定が Composition API に設定されている場合)
+- [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
   :::
 
 ## ref() {#ref}
@@ -109,7 +109,7 @@
   ```
 
 - **参照:**
-  - [ガイド - 算出プロパティ](/guide/essentials/computed.html)
+  - [ガイド - 算出プロパティ](/guide/essentials/computed)
   - [ガイド - 算出プロパティのデバッグ](/guide/extras/reactivity-in-depth.html#computed-debugging)
   - [ガイド - `computed()` の型付け](/guide/typescript/composition-api.html#typing-computed) <sup class="vt-badge ts" />
 
@@ -187,7 +187,7 @@
   ```
 
 - **参照:**
-  - [ガイド - リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html)
+  - [ガイド - リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals)
   - [ガイド - `reactive()` の型付け](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />
 
 ## readonly() {#readonly}
@@ -483,5 +483,5 @@
 
 - **参照**:
 
-  - [ガイド - ウォッチャー](/guide/essentials/watchers.html)
+  - [ガイド - ウォッチャー](/guide/essentials/watchers)
   - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth.html#watcher-debugging)

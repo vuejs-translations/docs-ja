@@ -67,7 +67,7 @@
   <component :is="href ? 'a' : 'span'"></component>
   ```
 
-  [ビルトインのコンポーネント](./built-in-components.html)はすべて `is` に渡すことができますが、名前で渡したい場合は登録しなければなりません。例えば:
+  [ビルトインのコンポーネント](./built-in-components)はすべて `is` に渡すことができますが、名前で渡したい場合は登録しなければなりません。例えば:
 
   ```vue
   <script>
@@ -138,7 +138,7 @@
 
   Vue テンプレートの `<slot>` 要素は JavaScript にコンパイルされているので、[ネイティブの `<slot>` 要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/slot)と混同しないように注意してください。
 
-- **参照:** [コンポーネント - スロット](/guide/components/slots.html)
+- **参照:** [コンポーネント - スロット](/guide/components/slots)
 
 ## `<template>` {#template}
 

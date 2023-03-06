@@ -42,7 +42,7 @@ export default {
 
 ### `<script>` {#script}
 
-- 各 `*.vue` ファイルには、一度に最大 1 つの `<script>` ブロックを含めることができます（[`<script setup>`](/api/sfc-script-setup.html) は除く）。
+- 各 `*.vue` ファイルには、一度に最大 1 つの `<script>` ブロックを含めることができます（[`<script setup>`](/api/sfc-script-setup) は除く）。
 
 - スクリプトは、ES モジュールとして実行されます。
 

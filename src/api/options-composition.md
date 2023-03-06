@@ -52,7 +52,7 @@
 
   上記の例では、提供された `msg` はリアクティブではないことに注意してください。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject.html#working-with-reactivity)を参照してください。
 
-- **参照:** [Provide / Inject](/guide/components/provide-inject.html)
+- **参照:** [Provide / Inject](/guide/components/provide-inject)
 
 ## inject {#inject}
 
@@ -167,7 +167,7 @@
   }
   ```
 
-- **参照:** [Provide / Inject](/guide/components/provide-inject.html)
+- **参照:** [Provide / Inject](/guide/components/provide-inject)
 
 ## mixins {#mixins}
 
@@ -188,7 +188,7 @@
   ミックスインフックは提供された順に呼び出され、コンポーネント自身のフックの前に呼び出されます。
 
   :::warning もう推奨されていません
-  Vue 2 では、ミックスインはコンポーネントロジックの再利用可能なチャンクを作成するための主要なメカニズムでした。ミックスインは Vue 3 でも引き続きサポートされていますが、コンポーネント間でのコード再利用には、[Composition API](/guide/reusability/composables.html) が好ましいアプローチとなっています。
+  Vue 2 では、ミックスインはコンポーネントロジックの再利用可能なチャンクを作成するための主要なメカニズムでした。ミックスインは Vue 3 でも引き続きサポートされていますが、コンポーネント間でのコード再利用には、[Composition API](/guide/reusability/composables) が好ましいアプローチとなっています。
   :::
 
 - **例:**

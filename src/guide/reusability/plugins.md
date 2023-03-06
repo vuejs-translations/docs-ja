@@ -14,7 +14,7 @@ app.use(myPlugin, {
 })
 ```
 
-プラグインの定義は `install()` メソッドを公開するオブジェクトか、あるいは単にインストール関数として動作する関数です。インストール関数は[アプリケーションインスタンス](/api/application.html)と、`app.use()` に渡された追加のオプション（もしあれば）を受け取ります:
+プラグインの定義は `install()` メソッドを公開するオブジェクトか、あるいは単にインストール関数として動作する関数です。インストール関数は[アプリケーションインスタンス](/api/application)と、`app.use()` に渡された追加のオプション（もしあれば）を受け取ります:
 
 ```js
 const myPlugin = {
@@ -28,7 +28,7 @@ const myPlugin = {
 
 1. [`app.component()`](/api/application.html#app-component) や [`app.directive()`](/api/application.html#app-directive) を使って、1 つもしくは複数のグローバルなコンポーネントやカスタムディレクティブを登録する。
 
-2. [`app.provide()`](/api/application.html#app-provide) を呼び出して、アプリケーション全体でリソースを[注入できる](/guide/components/provide-inject.html)ようにする。
+2. [`app.provide()`](/api/application.html#app-provide) を呼び出して、アプリケーション全体でリソースを[注入できる](/guide/components/provide-inject)ようにする。
 
 3. [`app.config.globalProperties`](/api/application.html#app-config-globalproperties) にグローバルなインスタンスプロパティやメソッドを追加する。
 

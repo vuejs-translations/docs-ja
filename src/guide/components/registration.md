@@ -8,7 +8,7 @@ Vue のコンポーネントをテンプレートで使用する時は、それ�
 
 ## グローバル登録 {#global-registration}
 
-開発中の [Vue アプリケーション](/guide/essentials/application.html)でグローバルにコンポーネントを利用できるようにするには、以下に示す `app.component()` メソッドを使用します:
+開発中の [Vue アプリケーション](/guide/essentials/application)でグローバルにコンポーネントを利用できるようにするには、以下に示す `app.component()` メソッドを使用します:
 
 ```js
 import { createApp } from 'vue'

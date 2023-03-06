@@ -212,7 +212,7 @@ Vue のリアクティビティーシステムは、主にランタイムベー�
 
 [Svelte](https://svelte.dev/) のような一部のフレームワークは、コンパイル時のリアクティビティーを実装することで、そのような制限を克服することを選択しています。リアクティビティーをシミュレートするためにコードを分析および変換します。コンパイルステップにより、フレームワークは JavaScript 自体のセマンティクスを変更できます。例えば、依存関係の解析やローカル定義された変数へのアクセスに関する作用トリガーを実行するコードを暗黙のうちに注入できます。欠点は、このような変換にはビルドステップが必要であり、また JavaScript のセマンティクスを変更するということは、本質的には「JavaScript のように見えるが別のものにコンパイルされる言語を作成すること」になります。
 
-Vue チームは、[Reactivity Transform](/guide/extras/reactivity-transform.html) という実験的な機能を通じてこの方向性を模索しましたが、最終的には[こういった理由](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028)で、このプロジェクトには適していないだろうと判断しました。
+Vue チームは、[Reactivity Transform](/guide/extras/reactivity-transform) という実験的な機能を通じてこの方向性を模索しましたが、最終的には[こういった理由](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028)で、このプロジェクトには適していないだろうと判断しました。
 
 ## リアクティビティーのデバッグ {#reactivity-debugging}
 

@@ -35,7 +35,7 @@
   const app = createApp(App)
   ```
 
-- **参照:** [ガイド - Vue アプリケーションの作成](/guide/essentials/application.html)
+- **参照:** [ガイド - Vue アプリケーションの作成](/guide/essentials/application)
 
 ## createSSRApp() {#createssrapp}
 
@@ -145,7 +145,7 @@
   </div>
 
 - **参照:**
-  - [Provide / Inject](/guide/components/provide-inject.html)
+  - [Provide / Inject](/guide/components/provide-inject)
   - [アプリケーションレベルの Provide](/guide/components/provide-inject.html#app-level-provide)
 
 ## app.component() {#app-component}
@@ -177,7 +177,7 @@
   const MyComponent = app.component('my-component')
   ```
 
-- **参照:** [コンポーネントの登録](/guide/components/registration.html)
+- **参照:** [コンポーネントの登録](/guide/components/registration)
 
 ## app.directive() {#app-directive}
 
@@ -215,11 +215,11 @@
   const myDirective = app.directive('my-directive')
   ```
 
-- **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives.html)
+- **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives)
 
 ## app.use() {#app-use}
 
-[プラグイン](/guide/reusability/plugins.html)をインストールします。
+[プラグイン](/guide/reusability/plugins)をインストールします。
 
 - **型**
 
@@ -250,7 +250,7 @@
   app.use(MyPlugin)
   ```
 
-- **参照:** [プラグイン](/guide/reusability/plugins.html)
+- **参照:** [プラグイン](/guide/reusability/plugins)
 
 ## app.mixin() {#app-mixin}
 
@@ -259,7 +259,7 @@
 :::warning 非推奨
 ミックインはエコシステムのライブラリーで幅広く使用されていることから、主に後方互換性のため、Vue 3 でサポートしています。ミックイン (特にグローバルミックスイン) はアプリケーションコードでは避けるべきです。
 
-ロジックを再利用するには、代わりに[コンポーザブル](/guide/reusability/composables.html)を使用してください。
+ロジックを再利用するには、代わりに[コンポーザブル](/guide/reusability/composables)を使用してください。
 :::
 
 - **型**
@@ -272,7 +272,7 @@
 
 ## app.version {#app-version}
 
-アプリケーションを作成した Vue のバージョンを提供します。Vue のバージョンの違いに応じた条件付きロジックが必要となる[プラグイン](/guide/reusability/plugins.html)内で有用となります。
+アプリケーションを作成した Vue のバージョンを提供します。Vue のバージョンの違いに応じた条件付きロジックが必要となる[プラグイン](/guide/reusability/plugins)内で有用となります。
 
 - **型**
 
@@ -391,7 +391,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 - **型**: `boolean`
 
-- **参照:** [ガイド - パフォーマンス](/guide/best-practices/performance.html)
+- **参照:** [ガイド - パフォーマンス](/guide/best-practices/performance)
 
 ## app.config.compilerOptions {#app-config-compileroptions}
 
@@ -426,7 +426,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   }
   ```
 
-- **参照:** [Vue および web コンポーネント](/guide/extras/web-components.html)
+- **参照:** [Vue および web コンポーネント](/guide/extras/web-components)
 
 ### app.config.compilerOptions.whitespace {#app-config-compileroptions-whitespace}
 

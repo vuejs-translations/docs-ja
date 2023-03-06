@@ -45,7 +45,7 @@
   data: (vm) => ({ a: vm.myProp })
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## props {#props}
 
@@ -126,7 +126,7 @@
   ```
 
 - **参照:**
-  - [ガイド - プロパティ](/guide/components/props.html)
+  - [ガイド - プロパティ](/guide/components/props)
   - [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api.html#typing-component-props) <sup class="vt-badge ts" />
 
 ## computed {#computed}
@@ -208,7 +208,7 @@
   ```
 
 - **参照:**
-  - [ガイド - 算出プロパティ](/guide/essentials/computed.html)
+  - [ガイド - 算出プロパティ](/guide/essentials/computed)
   - [ガイド - 算出プロパティの型付け](/guide/typescript/options-api.html#typing-computed-properties) <sup class="vt-badge ts" />
 
 ## methods {#methods}
@@ -250,7 +250,7 @@
   }
   ```
 
-- **参照:** [イベントハンドリング](/guide/essentials/event-handling.html)
+- **参照:** [イベントハンドリング](/guide/essentials/event-handling)
 
 ## watch {#watch}
 
@@ -368,7 +368,7 @@
   }
   ```
 
-- **参照:** [ウォッチャー](/guide/essentials/watchers.html)
+- **参照:** [ウォッチャー](/guide/essentials/watchers)
 
 ## emits {#emits}
 
@@ -397,7 +397,7 @@
 
   バリデーション関数は、コンポーネントの `$emit` 呼び出しに渡された追加の引数を受け取ります。 たとえば、`this.$emit('foo', 1)` が呼び出された場合、対応する `foo` のバリデータは引数 `1` を受け取ります。バリデータ関数は、イベントの引数が妥当かどうかを示す真偽値を返す必要があります。
 
-  `emits` オプションは、どのイベントリスナーが（ネイティブ DOM イベントリスナーではなく）コンポーネントイベントリスナーと見なされるかに影響することに注意してください。宣言されたイベントのリスナーは、コンポーネントの `$attrs` オブジェクトから削除されるため、コンポーネントのルート要素には渡されません。 詳細については、[フォールスルー属性](/guide/components/attrs.html) を参照してください。
+  `emits` オプションは、どのイベントリスナーが（ネイティブ DOM イベントリスナーではなく）コンポーネントイベントリスナーと見なされるかに影響することに注意してください。宣言されたイベントのリスナーは、コンポーネントの `$attrs` オブジェクトから削除されるため、コンポーネントのルート要素には渡されません。 詳細については、[フォールスルー属性](/guide/components/attrs) を参照してください。
 
 - **例**
 
@@ -434,7 +434,7 @@
   ```
 
 * **参照:**
-  - [ガイド - フォールスルー属性](/guide/components/attrs.html)
+  - [ガイド - フォールスルー属性](/guide/components/attrs)
   - [ガイド - コンポーネントの emits の型付け](/guide/typescript/options-api.html#typing-component-emits) <sup class="vt-badge ts" />
 
 ## expose {#expose}

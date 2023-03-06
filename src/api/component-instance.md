@@ -55,7 +55,7 @@
   - 複数のルートノードを持つコンポーネントの場合、`$el` は Vue が DOM 内のコンポーネントの位置を追跡するために使用するプレースホルダ DOM ノード（テキストノード、または SSR ハイドレーションモードではコメントノード）になります。
 
   :::tip
-  一貫性を保つため、要素への直接アクセスは `$el` に頼らず、[テンプレート参照](/guide/essentials/template-refs.html)を使用することが推奨されます。
+  一貫性を保つため、要素への直接アクセスは `$el` に頼らず、[テンプレート参照](/guide/essentials/template-refs)を使用することが推奨されます。
   :::
 
 ## $options {#options}
@@ -117,7 +117,7 @@
 
 ## $slots {#slots}
 
-親コンポーネントから渡された[スロット](/guide/components/slots.html)を表すオブジェクト。
+親コンポーネントから渡された[スロット](/guide/components/slots)を表すオブジェクト。
 
 - **型**
 
@@ -131,7 +131,7 @@
 
 - **詳細**
 
-  通常、[レンダー関数](/guide/extras/render-function.html) を手動で作成するときに使用しますが、スロットが存在するかどうかを検出するためにも使用できます。
+  通常、[レンダー関数](/guide/extras/render-function) を手動で作成するときに使用しますが、スロットが存在するかどうかを検出するためにも使用できます。
 
   各スロットは、そのスロットの名前に対応するキーの下にある vnode の配列を返す関数として `this.$slots` で公開されます。デフォルトのスロットは `this.$slots.default` として公開されます。
 
@@ -141,7 +141,7 @@
 
 ## $refs {#refs}
 
-[テンプレート参照](/guide/essentials/template-refs.html)を通じて登録された、DOM 要素およびコンポーネントインスタンスのオブジェクト。
+[テンプレート参照](/guide/essentials/template-refs)を通じて登録された、DOM 要素およびコンポーネントインスタンスのオブジェクト。
 
 - **型**
 
@@ -153,7 +153,7 @@
 
 - **参照:**
 
-  - [テンプレート参照](/guide/essentials/template-refs.html)
+  - [テンプレート参照](/guide/essentials/template-refs)
   - [特別な属性 - ref](./built-in-special-attributes.md#ref)
 
 ## $attrs {#attrs}
@@ -170,13 +170,13 @@
 
 - **詳細**
 
-  [フォールスルー属性](/guide/components/attrs.html)は、親コンポーネントから渡される属性やイベントハンドラーで、prop や子コンポーネントから発行されたイベントとして宣言されていないものです。
+  [フォールスルー属性](/guide/components/attrs)は、親コンポーネントから渡される属性やイベントハンドラーで、prop や子コンポーネントから発行されたイベントとして宣言されていないものです。
 
   デフォルトでは、ルート要素が 1 つしかない場合は `$attrs` に含まれるすべての要素がコンポーネントのルート要素に自動的に継承されます。コンポーネントに複数のルートノードがある場合、この動作は無効になります。また、[`inheritAttrs`](./options-misc.html#inheritattrs) オプションを使って明示的に無効化できます。
 
 - **参照:**
 
-  - [フォールスルー属性](/guide/components/attrs.html)
+  - [フォールスルー属性](/guide/components/attrs)
 
 ## $watch() {#watch}
 
@@ -259,7 +259,7 @@
 
 - **参照:**
   - [オプション - `watch`](/api/options-state.html#watch)
-  - [ガイド - ウォッチャー](/guide/essentials/watchers.html)
+  - [ガイド - ウォッチャー](/guide/essentials/watchers)
 
 ## $emit() {#emit}
 
@@ -288,7 +288,7 @@
 
 - **参照:**
 
-  - [コンポーネント - イベント](/guide/components/events.html)
+  - [コンポーネント - イベント](/guide/components/events)
   - [`emits` オプション](./options-state.html#emits)
 
 ## $forceUpdate() {#forceupdate}

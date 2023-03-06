@@ -14,13 +14,13 @@ outline: deep
 
 Composition API はオプションを宣言する代わりに関数をインポートすることで Vue コンポーネントを書くことができる API セットのことです。以下に記載する API を含む包括的な用語です:
 
-- [リアクティビティー API](/api/reactivity-core.html) 、例: `ref()` や `reactive()` で、リアクティブな状態、算出状態、ウォッチャーを直接作成できます。
+- [リアクティビティー API](/api/reactivity-core) 、例: `ref()` や `reactive()` で、リアクティブな状態、算出状態、ウォッチャーを直接作成できます。
 
-- [ライフサイクルフック](/api/composition-api-lifecycle.html)、 例: `onMounted()` や `onUnmounted()` で、コンポーネントのライフサイクルにプログラム的なフックを設定します。
+- [ライフサイクルフック](/api/composition-api-lifecycle)、 例: `onMounted()` や `onUnmounted()` で、コンポーネントのライフサイクルにプログラム的なフックを設定します。
 
-- [依存関係の注入](/api/composition-api-dependency-injection.html)、すなわち `provide()` と `inject()` によって、 リアクティビティー API を使用しながら Vue の依存関係注入システムを利用できます。
+- [依存関係の注入](/api/composition-api-dependency-injection)、すなわち `provide()` と `inject()` によって、 リアクティビティー API を使用しながら Vue の依存関係注入システムを利用できます。
 
-Composition API は Vue 3 と [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html) の組み込み機能です。Vue 2 の古いバージョンでは、公式にメンテナンスされている[`@vue/composition-api`](https://github.com/vuejs/composition-api)プラグインを使用してください。Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup.html) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
+Composition API は Vue 3 と [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html) の組み込み機能です。Vue 2 の古いバージョンでは、公式にメンテナンスされている[`@vue/composition-api`](https://github.com/vuejs/composition-api)プラグインを使用してください。Vue 3 においては、 単一ファイルコンポーネント内で  [`<script setup>`](/api/sfc-script-setup) 構文を書くことで使えます。以下は Composition API を使った簡単なコンポーネントの例です。
 
 ```vue
 <script setup>
@@ -53,7 +53,7 @@ Vue の Composition API の使い方について興味があるようでした�
 
 ### より良いロジックの再利用 {#better-logic-reuse}
 
-Composition API の最大の利点は [コンポーザブル関数](/guide/reusability/composables.html)の形式で、クリーンかつ効率的にロジックを再利用できることです。これは Options API の主要なロジック再利用メカニズムであった[ミックスインの欠点を全て](/guide/reusability/composables.html#vs-mixins)解決しています。
+Composition API の最大の利点は [コンポーザブル関数](/guide/reusability/composables)の形式で、クリーンかつ効率的にロジックを再利用できることです。これは Options API の主要なロジック再利用メカニズムであった[ミックスインの欠点を全て](/guide/reusability/composables.html#vs-mixins)解決しています。
 
 Composition API のロジック再利用性は [VueUse](https://vueuse.org/) のようなすばらしいコミュニティープロジェクトを生み出し、コンポーザブルの利便性を広める存在を増やし続けています。クリーンなメカニズムによってサードパーティーサービス・ライブラリーと Vue のリアクティブ機能との安定した統合も容易にしてくれています、例えば[イミュータブルなデータ](/guide/extras/reactivity-in-depth.html#immutable-data)、[ステートマシン](/guide/extras/reactivity-in-depth.html#state-machines)、そして [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs) などです。
 
@@ -112,7 +112,7 @@ Composition API だけを使用したい場合は(上にあげたオプション
 
 ### 両方の API を一緒に使うことはできますか? {#can-i-use-both-apis-together}
 
-はい。 Options API のコンポーネント内で [`setup()`](/api/composition-api-setup.html) オプションを使用することで Composition API を使うことができます。
+はい。 Options API のコンポーネント内で [`setup()`](/api/composition-api-setup) オプションを使用することで Composition API を使うことができます。
 
 しかしながら、この方法は既存の Options API コードベースがあり、Composition API で書かれた新しい機能/外部ライブラリーと統合する必要がある場合にのみ採ることを推奨します。
 

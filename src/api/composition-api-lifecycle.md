@@ -1,7 +1,7 @@
 # Composition API: ライフサイクルフック {#composition-api-lifecycle-hooks}
 
 :::info 使用上の注意
-このページに記載されているすべての API は、コンポーネントの `setup()` フェーズで同期的に呼び出される必要があります。詳細については、[ガイド - ライフサイクルフック](/guide/essentials/lifecycle.html)を参照してください。
+このページに記載されているすべての API は、コンポーネントの `setup()` フェーズで同期的に呼び出される必要があります。詳細については、[ガイド - ライフサイクルフック](/guide/essentials/lifecycle)を参照してください。
 :::
 
 ## onMounted() {#onmounted}
@@ -22,7 +22,7 @@
 
   - そのコンポーネント自身の DOM ツリーが作成され、親コンテナーに挿入された時。アプリケーションのルートコンテナが document 内にある場合のみ、そのコンポーネントの DOM ツリーも document 内にあることを保証することに注意してください。
 
-  このフックは、通常、コンポーネントのレンダリングされた DOM にアクセスする必要がある副作用を実行する場合や、[サーバーレンダリングされるアプリケーション](/guide/scaling-up/ssr.html)において DOM 関連のコードをクライアントに限定する場合に使用されます。
+  このフックは、通常、コンポーネントのレンダリングされた DOM にアクセスする必要がある副作用を実行する場合や、[サーバーレンダリングされるアプリケーション](/guide/scaling-up/ssr)において DOM 関連のコードをクライアントに限定する場合に使用されます。
 
   **このフックはサーバーサイドレンダリング時には呼び出されません。**
 
@@ -241,7 +241,7 @@
   }
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## onRenderTriggered() <sup class="vt-badge dev-only" /> {#onrendertriggered}
 
@@ -267,7 +267,7 @@
   }
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)
+- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## onActivated() {#onactivated}
 
@@ -338,4 +338,4 @@
   </script>
   ```
 
-- **参照:** [サーバーサイドレンダリング](/guide/scaling-up/ssr.html)
+- **参照:** [サーバーサイドレンダリング](/guide/scaling-up/ssr)

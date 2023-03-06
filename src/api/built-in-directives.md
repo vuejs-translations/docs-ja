@@ -165,7 +165,7 @@
   また、`v-for` はネイティブの `Map` や `Set` を含む、[反復処理プロトコル](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol)を実装した値に対しても動作させることができます。
 
 - **参照:**
-  - [リストレンダリング](/guide/essentials/list.html)
+  - [リストレンダリング](/guide/essentials/list)
 
 ## v-on {#v-on}
 
@@ -250,7 +250,7 @@
   ```
 
 - **参照:**
-  - [イベントハンドリング](/guide/essentials/event-handling.html)
+  - [イベントハンドリング](/guide/essentials/event-handling)
   - [コンポーネント - カスタムイベント](/guide/essentials/component-basics.html#listening-to-events)
 
 ## v-bind {#v-bind}
@@ -337,7 +337,7 @@
   文字列テンプレートを使用する場合や、ビルドステップでテンプレートを事前コンパイルする場合は、`.camel` は必要ありません。
 
 - **参照:**
-  - [クラスとスタイルのバインディング](/guide/essentials/class-and-style.html)
+  - [クラスとスタイルのバインディング](/guide/essentials/class-and-style)
   - [コンポーネント - プロパティ渡しの詳細](/guide/components/props.html#prop-passing-details)
 
 ## v-model {#v-model}
@@ -361,8 +361,8 @@
 
 - **参照:**
 
-  - [フォーム入力バインディング](/guide/essentials/forms.html)
-  - [コンポーネントのイベント - `v-model` での使用](/guide/components/v-model.html)
+  - [フォーム入力バインディング](/guide/essentials/forms)
+  - [コンポーネントのイベント - `v-model` での使用](/guide/components/v-model)
 
 ## v-slot {#v-slot}
 
@@ -413,7 +413,7 @@
   ```
 
 - **参照:**
-  - [コンポーネント - スロット](/guide/components/slots.html)
+  - [コンポーネント - スロット](/guide/components/slots)
 
 ## v-pre {#v-pre}
 

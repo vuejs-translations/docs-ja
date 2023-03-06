@@ -294,7 +294,7 @@ computed: {
 
 アプリケーションの場合、トップレベルの `App` コンポーネントとレイアウトコンポーネントのスタイルはグローバルであってもかまいませんが、その他のコンポーネントは常にスコープされるべきです。
 
-これは、[単一ファイルコンポーネント](/guide/scaling-up/sfc.html) にのみ関連しています。これは、[`scoped` 属性](https://vue-loader.vuejs.org/en/features/scoped-css.html) を使用することを必要としません。スコープは、[CSS モジュール](https://vue-loader.vuejs.org/en/features/css-modules.html) や [BEM](http://getbem.com/) のようなクラスベースの戦略、あるいは他のライブラリーや規約を利用することができます。
+これは、[単一ファイルコンポーネント](/guide/scaling-up/sfc.html) にのみ関連しています。これは、[`scoped` 属性](https://vue-loader.vuejs.org/en/features/scoped-css.html) を使用することを必要としません。スコープは、[CSS モジュール](https://vue-loader.vuejs.org/en/features/css-modules) や [BEM](http://getbem.com/) のようなクラスベースの戦略、あるいは他のライブラリーや規約を利用することができます。
 
 **しかし、コンポーネントライブラリーは `scoped` 属性を使用する代わりに、クラスベースの戦略を取るべきです。**
 

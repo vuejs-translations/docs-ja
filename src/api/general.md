@@ -165,7 +165,7 @@ Vue の現在のバージョンを公開します。
   }
   ```
 
-- **参照:** [ガイド - 非同期コンポーネント](/guide/components/async.html)
+- **参照:** [ガイド - 非同期コンポーネント](/guide/components/async)
 
 ## defineCustomElement() {#definecustomelement}
 

@@ -14,9 +14,9 @@ Vue には、状態の変化に応じてトランジションやアニメーシ�
 
 - `<Transition>` は、要素やコンポーネントが DOM に enter (挿入) 、leave (削除) される時にアニメーションを適用するために提供されます。これについては、このページ内で説明しています。
 
-- `<TransitionGroup>` は、要素やコンポーネントが `v-for` で作成されたリスト内に inserted into (追加)、removed from (削除)、moved within (移動) される時にアニメーションを適用するために提供されます。こちらについては、[次の章](/guide/built-ins/transition-group.html) で説明します。
+- `<TransitionGroup>` は、要素やコンポーネントが `v-for` で作成されたリスト内に inserted into (追加)、removed from (削除)、moved within (移動) される時にアニメーションを適用するために提供されます。こちらについては、[次の章](/guide/built-ins/transition-group) で説明します。
 
-この 2 つのコンポーネント以外にも、CSS クラスをトグルしたりスタイルバインディングによるステートドリブンアニメーションなど、Vue では他のテクニックを使ってアニメーションを適用することもできます。これらのテクニックは、[アニメーションテクニック](/guide/extras/animation.html) の章で説明されています。
+この 2 つのコンポーネント以外にも、CSS クラスをトグルしたりスタイルバインディングによるステートドリブンアニメーションなど、Vue では他のテクニックを使ってアニメーションを適用することもできます。これらのテクニックは、[アニメーションテクニック](/guide/extras/animation) の章で説明されています。
 
 ## `<Transition>` コンポーネント {#the-transition-component}
 

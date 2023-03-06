@@ -58,8 +58,8 @@
   単一ファイルコンポーネントのような、あらかじめコンパイルされたテンプレートは、ビルド時に `render` オプションにコンパイルされます。`render` と `template` の両方がコンポーネント内に存在する場合は `render` の方が優先されます。
 
 - **参照:**
-  - [レンダリングの仕組み](/guide/extras/rendering-mechanism.html)
-  - [レンダー関数](/guide/extras/render-function.html)
+  - [レンダリングの仕組み](/guide/extras/rendering-mechanism)
+  - [レンダー関数](/guide/extras/render-function)
 
 ## compilerOptions {#compileroptions}
 

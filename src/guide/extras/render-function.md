@@ -6,7 +6,7 @@ outline: deep
 
 Vue は、ほとんどの場合、アプリケーションを構築するためにテンプレートを使用することを推奨しています。しかし、JavaScript の完全なプログラムの力が必要な状況もあります。そこで、**レンダー関数** を使用します。
 
-> 仮想 DOM やレンダー関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism.html)の章を必ずお読みください。
+> 仮想 DOM やレンダー関数の概念に初めて触れる方は、まず[レンダリングの仕組み](/guide/extras/rendering-mechanism)の章を必ずお読みください。
 
 ## 基本的な使い方 {#basic-usage}
 
@@ -559,7 +559,7 @@ h(MyComponent, null, {
 
 ### 組み込みコンポーネント {#built-in-components}
 
-レンダー関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components.html) をインポートする必要があります。
+レンダー関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components) をインポートする必要があります。
 
 <div class="composition-api">
 
@@ -687,7 +687,7 @@ MyComponent.emits = ['click']
 
 `props` オプションが指定されていない場合、関数に渡される `props` オブジェクトには、`attrs` と同じようにすべての属性が含まれます。`props` オプションが指定されない限り、prop の名前はキャメルケースに正規化されません。
 
-明示的に `props` を指定した関数型コンポーネントの場合、[属性のフォールスルー](/guide/components/attrs.html)は通常のコンポーネントとほぼ同じように動作します。しかし、`props` を明示的に指定しない関数型コンポーネントの場合は、`class`、`style`、`onXxx` イベントリスナーのみがデフォルトで `attrs` から継承されます。どちらの場合でも、 `inheritAttrs` を `false` に設定することで、属性の継承を無効化できます。
+明示的に `props` を指定した関数型コンポーネントの場合、[属性のフォールスルー](/guide/components/attrs)は通常のコンポーネントとほぼ同じように動作します。しかし、`props` を明示的に指定しない関数型コンポーネントの場合は、`class`、`style`、`onXxx` イベントリスナーのみがデフォルトで `attrs` から継承されます。どちらの場合でも、 `inheritAttrs` を `false` に設定することで、属性の継承を無効化できます。
 
 ```js
 MyComponent.inheritAttrs = false

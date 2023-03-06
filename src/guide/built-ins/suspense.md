@@ -32,7 +32,7 @@ outline: deep
 
 1. 非同期 `setup()` フックを持つコンポーネント。これには、トップレベルの `await` がある `<script setup>` を使用したコンポーネントも含まれます。
 
-2. [非同期コンポーネント](/guide/components/async.html).
+2. [非同期コンポーネント](/guide/components/async).
 
 ### `async setup()` {#async-setup}
 

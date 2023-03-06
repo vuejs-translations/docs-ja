@@ -75,7 +75,7 @@ import { reactive } from 'vue'
 const state = reactive({ count: 0 })
 ```
 
-リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[リアクティビティーの探求](/guide/extras/reactivity-in-depth.html)で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
+リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[リアクティビティーの探求](/guide/extras/reactivity-in-depth)で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
 
 参照: [`reactive()` の型付け](/guide/typescript/composition-api.html#typing-reactive) <sup class="vt-badge ts" />。
 
@@ -425,7 +425,7 @@ callSomeFunction(obj.foo)
 const { foo, bar } = obj
 ```
 
-つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを[コンポーザブル関数](/guide/reusability/composables.html)に抽出する際に頻繁に使用されるため、非常に重要となります。
+つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを[コンポーザブル関数](/guide/reusability/composables)に抽出する際に頻繁に使用されるため、非常に重要となります。
 
 ### Ref Unwrapping in Templates \*\* {#ref-unwrapping-in-templates}
 

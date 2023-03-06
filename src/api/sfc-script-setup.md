@@ -53,7 +53,7 @@ import { capitalize } from './helpers'
 
 ## リアクティビティー {#reactivity}
 
-リアクティブな状態は [リアクティビティー API](./reactivity-core.html) を使って明示的に作成する必要があります。`setup()` 関数から返された値と同じように、テンプレート内で参照されるときに ref は自動的にアンラップされます:
+リアクティブな状態は [リアクティビティー API](./reactivity-core) を使って明示的に作成する必要があります。`setup()` 関数から返された値と同じように、テンプレート内で参照されるときに ref は自動的にアンラップされます:
 
 ```vue
 <script setup>
@@ -244,7 +244,7 @@ export default {
 - `props` や `emits` のような `<script setup>` で定義できるオプションは、`<script>` セクションで定義**しない**でください。
 - `<script setup>` 内で作成された変数は、コンポーネントインスタンスのプロパティとして追加されないので、Options API からはアクセスできません。このように API を混在させることは、強くお勧めしません。
 
-もし、サポートされていないシナリオに遭遇した場合は、`<script setup>` の代わりに、明示的な [`setup()`](/api/composition-api-setup.html) 関数に切り替えることを検討する必要があります。
+もし、サポートされていないシナリオに遭遇した場合は、`<script setup>` の代わりに、明示的な [`setup()`](/api/composition-api-setup) 関数に切り替えることを検討する必要があります。
 
 ## トップレベルの `await` {#top-level-await}
 

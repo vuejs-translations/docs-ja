@@ -8,10 +8,10 @@
 2. Options API コンポーネント内の Composition API に基づくコードの統合
 
 :::info Note
-単一ファイルコンポーネントで Composition API を使用する場合は、より簡潔で人間工学的な構文のために、[`<script setup>`](/api/sfc-script-setup.html) を強くお勧めします。
+単一ファイルコンポーネントで Composition API を使用する場合は、より簡潔で人間工学的な構文のために、[`<script setup>`](/api/sfc-script-setup) を強くお勧めします。
 :::
 
-[リアクティビティー API](./reactivity-core.html) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
+[リアクティビティー API](./reactivity-core) を使ってリアクティブな状態を宣言したり、`setup()` からオブジェクトを返すことによってそれらを公開することができます。返されたオブジェクトのプロパティは、コンポーネントインスタンス上でも利用することができます (他のオプションが使用されている場合):
 
 ```vue
 <script>
@@ -42,7 +42,7 @@ export default {
 
 `setup()` 自体はコンポーネントインスタンスにアクセスできません。- `this` は `setup()` 内では `undefined` 値を持ちます。Options API から Composition API で公開された値にアクセスすることができますが、その逆はできません。
 
-`setup()` は**同期的**にオブジェクトを返さなければなりません。`async setup()` が使用できるのは、そのコンポーネントが [Suspense](../guide/built-ins/suspense.html) コンポーネントの子孫であるときだけです。
+`setup()` は**同期的**にオブジェクトを返さなければなりません。`async setup()` が使用できるのは、そのコンポーネントが [Suspense](../guide/built-ins/suspense) コンポーネントの子孫であるときだけです。
 
 ## プロパティへのアクセス {#accessing-props}
 
@@ -134,7 +134,7 @@ export default {
 
 ## レンダー関数での使用 {#usage-with-render-functions}
 
-`setup` は同じスコープで宣言されたリアクティブなステートを直接利用することができる [レンダー関数](/guide/extras/render-function.html)を返すこともできます:
+`setup` は同じスコープで宣言されたリアクティブなステートを直接利用することができる [レンダー関数](/guide/extras/render-function)を返すこともできます:
 
 ```js{6}
 import { h, ref } from 'vue'
