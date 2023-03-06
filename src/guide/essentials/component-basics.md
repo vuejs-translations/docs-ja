@@ -179,7 +179,7 @@ SFC では、ネイティブの HTML 要素と区別するために、子コン�
 
 ブログを構築する場合、ブログの記事を表示するコンポーネントが必要になるかと思います。すべてのブログ記事が同じレイアウトで表示されるようにしたいのですが、コンテンツは異なっています。このようなコンポーネントは、表示したい特定の記事のタイトルや内容などのデータを渡すことができない限り役に立ちません。そこでプロパティの出番です。
 
-プロパティはコンポーネントに登録できるカスタム属性のことです。ブログ記事コンポーネントにタイトルを渡すには、<span class="options-api">[`props`](/api/options-state#props) オプション</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span>を使って、このコンポーネントが受け取るプロパティのリストを宣言する必要があります:
+プロパティはコンポーネントに登録できるカスタム属性のことです。ブログ記事コンポーネントにタイトルを渡すには、<span class="options-api">[`props`](/api/options-state#props) オプション</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup#defineprops-defineemits) マクロ</span>を使って、このコンポーネントが受け取るプロパティのリストを宣言する必要があります:
 
 <div class="options-api">
 
@@ -391,7 +391,7 @@ const postFontSize = ref(1)
 
 </div>
 
-オプションとして <span class="options-api">[`emits`](/api/options-state#emits) オプション</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup.html#defineprops-defineemits) マクロ</span>を使って発行するイベントを宣言することができます:
+オプションとして <span class="options-api">[`emits`](/api/options-state#emits) オプション</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup#defineprops-defineemits) マクロ</span>を使って発行するイベントを宣言することができます:
 
 <div class="options-api">
 

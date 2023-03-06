@@ -163,7 +163,7 @@
 
 ## isProxy() {#isproxy}
 
-オブジェクトが [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](./reactivity-advanced.html#shallowreactive), [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly) によって作られたプロキシかどうかをチェックします。
+オブジェクトが [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core#readonly), [`shallowReactive()`](./reactivity-advanced#shallowreactive), [`shallowReadonly()`](./reactivity-advanced#shallowreadonly) によって作られたプロキシかどうかをチェックします。
 
 - **型**
 
@@ -173,7 +173,7 @@
 
 ## isReactive() {#isreactive}
 
-オブジェクトが [`reactive()`](./reactivity-core#reactive) または [`shallowReactive()`](./reactivity-advanced.html#shallowreactive) によって作られたプロキシかどうかをチェックします。
+オブジェクトが [`reactive()`](./reactivity-core#reactive) または [`shallowReactive()`](./reactivity-advanced#shallowreactive) によって作られたプロキシかどうかをチェックします。
 
 - **型**
 
@@ -185,7 +185,7 @@
 
 渡された値が読み取り専用オブジェクトであるかどうかをチェックします。読み取り専用オブジェクトのプロパティは変更可能ですが、渡されたオブジェクトを経由して直接代入することはできません。
 
-[`readonly()`](./reactivity-core#readonly) と [`shallowReadonly()`](./reactivity-advanced.html#shallowreadonly) で作成したプロキシは、`set` 関数なしの [`computed()`](./reactivity-core.html#computed) ref と同様に読み取り専用と見なされます。
+[`readonly()`](./reactivity-core#readonly) と [`shallowReadonly()`](./reactivity-advanced#shallowreadonly) で作成したプロキシは、`set` 関数なしの [`computed()`](./reactivity-core#computed) ref と同様に読み取り専用と見なされます。
 
 - **型**
 

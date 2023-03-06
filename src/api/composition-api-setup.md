@@ -61,7 +61,7 @@ export default {
 
 もし、`props` オブジェクトを分割代入する場合は、分割代入された変数はリアクティビティーを失うことに注意してください。 そのため、常に `props.xxx` の形でプロパティにアクセスすることを推奨します。
 
-もし、本当にプロパティを分割代入すること、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー API である [toRefs()](./reactivity-utilities#torefs) や [toRef()](/api/reactivity-utilities.html#toref) を使用することで、行うことができます:
+もし、本当にプロパティを分割代入すること、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー API である [toRefs()](./reactivity-utilities#torefs) や [toRef()](/api/reactivity-utilities#toref) を使用することで、行うことができます:
 
 ```js
 import { toRefs, toRef } from 'vue'

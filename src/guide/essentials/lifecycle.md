@@ -31,7 +31,7 @@ export default {
 
 </div>
 
-インスタンスのライフサイクルのさまざまな段階で呼び出されるフックは他にもあり、最も一般的に使用されるのは <span class="composition-api">[`onMounted`](/api/composition-api-lifecycle#onmounted)、 [`onUpdated`](/api/composition-api-lifecycle.html#onupdated) および [`onUnmounted`](/api/composition-api-lifecycle.html#onunmounted)</span><span class="options-api">[`mounted`](/api/options-lifecycle.html#mounted)、 [`updated`](/api/options-lifecycle.html#updated) および [`unmounted`](/api/options-lifecycle.html#unmounted)</span> です。
+インスタンスのライフサイクルのさまざまな段階で呼び出されるフックは他にもあり、最も一般的に使用されるのは <span class="composition-api">[`onMounted`](/api/composition-api-lifecycle#onmounted)、 [`onUpdated`](/api/composition-api-lifecycle#onupdated) および [`onUnmounted`](/api/composition-api-lifecycle#onunmounted)</span><span class="options-api">[`mounted`](/api/options-lifecycle#mounted)、 [`updated`](/api/options-lifecycle#updated) および [`unmounted`](/api/options-lifecycle#unmounted)</span> です。
 
 <div class="options-api">
 

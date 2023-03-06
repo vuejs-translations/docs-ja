@@ -81,7 +81,7 @@ DOM 属性は文字列のみしか扱えないため、複雑なデータをカ�
 
 ### defineCustomElement {#definecustomelement}
 
-Vue は [`defineCustomElement`](/api/general#definecustomelement) メソッドを介したまったく同じ Vue コンポーネント API 群を使ってカスタム要素の作成をサポートします。このメソッドは [`defineComponent`](/api/general.html#definecomponent) と同じ引数を受け付けますが、代わりに `HTMLElement` を拡張したカスタム要素を返します:
+Vue は [`defineCustomElement`](/api/general#definecustomelement) メソッドを介したまったく同じ Vue コンポーネント API 群を使ってカスタム要素の作成をサポートします。このメソッドは [`defineComponent`](/api/general#definecomponent) と同じ引数を受け付けますが、代わりに `HTMLElement` を拡張したカスタム要素を返します:
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -169,7 +169,7 @@ document.body.appendChild(
 
 #### Provide / Inject {#provide-inject}
 
-[Provide / Inject API](/guide/components/provide-inject#provide-inject) と [Composition API](/api/composition-api-dependency-injection.html#provide) も、Vue で定義されたカスタム要素間で動作します。しかしながら、これは**カスタム要素間**のみ動作するということに注意してください。つまり、Vue で定義されたカスタム要素は、カスタム要素ではない Vue コンポーネントによってプロパティを注入することはできません。
+[Provide / Inject API](/guide/components/provide-inject#provide-inject) と [Composition API](/api/composition-api-dependency-injection#provide) も、Vue で定義されたカスタム要素間で動作します。しかしながら、これは**カスタム要素間**のみ動作するということに注意してください。つまり、Vue で定義されたカスタム要素は、カスタム要素ではない Vue コンポーネントによってプロパティを注入することはできません。
 
 ### カスタム要素としての SFC {#sfc-as-custom-element}
 

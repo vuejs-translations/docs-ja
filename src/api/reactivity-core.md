@@ -384,7 +384,7 @@
 
   - **`immediate`**: ウォッチャーが作成されたら、すぐにコールバックを起動します。最初の呼び出しでは、古い値は `undefined` になります。
   - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。詳しくは[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)をご参照ください。
-  - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core.html#watcheffect) をご参照ください。
+  - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core#watcheffect) をご参照ください。
   - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)をご参照ください。
 
   [`watchEffect()`](#watcheffect) と比較すると、`watch()` は以下のことができます:

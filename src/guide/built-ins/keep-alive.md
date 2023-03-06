@@ -93,7 +93,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 <div class="composition-api">
 
-kept-alive コンポーネントは、これら 2 つの状態に対して、[`onActivated()`](/api/composition-api-lifecycle#onactivated) と [`onDeactivated()`](/api/composition-api-lifecycle.html#ondeactivated) を使用してライフサイクルフックを登録できます:
+kept-alive コンポーネントは、これら 2 つの状態に対して、[`onActivated()`](/api/composition-api-lifecycle#onactivated) と [`onDeactivated()`](/api/composition-api-lifecycle#ondeactivated) を使用してライフサイクルフックを登録できます:
 
 ```vue
 <script setup>
@@ -114,7 +114,7 @@ onDeactivated(() => {
 </div>
 <div class="options-api">
 
-kept-alive コンポーネントは、これら 2 つの状態に対して、[`activated`](/api/options-lifecycle#activated) と [`deactivated`](/api/options-lifecycle.html#deactivated) のフックを使用してライフサイクルフックを登録できます:
+kept-alive コンポーネントは、これら 2 つの状態に対して、[`activated`](/api/options-lifecycle#activated) と [`deactivated`](/api/options-lifecycle#deactivated) のフックを使用してライフサイクルフックを登録できます:
 
 ```js
 export default {

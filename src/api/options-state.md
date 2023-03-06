@@ -295,7 +295,7 @@
 
   - **`immediate`**: ウォッチャーが作成されるとすぐにコールバックをトリガーします。最初の呼び出しでは、古い値は `undefined` になります。
   - **`deep`**: ソースがオブジェクトまたは配列の場合、深い探索を強制し、深部の変更の際にコールバックが発生するようにします。[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)を参照してください。
-  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core.html#watcheffect) を参照してください。
+  - **`flush`**: コールバックの実行タイミングを調整します。[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)と [`watchEffect()`](/api/reactivity-core#watcheffect) を参照してください。
   - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)を参照してください。
 
   アロー関数は `this` を介してコンポーネントのインスタンスにアクセスできないため、ウォッチコールバックを宣言する際に使用することは避けてください。

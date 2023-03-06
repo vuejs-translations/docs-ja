@@ -674,11 +674,11 @@ function MyComponent(props, context) {
 }
 ```
 
-第二引数の `context` には、3 つのプロパティが含まれます。 `attrs` , `emit` , そして `slots` です。これらはそれぞれ、インスタンスのプロパティである [`$attrs`](/api/component-instance#attrs), [`$emit`](/api/component-instance.html#emit), および [`$slots`](/api/component-instance.html#slots) と同じです。
+第二引数の `context` には、3 つのプロパティが含まれます。 `attrs` , `emit` , そして `slots` です。これらはそれぞれ、インスタンスのプロパティである [`$attrs`](/api/component-instance#attrs), [`$emit`](/api/component-instance#emit), および [`$slots`](/api/component-instance#slots) と同じです。
 
 </div>
 
-コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state#props) と [`emits`](/api/options-state.html#emits) はプロパティとして追加することで定義することが可能です:
+コンポーネントに対する通常の設定オプションのほとんどは、関数型コンポーネントでは使用できません。しかし、[`props`](/api/options-state#props) と [`emits`](/api/options-state#emits) はプロパティとして追加することで定義することが可能です:
 
 ```js
 MyComponent.props = ['value']

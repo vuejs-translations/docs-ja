@@ -26,7 +26,7 @@ const myPlugin = {
 
 厳密に定義されたプラグインの適用範囲はありませんが、プラグインが役立つ一般的なシナリオは以下の通りです:
 
-1. [`app.component()`](/api/application#app-component) や [`app.directive()`](/api/application.html#app-directive) を使って、1 つもしくは複数のグローバルなコンポーネントやカスタムディレクティブを登録する。
+1. [`app.component()`](/api/application#app-component) や [`app.directive()`](/api/application#app-directive) を使って、1 つもしくは複数のグローバルなコンポーネントやカスタムディレクティブを登録する。
 
 2. [`app.provide()`](/api/application#app-provide) を呼び出して、アプリケーション全体でリソースを[注入できる](/guide/components/provide-inject)ようにする。
 

@@ -119,7 +119,7 @@ function increaseCount(n) {
 
 ## 発行するイベントの宣言 {#declaring-emitted-events}
 
-<span class="composition-api">[`defineEmits()`](/api/sfc-script-setup#defineprops-defineemits) マクロ</span><span class="options-api">[`emits`](/api/options-state.html#emits) オプション</span>を使用して、コンポーネントが発行するイベントを明示的に宣言できます:
+<span class="composition-api">[`defineEmits()`](/api/sfc-script-setup#defineprops-defineemits) マクロ</span><span class="options-api">[`emits`](/api/options-state#emits) オプション</span>を使用して、コンポーネントが発行するイベントを明示的に宣言できます:
 
 <div class="composition-api">
 

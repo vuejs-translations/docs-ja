@@ -219,7 +219,7 @@ Vue で作成されたプロキシの、未加工の元のオブジェクトを�
 
 - **詳細**
 
-  `toRaw()` は [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core.html#readonly), [`shallowReactive()`](#shallowreactive), [`shallowReadonly()`](#shallowreadonly) で生成したプロキシから元のオブジェクトを返せるようにします。
+  `toRaw()` は [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core#readonly), [`shallowReactive()`](#shallowreactive), [`shallowReadonly()`](#shallowreadonly) で生成したプロキシから元のオブジェクトを返せるようにします。
 
   これは、プロキシのアクセスやトラッキングのオーバーヘッドを発生させずに一時的に読み込んだり、変更をトリガーせずに書き込んだりするために使用できる緊急避難口です。元のオブジェクトへの永続的な参照を保持することは推奨**されません**。注意して使用してください。
 

@@ -261,7 +261,7 @@ Vue のテンプレートでは、以下の場所で JavaScript の式を使用�
 <form @submit.prevent="onSubmit">...</form>
 ```
 
-この後、[`v-on` 向け](./event-handling#event-modifiers)や [`v-model` 向け](./forms.html#modifiers)の修飾子の例を、その機能のページで見ることになるでしょう。
+この後、[`v-on` 向け](./event-handling#event-modifiers)や [`v-model` 向け](./forms#modifiers)の修飾子の例を、その機能のページで見ることになるでしょう。
 
 最後に、ディレクティブの構文の全容をこちらの図にまとめました:
 

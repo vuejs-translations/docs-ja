@@ -48,12 +48,12 @@ footer: false
 <span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run dev</span></span>
 <span class="line"></span></code></pre></div>
 
-あなたの初めての Vue プロジェクトが今実行されているはずです！　なお、生成されたプロジェクトのサンプルコンポーネントは、[Options API](/guide/introduction#options-api) ではなく、[Composition API](/guide/introduction.html#composition-api) と `<script setup>` で書かれていることに注意してください。いくつか追加のヒントをどうぞ:
+あなたの初めての Vue プロジェクトが今実行されているはずです！　なお、生成されたプロジェクトのサンプルコンポーネントは、[Options API](/guide/introduction#options-api) ではなく、[Composition API](/guide/introduction#composition-api) と `<script setup>` で書かれていることに注意してください。いくつか追加のヒントをどうぞ:
 
 - IDE の推奨構成は [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar) です。他のエディターを使用している場合は、[IDE のサポート](/guide/scaling-up/tooling#ide-support)を確認してください。
 - バックエンドフレームワークとの統合を含む、ツールのさらなる詳細については、[ツールガイド](/guide/scaling-up/tooling) で説明しています。
 - 基礎となっているビルドツール Vite について学ぶには、[Vite のドキュメント](https://ja.vitejs.dev/) を確認しましょう。
-- もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview.html) を確認しましょう。
+- もし TypeScript を使うことを選択したなら、[TypeScript の使い方](typescript/overview) を確認しましょう。
 
 あなたのアプリをプロダクション環境に出す準備ができたら、以下を実行してください:
 
