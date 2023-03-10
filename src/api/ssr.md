@@ -1,10 +1,10 @@
-# Server-Side Rendering API {#server-side-rendering-api}
+# サーバーサイドレンダリング API {#server-side-rendering-api}
 
 ## renderToString() {#rendertostring}
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer` からエクスポート**
 
-- **Type**
+- **型**
 
   ```ts
   function renderToString(
@@ -13,7 +13,7 @@
   ): Promise<string>
   ```
 
-- **Example**
+- **例**
 
   ```js
   import { createSSRApp } from 'vue'
@@ -30,9 +30,9 @@
   })()
   ```
 
-  ### SSR Context {#ssr-context}
+  ### SSR コンテキスト {#ssr-context}
 
-  You can pass an optional context object, which can be used to record additional data during the render, for example [accessing content of Teleports](/guide/scaling-up/ssr#teleports):
+  省略可能なコンテキストオブジェクトを渡すと、レンダリング中に追加データを記録するために使用できます。例えば、[テレポートのコンテンツにアクセスする](/guide/scaling-up/ssr#teleports)には:
 
   ```js
   const ctx = {}
@@ -41,17 +41,17 @@
   console.log(ctx.teleports) // { '#teleported': 'teleported content' }
   ```
 
-  Most other SSR APIs on this page also optionally accept a context object. The context object can be accessed in component code via the [useSSRContext](#usessrcontext) helper.
+  このページにある他のほとんどの SSR API も、省略可能なコンテキストオブジェクトを受け付けます。[useSSRContext](#usessrcontext) ヘルパーを使うことで、コンポーネントコード内でコンテキストオブジェクトにアクセスできます。
 
-- **See also:** [Guide - Server-Side Rendering](/guide/scaling-up/ssr)
+- **参照:** [ガイド - サーバーサイドレンダリング](/guide/scaling-up/ssr)
 
 ## renderToNodeStream() {#rendertonodestream}
 
-Renders input as a [Node.js Readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable).
+入力を [Node.js Readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) としてレンダリングします。
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer` からエクスポート**
 
-- **Type**
+- **型**
 
   ```ts
   function renderToNodeStream(
@@ -60,24 +60,24 @@ Renders input as a [Node.js Readable stream](https://nodejs.org/api/stream.html#
   ): Readable
   ```
 
-- **Example**
+- **例**
 
   ```js
-  // inside a Node.js http handler
+  // Node.js http handler の内部
   renderToNodeStream(app).pipe(res)
   ```
 
   :::tip Note
-  This method is not supported in the ESM build of `vue/server-renderer`, which is decoupled from Node.js environments. Use [`pipeToNodeWritable`](#pipetonodewritable) instead.
+  このメソッドは、Node.js 環境から切り離されている `vue/server-renderer` の ESM ビルドではサポートされていません。代わりに [`pipeToNodeWritable`](#pipetonodewritable) を使用してください。
   :::
 
 ## pipeToNodeWritable() {#pipetonodewritable}
 
-Render and pipe to an existing [Node.js Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) instance.
+既存の [Node.js Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) インスタンスにパイプしてレンダリングします。
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer` からエクスポート**
 
-- **Type**
+- **型**
 
   ```ts
   function pipeToNodeWritable(
@@ -87,20 +87,20 @@ Render and pipe to an existing [Node.js Writable stream](https://nodejs.org/api/
   ): void
   ```
 
-- **Example**
+- **例**
 
   ```js
-  // inside a Node.js http handler
+  // Node.js http handler の内部
   pipeToNodeWritable(app, {}, res)
   ```
 
 ## renderToWebStream() {#rendertowebstream}
 
-Renders input as a [Web ReadableStream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API).
+入力を [Web ReadableStream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) としてレンダリングします。
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer` からエクスポート**
 
-- **Type**
+- **型**
 
   ```ts
   function renderToWebStream(
@@ -109,24 +109,24 @@ Renders input as a [Web ReadableStream](https://developer.mozilla.org/en-US/docs
   ): ReadableStream
   ```
 
-- **Example**
+- **例**
 
   ```js
-  // inside an environment with ReadableStream support
+  // ReadableStream がサポートされている環境の内部
   return new Response(renderToWebStream(app))
   ```
 
   :::tip Note
-  In environments that do not expose `ReadableStream` constructor in the global scope, [`pipeToWebWritable()`](#pipetowebwritable) should be used instead.
+  グローバルスコープで `ReadableStream` コンストラクターを公開しない環境では、代わりに [`pipeToWebWritable()`](#pipetowebwritable) を使用する必要があります。
   :::
 
 ## pipeToWebWritable() {#pipetowebwritable}
 
-Render and pipe to an existing [Web WritableStream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream) instance.
+既存の [Web WritableStream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream) インスタンスにパイプしてレンダリングします。
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer` からエクスポート**
 
-- **Type**
+- **型**
 
   ```ts
   function pipeToWebWritable(
@@ -136,13 +136,13 @@ Render and pipe to an existing [Web WritableStream](https://developer.mozilla.or
   ): void
   ```
 
-- **Example**
+- **例**
 
-  This is typically used in combination with [`TransformStream`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream):
+  これは通常、[`TransformStream`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream) と組み合わせて使用されます:
 
   ```js
-  // TransformStream is available in environments such as CloudFlare workers.
-  // in Node.js, TransformStream needs to be explicitly imported from 'stream/web'
+  // TransformStream は、CloudFlare のワーカーなどの環境で利用できます。
+  // Node.js では、'stream/web' から明示的にインポートする必要があります
   const { readable, writable } = new TransformStream()
   pipeToWebWritable(app, {}, writable)
 
@@ -151,11 +151,11 @@ Render and pipe to an existing [Web WritableStream](https://developer.mozilla.or
 
 ## renderToSimpleStream() {#rendertosimplestream}
 
-Renders input in streaming mode using a simple readable interface.
+シンプルで読みやすいインターフェイスを使用して、ストリーミングモードで入力をレンダリングします。
 
-- **Exported from `vue/server-renderer`**
+- **`vue/server-renderer` からエクスポート**
 
-- **Type**
+- **型**
 
   ```ts
   function renderToSimpleStream(
@@ -170,7 +170,7 @@ Renders input in streaming mode using a simple readable interface.
   }
   ```
 
-- **Example**
+- **例**
 
   ```js
   let res = ''
@@ -181,14 +181,14 @@ Renders input in streaming mode using a simple readable interface.
     {
       push(chunk) {
         if (chunk === null) {
-          // done
+          // 完了
           console(`render complete: ${res}`)
         } else {
           res += chunk
         }
       },
       destroy(err) {
-        // error encountered
+        // エラーが発生
       }
     }
   )
@@ -196,27 +196,27 @@ Renders input in streaming mode using a simple readable interface.
 
 ## useSSRContext() {#usessrcontext}
 
-A runtime API used to retrieve the context object passed to `renderToString()` or other server render APIs.
+`renderToString()` やその他のサーバー レンダリング API に渡されるコンテキストオブジェクトを取得するために使用するランタイム API。
 
-- **Type**
+- **型**
 
   ```ts
   function useSSRContext<T = Record<string, any>>(): T | undefined
   ```
 
-- **Example**
+- **例**
 
-  The retrieved context can be used to attach information that is needed for rendering the final HTML (e.g. head metadata).
+  取得したコンテキストを使用して、最終的な HTML をレンダリングするために必要な情報（ヘッドメタデータなど）を添付できます。
 
   ```vue
   <script setup>
   import { useSSRContext } from 'vue'
 
-  // make sure to only call it during SSR
-  // https://vitejs.dev/guide/ssr.html#conditional-logic
+  // SSR の時だけ呼び出すようにする
+  // https://ja.vitejs.dev/guide/ssr.html#条件付きロジック
   if (import.meta.env.SSR) {
     const ctx = useSSRContext()
-    // ...attach properties to the context
+    // ...コンテキストにプロパティを付加する
   }
   </script>
   ```

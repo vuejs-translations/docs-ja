@@ -409,7 +409,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: '高度な API',
       items: [
         { text: 'レンダー関数', link: '/api/render-function' },
-        { text: 'Server-Side Rendering', link: '/api/ssr' },
+        { text: 'サーバーサイドレンダリング', link: '/api/ssr' },
         { text: 'TypeScript ユーティリティー型', link: '/api/utility-types' },
         { text: 'カスタムレンダラー', link: '/api/custom-renderer' }
       ]
