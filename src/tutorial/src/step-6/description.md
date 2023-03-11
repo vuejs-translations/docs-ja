@@ -17,4 +17,4 @@
 
 現在、デモでは `<h1>` が両方一緒に表示されていて、ボタンは何もしません。それらに `v-if` と `v-else` ディレクティブを追加し、 `toggle()` メソッドを実装して、ボタンを押下時に切り替えができるようにしてみてください。
 
-`v-if` についての詳細: <a target="_blank" href="/guide/essentials/conditional.html">Guide - 条件付きレンダリング</a>
+`v-if` についての詳細: <a target="_blank" href="/guide/essentials/conditional.html">ガイド - 条件付きレンダリング</a>

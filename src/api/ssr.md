@@ -67,7 +67,7 @@
   renderToNodeStream(app).pipe(res)
   ```
 
-  :::tip Note
+  :::tip 注意
   このメソッドは、Node.js 環境から切り離されている `vue/server-renderer` の ESM ビルドではサポートされていません。代わりに [`pipeToNodeWritable`](#pipetonodewritable) を使用してください。
   :::
 
@@ -116,7 +116,7 @@
   return new Response(renderToWebStream(app))
   ```
 
-  :::tip Note
+  :::tip 注意
   グローバルスコープで `ReadableStream` コンストラクターを公開しない環境では、代わりに [`pipeToWebWritable()`](#pipetowebwritable) を使用する必要があります。
   :::
 
