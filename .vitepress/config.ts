@@ -410,7 +410,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: 'レンダー関数', link: '/api/render-function' },
         { text: 'サーバーサイドレンダリング', link: '/api/ssr' },
-        { text: 'TypeScript ユーティリティー型', link: '/api/utility-types' },
+        { text: 'TypeScript ユーティリティー', link: '/api/utility-types' }, // /api/ で折り返されないよう「型」を省略
         { text: 'カスタムレンダラー', link: '/api/custom-renderer' }
       ]
     }

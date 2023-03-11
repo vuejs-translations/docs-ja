@@ -174,7 +174,7 @@ const myDirective = {
 
 ここでは、ディレクティブの引数は、コンポーネントの状態にある `arg` プロパティに基づいてリアクティブに更新されます。
 
-:::tip Note
+:::tip 注意
 `el` 以外のディレクティブの引数は、読み取り専用として扱い、決して変更しないようにしましょう。フック間で情報を共有する必要がある場合は、要素の [dataset](https://developer.mozilla.org/ja/docs/Web/API/HTMLElement/dataset) を通して行うことを推奨します。
 :::
 
