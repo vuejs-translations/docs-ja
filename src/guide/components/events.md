@@ -211,8 +211,8 @@ const emit = defineEmits<{
 export default {
   emits: {
     submit(payload) {
-    // バリデーションの合格/不合格を示す
-    // `true` または `false` を返す
+      // バリデーションの合格/不合格を示す
+      // `true` または `false` を返す
     }
   }
 }
