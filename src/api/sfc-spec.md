@@ -36,13 +36,13 @@ export default {
 
 ### `<template>` {#template}
 
-- 各 `*.vue` ファイルには、一度に最大 1 つのトップレベル `<template>` ブロックを含めることができます。
+- 各 `*.vue` ファイルには、最大 1 つのトップレベル `<template>` ブロックを含めることができます。
 
 - コンテンツは抽出されて `@vue/compiler-dom` に渡され、JavaScript のレンダー関数に事前コンパイルされ、エクスポートされたコンポーネントに `render` オプションとしてアタッチされます。
 
 ### `<script>` {#script}
 
-- 各 `*.vue` ファイルには、一度に最大 1 つの `<script>` ブロックを含めることができます（[`<script setup>`](/api/sfc-script-setup) は除く）。
+- 各 `*.vue` ファイルには、最大 1 つの `<script>` ブロックを含めることができます（[`<script setup>`](/api/sfc-script-setup) は除く）。
 
 - スクリプトは、ES モジュールとして実行されます。
 
@@ -50,7 +50,7 @@ export default {
 
 ### `<script setup>` {#script-setup}
 
-- 各 `*.vue` ファイルには、一度に最大 1 つの `<script setup>` ブロックを含めることができます（通常の `<script>` は除く）。
+- 各 `*.vue` ファイルには、最大 1 つの `<script setup>` ブロックを含めることができます（通常の `<script>` は除く）。
 
 - スクリプトは前処理され、コンポーネントの `setup()` 関数として使用されます。これは、**コンポーネントの各インスタンスに対して**実行されることを意味します。`<script setup>` のトップレベルのバインディングは、自動的にテンプレートに公開されます。詳細は [`<script setup>` に関する専用のドキュメント](/api/sfc-script-setup)を参照してください。
 
@@ -68,7 +68,7 @@ export default {
 - [vite-plugin-vue-gql: `<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
 - [vue-i18n: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n#i18n-custom-block)
 
-カスタムブロックの扱いはツールに依存します - 独自のカスタムブロック統合を構築したい場合は、[関連するツールのセクション](/guide/scaling-up/tooling#sfc-custom-block-integrations)で詳細を確認してください。
+カスタムブロックの扱いはツールに依存します - 独自のカスタムブロック統合を構築したい場合は、[SFC カスタムブロック統合ツールのセクション](/guide/scaling-up/tooling#sfc-custom-block-integrations)で詳細を確認してください。
 
 ## 自動名前推論 {#automatic-name-inference}
 
@@ -109,7 +109,7 @@ p {{ msg }}
 - [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
 - [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors.html#using-pre-processors)
 
-## src でのインポート {#src-imports}
+## `src` でのインポート {#src-imports}
 
 `*.vue` コンポーネントを複数のファイルに分割したい場合は、`src` 属性を使用して言語ブロックに外部ファイルをインポートできます:
 
