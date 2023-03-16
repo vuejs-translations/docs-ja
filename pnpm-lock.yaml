@@ -5,7 +5,7 @@ specifiers:
   '@types/markdown-it': ^12.2.3
   '@types/node': ^16.9.1
   '@vue/repl': ^1.3.2
-  '@vue/theme': ^2.1.1
+  '@vue/theme': ^2.2.0
   dynamics.js: ^1.1.5
   gsap: ^3.9.0
   lint-staged: ^12.3.2
@@ -14,7 +14,7 @@ specifiers:
   textlint-filter-rule-allowlist: ^4.0.0
   textlint-filter-rule-comments: ^1.2.2
   textlint-rule-preset-vuejs-jp: github:vuejs-jp/textlint-rule-preset-vuejs-jp
-  vitepress: ^1.0.0-alpha.58
+  vitepress: ^1.0.0-alpha.60
   vue: ^3.2.47
 
 dependencies:
