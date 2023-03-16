@@ -14,7 +14,7 @@ specifiers:
   textlint-filter-rule-allowlist: ^4.0.0
   textlint-filter-rule-comments: ^1.2.2
   textlint-rule-preset-vuejs-jp: github:vuejs-jp/textlint-rule-preset-vuejs-jp
-  vitepress: ^1.0.0-alpha.50
+  vitepress: ^1.0.0-alpha.56
   vue: ^3.2.47
 
 dependencies:
@@ -22,7 +22,7 @@ dependencies:
   '@vue/theme': 2.0.0_vue@3.2.47
   dynamics.js: 1.1.5
   gsap: 3.9.0
-  vitepress: 1.0.0-alpha.50_svno5mexjalzzlm4w6lhjlrqwe
+  vitepress: 1.0.0-alpha.60_svno5mexjalzzlm4w6lhjlrqwe
   vue: 3.2.47
 
 devDependencies:
@@ -3191,8 +3191,8 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /vitepress/1.0.0-alpha.50_svno5mexjalzzlm4w6lhjlrqwe:
-    resolution: {integrity: sha512-6EdT6JIiHRD7KatKMfxCJ3J7aHlkMp67ZEcfYrMTLKAJ+K+qWs2p427udMHSenCOzVNLIikEC5v/rP3GOGWubQ==}
+  /vitepress/1.0.0-alpha.60_svno5mexjalzzlm4w6lhjlrqwe:
+    resolution: {integrity: sha512-GI5iLDkZRqGEPixbSloT+p6pbKcMh9ykRRxt8vf9AjV1gaPit6Stg/t9WNxTdIhKVCuQMexGs1605DNApSRK2A==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.3.3
