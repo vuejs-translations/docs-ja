@@ -102,6 +102,14 @@ h(Transition, {
   </Transition>
   ```
 
+  `key` 属性を変更することで強制的にトランジションさせる:
+  
+  ```vue-html
+  <Transition>
+    <div :key="text">{{ text }}</div>
+  </Transition>
+  ```
+
   トランジションモードと出現時のアニメーションを備えているダイナミックコンポーネント:
 
   ```vue-html
