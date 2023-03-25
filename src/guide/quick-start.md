@@ -62,7 +62,7 @@ footer: false
 
 これであなたのアプリのプロダクション向けビルドがプロジェクトの `./dist` ディレクトリーに作成されます。プロダクション環境への出荷についてさらに学ぶには [プロダクション環境への配信](/guide/best-practices/production-deployment) を確認してください。
 
-[次のステップ ＞](#次のステップ)
+[次のステップ ＞](#next-steps)
 
 ## CDN の Vue を使用する {#using-vue-from-cdn}
 

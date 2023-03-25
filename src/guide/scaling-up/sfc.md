@@ -60,7 +60,7 @@ const greeting = ref('Hello World!')
 SFC にはビルドステップが必要ですが、その代わりに多くの利点があります:
 
 - 使い慣れた HTML、CSS と JavaScript 構文を使用したモジュール化されたコンポーネントの作成
-- [本質的に結合された関心の連結](#関心の分離についてはどうですか？)
+- [本質的に結合された関心の連結](#what-about-separation-of-concerns)
 - ランタイムのコンパイルコストがかからない事前コンパイルされたテンプレート
 - [コンポーネントスコープのCSS](/api/sfc-css-features)
 - [Composition API を使用する場合のより人間工学的な構文](/api/sfc-script-setup)

@@ -114,4 +114,4 @@ const awesome = ref(true)
 暗黙的な優先順位により、 `v-if` と `v-for` を同じ要素で利用することは **推奨されません**。 詳細については [スタイルガイド](/style-guide/rules-essential#avoid-v-if-with-v-for) を参照ください。
 :::
 
-`v-if` と `v-for` が同じ要素に両方つかわれる場合、 `v-if` が先に評価されます。詳細については [リストレンダリングのガイド](list.html#v-for-と-v-if) を参照してください。
+`v-if` と `v-for` が同じ要素に両方つかわれる場合、 `v-if` が先に評価されます。詳細については[リストレンダリングのガイド](list.html#v-for-with-v-if)を参照してください。
