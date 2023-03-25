@@ -175,7 +175,7 @@ const emit = defineEmits(['change', 'delete'])
 
 - `defineProps` および `defineEmits` に渡されたオプションは、setup のスコープからモジュールのスコープに引き上げられます。そのため、オプションは setup のスコープで宣言されたローカル変数を参照できません。参照するとコンパイルエラーになります。しかし、インポートされたバインディングはモジュールのスコープに入っているので、参照できます。
 
-TypeScript を使用している場合は、[純粋な型アノテーションを使って props や emits を宣言](#typescript-のみの機能)することも可能です。
+TypeScript を使用している場合は、[純粋な型アノテーションを使って props や emits を宣言](#typescript-only-features)することも可能です。
 
 ## defineExpose() {#defineexpose}
 
