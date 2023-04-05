@@ -10,10 +10,9 @@ aside: false
 - [简体中文 / 簡体字中国語](https://cn.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-zh-cn)]
 - [日本語](https://ja.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-ja)]
 - [Українська / ウクライナ語](https://ua.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-ua)]
-
-## 作業中の言語 {#work-in-progress-languages}
-
 - [Français / フランス語](https://fr.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-fr)]
+
+<!-- ## 作業中の言語 {#work-in-progress-languages} -->
 
 ## 新しい翻訳の開始 {#starting-a-new-translation}
 
