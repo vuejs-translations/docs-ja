@@ -4,7 +4,7 @@
 
 Vue の SFC を試すためにマシンに何かをインストールする必要はありません - ブラウザーですぐに試せるオンラインのプレイグラウンドがあります:
 
-- [Vue SFC Playground](https://sfc.vuejs.org)
+- [Vue SFC Playground](https://play.vuejs.org)
   - 常に最新のコミットがデプロイされています
   - コンポーネントのコンパイル結果を確認できるように設計されています
 - [Vue + Vite on StackBlitz](https://vite.new/vue)

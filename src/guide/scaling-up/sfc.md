@@ -92,7 +92,7 @@ export default {
 
 SFC 内の `<style>` タグは通常ホットアップデートをサポートするために、開発中にネイティブな `<style>` タグとして挿入されます。本番環境では、それらを抽出して 1 つの CSS ファイルにマージできます。
 
-[Vue SFC Playground](https://sfc.vuejs.org/) では、SFC を試したり、どのようにコンパイルされるかを調べることができます。
+[Vue SFC Playground](https://play.vuejs.org/) では、SFC を試したり、どのようにコンパイルされるかを調べることができます。
 
 実際のプロジェクトでは、一般的に、SFC コンパイラーを [Vite](https://vitejs.dev/) や [Vue CLI](http://cli.vuejs.org/)（[webpack](https://webpack.js.org/)ベース）などのビルドツールと統合します。Vue では、SFC をできるだけ早く使い始めるための公式の scaffolding ツールを提供します。詳細については、[SFC ツール](/guide/scaling-up/tooling) をご覧ください。
 
