@@ -43,6 +43,7 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'パートナー', link: '/partners/' },
           { text: 'テーマ', link: '/ecosystem/themes' },
+          { text: '検定', link: 'https://certification.vuejs.org/?ref=vuejs-nav' },
           { text: '仕事', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'T シャツショップ', link: 'https://vue.threadless.com/' }
         ]
