@@ -314,7 +314,7 @@ vnode にカスタムディレクティブを追加します。
   import { h, withModifiers } from 'vue'
 
   const vnode = h('button', {
-    // v-on.stop.prevent と同等
+    // v-on:click.stop.prevent と同等
     onClick: withModifiers(() => {
       // ...
     }, ['stop', 'prevent'])
