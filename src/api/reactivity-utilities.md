@@ -100,6 +100,43 @@
 
   `toRef()` はソースプロパティが現在存在しない場合でも、利用可能な ref を返します。これにより [`toRefs`](#torefs) では取得できないオプショナルなプロパティを扱えるようになります。
 
+## toValue() <sup class="vt-badge" data-text="3.3+" /> {#tovalue}
+
+Normalizes values / refs / getters to values. This is similar to [unref()](#unref), except that it also normalizes getters. If the argument is a getter, it will be invoked and its return value will be returned.
+
+This can be used in [Composables](/guide/reusability/composables.html) to normalize an argument that can be either a value, a ref, or a getter.
+
+- **Type**
+
+  ```ts
+  function toValue<T>(source: T | Ref<T> | (() => T)): T
+  ```
+
+- **Example**
+
+  ```js
+  toValue(1) //       --> 1
+  toValue(ref(1)) //  --> 1
+  toValue(() => 1) // --> 1
+  ```
+
+  Normalizing arguments in composables:
+
+  ```ts
+  import type { MaybeRefOrGetter } from 'vue'
+
+  function useFeature(id: MaybeRefOrGetter<number>) {
+    watch(() => toValue(id), id => {
+      // react to id changes
+    })
+  }
+
+  // this composable supports any of the following:
+  useFeature(1)
+  useFeature(ref(1))
+  useFeature(() => 1)
+  ```
+
 ## toRefs() {#torefs}
 
 リアクティブオブジェクトをプレーンオブジェクトに変換します。変換後のオブジェクトの各プロパティは、元のオブジェクトの対応するプロパティを指す ref です。個々の ref は [`toRef()`](#toref) を用いて生成されます。
