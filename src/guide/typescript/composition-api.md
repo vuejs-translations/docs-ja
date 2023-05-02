@@ -400,3 +400,12 @@ const openModal = () => {
 ```
 
 この方法を Vue SFC ではなく、TypeScript ファイルで使いたい場合は、 Volar の [Takeover Mode](./overview#volar-takeover-mode) を有効にする必要があることに注意してください。
+
+コンポーネントの正確な型がわからない場合や重要でない場合は、代わりに `ComponentPublicInstance` を使用できます。この場合、`$el` のようなすべてのコンポーネントで共有されているプロパティのみが含まれます:
+
+```ts
+import { ref } from 'vue'
+import type { ComponentPublicInstance } from 'vue'
+
+const child = ref<ComponentPublicInstance | null>(null)
+```
