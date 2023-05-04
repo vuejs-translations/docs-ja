@@ -90,7 +90,7 @@ function useToggleFn(
         <a
           class="switch-link"
           title="API 選択について"
-          href="/guide/introduction.html#_2-つの-api-スタイル"
+          href="/guide/introduction.html#api-styles"
           @click="closeSideBar"
           >?</a
         >
