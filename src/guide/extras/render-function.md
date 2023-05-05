@@ -647,6 +647,41 @@ const vnode = withDirectives(h('div'), [
 
 ディレクティブが名前で登録されていて、直接インポートできない場合は、[`resolveDirective`](/api/render-function#resolvedirective) ヘルパーを使って解決することが可能です。
 
+### テンプレート参照
+
+<div class="composition-api">
+
+Composition API では、`ref()` 自身を vnode のプロパティとして渡すことで、テンプレート参照が作成されます:
+
+```js
+import { h, ref } from 'vue'
+
+export default {
+  setup() {
+    const divEl = ref()
+
+    // <div ref="divEl">
+    return () => h('div', { ref: divEl })
+  }
+}
+```
+
+</div>
+<div class="options-api">
+
+Options API では、vnode のプロパティに ref の名前を文字列で渡すことで、テンプレート参照が作成されます:
+
+```js
+export default {
+  render() {
+    // <div ref="divEl">
+    return h('div', { ref: 'divEl' })
+  }
+}
+```
+
+</div>
+
 ## 関数型コンポーネント {#functional-components}
 
 関数型コンポーネントは、それ自身の状態を持たないコンポーネントの代替形態です。それらは純粋な関数のように動作します。プロパティを受け取り、vnode を返します。 コンポーネントのインスタンスを作成することなく（つまり、`this` はありません）、通常のコンポーネントのライフサイクルフックもなくレンダリングされます。
