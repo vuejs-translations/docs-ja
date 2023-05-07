@@ -221,7 +221,7 @@ export default {
       // setter 関数
       set(newValue) {
         // 注意: ここでは、破壊的な代入構文を使用しています。
-        ;[this.firstName, this.lastName] = newValue.split(' ')
+        [this.firstName, this.lastName] = newValue.split(' ')
       }
     }
   }
@@ -249,7 +249,7 @@ const fullName = computed({
   // setter 関数
   set(newValue) {
     // 注意: ここでは、破壊的な代入構文を使用しています。
-    ;[firstName.value, lastName.value] = newValue.split(' ')
+    [firstName.value, lastName.value] = newValue.split(' ')
   }
 })
 </script>
