@@ -4,6 +4,7 @@ import { defineConfigWithTheme } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
+import { textAdPlugin } from './textAdMdPlugin'
 
 const nav: ThemeConfig['nav'] = [
   {
@@ -43,7 +44,10 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'パートナー', link: '/partners/' },
           { text: 'テーマ', link: '/ecosystem/themes' },
-          { text: '検定', link: 'https://certification.vuejs.org/?ref=vuejs-nav' },
+          {
+            text: '検定',
+            link: 'https://certification.vuejs.org/?ref=vuejs-nav'
+          },
           { text: '仕事', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'T シャツショップ', link: 'https://vue.threadless.com/' }
         ]
@@ -314,7 +318,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: 'アニメーションテクニック',
           link: '/guide/extras/animation'
-        },
+        }
         // {
         //   text: 'Building a Library for Vue',
         //   link: '/guide/extras/building-a-library'
@@ -708,7 +712,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
   markdown: {
     config(md) {
-      md.use(headerPlugin)
+      md.use(headerPlugin).use(textAdPlugin)
     }
   },
 
