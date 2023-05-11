@@ -647,7 +647,7 @@ const vnode = withDirectives(h('div'), [
 
 ディレクティブが名前で登録されていて、直接インポートできない場合は、[`resolveDirective`](/api/render-function#resolvedirective) ヘルパーを使って解決することが可能です。
 
-### テンプレート参照
+### テンプレート参照 {#template-refs}
 
 <div class="composition-api">
 
