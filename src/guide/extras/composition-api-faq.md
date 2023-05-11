@@ -55,7 +55,7 @@ Vue の Composition API の使い方について興味があるようでした�
 
 Composition API の最大の利点は [コンポーザブル関数](/guide/reusability/composables)の形式で、クリーンかつ効率的にロジックを再利用できることです。これは Options API の主要なロジック再利用メカニズムであった[ミックスインの欠点を全て](/guide/reusability/composables#vs-mixins)解決しています。
 
-Composition API のロジック再利用性は [VueUse](https://vueuse.org/) のようなすばらしいコミュニティープロジェクトを生み出し、コンポーザブルの利便性を広める存在を増やし続けています。クリーンなメカニズムによってサードパーティーサービス・ライブラリーと Vue のリアクティブ機能との安定した統合も容易にしてくれています、例えば[イミュータブルなデータ](/guide/extras/reactivity-in-depth#immutable-data)、[ステートマシン](/guide/extras/reactivity-in-depth#state-machines)、そして [RxJS](https://vueuse.org/rxjs/readme.html#vueuse-rxjs) などです。
+Composition API のロジック再利用性は [VueUse](https://vueuse.org/) のようなすばらしいコミュニティープロジェクトを生み出し、コンポーザブルの利便性を広める存在を増やし続けています。クリーンなメカニズムによってサードパーティーサービス・ライブラリーと Vue のリアクティブ機能との安定した統合も容易にしてくれています、例えば[イミュータブルなデータ](/guide/extras/reactivity-in-depth#immutable-data)、[ステートマシン](/guide/extras/reactivity-in-depth#state-machines)、そして [RxJS](/guide/extras/reactivity-in-depth#rxjs) などです。
 
 ### より柔軟なコード整理 {#more-flexible-code-organization}
 
