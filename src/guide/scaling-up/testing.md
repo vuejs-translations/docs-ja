@@ -207,7 +207,7 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
 ### 推奨事項 {#recommendation-1}
 
-- [Vitest](https://vitest.dev/) はヘッドレスでレンダリングするコンポーネントやコンポーザブルのためのライブラリーです（例: VueUse の [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) 関数など）。コンポーネントと DOM は [@testing-library/vue](https://testing-library.com/docs/vue-testing-library/intro) を使うことでテストできます。
+- [Vitest](https://vitest.dev/) はヘッドレスでレンダリングするコンポーネントやコンポーザブルのためのライブラリーです（例: VueUse の [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) 関数など）。コンポーネントと DOM は [`@vue/test-utils`](https://github.com/vuejs/test-utils) を使うことでテストできます。
 
 - [Cypress Component Testing](https://on.cypress.io/component) はテストで期待する動作が、スタイルの適切なレンダリングやネイティブ DOM イベントのトリガーに依存するようなコンポーネントのためのライブラリーです。テストライブラリーは、[@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro) を介して使用できます。
 
@@ -217,11 +217,11 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 コンポーネントのテストでは、テスト対象のコンポーネントを単独でマウントし、シミュレーションされたユーザー入力イベントをトリガーし、レンダリングした DOM に対してアサーションを行うことがよくあります。これらの作業を簡単にする専用のユーティリティーライブラリーがあります。
 
-- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) は、実装の詳細に依存しないコンポーネントのテストに重点を置いた Vue のテストライブラリーです。アクセシビリティーを念頭に置いて構築されており、そのアプローチによりリファクタリングも容易になります。このガイドの指針は、テストがソフトウェアの使われ方に似ていればいるほど、より信頼性を高めることができるというものです。
-
 - [`@vue/test-utils`](https://github.com/vuejs/test-utils) は、Vue 固有の API へのアクセスをユーザーに提供するために書かれた、公式のローレベルコンポーネントテストライブラリーです。`@testing-library/vue` はこのライブラリー上に構築されているローレベルのライブラリーでもあります。
 
-アプリケーションのテストの優先順位と一致するため、アプリケーションのコンポーネントテストには `@testing-library/vue` を使用することをお勧めします。Vue 固有の内部機能をテストする必要があるような、高度なコンポーネントを構築する場合にのみ `@vue/test-utils` を使用してください。
+- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) は、実装の詳細に依存しないコンポーネントのテストに重点を置いた Vue のテストライブラリーです。その指針は、テストがソフトウェアの使われ方に似ていればいるほど、より信頼性を高めることができるというものです。
+
+アプリケーションのコンポーネントのテストには `@vue/test-utils` を使用することをお勧めします。`testing-library/vue` は Suspense を使った非同期コンポーネントのテストに問題があるため、注意して使用する必要があります。
 
 ### その他の選択肢 {#other-options-1}
 
@@ -310,11 +310,12 @@ TypeScript を使用している場合は、`tsconfig.json` の `types` フィ�
 // tsconfig.json
 
 {
- "compilerOptions": {
+  "compilerOptions": {
     "types": ["vitest/globals"]
   }
 }
 ```
+
 :::
 
 そして、`*.test.js` で終わるファイルをプロジェクト内に作成します。すべてのテストファイルは、プロジェクトのルートにあるテストディレクトリー、またはソースファイルの隣接するテストディレクトリーに置くことができます。Vitest は命名規則を使用して自動的にファイルを検索してくれます。
