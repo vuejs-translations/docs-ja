@@ -151,9 +151,9 @@ Vue のテンプレートでは、以下の場所で JavaScript の式を使用�
 コンポーネントから公開されているメソッドであれば、以下のようにバインディングの式の内部で呼び出すことができます:
 
 ```vue-html
-<span :title="toTitleDate(date)">
+<time :title="toTitleDate(date)" :datetime="date">
   {{ formatDate(date) }}
-</span>
+</time>
 ```
 
 :::tip
