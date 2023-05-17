@@ -308,6 +308,35 @@ const props = withDefaults(defineProps<Props>(), {
 
 これは、同等な実行時のプロパティの `default` オプションにコンパイルされます。さらに、`withDefaults` ヘルパーは、デフォルト値の型チェックを行います。また、返される `props` の型が、デフォルト値が宣言されているプロパティに対して、省略可能フラグが削除されていることを保証します。
 
+### ジェネリクス
+
+`<script>` タグの `generic` 属性を使ってジェネリック型パラメーターを宣言できます:
+
+```vue
+<script setup lang="ts" generic="T">
+defineProps<{
+  id: T
+  list: T[]
+}>()
+</script>
+```
+
+`generic` の値は、TypeScript の `<...>` 間のパラメーターリストと全く同じ働きをします。例えば、複数のパラメーター、`extends` 制約、デフォルトの型、インポートされた型を参照できます:
+
+```vue
+<script
+  setup
+  lang="ts"
+  generic="T extends string | number, U extends Item"
+>
+import type { Item } from './types'
+defineProps<{
+  id: T
+  list: U[]
+}>()
+</script>
+```
+
 ## 制限 {#restrictions}
 
 モジュールの実行セマンティクスの違いにより、`<script setup>` 内のコードは、SFC のコンテキストに依存しています。外部の `.js` や `.ts` ファイルに移動すると、開発者とツールの両方に混乱を招く可能性があります。そのため、**`<script setup>`** は、`src` 属性と一緒に使うことはできません。
