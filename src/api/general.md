@@ -101,9 +101,16 @@ Vue の現在のバージョンを公開します。
 - **型**
 
   ```ts
+  // オプション構文
   function defineComponent(
-    component: ComponentOptions | ComponentOptions['setup']
+    component: ComponentOptions
   ): ComponentConstructor
+
+  // 関数構文（3.3 以上が必要）
+  function defineComponent(
+    setup: ComponentOptions['setup'],
+    extraOptions?: ComponentOptions
+  ): () => any
   ```
 
   > 読みやすくするため、型は単純化されています。
@@ -121,6 +128,56 @@ Vue の現在のバージョンを公開します。
 
   type FooInstance = InstanceType<typeof Foo>
   ```
+
+  ### 関数シグネチャー <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+
+  `defineComponent()` には、Composition API と[レンダー関数か JSX](/guide/extras/render-function.html) で使うための代替シグネチャーもあります。
+
+  オプションオブジェクトを渡す代わりに、関数を受け取ります。この関数は、Composition API の [`setup()`](/api/composition-api-setup.html#composition-api-setup) 関数と同じ働きをします: つまりプロパティと setup コンテキストを受け取ります。戻り値はレンダー関数であるべきで、`h()` と JSX の両方がサポートされています:
+
+  ```js
+  import { ref, h } from 'vue'
+
+  const Comp = defineComponent(
+    (props) => {
+      // ここでは <script setup> 内と同じように Composition API を使用します
+      const count = ref(0)
+
+      return () => {
+        // レンダー関数か JSX
+        return h('div', count.value)
+      }
+    },
+    // 追加のオプション（例: プロパティやエミットの宣言など）
+    {
+      props: {
+        /* ... */
+      }
+    }
+  )
+  ```
+
+  このシグネチャーの主なユースケースは、ジェネリックをサポートしているため、TypeScript（特に TSX）での使用です:
+
+  ```tsx
+  const Comp = defineComponent(
+    <T extends string | number>(props: { msg: T; list: T[] }) => {
+      // ここでは <script setup> 内と同じように Composition API を使用します
+      const count = ref(0)
+
+      return () => {
+        // レンダー関数か JSX
+        return <div>{count.value}</div>
+      }
+    },
+    // 現在のところ、手動による実行時プロパティの宣言はまだ必要です。
+    {
+      props: ['msg', 'list']
+    }
+  )
+  ```
+
+  将来的には、実行時プロパティを自動的に推論して注入する Babel プラグインを提供し（SFC の `defineProps` のように）、実行時プロパティの宣言を省略できるようにする予定です。
 
   ### webpack のツリーシェイキングに関する注意 {#note-on-webpack-treeshaking}
 

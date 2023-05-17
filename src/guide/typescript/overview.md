@@ -175,6 +175,10 @@ const count = ref(1)
 </template>
 ```
 
+参照:
+
+- [`<script setup>` における TypeScript のみの機能](/api/sfc-script-setup.html#typescript-only-features)
+
 ### テンプレート内での TypeScript {#typescript-in-templates}
 
 `<template>` は、`<script lang="ts">` や `<script setup lang="ts">` が使われている場合、バインディング式について、TypeScript をサポートします。これは、テンプレート内の式で型キャストを行う必要がある場合に便利です。
@@ -207,6 +211,13 @@ let x: string | number = 1
 :::tip
 Vue CLI または webpack ベースのセットアップを使用する場合、テンプレート内の式での TypeScript の使用には `vue-loader@^16.8.0` が必要になります。
 :::
+
+## ジェネリックコンポーネント {#generic-components}
+
+ジェネリックコンポーネントは以下の 2 つのケースでサポートされています:
+
+- SFC 内: [`generic` 属性ありの `<script setup>`](/api/sfc-script-setup.html#generics)
+- レンダー関数 / JSX コンポーネント: [`defineComponent()` の関数シグネチャー](/api/general.html#function-signature)
 
 ## API 固有のレシピ {#api-specific-recipes}
 
