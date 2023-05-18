@@ -239,6 +239,16 @@ React によって最初に導入されましたが、JSX は実際にはラン�
 
 Vue の型定義は、TSX を使用するための型推論も提供します。TSX を使用する場合は、Vue の JSX 変換が処理できるように、TypeScript が JSX の構文をそのまま残すように、必ず `tsconfig.json` で `"jsx": "preserve"` を指定してください。
 
+### JSX 型推論
+
+Vue JSX 変換と同様に、Vue の JSX も異なる型定義が必要です。現在、Vue の型は自動的に Vue の JSX 型をグローバルに登録します。つまり、Vue の型が利用可能な場合、TSX はそのまま使用できます。
+
+グローバルな JSX 型は、特に React と組み合わせて使用する場合、他の JSX 型推論を必要とするライブラリーと競合する可能性があります。3.3 から、Vue では TypeScript の [jsxImportSource](https://www.typescriptlang.org/ja/tsconfig#jsxImportSource) オプションを使用して JSX の名前空間を指定することがサポートされています。3.4 ではデフォルトのグローバルな JSX 名前空間の登録を削除する予定です。
+
+TSX ユーザーは、3.3 にアップグレード後に `tsconfig.json` で [jsxImportSource](https://www.typescriptlang.org/ja/tsconfig#jsxImportSource) を `vue` に設定するか、ファイルごとに `/* @jsxImportSource vue */` でオプトインすることをおすすめします。これにより、新しい動作を選択できるだけでなく、3.4 がリリースされた際にもスムーズにアップグレードできます。
+
+もし、グローバルな `JSX` 名前空間の存在に依存するコードがある場合、`vue/jsx` を明示的に参照することで、3.4 以前のグローバルな動作をそのまま保持することができます。`vue/jsx` はグローバルな `JSX` 名前空間を登録します。
+
 ## レンダー関数のレシピ {#render-function-recipes}
 
 以下では、テンプレート機能を同等のレンダー関数/JSX として実装するための一般的なレシピをいくつか紹介します。
