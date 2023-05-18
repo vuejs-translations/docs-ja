@@ -83,3 +83,29 @@
   この設定オプションは、フルビルド（つまり、ブラウザー上でテンプレートをコンパイルできるスタンドアロンの `vue.js`）を使っているときだけ反映されます。アプリケーションレベルの [app.config.compilerOptions](/api/application#app-config-compileroptions) と同じオプションをサポートし、現在のコンポーネントに対してより高い優先順位が設定されています。
 
 - **参照:** [app.config.compilerOptions](/api/application#app-config-compileroptions)
+
+## slots <sup class="vt-badge ts"/> {#slots}
+
+レンダー関数でプログラム的にスロットを使用する際に、型推論を支援するオプションです。3.3 以上でのみサポートされています。
+
+- **詳細**
+
+  このオプションの実行時の値は使用されません。実際の型は `SlotsType` 型ヘルパーを使った型キャストによって宣言する必要があります：
+
+  ```ts
+  import { SlotsType } from 'vue'
+  defineComponent({
+    slots: Object as SlotsType<{
+      default: { foo: string; bar: number }
+      item: { data: number }
+    }>,
+    setup(props, { slots }) {
+      expectType<
+        undefined | ((scope: { foo: string; bar: number }) => any)
+      >(slots.default)
+      expectType<undefined | ((scope: { data: number }) => any)>(
+        slots.item
+      )
+    }
+  })
+  ```
