@@ -175,7 +175,49 @@ const emit = defineEmits(['change', 'delete'])
 
 - `defineProps` および `defineEmits` に渡されたオプションは、setup のスコープからモジュールのスコープに引き上げられます。そのため、オプションは setup のスコープで宣言されたローカル変数を参照できません。参照するとコンパイルエラーになります。しかし、インポートされたバインディングはモジュールのスコープに入っているので、参照できます。
 
-TypeScript を使用している場合は、[純粋な型アノテーションを使って props や emits を宣言](#typescript-only-features)することも可能です。
+### 型のみの props/emit 宣言<sup class="vt-badge ts" /> {#type-only-props-emit-declarations}
+
+`defineProps` や `defineEmits` にリテラル型の引数を渡すことで、純粋な型の構文を使って props や emits を宣言することもできます:
+
+```ts
+const props = defineProps<{
+  foo: string
+  bar?: number
+}>()
+
+const emit = defineEmits<{
+  (e: 'change', id: number): void
+  (e: 'update', value: string): void
+}>()
+```
+
+- `defineProps` または `defineEmits` は、実行時の宣言か型宣言のどちらかしか使用できません。両方を同時に使用すると、コンパイルエラーになります。
+
+- 型宣言を使用する場合は、同等の実行時宣言が静的解析から自動的に生成されるため、二重の宣言を行う必要がなくなり、実行時の正しい動作が保証されます。
+
+  - 開発モードでは、コンパイラーは型から対応する実行時バリデーションを推測しようとします。上記の例では `foo: string` という型からは `foo: String` が推測されます。もし型がインポートされた型への参照である場合、コンパイラーは外部ファイルの情報を持っていないので、推測される結果は `foo: null`（`any` 型と同じ）になります。
+
+  - プロダクションモードでは、バンドルサイズを小さくするために、コンパイラーが配列形式の宣言を生成します（上記の props は `['foo', 'bar']` にコンパイルされます）。
+
+- バージョン 3.2 以下では、型パラメーターはローカルの型への参照か、型リテラルのどちらかに制限されています。この制限は 3.3 で削除されました。3.3 以降、Vue は外部からインポートされたものを含む、ほとんどの一般的な型からランタイムのプロパティを推論できるようになりました。
+
+### 型宣言を使用時のデフォルトのプロパティ値 {#default-props-values-when-using-type-declaration}
+
+型のみの `defineProps` 宣言の欠点は、プロパティのデフォルト値を提供する方法がないことです。この問題を解決するために、`withDefaults` コンパイラーマクロも用意されています:
+
+```ts
+export interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  msg: 'hello',
+  labels: () => ['one', 'two']
+})
+```
+
+これは、同等な実行時のプロパティの `default` オプションにコンパイルされます。さらに、`withDefaults` ヘルパーは、デフォルト値の型チェックを行います。また、返される `props` の型が、デフォルト値が宣言されているプロパティに対して、省略可能フラグが削除されていることを保証します。
 
 ## defineExpose() {#defineexpose}
 
@@ -280,53 +322,7 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 `async setup()` は、現在まだ実験的な機能である `Suspense` と組み合わせて使用する必要があります。将来のリリースで完成させてドキュメント化する予定ですが、もし今興味があるのであれば、その[テスト](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts)を参照することで、どのように動作するかを確認できます。
 :::
 
-## TypeScript のみの機能 <sup class="vt-badge ts" /> {#typescript-only-features}
-
-### 型のみの props/emit 宣言 {#type-only-props-emit-declarations}
-
-`defineProps` や `defineEmits` にリテラル型の引数を渡すことで、純粋な型の構文を使って props や emits を宣言することもできます:
-
-```ts
-const props = defineProps<{
-  foo: string
-  bar?: number
-}>()
-
-const emit = defineEmits<{
-  (e: 'change', id: number): void
-  (e: 'update', value: string): void
-}>()
-```
-
-- `defineProps` または `defineEmits` は、実行時の宣言か型宣言のどちらかしか使用できません。両方を同時に使用すると、コンパイルエラーになります。
-
-- 型宣言を使用する場合は、同等の実行時宣言が静的解析から自動的に生成されるため、二重の宣言を行う必要がなくなり、実行時の正しい動作が保証されます。
-
-  - 開発モードでは、コンパイラーは型から対応する実行時バリデーションを推測しようとします。上記の例では `foo: string` という型からは `foo: String` が推測されます。もし型がインポートされた型への参照である場合、コンパイラーは外部ファイルの情報を持っていないので、推測される結果は `foo: null`（`any` 型と同じ）になります。
-
-  - プロダクションモードでは、バンドルサイズを小さくするために、コンパイラーが配列形式の宣言を生成します（上記の props は `['foo', 'bar']` にコンパイルされます）。
-
-- バージョン 3.2 以下では、型パラメーターはローカルの型への参照か、型リテラルのどちらかに制限されています。この制限は 3.3 で削除されました。3.3 以降、Vue は外部からインポートされたものを含む、ほとんどの一般的な型からランタイムのプロパティを推論できるようになりました。
-
-### 型宣言を使用時のデフォルトのプロパティ値 {#default-props-values-when-using-type-declaration}
-
-型のみの `defineProps` 宣言の欠点は、プロパティのデフォルト値を提供する方法がないことです。この問題を解決するために、`withDefaults` コンパイラーマクロも用意されています:
-
-```ts
-export interface Props {
-  msg?: string
-  labels?: string[]
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  msg: 'hello',
-  labels: () => ['one', 'two']
-})
-```
-
-これは、同等な実行時のプロパティの `default` オプションにコンパイルされます。さらに、`withDefaults` ヘルパーは、デフォルト値の型チェックを行います。また、返される `props` の型が、デフォルト値が宣言されているプロパティに対して、省略可能フラグが削除されていることを保証します。
-
-### ジェネリクス
+### ジェネリクス <sup class="vt-badge ts" /> {#generics}
 
 `<script>` タグの `generic` 属性を使ってジェネリック型パラメーターを宣言できます:
 
