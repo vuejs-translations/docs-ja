@@ -189,6 +189,12 @@ const emit = defineEmits<{
   (e: 'change', id: number): void
   (e: 'update', value: string): void
 }>()
+
+// 3.3+: より簡潔な代替構文
+const emit = defineEmits<{
+  change: [id: number] // 名前付きタプル構文
+  update: [value: string]
+}>()
 ```
 
 - `defineProps` または `defineEmits` は、実行時の宣言か型宣言のどちらかしか使用できません。両方を同時に使用すると、コンパイルエラーになります。
