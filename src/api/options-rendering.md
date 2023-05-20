@@ -84,7 +84,7 @@
 
 - **参照:** [app.config.compilerOptions](/api/application#app-config-compileroptions)
 
-## スロット <sup class="vt-badge ts"/> {#slots}
+## slots <sup class="vt-badge ts"/> {#slots}
 
 レンダー関数でプログラム的にスロットを使用する際に、型推論を支援するオプションです。3.3 以上でのみサポートされています。
 
