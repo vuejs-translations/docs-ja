@@ -90,64 +90,6 @@
   }
   ```
 
-## app.provide() {#app-provide}
-
-アプリケーション内のすべての子孫コンポーネントに注入できる値を提供します。
-
-- **型**
-
-  ```ts
-  interface App {
-    provide<T>(key: InjectionKey<T> | symbol | string, value: T): this
-  }
-  ```
-
-- **詳細**
-
-  第 1 引数にはインジェクションキー、第 2 引数には提供される値を期待します。アプリケーションインスタンス自身を返します。
-
-- **例**
-
-  ```js
-  import { createApp } from 'vue'
-
-  const app = createApp(/* ... */)
-
-  app.provide('message', 'hello')
-  ```
-
-  アプリケーションのコンポーネント内部:
-
-  <div class="composition-api">
-
-  ```js
-  import { inject } from 'vue'
-
-  export default {
-    setup() {
-      console.log(inject('message')) // 'hello'
-    }
-  }
-  ```
-
-  </div>
-  <div class="options-api">
-
-  ```js
-  export default {
-    inject: ['message'],
-    created() {
-      console.log(this.message) // 'hello'
-    }
-  }
-  ```
-
-  </div>
-
-- **参照:**
-  - [Provide / Inject](/guide/components/provide-inject)
-  - [アプリケーションレベルの Provide](/guide/components/provide-inject#app-level-provide)
-
 ## app.component() {#app-component}
 
 名称文字列とコンポーネント定義を両方渡す場合、グローバルコンポーネントとして登録し、名称のみ渡す場合、登録済みのコンポーネントを取得します。
@@ -268,6 +210,95 @@
   interface App {
     mixin(mixin: ComponentOptions): this
   }
+  ```
+
+## app.provide() {#app-provide}
+
+アプリケーション内のすべての子孫コンポーネントに注入できる値を提供します。
+
+- **型**
+
+  ```ts
+  interface App {
+    provide<T>(key: InjectionKey<T> | symbol | string, value: T): this
+  }
+  ```
+
+- **詳細**
+
+  第 1 引数にはインジェクションキー、第 2 引数には提供される値を期待します。アプリケーションインスタンス自身を返します。
+
+- **例**
+
+  ```js
+  import { createApp } from 'vue'
+
+  const app = createApp(/* ... */)
+
+  app.provide('message', 'hello')
+  ```
+
+  アプリケーションのコンポーネント内部:
+
+  <div class="composition-api">
+
+  ```js
+  import { inject } from 'vue'
+
+  export default {
+    setup() {
+      console.log(inject('message')) // 'hello'
+    }
+  }
+  ```
+
+  </div>
+  <div class="options-api">
+
+  ```js
+  export default {
+    inject: ['message'],
+    created() {
+      console.log(this.message) // 'hello'
+    }
+  }
+  ```
+
+  </div>
+
+- **参照:**
+  - [Provide / Inject](/guide/components/provide-inject)
+  - [アプリケーションレベルの Provide](/guide/components/provide-inject#app-level-provide)
+  - [app.runWithContext()](#app-runwithcontext)
+
+## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
+
+現在のアプリをインジェクションコンテキストとしてコールバックを実行します。
+
+- **型**
+
+  ```ts
+  interface App {
+    runWithContext<T>(fn: () => T): T
+  }
+  ```
+
+- **詳細**
+
+  コールバック関数を受け取り、即座に実行します。コールバックの同期呼び出しの間、`inject()` 呼び出しは、現在アクティブなコンポーネントインスタンスがない場合でも、現在のアプリが提供する値からインジェクションを検索できます。また、コールバックの戻り値も返されます。
+
+- **例**
+
+  ```js
+  import { inject } from 'vue'
+
+  app.provide('id', 1)
+
+  const injected = app.runWithContext(() => {
+    return inject('id')
+  })
+
+  console.log(injected) // 1
   ```
 
 ## app.version {#app-version}
