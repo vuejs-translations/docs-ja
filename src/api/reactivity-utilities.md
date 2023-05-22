@@ -41,11 +41,23 @@
 
 ## toRef() {#toref}
 
-ソースとなるリアクティブオブジェクトのプロパティの ref を作成するために使用できます。作成された ref はそのソースのプロパティと同期されます。ソースのプロパティを変更すると ref も更新され、その逆も同様です。
+値 / ref / getter を ref に正規化するために使用できます（3.3+）。
+
+ソースとなるリアクティブオブジェクトのプロパティの ref を作成するためにも使用できます。作成された ref はそのソースのプロパティと同期されます。ソースのプロパティを変更すると ref も更新され、その逆も同様です。
 
 - **型**
 
   ```ts
+  // 正規化のシグネチャー（3.3+）
+  function toRef<T>(
+    value: T
+  ): T extends () => infer R
+    ? Readonly<Ref<R>>
+    : T extends Ref
+    ? T
+    : Ref<UnwrapRef<T>>
+
+  // オブジェクトプロパティのシグネチャー
   function toRef<T extends object, K extends keyof T>(
     object: T,
     key: K,
@@ -57,12 +69,29 @@
 
 - **例**
 
+  正規化のシグネチャー（3.3+）:
+
+  ```js
+  // 既存の ref をそのまま返します
+  toRef(existingRef)
+
+  // .value のアクセス時に getter を呼び出す、読み取り専用の ref を作成します
+  toRef(() => props.foo)
+
+  // ref(1) に相当する、関数でない値から
+  // 通常の ref を生成します
+  toRef(1)
+  ```
+
+  オブジェクトプロパティのシグネチャー:
+
   ```js
   const state = reactive({
     foo: 1,
     bar: 2
   })
 
+  // 元のプロパティと同期する双方向の ref
   const fooRef = toRef(state, 'foo')
 
   // ref を変更すると参照元も更新されます
@@ -74,7 +103,7 @@
   console.log(fooRef.value) // 3
   ```
 
-  以下とはことなるので注意してください:
+  以下とは異なるので注意してください:
 
   ```js
   const fooRef = ref(state.foo)
@@ -87,18 +116,21 @@
   ```vue
   <script setup>
   import { toRef } from 'vue'
-  
+
   const props = defineProps(/* ... */)
 
   // `props.foo` を ref に変換して
   // コンポーザブルに渡す
   useSomeFeature(toRef(props, 'foo'))
+
+  // getter 構文 - 3.3+ で推奨
+  useSomeFeature(toRef(() => props.foo))
   </script>
   ```
 
   コンポーネントプロパティに `toRefs` を使用する場合、プロパティの変更に関するいつも通りの制限が適用されます。ref に新しい値を代入しようとするのは、プロパティを直接変更しようとすることと同等であり、許可されていません。そのようなシナリオでは `get` と `set` を持つ [`computed`](./reactivity-core#computed) を使うことを検討するとよいでしょう。詳しくは、[コンポーネントで `v-model` を使う](/guide/components/v-model)ためのガイドを参照してください。
 
-  `toRef()` はソースプロパティが現在存在しない場合でも、利用可能な ref を返します。これにより [`toRefs`](#torefs) では取得できないオプショナルなプロパティを扱えるようになります。
+  オブジェクトプロパティのシグネチャーを使用する場合、`toRef()` はソースプロパティが現在存在しない場合でも、利用可能な ref を返します。これにより [`toRefs`](#torefs) では取得できない、省略可能なプロパティを扱えるようになります。
 
 ## toRefs() {#torefs}
 
