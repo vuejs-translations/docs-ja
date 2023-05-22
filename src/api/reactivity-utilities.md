@@ -132,6 +132,43 @@
 
   オブジェクトプロパティのシグネチャーを使用する場合、`toRef()` はソースプロパティが現在存在しない場合でも、利用可能な ref を返します。これにより [`toRefs`](#torefs) では取得できない、省略可能なプロパティを扱えるようになります。
 
+## toValue() <sup class="vt-badge" data-text="3.3+" /> {#tovalue}
+
+値 / ref / getter を値に正規化します。これは [unref()](#unref) に似ていますが、getter も正規化する点が異なります。引数が getter の場合、その getter が呼び出され、その戻り値が返されます。
+
+これは、[コンポーザブル](/guide/reusability/composables.html)で、値、ref、getter のいずれかになりうる引数を正規化するために使用できます。
+
+- **型**
+
+  ```ts
+  function toValue<T>(source: T | Ref<T> | (() => T)): T
+  ```
+
+- **例**
+
+  ```js
+  toValue(1) //       --> 1
+  toValue(ref(1)) //  --> 1
+  toValue(() => 1) // --> 1
+  ```
+
+  コンポーザブルの引数の正規化:
+
+  ```ts
+  import type { MaybeRefOrGetter } from 'vue'
+
+  function useFeature(id: MaybeRefOrGetter<number>) {
+    watch(() => toValue(id), id => {
+      // id の変化に対応する
+    })
+  }
+
+  // このコンポーザブルは、以下のいずれかをサポートします:
+  useFeature(1)
+  useFeature(ref(1))
+  useFeature(() => 1)
+  ```
+
 ## toRefs() {#torefs}
 
 リアクティブオブジェクトをプレーンオブジェクトに変換します。変換後のオブジェクトの各プロパティは、元のオブジェクトの対応するプロパティを指す ref です。個々の ref は [`toRef()`](#toref) を用いて生成されます。
