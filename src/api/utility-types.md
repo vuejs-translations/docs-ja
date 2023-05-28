@@ -34,23 +34,23 @@
 
 ## MaybeRef\<T> {#mayberef}
 
-Alias for `T | Ref<T>`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+`T | Ref<T>` のためのエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
 
-- Only supported in 3.3+.
+- 3.3 以上でのみサポートされています。
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-Alias for `T | Ref<T> | (() => T)`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+`T | Ref<T> | (() => T)` のためのエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
 
-- Only supported in 3.3+.
+- 3.3 以上でのみサポートされています。
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
-Extract prop types from a runtime props options object. The extracted types are internal facing - i.e. the resolved props received by the component. This means boolean props and props with default values are always defined, even if they are not required.
+ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は内在的、つまりコンポーネントから受け取った解決済みのプロパティです。これは、仮に必須でなくても、 boolean 型のプロパティとデフォルト値を持ったプロパティが常に定義されていることを意味しています。
 
-To extract public facing props, i.e. props that the parent is allowed to pass, use [`ExtractPublicPropTypes`](#extractpublicproptypes).
+外在的なプロパティを抽出するためには、言い換えると親にプロパティの受け渡しを可能にさせるには、[`ExtractPublicPropTypes`](#extractpublicproptypes) を使用します。
 
-- **Example**
+- **例**
 
   ```ts
   const propsOptions = {
@@ -77,9 +77,9 @@ To extract public facing props, i.e. props that the parent is allowed to pass, u
   
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-Extract prop types from a runtime props options object. The extracted types are public facing - i.e. the props that the parent is allowed to pass.
+ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は外在的、言い換えると親に受け渡し可能なプロパティです。
 
-- **Example**
+- **例**
 
   ```ts
   const propsOptions = {
