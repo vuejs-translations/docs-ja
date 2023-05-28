@@ -32,6 +32,78 @@
 
 - **参照:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props)
 
+## MaybeRef\<T> {#mayberef}
+
+Alias for `T | Ref<T>`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+
+- Only supported in 3.3+.
+
+## MaybeRefOrGetter\<T> {#maybereforgetter}
+
+Alias for `T | Ref<T> | (() => T)`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+
+- Only supported in 3.3+.
+
+## ExtractPropTypes\<T> {#extractproptypes}
+
+Extract prop types from a runtime props options object. The extracted types are internal facing - i.e. the resolved props received by the component. This means boolean props and props with default values are always defined, even if they are not required.
+
+To extract public facing props, i.e. props that the parent is allowed to pass, use [`ExtractPublicPropTypes`](#extractpublicproptypes).
+
+- **Example**
+
+  ```ts
+  const propsOptions = {
+    foo: String,
+    bar: Boolean,
+    baz: {
+      type: Number,
+      required: true
+    },
+    qux: {
+      type: Number,
+      default: 1
+    }
+  } as const
+
+  type Props = ExtractPropTypes<typeof propsOptions>
+  // {
+  //   foo?: string,
+  //   bar: boolean,
+  //   baz: number,
+  //   qux: number
+  // }
+  ```
+  
+## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
+
+Extract prop types from a runtime props options object. The extracted types are public facing - i.e. the props that the parent is allowed to pass.
+
+- **Example**
+
+  ```ts
+  const propsOptions = {
+    foo: String,
+    bar: Boolean,
+    baz: {
+      type: Number,
+      required: true
+    },
+    qux: {
+      type: Number,
+      default: 1
+    }
+  } as const
+
+  type Props = ExtractPublicPropTypes<typeof propsOptions>
+  // {
+  //   foo?: string,
+  //   bar?: boolean,
+  //   baz: number,
+  //   qux?: number
+  // }
+  ```
+
 ## ComponentCustomProperties {#componentcustomproperties}
 
 コンポーネントインスタンス型を拡張してカスタムグローバルプロパティのサポートするのに使われます。
@@ -121,8 +193,9 @@ TSX 要素のプロパティとして宣言されていないプロパティを�
   ```tsx
   <div style={ { '--bg-color': 'blue' } }>
   ```
+
   ```html
-  <div :style="{ '--bg-color': 'blue' }">
+  <div :style="{ '--bg-color': 'blue' }"></div>
   ```
 
 :::tip
