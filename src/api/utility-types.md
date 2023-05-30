@@ -32,6 +32,78 @@
 
 - **参照:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props)
 
+## MaybeRef\<T> {#mayberef}
+
+`T | Ref<T>` のエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
+
+- 3.3 以上でのみサポートされています。
+
+## MaybeRefOrGetter\<T> {#maybereforgetter}
+
+`T | Ref<T> | (() => T)` のエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
+
+- 3.3 以上でのみサポートされています。
+
+## ExtractPropTypes\<T> {#extractproptypes}
+
+ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は内向き、つまりコンポーネントから受け取った解決済みのプロパティです。これは、仮に必須でなくても、真偽値の型のプロパティとデフォルト値を持ったプロパティが常に定義されていることを意味しています。
+
+外向きのプロパティ、つまり親が渡すことのできるプロパティを抽出するためには [`ExtractPublicPropTypes`](#extractpublicproptypes) を使用します。
+
+- **例**
+
+  ```ts
+  const propsOptions = {
+    foo: String,
+    bar: Boolean,
+    baz: {
+      type: Number,
+      required: true
+    },
+    qux: {
+      type: Number,
+      default: 1
+    }
+  } as const
+
+  type Props = ExtractPropTypes<typeof propsOptions>
+  // {
+  //   foo?: string,
+  //   bar: boolean,
+  //   baz: number,
+  //   qux: number
+  // }
+  ```
+  
+## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
+
+ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は外向き、つまり親が渡すことのできるプロパティです。
+
+- **例**
+
+  ```ts
+  const propsOptions = {
+    foo: String,
+    bar: Boolean,
+    baz: {
+      type: Number,
+      required: true
+    },
+    qux: {
+      type: Number,
+      default: 1
+    }
+  } as const
+
+  type Props = ExtractPublicPropTypes<typeof propsOptions>
+  // {
+  //   foo?: string,
+  //   bar?: boolean,
+  //   baz: number,
+  //   qux?: number
+  // }
+  ```
+
 ## ComponentCustomProperties {#componentcustomproperties}
 
 コンポーネントインスタンス型を拡張してカスタムグローバルプロパティのサポートするのに使われます。
@@ -121,8 +193,9 @@ TSX 要素のプロパティとして宣言されていないプロパティを�
   ```tsx
   <div style={ { '--bg-color': 'blue' } }>
   ```
+
   ```html
-  <div :style="{ '--bg-color': 'blue' }">
+  <div :style="{ '--bg-color': 'blue' }"></div>
   ```
 
 :::tip
