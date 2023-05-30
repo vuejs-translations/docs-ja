@@ -34,21 +34,21 @@
 
 ## MaybeRef\<T> {#mayberef}
 
-`T | Ref<T>` のためのエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
+`T | Ref<T>` のエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
 
 - 3.3 以上でのみサポートされています。
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-`T | Ref<T> | (() => T)` のためのエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
+`T | Ref<T> | (() => T)` のエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
 
 - 3.3 以上でのみサポートされています。
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
-ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は内在的、つまりコンポーネントから受け取った解決済みのプロパティです。これは、仮に必須でなくても、 boolean 型のプロパティとデフォルト値を持ったプロパティが常に定義されていることを意味しています。
+ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は内向き、つまりコンポーネントから受け取った解決済みのプロパティです。これは、仮に必須でなくても、真偽値の型のプロパティとデフォルト値を持ったプロパティが常に定義されていることを意味しています。
 
-外在的なプロパティを抽出するためには、言い換えると親にプロパティの受け渡しを可能にさせるには、[`ExtractPublicPropTypes`](#extractpublicproptypes) を使用します。
+外向きのプロパティ、つまり親が渡すことのできるプロパティを抽出するためには [`ExtractPublicPropTypes`](#extractpublicproptypes) を使用します。
 
 - **例**
 
@@ -77,7 +77,7 @@
   
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は外在的、言い換えると親に受け渡し可能なプロパティです。
+ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は外向き、つまり親が渡すことのできるプロパティです。
 
 - **例**
 
