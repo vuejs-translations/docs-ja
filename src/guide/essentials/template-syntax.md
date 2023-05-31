@@ -162,7 +162,7 @@ Vue のテンプレートでは、以下の場所で JavaScript の式を使用�
 
 ### グローバルへのアクセスの制限 {#restricted-globals-access}
 
-テンプレートで用いる式はサンドボックス内で実行され、[限定的なグローバルのリスト](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsWhitelist.ts#L3)にのみアクセスできます。このリストには、`Math` や `Date` などのよく使われる組み込みグローバルが含まれています。
+テンプレートで用いる式はサンドボックス内で実行され、[限定的なグローバルのリスト](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3)にのみアクセスできます。このリストには、`Math` や `Date` などのよく使われる組み込みグローバルが含まれています。
 
 ユーザーが `window` に付与したプロパティなど、このリストに明示的に含まれていないグローバルには、テンプレート内の式からアクセスすることができません。ただし、[`app.config.globalProperties`](/api/application#app-config-globalproperties) に追加することにより、Vue のあらゆる式で利用できるグローバルを明示的に定義することができます。
 
