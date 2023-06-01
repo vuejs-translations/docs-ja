@@ -175,10 +175,6 @@ const count = ref(1)
 </template>
 ```
 
-参照:
-
-- [`<script setup>` における TypeScript のみの機能](/api/sfc-script-setup.html#typescript-only-features)
-
 ### テンプレート内での TypeScript {#typescript-in-templates}
 
 `<template>` は、`<script lang="ts">` や `<script setup lang="ts">` が使われている場合、バインディング式について、TypeScript をサポートします。これは、テンプレート内の式で型キャストを行う必要がある場合に便利です。
