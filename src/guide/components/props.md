@@ -494,7 +494,7 @@ export default {
 
 <div class="composition-api">
 
-[型のみのプロパティ宣言](/api/sfc-script-setup#typescript-only-features) <sup class="vt-badge ts" /> を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
+[型のみのプロパティ宣言](/api/sfc-script-setup#type-only-props-emit-declarations) <sup class="vt-badge ts" /> を使用する場合、Vue は型アノテーションに基づいて、同等の実行時プロパティ宣言へのコンパイルをベストエフォートで試みます。例えば、`defineProps<{ msg: string }>` は `{ msg: { type: String, required: true }}` にコンパイルされます。
 
 </div>
 <div class="options-api">
