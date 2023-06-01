@@ -239,7 +239,7 @@ React によって最初に導入されましたが、JSX は実際にはラン�
 
 Vue の型定義は、TSX を使用するための型推論も提供します。TSX を使用する場合は、Vue の JSX 変換が処理できるように、TypeScript が JSX の構文をそのまま残すように、必ず `tsconfig.json` で `"jsx": "preserve"` を指定してください。
 
-### JSX 型推論
+### JSX 型推論 {#jsx-type-inference}
 
 Vue JSX 変換と同様に、Vue の JSX も異なる型定義が必要です。現在、Vue の型は自動的に Vue の JSX 型をグローバルに登録します。つまり、Vue の型が利用可能な場合、TSX はそのまま使用できます。
 
