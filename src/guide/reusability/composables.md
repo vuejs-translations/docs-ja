@@ -208,7 +208,7 @@ const { data, error } = useFetch(() => `/posts/${props.id}`)
 
 [`watchEffect()`](/api/reactivity-core.html#watcheffect) と [`toValue()`](/api/reactivity-utilities.html#tovalue) API を使用して、既存の実装をリファクタリングできます:
 
-```js
+```js{8,13}
 // fetch.js
 import { ref, watchEffect, toValue } from 'vue'
 
@@ -253,8 +253,9 @@ export function useFetch(url) {
 import { toValue } from 'vue'
 
 function useFeature(maybeRefOrGetter) {
-  // maybeRef が実際に ref なら、その .value が返されます
-  // そうでなければ、maybeRef がそのまま返されます
+  // maybeRefOrGetter が ref か getter なら、
+  // その正規化された値が返されます。
+  // そうでなければ、そのまま返されます。
   const value = toValue(maybeRefOrGetter)
 }
 ```
