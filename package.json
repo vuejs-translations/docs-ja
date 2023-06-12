@@ -2,7 +2,7 @@
   "engines": {
     "node": ">=14.19.0"
   },
-  "packageManager": "pnpm@7.29.0",
+  "packageManager": "pnpm@8.6.2",
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build",
@@ -35,7 +35,8 @@
         "@algolia/client-search",
         "react",
         "react-dom",
-        "@types/react"
+        "@types/react",
+        "search-insights"
       ]
     }
   },
