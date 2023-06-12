@@ -184,43 +184,60 @@ const { data, error } = useFetch('...')
 </script>
 ```
 
-`useFetch()` は入力として静的な URL 文字列をとり、一度だけ取得してそれで完了です。URL が変更されるたびに再取得したい場合はどうでしょうか？　引数に ref も受け付けるようにすれば実現できます:
+### リアクティブな状態を受け取る {#accepting-reactive-state}
+
+`useFetch()` は入力として静的な URL 文字列をとり、一度だけ取得してそれで完了です。URL が変更されるたびに再取得したい場合はどうでしょうか？　これを実現するためには、リアクティブな状態をコンポーザブル関数に渡し、渡された状態を使ってアクションを実行するウォッチャーをコンポーザブルに作らせる必要があります:
+
+例えば、`useFetch()` は ref を受け取れるようにする必要があります:
+
+```js
+const url = ref('/initial-url')
+
+const { data, error } = useFetch(url)
+
+// 再取得のトリガーになります
+url.value = '/new-url'
+```
+
+もしくは、getter 関数を受け取ります:
+
+```js
+// props.id が変更されたときに再取得する
+const { data, error } = useFetch(() => `/posts/${props.id}`)
+```
+
+[`watchEffect()`](/api/reactivity-core.html#watcheffect) と [`toValue()`](/api/reactivity-utilities.html#tovalue) API を使用して、既存の実装をリファクタリングできます:
 
 ```js
 // fetch.js
-import { ref, isRef, unref, watchEffect } from 'vue'
+import { ref, watchEffect, toValue } from 'vue'
 
 export function useFetch(url) {
   const data = ref(null)
   const error = ref(null)
 
-  function doFetch() {
+  watchEffect(() => {
     // 取得前に状態をリセット..
     data.value = null
     error.value = null
-    // unref() は潜在的な ref をアンラップします
-    fetch(unref(url))
+    // toValue() は潜在的な ref や getter をアンラップします
+    fetch(toValue(url))
       .then((res) => res.json())
       .then((json) => (data.value = json))
       .catch((err) => (error.value = err))
-  }
-
-  if (isRef(url)) {
-    // 入力された URL が ref の場合、リアクティブな再取得をセットアップ
-    watchEffect(doFetch)
-  } else {
-    // それ以外の場合は、ただ一度だけ取得し
-    // ウォッチャーのオーバーヘッドを避ける
-    doFetch()
-  }
+  })
 
   return { data, error }
 }
 ```
 
-このバージョンの `useFetch()` は静的な URL 文字列と、URL 文字列の ref のどちらも受け付けるようになりました。[`isRef()`](/api/reactivity-utilities#isref) を使って URL が動的な ref だと判別した場合、[`watchEffect()`](/api/reactivity-core#watcheffect) を使ってリアクティブな副作用をセットアップします。この副作用は即時に実行され、URL の ref を依存関係として追跡します。URL の ref が変更されるたび、データをリセットし再度取得します。
+`toValue()` は、3.3 で追加された API です。これは、ref や getter を値に正規化するためのものです。引数が ref であれば、ref の値を返し、引数が関数であれば、関数を呼び出してその戻り値を返します。それ以外の場合は、引数をそのまま返します。これは [`unref()`](/api/reactivity-utilities.html#unref) と同様に動作しますが、関数に対しては特別な扱いをします。
 
-これが [`useFetch()` の更新バージョン](https://play.vuejs.org/#eNptVMFu2zAM/RXOl7hYancYdgnSYAO2nTZsKLadfFFsulHrSIYkJwuC/PtISnbdrpc4ksjH9x4pnbNPfV8cBsxW2drXTvcBPIah31RG73vrApzBYbuE2u77IWADF2id3cOCkhazoMHjVwz1bjovynGrePAUWZnaGh9gqzz+dh3cwmIXQu9XZfngrek7VePOdg26Ipx6XdsGCypaBttYXxJATNcNZRKjfPFucTVuDoI3UszzK7jdTIXeUk5xUN2AFD9mnKFRQS0BnbNuSYDBnYj67aQjJ0yKX5fRFfKDFgH3xDMgrQC+WdVAb4XTijfW2yEEa+Bw3Vp3W2UatIEPVQYf607Xj7zD5HWVbc5n0HC5rMuYIuhVWDf6QNm6pVAhRpEMTND95oft/Rv4wtuApGIwAR02KyAsCS726L26R8HlBkpi4jRREKWEe8ffWX0KLal8/Bd5YOcxkmGvKOczfaAj2Vx23TtkHXwWS9L6VYwNO6XNfVEU4/m6nKzMltlsUGgOn8+d9nf8GYysjorCvrQt1uHFIFYG/0peO5g6aJL8rJNwZlKx98I4DpEZOu7yeCI+Pj/iQ+VPpn4CbmzETaAAZUkZdG3AB1IEW6T+I7QcJLJjFJeNc0gVGD1ux979vz+Htt0BIexQBj2GMqWds8YOvjuBt6DDwkNwqn6kS6o8qAmgwR5NQzNzgu1pbmEu0kfxhP0nsRC30w144sJXJCkWXOWCbnWtVUclOnUC4qpMQz2Jw0uRVSD3jkoHCHqPdkgleZsAYpkrOOqu4ys4OCMqaTep1G3UpXiPr0gqbSnMHbWPrsRYQdlyNgOJCdfaJwEhaiQvSV5kJP1hkaKaWy3oz9oUIymLRtOa0a8L1Gwi5DiNwMs+YorkD/3wh7TkMs1i7Hx45MWlKormixrt8Fq4iXpDTxr8vvtGF2F0gbPmXUzzKOQuwDduhj05tYSHgRyIyNbUieE0zDOmqRWvvZGrMYFjJfyVQajMdFemtkdKCdngEX7S5SVaeZ7mmws8kBx5uxN/MuZXAohv+uQ2m/ldhV0RJ45ON3BTvJ/1g4sJ8Ni1l+bEEC6ZMx95WfPFXZxgWS2unlJTP5fw/uYmekW/l+zyD/mIah0=)で、デモ用に人工的な遅延とランダムなエラーが発生します。
+`toValue(url)` は `watchEffect` コールバックの **内部** で呼び出されていることに注意してください。これにより、`toValue()` の正規化中にアクセスされたすべてのリアクティブな依存関係が、ウォッチャーによって追跡されることが保証されます。
+
+このバージョンの `useFetch()` は、静的な URL 文字列、ref、getter を受け取れるようになり、より柔軟になりました。watchEffect はすぐに実行され、`toValue(url)` の間にアクセスされた依存関係をすべて追跡することになります。依存関係が追跡されない場合（例えば、url が既に文字列である場合）、エフェクトは一度だけ実行されます。それ以外の場合は、追跡された依存関係が変化するたびに再実行されます。
+
+これが [`useFetch()` の更新バージョン](https://play.vuejs.org/#eNptVMFu2zAM/RXOFztYZncodgmSYAPWnTZsKLadfFFsulHrSIZEJwuC/PtIyXaTtkALxxT5yPf45FPypevyfY/JIln6yumOwCP13bo0etdZR3ACh80cKrvresIaztA4u4OUi9KLpN7jN6RqO53nxRjKHz1nlqayxhNslMc/roUVpFuizi+K4tFb07Wqwq1ta3Q5HTtd2RpzblqQra0vGCCW65oreaIs/ZjOxmAf8MYRs2wGq/XU6D3X5HvV9sj5Y8UJakVqDuicdXMGJHfk0VcTj4wxOX9ZRFVYD34h3PGchPwG8N2qGjobZlpIYLnpiayB/YfGulWZaNAGPpUJfK5aXT1JRIbXZbI+nUDD+bwsYklAL2lZ6z1X64ZTw2CcKcAM3a1/2s6/gzsJAzKL3hA6rBfAWCE536H36gEDriwwFA4zTSMEpox7L8+L/pxacPv4K86Brcc4jGjFNV/5AS3TlrbLzqHwkLPYkt/fxFiLUto85Hk+ni+LScpknlwYhX147buD4oO7psGK5kD2r+zxhQdLg/9CSdObijSzvVoinGSeuPYwbPSP6VtZ8HgSJHx5JP8XA2TKH00F0V4BFaAouISvDHhiNrBB3j1CI90D5ZglfaMHuYXAx3Dc2+v4JbRt9wi0xWDymCpTbJ01tvftEbwFTakHcqp64guqPKgJoMYOTc1+OcLmeMUlEBzZM3ZUdjVqPPj/eRq5IAPngKwc6UZXWrXcpFVH4GmVqXkt0boiHwGog9IEpHdo+6GphBmgN6L1DA66beUC9s4EnhwdeOomMlMSkwsytLac5g7aR11ibkDZSLUABRk+aD8QoMiS1WSCcaKwISEZ2MqXIaBfLSpmchUb05pRsTNUIiNkOFjr9SZxyJTHOXx1YGR49eGRDP4rzRt6lmay86Re7DcgGTzAL74GrEOWDUaRL9kjb/fSoWzO3wPAlXNB9M1+KNrmcXF8uoab/PaCljQLwCN5oS93+jpFWmYyT/g8Zel9NEJ4S2fPpYMsc7i9uQlREeecnP8DWEwr0Q==)で、デモ用に人工的な遅延とランダムなエラーが発生します。
 
 ## 慣例とベストプラクティス {#conventions-and-best-practices}
 
@@ -230,19 +247,21 @@ export function useFetch(url) {
 
 ### 入力引数 {#input-arguments}
 
-コンポーザブルはリアクティビティーに依存しない場合でも ref の引数を受け取れます。もし他の開発者が使うかも知れないコンポーザブルを書くのなら、入力引数が生の値ではなく ref である場合にも対応するとよいでしょう。[`unref()`](/api/reactivity-utilities#unref) ユーティリティー関数はその用途に便利です:
+コンポーザブルはリアクティビティーに依存しない場合でも ref や getter の引数を受け取れます。もし他の開発者が使うかも知れないコンポーザブルを書くのなら、入力引数が生の値ではなく ref や getter である場合にも対応するとよいでしょう。[`toValue()`](/api/reactivity-utilities#tovalue) ユーティリティー関数はその用途に便利です:
 
 ```js
-import { unref } from 'vue'
+import { toValue } from 'vue'
 
-function useFeature(maybeRef) {
+function useFeature(maybeRefOrGetter) {
   // maybeRef が実際に ref なら、その .value が返されます
   // そうでなければ、maybeRef がそのまま返されます
-  const value = unref(maybeRef)
+  const value = toValue(maybeRefOrGetter)
 }
 ```
 
-もしコンポーザブルの入力が ref の場合にリアクティブな副作用を起こすなら、`watch()` で明示的に ref を監視するか、`watchEffect()` 内で `unref()` を呼び出して適切に追跡できるようにしてください。
+もしコンポーザブルの入力が ref や getter の場合にリアクティブな副作用を起こすなら、`watch()` で明示的に ref / getter を監視するか、`watchEffect()` 内で `toValue()` を呼び出して適切に追跡できるようにしてください。
+
+前に説明した [useFetch()の実装](#accepting-reactive-state)は、入力引数として ref、getter、プレーンな値を受け付けるコンポーザブルの具体例を示しています。
 
 ### 戻り値 {#return-values}
 
