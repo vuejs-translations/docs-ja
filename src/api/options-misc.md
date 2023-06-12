@@ -102,6 +102,27 @@
   </template>
   ```
 
+  3.3 以降では、`<script setup>` で直接 `defineOptions` を使用することもできます:
+
+  ```vue
+  <script setup>
+  defineProps(['label', 'value'])
+  defineEmits(['input'])
+  defineOptions({ inheritAttrs: false })
+  </script>
+
+  <template>
+    <label>
+      {{ label }}
+      <input
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on:input="$emit('input', $event.target.value)"
+      />
+    </label>
+  </template>
+  ```
+
   </div>
 
 - **参照:** [フォールスルー属性](/guide/components/attrs)

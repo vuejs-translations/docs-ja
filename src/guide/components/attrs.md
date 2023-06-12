@@ -90,7 +90,18 @@ export default {
 </script>
 
 <script setup>
-// ロジックのセットアップ
+// セットアップのロジック
+</script>
+```
+
+ 3.3 以降では、`<script setup>` で直接 `defineOptions` を使用することもできます:
+
+```vue
+<script setup>
+defineOptions({
+  inheritAttrs: false
+})
+// セットアップのロジック
 </script>
 ```
 
