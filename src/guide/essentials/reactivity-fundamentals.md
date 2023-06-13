@@ -67,9 +67,9 @@ export default {
 
 <div class="composition-api">
 
-## リアクティブな状態を宣言する \** {#declaring-reactive-state}
+## リアクティブな状態を宣言する \*\* {#declaring-reactive-state-1}
 
-### `ref()` \** {#ref}
+### `ref()` \*\* {#ref}
 
 Composition API では、リアクティブな状態を宣言する方法として、[`ref()`](/api/reactivity-core#ref) 関数を使用することを推奨します:
 
@@ -372,7 +372,7 @@ export default {
 
 <div class="composition-api">
 
-## `reactive()` \** {#reactive}
+## `reactive()` \*\* {#reactive}
 
 リアクティブな状態を宣言する方法として、`reactive()` という API を使う方法もあります。内側の値を特別なオブジェクトでラップする ref とは異なり、`reactive()` はオブジェクト自体をリアクティブにします:
 
@@ -496,7 +496,7 @@ console.log(count.value) // 1
 
 ref のアンラップは、深いリアクティブオブジェクトの内部にネストされたときのみ発生します。[浅いリアクティブオブジェクト](/api/reactivity-advanced#shallowreactive)のプロパティとしてアクセスされる場合には適用されません。
 
-### 配列やコレクションにおける注意点 \** {#caveat-in-arrays-and-collections}
+### 配列やコレクションにおける注意点 \*\* {#caveat-in-arrays-and-collections}
 
 リアクティブオブジェクトとは異なり、ref がリアクティブな配列や `Map` のようなネイティブコレクション型の要素としてアクセスされた場合、アンラップは**行われません**:
 
