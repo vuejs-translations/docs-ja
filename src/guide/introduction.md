@@ -30,6 +30,8 @@ Vue (発音は /vjuː/、**view** と同様) は、ユーザーインターフ�
 
 最小限のサンプルは、次のようになります:
 
+<div class="options-api">
+
 ```js
 import { createApp } from 'vue'
 
@@ -41,6 +43,23 @@ createApp({
   }
 }).mount('#app')
 ```
+
+</div>
+<div class="composition-api">
+
+```js
+import { createApp, ref } from 'vue'
+
+createApp({
+  setup() {
+    return {
+      count: ref(0)
+    }
+  }
+}).mount('#app')
+```
+
+</div>
 
 ```vue-html
 <div id="app">
@@ -96,6 +115,8 @@ Vue は、フロントエンド開発に必要な一般的な機能のほとん�
 
 ビルドツールが利用可能な Vue プロジェクトでは、**単一ファイルコンポーネント**と呼ばれる、HTML に似たファイル形式の Vue コンポーネントがよく利用されます (`*.vue` ファイルとしても知られ、「**SFC**」と略されます)。Vue の SFC は、その名前が示す通り、コンポーネントのロジック (JavaScript)、テンプレート (HTML)、およびスタイル (CSS) を単一のファイルに収めたものです。先ほどのサンプルコードを SFC 形式で書いたものを以下に示します:
 
+<div class="options-api">
+
 ```vue
 <script>
 export default {
@@ -117,6 +138,28 @@ button {
 }
 </style>
 ```
+
+</div>
+<div class="composition-api">
+
+```vue
+<script setup>
+import { ref } from 'vue'
+const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">Count is: {{ count }}</button>
+</template>
+
+<style scoped>
+button {
+  font-weight: bold;
+}
+</style>
+```
+
+</div>
 
 SFC は、Vue を特徴付ける機能で、ビルドのセットアップが必要なユースケースで**あれば**、Vue コンポーネントを作成するために推奨される方法です。詳細を知りたい方は、[SFC の作成方法と用途](/guide/scaling-up/sfc)に特設のセクションがありますので、ぜひご覧ください。ここでは、ビルドツール全体のセットアップを Vue が手伝ってくれることだけ覚えておいてください。
 
@@ -210,7 +253,7 @@ Vue を初めて使う方に、一般的な推奨事項をお伝えします:
 
 - プロダクション用途の場合は、以下をおすすめします:
 
-  - ビルドツールを利用しない予定の場合や、プログレッシブエンハンスメントなどの複雑性の低いシナリオで主に Vue を使う予定の場合は、Options API を選択します。 
+  - ビルドツールを利用しない予定の場合や、プログレッシブエンハンスメントなどの複雑性の低いシナリオで主に Vue を使う予定の場合は、Options API を選択します。
 
   - アプリケーション全体を Vue で構築する予定の場合は、Composition API と単一ファイルコンポーネントの組み合わせを使用します。
 
