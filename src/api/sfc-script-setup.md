@@ -304,7 +304,7 @@ const attrs = useAttrs()
 
 `<script setup>` は、通常の `<script>` と一緒に使うことができます。次のことが必要な場合は、通常の `<script>` が必要になることがあります:
 
-- `inheritAttrs` や、プラグインで有効になるカスタムオプションなど、`<script setup>` では表現できないオプションを宣言する
+- `inheritAttrs` や、プラグインで有効になるカスタムオプションなど、`<script setup>` では表現できないオプションを宣言する（3.3+ では [`defineOptions`](/api/sfc-script-setup#defineoptions) で置き換え可能）
 - 名前付きのエクスポートを宣言する
 - 副作用を実行したり、一度しか実行してはいけないオブジェクトを作成する
 
