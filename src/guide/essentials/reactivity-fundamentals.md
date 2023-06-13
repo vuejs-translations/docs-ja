@@ -8,9 +8,9 @@ outline: deep
 このページと、当ガイドの多くの章では、Options API と Composition API で異なる内容が含まれています。現在の設定は <span class="options-api">Options API</span> <span class="composition-api">Composition API</span> です。左サイドバーの上部にある「API の参照」スイッチで、API スタイルを切り替えることができます。
 :::
 
-## リアクティブな状態を宣言する {#declaring-reactive-state}
-
 <div class="options-api">
+
+## リアクティブな状態を宣言する \* {#declaring-reactive-state}
 
 Options API では、`data` オプションを使用して、コンポーネントのリアクティブな状態を宣言します。オプションの値は、オブジェクトを返す関数でなければなりません。Vue は、新しいコンポーネントのインスタンスを作成するときにこの関数を呼び出し、返されたオブジェクトをリアクティブシステムでラップします。このオブジェクトのトップレベルのプロパティは、コンポーネントのインスタンス（メソッドやライフサイクルフックでは `this`）にプロキシされます：
 
@@ -67,98 +67,157 @@ export default {
 
 <div class="composition-api">
 
-リアクティブなオブジェクトや配列を作るには、[`reactive()`](/api/reactivity-core#reactive) 関数を使用します。
+## リアクティブな状態を宣言する \*\* {#declaring-reactive-state-1}
+
+### `ref()` \*\* {#ref}
+
+Composition API では、リアクティブな状態を宣言する方法として、[`ref()`](/api/reactivity-core#ref) 関数を使用することを推奨します:
 
 ```js
-import { reactive } from 'vue'
+import { ref } from 'vue'
 
-const state = reactive({ count: 0 })
+const count = ref(0)
 ```
 
-リアクティブなオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)で、通常のオブジェクトと同じように振る舞います。違いは、Vue がリアクティブなオブジェクトのプロパティアクセスと変更を追跡できることです。詳細については、[リアクティビティーの探求](/guide/extras/reactivity-in-depth)で Vue のリアクティブシステムの仕組みを説明していますが、このメインガイドを読み終えた後に読むことをお勧めします。
+`ref()` は、引数を受け取り、それを `.value` プロパティを持つ ref オブジェクトにラップして返します:
 
-参照: [`reactive()` の型付け](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />。
+```js
+const count = ref(0)
 
-コンポーネントのテンプレートでリアクティブな状態を使うには、下記に示すように、コンポーネントの `setup()` 関数で宣言し、それを返します：
+console.log(count) // { value: 0 }
+console.log(count.value) // 0
+
+count.value++
+console.log(count.value) // 1
+```
+
+> 参照: [ref の型付け](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
+
+コンポーネントのテンプレート内で ref にアクセスするには、下記に示すように、コンポーネントの `setup()` 関数で宣言し、それを返します:
 
 ```js{5,9-11}
-import { reactive } from 'vue'
+import { ref } from 'vue'
 
 export default {
-  // `setup` 関数は、Composition API 専用の特別なフックです。
+  // `setup` は、Composition API 専用の特別なフックです。
   setup() {
-    const state = reactive({ count: 0 })
+    const count = ref(0)
 
-    // 状態をテンプレートに公開します
+    // ref をテンプレートに公開します
     return {
-      state
+      count
     }
   }
 }
 ```
 
 ```vue-html
-<div>{{ state.count }}</div>
+<div>{{ count }}</div>
 ```
 
-同様に、リアクティブな状態を変化させる関数を同じスコープで宣言し、状態と並行してメソッドとして公開することができます：
+テンプレート内で ref を使用する際、`.value` をつける必要は**ない**ことに注意してください。便利のよいように、ref はテンプレート内で使用されると自動的にアンラップされます（いくつかの[注意点](#caveat-when-unwrapping-in-templates)があります）。
 
-```js{7-9,14}
-import { reactive } from 'vue'
+イベントハンドラーで直接 ref を変更することもできます:
+
+```vue-html{1}
+<button @click="count++">
+  {{ count }}
+</button>
+```
+
+より複雑なロジックの場合、同じスコープで ref を変更する関数を宣言し、状態とともにメソッドとして公開できます:
+
+```js{7-10,15}
+import { ref } from 'vue'
 
 export default {
   setup() {
-    const state = reactive({ count: 0 })
+    const count = ref(0)
 
     function increment() {
-      state.count++
+      // JavaScript 内では .value が必要
+      count.value++
     }
 
     // 関数も公開することを忘れないでください。
     return {
-      state,
+      count,
       increment
     }
   }
 }
 ```
 
-通常、公開されたメソッドはイベントリスナーとして使用されます。
+公開されたメソッドは、イベントハンドラーとして使用できます:
 
-```vue-html
+```vue-html{1}
 <button @click="increment">
-  {{ state.count }}
+  {{ count }}
 </button>
 ```
 
+これは、ビルドツールを使わずに、[Codepen](https://codepen.io/vuejs-examples/pen/WNYbaqo) 上で実行されている例です。
+
 ### `<script setup>` \*\* {#script-setup}
 
-`setup()` 関数を使って手動で状態やメソッドを公開すると、冗長になることがあります。幸いなことに、これはビルドステップを使用しない場合にのみ必要です。単一ファイルコンポーネント (SFC) を使用する場合は、 `<script setup>` を使用することで大幅に簡略化することができます。
+`setup()` で状態やメソッドを手動で公開するのは冗長になりがちです。幸い、[単一ファイルコンポーネント（SFC）](/guide/scaling-up/sfc) を使用すれば、これを避けられます。`<script setup>` によって使い方を簡略化できます:
 
-```vue
+```vue{1}
 <script setup>
-import { reactive } from 'vue'
+import { ref } from 'vue'
 
-const state = reactive({ count: 0 })
+const count = ref(0)
 
 function increment() {
-  state.count++
+  count.value++
 }
 </script>
 
 <template>
   <button @click="increment">
-    {{ state.count }}
+    {{ count }}
   </button>
 </template>
 ```
 
-[Playground で試す](https://play.vuejs.org/#eNpNjkEKgzAURK8yZFNF0K5FS3uPbGyIEKo/If64Cbl7fxWky2HePCarVwjtnqzq1bCZ6AJjs5zCQ5Nbg4+MjGgnw263KJijX3ET/qZJk/G0Cc8TW4wXVmUYn4h73FHqHzcnksYTHJloV0tc1ciacG7bA28aTUXT0J035IAEtmtYBJEEDO/ELJanWZz5jFpdOq0OAMj5X4kiQtl151CYobuMqnwBBoFaVA==)
+[Playground で試す](https://play.vuejs.org/#eNo9jUEKgzAQRa8yZKMiaNcllvYe2dgwQqiZhDhxE3L3jrW4/DPvv1/UK8Zhz6juSm82uciwIef4MOR8DImhQMIFKiwpeGgEbQwZsoE2BhsyMUwH0d66475ksuwCgSOb0CNx20ExBCc77POase8NVUN6PBdlSwKjj+vMKAlAvzOzWJ52dfYzGXXpjPoBAKX856uopDGeFfnq8XKp+gWq4FAi)
 
-トップレベルのインポートと `<script setup>` で宣言された変数は、同じコンポーネントのテンプレートで自動的に使用できるようになります。
+`<script setup>` で宣言されたトップレベルのインポート、変数、関数は、同じコンポーネントのテンプレートで自動的に使用可能になります。テンプレートは同じスコープで宣言された JavaScript の関数と同じだと考えれば、当然ながら、一緒に宣言されたすべてのものにアクセスできます。
 
-> 当ページ残りの部分では、Composition API のコード例として主に SFC + `<script setup>` という構文を使用します。
+:::tip
+このガイドの残りの部分では、Composition API のコード例には主に SFC + `<script setup>` 構文を使用します。これは、Vue 開発者にとって最も一般的な使用方法だからです。
 
+SFC を使用しない場合でも、[`setup()`](/api/composition-api-setup) オプションで Composition API を使用できます。
+:::
+
+### ref を使う理由 \*\* {#why-refs}
+
+なぜ普通の変数ではなく、`.value` を使った ref が必要なのか、疑問に思うかもしれません。それを説明するために、Vue のリアクティビティシステムの仕組みについて簡単に説明する必要があります。
+
+テンプレート内で ref を使用し、後から ref の値を変更した場合、Vue は自動的にその変更を検出し、それに応じて DOM を更新します。これは、依存関係追跡ベースのリアクティビティーシステムによって実現されています。コンポーネントが初めてレンダリングされるとき、Vue はレンダリング中に使用されたすべての ref を**追跡**します。その後 ref が変更されると、それを追跡しているコンポーネントの再レンダリングが**トリガー**されます。
+
+標準的な JavaScript では、普通の変数のアクセスや変更を検出する方法はありません。しかし、プロパティの get や set の操作をインターセプトできます。
+
+`.value` プロパティは、Vue に、ref がアクセスされたり変更されたタイミングを検出する機会を提供します。Vue は、getter でトラッキングを行い、setter でトリガーを実行する仕組みになっています。概念的には、ref は次のようなオブジェクトと考えることができます:
+
+```js
+// 実際の実装ではなく、疑似コード
+const myRef = {
+  _value: 0,
+  get value() {
+    track()
+    return this._value
+  },
+  set value(newValue) {
+    this._value = newValue
+    trigger()
+  }
+}
+```
+
+ref のもう 1 つの優れた特徴は、普通の変数と違って、最新の値やリアクティビティー接続へのアクセスを維持したまま ref を関数に渡すことができることです。これは、複雑なロジックを再利用可能なコードにリファクタリングする際、特に便利です。
+
+リアクティビティーシステムについては、[リアクティビティーの探求](/guide/extras/reactivity-in-depth)セクションで詳しく解説しています。
 </div>
 
 <div class="options-api">
@@ -212,6 +271,66 @@ export default {
 
 </div>
 
+### ディープなリアクティビティー {#deep-reactivity}
+
+<div class="options-api">
+
+Vue では、デフォルトで状態がリアクティブになっています。つまり、ネストしたオブジェクトや配列を変化させた場合でも、変更が検出されることが期待できます:
+
+```js
+export default {
+  data() {
+    return {
+      obj: {
+        nested: { count: 0 },
+        arr: ['foo', 'bar']
+      }
+    }
+  },
+  methods: {
+    mutateDeeply() {
+      // これらは期待通りに動作します。
+      this.obj.nested.count++
+      this.obj.arr.push('baz')
+    }
+  }
+}
+```
+
+</div>
+
+<div class="composition-api">
+
+ref は、深くネストしたオブジェクトや配列、`Map` のような JavaScript ビルトインのデータ構造など、どんな値の型も保持できます。
+
+ref は、その値を深いリアクティブにします。つまり、ネストしたオブジェクトや配列を変更した場合でも、変更が検出されることが期待できます:
+
+```js
+import { ref } from 'vue'
+
+const obj = ref({
+  nested: { count: 0 },
+  arr: ['foo', 'bar']
+})
+
+function mutateDeeply() {
+  // これらは期待通りに動作します。
+  obj.value.nested.count++
+  obj.value.arr.push('baz')
+}
+```
+
+非プリミティブ値は、後述する [`reactive()`](#reactive) を介してリアクティブプロキシーに変換されます。
+
+また、[浅い ref](/api/reactivity-advanced#shallowref) により、深いリアクティビティーをオプトアウトすることもできます。浅い ref では、`.value` アクセスのみがリアクティビティーに追跡されます。浅い ref は、大きなオブジェクトの監視コストを回避してパフォーマンスを最適化する場合や、内部の状態を外部ライブラリーで管理する場合などに利用できます。
+
+さらに読む:
+
+- [大きなイミュータブルな構造のリアクティビティーオーバーヘッドを減らす](/guide/best-practices/performance#reduce-reactivity-overhead-for-large-immutable-structures)
+- [外部の状態システムとの統合](/guide/extras/reactivity-in-depth#integration-with-external-state-systems)
+
+</div>
+
 ### DOM 更新のタイミング {#dom-update-timing}
 
 リアクティブな状態を変化させると、DOM は自動的に更新されます。しかし、DOM の更新は同期的に適用されないことに注意する必要があります。その代わりに Vue は、更新サイクルの「next tick」まで更新をバッファリングし、どれだけ状態を変化させても、各コンポーネントは一度だけ更新することを保証しています。
@@ -224,7 +343,7 @@ export default {
 import { nextTick } from 'vue'
 
 function increment() {
-  state.count++
+  count.value++
   nextTick(() => {
     // DOM 更新にアクセスします
   })
@@ -251,56 +370,31 @@ export default {
 
 </div>
 
-### ディープなリアクティビティー {#deep-reactivity}
-
-Vue では、デフォルトで状態がリアクティブになっています。つまり、ネストしたオブジェクトや配列を変化させた場合でも、変更が検出されることが期待できます：
-
-<div class="options-api">
-
-```js
-export default {
-  data() {
-    return {
-      obj: {
-        nested: { count: 0 },
-        arr: ['foo', 'bar']
-      }
-    }
-  },
-  methods: {
-    mutateDeeply() {
-      // これらは期待通りに動作します。
-      this.obj.nested.count++
-      this.obj.arr.push('baz')
-    }
-  }
-}
-```
-
-</div>
-
 <div class="composition-api">
+
+## `reactive()` \*\* {#reactive}
+
+リアクティブな状態を宣言する方法として、`reactive()` という API を使う方法もあります。内側の値を特別なオブジェクトでラップする ref とは異なり、`reactive()` はオブジェクト自体をリアクティブにします:
 
 ```js
 import { reactive } from 'vue'
 
-const obj = reactive({
-  nested: { count: 0 },
-  arr: ['foo', 'bar']
-})
-
-function mutateDeeply() {
-  // これらは期待通りに動作します。
-  obj.nested.count++
-  obj.arr.push('baz')
-}
+const state = reactive({ count: 0 })
 ```
 
-</div>
+> 参照: [reactive の型付け](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
-また、ルートレベルでのみリアクティビティーを追跡する[浅いリアクティブオブジェクト](/api/reactivity-advanced#shallowreactive)を明示的に作成することも可能ですが、これらは一般的に高度な使用例においてのみ必要とされるものとなります。
+テンプレートでの使用法:
 
-<div class="composition-api">
+```vue-html
+<button @click="state.count++">
+  {{ state.count }}
+</button>
+```
+
+リアクティブオブジェクトは [JavaScript プロキシ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) であり、通常のオブジェクトと同じように動作します。違いは、Vue がリアクティブオブジェクトのすべてのプロパティのアクセスや変更をインターセプトして、リアクティビティーの追跡やトリガーを行うことができることです。
+
+`reactive()` はオブジェクトを深く変換します。ネストしたオブジェクトもアクセスした際に `reactive()` でラップされます。また、ref の値がオブジェクトである場合、内部では `ref()` からも呼び出されます。浅い ref と同様に、深いリアクティビティーをオプトアウトするための [`shallowReactive()`](/api/reactivity-advanced#shallowreactive) API もあります。
 
 ### リアクティブプロキシ vs. 独自 \*\* {#reactive-proxy-vs-original-1}
 
@@ -339,155 +433,43 @@ console.log(proxy.nested === raw) // false
 
 ### `reactive()` の制限 \*\* {#limitations-of-reactive}
 
-`reactive()` API には 2 つの制限があります：
+`reactive()` API にはいくつかの制限があります:
 
-1. オブジェクト型 (オブジェクト、配列、および `Map` や `Set` などの [コレクション型](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections)) に対してのみ機能します。文字列、数値、真偽値などの [プリミティブ型](https://developer.mozilla.org/ja/docs/Glossary/Primitive) を保持することはできません。
+1. **限定された値の型:** オブジェクト型 (オブジェクト、配列、および `Map` や `Set` などの [コレクション型](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections)) に対してのみ機能します。文字列、数値、真偽値などの [プリミティブ型](https://developer.mozilla.org/ja/docs/Glossary/Primitive) を保持できません。
 
-2. Vue のリアクティビティー追跡はプロパティアクセス上で動作するため、リアクティブなオブジェクトへの参照を常に同じに保つ必要があります。つまり、最初の参照へのリアクティブな接続が失われるため、リアクティブなオブジェクトを簡単に「置き換える」ことはできません:
+2. **オブジェクト全体を置換できない:** Vue のリアクティビティー追跡はプロパティアクセス上で動作するため、リアクティブなオブジェクトへの参照を常に同じに保つ必要があります。つまり、最初の参照へのリアクティブな接続が失われるため、リアクティブなオブジェクトを簡単に「置き換える」ことはできません:
 
    ```js
    let state = reactive({ count: 0 })
 
-   // 上記の参照（{ count: 0 }）は、もはや追跡されていません（リアクティブな接続が失われました！）
+   // 上記の参照（{ count: 0 }）は、もはや追跡されていません
+   // （リアクティブな接続は失われました！）
    state = reactive({ count: 1 })
    ```
 
-   また、リアクティブなオブジェクトのプロパティをローカル変数に代入したり、分割代入したり、そのプロパティを関数に渡したりすると、下記に示すようにリアクティブなつながりが失われることとなります：
+3. **分割代入できない:** また、リアクティブなオブジェクトのプロパティをローカル変数に分割代入したり、そのプロパティを関数に渡したりすると、下記に示すようにリアクティブなつながりが失われることとなります：
 
    ```js
    const state = reactive({ count: 0 })
 
-   // n は切り離されたローカル変数
-   // を state.count から取得します。
-   let n = state.count
-   // 元の状態に戻りません。
-   n++
-
-   // count も state.count と切り離されます。
+   // count は分割代入すると state.count と切り離されます。
    let { count } = state
    // 元の状態に戻りません。
    count++
 
    // この関数が受け取る平文番号と
    // state.count の変更を追跡することができません。
+   // リアクティビティーを維持するためには、オブジェクト全体を渡す必要があります
    callSomeFunction(state.count)
    ```
 
-## `ref()` と共に使うリアクティブな変数 \*\* {#reactive-variables-with-ref}
+このような制約があるため、リアクティブな状態を宣言するための主要な API として `ref()` を使用することを推奨します。
 
-Vue は、`reactive()` の制限に対処するため、[`ref()`](/api/reactivity-core#ref) という関数も提供しており、任意の値の型を保持できるリアクティブな **"refs "** を作成することができます：
+## 追加の ref アンラップの詳細 \*\* {#additional-ref-unwrapping-details}
 
-```js
-import { ref } from 'vue'
+### リアクティブなオブジェクトのプロパティとして \*\* {#ref-unwrapping-as-reactive-object-property}
 
-const count = ref(0)
-```
-
-`ref()` は引数を受け取り、それを `.value` プロパティを持つ ref オブジェクトにラップして返します：
-
-```js
-const count = ref(0)
-
-console.log(count) // { value: 0 }
-console.log(count.value) // 0
-
-count.value++
-console.log(count.value) // 1
-```
-
-参照: [`ref()` の型付け](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />。
-
-リアクティブなオブジェクトのプロパティと同様に、ref の `.value` プロパティはリアクティブとなります。また、オブジェクト型を保持する場合、ref は `.value` を `reactive()` で自動的に変換します。
-
-オブジェクトの値を含む ref は、オブジェクト全体をリアクティブに置き換えることができます：
-
-```js
-const objectRef = ref({ count: 0 })
-
-// これはリアクティブに動きます。
-objectRef.value = { count: 1 }
-```
-
-また、Ref を関数に渡したり、プレーンオブジェクトから分解したりしても、リアクティビティーが失われることはありません。
-
-```js
-const obj = {
-  foo: ref(1),
-  bar: ref(2)
-}
-
-// ref を受け取るこの関数は、
-// .value を介して値にアクセスする必要がありますが、それは
-// リアクティビティーを保持します。
-callSomeFunction(obj.foo)
-
-// リアクティビティーを保持しています。
-const { foo, bar } = obj
-```
-
-つまり、`ref()` を使うと、任意の値への「参照」を作り、リアクティビティーを失わずに受け渡しすることができます。この能力は、ロジックを[コンポーザブル関数](/guide/reusability/composables)に抽出する際に頻繁に使用されるため、非常に重要となります。
-
-### Ref Unwrapping in Templates \*\* {#ref-unwrapping-in-templates}
-
-ref がテンプレートのトップレベルのプロパティとしてアクセスされた場合、それらは自動的に「アンラップ」されるので、`.value` を使用する必要はありません。以下は、先ほどのカウンターの例で、代わりに `ref()` を使用したものとなります：
-
-```vue{13}
-<script setup>
-import { ref } from 'vue'
-
-const count = ref(0)
-
-function increment() {
-  count.value++
-}
-</script>
-
-<template>
-  <button @click="increment">
-    {{ count }} <!-- .value は必要ありません -->
-  </button>
-</template>
-```
-
-[Playground で試す](https://play.vuejs.org/#eNo9jUEKgzAQRa8yZKMiaNclSnuP2dgwQqiZhDhxE3L3Riwu//DmvazeIQxHIvVUejfRBoGdJIUZ2brgo0CGSCsUWKN30FS0QUY2nncB4xMLTCfRPrrzviY2Yj2DZRPJEUvbQUaGix2OZUvU98gFWY9XsbbqEHJhW4TqAtCfJFItL7NZ851Q3TpUc87/cCl6vMD6pMfboMoPvd1Nzg==)
-
-アンラップは、ref がテンプレートに描画されるコンテキスト上のトップレベルのプロパティである場合にのみ適用されることに注意してください。例として `object` はトップレベルのプロパティですが、`object.foo` はトップレベルではありません。
-
-そのため、下記に示したようなオブジェクトがあるとすると：
-
-```js
-const object = { foo: ref(1) }
-```
-
-下記に示した式は、期待通りに動作 **しません** ：
-
-```vue-html
-{{ object.foo + 1 }}
-```
-
-レンダリング結果は `[object Object]1` となります。これは `object.foo` が ref オブジェクトであるためです。これを解決するには、下記に示すように `foo` をトップレベルのプロパティにします：
-
-```js
-const { foo } = object
-```
-
-```vue-html
-{{ foo + 1 }}
-```
-
-これで、レンダリング結果は「2」になります。
-
-注意点としては、ref がテキスト補間の最終評価値（つまり <code v-pre>{{ }}</code> タグ）である場合もアンラップされるので、以下のように `1` がレンダリングされます。
-
-```vue-html
-{{ object.foo }}
-```
-
-これはテキスト補間の便利な機能に過ぎず、 <code v-pre>{{ object.foo.value }}</code> と等価になります。
-
-### リアクティブなオブジェクトにおける Ref のアンラッピング \*\* {#ref-unwrapping-in-reactive-objects}
-
-リアクティブなオブジェクトのプロパティとして `ref` にアクセスしたり変化させたりすると、自動的にアンラップされるので、通常のプロパティと同じように振る舞うことができます：
+ref は、リアクティブなオブジェクトのプロパティとしてアクセスまたは変更されると、自動的にアンラップされます。つまり、通常のプロパティと同じように動作します:
 
 ```js
 const count = ref(0)
@@ -501,32 +483,75 @@ state.count = 1
 console.log(count.value) // 1
 ```
 
-既存の ref にリンクされたプロパティに新しい ref が割り当てられた場合、下記に示すように、それは古い ref を置き換えることとなります：
+既存の ref にリンクされたプロパティに新しい ref が割り当てられると、古い ref を置き換えることになります:
 
 ```js
 const otherCount = ref(2)
 
 state.count = otherCount
 console.log(state.count) // 2
-// 元の ref は state.count から切り離されました。
+// 元の ref は state.count から切り離されました
 console.log(count.value) // 1
 ```
 
-Ref のアンラッピングは、より深いリアクティブなオブジェクトの内部にネストされている場合にのみ発生します。[浅いリアクティブなオブジェクト](/api/reactivity-advanced#shallowreactive) のプロパティとしてアクセスされた場合は適用されません。
+ref のアンラップは、深いリアクティブオブジェクトの内部にネストされたときのみ発生します。[浅いリアクティブオブジェクト](/api/reactivity-advanced#shallowreactive)のプロパティとしてアクセスされる場合には適用されません。
 
-### 配列とコレクションにおける Ref のアンラッピング {#ref-unwrapping-in-arrays-and-collections}
+### 配列やコレクションにおける注意点 \*\* {#caveat-in-arrays-and-collections}
 
-リアクティブなオブジェクトと異なり、ref がリアクティブな配列の要素や、`Map` のようなネイティブコレクション型としてアクセスされた場合には、アンラップは行われません。
+リアクティブオブジェクトとは異なり、ref がリアクティブな配列や `Map` のようなネイティブコレクション型の要素としてアクセスされた場合、アンラップは**行われません**:
 
 ```js
 const books = reactive([ref('Vue 3 Guide')])
-// ここでは .value が必要となります
+// ここでは .value が必要
 console.log(books[0].value)
 
 const map = reactive(new Map([['count', ref(0)]]))
-// ここでは .value が必要となります
+// ここでは .value が必要
 console.log(map.get('count').value)
 ```
+
+### テンプレートでアンラップするときの注意点 \*\* {#caveat-when-unwrapping-in-templates}
+
+テンプレートでの ref のアンラップは、ref がテンプレートのレンダリングコンテキストでトップレベルのプロパティである場合にのみ適用されます。
+
+以下の例では、`count` と `object` はトップレベルのプロパティですが、`object.id` はトップレベルではありません:
+
+```js
+const count = ref(0)
+const object = { id: ref(0) }
+```
+
+したがって、この表現は期待通りに動作します:
+
+```vue-html
+{{ count + 1 }}
+```
+
+……一方、こちらは動作**しません**:
+
+```vue-html
+{{ object.id + 1 }}
+```
+
+レンダリング結果は `[object Object]1` となります。これは、式の評価時に `object.id` がアンラップされず、ref オブジェクトのままだからです。これを修正するには、`id` をトップレベルのプロパティに分割代入すればいいのです:
+
+```js
+const { id } = object
+```
+
+```vue-html
+{{ id + 1 }}
+```
+
+これで、レンダリング結果は「2」になります。
+
+もう 1 つ注意すべきは、ref がテキスト補間（つまり<code v-pre>{{ }}</code> タグ）の最終評価値である場合、アンラップされるので、以下のようにすると `1` が表示されます:
+
+```vue-html
+{{ object.id }}
+```
+
+これはテキスト補間の便利な機能に過ぎず、<code v-pre>{{ object.id.value }}</code> と同等です。
 
 </div>
 

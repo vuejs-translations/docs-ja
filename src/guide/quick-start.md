@@ -98,7 +98,7 @@ CDN から Vue を使用する場合は「ビルドステップ」は必要あ�
 </script>
 ```
 
-[JSFiddle のデモ](https://jsfiddle.net/yyx990803/nw1xg8Lj/)
+[Codepen のデモ](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
 ### ES モジュール ビルドの使用 {#using-the-es-module-build}
 
@@ -122,7 +122,7 @@ CDN から Vue を使用する場合は「ビルドステップ」は必要あ�
 
 `<script type="module">` を使用していることと、インポートされる CDN の URL が、（ひとつ前の例とは違って）Vue の **ES モジュール ビルド** を指していることに注意してください。
 
-[JSFiddle のデモ](https://jsfiddle.net/yyx990803/vo23c470/)
+[Codepen のデモ](https://codepen.io/vuejs-examples/pen/VwVYVZO)
 
 ### インポートマップの有効化 {#enabling-import-maps}
 
