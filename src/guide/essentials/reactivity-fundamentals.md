@@ -514,7 +514,7 @@ console.log(map.get('count').value)
 
 テンプレートでの ref のアンラップは、ref がテンプレートのレンダリングコンテキストでトップレベルのプロパティである場合にのみ適用されます。
 
-以下の例では、`count` と `object` はトップレベルのプロパティですが、`object.count` はトップレベルではありません:
+以下の例では、`count` と `object` はトップレベルのプロパティですが、`object.id` はトップレベルではありません:
 
 ```js
 const count = ref(0)
