@@ -208,8 +208,10 @@ const value = inject('message', 'default value')
 場合によっては、関数を呼び出したり、新しいクラスをインスタンス化したりして、デフォルト値を作成する必要があるかもしれません。オプションの値が使用されないケースで不要な計算や副作用を避けるために、デフォルト値を作成するためのファクトリー関数を使用することができます:
 
 ```js
-const value = inject('key', () => new ExpensiveClass())
+const value = inject('key', () => new ExpensiveClass(), true)
 ```
+
+The third parameter indicates the default value should be treated as a factory function.
 
 </div>
 
