@@ -225,7 +225,9 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 ### その他の選択肢 {#other-options-1}
 
-- [Nightwatch](https://v2.nightwatchjs.org/) は、Vue コンポーネントテストをサポートする E2E テストランナーです。（Nightwatch バージョン 2 の[プロジェクトの例](https://github.com/nightwatchjs-community/todo-vue)）
+- [Nightwatch](https://nightwatchjs.org/) は、Vue コンポーネントテストをサポートする E2E テストランナーです。（[プロジェクトの例](https://github.com/nightwatchjs-community/todo-vue)）
+
+- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) は、標準化された自動化に基づいて、ネイティブのユーザーインタラクションに依存するクロスブラウザのコンポーネントテスト用。テスティングライブラリーとの併用も可能です。
 
 ## E2E テスト {#e2e-testing}
 
@@ -273,7 +275,9 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 - [Playwright](https://playwright.dev/) は、より幅広いブラウザー（主に WebKit）をサポートする、優れた E2E テストソリューションでもあります。詳しくは [Why Playwright](https://playwright.dev/docs/why-playwright) をご覧ください。
 
-- [Nightwatch v2](https://v2.nightwatchjs.org/) は、[Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) をベースとした E2E テストソリューションです。こちらは最も広い範囲のブラウザーをサポートしています。
+- [Nightwatch](https://nightwatchjs.org/) は、[Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) をベースとした E2E テストソリューションです。こちらは最も広い範囲のブラウザーをサポートしています。
+
+- [WebdriverIO](https://webdriver.io/) は、WebDriver プロトコルに基づいた Web およびモバイルテスト用のテスト自動化フレームワークです。
 
 ## レシピ {#recipes}
 
