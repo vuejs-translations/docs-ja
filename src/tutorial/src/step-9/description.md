@@ -5,7 +5,7 @@
 <a target="_blank" href="/api/built-in-special-attributes.html#ref">特別な `ref` 属性</a>（例：テンプレート内の要素）をつかって、テンプレート参照が要求できます：
 
 ```vue-html
-<p ref="p">hello</p>
+<p ref="pElementRef">hello</p>
 ```
 
 <div class="composition-api">
@@ -15,7 +15,7 @@ ref にアクセスするには、一致する名前を定義<span class="html">
 <div class="sfc">
 
 ```js
-const p = ref(null)
+const pElementRef = ref(null)
 ```
 
 </div>
@@ -23,10 +23,10 @@ const p = ref(null)
 
 ```js
 setup() {
-  const p = ref(null)
+  const pElementRef = ref(null)
 
   return {
-    p
+    pElementRef
   }
 }
 ```
@@ -67,7 +67,7 @@ createApp({
 
 <div class="options-api">
 
-要素が `this.$refs` は `this.$refs.p` として公開されますが、コンポーネントが**マウントされた後**でないとにアクセスできません。
+要素が `this.$refs` は `this.$refs.pElementRef` として公開されますが、コンポーネントが**マウントされた後**でないとにアクセスできません。
 
 マウントした後のコードを実施したい場合、`mounted` の option が使えます：
 
@@ -97,4 +97,4 @@ createApp({
 
 これは**ライフサイクルフック**とよばれます。コンポーネントライフサイクルの特定の時に呼び出されるコールバックが登録できます。他にも <span class="options-api">`created` と `updated`</span><span class="composition-api">`onUpdated` と `onUnmounted`</span> があります。詳しくは<a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">ライフサイクルダイアグラム</a>を参照してください。
 
-では、 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> のフックを追加し、`<p>` の要素が<span class="options-api">`this.$refs.p`</span><span class="composition-api">`p.value`</span>でアクセスして直接に DOM の操作（例:`textContent` の変更）をしてみましょう。
+では、 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> のフックを追加し、`<p>` の要素が<span class="options-api">`this.$refs.pElementRef`</span><span class="composition-api">`pElementRef.value`</span>でアクセスして直接に DOM の操作（例:`textContent` の変更）をしてみましょう。
