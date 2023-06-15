@@ -254,6 +254,7 @@
   ```js
   import Base from './Base.js'
   export default {
+    extends: Base,
     setup(props, ctx) {
       return {
         ...Base.setup(props, ctx),
