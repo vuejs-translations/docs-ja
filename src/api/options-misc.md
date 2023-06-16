@@ -76,18 +76,15 @@
   </div>
   <div class="composition-api">
 
-  `<script setup>` を使用するコンポーネントでこのオプションを宣言する場合、別の `<script>` ブロックが必要です:
+  `<script setup>` を使用するコンポーネントでこのオプションを宣言する場合、[`defineOptions`](/api/sfc-script-setup#defineoptions) マクロを使用できます:
 
   ```vue
-  <script>
-  export default {
-    inheritAttrs: false
-  }
-  </script>
-
   <script setup>
   defineProps(['label', 'value'])
   defineEmits(['input'])
+  defineOptions({
+    inheritAttrs: false
+  })
   </script>
 
   <template>

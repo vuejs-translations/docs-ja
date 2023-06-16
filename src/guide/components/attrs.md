@@ -75,22 +75,17 @@ outline: deep
 
 ## 属性の継承の無効化 {#disabling-attribute-inheritance}
 
-コンポーネントに自動的な属性の継承をさせたく**ない**場合は、コンポーネントのオプションで `inheritAttrs: false` を設定することができます。
+コンポーネントに自動的な属性の継承をさせたく**ない**場合は、コンポーネントのオプションで `inheritAttrs: false` を設定できます。
 
 <div class="composition-api">
 
-`<script setup>` を使用するなら、このオプションは別の通常の `<script>` ブロックを使って宣言する必要があります:
+`<script setup>` を使用する場合、[`defineOptions`](/api/sfc-script-setup#defineoptions) マクロを使用できます:
 
 ```vue
-<script>
-// 通常の <script> でオプションを宣言
-export default {
-  inheritAttrs: false
-}
-</script>
-
 <script setup>
-// セットアップのロジック
+defineOptions({
+  inheritAttrs: false
+})
 </script>
 ```
 
@@ -107,15 +102,15 @@ defineOptions({
 
 </div>
 
-属性の継承を無効にする一般的なシナリオは、ルートノード以外の要素に属性を適用する必要がある場合です。 `inheritAttrs` オプションを `false` に設定することで、フォールスルー属性を適用する場所を完全に制御することができます。
+属性の継承を無効にする一般的なシナリオは、ルートノード以外の要素に属性を適用する必要がある場合です。 `inheritAttrs` オプションを `false` に設定することで、フォールスルー属性を適用する場所を完全に制御できます。
 
-これらのフォールスルー属性は、テンプレート内の式で `$attrs` として直接アクセスすることができます:
+これらのフォールスルー属性は、テンプレート内の式で `$attrs` として直接アクセスできます:
 
 ```vue-html
 <span>Fallthrough attributes: {{ $attrs }}</span>
 ```
 
-`$attrs` オブジェクトには、コンポーネントの `props` や `emits` オプションで宣言されていないすべての属性 (例えば `class`, `style`, `v-on` リスナーなど) が含まれます。
+`$attrs` オブジェクトには、コンポーネントの `props` や `emits` オプションで宣言されていないすべての属性（例えば `class`, `style`, `v-on` リスナーなど）が含まれます。
 
 備考:
 
@@ -169,7 +164,7 @@ defineOptions({
 
 <div class="composition-api">
 
-必要であれば、`<script setup>` 内で `useAttrs()` API を使用してコンポーネントのフォールスルー属性にアクセスすることができます:
+必要であれば、`<script setup>` 内で `useAttrs()` API を使用してコンポーネントのフォールスルー属性にアクセスできます:
 
 ```vue
 <script setup>
@@ -196,7 +191,7 @@ export default {
 
 <div class="options-api">
 
-必要であれば、`$attrs` インスタンスプロパティを介して、コンポーネントのフォールスルー属性にアクセスすることができます:
+必要であれば、`$attrs` インスタンスプロパティを介して、コンポーネントのフォールスルー属性にアクセスできます:
 
 ```js
 export default {
