@@ -12,7 +12,7 @@
 
 `<Footer>` コンポーネントはこれらのプロパティを全く気にしないかもしれませんが、`<DeepChild>` がそれらにアクセスできるように宣言して渡す必要があることに注意してください。さらに長い親チェーンがある場合、より多くのコンポーネントが影響を受けることになります。これは "プロパティのバケツリレー（Prop Drilling）" と呼ばれていて、対処するのが楽しいことでないことは明らかです。
 
-プロパティのバケツリレーは `provide` と `inject` で解決できます。親コンポーネントは、そのすべての子孫コンポーネントに対して **依存関係を提供するプロバイダー (dependency provider)** として機能することができます。子孫ツリー内のどのコンポーネントも、その深さに関係なく、親チェーン内の上位コンポーネントが提供する依存関係を**注入 (inject)** することができます。
+プロパティのバケツリレーは `provide` と `inject` で解決できます。親コンポーネントは、そのすべての子孫コンポーネントに対して **依存関係を提供するプロバイダー (dependency provider)** として機能できます。子孫ツリー内のどのコンポーネントも、その深さに関係なく、親チェーン内の上位コンポーネントが提供する依存関係を**注入 (inject)** できます。
 
 ![Provide/inject スキーマ](./images/provide-inject.png)
 
@@ -46,7 +46,7 @@ export default {
 
 `provide()` 関数は 2 つの引数を受け付けます。第 1 引数は**インジェクションキー**と呼ばれ、文字列または `Symbol` となります。インジェクションキーは、子孫のコンポーネントが、インジェクション（注入）に必要な値を探すのに使われます。1 つのコンポーネントが異なる値を提供するために、異なるインジェクションキーで `provide()` を複数回呼び出すことができます。
 
-第 2 引数は提供される値です。この値は refs のようなリアクティブな状態を含む、任意の型にすることができます:
+第 2 引数は提供される値です。この値は refs のようなリアクティブな状態を含む、任意の型にできます:
 
 ```js
 import { ref, provide } from 'vue'
@@ -55,7 +55,7 @@ const count = ref(0)
 provide('key', count)
 ```
 
-リアクティブな値を提供することで、提供された値を使用する子孫コンポーネントが、プロバイダーコンポーネントとのリアクティブな接続を確立することができます。
+リアクティブな値を提供することで、提供された値を使用する子孫コンポーネントが、プロバイダーコンポーネントとのリアクティブな接続を確立できます。
 
 </div>
 
@@ -107,7 +107,7 @@ const app = createApp({})
 app.provide(/* key */ 'message', /* value */ 'hello!')
 ```
 
-アプリケーションレベルの Provide は、アプリケーションでレンダリングされるすべてのコンポーネントで利用可能です。これは特に[プラグイン](/guide/reusability/plugins)を書くときに便利です。プラグインは通常、コンポーネントを使って値を提供することができないからです。
+アプリケーションレベルの Provide は、アプリケーションでレンダリングされるすべてのコンポーネントで利用可能です。これは特に[プラグイン](/guide/reusability/plugins)を書くときに便利です。プラグインは通常、コンポーネントを使って値を提供できないからです。
 
 ## Inject {#inject}
 
@@ -123,7 +123,7 @@ const message = inject('message')
 </script>
 ```
 
-提供された値が ref である場合、そのまま注入され、自動的にアンラップされることは**ありません**。これにより、インジェクターコンポーネントはプロバイダーコンポーネントとのリアクティビティーの接続を保持することができます。
+提供された値が ref である場合、そのまま注入され、自動的にアンラップされることは**ありません**。これにより、インジェクターコンポーネントはプロバイダーコンポーネントとのリアクティビティーの接続を保持できます。
 
 [リアクティビティーのある provide と inject の完全なサンプル](https://play.vuejs.org/#eNqFUUFugzAQ/MrKF1IpxfeIVKp66Kk/8MWFDXYFtmUbpArx967BhURRU9/WOzO7MzuxV+fKcUB2YlWovXYRAsbBvQije2d9hAk8Xo7gvB11gzDDxdseCuIUG+ZN6a7JjZIvVRIlgDCcw+d3pmvTglz1okJ499I0C3qB1dJQT9YRooVaSdNiACWdQ5OICj2WwtTWhAg9hiBbhHNSOxQKu84WT8LkNQ9FBhTHXyg1K75aJHNUROxdJyNSBVBp44YI43NvG+zOgmWWYGt7dcipqPhGZEe2ef07wN3lltD+lWN6tNkV/37+rdKjK2rzhRTt7f3u41xhe37/xJZGAL2PLECXa9NKdD/a6QTTtGnP88LgiXJtYv4BaLHhvg==)
 
@@ -155,7 +155,7 @@ export default {
 }
 ```
 
-インジェクションはコンポーネント自身の状態よりも**先に**解決されるので、`data()` で注入されたプロパティにアクセスすることができます:
+インジェクションはコンポーネント自身の状態よりも**先に**解決されるので、`data()` で注入されたプロパティにアクセスできます:
 
 ```js
 export default {
@@ -205,12 +205,13 @@ export default {
 const value = inject('message', 'default value')
 ```
 
-場合によっては、関数を呼び出したり、新しいクラスをインスタンス化したりして、デフォルト値を作成する必要があるかもしれません。オプションの値が使用されないケースで不要な計算や副作用を避けるために、デフォルト値を作成するためのファクトリー関数を使用することができます:
+場合によっては、関数を呼び出したり、新しいクラスをインスタンス化したりして、デフォルト値を作成する必要があるかもしれません。オプションの値が使用されないケースで不要な計算や副作用を避けるために、デフォルト値を作成するためのファクトリー関数を使用できます:
 
 ```js
-const value = inject('key', () => new ExpensiveClass())
+const value = inject('key', () => new ExpensiveClass(), true)
 ```
 
+3 番目の引数は、デフォルト値をファクトリー関数として扱うべきことを示します。
 </div>
 
 <div class="options-api">
@@ -274,7 +275,7 @@ const { location, updateLocation } = inject('location')
 </template>
 ```
 
-最後に、`provide` を通して渡されたデータがインジェクターコンポーネントによって変更されないようにしたい場合は、提供された値を [`readonly()`](/api/reactivity-core#readonly) でラップすることができます。
+最後に、`provide` を通して渡されたデータがインジェクターコンポーネントによって変更されないようにしたい場合は、提供された値を [`readonly()`](/api/reactivity-core#readonly) でラップできます。
 
 ```vue
 <script setup>
