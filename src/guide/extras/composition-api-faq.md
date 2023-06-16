@@ -8,7 +8,7 @@ outline: deep
 このページは Vue を使用した経験、 特に Vue 2 の Options API の経験があることを前提としています。
 :::
 
-## Composition API とは? {#what-is-composition-api}
+## Composition API とは？ {#what-is-composition-api}
 
 <VueSchoolLink href="https://vueschool.io/lessons/introduction-to-the-vue-js-3-composition-api" title="Composition API の無料レッスン"/>
 
@@ -49,7 +49,7 @@ onMounted(() => {
 
 Vue の Composition API の使い方について興味があるようでしたら、左サイドメニューの一番上にある　API 選択トグルを Composition API に切り替えて、最初からガイドを読み進めることができます。
 
-## なぜ Composition API なのか? {#why-composition-api}
+## なぜ Composition API なのか？ {#why-composition-api}
 
 ### より良いロジックの再利用 {#better-logic-reuse}
 
@@ -64,7 +64,7 @@ Composition API のロジック再利用性は [VueUse](https://vueuse.org/) の
 例として Vue CLI の GUI で使われるフォルダーエクスプローラーコンポーネントをとりあげます: このコンポーネントは以下のような論理的関心を担っています:
 
 - 現在のフォルダーの状態のトラッキングと内容の表示
-- フォルダーナビゲーションのハンドリング(開く、閉じる、再読み込み)
+- フォルダーナビゲーションのハンドリング（開く、閉じる、再読み込み）
 - 新規フォルダーの作成のハンドリング
 - お気に入りフォルダーのみ表示の切り替え
 - 隠しフォルダーの表示切り替え
@@ -88,11 +88,11 @@ Composition API のロジック再利用性は [VueUse](https://vueuse.org/) の
 
 このため、 Vue を Typescript で使いたい多くの開発者が `vue-class-component` による Class API を使うようになりました。ですが、クラスベースの API は ES デコレータに重度に依存しているため、 機能的には Vue 3 が開発された 2019 年時点の、ステージ 2 のプロポーザル段階のものになっています。私たちは公式の API が不安定なプロポーザルベースに依存していることはリスキー過ぎると感じました。それ以降、デコレータのプロポーザルはまたも全面的に見直され、2022 年にようやくステージ 3 に到達しました。加えて、クラスベースの API は Options API と同様にロジックの再利用とコード整理の制限の悩みがあります。
 
-これと比較して、 Composition API はほとんどプレーンな変数と関数を活用しているため、もともと型と親和性があります。 Composition API で書かれたコードのほとんどはタイプヒントを付ける必要なく型推論を享受することができます。大抵の場合 Composition API のコードは、TypeScript とプレーンな JavaScript でほぼ同じに見えるでしょう。これにより、プレーンな Javascript ユーザーも部分的に型推論の恩恵を得ることが可能です。
+これと比較して、 Composition API はほとんどプレーンな変数と関数を活用しているため、もともと型と親和性があります。 Composition API で書かれたコードのほとんどはタイプヒントを付ける必要なく型推論を享受できます。大抵の場合 Composition API のコードは、TypeScript とプレーンな JavaScript でほぼ同じに見えるでしょう。これにより、プレーンな Javascript ユーザーも部分的に型推論の恩恵を得ることが可能です。
 
 ### プロダクションバンドルをより小さく、そしてオーバーヘッドを減らす {#smaller-production-bundle-and-less-overhead}
 
-Composition API で書かれたコードと `<script setup>` は　Options API より効率的でバンドルサイズの縮小化に親和性があります。テンプレート内の `<script setup>` コンポーネントは `<script setup>` と同じスコープ内にインラインの関数としてコンパイルされます。`this` からのプロパティアクセスとは異なり、コンパイルされたテンプレートコードは `<script setup>` 内で宣言された変数に、インスタンスプロキシを間に挟まずに直接アクセスすることができるようになります。これは、すべての変数名を安全に短縮することにもなり、より良い縮小化につながります。
+Composition API で書かれたコードと `<script setup>` は　Options API より効率的でバンドルサイズの縮小化に親和性があります。テンプレート内の `<script setup>` コンポーネントは `<script setup>` と同じスコープ内にインラインの関数としてコンパイルされます。`this` からのプロパティアクセスとは異なり、コンパイルされたテンプレートコードは `<script setup>` 内で宣言された変数に、インスタンスプロキシを間に挟まずに直接アクセスできるようになります。これは、すべての変数名を安全に短縮することにもなり、より良い縮小化につながります。
 
 ## Options API との関係 {#relationship-with-options-api}
 
@@ -104,9 +104,9 @@ Options API から移行したユーザーの中には、Composition API のコ�
 
 Options API は、コンポーネントコードを書くときに「考えることを減らす」ことを可能にし、それが多くのユーザーに支持されている理由です。しかし、精神的なオーバーヘッドを減らす一方で、逃げ場のない規定のコード構成パターンに縛られてしまい、大規模なプロジェクトではリファクタリングやコード品質の向上が困難になる可能性があります。この点、Composition API は、長期的なスケーラビリティに優れています。
 
-### Composition API は全てのユースケースをカバーしていますか? {#does-composition-api-cover-all-use-cases}
+### Composition API は全てのユースケースをカバーしていますか？ {#does-composition-api-cover-all-use-cases}
 
-はい、状態を持つロジックについてはそうです。 少しではありますが、Composition API を使う時にオプションがいくつか必要になります: `props` 、 `emits` 、 `name` 、 と `inheritAttrs` です。もし `<script setup>` を使っているしたら、唯一 `inheritAttrs` がプレーンな `<script>` が必要なオプションです。
+はい、状態を持つロジックについてはそうです。 少しではありますが、Composition API を使う時にオプションがいくつか必要になります: `props` 、 `emits` 、 `name` 、 と `inheritAttrs` です。
 
 :::tip
 
@@ -114,7 +114,7 @@ Options API は、コンポーネントコードを書くときに「考える�
 
 :::
 
-Composition API だけを使用したい場合は(上にあげたオプションと共に)、 [compile-time flag](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) を使用することで Options API に関するコードを省き数キロバイトプロダクションバンドルをカットすることができます。これはあなたの依存関係内の Vue コンポーネントに影響に与える点に注意してください。
+Composition API だけを使用したい場合は（上にあげたオプションと共に）、 [compile-time flag](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) を使用することで Options API に関するコードを省き数キロバイトプロダクションバンドルをカットできます。これはあなたの依存関係内の Vue コンポーネントに影響を与える点に注意してください。
 
 ### 同じコンポーネント内で両方の API を使用できますか？ {#can-i-use-both-apis-in-the-same-component}
 
@@ -122,7 +122,7 @@ Composition API だけを使用したい場合は(上にあげたオプション
 
 しかしながら、この方法は既存の Options API コードベースがあり、Composition API で書かれた新しい機能/外部ライブラリーと統合する必要がある場合にのみ採ることを推奨します。
 
-### Options API は非推奨になったのですか? {#will-options-api-be-deprecated}
+### Options API は非推奨になったのですか？ {#will-options-api-be-deprecated}
 
 いいえ、私たちは特にそうする予定はありません。 Options API は Vue の不可欠な要素であり、多くの開発者が Vue を愛する理由にもなっています。 Composition API の利点の多くは大規模プロジェクトでこそ現れるものであり、多くの低~中程度の複雑性のシナリオにおいては Options API が堅実な選択肢であり続けることも理解しています。
 
@@ -138,13 +138,13 @@ React Hooks はコンポーネントが更新されるたびに繰り返し実�
 
 - Hooks は呼び出し順序に敏感で、条件付きでない
 
-- React コンポーネント内で変数が宣言されるとフッククロージャに補足され、開発者が正しく依存関係の配列にパスしなかった場合に "stale" になります。そのため、 React の開発者は ESLint のルールに頼りつつ正しい依存関係を渡すようにしています。しかし、このルールは十分に賢くないことが多く、正しさを補おうとし過ぎるあまり、エッジケースに遭遇したときに不必要に無効化され頭痛の種になることがあります。
+- React コンポーネント内で変数が宣言されるとフッククロージャに補足され、開発者が正しく依存関係の配列にパスしなかった場合は "stale" になります。そのため、 React の開発者は ESLint のルールに頼りつつ正しい依存関係を渡すようにしています。しかし、このルールは十分に賢くないことが多く、正しさを補おうとし過ぎるあまり、エッジケースに遭遇したときに不必要に無効化され頭痛の種になることがあります。
 
 - コストの高い計算には `useMemo` の使用が必要となり、再び手動で正しい依存関係の配列を渡す必要があります。
 
 - 子コンポーネントに渡されるイベントハンドラーは、デフォルトでは不必要な子コンポーネントの更新を引き起こすので、最適化として明示的に `useCallback` を必要とします。これはほとんど常に必要であり、また正しい依存関係の配列が必要です。これを無視すると、デフォルトでアプリケーションがオーバーレンダリングされることになり、気づかないうちにパフォーマンスの問題を引き起こす可能性があります。
 
-- stale クロージャの問題は、 Concurrent 機能と組み合わさって、フックコードの一部がいつ実行されるかを推論することを難しくし、(`useRef` によって) レンダー間で持続されるべき変更可能な状態を扱うことを面倒なものにします。
+- stale クロージャの問題は、 Concurrent 機能と組み合わさって、フックコードの一部がいつ実行されるかを推論することを難しくし、（`useRef` によって）レンダー間で持続されるべき変更可能な状態を扱うことを面倒なものにします。
 
 これと比較して、 Vue Composition API は:
 
