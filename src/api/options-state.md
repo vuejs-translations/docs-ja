@@ -45,7 +45,7 @@
   data: (vm) => ({ a: vm.myProp })
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
+- **参照** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## props {#props}
 
@@ -125,7 +125,7 @@
   }
   ```
 
-- **参照:**
+- **参照**
   - [ガイド - プロパティ](/guide/components/props)
   - [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
 
@@ -207,7 +207,7 @@
   }
   ```
 
-- **参照:**
+- **参照**
   - [ガイド - 算出プロパティ](/guide/essentials/computed)
   - [ガイド - 算出プロパティの型付け](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
@@ -250,7 +250,7 @@
   }
   ```
 
-- **参照:** [イベントハンドリング](/guide/essentials/event-handling)
+- **参照** [イベントハンドリング](/guide/essentials/event-handling)
 
 ## watch {#watch}
 
@@ -368,7 +368,7 @@
   }
   ```
 
-- **参照:** [ウォッチャー](/guide/essentials/watchers)
+- **参照** [ウォッチャー](/guide/essentials/watchers)
 
 ## emits {#emits}
 
@@ -433,7 +433,7 @@
   }
   ```
 
-* **参照:**
+* **参照**
   - [ガイド - フォールスルー属性](/guide/components/attrs)
   - [ガイド - コンポーネントの emits の型付け](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
 

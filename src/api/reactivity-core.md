@@ -39,7 +39,7 @@
   console.log(count.value) // 1
   ```
 
-- **参照:**
+- **参照**
   - [ガイド - `ref()` と共に使うリアクティブな変数](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
   - [ガイド - `ref()` の型付け](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
@@ -108,7 +108,7 @@
   })
   ```
 
-- **参照:**
+- **参照**
   - [ガイド - 算出プロパティ](/guide/essentials/computed)
   - [ガイド - 算出プロパティのデバッグ](/guide/extras/reactivity-in-depth#computed-debugging)
   - [ガイド - `computed()` の型付け](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
@@ -186,7 +186,7 @@
   console.log(obj.count === count.value) // true
   ```
 
-- **参照:**
+- **参照**
   - [ガイド - リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals)
   - [ガイド - `reactive()` の型付け](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
@@ -308,7 +308,7 @@
   })
   ```
 
-- **参照**:
+- **参照**
   - [ガイド - ウォッチャー](/guide/essentials/watchers#watcheffect)
   - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)
 
@@ -481,7 +481,7 @@
   })
   ```
 
-- **参照**:
+- **参照**
 
   - [ガイド - ウォッチャー](/guide/essentials/watchers)
   - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)

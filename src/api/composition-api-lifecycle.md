@@ -241,7 +241,7 @@
   }
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
+- **参照** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## onRenderTriggered() <sup class="vt-badge dev-only" /> {#onrendertriggered}
 
@@ -267,7 +267,7 @@
   }
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
+- **参照** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## onActivated() {#onactivated}
 
@@ -281,7 +281,7 @@
   function onActivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **参照** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onDeactivated() {#ondeactivated}
 
@@ -295,7 +295,7 @@
   function onDeactivated(callback: () => void): void
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **参照** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## onServerPrefetch() <sup class="vt-badge" data-text="SSR only" /> {#onserverprefetch}
 
@@ -338,4 +338,4 @@
   </script>
   ```
 
-- **参照:** [サーバーサイドレンダリング](/guide/scaling-up/ssr)
+- **参照** [サーバーサイドレンダリング](/guide/scaling-up/ssr)

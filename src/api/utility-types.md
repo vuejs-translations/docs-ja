@@ -30,7 +30,7 @@
   }
   ```
 
-- **参照:** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props)
+- **参照** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props)
 
 ## MaybeRef\<T> {#mayberef}
 
@@ -74,7 +74,7 @@
   //   qux: number
   // }
   ```
-  
+
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
 ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は外向き、つまり親が渡すことのできるプロパティです。
@@ -125,7 +125,7 @@
   拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)を参照してください。
   :::
 
-- **参照:** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)
+- **参照** [ガイド - グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
@@ -147,7 +147,7 @@
   拡張するには、モジュールを `.ts` または `.d.ts` ファイルとして配置する必要があります。詳細は[グローバルプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties)を参照してください。
   :::
 
-- **参照:** [ガイド - カスタムオプションの拡張](/guide/typescript/options-api#augmenting-custom-options)
+- **参照** [ガイド - カスタムオプションの拡張](/guide/typescript/options-api#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 

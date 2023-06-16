@@ -51,13 +51,13 @@
   type VNodeArrayChildren = (VNodeArrayChildren | VNodeChildAtom)[]
   ```
 
-- **詳細:**
+- **詳細**
 
   `render` は文字列テンプレートに代わるもので、JavaScript のプログラミング能力をフルに活用してコンポーネントのレンダリング出力を宣言できます。
 
   単一ファイルコンポーネントのような、あらかじめコンパイルされたテンプレートは、ビルド時に `render` オプションにコンパイルされます。`render` と `template` の両方がコンポーネント内に存在する場合は `render` の方が優先されます。
 
-- **参照:**
+- **参照**
   - [レンダリングの仕組み](/guide/extras/rendering-mechanism)
   - [レンダー関数](/guide/extras/render-function)
 
@@ -82,7 +82,7 @@
 
   この設定オプションは、フルビルド（つまり、ブラウザー上でテンプレートをコンパイルできるスタンドアロンの `vue.js`）を使っているときだけ反映されます。アプリケーションレベルの [app.config.compilerOptions](/api/application#app-config-compileroptions) と同じオプションをサポートし、現在のコンポーネントに対してより高い優先順位が設定されています。
 
-- **参照:** [app.config.compilerOptions](/api/application#app-config-compileroptions)
+- **参照** [app.config.compilerOptions](/api/application#app-config-compileroptions)
 
 ## slots <sup class="vt-badge ts"/> {#slots}
 

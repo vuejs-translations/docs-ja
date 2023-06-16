@@ -125,7 +125,7 @@
 
   </div>
 
-- **参照:** [フォールスルー属性](/guide/components/attrs)
+- **参照** [フォールスルー属性](/guide/components/attrs)
 
 ## components {#components}
 
@@ -155,7 +155,7 @@
   }
   ```
 
-- **参照:** [コンポーネントの登録](/guide/components/registration)
+- **参照** [コンポーネントの登録](/guide/components/registration)
 
 ## directives {#directives}
 
@@ -190,4 +190,4 @@
 
   コンポーネントインスタンスで使用可能なディレクティブのハッシュ。
 
-- **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives)
+- **参照** [カスタムディレクティブ](/guide/reusability/custom-directives)

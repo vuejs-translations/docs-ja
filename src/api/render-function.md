@@ -93,7 +93,7 @@
   })
   ```
 
-- **参照:** [ガイド - レンダー関数 - vnode の作成](/guide/extras/render-function#creating-vnodes)
+- **参照** [ガイド - レンダー関数 - vnode の作成](/guide/extras/render-function#creating-vnodes)
 
 ## mergeProps() {#mergeprops}
 
@@ -228,7 +228,7 @@ vnode のクローンを作成します。
 
   </div>
 
-- **参照:** [ガイド - レンダー関数 - コンポーネント](/guide/extras/render-function#components)
+- **参照** [ガイド - レンダー関数 - コンポーネント](/guide/extras/render-function#components)
 
 ## resolveDirective() {#resolvedirective}
 
@@ -248,7 +248,7 @@ vnode のクローンを作成します。
 
   ディレクティブが見つからない場合、実行時警告が発生し、この関数は `undefined` を返します。
 
-- **参照:** [ガイド - レンダー関数 - カスタムディレクティブ](/guide/extras/render-function#custom-directives)
+- **参照** [ガイド - レンダー関数 - カスタムディレクティブ](/guide/extras/render-function#custom-directives)
 
 ## withDirectives() {#withdirectives}
 
@@ -296,7 +296,7 @@ vnode にカスタムディレクティブを追加します。
   ])
   ```
 
-- **参照:** [ガイド - レンダー関数 - カスタムディレクティブ](/guide/extras/render-function#custom-directives)
+- **参照** [ガイド - レンダー関数 - カスタムディレクティブ](/guide/extras/render-function#custom-directives)
 
 ## withModifiers() {#withmodifiers}
 
@@ -321,4 +321,4 @@ vnode にカスタムディレクティブを追加します。
   })
   ```
 
-- **参照:** [ガイド - レンダー関数 - イベント修飾子](/guide/extras/render-function#event-modifiers)
+- **参照** [ガイド - レンダー関数 - イベント修飾子](/guide/extras/render-function#event-modifiers)

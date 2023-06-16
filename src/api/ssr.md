@@ -43,7 +43,7 @@
 
   このページにある他のほとんどの SSR API も、省略可能なコンテキストオブジェクトを受け付けます。[useSSRContext](#usessrcontext) ヘルパーを使うことで、コンポーネントコード内でコンテキストオブジェクトにアクセスできます。
 
-- **参照:** [ガイド - サーバーサイドレンダリング](/guide/scaling-up/ssr)
+- **参照** [ガイド - サーバーサイドレンダリング](/guide/scaling-up/ssr)
 
 ## renderToNodeStream() {#rendertonodestream}
 
