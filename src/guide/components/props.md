@@ -121,7 +121,7 @@ defineProps<{
 
 ### プロパティ名での大文字・小文字の使い分け {#prop-name-casing}
 
-長いプロパティ名は、camelCase (キャメルケース) で宣言します。そうすると、プロパティのキーとして使うときに引用符を使わなくて済みます。camelCase は JavaScript の有効な識別子であるため、以下のようにテンプレート内の式で直接参照することができます:
+長いプロパティ名は、camelCase（キャメルケース）で宣言します。そうすると、プロパティのキーとして使うときに引用符を使わなくて済みます。camelCase は JavaScript の有効な識別子であるため、以下のようにテンプレート内の式で直接参照できます:
 
 <div class="composition-api">
 
@@ -148,7 +148,7 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-技術的には、子コンポーネントにプロパティを渡すときにも camelCase を用いることができます (ただし [DOM テンプレート](/guide/essentials/component-basics#dom-template-parsing-caveats)内を除く)。しかし、常に kebab-case (ケバブケース) を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
+技術的には、子コンポーネントにプロパティを渡すときにも camelCase を用いることができます（ただし [DOM テンプレート](/guide/essentials/component-basics#dom-template-parsing-caveats)内を除く）。しかし、常に kebab-case（ケバブケース）を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
 
 ```vue-html
 <MyComponent greeting-message="hello" />
@@ -371,7 +371,7 @@ export default {
 
 ## プロパティのバリデーション {#prop-validation}
 
-先ほど見た型のように、コンポーネントではプロパティに対する要件を指定することができます。要件が合わないと、Vue がブラウザーの JavaScript コンソールで警告を発します。他の人に使ってもらうことを想定したコンポーネントを開発する場合、これはとても便利です。
+先ほど見た型のように、コンポーネントではプロパティに対する要件を指定できます。要件が合わないと、Vue がブラウザーの JavaScript コンソールで警告を発します。他の人に使ってもらうことを想定したコンポーネントを開発する場合、これはとても便利です。
 
 プロパティのバリデーションを指定するには、文字列の配列の代わりに <span class="composition-api">`defineProps()` マクロ</span><span class="options-api">`props` オプション</span>を用いて、バリデーションの要件を持たせたオブジェクトを指定します。例:
 
@@ -424,7 +424,7 @@ defineProps({
 ```
 
 :::tip
-`defineProps()` の引数の中のコードは、コンパイル時に式全体が外側の関数スコープに移されるため、**`<script setup>` 内で宣言している他の変数にアクセスすることができません** 。
+`defineProps()` の引数の中のコードは、コンパイル時に式全体が外側の関数スコープに移されるため、**`<script setup>` 内で宣言している他の変数にアクセスできません** 。
 :::
 
 </div>
@@ -490,7 +490,7 @@ export default {
 
 - `default` の値を指定すると、プロパティの値が `undefined` に解決される時、それが使用されます。プロパティが指定されなかった場合と、明示的に `undefined` 値が渡された場合も、これに含まれます。
 
-プロパティのバリデーションに失敗すると、Vue がコンソールに警告を出します (開発ビルドを使用する場合)。
+プロパティのバリデーションに失敗すると、Vue がコンソールに警告を出します（開発ビルドを使用する場合）。
 
 <div class="composition-api">
 
@@ -500,14 +500,14 @@ export default {
 <div class="options-api">
 
 ::: tip 注意
-プロパティのバリデーションは、コンポーネントのインスタンスが生成される**前**に実行されます。そのため、`default` や `validator` 関数の中ではインスタンスのプロパティ (例えば `data`、`computed` など) が使用できないことに注意してください。
+プロパティのバリデーションは、コンポーネントのインスタンスが生成される**前**に実行されます。そのため、`default` や `validator` 関数の中ではインスタンスのプロパティ（例えば `data`、`computed` など）が使用できないことに注意してください。
 :::
 
 </div>
 
 ### 実行時の型チェック {#runtime-type-checks}
 
-`type` には、以下のネイティブコンストラクターを指定することができます:
+`type` には、以下のネイティブコンストラクターを指定できます:
 
 - `String`
 - `Number`
@@ -579,7 +579,7 @@ export default {
 
 </div>
 
-このコンポーネントは、次のように使用することができます:
+このコンポーネントは、次のように使用できます:
 
 ```vue-html
 <!-- :disabled="true" を渡すのと同等 -->
@@ -589,13 +589,29 @@ export default {
 <MyComponent />
 ```
 
-また、以下のように複数の型を受け付けるようにプロパティを宣言した場合:
+プロパティが複数の型を許容するように宣言されている場合、`Boolean` のキャストルールも適用されます。ただし、`String` と `Boolean` の両方が許可されている場合は、Boolean のキャストルールは String の前に Boolean が現れる場合のみ適用されるという特別な状況があります:
 
 <div class="composition-api">
 
 ```js
+// disabled は true にキャストされます
 defineProps({
   disabled: [Boolean, Number]
+})
+
+// disabled は true にキャストされます
+defineProps({
+  disabled: [Boolean, String]
+})
+
+// disabled は true にキャストされます
+defineProps({
+  disabled: [Number, Boolean]
+})
+
+// disabled は空文字列としてパースされます（disabled=""）
+defineProps({
+  disabled: [String, Boolean]
 })
 ```
 
@@ -603,13 +619,33 @@ defineProps({
 <div class="options-api">
 
 ```js
+// disabled は true にキャストされます
 export default {
   props: {
     disabled: [Boolean, Number]
   }
 }
+
+// disabled は true にキャストされます
+export default {
+  props: {
+    disabled: [Boolean, String]
+  }
+}
+
+// disabled は true にキャストされます
+export default {
+  props: {
+    disabled: [Number, Boolean]
+  }
+}
+
+// disabled は空文字列としてパースされます（disabled=""）
+export default {
+  props: {
+    disabled: [String, Boolean]
+  }
+}
 ```
 
 </div>
-
-型の配列に `Boolean` が含まれている場合、配列の先頭に `String` が現れていない限り、`Boolean` のキャストルールが適用されます。
