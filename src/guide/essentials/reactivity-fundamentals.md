@@ -12,7 +12,7 @@ outline: deep
 
 ## リアクティブな状態を宣言する \* {#declaring-reactive-state}
 
-Options API では、`data` オプションを使用して、コンポーネントのリアクティブな状態を宣言します。オプションの値は、オブジェクトを返す関数でなければなりません。Vue は、新しいコンポーネントのインスタンスを作成するときにこの関数を呼び出し、返されたオブジェクトをリアクティブシステムでラップします。このオブジェクトのトップレベルのプロパティは、コンポーネントのインスタンス（メソッドやライフサイクルフックでは `this`）にプロキシされます：
+Options API では、`data` オプションを使用して、コンポーネントのリアクティブな状態を宣言します。オプションの値は、オブジェクトを返す関数でなければなりません。Vue は、新しいコンポーネントのインスタンスを作成するときにこの関数を呼び出し、返されたオブジェクトをリアクティブシステムでラップします。このオブジェクトのトップレベルのプロパティは、コンポーネントのインスタンス（メソッドやライフサイクルフックでは `this`）にプロキシされます:
 
 ```js{2-6}
 export default {
@@ -37,13 +37,13 @@ export default {
 
 これらインスタンスのプロパティは、インスタンスが最初に作成されたときにのみ追加されます。したがって、 `data` 関数が返すオブジェクトにこれらのプロパティが全て存在していることを確認する必要があります。必要であれば、 `null` や `undefined` などのプレースホルダーを使用して、まだ利用できない値をプロパティとして指定します。
 
-新しいプロパティを `data` に含めず、直接 `this` に追加することも可能です。しかし、この方法で追加されたプロパティは、リアクティブな更新をトリガーすることができません。
+新しいプロパティを `data` に含めず、直接 `this` に追加することも可能です。しかし、この方法で追加されたプロパティは、リアクティブな更新をトリガーできません。
 
 Vue は、コンポーネントのインスタンスを介して自身の組み込み API を公開する際に、接頭辞として `$` を使用します。また、内部プロパティには `_` という接頭辞を予約します。トップレベルの `data` プロパティには、これらの文字で始まる名前を使用しないでください。
 
 ### リアクティブプロキシ vs. 独自 \* {#reactive-proxy-vs-original}
 
-Vue 3 では、[JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)を活用することで、データをリアクティブにすることができます。Vue 2 から来たユーザーは、以下のエッジケースに注意する必要があります：
+Vue 3 では、[JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)を活用することで、データをリアクティブにできます。Vue 2 から来たユーザーは、以下のエッジケースに注意する必要があります:
 
 ```js
 export default {
@@ -226,7 +226,7 @@ ref のもう 1 つの優れた特徴は、普通の変数と違って、最新�
 
 <VueSchoolLink href="https://vueschool.io/lessons/methods-in-vue-3" title="Vue School の無料動画レッスン"/>
 
-コンポーネントのインスタンスにメソッドを追加するには、 `methods` オプションを使用します。これは、必要なメソッドを含むオブジェクトでなければなりません：
+コンポーネントのインスタンスにメソッドを追加するには、 `methods` オプションを使用します。これは、必要なメソッドを含むオブジェクトでなければなりません:
 
 ```js{7-11}
 export default {
@@ -259,7 +259,7 @@ export default {
 }
 ```
 
-コンポーネントのインスタンスに属する他のプロパティと同じく、`methods` はコンポーネントのテンプレート内からアクセスすることができます。テンプレートの中では、イベントリスナーとして一般的に使用されます：
+コンポーネントのインスタンスに属する他のプロパティと同じく、`methods` はコンポーネントのテンプレート内からアクセスできます。テンプレートの中では、イベントリスナーとして一般的に使用されます:
 
 ```vue-html
 <button @click="increment">{{ count }}</button>
@@ -335,18 +335,17 @@ function mutateDeeply() {
 
 リアクティブな状態を変化させると、DOM は自動的に更新されます。しかし、DOM の更新は同期的に適用されないことに注意する必要があります。その代わりに Vue は、更新サイクルの「next tick」まで更新をバッファリングし、どれだけ状態を変化させても、各コンポーネントは一度だけ更新することを保証しています。
 
-状態変化後の DOM 更新が完了するのを待つため、[nextTick()](/api/general#nexttick) というグローバル API を使用することができます：
+状態変化後の DOM 更新が完了するのを待つため、[nextTick()](/api/general#nexttick) というグローバル API を使用できます:
 
 <div class="composition-api">
 
 ```js
 import { nextTick } from 'vue'
 
-function increment() {
+async function increment() {
   count.value++
-  nextTick(() => {
-    // DOM 更新にアクセスします
-  })
+  await nextTick()
+  // DOM が更新されました
 }
 ```
 
@@ -358,11 +357,10 @@ import { nextTick } from 'vue'
 
 export default {
   methods: {
-    increment() {
+    async increment() {
       this.count++
-      nextTick(() => {
-        // DOM 更新にアクセスします
-      })
+      await nextTick()
+      // DOM が更新されました
     }
   }
 }
@@ -398,7 +396,7 @@ const state = reactive({ count: 0 })
 
 ### リアクティブプロキシ vs. 独自 \*\* {#reactive-proxy-vs-original-1}
 
-注意すべきは、`reactive()` の戻り値が、元のオブジェクトの[プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)であり、元のオブジェクトと等しくないということです：
+注意すべきは、`reactive()` の戻り値が、元のオブジェクトの[プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)であり、元のオブジェクトと等しくないということです:
 
 ```js
 const raw = {}
@@ -559,7 +557,7 @@ const { id } = object
 
 ### ステートフルなメソッド \* {#stateful-methods}
 
-場合によっては、デバウンスされたイベントハンドラーを作成するなど、下記に示すように、動的にメソッド関数を作成する必要があります：
+場合によっては、デバウンスされたイベントハンドラーを作成するなど、下記に示すように、動的にメソッド関数を作成する必要があります:
 
 ```js
 import { debounce } from 'lodash-es'
@@ -576,7 +574,7 @@ export default {
 
 しかし、デバウンスされた関数は**ステートフル**であり、経過時間に関する何らかの内部状態を保持するため、この方法は再利用されるコンポーネントにとって問題があります。複数のコンポーネントのインスタンスが同じデバウンスされた関数を共有する場合に、それらは互いに干渉します。
 
-各コンポーネントのインスタンスのデバウンスされた関数を他から独立させるために、 `created` ライフサイクルフックでデバウンスされたバージョンを作成することができます。
+各コンポーネントのインスタンスのデバウンスされた関数を他から独立させるために、 `created` ライフサイクルフックでデバウンスされたバージョンを作成できます。
 
 ```js
 export default {
