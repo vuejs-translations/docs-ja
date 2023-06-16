@@ -95,7 +95,7 @@
   ```vue
   <script setup>
   import { ref } from 'vue'
-  
+
   const tag = ref('input')
   const username = ref('')
   </script>
@@ -108,7 +108,7 @@
 
   実際のアプリケーションでは、ネイティブのフォームフィールドはコンポーネントでラップされるのが一般的なので、このようなエッジケースはあまりありません。もし、ネイティブ要素を直接使用する必要がある場合は、 `v-model` を属性とイベントに手動で分割できます。
 
-- **参照:** [動的コンポーネント](/guide/essentials/component-basics#dynamic-components)
+- **参照** [動的コンポーネント](/guide/essentials/component-basics#dynamic-components)
 
 ## `<slot>` {#slot}
 
@@ -138,13 +138,13 @@
 
   Vue テンプレートの `<slot>` 要素は JavaScript にコンパイルされているので、[ネイティブの `<slot>` 要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/slot)と混同しないように注意してください。
 
-- **参照:** [コンポーネント - スロット](/guide/components/slots)
+- **参照** [コンポーネント - スロット](/guide/components/slots)
 
 ## `<template>` {#template}
 
 DOM に要素をレンダリングせずに組み込みディレクティブを使用したい場合、`<template>` タグをプレースホルダーとして使用します。
 
-- **詳細:**
+- **詳細**
 
   `<template>` の特別な処理は、以下のディレクティブと一緒に使われた場合のみ発生します:
 
@@ -156,9 +156,9 @@ DOM に要素をレンダリングせずに組み込みディレクティブを�
 
   `v-for` を持つ `<template>` は [`key` 属性](/api/built-in-special-attributes#key)を持たせることができます。それ以外の属性やディレクティブは、対応する要素がなければ意味をなさないので、すべて破棄されます。
 
-  単一ファイルコンポーネントは、テンプレート全体をラップするために[トップレベルの `<template>` タグ](/api/sfc-spec#language-blocks)を使用します。この使い方は、上記で説明した `<template>` の使い方とは別のものです。このトップレベルタグはテンプレート自体の一部ではなく、ディレクティブのようなテンプレートの構文もサポートしていません。 
+  単一ファイルコンポーネントは、テンプレート全体をラップするために[トップレベルの `<template>` タグ](/api/sfc-spec#language-blocks)を使用します。この使い方は、上記で説明した `<template>` の使い方とは別のものです。このトップレベルタグはテンプレート自体の一部ではなく、ディレクティブのようなテンプレートの構文もサポートしていません。
 
-- **参照:**
-  - [ガイド - `<template>` に `v-if` を適用する](/guide/essentials/conditional#v-if-on-template) 
-  - [ガイド - `<template>` に `v-for` を適用する](/guide/essentials/list#v-for-on-template) 
-  - [ガイド - 名前付きスロット](/guide/components/slots#named-slots) 
+- **参照**
+  - [ガイド - `<template>` に `v-if` を適用する](/guide/essentials/conditional#v-if-on-template)
+  - [ガイド - `<template>` に `v-for` を適用する](/guide/essentials/list#v-for-on-template)
+  - [ガイド - 名前付きスロット](/guide/components/slots#named-slots)

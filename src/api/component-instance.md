@@ -89,7 +89,7 @@
   })
   ```
 
-- **参照:** [`app.config.optionMergeStrategies`](/api/application#app-config-optionmergestrategies)
+- **参照** [`app.config.optionMergeStrategies`](/api/application#app-config-optionmergestrategies)
 
 ## $parent {#parent}
 
@@ -137,7 +137,7 @@
 
   スロットが[スコープ付きスロット](/guide/components/slots#scoped-slots)の場合、スロット関数に渡された引数はそのスロットのプロパティとして利用可能です。
 
-- **参照:** [レンダー関数 - スロットのレンダリング](/guide/extras/render-function#rendering-slots)
+- **参照** [レンダー関数 - スロットのレンダリング](/guide/extras/render-function#rendering-slots)
 
 ## $refs {#refs}
 
@@ -151,7 +151,7 @@
   }
   ```
 
-- **参照:**
+- **参照**
 
   - [テンプレート参照](/guide/essentials/template-refs)
   - [特別な属性 - ref](./built-in-special-attributes.md#ref)
@@ -174,7 +174,7 @@
 
   デフォルトでは、ルート要素が 1 つしかない場合は `$attrs` に含まれるすべての要素がコンポーネントのルート要素に自動的に継承されます。コンポーネントに複数のルートノードがある場合、この動作は無効になります。また、[`inheritAttrs`](./options-misc#inheritattrs) オプションを使って明示的に無効化できます。
 
-- **参照:**
+- **参照**
 
   - [フォールスルー属性](/guide/components/attrs)
 
@@ -257,7 +257,7 @@
   unwatch()
   ```
 
-- **参照:**
+- **参照**
   - [オプション - `watch`](/api/options-state#watch)
   - [ガイド - ウォッチャー](/guide/essentials/watchers)
 
@@ -286,7 +286,7 @@
   }
   ```
 
-- **参照:**
+- **参照**
 
   - [コンポーネント - イベント](/guide/components/events)
   - [`emits` オプション](./options-state#emits)
@@ -323,4 +323,4 @@
 
   グローバルバージョンの `nextTick()` との唯一の違いは、`this.$nextTick()` に渡されるコールバックの `this` コンテキストが現在のコンポーネントインスタンスにバインドされるということです。
 
-- **参照:** [`nextTick()`](./general#nexttick)
+- **参照** [`nextTick()`](./general#nexttick)

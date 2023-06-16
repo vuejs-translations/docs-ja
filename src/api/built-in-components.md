@@ -126,7 +126,7 @@ h(Transition, {
   </Transition>
   ```
 
-- **参照:** [`<Transition>` ガイド](/guide/built-ins/transition)
+- **参照** [`<Transition>` ガイド](/guide/built-ins/transition)
 
 ## `<TransitionGroup>` {#transitiongroup}
 
@@ -172,7 +172,7 @@ h(Transition, {
   </TransitionGroup>
   ```
 
-- **参照:** [ガイド - TransitionGroup](/guide/built-ins/transition-group)
+- **参照** [ガイド - TransitionGroup](/guide/built-ins/transition-group)
 
 ## `<KeepAlive>` {#keepalive}
 
@@ -265,7 +265,7 @@ h(Transition, {
   </KeepAlive>
   ```
 
-- **参照:** [ガイド - KeepAlive](/guide/built-ins/keep-alive)
+- **参照** [ガイド - KeepAlive](/guide/built-ins/keep-alive)
 
 ## `<Teleport>` {#teleport}
 
@@ -307,7 +307,7 @@ h(Transition, {
   </teleport>
   ```
 
-- **参照:** [ガイド - Teleport](/guide/built-ins/teleport)
+- **参照** [ガイド - Teleport](/guide/built-ins/teleport)
 
 ## `<Suspense>` <sup class="vt-badge experimental" /> {#suspense}
 
@@ -333,4 +333,4 @@ h(Transition, {
 
   デフォルトスロットのレンダリング中に非同期な依存関係（[非同期コンポーネント](/guide/components/async)や [`async setup()`](/guide/built-ins/suspense#async-setup) のコンポーネント）が発生すると、それらが全て解決するまで待ってからデフォルトスロットを表示します。
 
-- **参照:** [ガイド - Suspense](/guide/built-ins/suspense)
+- **参照** [ガイド - Suspense](/guide/built-ins/suspense)

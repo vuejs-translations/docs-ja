@@ -35,7 +35,7 @@
 
   `text` が変更されると、`<span>` はパッチされるのではなく、常に置き換えられるので、トランジションがトリガーされます。
 
-- **参照:** [ガイド - リストレンダリング - `key` による状態管理](/guide/essentials/list#maintaining-state-with-key)
+- **参照** [ガイド - リストレンダリング - `key` による状態管理](/guide/essentials/list#maintaining-state-with-key)
 
 ## ref {#ref}
 
@@ -80,7 +80,7 @@
 
   `this.$refs` はリアクティブではないので、テンプレート内でデータバインディングのために使わないでください。
 
-- **参照:**
+- **参照**
   - [ガイド - テンプレート参照](/guide/essentials/template-refs)
   - [ガイド - テンプレート参照の型付け](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
   - [ガイド - コンポーネントのテンプレート参照の型付け](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
@@ -103,7 +103,7 @@
   </table>
   ```
 
-- **参照:**
+- **参照**
 
   - [ビルトインの特別な要素 - `<component>`](/api/built-in-special-elements#component)
   - [動的コンポーネント](/guide/essentials/component-basics#dynamic-components)

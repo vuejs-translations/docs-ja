@@ -230,7 +230,7 @@
   }
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
+- **参照** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## renderTriggered <sup class="vt-badge dev-only" /> {#rendertriggered}
 
@@ -256,7 +256,7 @@
   }
   ```
 
-- **参照:** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
+- **参照** [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
 
 ## activated {#activated}
 
@@ -272,7 +272,7 @@
   }
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **参照** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## deactivated {#deactivated}
 
@@ -288,7 +288,7 @@
   }
   ```
 
-- **参照:** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
+- **参照** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
 
 ## serverPrefetch <sup class="vt-badge" data-text="SSR only" /> {#serverprefetch}
 
@@ -333,4 +333,4 @@
   }
   ```
 
-- **参照:** [サーバーサイドレンダリング](/guide/scaling-up/ssr)
+- **参照** [サーバーサイドレンダリング](/guide/scaling-up/ssr)

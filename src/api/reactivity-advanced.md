@@ -32,7 +32,7 @@
   state.value = { count: 2 }
   ```
 
-- **参照:**
+- **参照**
   - [ガイド - 大きなイミュータブルな構造のリアクティビティオーバーヘッドを減らす](/guide/best-practices/performance#reduce-reactivity-overhead-for-large-immutable-structures)
   - [ガイド - 外部の状態システムとの統合](/guide/extras/reactivity-in-depth#integration-with-external-state-systems)
 
@@ -95,7 +95,7 @@
 
   ```js
   import { customRef } from 'vue'
-  
+
   export function useDebouncedRef(value, delay = 200) {
     let timeout
     return customRef((track, trigger) => {

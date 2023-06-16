@@ -35,7 +35,7 @@
   const app = createApp(App)
   ```
 
-- **参照:** [ガイド - Vue アプリケーションの作成](/guide/essentials/application)
+- **参照** [ガイド - Vue アプリケーションの作成](/guide/essentials/application)
 
 ## createSSRApp() {#createssrapp}
 
@@ -119,7 +119,7 @@
   const MyComponent = app.component('my-component')
   ```
 
-- **参照:** [コンポーネントの登録](/guide/components/registration)
+- **参照** [コンポーネントの登録](/guide/components/registration)
 
 ## app.directive() {#app-directive}
 
@@ -157,7 +157,7 @@
   const myDirective = app.directive('my-directive')
   ```
 
-- **参照:** [カスタムディレクティブ](/guide/reusability/custom-directives)
+- **参照** [カスタムディレクティブ](/guide/reusability/custom-directives)
 
 ## app.use() {#app-use}
 
@@ -192,7 +192,7 @@
   app.use(MyPlugin)
   ```
 
-- **参照:** [プラグイン](/guide/reusability/plugins)
+- **参照** [プラグイン](/guide/reusability/plugins)
 
 ## app.mixin() {#app-mixin}
 
@@ -266,7 +266,7 @@
 
   </div>
 
-- **参照:**
+- **参照**
   - [Provide / Inject](/guide/components/provide-inject)
   - [アプリケーションレベルの Provide](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
@@ -328,7 +328,7 @@
   }
   ```
 
-- **参照:** [グローバル API - バージョン](/api/general#version)
+- **参照** [グローバル API - バージョン](/api/general#version)
 
 ## app.config {#app-config}
 
@@ -420,9 +420,9 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 これを `true` に設定することで、ブラウザーの開発ツールの performance/timeline パネルで、コンポーネントの初期化、コンパイル、レンダリング、パッチについてのパフォーマンスのトレースが有効となります。 開発モードおよび [performance.mark](https://developer.mozilla.org/ja/docs/Web/API/Performance/mark) API をサポートするブラウザーでのみ動作します。
 
-- **型**: `boolean`
+- **型:** `boolean`
 
-- **参照:** [ガイド - パフォーマンス](/guide/best-practices/performance)
+- **参照** [ガイド - パフォーマンス](/guide/best-practices/performance)
 
 ## app.config.compilerOptions {#app-config-compileroptions}
 
@@ -457,7 +457,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   }
   ```
 
-- **参照:** [Vue および web コンポーネント](/guide/extras/web-components)
+- **参照** [Vue および web コンポーネント](/guide/extras/web-components)
 
 ### app.config.compilerOptions.whitespace {#app-config-compileroptions-whitespace}
 
@@ -554,7 +554,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   }
   ```
 
-- **参照:** [ガイド - グローバルなプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
+- **参照** [ガイド - グローバルなプロパティの拡張](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
 ## app.config.optionMergeStrategies {#app-config-optionmergestrategies}
 
@@ -605,4 +605,4 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   // 'Hello Vue'をログに記録します
   ```
 
-- **参照:** [コンポーネントインスタンス - `$options`](/api/component-instance#options)
+- **参照** [コンポーネントインスタンス - `$options`](/api/component-instance#options)

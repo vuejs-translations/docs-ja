@@ -37,7 +37,7 @@
   </script>
   ```
 
-- **参照**:
+- **参照**
   - [ガイド - Provide / Inject](/guide/components/provide-inject)
   - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
@@ -101,6 +101,6 @@
   </script>
   ```
 
-- **参照**:
+- **参照**
   - [ガイド - Provide / Inject](/guide/components/provide-inject)
   - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />

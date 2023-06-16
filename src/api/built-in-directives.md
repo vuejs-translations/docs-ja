@@ -18,7 +18,7 @@
   <span>{{msg}}</span>
   ```
 
-- **参照:** [テンプレート構文 - テキスト展開](/guide/essentials/template-syntax#text-interpolation)
+- **参照** [テンプレート構文 - テキスト展開](/guide/essentials/template-syntax#text-interpolation)
 
 ## v-html {#v-html}
 
@@ -26,7 +26,7 @@
 
 - **期待する値:** `string`
 
-- **詳細:**
+- **詳細**
 
   `v-html` の内容は、プレーンな HTML として挿入されます - Vue テンプレートの構文は処理されません。もし、`v-html` を使ってテンプレートを構成しようとしているのであれば、代わりにコンポーネントを使うなどして解決策を見直してみてください。
 
@@ -36,13 +36,13 @@
 
   [単一ファイルコンポーネント](/guide/scaling-up/sfc)では、`scoped` スタイルは `v-html` 内のコンテンツには適用されません。これは、その HTML が Vue のテンプレートコンパイラーによって処理されないからです。もし `v-html` のコンテンツにスコープ付き CSS を適用したい場合は、代わりに [CSS modules](./sfc-css-features#css-modules) を使ったり、BEM などの手動スコープ戦略を持つ追加のグローバル `<style>` 要素を使用可能です。
 
-- **例:**
+- **例**
 
   ```vue-html
   <div v-html="html"></div>
   ```
 
-- **参照:** [テンプレート構文 - 生の HTML](/guide/essentials/template-syntax#raw-html)
+- **参照** [テンプレート構文 - 生の HTML](/guide/essentials/template-syntax#raw-html)
 
 ## v-show {#v-show}
 
@@ -54,7 +54,7 @@
 
   `v-show` はインラインスタイルで `display` CSS プロパティをセットする動作で、要素が表示されている場合は `display` の初期値を尊重しようとします。また、その状態が変化したときにトランジションを引き起こします。
 
-- **参照:** [条件付きレンダリング - v-show](/guide/essentials/conditional#v-show)
+- **参照** [条件付きレンダリング - v-show](/guide/essentials/conditional#v-show)
 
 ## v-if {#v-if}
 
@@ -72,7 +72,7 @@
 
   一緒に使用した場合、 `v-if` は `v-for` よりも高い優先度を持ちます。この 2 つのディレクティブを 1 つの要素で同時に使うことはお勧めしません。詳しくは [リストレンダリングガイド](/guide/essentials/list#v-for-with-v-if) を参照してください。
 
-- **参照:** [条件付きレンダリング - v-if](/guide/essentials/conditional#v-if)
+- **参照** [条件付きレンダリング - v-if](/guide/essentials/conditional#v-if)
 
 ## v-else {#v-else}
 
@@ -97,7 +97,7 @@
   </div>
   ```
 
-- **参照:** [条件付きレンダリング - v-else](/guide/essentials/conditional#v-else)
+- **参照** [条件付きレンダリング - v-else](/guide/essentials/conditional#v-else)
 
 ## v-else-if {#v-else-if}
 
@@ -128,7 +128,7 @@
   </div>
   ```
 
-- **参照:** [条件付きレンダリング - v-else-if](/guide/essentials/conditional#v-else-if)
+- **参照** [条件付きレンダリング - v-else-if](/guide/essentials/conditional#v-else-if)
 
 ## v-for {#v-for}
 
@@ -164,7 +164,7 @@
 
   また、`v-for` はネイティブの `Map` や `Set` を含む、[反復処理プロトコル](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol)を実装した値に対しても動作させることができます。
 
-- **参照:**
+- **参照**
   - [リストレンダリング](/guide/essentials/list)
 
 ## v-on {#v-on}
@@ -177,7 +177,7 @@
 
 - **引数:** `event`（オブジェクト構文を使用する場合は省略可能）
 
-- **修飾子:**
+- **修飾子**
 
   - `.stop` - `event.stopPropagation()` を呼び出します。
   - `.prevent` - `event.preventDefault()` を呼び出します。
@@ -200,7 +200,7 @@
 
   `v-on` は引数なしで、イベントとリスナーのペアのオブジェクトにバインドすることもサポートしています。オブジェクト構文を使用する場合、修飾子をサポートしないことに注意してください。
 
-- **例:**
+- **例**
 
   ```vue-html
   <!-- メソッドハンドラー -->
@@ -249,7 +249,7 @@
   <MyComponent @my-event="handleThis(123, $event)" />
   ```
 
-- **参照:**
+- **参照**
   - [イベントハンドリング](/guide/essentials/event-handling)
   - [コンポーネント - カスタムイベント](/guide/essentials/component-basics#listening-to-events)
 
@@ -263,13 +263,13 @@
 
 - **引数:** `attrOrProp（省略可能）`
 
-- **修飾子:**
+- **修飾子**
 
   - `.camel` - kebab-case の属性名を camelCase に変換します。
   - `.prop` - バインディングを DOM プロパティとして設定するよう強制します。<sup class="vt-badge">3.2+</sup>
   - `.attr` - バインディングを DOM 属性として設定するよう強制します。<sup class="vt-badge">3.2+</sup>
 
-- **使用法:**
+- **使用法**
 
   `class` や `style` 属性をバインドする際に使用する `v-bind` は、Array や Object などの追加の値の型をサポートします。詳しくは、以下のリンク先のガイドを参照してください。
 
@@ -279,7 +279,7 @@
 
   引数なしで使用する場合、属性の名前と値のペアを含むオブジェクトをバインドするために使用できます。
 
-- **例:**
+- **例**
 
   ```vue-html
   <!-- 属性をバインドする -->
@@ -336,7 +336,7 @@
 
   文字列テンプレートを使用する場合や、ビルドステップでテンプレートを事前コンパイルする場合は、`.camel` は必要ありません。
 
-- **参照:**
+- **参照**
   - [クラスとスタイルのバインディング](/guide/essentials/class-and-style)
   - [コンポーネント - プロパティ渡しの詳細](/guide/components/props#prop-passing-details)
 
@@ -353,13 +353,13 @@
   - `<textarea>`
   - コンポーネント
 
-- **修飾子:**
+- **修飾子**
 
   - [`.lazy`](/guide/essentials/forms#lazy) - `input` の代わりに `change` イベントを購読する
   - [`.number`](/guide/essentials/forms#number) - 有効な入力文字列を数値に変換する
   - [`.trim`](/guide/essentials/forms#trim) - 入力をトリムする
 
-- **参照:**
+- **参照**
 
   - [フォーム入力バインディング](/guide/essentials/forms)
   - [コンポーネントのイベント - `v-model` での使用](/guide/components/v-model)
@@ -379,7 +379,7 @@
   - `<template>`
   - [コンポーネント](/guide/components/slots#scoped-slots)（プロパティのある単独のデフォルトスロット用）
 
-- **例:**
+- **例**
 
   ```vue-html
   <!-- 名前付きスロット -->
@@ -412,7 +412,7 @@
   </Mouse>
   ```
 
-- **参照:**
+- **参照**
   - [コンポーネント - スロット](/guide/components/slots)
 
 ## v-pre {#v-pre}
@@ -425,7 +425,7 @@
 
   `v-pre` を指定した要素の内部では、Vue テンプレートの構文はすべて維持され、そのままレンダリングされます。この最も一般的な使用例は、未加工のマスタッシュタグを表示することです。
 
-- **例:**
+- **例**
 
   ```vue-html
   <span v-pre>{{ this will not be compiled }}</span>
@@ -459,7 +459,7 @@
 
   3.2 以降では、[`v-memo`](#v-memo) を使って、テンプレートの一部を無効化する条件付きでメモ化できます。
 
-- **参照:**
+- **参照**
   - [データバインディング構文 - 展開](/guide/essentials/template-syntax#text-interpolation)
   - [v-memo](#v-memo)
 
@@ -500,7 +500,7 @@
 
   子コンポーネントの更新チェックが最適化されていない特定のエッジケースで、不要な更新を手動で防ぐために `v-memo` をコンポーネントに使用できます。しかし、ここでも、必要な更新をスキップしないように正しい依存関係を指定するのは、開発者の責任です。
 
-- **参照:**
+- **参照**
   - [v-once](#v-once)
 
 ## v-cloak {#v-cloak}
@@ -517,7 +517,7 @@
 
   `v-cloak` は関連するコンポーネントインスタンスがマウントされるまで、その要素に残ります。`[v-cloak] { display: none }` のような CSS ルールと組み合わせることで、コンポーネントの準備が整うまで未加工のテンプレートを非表示にできます。
 
-- **例:**
+- **例**
 
   ```css
   [v-cloak] {
