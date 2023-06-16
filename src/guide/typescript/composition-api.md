@@ -20,7 +20,7 @@ props.bar // number | undefined
 </script>
 ```
 
-これは "runtime declaration" (実行時宣言) と呼ばれます、なぜなら `defineProps()` に渡された引数は、実行時に `props` のオプションとして使用されるためです。
+これは実行時の宣言（runtime declaration）と呼ばれます、なぜなら `defineProps()` に渡された引数は、実行時に `props` のオプションとして使用されるためです。
 
 しかし、通常は型引数でプロパティの型を定義するほうがより単純です:
 
@@ -33,9 +33,9 @@ const props = defineProps<{
 </script>
 ```
 
-これは "type-based declaration" (型ベースの宣言) と呼ばれます。コンパイラーは型引数に基づいて同等の実行時のオプションを推論しようとします。今回の場合、2 番目の例は最初の例と全く同じ実行時のオプションにコンパイルされます。
+これは型ベースの宣言（type-based declaration）と呼ばれます。コンパイラーは型引数に基づいて同等の実行時のオプションを推論しようとします。今回の場合、2 番目の例は最初の例と全く同じ実行時のオプションにコンパイルされます。
 
-type-base declaration と runtime declaration の両方を同時に使用することはできません。
+型ベースの宣言と実行時の宣言の両方を同時に使用することはできません。
 
 プロパティの型をインターフェースとして分離することもできます:
 
@@ -58,7 +58,7 @@ const props = defineProps<Props>()
 
 ### プロパティのデフォルト値 {#props-default-values}
 
-type-based declaration を使用すると、プロパティのデフォルト値を宣言することができません。これは、`withDefaults` コンパイラーマクロによって解決できます:
+型ベースの宣言を使用すると、プロパティのデフォルト値を宣言できません。これは、`withDefaults` コンパイラーマクロによって解決できます:
 
 ```ts
 export interface Props {
@@ -86,7 +86,7 @@ export default defineComponent({
     message: String
   },
   setup(props) {
-    props.message // <-- type: string
+    props.message // <-- 型: string
   }
 })
 ```
@@ -136,22 +136,33 @@ export default defineComponent({
 
 ## コンポーネントの emit の型付け {#typing-component-emits}
 
-`<script setup>` では、`emit` 関数も runtime declaration もしくは type declaration (型宣言) のいずれかを使って型付けすることができます:
+`<script setup>` では、`emit` 関数も実行時の宣言もしくは型ベースの宣言のいずれかを使って型付けできます:
 
 ```vue
 <script setup lang="ts">
-// runtime
+// 実行時の宣言
 const emit = defineEmits(['change', 'update'])
 
-// type-based
+// 型ベースの宣言
 const emit = defineEmits<{
   (e: 'change', id: number): void
   (e: 'update', value: string): void
 }>()
+
+// 3.3+: より簡潔な代替の構文
+const emit = defineEmits<{
+  change: [id: number]
+  update: [value: string]
+}>()
 </script>
 ```
 
-type declaration の場合、引数は、[Call Signatures](https://www.typescriptlang.org/docs/handbook/2/functions.html#call-signatures) を持つ型リテラルでなければなりません。この型リテラルは、返される `emit` 関数の型として使用されます。見れば分かるとおり、型ベースの宣言をすることで発行されるイベントの型をより細かく制御することができます。
+型引数には、以下のいずれかを指定します:
+
+1. [Call Signatures](https://www.typescriptlang.org/docs/handbook/2/functions.html#call-signatures) で型リテラルとして記述される、呼び出し可能な関数型。これは、返される `emit` 関数の型として使用されます。
+2. キーがイベント名で、値が追加で受け付けるイベントのパラメーターを表す配列/タプル型である型リテラル。上記の例では、名前付きタプルを使用しているため、各引数は明示的な名前を持つことができます。
+
+このように、型宣言によって、発行されるイベントの型制約をより細かく制御できます。
 
 `<script setup>` を使用しない場合は、`defineComponent()` は setup コンテキスト内で `emit` 関数のイベント名を推論できます:
 
@@ -276,7 +287,7 @@ function handleChange(event) {
 </template>
 ```
 
-type annotation (型注釈) が無い場合、`event` 引数は暗黙の `any` 型になります。`tsconfig.json` で `"strict": true` や `"noImplicitAny": true` にしている場合、これは型エラーになります。そのため、明示的にイベントハンドラーの引数を型付けすることが推奨されます。加えて、`event` のプロパティにアクセスする際、型アサーションを使用する必要があるかもしれません:
+型注釈が無い場合、`event` 引数は暗黙の `any` 型になります。`tsconfig.json` で `"strict": true` や `"noImplicitAny": true` にしている場合、これは型エラーになります。そのため、明示的にイベントハンドラーの引数を型付けすることが推奨されます。加えて、`event` のプロパティにアクセスする際、型アサーションを使用する必要があるかもしれません:
 
 ```ts
 function handleChange(event: Event) {
@@ -286,7 +297,7 @@ function handleChange(event: Event) {
 
 ## Provide / Inject の型付け {#typing-provide-inject}
 
-provide (提供) と inject (注入) は通常、別々のコンポーネントで実行されます。注入された値を適切に型付けするために、Vue は `InjectionKey` インターフェースを提供します。これは、`Symbol` を継承したジェネリック型で、provider (値を提供する側) と consumer (値を利用する側) の間で注入された値の型を同期させるために使用できます:
+provide と inject は通常、別々のコンポーネントで実行されます。注入された値を適切に型付けするために、Vue は `InjectionKey` インターフェースを提供します。これは、`Symbol` を継承したジェネリック型で、provider（値を提供する側）と consumer（値を利用する側）の間で注入された値の型を同期させるために使用できます:
 
 ```ts
 import { provide, inject } from 'vue'
@@ -296,18 +307,18 @@ const key = Symbol() as InjectionKey<string>
 
 provide(key, 'foo') // string 型以外の値を渡すとエラーになる
 
-const foo = inject(key) // type of foo: string | undefined
+const foo = inject(key) // foo: string | undefined の型
 ```
 
-複数のコンポーネントで import できるように、injection key は別のファイルに格納することが推奨されます。
+複数のコンポーネントで import できるように、インジェクションキーは別のファイルに格納することが推奨されます。
 
-injection key に文字列を使用した場合、注入された値の型は `unknown` になり、型引数で明示的に型付けする必要があります。
+インジェクションキーに文字列を使用した場合、注入された値の型は `unknown` になり、型引数で明示的に型付けする必要があります。
 
 ```ts
-const foo = inject<string>('foo') // type: string | undefined
+const foo = inject<string>('foo') // 型: string | undefined
 ```
 
-注入された値が `undefined` になりうることに注意してください、なぜなら実行時に provider (値を提供する側) がその値を提供する保証は無いからです。
+注入された値が `undefined` になりうることに注意してください、なぜなら実行時に provider（値を提供する側）がその値を提供する保証は無いからです。
 
 デフォルト値を提供することで、`undefined` 型を取り除くことができます:
 
@@ -341,7 +352,7 @@ onMounted(() => {
 </template>
 ```
 
-厳密な型安全性のために、`el.value` にアクセスする際には、オプショナルチェーンもしくは type guards (型ガード) をする必要があります。なぜなら、コンポーネントがマウントされるまでは ref の初期値は `null` であり、参照されていた要素が `v-if` によってアンマウントされた場合にも `null` にセットされる可能性があるからです。
+厳密な型安全性のために、`el.value` にアクセスする際には、オプショナルチェーンもしくは型ガードをする必要があります。なぜなら、コンポーネントがマウントされるまでは ref の初期値は `null` であり、参照されていた要素が `v-if` によってアンマウントされた場合にも `null` にセットされる可能性があるからです。
 
 ## コンポーネントのテンプレート参照の型付け {#typing-component-template-refs}
 
