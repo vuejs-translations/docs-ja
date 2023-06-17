@@ -224,6 +224,29 @@ export function register() {
 
 もし多くのコンポーネントがある場合、Vite の [glob import](https://vitejs.dev/guide/features.html#glob-import) や webpack の [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) のようなビルドツールの機能を利用して、ディレクトリーからすべてのコンポーネントを読み込むこともできます。
 
+### Web コンポーネント と TypeScript {#web-components-and-typescript}
+
+もしアプリケーションやライブラリーを開発している場合、カスタム要素として定義されているものも含めて、Vue コンポーネントを[型チェック](/guide/scaling-up/tooling.html#typescript)したいかもしれません。
+
+カスタム要素はネイティブ API を使用してグローバルに登録されているので、デフォルトでは Vue テンプレートで使用される時に型推論が行われません。カスタム要素として登録された Vue コンポーネントの型のサポートを提供するために、Vue テンプレート、または [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) で [`GlobalComponents` インターフェース](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage)を使用することでグローバルなコンポーネントの型を登録することができます:
+
+```typescript
+import { defineCustomElement } from 'vue'
+
+// vue SFC
+import CounterSFC from './src/components/counter.ce.vue'
+
+// コンポーネントを Web コンポーネントに変換
+export const Counter = defineCustomElement(CounterSFC)
+
+// グローバルな型を登録
+declare module 'vue' {
+  export interface GlobalComponents {
+    Counter: typeof Counter
+  }
+}
+```
+
 ## Web コンポーネント と Vue コンポーネントの比較 {#web-components-vs-vue-components}
 
 開発者の中には、フレームワークに依存した独自のコンポーネントモデルは避けるべきであり、カスタム要素のみを使用することでアプリケーションの「将来性」を確保できると考える人もいます。ここでは、この考え方が問題を単純化しすぎていると思われる理由を説明します。
