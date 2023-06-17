@@ -22,7 +22,9 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <a target="_blank"></a>
+    <a href="https://note.com/mskzu_hirno/n/n165dc919276d" target="_blank">
+      Vue Fes Japan 2023 CFP 募集のお知らせ
+    </a>
     <button @click="dismiss">
       <VTIconPlus class="close" />
     </button>
