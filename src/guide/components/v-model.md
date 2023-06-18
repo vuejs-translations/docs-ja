@@ -403,6 +403,8 @@ export default {
 
 </div>
 
+### 引数を持つ `v-model` 修飾子 {#modifiers-for-v-model-with-arguments}
+
 引数と修飾子の両方を持つ `v-model` バインディングの場合、生成されるプロパティの名前は `arg + "Modifiers"` になります。例えば:
 
 ```vue-html
@@ -431,6 +433,59 @@ export default {
     console.log(this.titleModifiers) // { capitalize: true }
   }
 }
+```
+
+</div>
+
+以下は異なる引数を持つ複数の `v-model` で修飾子を使用するもう 1 つの例です:
+
+```vue-html
+<UserName
+  v-model:first-name.capitalize="first"
+  v-model:last-name.uppercase="last"
+/>
+```
+
+<div class="composition-api">
+
+```vue{5,6,10,11}
+<script setup >
+const props = defineProps({
+  firstName: String,
+  lastName: String,
+  firstNameModifiers: { default: () => ({}) },
+  lastNameModifiers: { default: () => ({}) }
+})
+defineEmits(['update:firstName', 'update:lastName'])
+
+console.log(props.firstNameModifiers) // { capitalize: true }
+console.log(props.lastNameModifiers) // { uppercase: true }
+</script>
+```
+
+</div>
+<div class="options-api">
+
+```vue{15,16}
+<script>
+export default {
+  props: {
+    firstName: String,
+    lastName: String,
+    firstNameModifiers: {
+      default: () => ({})
+    },
+    lastNameModifiers: {
+      default: () => ({})
+    }
+  },
+  emits: ['update:firstName', 'update:lastName'],
+  created() {
+    console.log(this.firstNameModifiers) // { capitalize: true }
+    console.log(this.lastNameModifiers) // { uppercase: true }
+  }
+}
+</script>
 ```
 
 </div>
