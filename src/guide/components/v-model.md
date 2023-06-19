@@ -403,7 +403,7 @@ export default {
 
 </div>
 
-### 引数を持つ `v-model` 修飾子 {#modifiers-for-v-model-with-arguments}
+### 引数を持つ `v-model` の修飾子 {#modifiers-for-v-model-with-arguments}
 
 引数と修飾子の両方を持つ `v-model` バインディングの場合、生成されるプロパティの名前は `arg + "Modifiers"` になります。例えば:
 
