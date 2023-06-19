@@ -133,7 +133,7 @@ Vue の現在のバージョンを公開します。
 
   `defineComponent()` には、Composition API と[レンダー関数か JSX](/guide/extras/render-function.html) で使うための代替シグネチャーもあります。
 
-  オプションオブジェクトを渡す代わりに、関数を受け取ります。この関数は、Composition API の [`setup()`](/api/composition-api-setup.html#composition-api-setup) 関数と同じ働きをします: つまりプロパティと setup コンテキストを受け取ります。戻り値はレンダー関数であるべきで、`h()` と JSX の両方がサポートされています:
+  オプションオブジェクトを渡す代わりに、関数を受け取ります。この関数は、Composition API の [`setup()`](/api/composition-api-setup.html#composition-api-setup) 関数と同じ働きをします: つまり props と setup コンテキストを受け取ります。戻り値はレンダー関数であるべきで、`h()` と JSX の両方がサポートされています:
 
   ```js
   import { ref, h } from 'vue'
@@ -148,7 +148,7 @@ Vue の現在のバージョンを公開します。
         return h('div', count.value)
       }
     },
-    // 追加のオプション（例: プロパティやエミットの宣言など）
+    // 追加のオプション（例: props や emits の宣言など）
     {
       props: {
         /* ... */
@@ -170,14 +170,14 @@ Vue の現在のバージョンを公開します。
         return <div>{count.value}</div>
       }
     },
-    // 現在のところ、手動による実行時プロパティの宣言はまだ必要です。
+    // 現在のところ、手動による実行時 props の宣言はまだ必要です。
     {
       props: ['msg', 'list']
     }
   )
   ```
 
-  将来的には、実行時プロパティを自動的に推論して注入する Babel プラグインを提供し（SFC の `defineProps` のように）、実行時プロパティの宣言を省略できるようにする予定です。
+  将来的には、実行時 props を自動的に推論して注入する Babel プラグインを提供し（SFC の `defineProps` のように）、実行時 props の宣言を省略できるようにする予定です。
 
   ### webpack のツリーシェイキングに関する注意 {#note-on-webpack-treeshaking}
 

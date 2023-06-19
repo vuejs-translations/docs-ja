@@ -44,9 +44,9 @@ export default {
 
 `setup()` は**同期的**にオブジェクトを返さなければなりません。`async setup()` が使用できるのは、そのコンポーネントが [Suspense](../guide/built-ins/suspense) コンポーネントの子孫であるときだけです。
 
-## プロパティへのアクセス {#accessing-props}
+## props へのアクセス {#accessing-props}
 
-`setup` 関数の第 1 引数は `props` 引数です。標準コンポーネントで期待するように、`setup` 関数内の `props` はリアクティブで、新しい `props` が渡されたら更新されます。
+`setup` 関数の第 1 引数は `props` 引数です。標準コンポーネントで期待するように、`setup` 関数内の `props` はリアクティブで、新しい props が渡されたら更新されます。
 
 ```js
 export default {
@@ -59,9 +59,9 @@ export default {
 }
 ```
 
-もし、`props` オブジェクトを分割代入する場合は、分割代入された変数はリアクティビティーを失うことに注意してください。 そのため、常に `props.xxx` の形でプロパティにアクセスすることを推奨します。
+もし、`props` オブジェクトを分割代入する場合は、分割代入された変数はリアクティビティーを失うことに注意してください。 そのため、常に `props.xxx` の形で props にアクセスすることを推奨します。
 
-もし、本当にプロパティを分割代入すること、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー API である [toRefs()](./reactivity-utilities#torefs) や [toRef()](/api/reactivity-utilities#toref) を使用することで、行うことができます:
+もし、本当に props を分割代入したり、もしくはリアクティビティーを保持しながら外部の関数に渡すことが必要なら、 ユーティリティー API である [toRefs()](./reactivity-utilities#torefs) や [toRef()](/api/reactivity-utilities#toref) を使用することで、行うことができます:
 
 ```js
 import { toRefs, toRef } from 'vue'

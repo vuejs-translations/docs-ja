@@ -6,7 +6,7 @@
 
 ## PropType\<T> {#proptype-t}
 
-ランタイムプロパティ宣言を使用する際、より具体的な型でプロパティに注釈を付けるために使われます。
+ランタイム props 宣言を使用する際、より具体的な型で props に注釈を付けるために使われます。
 
 - **例**
 
@@ -30,7 +30,7 @@
   }
   ```
 
-- **参照** [ガイド - コンポーネントプロパティの型付け](/guide/typescript/options-api#typing-component-props)
+- **参照** [ガイド - コンポーネント props の型付け](/guide/typescript/options-api#typing-component-props)
 
 ## MaybeRef\<T> {#mayberef}
 
@@ -46,9 +46,9 @@
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
-ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は内向き、つまりコンポーネントから受け取った解決済みのプロパティです。これは、仮に必須でなくても、真偽値の型のプロパティとデフォルト値を持ったプロパティが常に定義されていることを意味しています。
+ランタイム props オプションオブジェクトから props の型を抽出します。抽出された型は内向き、つまりコンポーネントから受け取った解決済みの props です。これは、仮に必須でなくても、真偽値の型の props とデフォルト値を持った props が常に定義されていることを意味しています。
 
-外向きのプロパティ、つまり親が渡すことのできるプロパティを抽出するためには [`ExtractPublicPropTypes`](#extractpublicproptypes) を使用します。
+外向きの props、つまり親が渡すことのできる props を抽出するためには [`ExtractPublicPropTypes`](#extractpublicproptypes) を使用します。
 
 - **例**
 
@@ -77,7 +77,7 @@
 
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-ランタイムプロパティオプションオブジェクトからプロパティの型を抽出します。抽出された型は外向き、つまり親が渡すことのできるプロパティです。
+ランタイム props オプションオブジェクトから props の型を抽出します。抽出された型は外向き、つまり親が渡すことのできる props です。
 
 - **例**
 
@@ -151,7 +151,7 @@
 
 ## ComponentCustomProps {#componentcustomprops}
 
-TSX 要素のプロパティとして宣言されていないプロパティを拡張して TSX プロパティとして使用します。
+TSX 要素で宣言されていない props を使用するため、許可された TSX の props を拡張するために使用します。
 
 - **例**
 
@@ -166,7 +166,7 @@ TSX 要素のプロパティとして宣言されていないプロパティを�
   ```
 
   ```tsx
-  // hello が宣言されていないプロパティでも使えるようになります
+  // hello が宣言されていない props でも使えるようになります
   <MyComponent hello="world" />
   ```
 
