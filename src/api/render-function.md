@@ -41,7 +41,7 @@
   ```js
   import { h } from 'vue'
 
-  // type 以外の引数は省略可能
+  // type 以外のすべての引数は省略可能
   h('div')
   h('div', { id: 'foo' })
 

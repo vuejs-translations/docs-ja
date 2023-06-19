@@ -175,11 +175,11 @@ SFC では、ネイティブの HTML 要素と区別するために、子コン�
 
 詳細は [DOM テンプレート解析の注意点](#dom-template-parsing-caveats)を参照ください。
 
-## プロパティの受け渡し {#passing-props}
+## props の受け渡し {#passing-props}
 
-ブログを構築する場合、ブログの記事を表示するコンポーネントが必要になるかと思います。すべてのブログ記事が同じレイアウトで表示されるようにしたいのですが、コンテンツは異なっています。このようなコンポーネントは、表示したい特定の記事のタイトルや内容などのデータを渡すことができない限り役に立ちません。そこでプロパティの出番です。
+ブログを構築する場合、ブログの記事を表示するコンポーネントが必要になるかと思います。すべてのブログ記事が同じレイアウトで表示されるようにしたいのですが、コンテンツは異なっています。このようなコンポーネントは、表示したい特定の記事のタイトルや内容などのデータを渡すことができない限り役に立ちません。そこで props の出番です。
 
-プロパティはコンポーネントに登録できるカスタム属性のことです。ブログ記事コンポーネントにタイトルを渡すには、<span class="options-api">[`props`](/api/options-state#props) オプション</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup#defineprops-defineemits) マクロ</span>を使って、このコンポーネントが受け取るプロパティのリストを宣言する必要があります:
+props はコンポーネントに登録できるカスタム属性のことです。ブログ記事コンポーネントにタイトルを渡すには、<span class="options-api">[`props`](/api/options-state#props) オプション</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup#defineprops-defineemits) マクロ</span>を使って、このコンポーネントが受け取る props のリストを宣言する必要があります:
 
 <div class="options-api">
 
@@ -212,16 +212,16 @@ defineProps(['title'])
 </template>
 ```
 
-`defineProps` はコンパイル時のマクロで `<script setup>` 内でのみ利用可能であり、明示的にインポートする必要はありません。宣言されたプロパティは、自動的にテンプレートに公開されます。また、`defineProps` はコンポーネントに渡されたすべてのプロパティを含むオブジェクトを返すので、必要に応じて JavaScript 内でアクセスすることができます:
+`defineProps` はコンパイル時のマクロで `<script setup>` 内でのみ利用可能であり、明示的にインポートする必要はありません。宣言された props は、自動的にテンプレートに公開されます。また、`defineProps` はコンポーネントに渡されたすべての props を含むオブジェクトを返すので、必要に応じて JavaScript 内でアクセスすることができます:
 
 ```js
 const props = defineProps(['title'])
 console.log(props.title)
 ```
 
-参照:[コンポーネントプロパティの型付け](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
+参照:[コンポーネント props の型付け](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
 
-`<script setup>` を使わない場合、プロパティは `props` オプションで宣言する必要があり、props オブジェクトは `setup()` の第 1 引数として渡されます:
+`<script setup>` を使わない場合、props は `props` オプションで宣言する必要があり、props オブジェクトは `setup()` の第 1 引数として渡されます:
 
 ```js
 export default {
@@ -234,9 +234,9 @@ export default {
 
 </div>
 
-コンポーネントは好きなだけプロパティを持つことができ、デフォルトでどんな値でも、どのプロパティにも渡すことができます。
+コンポーネントは好きなだけ props を持つことができ、デフォルトでどんな値でも、どの props にも渡すことができます。
 
-プロパティが登録されると、以下のようにカスタム属性としてデータを渡すことができるようになります:
+props が登録されると、以下のようにカスタム属性としてデータを渡すことができるようになります:
 
 ```vue-html
 <BlogPost title="My journey with Vue" />
@@ -297,9 +297,9 @@ const posts = ref([
 
 </div>
 
-動的なプロパティの値を渡すために `v-bind` がどう使用されているかに注目してください。これは、レンダリングするコンテンツを事前に正確に把握していない場合に特に役立ちます。
+動的な props の値を渡すために `v-bind` がどう使用されているかに注目してください。これは、レンダリングするコンテンツを事前に正確に把握していない場合に特に役立ちます。
 
-プロパティについては以上となりますが、このページを読み終え内容に慣れてきたら、後ほど[プロパティ](/guide/components/props)の完全ガイドを読みにくることをおすすめします。
+props については以上となりますが、このページを読み終え内容に慣れてきたら、後ほど[props](/guide/components/props)の完全ガイドを読みにくることをおすすめします。
 
 ## イベントの購読 {#listening-to-events}
 
@@ -554,7 +554,7 @@ Vue のテンプレートを DOM に直接記述する場合、Vue は DOM か�
 
 ### 大文字小文字の区別 {#case-insensitivity}
 
-HTML タグや属性名は大文字と小文字を区別しないので、ブラウザーはどの大文字も小文字として解釈します。つまり、DOM 内テンプレートを使用する場合、パスカルケースのコンポーネント名、キャメルケースのプロパティ名、`v-on` イベント名は、すべてケバブケース（ハイフン区切り）を使用する必要があるということになります:
+HTML タグや属性名は大文字と小文字を区別しないので、ブラウザーはどの大文字も小文字として解釈します。つまり、DOM 内テンプレートを使用する場合、パスカルケースのコンポーネント名、キャメルケースの props 名、`v-on` イベント名は、すべてケバブケース（ハイフン区切り）を使用する必要があるということになります:
 
 ```js
 // JavaScript 内ではキャメルケース

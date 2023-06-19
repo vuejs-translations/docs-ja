@@ -16,7 +16,7 @@ const AsyncComp = defineAsyncComponent(() => {
 // ... `AsyncComp` を普通のコンポーネントと同じように使用する
 ```
 
-このように、`defineAsyncComponent` は Promise を返すローダー関数を受け取ります。Promise の `resolve` コールバックは、コンポーネントの定義をサーバーから取得したときに呼ばれます。読み込みが失敗したことを示すために、`reject(reason)` を呼ぶこともできます。 
+このように、`defineAsyncComponent` は Promise を返すローダー関数を受け取ります。Promise の `resolve` コールバックは、コンポーネントの定義をサーバーから取得したときに呼ばれます。読み込みが失敗したことを示すために、`reject(reason)` を呼ぶこともできます。
 
 [ES モジュールの動的インポート](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import)<!-- TODO: 日本語版のページが出来たら URL 差し替え -->も Promise を返すため、ほとんどの場合には `defineAsyncComponent` と合わせて使用します。Vite や webpack などのバンドラーもこの構文をサポートしているため（バンドル分割ポイントとして使用されます）、Vue SFC をインポートするためにも使用できます。
 
@@ -28,7 +28,7 @@ const AsyncComp = defineAsyncComponent(() =>
 )
 ```
 
-結果的に得られる `AsyncComp` は、実際にページ上にレンダリングされるときにローダー関数を呼ぶだけのラッパーコンポーネントです。さらに、内側のコンポーネントに任意のプロパティやスロットを渡せるため、非同期ラッパーを使用すると、コンポーネントをシームレスに置換するとともに、遅延読み込みも実現できます。
+結果的に得られる `AsyncComp` は、実際にページ上にレンダリングされるときにローダー関数を呼ぶだけのラッパーコンポーネントです。さらに、内側のコンポーネントに任意の props やスロットを渡せるため、非同期ラッパーを使用すると、コンポーネントをシームレスに置換するとともに、遅延読み込みも実現できます。
 
 通常のコンポーネントと同様に、非同期コンポーネントも `app.component()` を用いて[グローバルに登録](/guide/components/registration#global-registration)できます:
 
@@ -99,7 +99,7 @@ const AsyncComp = defineAsyncComponent({
   // 読み込みに失敗した場合に使用するコンポーネント
   errorComponent: ErrorComponent,
   // エラーコンポーネントは timeout が与えられて
-  // その時間を超えた場合に表示される。デフォルト: Infinity。  
+  // その時間を超えた場合に表示される。デフォルト: Infinity。
   timeout: 3000
 })
 ```

@@ -28,7 +28,7 @@
 
 しかし、これを実際に動作させるためには、`<CustomInput>` コンポーネントは次の 2 つのことをしなければなりません:
 
-1. ネイティブの `<input>` 要素の `value` 属性を、`modelValue` プロパティにバインドする
+1. ネイティブの `<input>` 要素の `value` 属性を、`modelValue` props にバインドする
 2. ネイティブの `input` イベントがトリガーされたら、新しい値で `update:modelValue` カスタムイベントを発行する
 
 実際には次のようになります:
@@ -147,13 +147,13 @@ const value = computed({
 
 ## `v-model` の引数 {#v-model-arguments}
 
-デフォルトでは、コンポーネントの `v-model` は、プロパティとして `modelValue` を、イベントとして `update:modelValue` を使用します。これらの名前は、`v-model` に引数として渡すことで変更できます:
+デフォルトでは、コンポーネントの `v-model` は、props として `modelValue` を、イベントとして `update:modelValue` を使用します。これらの名前は、`v-model` に引数として渡すことで変更できます:
 
 ```vue-html
 <MyComponent v-model:title="bookTitle" />
 ```
 
-この場合、子コンポーネントは `title` プロパティを受け取り、 `update:title` イベントを発行して親の値を更新する必要があります:
+この場合、子コンポーネントは `title` props を受け取り、 `update:title` イベントを発行して親の値を更新する必要があります:
 
 <div class="composition-api">
 
@@ -202,9 +202,9 @@ export default {
 
 ## 複数の `v-model` のバインディング {#multiple-v-model-bindings}
 
-先ほど [`v-model` の引数](#v-model-arguments)で学んだように、特定のプロパティとイベントをターゲットにする機能を活用することで、1 つのコンポーネントインスタンスに複数の `v-model` バインディングを作成できるようになりました。
+先ほど [`v-model` の引数](#v-model-arguments)で学んだように、特定の props とイベントをターゲットにする機能を活用することで、1 つのコンポーネントインスタンスに複数の `v-model` バインディングを作成できるようになりました。
 
-各 `v-model` は、コンポーネントで追加のオプションを必要とせずに、別のプロパティに同期します:
+各 `v-model` は、コンポーネントで追加のオプションを必要とせずに、別の props に同期します:
 
 ```vue-html
 <UserName
@@ -283,7 +283,7 @@ export default {
 <MyComponent v-model.capitalize="myText" />
 ```
 
-コンポーネント `v-model` に追加された修飾子は、`modelModifiers` プロパティを通じてコンポーネントに提供されます。以下の例では、`modelModifiers` プロパティを含むコンポーネントを作成しています。これはデフォルトでは空のオブジェクトです:
+コンポーネント `v-model` に追加された修飾子は、`modelModifiers` props を通じてコンポーネントに提供されます。以下の例では、`modelModifiers` props を含むコンポーネントを作成しています。これはデフォルトでは空のオブジェクトです:
 
 <div class="composition-api">
 
@@ -338,9 +338,9 @@ export default {
 
 </div>
 
-コンポーネントの `modelModifiers` プロパティに `capitalize` が含まれており、その値が `true` であることに注目してください。これは、`v-model` バインディングに `v-model.capitalize="myText"` が設定されているためです。
+コンポーネントの `modelModifiers` props に `capitalize` が含まれており、その値が `true` であることに注目してください。これは、`v-model` バインディングに `v-model.capitalize="myText"` が設定されているためです。
 
-これでプロパティの設定ができたので、`modelModifiers` オブジェクトのキーをチェックして、発行された値を変更するハンドラーを書くことができます。以下のコードでは、`<input />` 要素が `input` イベントを発火するたびに、文字列を大文字にしています。
+これで props の設定ができたので、`modelModifiers` オブジェクトのキーをチェックして、発行された値を変更するハンドラーを書くことができます。以下のコードでは、`<input />` 要素が `input` イベントを発火するたびに、文字列の最初を大文字にしています。
 
 <div class="composition-api">
 
@@ -403,7 +403,7 @@ export default {
 
 </div>
 
-引数と修飾子の両方を持つ `v-model` バインディングの場合、生成されるプロパティの名前は `arg + "Modifiers"` になります。例えば:
+引数と修飾子の両方を持つ `v-model` バインディングの場合、生成される props の名前は `arg + "Modifiers"` になります。例えば:
 
 ```vue-html
 <MyComponent v-model:title.capitalize="myText">

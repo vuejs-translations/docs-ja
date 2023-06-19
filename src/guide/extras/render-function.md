@@ -19,7 +19,7 @@ import { h } from 'vue'
 
 const vnode = h(
   'div', // type
-  { id: 'foo', class: 'bar' }, // プロパティ
+  { id: 'foo', class: 'bar' }, // props
   [
     /* children */
   ]
@@ -31,11 +31,11 @@ const vnode = h(
 `h()` 関数は非常に柔軟に設計されています。
 
 ```js
-// type 以外のすべての引数はオプションです
+// type 以外のすべての引数は省略可能
 h('div')
 h('div', { id: 'foo' })
 
-// 属性とプロパティの両方が props で使用できます
+// props は属性とプロパティの両方が使用可能
 // Vue は自動的に正しい割り当て方法を選択します
 h('div', { class: 'bar', innerHTML: 'hello' })
 
@@ -98,7 +98,7 @@ export default {
 }
 ```
 
-レンダー関数は `setup()` の内部で宣言されているので、当然同じスコープで宣言されたプロパティやリアクティブなステートにアクセスすることができます。
+レンダー関数は `setup()` の内部で宣言されているので、当然同じスコープで宣言された props やリアクティブなステートにアクセスすることができます。
 
 単一の vnode を返すだけでなく、文字列や配列を返すこともできます:
 
@@ -234,7 +234,7 @@ const vnode = <div id={dynamicId}>hello, {userName}</div>
 
 React によって最初に導入されましたが、JSX は実際にはランタイムセマンティクスが定義されておらず、様々な異なる出力にコンパイルすることができます。JSX を扱ったことがある場合、**Vue JSX 変換は React の JSX 変換とは異なる** ので、Vue アプリケーションで React の JSX 変換を使用することはできないことに注意してください。React の JSX との顕著な違いとしては、以下のようなものがあります:
 
-- `class` や `for` などの HTML 属性をプロパティとして使用できます - `className` や `htmlFor` を使用する必要はありません。
+- `class` や `for` などの HTML 属性を props として使用できます - `className` や `htmlFor` を使用する必要はありません。
 - コンポーネントへの子要素の渡し方（スロットなど）が[異なります](#passing-slots)。
 
 Vue の型定義は、TSX を使用するための型推論も提供します。TSX を使用する場合は、Vue の JSX 変換が処理できるように、TypeScript が JSX の構文をそのまま残すように、必ず `tsconfig.json` で `"jsx": "preserve"` を指定してください。
@@ -347,7 +347,7 @@ h(
 
 ### `v-on` {#v-on}
 
-`on` で始まり、大文字が続く名前のプロパティは、イベントリスナーとして扱われます。例えば、 `onClick` はテンプレートでは `@click` に相当します。
+`on` で始まり、大文字が続く名前の props は、イベントリスナーとして扱われます。例えば、 `onClick` はテンプレートでは `@click` に相当します。
 
 ```js
 h(
@@ -542,7 +542,7 @@ export default {
 h(MyComponent, () => 'hello')
 
 // 名前付きスロット
-// スロットのオブジェクトがプロパティとして扱われるのを避けるために、
+// スロットのオブジェクトが props として扱われるのを避けるために、
 // `null` が必要であることに注意してください。
 h(MyComponent, null, {
   default: () => 'default slot',
@@ -600,7 +600,7 @@ export default {
 
 ### `v-model` {#v-model}
 
-`v-model` ディレクティブは、テンプレートのコンパイル時に `modelValue` と `onUpdate:modelValue` プロパティに展開されます:
+`v-model` ディレクティブは、テンプレートのコンパイル時に `modelValue` と `onUpdate:modelValue` props に展開されます:
 
 <div class="composition-api">
 
@@ -661,7 +661,7 @@ const vnode = withDirectives(h('div'), [
 
 <div class="composition-api">
 
-Composition API では、`ref()` 自身を vnode のプロパティとして渡すことで、テンプレート参照が作成されます:
+Composition API では、`ref()` 自身を vnode の props として渡すことで、テンプレート参照が作成されます:
 
 ```js
 import { h, ref } from 'vue'
@@ -679,7 +679,7 @@ export default {
 </div>
 <div class="options-api">
 
-Options API では、vnode のプロパティに ref の名前を文字列で渡すことで、テンプレート参照が作成されます:
+Options API では、vnode の props に ref の名前を文字列で渡すことで、テンプレート参照が作成されます:
 
 ```js
 export default {
@@ -694,7 +694,7 @@ export default {
 
 ## 関数型コンポーネント {#functional-components}
 
-関数型コンポーネントは、それ自身の状態を持たないコンポーネントの代替形態です。それらは純粋な関数のように動作します。プロパティを受け取り、vnode を返します。 コンポーネントのインスタンスを作成することなく（つまり、`this` はありません）、通常のコンポーネントのライフサイクルフックもなくレンダリングされます。
+関数型コンポーネントは、それ自身の状態を持たないコンポーネントの代替形態です。それらは純粋な関数のように動作します。props を受け取り、vnode を返します。 コンポーネントのインスタンスを作成することなく（つまり、`this` はありません）、通常のコンポーネントのライフサイクルフックもなくレンダリングされます。
 
 関数型コンポーネントを作成するには、オプションオブジェクトではなく、単純な関数を使用します。この関数は事実上、コンポーネントの `render` 関数です。
 
@@ -730,7 +730,7 @@ MyComponent.props = ['value']
 MyComponent.emits = ['click']
 ```
 
-`props` オプションが指定されていない場合、関数に渡される `props` オブジェクトには、`attrs` と同じようにすべての属性が含まれます。`props` オプションが指定されない限り、prop の名前はキャメルケースに正規化されません。
+`props` オプションが指定されていない場合、関数に渡される `props` オブジェクトには、`attrs` と同じようにすべての属性が含まれます。`props` オプションが指定されない限り、props の名前はキャメルケースに正規化されません。
 
 明示的に `props` を指定した関数型コンポーネントの場合、[属性のフォールスルー](/guide/components/attrs)は通常のコンポーネントとほぼ同じように動作します。しかし、`props` を明示的に指定しない関数型コンポーネントの場合は、`class`、`style`、`onXxx` イベントリスナーのみがデフォルトで `attrs` から継承されます。どちらの場合でも、 `inheritAttrs` を `false` に設定することで、属性の継承を無効化できます。
 

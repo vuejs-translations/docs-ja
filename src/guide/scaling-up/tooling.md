@@ -53,7 +53,7 @@ Vue をビルドステップなしで使用する場合、コンポーネント�
 
 ## IDE のサポート {#ide-support}
 
-- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar) の拡張です。Volar は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネントプロパティの intellisense を提供します。
+- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Volar](https://github.com/johnsoncodehk/volar) の拡張です。Volar は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネント props の intellisense を提供します。
 
   :::tip
   Volar は Vue 2 用の以前の VSCode 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
@@ -86,7 +86,7 @@ Vue のブラウザー開発者ツール拡張では、Vue アプリのコンポ
 
 主な記事: [TypeScript で Vue を使用する](/guide/typescript/overview).
 
-- [Volar](https://github.com/johnsoncodehk/volar) は `<script lang="ts">` ブロックを使用した SFC に対して、テンプレート内の式やコンポーネント間のプロパティの検証を含む型チェックを提供します。
+- [Volar](https://github.com/johnsoncodehk/volar) は `<script lang="ts">` ブロックを使用した SFC に対して、テンプレート内の式やコンポーネント間の props のバリデーションを含む型チェックを提供します。
 
 - コマンドラインから同様の型チェックを行う場合や、SFC 用の `d.ts` ファイルを生成する場合は、[`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/vue-tsc) を使用します。
 
