@@ -170,14 +170,14 @@ Vue の現在のバージョンを公開します。
         return <div>{count.value}</div>
       }
     },
-    // 現在のところ、手動による実行時 props の宣言はまだ必要です。
+    // 現在のところ、手動によるランタイム props 宣言はまだ必要です。
     {
       props: ['msg', 'list']
     }
   )
   ```
 
-  将来的には、実行時 props を自動的に推論して注入する Babel プラグインを提供し（SFC の `defineProps` のように）、実行時 props の宣言を省略できるようにする予定です。
+  将来的には、ランタイム props を自動的に推論して注入する Babel プラグインを提供し（SFC の `defineProps` のように）、ランタイム props 宣言を省略できるようにする予定です。
 
   ### webpack のツリーシェイキングに関する注意 {#note-on-webpack-treeshaking}
 
