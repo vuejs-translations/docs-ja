@@ -10,13 +10,13 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 ## `<Transition>` との違い {#differences-from-transition}
 
-`<TransitionGroup>` は `<Transition>` と同じプロパティ、CSS トランジションクラス、JavaScript フックをサポートしますが、以下の違いがあります:
+`<TransitionGroup>` は `<Transition>` と同じ props、CSS トランジションクラス、JavaScript フックをサポートしますが、以下の違いがあります:
 
-- デフォルトでは、ラッパーの要素はレンダリングされません。しかし、`tag` プロパティでレンダリングする要素を指定することができます。
+- デフォルトでは、ラッパーの要素はレンダリングされません。しかし、`tag` props でレンダリングする要素を指定することができます。
 
 - [トランジションモード](./transition#transition-modes)は、排他的な要素同士を交互にトランジションすることがなくなったので、利用できません。
 
-- 内部の要素は **常に** ユニークな `key` プロパティを設定する必要があります。
+- 内部の要素は **常に** ユニークな `key` 属性を設定する必要があります。
 
 - CSS トランジションクラスはグループ / コンテナ **ではなく**、リストの個々の要素に適用されます。
 

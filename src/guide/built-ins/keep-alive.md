@@ -52,7 +52,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## Include / Exclude {#include-exclude}
 
-デフォルトでは、`<KeepAlive>` はコンポーネント内のどんなコンポーネントでもキャッシュします。この動作は `include` と `exclude` プロパティを使用してカスタマイズできます。どちらのプロパティにも、カンマ区切りの文字列、`RegExp`、あるいは、そのいずれかの型を含む配列を指定できます:
+デフォルトでは、`<KeepAlive>` はコンポーネント内のどんなコンポーネントでもキャッシュします。この動作は `include` と `exclude` props を使用してカスタマイズできます。どちらの props にも、カンマ区切りの文字列、`RegExp`、あるいは、そのいずれかの型を含む配列を指定できます:
 
 ```vue-html
 <!-- カンマ区切りの文字列 -->
@@ -79,7 +79,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## キャッシュインスタンスの最大数 {#max-cached-instances}
 
-`max` prop を使うと、キャッシュできるコンポーネントインスタンスの最大数を制限することができます。`max` が指定された場合、`<KeepAlive>` は [LRU キャッシュ](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>) のように動作します。つまり、キャッシュインスタンスの数が指定された最大数を越えようとした時点で、最も過去にアクセスされたキャッシュインスタンスが破棄され、新しいキャッシュ用のスペースが作られます。
+`max` props を使うと、キャッシュできるコンポーネントインスタンスの最大数を制限することができます。`max` が指定された場合、`<KeepAlive>` は [LRU キャッシュ](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>) のように動作します。つまり、キャッシュインスタンスの数が指定された最大数を越えようとした時点で、最も過去にアクセスされたキャッシュインスタンスが破棄され、新しいキャッシュ用のスペースが作られます。
 
 ```vue-html
 <KeepAlive :max="10">

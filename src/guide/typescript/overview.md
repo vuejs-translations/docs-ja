@@ -111,7 +111,7 @@ export default defineComponent({
 })
 ```
 
-`<script setup>` を使わずに Composition API を使用する場合、`defineComponent()` は `setup()` に渡されたプロパティを推論することができます:
+`<script setup>` を使わずに Composition API を使用する場合、`defineComponent()` は `setup()` に渡された props を推論することができます:
 
 ```ts
 import { defineComponent } from 'vue'

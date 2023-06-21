@@ -2,11 +2,11 @@
 
 > このページは [TypeScript で Vue を使用する](./overview) ページの内容をすでに読んでいることを前提にしています。
 
-## コンポーネントプロパティの型付け {#typing-component-props}
+## コンポーネント props の型付け {#typing-component-props}
 
 ### `<script setup>` の使用 {#using-script-setup}
 
-`<script setup>` を使用する場合、 `defineProps()` マクロは、引数に基づいてプロパティの型を推論できます:
+`<script setup>` を使用する場合、 `defineProps()` マクロは、引数に基づいて props の型を推論できます:
 
 ```vue
 <script setup lang="ts">
@@ -22,7 +22,7 @@ props.bar // number | undefined
 
 これは実行時の宣言（runtime declaration）と呼ばれます、なぜなら `defineProps()` に渡された引数は、実行時に `props` のオプションとして使用されるためです。
 
-しかし、通常は型引数でプロパティの型を定義するほうがより単純です:
+しかし、通常は型引数で props の型を定義するほうがより単純です:
 
 ```vue
 <script setup lang="ts">
@@ -37,7 +37,7 @@ const props = defineProps<{
 
 型ベースの宣言と実行時の宣言の両方を同時に使用することはできません。
 
-プロパティの型をインターフェースとして分離することもできます:
+props の型をインターフェースとして分離することもできます:
 
 ```vue
 <script setup lang="ts">
@@ -54,11 +54,11 @@ const props = defineProps<Props>()
 
 バージョン 3.2 以下では、`defineProps()` のジェネリック型の引数はリテラル型かローカルのインターフェースへの参照に制限されていました。
 
-この制限は 3.3 で解決されました。Vue の最新バージョンは型引数の位置でインポートされた複雑な型の限定されたセットを参照することをサポートしています。しかし、型からランタイムへの変換は依然として AST ベースであるため、実際の型解析を必要とするいくつかの複雑な型、例えば条件型など、はサポートされていません。条件型は単一のプロパティの型には使用できますが、props オブジェクト全体の型には使用できません。
+この制限は 3.3 で解決されました。Vue の最新バージョンは型引数の位置でインポートされた複雑な型の限定されたセットを参照することをサポートしています。しかし、型からランタイムへの変換は依然として AST ベースであるため、実際の型解析を必要とするいくつかの複雑な型、例えば条件型など、はサポートされていません。条件型は単一の props の型には使用できますが、props オブジェクト全体の型には使用できません。
 
-### プロパティのデフォルト値 {#props-default-values}
+###  props のデフォルト値 {#props-default-values}
 
-型ベースの宣言を使用すると、プロパティのデフォルト値を宣言できません。これは、`withDefaults` コンパイラーマクロによって解決できます:
+型ベースの宣言を使用すると、props のデフォルト値を宣言できません。これは、`withDefaults` コンパイラーマクロによって解決できます:
 
 ```ts
 export interface Props {
@@ -72,11 +72,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 ```
 
-これは、実行時のプロパティの `default` オプションと同等にコンパイルされます。さらに、`withDefaults` ヘルパーはデフォルト値の型チェックを提供し、戻り値の `props` の型からはデフォルト値が宣言されているプロパティのオプションフラグが削除されていることを保証します。
+これは、ランタイム props の `default` オプションと同等にコンパイルされます。さらに、`withDefaults` ヘルパーはデフォルト値の型チェックを提供し、戻り値の `props` の型からはデフォルト値が宣言されているプロパティのオプションフラグが削除されていることを保証します。
 
 ### `<script setup>` を使用しない場合 {#without-script-setup}
 
-`<script setup>` を使用しない場合、 `defineComponent()` を使用して、プロパティの型推論をする必要があります。`setup()` に渡された変数 props の型は、`props` オプションから推論されます。
+`<script setup>` を使用しない場合、 `defineComponent()` を使用して、props の型推論をする必要があります。`setup()` に渡された変数 props の型は、`props` オプションから推論されます。
 
 ```ts
 import { defineComponent } from 'vue'
@@ -93,7 +93,7 @@ export default defineComponent({
 
 ### 複合型 {#complex-prop-types}
 
-型ベースの宣言では、プロパティは他の型と同様に複合型を使用できます:
+型ベースの宣言では、props は他の型と同様に複合型を使用できます:
 
 ```vue
 <script setup lang="ts">

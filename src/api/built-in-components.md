@@ -13,7 +13,7 @@ pageClass: api
 import { h, Transition } from 'vue'
 
 h(Transition, {
-  /* プロパティ */
+  /* props */
 })
 ```
 
@@ -23,7 +23,7 @@ h(Transition, {
 
 **単一の**要素またはコンポーネントにアニメーションのトランジションを提供します。
 
-- **プロパティ**
+- **props**
 
   ```ts
   interface TransitionProps {
@@ -63,7 +63,7 @@ h(Transition, {
     appear?: boolean
 
     /**
-     * トランジションクラスをカスタマイズするためのプロパティ。
+     * トランジションクラスをカスタマイズするための props。
      * テンプレートでは kebab-case を使用（例: enter-from-class="xxx"）
      */
     enterFromClass?: string
@@ -132,9 +132,9 @@ h(Transition, {
 
 リスト内の**複数**の要素またはコンポーネントにトランジション効果を提供する。
 
-- **プロパティ**
+- **props**
 
-  `<TransitionGroup>` は `<Transition>` と同じプロパティ（`mode` 以外）と追加の 2 つのプロパティを受け取ります:
+  `<TransitionGroup>` は `<Transition>` と同じ props（`mode` 以外）と追加の 2 つの props を受け取ります:
 
   ```ts
   interface TransitionGroupProps extends Omit<TransitionProps, 'mode'> {
@@ -156,11 +156,11 @@ h(Transition, {
 
 - **詳細**
 
-  デフォルトでは、`<TransitionGroup>` はラッパー DOM 要素をレンダリングしませんが、 `tag` プロパティによって定義できます。
+  デフォルトでは、`<TransitionGroup>` はラッパー DOM 要素をレンダリングしませんが、 `tag` props によって定義できます。
 
   アニメーションが正しく動作するためには、`<transition-group>` 内のすべての子に[**一意なキーを指定**](/guide/essentials/list#maintaining-state-with-key)する必要があることに注意してください。
 
-  `<TransitionGroup>` は CSS の transform による移動トランジションに対応しています。更新後に画面上の子の位置が変化した場合、移動用の CSS クラス（`name` 属性から自動生成されるか、`move-class` プロパティで設定）が適用されます。移動用のクラスが適用されたときに、CSS の `transform` プロパティが「トランジション可能」であれば、その要素は [FLIP テクニック](https://aerotwist.com/blog/flip-your-animations/)を使って移動先までスムーズにアニメーションします。
+  `<TransitionGroup>` は CSS の transform による移動トランジションに対応しています。更新後に画面上の子の位置が変化した場合、移動用の CSS クラス（`name` 属性から自動生成されるか、`move-class` props で設定）が適用されます。移動用のクラスが適用されたときに、CSS の `transform` プロパティが「トランジション可能」であれば、その要素は [FLIP テクニック](https://aerotwist.com/blog/flip-your-animations/)を使って移動先までスムーズにアニメーションします。
 
 - **例**
 
@@ -178,7 +178,7 @@ h(Transition, {
 
 動的に切り替えられる、内側のコンポーネントをキャッシュします。
 
-- **プロパティ**
+- **props**
 
   ```ts
   interface KeepAliveProps {
@@ -271,7 +271,7 @@ h(Transition, {
 
 スロットの内容を DOM の別の場所にレンダリングします。
 
-- **プロパティ**
+- **props**
 
   ```ts
   interface TeleportProps {
@@ -313,7 +313,7 @@ h(Transition, {
 
 コンポーネントツリー内のネストした非同期な依存関係を管理するために使用します。
 
-- **プロパティ**
+- **props**
 
   ```ts
   interface SuspenseProps {
