@@ -324,7 +324,7 @@
   ```vue-html
   <div :someProperty.prop="someObject"></div>
 
-  <!-- 以下とと同じ -->
+  <!-- 以下と同じ -->
   <div .someProperty="someObject"></div>
   ```
 
