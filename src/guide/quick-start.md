@@ -80,6 +80,8 @@ CDN から Vue を使用する場合は「ビルドステップ」は必要あ�
 
 上記のリンクは、Vue の**グローバルビルド**を読み込んでいます。これは、すべてのトップレベル API がグローバルな `Vue` オブジェクトのプロパティとして公開されています。以下は、グローバルビルドを使用した完全な例です:
 
+<div class="options-api">
+
 ```html
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
@@ -100,9 +102,42 @@ CDN から Vue を使用する場合は「ビルドステップ」は必要あ�
 
 [Codepen のデモ](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
+</div>
+
+<div class="composition-api">
+
+```html
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div id="app">{{ message }}</div>
+
+<script>
+  const { createApp, ref } = Vue
+
+  createApp({
+    setup() {
+      const message = ref('Hello vue!')
+      return {
+        message
+      }
+    }
+  }).mount('#app')
+</script>
+```
+
+[Codepen のデモ](https://codepen.io/vuejs-examples/pen/eYQpQEG)
+
+:::tip
+このガイドでは、Composition API の多くの例で `<script setup>` という構文を使用しており、これにはビルド ツールが必要です。ビルドステップなしで Composition API を使用する場合は、[`setup()` オプション](/api/composition-api-setup) の使い方を参照してください。
+:::
+
+</div>
+
 ### ES モジュール ビルドの使用 {#using-the-es-module-build}
 
 このドキュメントの残りの部分では、主に [ES モジュール](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)構文を使用します。最近のブラウザーは ES モジュールをネイティブでサポートしているので、次のようにネイティブの ES モジュールで CDN から Vue を使用できます:
+
+<div class="options-api">
 
 ```html{3,4}
 <div id="app">{{ message }}</div>
@@ -120,9 +155,41 @@ CDN から Vue を使用する場合は「ビルドステップ」は必要あ�
 </script>
 ```
 
+</div>
+
+<div class="composition-api">
+
+```html{3,4}
+<div id="app">{{ message }}</div>
+
+<script type="module">
+  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+  createApp({
+    setup() {
+      const message = ref('Hello Vue!')
+      return {
+        message
+      }
+    }
+  }).mount('#app')
+</script>
+```
+
+</div>
+
 `<script type="module">` を使用していることと、インポートされる CDN の URL が、（ひとつ前の例とは違って）Vue の **ES モジュール ビルド** を指していることに注意してください。
 
+<div class="options-api">
+
 [Codepen のデモ](https://codepen.io/vuejs-examples/pen/VwVYVZO)
+
+</div>
+<div class="composition-api">
+
+[Codepen のデモ](https://codepen.io/vuejs-examples/pen/MWzazEv)
+
+</div>
 
 ### インポートマップの有効化 {#enabling-import-maps}
 
@@ -133,6 +200,8 @@ import { createApp } from 'vue'
 ```
 
 [インポートマップ](https://caniuse.com/import-maps)を使って、`vue` のインポートの場所をブラウザーに教えることができます:
+
+<div class="options-api">
 
 ```html{1-7,12}
 <script type="importmap">
@@ -158,16 +227,45 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[JSFiddle のデモ](https://jsfiddle.net/yyx990803/2ke1ab0z/)
+[Codepen のデモ](https://codepen.io/vuejs-examples/pen/wvQKQyM)
 
-他の依存関係のエントリーをインポートマップに追加することもできますが、使おうとしているライブラリーの ES モジュールバージョンを指していることを確認してください。
+</div>
 
-:::tip インポートマップのブラウザサポート
-インポートマップは Chromium ベースのブラウザーでデフォルトでサポートされているため、学習過程の間は Chrome または Edge の使用を推奨します。
+<div class="composition-api">
 
-Firefox を使用している場合、バージョン 108+ ではデフォルトでサポートされ、バージョン 102+ では `about:config` で `dom.importMaps.enabled` オプションを true に設定することでサポートされます。
+```html{1-7,12}
+<script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+  }
+</script>
 
-あなたの好むブラウザーがまだインポートマップに対応していなくとも、[es-module-shims](https://github.com/guybedford/es-module-shims) でポリフィル (polyfill) できます。
+<div id="app">{{ message }}</div>
+
+<script type="module">
+  import { createApp, ref } from 'vue'
+
+  createApp({
+    setup() {
+      const message = ref('Hello Vue!')
+      return {
+        message
+      }
+    }
+  }).mount('#app')
+</script>
+```
+
+[Codepen のデモ](https://codepen.io/vuejs-examples/pen/YzRyRYM)
+
+</div>
+
+他の依存関係のエントリーをインポートマップに追加することもできますが、使用するライブラリーの ES モジュールのバージョンを指していることを確認してください。
+
+:::tip インポートマップのブラウザーサポート
+インポートマップは比較的新しいブラウザー機能です。必ず[サポート範囲](https://caniuse.com/import-maps)内のブラウザーを使用してください。特に、Safari 16.4+ でのみサポートされています。
 :::
 
 :::warning プロダクション使用の注意
@@ -190,6 +288,8 @@ Firefox を使用している場合、バージョン 108+ ではデフォルト
 </script>
 ```
 
+<div class="options-api">
+
 ```js
 // my-component.js
 export default {
@@ -200,15 +300,30 @@ export default {
 }
 ```
 
-ES モジュールは `file://` プロトコルでは動作しないため、上記の `index.html` をブラウザーで直接開くとエラーが発生します。これを動作させるには、ローカルの HTTP サーバーを使い `http://` プロトコルで `index.html` を配信する必要があります。
+</div>
+<div class="composition-api">
 
-ローカル HTTP サーバーを起動するには、まず [Node.js](https://nodejs.org/ja/) をインストールし、HTML ファイルと同じディレクトリーで、コマンドラインから `npx serve` を実行します。正しい MIME タイプで静的ファイルを配信できる、他の HTTP サーバーを使用することもできます。
+```js
+// my-component.js
+import { ref } from 'vue'
+export default {
+  setup() {
+    const count = ref(0)
+    return { count }
+  },
+  template: `<div>count is {{ count }}</div>`
+}
+```
 
-あなたはインポートされたコンポーネントのテンプレートが JavaScript 文字列としてインライン化されていることに気づいたかもしれません。あなたが VSCode を使っていれば、[es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 拡張をインストールして `/*html*/` コメントを文字列の前につけることで構文を強調表示 (syntax highlighting) できます。
+</div>
 
-### ビルドステップなしで Composition API を使用する {#using-composition-api-without-a-build-step}
+ES モジュールは `file://` プロトコルでは動作しないため、上記の `index.html` をブラウザーで直接開くとエラーが発生します。これは、ローカルファイルを開くときにブラウザーが使用するプロトコルです。
 
-Composition API の例の多くは `<script setup>` 構文を使用しています。Composition API をビルドなしで使用する場合は、[`setup()` オプション](/api/composition-api-setup)の使用方法を参照してください。
+セキュリティー上の理由から、ES モジュールは `http://` プロトコルでのみ動作できます。これはブラウザがウェブ上でページを開くときに使用するプロトコルです。ES モジュールをローカルマシンで動作させるためには、ローカルの HTTP サーバーを使って `http://` プロトコルで `index.html` を配信する必要があります。
+
+ローカル HTTP サーバーを起動するには、まず [Node.js](https://nodejs.org/en/) がインストールされていることを確認し、HTML ファイルがあるのと同じディレクトリでコマンドラインから `npx serve` を実行します。正しい MIME タイプで静的ファイルを配信できる他の HTTP サーバーを使用することもできます。
+
+インポートされたコンポーネントのテンプレートが JavaScript 文字列としてインライン化されていることに気づいたかもしれません。VSCode を使っている場合は [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 拡張機能をインストールして、文字列の前に `/*html*/` というコメントをつけることでシンタックスハイライトさせられます。
 
 ## 次のステップ {#next-steps}
 
