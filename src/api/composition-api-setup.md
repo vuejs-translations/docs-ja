@@ -21,7 +21,7 @@ export default {
   setup() {
     const count = ref(0)
 
-    // テンプレートや他の options API フックを公開します
+    // テンプレートや他の Options API フックを公開します
     return {
       count
     }
