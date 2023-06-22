@@ -94,13 +94,13 @@ const { x, y } = useMouse()
 
 ```js
 // event.js
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 
 export function useEventListener(target, event, callback) {
   // 必要であれば、 セレクター文字列を target として
   // 扱えるようにもできます
   onMounted(() => target.addEventListener(event, callback))
-  onBeforeUnmount(() => target.removeEventListener(event, callback))
+  onUnmounted(() => target.removeEventListener(event, callback))
 }
 ```
 
