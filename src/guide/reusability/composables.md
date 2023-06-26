@@ -260,7 +260,7 @@ function useFeature(maybeRefOrGetter) {
 }
 ```
 
-もしコンポーザブルの入力が ref や getter の場合にリアクティブな副作用を起こすなら、`watch()` で明示的に ref / getter を監視するか、`watchEffect()` 内で `toValue()` を呼び出して適切に追跡できるようにしてください。
+もしコンポーザブルの入力が ref や getter の場合にリアクティブエフェクトを起こすなら、`watch()` で明示的に ref / getter を監視するか、`watchEffect()` 内で `toValue()` を呼び出して適切に追跡できるようにしてください。
 
 前に説明した [useFetch()の実装](#accepting-reactive-state)は、入力引数として ref、getter、プレーンな値を受け付けるコンポーザブルの具体例を示しています。
 

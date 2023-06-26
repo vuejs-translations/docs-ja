@@ -38,7 +38,7 @@
 
 ## triggerRef() {#triggerref}
 
-[浅い ref](#shallowref) に依存する作用を強制的にトリガーします。これは通常、浅い ref の内部値に対して深い変更を加えた後に使用されます。
+[浅い ref](#shallowref) に依存するエフェクトを強制的にトリガーします。これは通常、浅い ref の内部値に対して深い変更を加えた後に使用されます。
 
 - **型**
 
@@ -58,7 +58,7 @@
     console.log(shallow.value.greet)
   })
 
-  // 浅い ref なので、これは作用が発動しない
+  // 浅い ref なので、これはエフェクトが発動しない
   shallow.value.greet = 'Hello, universe'
 
   // "Hello, universe" がログ出力される

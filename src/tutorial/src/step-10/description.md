@@ -1,6 +1,6 @@
 # ウォッチャー {#watchers}
 
-時には "side effects (副作用)" をリアクティブに実行する必要があるかもしれません - 例えば、数値が変化したときにコンソールにログを記録するといったことです。これはウォッチャーで実現することができます:
+時には副作用をリアクティブに実行する必要があるかもしれません - 例えば、数値が変化したときにコンソールにログを記録するといったことです。これはウォッチャーで実現することができます:
 
 <div class="composition-api">
 
@@ -10,7 +10,7 @@ import { ref, watch } from 'vue'
 const count = ref(0)
 
 watch(count, (newCount) => {
-  // yes, console.log() is a side effect
+  // そう、console.log() は副作用です
   console.log(`new count is: ${newCount}`)
 })
 ```
@@ -29,7 +29,7 @@ export default {
   },
   watch: {
     count(newCount) {
-      // yes, console.log() is a side effect
+      // そう、console.log() は副作用です
       console.log(`new count is: ${newCount}`)
     }
   }
