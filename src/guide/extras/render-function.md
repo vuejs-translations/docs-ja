@@ -739,3 +739,78 @@ MyComponent.inheritAttrs = false
 ```
 
 関数型コンポーネントは、通常のコンポーネントと同様に登録や使用ができます。もし、`h()` の第一引数に関数を渡した場合、それは関数型コンポーネントとして扱われます。
+
+### 関数型コンポーネントの型付け<sup class="vt-badge ts" /> {#typing-functional-components}
+
+関数型コンポーネントは、名前付きか匿名かに基づいて型付けできます。Volar は SFC のテンプレートで関数型コンポーネントを使用する際に、適切に型付けされた関数型コンポーネントの型チェックもサポートします。
+
+**名前付き関数型コンポーネント**
+
+```tsx
+import type { SetupContext } from 'vue'
+type FComponentProps = {
+  message: string
+}
+
+type Events = {
+  sendMessage(message: string): void
+}
+
+function FComponent(
+  props: FComponentProps,
+  context: SetupContext<Events>
+) {
+  return (
+    <button onClick={() => context.emit('sendMessage', props.message)}>
+        {props.message} {' '}
+    </button>
+  )
+}
+
+FComponent.props = {
+  message: {
+    type: String,
+    required: true
+  }
+}
+
+FComponent.emits = {
+  sendMessage: (value: unknown) => typeof value === 'string'
+}
+```
+
+**匿名関数型コンポーネント**
+
+```tsx
+import type { FunctionalComponent } from 'vue'
+
+type FComponentProps = {
+  message: string
+}
+
+type Events = {
+  sendMessage(message: string): void
+}
+
+const FComponent: FunctionalComponent<FComponentProps, Events> = (
+  props,
+  context
+) => {
+  return (
+    <button onClick={() => context.emit('sendMessage', props.message)}>
+        {props.message} {' '}
+    </button>
+  )
+}
+
+FComponent.props = {
+  message: {
+    type: String,
+    required: true
+  }
+}
+
+FComponent.emits = {
+  sendMessage: (value) => typeof value === 'string'
+}
+```
