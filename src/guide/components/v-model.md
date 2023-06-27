@@ -449,7 +449,7 @@ export default {
 <div class="composition-api">
 
 ```vue{5,6,10,11}
-<script setup >
+<script setup>
 const props = defineProps({
   firstName: String,
   lastName: String,
