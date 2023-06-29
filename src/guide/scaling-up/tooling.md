@@ -80,6 +80,7 @@ Vue のブラウザー開発者ツール拡張では、Vue アプリのコンポ
 - [ドキュメント](https://devtools.vuejs.org/)
 - [Chrome Extension](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+- [Edge Extension](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
 - [スタンドアロンの Electron アプリ](https://devtools.vuejs.org/guide/installation.html#standalone)
 
 ## TypeScript {#typescript}
