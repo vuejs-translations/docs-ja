@@ -79,17 +79,7 @@ outline: deep
 
 <div class="composition-api">
 
-`<script setup>` を使用する場合、[`defineOptions`](/api/sfc-script-setup#defineoptions) マクロを使用できます:
-
-```vue
-<script setup>
-defineOptions({
-  inheritAttrs: false
-})
-</script>
-```
-
- 3.3 以降では、`<script setup>` で直接 `defineOptions` を使用することもできます:
+ 3.3 以降では、`<script setup>` で直接 [`defineOptions`](/api/sfc-script-setup#defineoptions) を使用することもできます:
 
 ```vue
 <script setup>
