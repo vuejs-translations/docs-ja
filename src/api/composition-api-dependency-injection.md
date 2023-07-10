@@ -83,7 +83,7 @@
   import { inject } from 'vue'
   import { fooSymbol } from './injectionSymbols'
 
-  // デフォルトの静的な値を注入
+  // デフォルト値なしの静的な値を注入
   const foo = inject('foo')
 
   // リアクティブな値を注入
