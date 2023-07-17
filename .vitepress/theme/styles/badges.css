@@ -16,11 +16,11 @@
 }
 
 .vt-badge.dev-only:before {
-  content: 'Dev only';
+  content: 'Dev のみ';
 }
 
 .vt-badge.experimental:before {
-  content: 'Experimental';
+  content: '実験的機能';
 }
 
 .vt-badge[data-text]:before {
