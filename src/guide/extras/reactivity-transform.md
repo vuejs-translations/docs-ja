@@ -3,7 +3,10 @@
 :::danger 非推奨の実験的な機能
 Reactivity Transform は実験的な機能でしたが、非推奨となりました。[理由についてはこちら](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028)をお読みください。
 
-最終的には、将来のマイナーリリースで Vue のコアから削除される予定です。まだ使用したい場合は、[Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) というプラグインで利用できるようになりました。
+最終的には、将来のマイナーリリースで Vue のコアから削除される予定です。
+
+- 移行する場合は、そのプロセスを自動化できる[コマンドラインツール](https://github.com/edison1105/drop-reactivity-transform)をチェックしてください。
+- 今後も使用したい場合は、[Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) というプラグインで利用できるようになりました。
 :::
 
 :::tip Composition API 固有
