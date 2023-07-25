@@ -16,8 +16,6 @@ Vue 3 は、Vue の現在の最新メジャーバージョンです。Teleport�
 
 - IE11 をサポートする必要がある場合。Vue 3 はモダンな JavaScript の機能を活用しているため、IE11 をサポートしていません。
 
-- Nuxt や Vuetify などの大きいエコシステムプロジェクトが、Vue 3 向けの安定版をリリースするのをまだ待っている場合。ベータ段階のソフトウェアを使いたくないのであればこれは妥当なことです。しかし、[Quasar](https://quasar.dev/)、[Naive UI](https://www.naiveui.com/)、[Element Plus](https://element-plus.org/) など、すでに安定した Vue 3 コンポーネントライブラリーが他にもあることは知っておいてください。
-
 既存の Vue 2 アプリを Vue 3 に移行する場合は、[移行ガイド](https://v3-migration.vuejs.org/)を参照してください。
 
 ## Vue 2 はまだサポートされているのでしょうか？ {#is-vue-2-still-supported}
