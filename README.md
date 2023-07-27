@@ -22,7 +22,7 @@ pnpm run dev
 
 ## コンテンツに関する作業
 
-- サポートされている [Markdown 拡張](https://vitepress.vuejs.org/guide/markdown)や [Markdown 内で Vue 構文を使用する](https://vitepress.vuejs.org/guide/using-vue)機能については、VitePress ドキュメントを参照してください。
+- サポートされている [Markdown 拡張](https://vitepress.dev/guide/markdown)や [Markdown 内で Vue 構文を使用する](https://vitepress.dev/guide/using-vue)機能については、VitePress ドキュメントを参照してください。
 
 <!--
 - ドキュメントのルールの執筆と維持するためのルールと推奨事項については [Writing Guide](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) を参照してください。
