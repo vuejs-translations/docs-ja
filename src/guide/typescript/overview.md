@@ -221,5 +221,5 @@ Vue では、JSX / TSX を使ったコンポーネントの作成もサポート
 
 ## API 固有のレシピ {#api-specific-recipes}
 
-- [Composition API とともに TypeScript を使用する](./composition-api)
-- [Options API とともに TypeScript を使用する](./options-api)
+- [Composition API で TypeScript を使用する](./composition-api)
+- [Options API で TypeScript を使用する](./options-api)
