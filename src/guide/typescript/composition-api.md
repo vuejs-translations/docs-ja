@@ -1,4 +1,4 @@
-# Composition API とともに TypeScript を使用する {#typescript-with-composition-api}
+# Composition API で TypeScript を使用する {#typescript-with-composition-api}
 
 > このページは [TypeScript で Vue を使用する](./overview) ページの内容をすでに読んでいることを前提にしています。
 
@@ -132,7 +132,7 @@ export default defineComponent({
 })
 ```
 
-`props` オプションは Options API でより一般的に使用されるため、[Options API とともに TypeScript を使用する](/guide/typescript/options-api#typing-component-props)のガイドでさらに詳しい例を見つけることができます。これらの例で示されているテクニックは、`defineProps()` を使った実行時の宣言にも適用されます。
+`props` オプションは Options API でより一般的に使用されるため、[Options API で TypeScript を使用する](/guide/typescript/options-api#typing-component-props)のガイドでさらに詳しい例を見つけることができます。これらの例で示されているテクニックは、`defineProps()` を使った実行時の宣言にも適用されます。
 
 ## コンポーネントの emit の型付け {#typing-component-emits}
 

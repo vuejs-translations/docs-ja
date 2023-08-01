@@ -237,7 +237,7 @@ export default {
 
 </div>
 
-## リアクティビティーと共に利用する {#working-with-reactivity}
+## リアクティビティーの利用 {#working-with-reactivity}
 
 <div class="composition-api">
 
@@ -321,7 +321,7 @@ export default {
 
 </div>
 
-## シンボルキーと共に利用する {#working-with-symbol-keys}
+## シンボルキーの利用 {#working-with-symbol-keys}
 
 今までの例では、文字列のインジェクションキーを使っていました。もしあなたが多くの依存関係を提供するプロバイダーを持つ大規模なアプリケーションで作業していたり、他の開発者が使用する予定のコンポーネントを作成している場合は、衝突の危険性を避けるためにシンボルインジェクションキーを使用するのがベストです。
 

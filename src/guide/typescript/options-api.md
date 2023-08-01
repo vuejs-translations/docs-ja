@@ -1,4 +1,4 @@
-# Options API とともに TypeScript を使用する {#typescript-with-options-api}
+# Options API で TypeScript を使用する {#typescript-with-options-api}
 
 > このページは [TypeScript で Vue を使用する](./overview) ページの内容をすでに読んでいることを前提にしています。
 

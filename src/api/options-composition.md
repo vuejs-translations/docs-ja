@@ -50,7 +50,7 @@
   }
   ```
 
-  上記の例では、提供された `msg` はリアクティブではないことに注意してください。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject#working-with-reactivity)を参照してください。
+  上記の例では、提供された `msg` はリアクティブではないことに注意してください。詳しくは[リアクティビティーの利用](/guide/components/provide-inject#working-with-reactivity)を参照してください。
 
 - **参照** [Provide / Inject](/guide/components/provide-inject)
 
@@ -88,7 +88,7 @@
 
   一致するプロパティもデフォルト値も提供されなかった場合、注入されたプロパティは `undefined` となります。
 
-  注入されたバインディングはリアクティブ**ではない**ことに注意してください。これは意図的なものです。ただし、注入された値がリアクティブなオブジェクトである場合、そのオブジェクトのプロパティはリアクティブなままです。詳しくは[リアクティビティーと共に利用する](/guide/components/provide-inject#working-with-reactivity)を参照してください。
+  注入されたバインディングはリアクティブ**ではない**ことに注意してください。これは意図的なものです。ただし、注入された値がリアクティブなオブジェクトである場合、そのオブジェクトのプロパティはリアクティブなままです。詳しくは[リアクティビティーの利用](/guide/components/provide-inject#working-with-reactivity)を参照してください。
 
 - **例**
 

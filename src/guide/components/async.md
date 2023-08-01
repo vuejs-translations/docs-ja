@@ -108,6 +108,6 @@ const AsyncComp = defineAsyncComponent({
 
 エラーコンポーネントが与えられた場合、ローダー関数から返された Promise が reject されたときに表示されます。リクエストが長すぎる場合にエラーコンポーネントを表示するために、timeout を指定することもできます。
 
-## Suspense とともに使用する {#using-with-suspense}
+## Suspense での使用 {#using-with-suspense}
 
-非同期コンポーネントは、ビルトインコンポーネント `<Suspense>` とともに使用することもできます。`<Suspense>` と非同期コンポーネント間のインタラクションについては、[`<Suspense>` のページ](/guide/built-ins/suspense) にドキュメントがあります。
+非同期コンポーネントは、ビルトインコンポーネント `<Suspense>` と使用することもできます。`<Suspense>` と非同期コンポーネント間のインタラクションについては、[`<Suspense>` のページ](/guide/built-ins/suspense) にドキュメントがあります。
