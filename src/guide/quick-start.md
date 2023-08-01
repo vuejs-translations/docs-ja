@@ -24,7 +24,7 @@ footer: false
 
 [Node.js](https://nodejs.org/) の最新バージョンがインストールされていること、現在の作業ディレクトリがプロジェクトを作成する予定の場所であることを確認し、コマンドラインで次のコマンドを（`>` 記号なしで）実行します:
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt;</span> <span style="color:#A6ACCD;">npm init vue@latest</span></span></code></pre></div>
+<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt;</span> <span style="color:#A6ACCD;">npm create vue@latest</span></span></code></pre></div>
 
 このコマンドは、公式の Vue プロジェクトスキャフォールディングツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。TypeScript やテストのサポートなど、いくつかのオプション機能がプロンプトに表示されます:
 
