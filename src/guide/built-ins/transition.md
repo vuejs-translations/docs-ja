@@ -362,6 +362,8 @@ function onEnter(el, done) {
 
 // enter トランジションが完了したときに呼ばれる
 function onAfterEnter(el) {}
+
+// enter トランジションが完了前にキャンセルされたときに呼ばれる
 function onEnterCancelled(el) {}
 
 // leave フックの前に呼ばれる
