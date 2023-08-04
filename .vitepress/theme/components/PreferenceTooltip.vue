@@ -99,30 +99,30 @@ function dismiss() {
   <Transition name="fly-in">
     <div class="preference-tooltip" v-if="show">
       <template v-if="source === 'default'">
-        <p>API style now defaults to Composition API.</p>
+        <p>API スタイルのデフォルトは Composition API になりました。</p>
         <p>
-          Some pages contain different content based on the API style
-          chosen. Use this switch to toggle between APIs styles.
+          一部のページには、選択した API スタイルに基づいて異なるコンテンツが含まれています。
+          API スタイルを切り替えるには、このスイッチを使用してください。
         </p>
       </template>
       <template v-if="source && source.startsWith('url')">
         <p>
-          Showing content for
-          {{ preferComposition ? 'Composition' : 'Options' }} API because
+
+          {{ preferComposition ? 'Composition' : 'Options' }} API のコンテンツを表示しています
           {{
             source === 'url-query'
-              ? 'it is specified by the URL query.'
-              : 'the target section is only available for that API.'
+              ? '（URL クエリ文字列で指定されたため）'
+              : '（対象のセクションがその API 専用のため）'
           }}
         </p>
         <p>
-          This is different from your saved preference and will only affect
-          the current browsing session.
+          これは保存された設定とは異なるので、現在の閲覧セッションにのみ影響します。
+
         </p>
       </template>
       <p class="actions">
-        <a href="/guide/introduction#api-styles">Learn more</a>
-        <button @click="dismiss">Got it</button>
+        <a href="/guide/introduction#api-styles">詳細はこちら</a>
+        <button @click="dismiss">了解</button>
       </p>
       <div class="arrow-top"></div>
       <div class="arrow-top inner"></div>
