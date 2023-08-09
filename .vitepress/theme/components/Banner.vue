@@ -22,7 +22,7 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <a href="https://note.com/mskzu_hirno/n/n5ed069eaffe8" target="_blank">
+    <a href="https://vuefes.jp/2023/#ticket" target="_blank">
       Vue Fes Japan 2023 チケット発売開始！ <span>9月18日（月）までのご購入で 1,000円 OFF!</span>
     </a>
     <button @click="dismiss">
