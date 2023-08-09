@@ -22,7 +22,9 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <a target="_blank"></a>
+    <a href="https://note.com/mskzu_hirno/n/n5ed069eaffe8" target="_blank">
+      Vue Fes Japan 2023 チケット発売開始！ <span>9月18日（月）までのご購入で 1,000円 OFF!</span>
+    </a>
     <button @click="dismiss">
       <VTIconPlus class="close" />
     </button>
@@ -79,10 +81,14 @@ button {
   fill: #fff;
   transform: rotate(45deg);
 }
-/*
+
+a > span {
+  font-size: 11px;
+  font-weight: normal;
+}
 @media (max-width: 720px) {
   a > span {
     display: none;
   }
-} */
+}
 </style>
