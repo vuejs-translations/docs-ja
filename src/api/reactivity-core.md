@@ -40,7 +40,7 @@
   ```
 
 - **参照**
-  - [ガイド - `ref()` と共に使うリアクティブな変数](/guide/essentials/reactivity-fundamentals#reactive-variables-with-ref)
+  - [ガイド - リアクティビティーの基礎 `ref()`](/guide/essentials/reactivity-fundamentals#ref)
   - [ガイド - `ref()` の型付け](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
 ## computed() {#computed}
