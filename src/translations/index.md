@@ -11,6 +11,8 @@ aside: false
 - [日本語](https://ja.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-ja)]
 - [Українська / ウクライナ語](https://ua.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-ua)]
 - [Français / フランス語](https://fr.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-fr)]
+- [한국어 / 韓国語](https://ko.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-ko)]
+- [Português / ポルトガル語](https://pt.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-pt)]
 
 <!-- ## 作業中の言語 {#work-in-progress-languages} -->
 
