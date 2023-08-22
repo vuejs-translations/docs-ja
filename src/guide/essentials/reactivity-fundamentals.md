@@ -516,7 +516,7 @@ console.log(map.get('count').value)
 
 ```js
 const count = ref(0)
-const object = { id: ref(0) }
+const object = { id: ref(1) }
 ```
 
 したがって、この表現は期待通りに動作します:
