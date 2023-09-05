@@ -77,7 +77,7 @@ function track(interest?: boolean) {
       href="/sponsor/"
       class="sponsor-item action"
       @click="track(true)"
-      >あなたのロゴ</a
+      >スポンサーになる</a
     >
   </div>
 </template>
