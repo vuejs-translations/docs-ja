@@ -34,7 +34,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
   - TS ファイル内で `*.vue` をインポートする際に型サポートを得る場合、[TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) も必要となります。
 
-- [WebStorm](https://www.jetbrains.com/webstorm/) は TypeScript と Vue の両方をすぐに利用できるようサポートしています。他の JetBrains IDE も最初から、または [この無料プラグイン](https://plugins.jetbrains.com/plugin/9442-vue-js) で、これらをサポートしています。
+- [WebStorm](https://www.jetbrains.com/webstorm/) は TypeScript と Vue の両方をすぐに利用できるようサポートしています。他の JetBrains IDE も最初から、または [この無料プラグイン](https://plugins.jetbrains.com/plugin/9442-vue-js) で、これらをサポートしています。バージョン 2023.2 では、WebStorm と Vue プラグインは Vue Language Server をビルトインでサポートしています。Settings → Languages & Frameworks → TypeScript → Vue で、すべての TypeScript バージョンで Volar インテグレーションを使用するように Vue サービスを設定できます。デフォルトでは、Volar は TypeScript バージョン 5.0 以上で使用されます。
 
 ### `tsconfig.json` の構成 {#configuring-tsconfig-json}
 
