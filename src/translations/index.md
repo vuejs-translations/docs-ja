@@ -13,6 +13,7 @@ aside: false
 - [Français / フランス語](https://fr.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-fr)]
 - [한국어 / 韓国語](https://ko.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-ko)]
 - [Português / ポルトガル語](https://pt.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-pt)]
+- [বাংলা / ベンガル語](https://bn.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-bn)]
 
 <!-- ## 作業中の言語 {#work-in-progress-languages} -->
 
