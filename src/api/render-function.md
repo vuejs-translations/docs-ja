@@ -199,7 +199,7 @@ vnode のクローンを作成します。
   <div class="composition-api">
 
   ```js
-  const { h, resolveComponent } = Vue
+  import { h, resolveComponent } from 'vue'
 
   export default {
     setup() {
@@ -216,7 +216,7 @@ vnode のクローンを作成します。
   <div class="options-api">
 
   ```js
-  const { h, resolveComponent } = Vue
+  import { h, resolveComponent } from 'vue'
 
   export default {
     render() {
