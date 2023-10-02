@@ -21,7 +21,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 - CSS トランジションクラスはグループ / コンテナ **ではなく**、リストの個々の要素に適用されます。
 
 :::tip
-[DOM テンプレート](/guide/essentials/component-basics#dom-template-parsing-caveats) で使用する場合、`<transition-group>` として参照する必要があります。
+[DOM 内テンプレート](/guide/essentials/component-basics#in-dom-template-parsing-caveats) で使用する場合、`<transition-group>` として参照する必要があります。
 :::
 
 ## Enter / Leave トランジション {#enter-leave-transitions}

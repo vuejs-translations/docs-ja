@@ -148,7 +148,7 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-技術的には、子コンポーネントに props を渡すときにも camelCase を用いることができます（ただし [DOM テンプレート](/guide/essentials/component-basics#dom-template-parsing-caveats)内を除く）。しかし、常に kebab-case（ケバブケース）を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
+技術的には、子コンポーネントに props を渡すときにも camelCase を用いることができます（ただし [DOM 内テンプレート](/guide/essentials/component-basics#in-dom-template-parsing-caveats)内を除く）。しかし、常に kebab-case（ケバブケース）を用いて HTML の属性に揃える、以下のような表記が慣例となっています:
 
 ```vue-html
 <MyComponent greeting-message="hello" />

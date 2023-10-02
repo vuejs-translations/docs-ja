@@ -168,7 +168,7 @@ Vue の文脈的には、テンプレートコンパイラーがパフォーマ�
 
 詳しくはこちらをご覧ください:
 - [ガイド - Vue アプリケーションの作成 - DOM 内のルートコンポーネントテンプレート](/guide/essentials/application.html#in-dom-root-component-template)
-- [ガイド - コンポーネントの基礎 - DOM テンプレート解析の注意点](/guide/essentials/component-basics.html#dom-template-parsing-caveats)
+- [ガイド - コンポーネントの基礎 - DOM 内テンプレート解析の注意点](/guide/essentials/component-basics.html#in-dom-template-parsing-caveats)
 - [オプション: レンダリング - template](/api/options-rendering.html#template)
 
 ## inject {#inject}
