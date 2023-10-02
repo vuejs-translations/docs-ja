@@ -95,7 +95,7 @@
 
   ネイティブの HTML 要素で `is` 属性が使われている場合、[Customized built-in element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) として解釈されます。これは、ネイティブの Web プラットフォームの機能です。
 
-  しかし、[DOM テンプレート解析の注意点](/guide/essentials/component-basics#dom-template-parsing-caveats)で説明したように、ネイティブ要素を Vue コンポーネントに置き換えるためには Vue が必要になる場合があります。`is` 属性の値の前に `vue:` を付けると、Vue はその要素を Vue コンポーネントとしてレンダリングします:
+  しかし、[DOM 内テンプレート解析の注意点](/guide/essentials/component-basics#in-dom-template-parsing-caveats)で説明したように、ネイティブ要素を Vue コンポーネントに置き換えるためには Vue が必要になる場合があります。`is` 属性の値の前に `vue:` を付けると、Vue はその要素を Vue コンポーネントとしてレンダリングします:
 
   ```vue-html
   <table>
