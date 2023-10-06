@@ -352,6 +352,8 @@ onMounted(() => {
 </template>
 ```
 
+適切な DOM インターフェースを取得するには、[MDN](https://developer.mozilla.org/ja/docs/Web/HTML/Element/input#技術的概要) のようなページを確認してください。
+
 厳密な型安全性のために、`el.value` にアクセスする際には、オプショナルチェーンもしくは型ガードをする必要があります。なぜなら、コンポーネントがマウントされるまでは ref の初期値は `null` であり、参照されていた要素が `v-if` によってアンマウントされた場合にも `null` にセットされる可能性があるからです。
 
 ## コンポーネントのテンプレート参照の型付け {#typing-component-template-refs}
