@@ -216,15 +216,16 @@ export function useFetch(url) {
   const data = ref(null)
   const error = ref(null)
 
-  watchEffect(() => {
-    // 取得前に状態をリセット..
-    data.value = null
-    error.value = null
-    // toValue() は潜在的な ref や getter をアンラップします
-    fetch(toValue(url))
+	const fetchData = (dt) => {
+			fetch(toValue(url))
       .then((res) => res.json())
       .then((json) => (data.value = json))
       .catch((err) => (error.value = err))
+	}
+
+  watchEffect(() => {
+    // 取得前に状態をリセット..
+    fetchData(url)
   })
 
   return { data, error }
