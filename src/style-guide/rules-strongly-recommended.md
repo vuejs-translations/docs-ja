@@ -352,7 +352,7 @@ components/
 ```
 
 ```vue-html
-<!-- DOM テンプレートの中 -->
+<!-- DOM 内テンプレートの中 -->
 <my-component/>
 ```
 
@@ -367,7 +367,7 @@ components/
 ```
 
 ```vue-html
-<!-- DOM テンプレートの中 -->
+<!-- DOM 内テンプレートの中 -->
 <my-component></my-component>
 ```
 
