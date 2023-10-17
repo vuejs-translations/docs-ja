@@ -294,17 +294,17 @@ h(Transition, {
   ターゲットコンテナーの指定:
 
   ```vue-html
-  <teleport to="#some-id" />
-  <teleport to=".some-class" />
-  <teleport to="[data-teleport]" />
+  <Teleport to="#some-id" />
+  <Teleport to=".some-class" />
+  <Teleport to="[data-teleport]" />
   ```
 
   条件によって無効化:
 
   ```vue-html
-  <teleport to="#popup" :disabled="displayVideoInline">
+  <Teleport to="#popup" :disabled="displayVideoInline">
     <video src="./my-movie.mp4">
-  </teleport>
+  </Teleport>
   ```
 
 - **参照** [ガイド - Teleport](/guide/built-ins/teleport)
