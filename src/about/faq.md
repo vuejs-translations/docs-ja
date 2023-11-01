@@ -42,7 +42,7 @@ Vue は、Wikimedia Foundation、NASA、Apple、Google、Microsoft、GitLab、Zo
 
 Vue 3 は、最もパフォーマンスの高い主流のフロントエンドフレームワークの 1 つであり、手動で最適化することなく、ほとんどの Web アプリケーションのユースケースを簡単に処理します。
 
-ストレステストのシナリオでは、Vue は [js-framework-benchmark](https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts-results/table.html) で React と Angular をかなりの差で上回ります。また、このベンチマークでは、最速のプロダクションレベルの非仮想 DOM フレームワークのいくつかと接戦状態です。
+ストレステストのシナリオでは、Vue は [js-framework-benchmark](https://krausest.github.io/js-framework-benchmark/current.html) で React と Angular をかなりの差で上回ります。また、このベンチマークでは、最速のプロダクションレベルの非仮想 DOM フレームワークのいくつかと接戦状態です。
 
 上記のような統合的なベンチマークは、専用の最適化による未加工のレンダリングパフォーマンスに焦点を当てており、実際のパフォーマンス結果を完全には表していない可能性があることに注意してください。ページ読み込みのパフォーマンスがさらに気になる場合は、[WebPageTest](https://www.webpagetest.org/lighthouse) や [PageSpeed Insights](https://pagespeed.web.dev/) を使用して、今見ているこの Web サイトを検査してみてください。このウェブサイトは、SSG プリレンダリング、ページ全体のハイドレーション、SPA クライアントサイドナビゲーションなど、Vue そのものを使用しています。低速の 4G ネットワークと 4 倍の CPU スロットリングのエミュレートされた Moto G4 で、100 点のパフォーマンスを記録しています。
 
