@@ -163,7 +163,7 @@ form 要素に `autocomplete='on'` を記述すると、フォーム内のすべ
 すべてのフォームコントロールの目的を説明するため、ラベルを用意しましょう。`for` と `id` をリンクします:
 
 ```vue-html
-<label for="name">Name</label>
+<label for="name">Name: </label>
 <input type="text" name="name" id="name" v-model="name" />
 ```
 
@@ -191,7 +191,7 @@ Chrome デベロッパー ツールでこの要素を検査し、Elements タブ
 [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label)<!-- TODO: 日本語版のページが出来たら URL 差し替え --> で入力欄にアクセシブルな名前を与えることもできます。
 
 ```vue-html
-<label for="name">Name</label>
+<label for="name">Name: </label>
 <input
   type="text"
   name="name"
@@ -220,7 +220,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 >
   <h1 id="billing">Billing</h1>
   <div class="form-item">
-    <label for="name">Name:</label>
+    <label for="name">Name: </label>
     <input
       type="text"
       name="name"
@@ -250,7 +250,7 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 >
   <h1 id="billing">Billing</h1>
   <div class="form-item">
-    <label for="name">Full Name:</label>
+    <label for="name">Full Name: </label>
     <input
       type="text"
       name="name"
@@ -330,7 +330,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 ```vue-html
 <fieldset>
   <legend>Using aria-labelledby</legend>
-  <label id="date-label" for="date">Current Date:</label>
+  <label id="date-label" for="date">Current Date: </label>
   <input
     type="date"
     name="date"
@@ -346,7 +346,7 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 ```vue-html
 <fieldset>
   <legend>Using aria-describedby</legend>
-  <label id="dob" for="dob">Date of Birth:</label>
+  <label id="dob" for="dob">Date of Birth: </label>
   <input type="date" name="dob" id="dob" aria-describedby="dob-instructions" />
   <p id="dob-instructions">MM/DD/YYYY</p>
 </fieldset>
