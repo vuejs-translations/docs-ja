@@ -161,7 +161,8 @@ function track(interest?: boolean) {
   height: 60px;
 }
 .aside .special .sponsor-item img {
-  width: 120px;
+  max-width: 120px;
+  max-height: 48px;
 }
 .aside .platinum .sponsor-item {
   width: 111px;
