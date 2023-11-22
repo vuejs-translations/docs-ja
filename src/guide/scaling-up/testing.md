@@ -141,7 +141,7 @@ const { getByText } = render(Stepper, {
 
 getByText('0') // コンポーネント内に "0 "があることを暗黙のうちに評価します
 
-const button = getByText('increment')
+const button = getByRole('button', { name: /increment/i })
 
 // インクリメントボタンにクリックイベントをディスパッチします。
 await fireEvent.click(button)
@@ -209,7 +209,7 @@ cy.get(valueSelector).should('be.visible').and('contain.text', '0')
 
 - [Vitest](https://vitest.dev/) はヘッドレスでレンダリングするコンポーネントやコンポーザブルのためのライブラリーです（例: VueUse の [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) 関数など）。コンポーネントと DOM は [`@vue/test-utils`](https://github.com/vuejs/test-utils) を使うことでテストできます。
 
-- [Cypress Component Testing](https://on.cypress.io/component) はテストで期待する動作が、スタイルの適切なレンダリングやネイティブ DOM イベントのトリガーに依存するようなコンポーネントのためのライブラリーです。テストライブラリーは、[@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro) を介して使用できます。
+- [Cypress Component Testing](https://on.cypress.io/component) はテストで期待する動作が、スタイルの適切なレンダリングやネイティブ DOM イベントのトリガーに依存するようなコンポーネントのためのライブラリーです。これは [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro) を介して Testing Library で使用できます。
 
 Vitest とブラウザーベースのランナーの主な違いは、スピードと実行コンテキストです。つまり、Cypress のようなブラウザーベースのランナーは Vitest のようなノードベースのランナーでは捕捉できない問題（例: スタイルの問題、本物のネイティブ DOM イベント、クッキー、ローカルストレージ、ネットワーク障害など）をキャッチできます。ですが、ブラウザーベースのランナーは、ブラウザーを開き、スタイルシートをコンパイルなどをするので **Vitest より桁違いに遅い**のです。Cypress はコンポーネントテストをサポートするブラウザーベースのランナーです。Vitest と Cypress の比較に関する最新情報は [Vitest の比較ページ](https://vitest.dev/guide/comparisons.html#cypress)をお読みください。
 
@@ -227,7 +227,7 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 - [Nightwatch](https://nightwatchjs.org/) は、Vue コンポーネントテストをサポートする E2E テストランナーです。（[プロジェクトの例](https://github.com/nightwatchjs-community/todo-vue)）
 
-- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) は、標準化された自動化に基づいて、ネイティブのユーザーインタラクションに依存するクロスブラウザのコンポーネントテスト用。テスティングライブラリーとの併用も可能です。
+- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) は、標準化された自動化に基づいて、ネイティブのユーザーインタラクションに依存するクロスブラウザのコンポーネントテスト用。Testing Library との併用も可能です。
 
 ## E2E テスト {#e2e-testing}
 
@@ -241,7 +241,7 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 エンドツーエンドテストは、アプリケーションの多くのレイヤーを検証します。ローカルでビルドしたアプリケーションを対象とすることも、稼働中のステージング環境を対象とすることもできます。ステージング環境に対するテストは、フロントエンドのコードと静的サーバーだけでなく、関連するすべてのバックエンドのサービスとインフラストラクチャーもテスト対象に含みます。
 
-> テストがソフトウェアの使われ方に似ていればいるほど、テストはより信頼できるものになる。- [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - テスティングライブラリーの著者
+> テストがソフトウェアの使用方法に似ていればいるほど、テストはより信頼できるものになる。- [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Testing Library の作者
 
 ユーザーの行動がアプリケーションにどのような影響を与えるかをテストすることで、E2E テストは、アプリケーションが適切に機能しているかどうかの信頼性を高める鍵となることが多いです。
 
@@ -263,7 +263,7 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 #### ヘッドレスモードでの可視性 {#visibility-in-headless-mode}
 
-エンドツーエンド (E2E) テストが継続的インテグレーション / デプロイメントパイプラインで実行されるとき、しばしばヘッドレスブラウザーで実行されます（すなわち、ユーザーが見るためのブラウザーが開かれません）。最新の E2E テストフレームワークの重要な機能では、テスト中にアプリケーションのスナップショットやビデオを見て、エラーが発生した理由に対する何らかの洞察を得られる機能があります。歴史的に、これらの機能の統合を維持するのは面倒なことでした。
+エンドツーエンド (E2E) テストが継続的インテグレーション/デプロイメントパイプラインで実行されるとき、しばしばヘッドレスブラウザーで実行されます（すなわち、ユーザーが見るためのブラウザーが開かれません）。最新の E2E テストフレームワークの重要な機能では、テスト中にアプリケーションのスナップショットやビデオを見て、エラーが発生した理由に対する何らかの洞察を得られる機能があります。歴史的に、これらの機能の統合を維持するのは面倒なことでした。
 
 ### 推奨事項 {#recommendation-2}
 
@@ -322,7 +322,7 @@ TypeScript を使用している場合は、`tsconfig.json` の `types` フィ�
 
 :::
 
-そして、`*.test.js` で終わるファイルをプロジェクト内に作成します。すべてのテストファイルは、プロジェクトのルートにあるテストディレクトリー、またはソースファイルの隣接するテストディレクトリーに置くことができます。Vitest は命名規則を使用して自動的にファイルを検索してくれます。
+次に、`*.test.js` で終わるファイルをプロジェクト内に作成します。すべてのテストファイルは、プロジェクトのルートにあるテストディレクトリー、またはソースファイルの隣接するテストディレクトリーに置くことができます。Vitest は命名規則を使用して自動的にファイルを検索してくれます。
 
 ```js
 // MyComponent.test.js
@@ -413,7 +413,7 @@ export function withSetup(composable) {
     }
   })
   app.mount(document.createElement('div'))
-  // provide / unmount のテストのため
+  // provide/unmount のテストのため
   // result と app インスタンスを返却します
   return [result, app]
 }
