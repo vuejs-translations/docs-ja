@@ -89,7 +89,7 @@ Vue のブラウザー開発者ツール拡張では、Vue アプリのコンポ
 
 - [Volar](https://github.com/johnsoncodehk/volar) は `<script lang="ts">` ブロックを使用した SFC に対して、テンプレート内の式やコンポーネント間の props のバリデーションを含む型チェックを提供します。
 
-- コマンドラインから同様の型チェックを行う場合や、SFC 用の `d.ts` ファイルを生成する場合は、[`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/vue-tsc) を使用します。
+- コマンドラインから同様の型チェックを行う場合や、SFC 用の `d.ts` ファイルを生成する場合は、[`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) を使用します。
 
 ## テスト {#testing}
 
