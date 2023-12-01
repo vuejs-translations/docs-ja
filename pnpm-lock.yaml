@@ -50,8 +50,8 @@ devDependencies:
     specifier: ^1.2.2
     version: 1.2.2(textlint@12.1.0)
   textlint-rule-preset-vuejs-jp:
-    specifier: https://github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tarball/v1.3.0
-    version: '@github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tarball/v1.3.0(textlint@12.1.0)'
+    specifier: github:vuejs-jp/textlint-rule-preset-vuejs-jp
+    version: github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/d62d64c25aed61a5f7455028b31aca7640181a13(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)(textlint@12.1.0)
 
 packages:
 
@@ -355,7 +355,6 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.18.8
-    dev: false
 
   /@babel/parser@7.23.5:
     resolution: {integrity: sha512-hOOqoiNXrmGdFbhgCzu6GiURxUgM27Xwd/aPuu8RfHEZPBzL1Z54okAHAQjXfcQNwvrlkAmAp4SlRTZ45vlthQ==}
@@ -363,6 +362,7 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.18.8
+    dev: false
 
   /@babel/types@7.18.8:
     resolution: {integrity: sha512-qwpdsmraq0aJ3osLJRApsc2ouSJCdnMeZwB0DhbtHAtRpZNZCdlbRnHIgcRKzdE1g0iOGg644fzjOBcdOz9cPw==}
@@ -797,10 +797,6 @@ packages:
 
   /@textlint/ast-node-types@12.1.0:
     resolution: {integrity: sha512-UlxqemrV/EnGTCl26OU7JhtFJpH7NZdgXvnsuII604orcIkvywUA1GGlg51grfbfqi+ar4zRsOb6fVbcbMZnKA==}
-    dev: true
-
-  /@textlint/ast-node-types@13.4.1:
-    resolution: {integrity: sha512-qrZyhCh8Ekk6nwArx3BROybm9BnX6vF7VcZbijetV/OM3yfS4rTYhoMWISmhVEP2H2re0CtWEyMl/XF+WdvVLQ==}
     dev: true
 
   /@textlint/ast-tester@12.1.0:
@@ -1477,8 +1473,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /async@2.6.4:
-    resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
+  /async@2.6.3:
+    resolution: {integrity: sha512-zflvls11DCy+dQWzTW2dzuilv8Z5X/pjfmZOWba6TNIVDm+2UDaJmXSOXlasHKfNBs8oo3M0aT50fDEWfKZjXg==}
     dependencies:
       lodash: 4.17.21
     dev: true
@@ -1497,10 +1493,6 @@ packages:
 
   /boundary@1.0.1:
     resolution: {integrity: sha1-TWfcJgLAzBbdm85+v4fpSCkPWBI=}
-    dev: true
-
-  /boundary@2.0.0:
-    resolution: {integrity: sha512-rJKn5ooC9u8q13IMCrW0RSp31pxBCHE3y9V/tp3TdWSLf8Em3p6Di4NBpfzbJge9YjjFEsD0RtFEjtvHL5VyEA==}
     dev: true
 
   /brace-expansion@1.1.11:
@@ -1707,28 +1699,10 @@ packages:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
 
-  /define-data-property@1.1.1:
-    resolution: {integrity: sha512-E7uGkTzkk1d0ByLeSc6ZsFS79Axg+m1P/VsgYsxHgiuc3tFSj+MjMIwe90FC4lOAZzNBdY7kkO2P2wKdsQ1vgQ==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      get-intrinsic: 1.2.2
-      gopd: 1.0.1
-      has-property-descriptors: 1.0.1
-    dev: true
-
   /define-properties@1.1.3:
     resolution: {integrity: sha512-3MqfYKj2lLzdMSf8ZIZE/V+Zuy+BgD6f164e8K2w7dgnpKArBDerGYpM46IYYcjnkdPNMjPk9A6VFB8+3SKlXQ==}
     engines: {node: '>= 0.4'}
     dependencies:
-      object-keys: 1.1.1
-    dev: true
-
-  /define-properties@1.2.1:
-    resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      define-data-property: 1.1.1
-      has-property-descriptors: 1.0.1
       object-keys: 1.1.1
     dev: true
 
@@ -1959,29 +1933,12 @@ packages:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
     dev: true
 
-  /function-bind@1.1.2:
-    resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
-    dev: true
-
-  /functions-have-names@1.2.3:
-    resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
-    dev: true
-
   /get-intrinsic@1.1.1:
     resolution: {integrity: sha512-kWZrnVM42QCiEA2Ig1bG8zjoIMOgxWwYCEeNdwY6Tv/cOSeGpcoX4pXHfKUxNKVoArnrEr2e9srnAxxGIraS9Q==}
     dependencies:
       function-bind: 1.1.1
       has: 1.0.3
       has-symbols: 1.0.2
-    dev: true
-
-  /get-intrinsic@1.2.2:
-    resolution: {integrity: sha512-0gSo4ml/0j98Y3lngkFEot/zhiCeWsbYIlZ+uZOVgzLyLaUw7wxUL+nCTP0XJvJg1AXulJRI3UJi8GsbDuxdGA==}
-    dependencies:
-      function-bind: 1.1.2
-      has-proto: 1.0.1
-      has-symbols: 1.0.3
-      hasown: 2.0.0
     dev: true
 
   /get-stdin@5.0.1:
@@ -2010,12 +1967,6 @@ packages:
       path-is-absolute: 1.0.1
     dev: true
 
-  /gopd@1.0.1:
-    resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
-    dependencies:
-      get-intrinsic: 1.2.2
-    dev: true
-
   /graceful-fs@4.2.9:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}
     dev: true
@@ -2031,24 +1982,8 @@ packages:
       ansi-regex: 2.1.1
     dev: true
 
-  /has-property-descriptors@1.0.1:
-    resolution: {integrity: sha512-VsX8eaIewvas0xnvinAe9bw4WfIeODpGYikiWYLH+dma0Jw6KHYqWiWfhQlgOVK8D6PvjubK5Uc4P0iIhIcNVg==}
-    dependencies:
-      get-intrinsic: 1.2.2
-    dev: true
-
-  /has-proto@1.0.1:
-    resolution: {integrity: sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==}
-    engines: {node: '>= 0.4'}
-    dev: true
-
   /has-symbols@1.0.2:
     resolution: {integrity: sha512-chXa79rL/UC2KlX17jo3vRGz0azaWEx5tGqZg5pO3NUyEJVB17dMruQlzCCOfUvElghKcm5194+BCRvi2Rv/Gw==}
-    engines: {node: '>= 0.4'}
-    dev: true
-
-  /has-symbols@1.0.3:
-    resolution: {integrity: sha512-l3LCuF6MgDNwTDKkdYGEihYjt5pRPbEg46rtlmnSPlUbgmB8LOIrKJbYYFBSbnPaJexMKtiPO8hmeRjRz2Td+A==}
     engines: {node: '>= 0.4'}
     dev: true
 
@@ -2064,13 +1999,6 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
-    dev: true
-
-  /hasown@2.0.0:
-    resolution: {integrity: sha512-vUptKVTpIJhcczKBbgnS+RtcuYMB8+oNzPK2/Hp3hanz8JmpATdmmgLgSaadVREkDm+e2giHwY3ZRkyjSIDDFA==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      function-bind: 1.1.2
     dev: true
 
   /hast-util-from-parse5@8.0.1:
@@ -2400,7 +2328,7 @@ packages:
   /kuromoji@0.1.2:
     resolution: {integrity: sha512-V0dUf+C2LpcPEXhoHLMAop/bOht16Dyr+mDiIE39yX3vqau7p80De/koFqpiTcL1zzdZlc3xuHZ8u5gjYRfFaQ==}
     dependencies:
-      async: 2.6.4
+      async: 2.6.3
       doublearray: 0.0.2
       zlibjs: 0.3.1
     dev: true
@@ -3164,15 +3092,6 @@ packages:
       define-properties: 1.1.3
     dev: true
 
-  /regexp.prototype.flags@1.5.1:
-    resolution: {integrity: sha512-sy6TXMN+hnP/wMy+ISxg3krXx7BAtWVO4UouuCN/ziM9UEne0euamVNafDfvC83bRNr95y0V5iijeDQFUNpvrg==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      call-bind: 1.0.2
-      define-properties: 1.2.1
-      set-function-name: 2.0.1
-    dev: true
-
   /regx@1.0.4:
     resolution: {integrity: sha512-Z/5ochRUyD5TkJgFq+66ajKePlj6KzpSLfDO2lOLOLu7E82xAjNux0m8mx1DAXBj5ECHiRCBWoqL25b4lkwcgw==}
     dev: true
@@ -3286,15 +3205,6 @@ packages:
   /semver@5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
     hasBin: true
-    dev: true
-
-  /set-function-name@2.0.1:
-    resolution: {integrity: sha512-tMNCiqYVkXIZgc2Hnoy2IvC/f8ezc5koaRFkCjrpWzGpCd3qbZXPzVy9MAZzK1ch/X0jvSkojys3oqJN0qCmdA==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      define-data-property: 1.1.1
-      functions-have-names: 1.2.3
-      has-property-descriptors: 1.0.1
     dev: true
 
   /shebang-command@1.2.0:
@@ -3515,12 +3425,6 @@ packages:
       boundary: 1.0.1
     dev: true
 
-  /structured-source@4.0.0:
-    resolution: {integrity: sha512-qGzRFNJDjFieQkl/sVOI2dUjHKRyL9dAJi2gCPGJLbJHBIkyOHxjuocpIEfbLioX+qSJpvbYdT49/YCdMznKxA==}
-    dependencies:
-      boundary: 2.0.0
-    dev: true
-
   /supports-color@2.0.0:
     resolution: {integrity: sha1-U10EXOa2Nj+kARcIRimZXp3zJMc=}
     engines: {node: '>=0.8.0'}
@@ -3586,62 +3490,87 @@ packages:
       unist-util-visit: 1.4.1
     dev: true
 
-  /textlint-rule-helper@2.3.1:
-    resolution: {integrity: sha512-b1bijvyiUmKinfFE5hkQMSXs3Ky8jyZ3Y6SOoTRJKV9HLL2LWUVFAUezO7z4FpAkVvYruDYWCwA5qWV8GmvyUw==}
+  /textlint-rule-helper@2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
+    resolution: {integrity: sha512-pdX3uNbFzQTgINamaBpEHRT/MgROHev5wCnQnUTXRLT5DaRjls0Rmpi5d1MPZG6HT5NKVL++Q2J0FUbh5shi3Q==}
+    peerDependencies:
+      '@textlint/ast-node-types': ^12.1.0
+      '@textlint/types': ^12.1.0
     dependencies:
-      '@textlint/ast-node-types': 13.4.1
-      structured-source: 4.0.0
+      '@textlint/ast-node-types': 12.1.0
+      '@textlint/types': 12.1.0
+      structured-source: 3.0.2
       unist-util-visit: 2.0.3
     dev: true
 
-  /textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana@2.2.0:
+  /textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana@2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-6e5LfdjQgpkvGqMPFLxXtXyfXgc8iLOBuBda1jPWT873ttlfzTR9djjS7zmTkmNZDO4x0nvYPNTxCvgvilzlMQ==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-ja-no-space-around-parentheses@2.2.0:
+  /textlint-rule-ja-no-space-around-parentheses@2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-7m6n2XzOyYRVDvRfdYIxz6Qg23KA7BslYW44dAxYtmdVuDzQNKoSbZoGkZju/ITKsiN4JW+e/zEfFAY/qBEucQ==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-ja-no-space-between-full-width@2.2.0:
+  /textlint-rule-ja-no-space-between-full-width@2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-oe5hOTbiKyhSTsBVroRk1mJqfUuCFeHexK3Sb6KWBET9sAhN3j7BnoKwxe2mjiDX5nXg+7Ka3ziwfQlnQ41l0w==}
     dependencies:
       match-index: 1.0.3
       regx: 1.0.4
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-ja-space-after-exclamation@2.2.0:
+  /textlint-rule-ja-space-after-exclamation@2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-Foc9OzQ1WvdyKJnfXlj8DmODStNw13LpWhQK+yLecVYd3h8vLhaGvnpTitM6hj2Ep7klmX54Csn/iKDfGHb4Hw==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-ja-space-after-question@2.2.0:
+  /textlint-rule-ja-space-after-question@2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-SoYKd8x0kPVp/4sa8XOE/62SAganWpbDcGl1CJ7aTk151+pO2C7Z34UnjeC9olYYxM9m0pZ0AOfdCwB3yvteJw==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-ja-space-around-code@2.2.0:
+  /textlint-rule-ja-space-around-code@2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-JJfnSTFJCBL618TYVMqFfil8r7MhZuY0tEg2kyD6k/gcjbYFBx050pEl/RJJ5uD3UShLV7y4t289Gg9zuNjklw==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-ja-space-between-half-and-full-width@2.3.0:
-    resolution: {integrity: sha512-XJmw9fiKCK32P1fVGnYsqr1RdrWxTSqVqBPPHFVaIZhS1pBR7FsxdcR1SD6vEKe+EBJDEEZhJxrw8Pi1E5E22g==}
+  /textlint-rule-ja-space-between-half-and-full-width@2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
+    resolution: {integrity: sha512-/NJb0FrBa0qx/Z1SuW1nE0dhERCRNxz8IkdZ8V3VPxtZIaeBbPLdYxLf7h5qJnEAapqSd85pvZ4EXZI3RArvYw==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
   /textlint-rule-no-hankaku-kana@1.0.2:
@@ -3651,40 +3580,49 @@ packages:
       textlint-rule-helper: 1.2.0
     dev: true
 
-  /textlint-rule-no-mix-dearu-desumasu@5.0.0:
+  /textlint-rule-no-mix-dearu-desumasu@5.0.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-fBNWXBUeP9xuxZYjNqm3PQDsHStYPxpkJaLwTvbNQEZ6rpC1dHsHwLujYtuAQVuvrfxxU6J4jtepP61rhjPA8g==}
     dependencies:
       analyze-desumasu-dearu: 5.0.1
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
       unist-util-visit: 3.1.0
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-no-nfd@1.0.2:
+  /textlint-rule-no-nfd@1.0.2(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-n6tUx40/V6koDo78qqePHxSovuwSIKO0xwY3FCqVDbcfg9GxQCjde1twQJ99T3bs4LabhPOo/Pt3USaQ9XcTRQ==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
       unorm: 1.6.0
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
   /textlint-rule-no-zero-width-spaces@1.0.1:
     resolution: {integrity: sha512-AkxpzBILGB4YsXddzHx2xqpXmqMv5Yd+PQm4anUV+ADSJuwLP1Jd6yHf/LOtu9j3ps8K3XM9vQrXRK73z0bU3A==}
     dev: true
 
-  /textlint-rule-preset-ja-spacing@2.3.0:
-    resolution: {integrity: sha512-HqDv2P69uNFFRSYE22GW3xuApXUmcNr17pAaYn72nVRdUQsxfP4GBNlxONghj1US1G1ipXcfllE9xQ7tKTZWpw==}
+  /textlint-rule-preset-ja-spacing@2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
+    resolution: {integrity: sha512-o8bCFoN5d5rnDVIIwULVIGMjsibupJ5S4J1vtXdXLar7TG7HsXHe2f/rHxP4gApy+fBC/RI6EXui62Zt6PCGZw==}
     dependencies:
-      textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana: 2.2.0
-      textlint-rule-ja-no-space-around-parentheses: 2.2.0
-      textlint-rule-ja-no-space-between-full-width: 2.2.0
-      textlint-rule-ja-space-after-exclamation: 2.2.0
-      textlint-rule-ja-space-after-question: 2.2.0
-      textlint-rule-ja-space-around-code: 2.2.0
-      textlint-rule-ja-space-between-half-and-full-width: 2.3.0
+      textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana: 2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-ja-no-space-around-parentheses: 2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-ja-no-space-between-full-width: 2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-ja-space-after-exclamation: 2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-ja-space-after-question: 2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-ja-space-around-code: 2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-ja-space-between-half-and-full-width: 2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-preset-jtf-style@2.3.13(textlint@12.1.0):
-    resolution: {integrity: sha512-DH5V00hOCXK1BLG4/MfxXSFGKzruEQ/fzQG396CwiDK8LB0cMS1Z0O8JYRXMFDbmHRtR7LVXL8/3L1OwQ4TunQ==}
+  /textlint-rule-preset-jtf-style@2.3.12(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)(textlint@12.1.0):
+    resolution: {integrity: sha512-Te2pQWku6hpLknWh8rpFjAiOZpSZa3yMaBEbmdstFf8C9ejX6+LXI0gn7vlb7nBbDWnLV+pgVoYXWtqk2W5Jig==}
     peerDependencies:
       textlint: '>= 5.6.0'
     dependencies:
@@ -3692,21 +3630,27 @@ packages:
       japanese-numerals-to-number: 1.0.2
       match-index: 1.0.3
       moji: 0.5.1
-      regexp.prototype.flags: 1.5.1
+      regexp.prototype.flags: 1.4.1
       regx: 1.0.4
       sorted-joyo-kanji: 0.2.0
       textlint: 12.1.0
-      textlint-rule-helper: 2.3.1
-      textlint-rule-prh: 5.3.0
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-prh: 5.3.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
-  /textlint-rule-prh@5.3.0:
+  /textlint-rule-prh@5.3.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0):
     resolution: {integrity: sha512-gdod+lL1SWUDyXs1ICEwvQawaSshT3mvPGufBIjF2R5WFPdKQDMsiuzsjkLm+aF+9d97dA6pFsiyC8gSW7mSgg==}
     dependencies:
-      '@babel/parser': 7.23.5
+      '@babel/parser': 7.23.0
       prh: 5.4.4
-      textlint-rule-helper: 2.3.1
+      textlint-rule-helper: 2.2.1(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
       untildify: 3.0.3
+    transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
     dev: true
 
   /textlint@12.1.0:
@@ -3830,10 +3774,8 @@ packages:
     resolution: {integrity: sha512-ZOQSsnce92GrxSqlnEEseX0gi7GH9zTJZ0p9dtu87WRb/37mMPO2Ilx1s/t9vBHrFhbgweUwb+t7cIn5dxPhZg==}
     dev: true
 
-  /unist-util-is@5.2.1:
-    resolution: {integrity: sha512-u9njyyfEh43npf1M+yGKDGVPbY/JWEemg5nH05ncKPfi+kBbKBJoTdsogMu33uhytuLlv9y0O7GH7fEdwLdLQw==}
-    dependencies:
-      '@types/unist': 2.0.6
+  /unist-util-is@5.1.1:
+    resolution: {integrity: sha512-F5CZ68eYzuSvJjGhCLPL3cYx45IxkqXSetCcRgUXtbcm50X2L9oOWQlfUfDdAf+6Pd27YDblBfdtmsThXmwpbQ==}
     dev: true
 
   /unist-util-is@6.0.0:
@@ -3877,7 +3819,7 @@ packages:
     resolution: {integrity: sha512-1xAFJXAKpnnJl8G7K5KgU7FY55y3GcLIXqkzUj5QF/QVP7biUm0K0O2oqVkYsdjzJKifYeWn9+o6piAK2hGSHw==}
     dependencies:
       '@types/unist': 2.0.6
-      unist-util-is: 5.2.1
+      unist-util-is: 5.1.1
     dev: true
 
   /unist-util-visit-parents@6.0.1:
@@ -3905,7 +3847,7 @@ packages:
     resolution: {integrity: sha512-Szoh+R/Ll68QWAyQyZZpQzZQm2UPbxibDvaY8Xc9SUtYgPsDzx5AWSk++UUt2hJuow8mvwR+rG+LQLw+KsuAKA==}
     dependencies:
       '@types/unist': 2.0.6
-      unist-util-is: 5.2.1
+      unist-util-is: 5.1.1
       unist-util-visit-parents: 4.1.1
     dev: true
 
@@ -4208,20 +4150,22 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  '@github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tarball/v1.3.0(textlint@12.1.0)':
-    resolution: {tarball: https://github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tarball/v1.3.0}
-    id: '@github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tarball/v1.3.0'
+  github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/d62d64c25aed61a5f7455028b31aca7640181a13(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)(textlint@12.1.0):
+    resolution: {tarball: https://codeload.github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tar.gz/d62d64c25aed61a5f7455028b31aca7640181a13}
+    id: github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/d62d64c25aed61a5f7455028b31aca7640181a13
     name: textlint-rule-preset-vuejs-jp
     version: 1.3.0
     dependencies:
       '@textlint-rule/textlint-rule-no-invalid-control-character': 2.0.0
       '@textlint/module-interop': 12.1.0
       textlint-rule-no-hankaku-kana: 1.0.2
-      textlint-rule-no-mix-dearu-desumasu: 5.0.0
-      textlint-rule-no-nfd: 1.0.2
+      textlint-rule-no-mix-dearu-desumasu: 5.0.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-no-nfd: 1.0.2(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
       textlint-rule-no-zero-width-spaces: 1.0.1
-      textlint-rule-preset-ja-spacing: 2.3.0
-      textlint-rule-preset-jtf-style: 2.3.13(textlint@12.1.0)
+      textlint-rule-preset-ja-spacing: 2.2.0(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)
+      textlint-rule-preset-jtf-style: 2.3.12(@textlint/ast-node-types@12.1.0)(@textlint/types@12.1.0)(textlint@12.1.0)
     transitivePeerDependencies:
+      - '@textlint/ast-node-types'
+      - '@textlint/types'
       - textlint
     dev: true
