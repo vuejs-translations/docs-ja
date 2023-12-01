@@ -16,7 +16,9 @@ aside: false
 - [বাংলা / ベンガル語](https://bn.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-bn)]
 - [Italiano / イタリア語](https://it.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-it)]
 
-<!-- ## 作業中の言語 {#work-in-progress-languages} -->
+## 作業中の言語 {#work-in-progress-languages}
+
+- [فارسی / ペルシャ語](https://fa.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-fa)]
 
 ## 新しい翻訳の開始 {#starting-a-new-translation}
 
