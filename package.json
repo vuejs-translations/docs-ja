@@ -28,7 +28,7 @@
     "textlint": "^12.1.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
-    "textlint-rule-preset-vuejs-jp": "github:vuejs-jp/textlint-rule-preset-vuejs-jp"
+    "textlint-rule-preset-vuejs-jp": "https://github.com/vuejs-jp/textlint-rule-preset-vuejs-jp/tarball/v1.3.0"
   },
   "pnpm": {
     "peerDependencyRules": {
