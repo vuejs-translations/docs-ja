@@ -127,6 +127,8 @@
 
 コンポーネントが窮屈に感じられたり、読みにくくなったりした場合、複数行のプロパティの間にスペースを追加することで、再び読み飛ばしやすくできます。Vim などのエディターでは、このような書式設定オプションにより、キーボードでの操作を容易にすることもできます。
 
+<div class="options-api">
+
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
 
@@ -156,6 +158,7 @@ computed: {
   }
 }
 ```
+
 </div>
 
 <div class="style-example style-example-good">
@@ -185,6 +188,68 @@ computed: {
   }
 }
 ```
+
+</div>
+
+</div>
+
+<div class="composition-api">
+
+<div class="style-example style-example-bad">
+<h3>悪い例</h3>
+
+```js
+defineProps({
+  value: {
+    type: String,
+    required: true
+  },
+  focused: {
+    type: Boolean,
+    default: false
+  },
+  label: String,
+  icon: String
+})
+const formattedValue = computed(() => {
+  // ...
+})
+const inputClasses = computed(() => {
+  // ...
+})
+```
+
+</div>
+
+<div class="style-example style-example-good">
+<h3>良い例</h3>
+
+```js
+defineProps({
+  value: {
+    type: String,
+    required: true
+  },
+
+  focused: {
+    type: Boolean,
+    default: false
+  },
+
+  label: String,
+  icon: String
+})
+
+const formattedValue = computed(() => {
+  // ...
+})
+
+const inputClasses = computed(() => {
+  // ...
+})
+```
+
+</div>
 
 </div>
 
