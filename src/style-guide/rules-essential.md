@@ -44,6 +44,7 @@
   :::
 
 <div class="options-api">
+
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
 
@@ -83,9 +84,11 @@ props: {
 ```
 
 </div>
+
 </div>
 
 <div class="composition-api">
+
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
 
@@ -123,6 +126,7 @@ const props = defineProps({
 ```
 
 </div>
+
 </div>
 
 ## キー付きの `v-for` を使用する {#use-keyed-v-for}
@@ -131,6 +135,8 @@ const props = defineProps({
 
 ::: details 詳しい説明
 例えば、TODO のリストがあるとします:
+
+<div class="options-api">
 
 ```js
 data() {
@@ -148,6 +154,25 @@ data() {
   }
 }
 ```
+
+</div>
+
+<div class="composition-api">
+
+```js
+const todos = ref([
+  {
+    id: 1,
+    text: 'Learn to use v-for'
+  },
+  {
+    id: 2,
+    text: 'Learn to use key'
+  }
+])
+```
+
+</div>
 
 そして、アルファベット順に並べ替えます。DOM を更新するとき、Vue はレンダリングを最適化し、最も低コストな DOM の操作を実行します。つまり、最初の todo 要素を削除して、リストの最後に再び追加するということかもしれません。
 
@@ -214,6 +239,8 @@ Vue がディレクティブを処理する際、 `v-if` は `v-for` よりも�
 
 これは、次のように、算出プロパティに対して反復処理を行うことで解決できます:
 
+<div class="options-api">
+
 ```js
 computed: {
   activeUsers() {
@@ -221,6 +248,18 @@ computed: {
   }
 }
 ```
+
+</div>
+
+<div class="composition-api">
+
+```js
+const activeUsers = computed(() => {
+  return users.filter((user) => user.isActive)
+})
+```
+
+</div>
 
 ```vue-html
 <ul>
