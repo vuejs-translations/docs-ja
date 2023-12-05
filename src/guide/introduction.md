@@ -91,7 +91,7 @@ const count = ref(0)
 すでに分からないことがあるかもしれませんが、ご心配なく。このドキュメントの続きを読めば、細かい点まで理解できるようになっています。Vue が何を提供するかを大まかに掴んでいただくため、今はまず、このまま読み進めていただければと思います。
 
 :::tip 前提となる知識
-このドキュメントの続きでは、HTML、CSS、そして JavaScript の基礎知識があることが前提となっています。もしフロントエンドの開発をまったく経験したことがなければ、最初の一歩で Vue のようなフレームワークにすぐに飛び込むのは最適な方針でないかもしれません。基本を習ってからここに戻ってくるのでも大丈夫です！　[この JavaScript の概要](https://developer.mozilla.org/ja/docs/Web/JavaScript/A_re-introduction_to_JavaScript)で、自分の知識レベルを確認することができます。ほかのフレームワークを使用した経験があれば、役立ちます。ただし、必須ではありません。
+このドキュメントの続きでは、HTML、CSS、そして JavaScript の基礎知識があることが前提となっています。もしフロントエンドの開発をまったく経験したことがなければ、最初の一歩で Vue のようなフレームワークにすぐに飛び込むのは最適な方針でないかもしれません。基本を習ってからここに戻ってくるのでも大丈夫です！　必要に応じて、[JavaScript](https://developer.mozilla.org/ja/docs/Web/JavaScript/A_re-introduction_to_JavaScript)、[HTML](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML)、[CSS](https://developer.mozilla.org/ja/docs/Learn/CSS/First_steps) の概要を見て知識レベル確認できます。他のフレームワークを使用した経験があれば役立ちますが、必須ではありません。
 :::
 
 ## プログレッシブフレームワーク {#the-progressive-framework}
