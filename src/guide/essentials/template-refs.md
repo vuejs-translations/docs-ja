@@ -67,7 +67,7 @@ export default {
 
 </div>
 
-参照にアクセスできるのは、**コンポーネントがマウントされた後**に限られることに注意してください。テンプレートの式で <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> にアクセスしようとしても、初回のレンダリングでは `null` になっています。なぜなら、初回のレンダリングが終わった後でないと要素が存在しないためです！
+参照にアクセスできるのは、**コンポーネントがマウントされた後**に限られることに注意してください。テンプレートの式で <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span> にアクセスしようとしても、初回のレンダリングでは <span class="options-api">`undefined`</span><span class="composition-api">`null`</span> になっています。なぜなら、初回のレンダリングが終わった後でないと要素が存在しないためです！
 
 <div class="composition-api">
 
