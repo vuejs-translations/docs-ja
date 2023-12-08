@@ -23,17 +23,17 @@
   ```vue
   <script setup>
   import { ref, provide } from 'vue'
-  import { fooSymbol } from './injectionSymbols'
+  import { countSymbol } from './injectionSymbols'
 
   // 静的な値を提供
-  provide('foo', 'bar')
+  provide('path', '/project/')
 
   // リアクティブな値を提供
   const count = ref(0)
   provide('count', count)
 
   // シンボルのキーを使って提供
-  provide(fooSymbol, count)
+  provide(countSymbol, count)
   </script>
   ```
 
@@ -81,19 +81,19 @@
   ```vue
   <script setup>
   import { inject } from 'vue'
-  import { fooSymbol } from './injectionSymbols'
+  import { countSymbol } from './injectionSymbols'
 
   // デフォルト値なしの静的な値を注入
-  const foo = inject('foo')
+  const path = inject('path')
 
   // リアクティブな値を注入
   const count = inject('count')
 
   // シンボルのキーを使って注入
-  const foo2 = inject(fooSymbol)
+  const count2 = inject(countSymbol)
 
   // デフォルト値ありで注入
-  const bar = inject('foo', 'default value')
+  const bar = inject('path', '/default-path')
 
   // 関数のデフォルト値を使って注入
   const fn = inject('function', () => {})
@@ -103,6 +103,16 @@
   </script>
   ```
 
-- **参照**
+## hasInjectionContext() <sup class="vt-badge" data-text="3.3+" /> {#has-injection-context}
+
+[inject()](#inject) が警告なしで使用できる場合に true を返します（`setup()` の外側など、間違った場所で呼び出されたという警告）。このメソッドは、エンドユーザーに警告を出すことなく、内部的に `inject()` を使用したいライブラリーが使用するように設計されています。
+
+- **型**
+
+  ```ts
+  function hasInjectionContext(): boolean
+  ```
+
+* **参照**
   - [ガイド - Provide / Inject](/guide/components/provide-inject)
   - [ガイド - Provide / Inject の型付け](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
