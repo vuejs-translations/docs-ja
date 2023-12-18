@@ -17,6 +17,7 @@ if (typeof window !== 'undefined') {
   }
 }
 </script>
+
 # コンポーネントのイベント {#component-events}
 
 > このページは、すでに[コンポーネントの基礎](/guide/essentials/component-basics)を読んでいることを前提にしています。初めてコンポーネントに触れる方は、まずそちらをお読みください。
@@ -176,15 +177,15 @@ export default {
 
 </div>
 
-`emits` オプションと `defineEmits()` マクロはオブジェクト構文もサポートしており、発行されたイベントのペイロードのランタイムバリデーションを実行できます:
+`emits` オプションと `defineEmits()` マクロはオブジェクト構文もサポートしています。TypeScript を使用している場合は引数の型付けができ、発行されるイベントのペイロードのランタイムバリデーションを実行できます:
 
 <div class="composition-api">
 
 ```vue
 <script setup>
 const emit = defineEmits({
-  submit(payload) {
-    // バリデーションの合格/不合格を示す
+  submit(payload: { email: string, password: string }) {
+    // バリデーションの合格/不合格を示すための
     // `true` または `false` を返す
   }
 })
@@ -210,8 +211,8 @@ const emit = defineEmits<{
 ```js
 export default {
   emits: {
-    submit(payload) {
-      // バリデーションの合格/不合格を示す
+    submit(payload: { email: string, password: string }) {
+      // バリデーションの合格/不合格を示すための
       // `true` または `false` を返す
     }
   }
@@ -287,3 +288,15 @@ export default {
 ```
 
 </div>
+
+## props としてのイベント {#events-props}
+
+大文字のイベント名の前に `on` を付けることで、イベントを `props` として宣言して渡すこともできます。
+
+`props.onEvent` を使用するのと `emit('event')` を使用するのでは動作が異なります。前者はプロパティベースのリスナー（`@event` または `:on-event`）のみを処理します。
+
+:::warning
+もし `:onEvent` と `@event` の両方が渡された場合、`props.onEvent` は「関数」ではなく「関数の配列」になる可能性があります。この動作は安定しておらず、将来変更される可能性があります。
+:::
+
+このため、イベントを発行するときには `props.onEvent` の代わりに `emit('event')` を使用することを推奨します。
