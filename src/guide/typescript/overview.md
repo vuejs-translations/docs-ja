@@ -42,7 +42,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 `tsconfig.json` を手動で構成する場合、いくつかの注目すべきオプションは以下の通りです:
 
-- Vite は TypeScript のトランスパイルに [esbuild](https://esbuild.github.io/) を使用しており、単一ファイルのトランスパイル制限に従うので、[`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) を `true` に設定してください。
+- Vite は TypeScript のトランスパイルに [esbuild](https://esbuild.github.io/) を使用しており、単一ファイルのトランスパイル制限に従うので、[`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) を `true` に設定してください。[`compilerOptions.verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) は [`isolatedModules` のスーパーセット](https://github.com/microsoft/TypeScript/issues/53601)であり、これも良い選択です。これは [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) で使用されています。
 
 - Options API を使用する場合は、コンポーネントオプションにおける this の型チェックを活用するために [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) を `true` に設定 (もしくは少なくとも strict フラグの一部である [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis) を `true` に設定) する必要があります。そうでないと、this は常に any 型として扱われます。
 
