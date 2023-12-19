@@ -4164,3 +4164,7 @@ packages:
       - '@textlint/types'
       - textlint
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
