@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: vuejs-translations/ryu-cho@v1
         with:
+          # ↓ personal access token (classic) with `public_repo` scope
           access-token: ${{ secrets.RYU_CHO_ACCESS_TOKEN }}
           username: ${{ secrets.RYU_CHO_USER_NAME }}
           email: ${{ secrets.RYU_CHO_USER_EMAIL }}
