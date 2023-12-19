@@ -315,10 +315,6 @@ export default {
 
 `computed()` 関数は、通常 Composition API のコンポーネントで使用されますが、Options API の特定のユースケースを補完するために使用することもできます。API 選択を Composition API に設定して[リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals)と[算出プロパティ](/guide/essentials/computed)を読むと、より詳しい使い方を学ぶことができます。
 
-:::warning 一時的な設定が必要
-上記の使い方では、`app.config.unwrapInjectedRef = true` を設定して、インジェクションが自動的に算出 ref をアンラップするようにする必要があります。これは Vue 3.3 でデフォルトの動作になり、この設定は破損を避けるために一時的に導入されています。3.3 以降では不要になります。
-:::
-
 </div>
 
 ## シンボルキーの利用 {#working-with-symbol-keys}
