@@ -42,4 +42,6 @@
 
 この行動規範は、https://www.contributor-covenant.org/version/1/4/code-of-conduct.html にある [Contributor Covenant][homepage] のバージョン 1.4 を基にしています。
 
+この行動規範のよくある質問への回答は https://www.contributor-covenant.org/faq を参照してください。
+
 [homepage]: https://www.contributor-covenant.org
