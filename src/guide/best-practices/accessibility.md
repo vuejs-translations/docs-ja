@@ -123,7 +123,7 @@ watch(
 | main            | role="main"          | ドキュメントの主要な、または中心となる内容。                                                                     |
 | footer          | role="contentinfo"   | 親文章に関する情報: 脚注/著作権情報/プライバシーステートメントへのリンク                           |
 | aside           | role="complementary" | メインコンテンツをサポートしつつ、独立して意味を持つコンテンツ                                    |
-| _Not available_ | role="search"        | アプリケーションの検索機能を含むセクション                                               |
+| search          | role="search"        | アプリケーションの検索機能を含むセクション                                               |
 | form            | role="form"          | フォームに関連する要素のコレクション                                                                           |
 | section         | role="region"        | 関連性がありユーザーが移動したくなるであろうコンテンツ。この要素にはラベルを付ける必要がある |
 
