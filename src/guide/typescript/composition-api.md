@@ -50,6 +50,16 @@ const props = defineProps<Props>()
 </script>
 ```
 
+これは `Props` が外部のソースからインポートされた場合にも機能します。この機能は、TypeScript が Vue の peer dependency である必要があります。
+
+```vue
+<script setup lang="ts">
+import type { Props } from './foo'
+
+const props = defineProps<Props>()
+</script>
+```
+
 #### 構文の制限 {#syntax-limitations}
 
 バージョン 3.2 以下では、`defineProps()` のジェネリック型の引数はリテラル型かローカルのインターフェースへの参照に制限されていました。
