@@ -2,6 +2,10 @@
 footer: false
 ---
 
+<script setup>
+import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
+</script>
+
 # クイックスタート {#quick-start}
 
 ## オンラインで Vue を試す {#try-vue-online}
@@ -22,9 +26,38 @@ footer: false
 
 このセクションでは、ローカルマシン上で Vue の[シングルページアプリケーション](/guide/extras/ways-of-using-vue#single-page-application-spa)を生成する方法を紹介します。作成されたプロジェクトは、[Vite](https://ja.vitejs.dev/) に基づいたビルド設定を使用し、Vue の単一ファイルコンポーネント（SFC）を使用できるようにします。
 
-[Node.js](https://nodejs.org/) の最新バージョンがインストールされていること、現在の作業ディレクトリがプロジェクトを作成する予定の場所であることを確認し、コマンドラインで次のコマンドを（`>` 記号なしで）実行します:
+[Node.js](https://nodejs.org/) の最新バージョンがインストールされていること、現在の作業ディレクトリがプロジェクトを作成する予定の場所であることを確認し、コマンドラインで次のコマンドを（`$` 記号なしで）実行します:
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt;</span> <span style="color:#A6ACCD;">npm create vue@latest</span></span></code></pre></div>
+<VTCodeGroup>
+  <VTCodeGroupTab label="npm">
+
+  ```sh
+  $ npm create vue@latest
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="pnpm">
+  
+  ```sh
+  $ pnpm create vue@latest
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="yarn">
+  
+  ```sh
+  $ yarn create vue@latest
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="bun">
+  
+  ```sh
+  $ bun create vue@latest
+  ```
+
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 このコマンドは、公式の Vue プロジェクトスキャフォールディングツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。TypeScript やテストのサポートなど、いくつかのオプション機能がプロンプトに表示されます:
 
@@ -43,10 +76,44 @@ footer: false
 
 もしオプションについてはっきりとわからないなら、今のところ単純にエンターを押して `No` を選んでください。プロジェクトが作成されたら、指示に従って依存関係をインストールし開発サーバーを起動しましょう:
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">cd</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span>
-<span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm install</span></span>
-<span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run dev</span></span>
-<span class="line"></span></code></pre></div>
+<VTCodeGroup>
+  <VTCodeGroupTab label="npm">
+
+  ```sh
+  $ cd <your-project-name>
+  $ npm install
+  $ npm run dev
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="pnpm">
+  
+  ```sh
+  $ cd <your-project-name>
+  $ pnpm install
+  $ pnpm run dev
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="yarn">
+  
+  ```sh
+  $ cd <your-project-name>
+  $ yarn
+  $ yarn dev
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="bun">
+  
+  ```sh
+  $ cd <your-project-name>
+  $ bun install
+  $ bun run dev
+  ```
+
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 あなたの初めての Vue プロジェクトが今実行されているはずです！　なお、生成されたプロジェクトのサンプルコンポーネントは、[Options API](/guide/introduction#options-api) ではなく、[Composition API](/guide/introduction#composition-api) と `<script setup>` で書かれていることに注意してください。いくつか追加のヒントをどうぞ:
 
@@ -57,8 +124,36 @@ footer: false
 
 あなたのアプリをプロダクション環境に出す準備ができたら、以下を実行してください:
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run build</span></span>
-<span class="line"></span></code></pre></div>
+<VTCodeGroup>
+  <VTCodeGroupTab label="npm">
+
+  ```sh
+  $ npm run build
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="pnpm">
+  
+  ```sh
+  $ pnpm run build
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="yarn">
+  
+  ```sh
+  $ yarn build
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="bun">
+  
+  ```sh
+  $ bun run build
+  ```
+
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 これであなたのアプリのプロダクション向けビルドがプロジェクトの `./dist` ディレクトリーに作成されます。プロダクション環境への出荷についてさらに学ぶには [プロダクション環境への配信](/guide/best-practices/production-deployment) を確認してください。
 
