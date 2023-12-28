@@ -156,34 +156,6 @@ components/
 
 </div>
 
-## 単一インスタンスのコンポーネント名 {#single-instance-component-names}
-
-**常に1つのアクティブなインスタンスしかもたないコンポーネントは、1つしか存在しえないことをを示すために `The` という接頭辞で始めるべきです。**
-
-これは、そのコンポーネントが 1 つのページでしか使われないということを意味するのではなく、**ページごと**に 1 回しか使われないという意味です。これらのコンポーネントは、アプリ内のコンテキストではなく、アプリに対して固有であるため、決して props を受け入れることはありません。もし props を追加する必要性があることに気づいたのなら、それは**現時点**でページごとに 1 回しか使われていないだけで、実際には再利用可能なコンポーネントだということを示すよい目印です。
-
-<div class="style-example style-example-bad">
-<h3>悪い例</h3>
-
-```
-components/
-|- Heading.vue
-|- MySidebar.vue
-```
-
-</div>
-
-<div class="style-example style-example-good">
-<h3>良い例</h3>
-
-```
-components/
-|- TheHeading.vue
-|- TheSidebar.vue
-```
-
-</div>
-
 ## 密結合コンポーネントの名前 {#tightly-coupled-component-names}
 
 **親コンポーネントと密結合した子コンポーネントには、親コンポーネントの名前をプレフィックスとして含むべきです。**
