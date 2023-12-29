@@ -70,7 +70,7 @@ Vue コンパイラーの新しい**マイナー**バージョンは、以前の
 
 実質的な API に対する新機能と Vue への主要な変更は、**Request for Comments** (RFC) プロセスを通過します。RFC プロセスは、新機能がフレームワークに導入されるための一貫して管理された経路を提供し、ユーザーが設計プロセスに参加してフィードバックをする機会を与えることを目的とします。
 
-RFC プロセスは、GitHub 上の [vuejs/rfcs](https://github.com/vuejs/rfcs) レポジトリで行われます。
+RFC プロセスは、GitHub 上の [vuejs/rfcs](https://github.com/vuejs/rfcs) リポジトリーで行われます。
 
 ## 実験的機能 {#experimental-features}
 
