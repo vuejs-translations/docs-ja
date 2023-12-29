@@ -64,6 +64,19 @@ HTML 属性の中ではマスタッシュ構文が使えません。代わりに
 
 > このガイドの残りの部分では、Vue を用いる開発者にとって最も一般的な書き方である省略記法をコード例のなかで使用します。
 
+### 同名省略記法 <sup class="vt-badge" data-text="3.4+" /> {#same-name-shorthand}
+
+バインドされている JavaScript の値と属性が同じ名前を持っている場合、属性値を省略するために構文をさらに短くすることができます:
+
+```vue-html
+<!-- :id="id" と同じ -->
+<div :id></div>
+<!-- 同じように動きます -->
+<div v-bind:id></div>
+```
+
+これは、JavaScript でオブジェクトを宣言するときのプロパティ省略記法に似ています。この機能は Vue 3.4 以上でのみ使用できます。
+
 ### ブーリアン属性 {#boolean-attributes}
 
 [ブーリアン属性](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes)は、要素に含まれるかどうかによって「真」または「偽」の値を表す属性です。例えば、[`disabled`](https://developer.mozilla.org/ja/docs/Web/HTML/Attributes/disabled) は最も一般的に用いられるブーリアン属性の 1 つです。
