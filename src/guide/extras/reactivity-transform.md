@@ -1,12 +1,9 @@
 # Reactivity Transform {#reactivity-transform}
 
-:::danger 非推奨の実験的な機能
-Reactivity Transform は実験的な機能でしたが、非推奨となりました。[理由についてはこちら](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028)をお読みください。
+:::danger 削除された実験的な機能
+Reactivity Transform は実験的な機能でしたが、最新の 3.4 のリリースで削除されました。[理由についてはこちら](https://github.com/vuejs/rfcs/discussions/369#discussioncomment-5059028)をお読みください。
 
-最終的には、将来のマイナーリリースで Vue のコアから削除される予定です。
-
-- 移行する場合は、そのプロセスを自動化できる[コマンドラインツール](https://github.com/edison1105/drop-reactivity-transform)をチェックしてください。
-- 今後も使用したい場合は、[Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) というプラグインで利用できるようになりました。
+今後も使用したい場合は、[Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) というプラグインで利用できるようになりました。
 :::
 
 :::tip Composition API 固有
@@ -286,8 +283,8 @@ Vue の SFC 内だけでなく、有効な JS / TS を書くことのできる�
 
 ## 明示的なオプトイン {#explicit-opt-in}
 
-:::warning
-下記は、Vue バージョン 3.3 以下のみに適用されます。コアのサポートは 3.4 以降では削除されます。引き続き transform を使用する場合は、代わりに [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) に移行してください。
+:::danger もうコアではサポートされません
+下記は、Vue バージョン 3.3 以下のみに適用されます。Vue Core 3.4 以降と `@vitejs/plugin-vue` 5.0 以降でのサポートは削除されました。引き続き transform を使用する場合は、代わりに [Vue Macros](https://vue-macros.sxzz.moe/features/reactivity-transform.html) に移行してください。
 :::
 
 ### Vite {#vite}
