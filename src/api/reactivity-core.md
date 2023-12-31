@@ -52,7 +52,7 @@
   ```ts
   // 読み取り専用
   function computed<T>(
-    getter: () => T,
+    getter: (oldValue: T | undefined) => T,
     // 下記の "Computed Debugging" リンクをご参照ください
     debuggerOptions?: DebuggerOptions
   ): Readonly<Ref<Readonly<T>>>
@@ -60,7 +60,7 @@
   // 書き込み可
   function computed<T>(
     options: {
-      get: () => T
+      get: (oldValue: T | undefined) => T
       set: (value: T) => void
     },
     debuggerOptions?: DebuggerOptions
@@ -112,6 +112,7 @@
   - [ガイド - 算出プロパティ](/guide/essentials/computed)
   - [ガイド - 算出プロパティのデバッグ](/guide/extras/reactivity-in-depth#computed-debugging)
   - [ガイド - `computed()` の型付け](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+  - [ガイド - パフォーマンス - 算出の安定性](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
 
