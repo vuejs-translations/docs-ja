@@ -17,6 +17,7 @@ const nav: ThemeConfig['nav'] = [
       { text: 'クイックスタート', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
       { text: '用語集', link: '/glossary/' },
+      { text: 'エラーリファレンス', link: '/error-reference/' },
       {
         text: 'Vue 2 のドキュメント',
         link: 'https://v2.ja.vuejs.org'
