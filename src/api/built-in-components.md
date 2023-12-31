@@ -126,7 +126,7 @@ h(Transition, {
   </Transition>
   ```
 
-- **参照** [`<Transition>` ガイド](/guide/built-ins/transition)
+- **参照** [ガイド - Transition](/guide/built-ins/transition)
 
 ## `<TransitionGroup>` {#transitiongroup}
 
