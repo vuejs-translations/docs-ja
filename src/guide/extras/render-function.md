@@ -241,13 +241,23 @@ Vue の型定義は、TSX を使用するための型推論も提供します。
 
 ### JSX 型推論 {#jsx-type-inference}
 
-Vue JSX 変換と同様に、Vue の JSX も異なる型定義が必要です。現在、Vue の型は自動的に Vue の JSX 型をグローバルに登録します。つまり、Vue の型が利用可能な場合、TSX はそのまま使用できます。
+Vue JSX 変換と同様に、Vue の JSX も異なる型定義が必要です。
 
-グローバルな JSX 型は、特に React と組み合わせて使用する場合、他の JSX 型推論を必要とするライブラリーと競合する可能性があります。3.3 から、Vue では TypeScript の [jsxImportSource](https://www.typescriptlang.org/ja/tsconfig#jsxImportSource) オプションを使用して JSX の名前空間を指定することがサポートされています。3.4 ではデフォルトのグローバルな JSX 名前空間の登録を削除する予定です。
+Vue 3.4 から、Vue はもはやグローバルな JSX 名前空間を暗黙的に登録しません。TypeScript に Vue の JSX 型定義を使用するよう指示するためには、`tsconfig.json` に以下を含めることを確認してください：
 
-TSX ユーザーは、3.3 にアップグレード後に `tsconfig.json` で [jsxImportSource](https://www.typescriptlang.org/ja/tsconfig#jsxImportSource) を `vue` に設定するか、ファイルごとに `/* @jsxImportSource vue */` でオプトインすることをおすすめします。これにより、新しい動作を選択できるだけでなく、3.4 がリリースされた際にもスムーズにアップグレードできます。
+```json
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
+    // ...
+  }
+}
+```
 
-もし、グローバルな `JSX` 名前空間の存在に依存するコードがある場合、`vue/jsx` を明示的に参照することで、3.4 以前のグローバルな動作をそのまま保持することができます。`vue/jsx` はグローバルな `JSX` 名前空間を登録します。
+ファイルの先頭に `/* @jsxImportSource vue */` のコメントを追加することで、ファイルごとにこの設定を適用することもできます。
+
+もし、グローバルな `JSX` 名前空間の存在に依存するコードがある場合、プロジェクト内で `vue/jsx` を明示的にインポートまたは参照することで、3.4 以前のグローバル動作をそのまま保持することができます。これにより、`vue/jsx` はグローバルな `JSX` 名前空間を登録します。
 
 ## レンダー関数のレシピ {#render-function-recipes}
 
