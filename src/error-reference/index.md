@@ -15,9 +15,9 @@ onMounted(() => {
 
 プロダクションビルドにおいて、以下のエラーハンドラー API に渡される第 3 引数は完全な情報の文字列ではなく短いコードになります:
 
-- [`app.config.errorHandler`](/api/application.html#app-config-errorhandler)
-- [`onErrorCaptured`](/api/composition-api-lifecycle.html#onerrorcaptured) (Composition API)
-- [`errorCaptured`](/api/options-lifecycle.html#errorcaptured) (Options API)
+- [`app.config.errorHandler`](/api/application#app-config-errorhandler)
+- [`onErrorCaptured`](/api/composition-api-lifecycle#onerrorcaptured) (Composition API)
+- [`errorCaptured`](/api/options-lifecycle#errorcaptured) (Options API)
 
 以下の表は、コードを元の完全な情報文字列にマッピングしたものです。
 
