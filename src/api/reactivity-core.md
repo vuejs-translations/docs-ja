@@ -112,7 +112,7 @@
   - [ガイド - 算出プロパティ](/guide/essentials/computed)
   - [ガイド - 算出プロパティのデバッグ](/guide/extras/reactivity-in-depth#computed-debugging)
   - [ガイド - `computed()` の型付け](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
-  - [ガイド - パフォーマンス - 算出の安定性](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
+  - [ガイド - パフォーマンス - 算出プロパティの安定性](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive() {#reactive}
 
