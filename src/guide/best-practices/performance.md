@@ -124,7 +124,7 @@ Vue では、子コンポーネントは、受け取った props のうち少な
 
 `v-memo` は組み込みのディレクティブで、大きなサブツリーや `v-for` リストの更新を条件付きでスキップするために使用することができます。詳細は [API リファレンス](/api/built-in-directives#v-memo)を参照してください。
 
-### 算出の安定性 <sup class="vt-badge" data-text="3.4+" /> {#computed-stability}
+### 算出プロパティの安定性 <sup class="vt-badge" data-text="3.4+" /> {#computed-stability}
 
 3.4 以降、算出プロパティは、算出値が以前の値から変更された場合にのみエフェクトをトリガーします。例えば、以下の `isEven` の算出プロパティは、戻り値が `true` から `false` に変更された場合、またはその逆の場合にのみエフェクトをトリガーします:
 
