@@ -48,6 +48,8 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 - 例えば `create-vue` プロジェクトでデフォルトで設定される `@/*` エイリアスのような resolver エイリアスをビルドツールで設定した場合、TypeScript 用の設定として、[`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths) にもエイリアスを設定する必要があります。
 
+- Vue で TSX を使用する場合は [`compilerOptions.jsx`](https://www.typescriptlang.org/tsconfig#jsx) を `"preserve"` に設定し [`compilerOptions.jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource) を `"vue"` に設定してください。
+
 参照:
 
 - [Official TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
