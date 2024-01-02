@@ -243,7 +243,7 @@ Vue の型定義は、TSX を使用するための型推論も提供します。
 
 Vue JSX 変換と同様に、Vue の JSX も異なる型定義が必要です。
 
-Vue 3.4 から、Vue はもはやグローバルな JSX 名前空間を暗黙的に登録しません。TypeScript に Vue の JSX 型定義を使用するよう指示するためには、`tsconfig.json` に以下を含めることを確認してください：
+Vue 3.4 から、Vue はもはやグローバルな `JSX` 名前空間を暗黙的に登録しません。TypeScript に Vue の JSX 型定義を使用するよう指示するためには、`tsconfig.json` に以下を含めることを確認してください:
 
 ```json
 {
