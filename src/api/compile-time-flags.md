@@ -10,27 +10,27 @@ outline: deep
 
 ビルドツールに応じた設定方法については、[設定ガイド](#configuration-guides)を参照してください。
 
-## `__VUE_OPTIONS_API__`
+## `__VUE_OPTIONS_API__` {#VUE_OPTIONS_API}
 
 - **デフォルト:** `true`
 
   Options API サポートを有効 / 無効にします。無効にするとバンドルが小さくなりますが、サードパーティーのライブラリーが Options API に依存している場合、互換性に影響する可能性があります。
 
-## `__VUE_PROD_DEVTOOLS__`
+## `__VUE_PROD_DEVTOOLS__` {#VUE_PROD_DEVTOOLS}
 
 - **デフォルト:** `false`
 
   本番ビルドにおける devtools サポートを有効 / 無効にします。バンドルに含まれるコードが増えるので、デバッグ目的でのみ有効にすることをお勧めします。
 
-## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` <sup class="vt-badge" data-text="3.4+" />
+## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` <sup class="vt-badge" data-text="3.4+" /> {#VUE_PROD_HYDRATATION_MISMATCH_DETAILS}
 
 - **デフォルト:** `false`
 
   本番ビルドにおけるハイドレーションの不一致についての詳細な警告を有効 / 無効にします。バンドルに含まれるコードが増えるので、デバッグ目的でのみ有効にすることをお勧めします。
 
-## 設定ガイド
+## 設定ガイド {#configuration-guides}
 
-### Vite
+### Vite {#vite}
 
 `@vitejs/plugin-vue` はこれらのフラグのデフォルト値を自動的に提供します。デフォルト値を変更するには、Vite の [`define` 設定オプション](https://vitejs.dev/config/shared-options.html#define)を使用してください:
 
@@ -46,7 +46,7 @@ export default defineConfig({
 })
 ```
 
-### vue-cli
+### vue-cli {#vue-cli}
 
 `@vue/cli-service` はこれらのフラグのデフォルト値を自動的に提供します。値を設定 / 変更するには:
 
@@ -66,7 +66,7 @@ module.exports = {
 }
 ```
 
-### webpack
+### webpack {#webpack}
 
 フラグは webpack の [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) を使って定義します:
 
@@ -84,7 +84,7 @@ module.exports = {
 }
 ```
 
-### Rollup
+### Rollup {#rollup}
 
 フラグは [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace) を使って定義します:
 
