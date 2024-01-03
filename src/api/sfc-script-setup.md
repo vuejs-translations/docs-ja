@@ -235,12 +235,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 ```js
 // 親から v-model 経由で使用される、"modelValue" props を宣言する
-const modelValue = defineModel()
+const model = defineModel()
 // もしくは: オプション付きで "modelValue" props を宣言する
-const modelValue = defineModel({ type: String })
+const model = defineModel({ type: String })
 
 // 変更された時に "update:modelValue" イベントを発行
-modelValue.value = 'hello'
+model.value = 'hello'
 
 // 親から v-model:count 経由で使用される、"count" props を宣言する
 const count = defineModel('count')
@@ -266,15 +266,18 @@ if (modelModifiers.trim) {
 }
 ```
 
-通常、修飾子が存在する場合は、親から読み込んだ値や親に同期した値を条件付きで変換する必要があります。これは `get` と `set` 変換オプションで実現できます:
+
+修飾子が存在する場合、親から読み込んだ値や親に同期して返す値を変換する必要があることが多いです。それを実現するには `get` と `set` 変換オプションを使用します:
 
 ```js
 const [modelValue, modelModifiers] = defineModel({
   // ここでは必要ないので get() は省略されている
   set(value) {
+    // .trim 修飾子が使われた場合、トリムした値を返す
     if (modelModifiers.trim) {
       return value.trim()
     }
+    // それ以外は値をそのまま返す
     return value
   }
 })
