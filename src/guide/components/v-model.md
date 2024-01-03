@@ -373,8 +373,6 @@ console.log(modifiers) // { capitalize: true }
 
 ```vue{6-8}
 <script setup>
-import { computed } from 'vue'
-
 const [model, modifiers] = defineModel({
   set(value) {
     if (modifiers.capitalize) {
