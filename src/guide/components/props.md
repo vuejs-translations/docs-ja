@@ -405,8 +405,9 @@ defineProps({
     }
   },
   // カスタムのバリデーター関数
+  // 3.4 以降、全ての props が第 2 引数として渡されます
   propF: {
-    validator(value) {
+    validator(value, props) {
       // 値が以下の文字列のいずれかに一致する必要がある
       return ['success', 'warning', 'danger'].includes(value)
     }
@@ -459,8 +460,9 @@ export default {
       }
     },
     // カスタムのバリデーター関数
+    // 3.4 以降、全ての props が第 2 引数として渡されます
     propF: {
-      validator(value) {
+      validator(value, props) {
         // 値が以下の文字列のいずれかに一致する必要がある
         return ['success', 'warning', 'danger'].includes(value)
       }
