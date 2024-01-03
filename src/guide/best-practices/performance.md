@@ -124,6 +124,53 @@ Vue では、子コンポーネントは、受け取った props のうち少な
 
 `v-memo` は組み込みのディレクティブで、大きなサブツリーや `v-for` リストの更新を条件付きでスキップするために使用することができます。詳細は [API リファレンス](/api/built-in-directives#v-memo)を参照してください。
 
+### 算出プロパティの安定性 <sup class="vt-badge" data-text="3.4+" /> {#computed-stability}
+
+3.4 以降、算出プロパティは、算出値が以前の値から変更された場合にのみエフェクトをトリガーします。例えば、以下の `isEven` の算出プロパティは、戻り値が `true` から `false` に変更された場合、またはその逆の場合にのみエフェクトをトリガーします:
+
+```js
+const count = ref(0)
+const isEven = computed(() => {
+  return count.value % 2 === 0 ? true : false
+})
+
+watchEffect(() => console.log(isEven.value)) // true
+
+// 算出値は `true` のままなので、新しいログをトリガーしません
+count.value = 2
+count.value = 4
+```
+
+これは不要なエフェクトのトリガーを減らしますが、残念ながら、算出プロパティが計算ごとに新しいオブジェクトを作成する場合には機能しません:
+
+```js
+const computedObj = computed(() => {
+  return {
+    isEven: count.value % 2 === 0 ? true : false
+  }
+})
+```
+
+新しいオブジェクトが毎回作成されるため、新しい値は技術的には常に古い値と異なります。たとえ `isEven` プロパティが同じままであるとしても、Vue は、古い値と新しい値を深く比較しない限り、わかりません。そのような比較はコストがかかりますし、その価値はないでしょう。
+
+その代わりに、新しい値と古い値を手動で比較し、何も変更されていないことがわかれば古い値を条件付きで返すことで、これを最適化することができます:
+
+```js
+const computedObj = computed((oldValue) => {
+  const newValue = {
+    isEven: count.value % 2 === 0 ? true : false
+  }
+  if (oldValue && oldValue.isEven === newValue.isEven) {
+    return oldValue
+  }
+  return newValue
+})
+```
+
+[Playground で試す](https://play.vuejs.org/#eNqlVMlu2zAQ/ZUBgSZ24UpuczMkd4MPLdAFadEeyh4UibKVSKRADm2jhv+9Q1KyDTRRXOQggJrlzeO8Ge7Y27aN1lawGUtMrqsWwQi07ZzLqmmVRtiBFuUEctW0FkUxgU2G+WpRliJH2EOpVQOXhHDJJZe5kgYp1kqE1CWOpuOjXfikayvNzwpXyuKXFqum+pNhpWQX/+s3JfQwoeT9wb13pOriR1ZbAekcdlwCwaDVMpwBKrNYCzkLpKK1j3wGryBNU5jCa0BNhhmUWW2Ey9hzuX+Q8/mEz2YbUqXYdOYn8KakEo4VLi6gP0cBzSf3pTrbuC/Yta1POWB29j6tb8/JGIxG48N1BjUO14haa1ajAXW7sI7ffxU8p9rjpUorcy+cbYsMBVXzpeLYLUc33qggA53JguZfuN5K29wIfSIpafkpw1VU1krpkT+GeMJ7Di+nbjVc8FFfEgde0Ec6ExUukzjsJG0j/aBo2pro0B/Abtfx2HuRkhuLSITf5HWV36WcBeaczcNhmHQSh3SPnLjldwPhegqbIA+o03mm4sO73JGKA9S/iI/APYiVxCdNYBOGhnpdVsvo1ihJb5iXiTOndlUL7XBIC85m/ZBzltW12nz0NrdCk96er0R+d4/91mydjbOvWhih19TTgw8zvRQY3Itvn8WWzgdnowpbU/SA81oYVVvHMYS9s7Ig2idxnu0H/xJXcvndLLYopOkv5Yj6PfXxnNEz/H7g6ke6V9FV/9ax/V8w4Rl9)
+
+同じ依存を毎回の実行で収集できるように、古い値を比較して返す前に、完全な算出を常に実行する必要があることに注意してください。
+
 ## 全般的な最適化 {#general-optimizations}
 
 > 以下のヒントは、ページロードと更新の両方のパフォーマンスに影響します。

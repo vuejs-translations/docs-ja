@@ -227,6 +227,52 @@ const props = withDefaults(defineProps<Props>(), {
 
 これは、同等なランタイム props の `default` オプションにコンパイルされます。さらに、`withDefaults` ヘルパーは、デフォルト値の型チェックを行います。また、返される `props` の型が、デフォルト値が宣言されているプロパティに対して、省略可能フラグが削除されていることを保証します。
 
+## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
+
+このマクロは親コンポーネントから `v-model` 経由で使用できる双方向バインディングの props を宣言するために使用できます。ref のように宣言および変更が可能です。これは同じ名前の props と、対応する `update:propName` イベントを宣言します。
+
+第一引数がリテラル文字列の場合、props の名前として使用されます。それ以外の場合、props 名はデフォルトで `"modelValue"` になります。どちらの場合も、props のオプションとして使用される追加のオブジェクトを渡すこともできます。
+
+```vue
+<script setup>
+const modelValue = defineModel({ type: String })
+modelValue.value = 'hello'
+
+const count = defineModel('count', { default: 0 })
+function inc() {
+  count.value++
+}
+</script>
+
+<template>
+  <input v-model="modelValue" />
+  <button @click="inc">increment</button>
+</template>
+```
+
+### ローカルモード
+
+オプションのオブジェクトでは追加で `local` オプションを指定することもできます。`true` に設定すると、親が一致する `v-model` を渡さなかった場合でも、ref をローカルで変更できます。つまりモデルが省略可能になります。
+
+```ts
+// ローカルで変更可能なモデル。親から一致する `v-model` を
+// 渡されない場合でも、ローカルで変更できる
+const count = defineModel('count', { local: true, default: 0 })
+```
+
+### 値の型を指定 <sup class="vt-badge ts" /> {#provide-value-type}
+
+`defineProps` や `defineEmits` と同様に、`defineModel` も型引数を受け取ることができ、モデルの値の型を指定できます:
+
+```ts
+const modelValue = defineModel<string>()
+//    ^? Ref<string | undefined>
+
+// オプション付きのデフォルトモデル。required は undefined になりうる値を除去する
+const modelValue = defineModel<string>({ required: true })
+//    ^? Ref<string>
+```
+
 ## defineExpose() {#defineexpose}
 
 `<script setup>` を使用したコンポーネントは、**デフォルトで閉じられています**。つまり、テンプレート参照や `$parent` チェーンを介して取得されるコンポーネントのパブリックインスタンスは、`<script setup>` 内で宣言されたバインディングを公開**しません**。
@@ -249,7 +295,7 @@ defineExpose({
 
 親がテンプレート参照を介してこのコンポーネントのインスタンスを取得すると、取得されたインスタンスは `{ a: number, b: number }` という形状になります（ref は通常のインスタンスと同様、自動的にアンラップされます）。
 
-## defineOptions() {#defineoptions}
+## defineOptions() <sup class="vt-badge" data-text="3.3+" /> {#defineoptions}
 
 このマクロは、`<script>` ブロックを別途使用することなく、`<script setup>` 内で直接コンポーネントオプションを宣言するために使用できます:
 
@@ -379,5 +425,5 @@ defineProps<{
 
 ## 制限 {#restrictions}
 
-* モジュールの実行セマンティクスの違いにより、`<script setup>` 内のコードは、SFC のコンテキストに依存しています。外部の `.js` や `.ts` ファイルに移動すると、開発者とツールの両方に混乱を招く可能性があります。そのため、**`<script setup>`** は、`src` 属性と一緒に使うことはできません。
-* `<script setup>` は、DOM 内のルートコンポーネントテンプレートをサポートしていません（[関連する議論](https://github.com/vuejs/core/issues/8391)）。
+- モジュールの実行セマンティクスの違いにより、`<script setup>` 内のコードは、SFC のコンテキストに依存しています。外部の `.js` や `.ts` ファイルに移動すると、開発者とツールの両方に混乱を招く可能性があります。そのため、**`<script setup>`** は、`src` 属性と一緒に使うことはできません。
+- `<script setup>` は、DOM 内のルートコンポーネントテンプレートをサポートしていません（[関連する議論](https://github.com/vuejs/core/issues/8391)）。
