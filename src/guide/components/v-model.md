@@ -1,6 +1,6 @@
 # コンポーネントの v-model {#component-v-model}
 
-## 基本的な使い方
+## 基本的な使い方{#basic-usage}
 
 コンポーネント上で `v-model` を使用すると双方向バインディングを実装できます。
 
@@ -49,7 +49,7 @@ const model = defineModel()
 
 [Playground の例](https://play.vuejs.org/#eNqFUtFKwzAU/ZWYl06YLbK30Q10DFSYigq+5KW0t11mmoQknZPSf/cm3eqEsT0l555zuefmpKV3WsfbBuiUpjY3XDtiwTV6ziSvtTKOLNZcFKQ0qiZRnATkG6JB0BIDJen2kp5iMlfSOlLbisw8P4oeQAhFPpURxVV0zWSa9PNwEgIHtRaZA0SEpOvbeduG5q5LE0Sh2jvZ3tSqADFjFHlGSYJkmhz10zF1FseXvIo3VklcrfX9jOaq1lyAedGOoz1GpyQwnsvQ3fdTqDnTwPhQz9eQf52ob+zO1xh9NWDBbIHRgXOZqcD19PL9GXZ4H0h03whUnyHfwCrReI+97L6RBdo+0gW3j+H9uaw+7HLnQNrDUt6oV3ZBzyhmsjiz+p/dSTwJfUx2+IpD1ic+xz5enwQGXEDJJaw8Gl2I1upMzlc/hEvdOBR6SNKAjqP1J6P/o6XdL11L5h4=)
 
-### 内部の仕組み
+### 内部の仕組み {#under-the-hood}
 
 `defineModel` は便利なマクロです。コンパイラーはこれを次のように展開します:
 

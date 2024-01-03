@@ -253,7 +253,7 @@ function inc() {
 }
 ```
 
-### 修飾子と変換
+### 修飾子と変換 {#modifiers-and-transformers}
 
 `v-model` ディレクティブで使われる修飾子にアクセスするには、`defineModel()` の戻り値を次のように分割代入します:
 
