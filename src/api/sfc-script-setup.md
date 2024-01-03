@@ -229,40 +229,63 @@ const props = withDefaults(defineProps<Props>(), {
 
 ## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
 
-このマクロは親コンポーネントから `v-model` 経由で使用できる双方向バインディングの props を宣言するために使用できます。ref のように宣言および変更が可能です。これは同じ名前の props と、対応する `update:propName` イベントを宣言します。
+このマクロは親コンポーネントから `v-model` 経由で使用できる双方向バインディングの props を宣言するために使用できます。使用例は、[コンポーネントの `v-model`](/guide/components/v-model) のガイドでも説明されています。
 
-第一引数がリテラル文字列の場合、props の名前として使用されます。それ以外の場合、props 名はデフォルトで `"modelValue"` になります。どちらの場合も、props のオプションとして使用される追加のオブジェクトを渡すこともできます。
+このマクロは内部でモデルの props と、それに対応する値更新イベントを宣言します。第一引数がリテラル文字列の場合、props の名前として使用されます。それ以外の場合、props 名はデフォルトで `"modelValue"` になります。どちらの場合も、props のオプションやモデル ref の値変換オプションを含んだ追加のオブジェクトを渡すこともできます。
 
-```vue
-<script setup>
-const modelValue = defineModel({ type: String })
-modelValue.value = 'hello'
+```js
+// 親から v-model 経由で使用される、"modelValue" props を宣言する
+const model = defineModel()
+// もしくは: オプション付きで "modelValue" props を宣言する
+const model = defineModel({ type: String })
 
-const count = defineModel('count', { default: 0 })
+// 変更された時に "update:modelValue" イベントを発行
+model.value = 'hello'
+
+// 親から v-model:count 経由で使用される、"count" props を宣言する
+const count = defineModel('count')
+// もしくは: オプション付きで "count" props を宣言する
+const count = defineModel('count', { type: Number, default: 0 })
+
 function inc() {
+  // 変更された時に "update:count" イベントを発行
   count.value++
 }
-</script>
-
-<template>
-  <input v-model="modelValue" />
-  <button @click="inc">increment</button>
-</template>
 ```
 
-### ローカルモード
+### 修飾子と変換 {#modifiers-and-transformers}
 
-オプションのオブジェクトでは追加で `local` オプションを指定することもできます。`true` に設定すると、親が一致する `v-model` を渡さなかった場合でも、ref をローカルで変更できます。つまりモデルが省略可能になります。
+`v-model` ディレクティブで使われる修飾子にアクセスするには、`defineModel()` の戻り値を次のように分割代入します:
 
-```ts
-// ローカルで変更可能なモデル。親から一致する `v-model` を
-// 渡されない場合でも、ローカルで変更できる
-const count = defineModel('count', { local: true, default: 0 })
+```js
+const [modelValue, modelModifiers] = defineModel()
+
+// v-model.trim に該当
+if (modelModifiers.trim) {
+  // ...
+}
 ```
 
-### 値の型を指定 <sup class="vt-badge ts" /> {#provide-value-type}
 
-`defineProps` や `defineEmits` と同様に、`defineModel` も型引数を受け取ることができ、モデルの値の型を指定できます:
+修飾子が存在する場合、親から読み込んだ値や親に同期して返す値を変換する必要があることが多いです。それを実現するには `get` と `set` 変換オプションを使用します:
+
+```js
+const [modelValue, modelModifiers] = defineModel({
+  // ここでは必要ないので get() は省略されている
+  set(value) {
+    // .trim 修飾子が使われた場合、トリムした値を返す
+    if (modelModifiers.trim) {
+      return value.trim()
+    }
+    // それ以外は値をそのまま返す
+    return value
+  }
+})
+```
+
+### TypeScript での使用 <sup class="vt-badge ts" /> {#usage-with-typescript}
+
+`defineProps` や `defineEmits` と同様に、`defineModel` も型引数を受け取ることができ、モデルの値や修飾子の型を指定できます:
 
 ```ts
 const modelValue = defineModel<string>()
@@ -271,6 +294,9 @@ const modelValue = defineModel<string>()
 // オプション付きのデフォルトモデル。required は undefined になりうる値を除去する
 const modelValue = defineModel<string>({ required: true })
 //    ^? Ref<string>
+
+const [modelValue, modifiers] = defineModel<string, 'trim' | 'uppercase'>()
+//                 ^? Record<'trim' | 'uppercase', true | undefined>
 ```
 
 ## defineExpose() {#defineexpose}
