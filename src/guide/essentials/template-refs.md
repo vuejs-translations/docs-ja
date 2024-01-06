@@ -12,7 +12,7 @@ Vue の宣言型レンダリングモデルは、直接的な DOM 操作のほ�
 
 <div class="composition-api">
 
-Composition API で参照を取得するには、以下のように同名の ref を宣言します:
+Composition API で参照を取得するには、以下のようにテンプレートの ref 属性の値と一致する名前の ref を宣言します:
 
 ```vue
 <script setup>
