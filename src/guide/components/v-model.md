@@ -1,6 +1,6 @@
 # コンポーネントの v-model {#component-v-model}
 
-## 基本的な使い方{#basic-usage}
+## 基本的な使い方 {#basic-usage}
 
 コンポーネント上で `v-model` を使用すると双方向バインディングを実装できます。
 
