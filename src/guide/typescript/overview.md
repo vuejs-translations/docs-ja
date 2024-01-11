@@ -210,7 +210,7 @@ let x: string | number = 1
 Vue CLI または webpack ベースのセットアップを使用する場合、テンプレート内の式での TypeScript の使用には `vue-loader@^16.8.0` が必要になります。
 :::
 
-### TSX の使用方法
+### TSX の使用方法 {#usage-with-tsx}
 
 Vue では、JSX / TSX を使ったコンポーネントの作成もサポートしています。詳細については、[レンダー関数と JSX](/guide/extras/render-function.html#jsx-tsx) で説明しています。
 
