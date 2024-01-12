@@ -21,6 +21,33 @@ Vue 2 や他のフレームワークから来た経験豊富な開発者であ�
 
 - また、 SFC モードと HTML モードの切り替えも可能です。前者は<a target="_blank" href="/guide/introduction.html#single-file-components">単一ファイルコンポーネント</a>（SFC）形式のコード例を表示します。これは、多くの開発者が Vue をビルドステップで使用するときに使用する形式です。HTML モードは、ビルドステップなしで使用する方法を示しています。
 
+<div class="html">
+
+:::tip
+If you're about to use HTML-mode without a build step in your own applications, make sure you either change imports to:
+
+```js
+import { ... } from 'vue/dist/vue.esm-bundler.js'
+```
+
+inside your scripts or configure your build tool to resolve `vue` accordingly. Sample config for [Vite](https://vitejs.dev/):
+
+```js
+// vite.config.js
+export default {
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.esm-bundler.js'
+    }
+  }
+}
+```
+
+See the respective [section in Tooling guide](/guide/scaling-up/tooling.html#note-on-in-browser-template-compilation) for more information.
+:::
+
+</div>
+
 </details>
 
 準備はいいですか？　"Next" をクリックしてください。
