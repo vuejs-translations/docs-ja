@@ -19,6 +19,8 @@ aside: false
 ## 作業中の言語 {#work-in-progress-languages}
 
 - [فارسی / ペルシャ語](https://fa.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-fa)]
+- [Čeština / チェコ語](https://cs.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-cs)]
+- [العربية / アラビア語](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
 
 ## 新しい翻訳の開始 {#starting-a-new-translation}
 
