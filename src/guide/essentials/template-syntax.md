@@ -238,7 +238,7 @@ Vue のテンプレートでは、以下の場所で JavaScript の式を使用�
 <a v-on:[eventName]="doSomething"> ... </a>
 
 <!-- 省略記法 -->
-<a @[eventName]="doSomething">
+<a @[eventName]="doSomething"> ... </a>
 ```
 
 この例では、`eventName` の値が `"focus"` のとき、`v-on:[eventName]` が `v-on:focus` と同等になります。
