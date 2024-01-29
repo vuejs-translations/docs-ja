@@ -577,6 +577,41 @@ h(MyComponent, null, {
 
 スロットを関数として渡すことで、子コンポーネントがスロットを遅延的に呼び出すことができます。これにより、スロットの依存関係が親ではなく子によって追跡されるようになり、より正確で効率的な更新が行われるようになります。
 
+## スコープ付きスロット（scoped slot） {#scoped-slots}
+
+親コンポーネントでスコープ付きスロットをレンダリングするには、子コンポーネントにスロットを渡します。スロットが `text` というパラメーターを持っていることに注意してください。スロットは子コンポーネントで呼び出され、子コンポーネントのデータが親コンポーネントに渡されます。
+
+```js
+// 親コンポーネント
+export default {
+  setup() {
+    return () => h(MyComp, null, {
+      default: ({ text }) => h('p', text)
+    })
+  }
+}
+```
+
+スロットが props として扱われないように、`null` を渡すのを忘れないでください。
+
+```js
+// 子コンポーネント
+export default {
+  setup(props, { slots }) {
+    const text = ref('hi')
+    return () => h('div', null, slots.default({ text: text.value }))
+  }
+}
+```
+
+同等の JSX:
+
+```jsx
+<MyComponent>{{
+  default: ({ text }) => <p>{ text }</p>  
+}}</MyComponent>
+```
+
 ### 組み込みコンポーネント {#built-in-components}
 
 レンダー関数で使用するためには、`<KeepAlive>`, `<Transition>`, `<TransitionGroup>`, `<Teleport>`, `<Suspense>` などの [組み込みコンポーネント](/api/built-in-components) をインポートする必要があります。
