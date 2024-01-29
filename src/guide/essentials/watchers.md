@@ -331,13 +331,17 @@ watchEffect(async () => {
 
 リアクティブな状態が変更されるとき、Vue コンポーネントの更新と生成されたウォッチャーコールバックを実行します。
 
-デフォルトでは、ユーザーが生成したウォッチャーのコールバックは Vue コンポーネントが更新される**前に**呼ばれます。これはつまり、コールバック内で DOM へアクセスしようとすると、DOM は Vue が更新を適用される前の状態です。
+コンポーネントの更新と同様に、ユーザーが作成したウォッチャーのコールバックは、重複実行を避けるためにバッチ処理されます。例えば、監視対象の配列に 1000 個のアイテムを同期的にプッシュする場合、ウォッチャーが 1000 回起動するのはおそらく望ましくないでしょう。
 
-もし Vue の更新**後**にウォッチャーコールバック内で DOM へアクセスしたいとき、`flush: 'post'` オプションで指定する必要があります:
+デフォルトでは、ウォッチャーのコールバックは親コンポーネント（存在する場合）の更新**後**、オーナーコンポーネントの DOM 更新**前**に呼び出されます。つまり、ウォッチャーのコールバック内でオーナーコンポーネント自身の DOM にアクセスしようとすると、DOM は更新前の状態になります。
+
+### 遅延ウォッチャー {#post-watchers}
+
+ウォッチャーコールバック内で、Vue が更新した**後**のオーナーコンポーネントの DOM にアクセスしたい場合は、`flush: 'post'` オプションを指定する必要があります:
 
 <div class="options-api">
 
-```js
+```js{6}
 export default {
   // ...
   watch: {
@@ -353,7 +357,7 @@ export default {
 
 <div class="composition-api">
 
-```js
+```js{2,6}
 watch(source, callback, {
   flush: 'post'
 })
@@ -374,6 +378,54 @@ watchPostEffect(() => {
 ```
 
 </div>
+
+### 同期ウォッチャー {#sync-watchers}
+
+Vue が管理する更新の前に、同期的に起動するウォッチャーを作成することもできます:
+
+<div class="options-api">
+
+```js{6}
+export default {
+  // ...
+  watch: {
+    key: {
+      handler() {},
+      flush: 'sync'
+    }
+  }
+}
+```
+
+</div>
+
+<div class="composition-api">
+
+```js{2,6}
+watch(source, callback, {
+  flush: 'sync'
+})
+
+watchEffect(callback, {
+  flush: 'sync'
+})
+```
+
+sync の `watchEffect()` には、便利なエイリアスの `watchSyncEffect()` もあります:
+
+```js
+import { watchSyncEffect } from 'vue'
+
+watchSyncEffect(() => {
+  /* リアクティブなデータ変更時に同期的に実行される */
+})
+```
+
+</div>
+
+:::warning 使用には注意が必要
+同期ウォッチャーにはバッチ機能はなく、リアクティブな変更が検出されるたびにトリガーされます。単純な真偽値を監視するために使うのは構いませんが、配列のように何度も同期的に変更される可能性のあるデータソースでは使わないようにしましょう。
+:::
 
 <div class="options-api">
 
