@@ -257,16 +257,17 @@ methods: {
 `.capture`、 `.once`、 さらには `.passive` 修飾子は[ネイティブ  `addEventListener` メソッドのオプション](https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener#options)を反映します:
 
 ```vue-html
-<!-- イベントリスナーを加えるときはキャプチャーモードを使用してください。 -->
-<!-- つまり、内側の要素をターゲットにしたイベントはその要素で操作される前にここで操作されます。 -->
+<!-- イベントリスナーを加えるときにキャプチャーモードを使用します。 -->
+<!-- つまり、内側の要素をターゲットにしたイベントは               -->
+<!-- その要素で操作される前にここで操作されます。                 -->
 <div @click.capture="doThis">...</div>
 
-<!-- クリックイベントは最大で１回は呼ばれます。 -->
+<!-- クリックイベントは最大で １ 度だけ呼ばれます。 -->
 <a @click.once="doThis"></a>
 
-<!-- `event.preventDefault()` が含まれる場合、 -->
-<!-- `onScroll`が完了するのを待っている代わりに -->
-<!-- スクロールイベントのデフォルト動作 (scrolling) が即座に実行されます -->
+<!-- `event.preventDefault()` が含まれる場合、         -->
+<!-- スクロールイベントのデフォルト動作（スクロール）は   -->
+<!-- `onScroll` が完了するのを待たずに即座に実行されます -->
 <div @scroll.passive="onScroll">...</div>
 ```
 
