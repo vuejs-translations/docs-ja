@@ -365,6 +365,8 @@ import { createApp } from 'vue'
 
 :::warning プロダクション使用の注意
 ここまでの例では、Vue の開発ビルドを使用しています。プロダクションで CDN から Vue を使用する場合は、[プロダクション環境への配信](/guide/best-practices/production-deployment#without-build-tools)を確認してください。
+
+ビルドシステムなしで Vue を使用することは可能ですが、別のアプローチとして、[`vuejs/petite-vue`](https://github.com/vuejs/petite-vue) を使用することも検討してください。`petite-vue` は、[`jquery/jquery`](https://github.com/jquery/jquery)（過去）や[`alpinejs/alpine`](https://github.com/alpinejs/alpine)（現在）が使用されるようなコンテキストに適しています。
 :::
 
 ### モジュールの分割 {#splitting-up-the-modules}
