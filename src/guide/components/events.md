@@ -182,7 +182,7 @@ export default {
 <div class="composition-api">
 
 ```vue
-<script setup>
+<script setup lang="ts">
 const emit = defineEmits({
   submit(payload: { email: string, password: string }) {
     // バリデーションの合格/不合格を示すための
