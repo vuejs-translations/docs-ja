@@ -26,7 +26,7 @@ outline: deep
 
   本番ビルドにおける devtools サポートを有効 / 無効にします。バンドルに含まれるコードが増えるので、デバッグ目的でのみ有効にすることをお勧めします。
 
-## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` <sup class="vt-badge" data-text="3.4+" /> {#VUE_PROD_HYDRATATION_MISMATCH_DETAILS}
+## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` <sup class="vt-badge" data-text="3.4+" /> {#VUE_PROD_HYDRATION_MISMATCH_DETAILS}
 
 - **デフォルト:** `false`
 
