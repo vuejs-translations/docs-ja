@@ -53,8 +53,8 @@ Vue チームは、[VitePress](https://vitepress.dev/) と呼ばれる静的サ�
 
 Vue は主に Web アプリケーションを構築するために設計されていますが、決してブラウザーだけに限定されるものではありません。以下のことが可能です。
 
-- [Electron](https://www.electronjs.org/) や [Tauri](https://tauri.app) を使ってデスクトップアプリケーションを構築する
+- [Electron](https://www.electronjs.org/) を使ってデスクトップアプリケーションを構築する
 - [Ionic Vue](https://ionicframework.com/docs/vue/overview) でモバイルアプリを構築する
-- [Quasar](https://quasar.dev/) で、同じコードベースからデスクトップとモバイルのアプリをビルドする
+- [Quasar](https://quasar.dev/) や [Tauri](https://tauri.app) で、同一のコードベースからデスクトップとモバイルのアプリをビルドする
 - [TresJS](https://tresjs.org/) で 3D WebGL 体験を構築する
 - Vue の[カスタムレンダラー API](/api/custom-renderer) を使って、[ターミナル](https://github.com/vue-terminal/vue-termui)向けのカスタムレンダラーを構築できます！
