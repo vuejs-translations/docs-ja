@@ -407,6 +407,8 @@ export default {
 
     // enter トランジションが完了したときに呼ばれる
     onAfterEnter(el) {},
+
+    // enter トランジションが完了する前にキャンセルされたときに呼ばれる
     onEnterCancelled(el) {},
 
     // leave フックの前に呼ばれる
