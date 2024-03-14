@@ -86,10 +86,10 @@ Vue をビルドステップなしで使用する場合、コンポーネント�
 
 ## IDE のサポート {#ide-support}
 
-- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) の拡張です。その拡張は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネント props の intellisense を提供します。
+- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Vue - Official 拡張機能](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（元 Volar）です。その拡張は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネント props の intellisense を提供します。
 
   :::tip
-  Volar は Vue 2 用の以前の VSCode 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
+  Vue - Official は Vue 2 用の以前の VSCode 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
   :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) も Vue SFC の素晴らしいサポートを提供しています。
@@ -120,7 +120,7 @@ Vue のブラウザー開発者ツール拡張では、Vue アプリのコンポ
 
 主な記事: [TypeScript で Vue を使用する](/guide/typescript/overview).
 
-- [Volar](https://github.com/johnsoncodehk/volar) は `<script lang="ts">` ブロックを使用した SFC に対して、テンプレート内の式やコンポーネント間の props のバリデーションを含む型チェックを提供します。
+- [Vue - Official 拡張機能](https://github.com/vuejs/language-tools)は `<script lang="ts">` ブロックを使用した SFC に対して、テンプレート内の式やコンポーネント間の props のバリデーションを含む型チェックを提供します。
 
 - コマンドラインから同様の型チェックを行う場合や、SFC 用の `d.ts` ファイルを生成する場合は、[`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) を使用します。
 
@@ -150,7 +150,7 @@ Vue CLI を使用していたユーザーは、webpack ローダーを介して�
 
 ## コードフォーマット {#formatting}
 
-- [Volar](https://github.com/johnsoncodehk/volar) VSCode 拡張は、Vue SFC のフォーマットをそのまま提供します。
+- [Vue - Official](https://github.com/vuejs/language-tools) VSCode 拡張は、すぐ使える Vue SFC のフォーマット機能を提供します。
 
 - また、 [Prettier](https://prettier.io/) では、Vue の SFC のフォーマットを組み込みでサポートしています。
 

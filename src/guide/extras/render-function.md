@@ -787,7 +787,7 @@ MyComponent.inheritAttrs = false
 
 ### 関数型コンポーネントの型付け<sup class="vt-badge ts" /> {#typing-functional-components}
 
-関数型コンポーネントは、名前付きか匿名かに基づいて型付けできます。Volar は SFC のテンプレートで関数型コンポーネントを使用する際に、適切に型付けされた関数型コンポーネントの型チェックもサポートします。
+関数型コンポーネントは、名前付きか匿名かに基づいて型付けできます。[Vue - Official 拡張機能](https://github.com/vuejs/language-tools)は SFC のテンプレートで関数型コンポーネントを使用する際に、適切に型付けされた関数型コンポーネントの型チェックもサポートします。
 
 **名前付き関数型コンポーネント**
 
