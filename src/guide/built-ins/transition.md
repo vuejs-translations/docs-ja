@@ -450,7 +450,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 
 `:css="false"` を利用する場合は、トランジションがいつ終了するかを完全に制御する責任があります。この場合、 `done` コールバックを `@enter` と `@leave` フックで呼ぶ必要があります。呼ばない場合は、フックは同期的に呼び出され、トランジションは直ちに終了します。
 
-ここでは、[GreenSock library](https://greensock.com/) を使ってアニメーションを行うデモを紹介します。もちろん、[Anime.js](https://animejs.com/) や [Motion One](https://motion.dev/) など、他のアニメーションライブラリーも利用可能です。
+ここでは、[GSAP ライブラリー](https://gsap.com/)を使ってアニメーションを行うデモを紹介します。もちろん、[Anime.js](https://animejs.com/) や [Motion One](https://motion.dev/) など、他のアニメーションライブラリーも利用可能です。
 
 <JsHooks />
 
