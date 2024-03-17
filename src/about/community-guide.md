@@ -23,7 +23,7 @@ Vue のコミュニティーは信じられないほど急速に成長してお�
 
 ### サポートを受ける {#get-support}
 
-- [Discord チャット](https://chat.vuejs.org/): Vue 開発者がリアルタイムで会ってチャットする場所。
+- [Discord チャット](https://discord.com/invite/vue): Vue 開発者がリアルタイムで会ってチャットする場所。
 - [フォーラム](https://forum.vuejs.org/): Vue とそのエコシステムについて質問したり、回答を得たりするのに最適な場所です。
 - [DEV コミュニティー](https://dev.to/t/vue): Dev.to の Vue 関連トピックを共有、議論してください。
 - [Meetups](https://events.vuejs.org/meetups): あなたのようなローカルな Vue の愛好家を見つけたいですか？　コミュニティーのリーダーになることに興味がありますか？　あなたが必要とするヘルプとサポートがここにあります！
