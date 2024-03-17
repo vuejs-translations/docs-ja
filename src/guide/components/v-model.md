@@ -27,7 +27,7 @@ function update() {
 
 ```vue-html
 <!-- Parent.vue -->
-<Child v-model="count" />
+<Child v-model="countModel" />
 ```
 
 `defineModel()` が返す値は ref です。他の ref と同じようにアクセスしたり変更したりできますが、親の値とローカルの値の双方向バインディングとして動作する点が異なります:
