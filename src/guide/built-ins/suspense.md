@@ -132,3 +132,9 @@ pending 状態に戻った場合、フォールバックのコンテンツはす
 ```
 
 Vue Router には、動的インポートを使用した [lazily loading components (遅延ローディングコンポーネント)](https://router.vuejs.org/guide/advanced/lazy-loading.html) が組み込まれています。これらは非同期コンポーネントとは異なり、現在のところ `<Suspense>` をトリガーすることはありません。しかし、非同期コンポーネントを子コンポーネントとして持つことは可能で、その場合は通常の方法で `<Suspense>` をトリガーすることができます。
+
+---
+
+**関連**
+
+- [`<Suspense>` API リファレンス](/api/built-in-components#suspense)
