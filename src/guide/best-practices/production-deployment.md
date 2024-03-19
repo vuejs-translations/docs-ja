@@ -27,7 +27,7 @@ CDN やセルフホストのスクリプトからロードして、ビルドツ�
 カスタムセットアップを使用している場合は、以下を確認してください:
 
 1. `vue` が `vue.runtime.esm-bundler.js` で解決される。
-2. [コンパイル時の機能フラグ](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags)が適切に設定されている。
+2. [コンパイル時の機能フラグ](/api/compile-time-flags)が適切に設定されている。
 3. <code>process.env<wbr>.NODE_ENV</code> がビルド時に `"production"` に置き換わる。
 
 その他の参考文献:

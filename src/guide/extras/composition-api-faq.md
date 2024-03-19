@@ -114,7 +114,7 @@ Options API は、コンポーネントコードを書くときに「考える�
 
 :::
 
-Composition API だけを使用したい場合は（上にあげたオプションと共に）、 [compile-time flag](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) を使用することで Options API に関するコードを省き数キロバイトプロダクションバンドルをカットできます。これはあなたの依存関係内の Vue コンポーネントに影響を与える点に注意してください。
+Composition API だけを使用したい場合は（上にあげたオプションと共に）、 [compile-time flag](/api/compile-time-flags) を使用することで Options API に関するコードを省き数キロバイトプロダクションバンドルをカットできます。これはあなたの依存関係内の Vue コンポーネントに影響を与える点に注意してください。
 
 ### 同じコンポーネント内で両方の API を使用できますか？ {#can-i-use-both-apis-in-the-same-component}
 
