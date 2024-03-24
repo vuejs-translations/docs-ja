@@ -42,7 +42,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 - Vite は TypeScript のトランスパイルに [esbuild](https://esbuild.github.io/) を使用しており、単一ファイルのトランスパイル制限に従うので、[`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) を `true` に設定してください。[`compilerOptions.verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) は [`isolatedModules` のスーパーセット](https://github.com/microsoft/TypeScript/issues/53601)であり、これも良い選択です。これは [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) で使用されています。
 
-- Options API を使用する場合は、コンポーネントオプションにおける this の型チェックを活用するために [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) を `true` に設定 (もしくは少なくとも strict フラグの一部である [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis) を `true` に設定) する必要があります。そうでないと、this は常に any 型として扱われます。
+- Options API を使用する場合は、コンポーネントオプションにおける this の型チェックを活用するために [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) を `true` に設定（もしくは少なくとも strict フラグの一部である [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis) を `true` に設定）する必要があります。そうでないと、this は常に any 型として扱われます。
 
 - 例えば `create-vue` プロジェクトでデフォルトで設定される `@/*` エイリアスのような resolver エイリアスをビルドツールで設定した場合、TypeScript 用の設定として、[`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths) にもエイリアスを設定する必要があります。
 

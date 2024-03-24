@@ -146,7 +146,7 @@ Vue CLI を使用していたユーザーは、webpack ローダーを介して�
 
 3. プロダクションビルドコマンドの一部として ESLint を実行し、プロダクションにリリースする前に完全なリンターのフィードバックを受けることができます。
 
-4. (任意) [lint-staged](https://github.com/okonet/lint-staged) のようなツールを設定して、git commit 時に変更したファイルを自動的にリントするようにします。
+4. （任意）[lint-staged](https://github.com/okonet/lint-staged) のようなツールを設定して、git commit 時に変更したファイルを自動的にリントするようにします。
 
 ## コードフォーマット {#formatting}
 

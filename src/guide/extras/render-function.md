@@ -466,7 +466,7 @@ function render() {
 }
 ```
 
-コンポーネントが名前で登録されていて直接インポートできない場合 (例えば、ライブラリーによってグローバルに登録されている場合)、 [`resolveComponent()`](/api/render-function#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
+コンポーネントが名前で登録されていて直接インポートできない場合（例えば、ライブラリーによってグローバルに登録されている場合）、 [`resolveComponent()`](/api/render-function#resolvecomponent) ヘルパーを使ってプログラムで解決することが可能です。
 
 ### スロットのレンダリング {#rendering-slots}
 

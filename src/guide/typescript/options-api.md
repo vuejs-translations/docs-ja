@@ -199,7 +199,7 @@ export default defineComponent({
 </template>
 ```
 
-type annotation (型注釈) が無い場合、`event` 引数は暗黙の `any` 型になります。`tsconfig.json` で `"strict": true` や `"noImplicitAny": true` にしている場合、これは型エラーになります。そのため、明示的にイベントハンドラーの引数を型付けすることが推奨されます。加えて、`event` のプロパティにアクセスする際、型アサーションを使用する必要があるかもしれません:
+type annotation（型注釈）が無い場合、`event` 引数は暗黙の `any` 型になります。`tsconfig.json` で `"strict": true` や `"noImplicitAny": true` にしている場合、これは型エラーになります。そのため、明示的にイベントハンドラーの引数を型付けすることが推奨されます。加えて、`event` のプロパティにアクセスする際、型アサーションを使用する必要があるかもしれません:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -236,7 +236,7 @@ declare module 'vue' {
 
 この型拡張は `.ts` ファイルに入れるか、プロジェクト全体の `*.d.ts` ファイルに入れることができます。どちらにしても、必ず `tsconfig.json` でそのファイルが include されているようにしてください。ライブラリやプラグインの作者の場合、このファイルは `package.json` の `types` プロパティで指定されている必要があります。
 
-モジュール拡張を利用するためには、拡張が [TypeScript module](https://www.typescriptlang.org/docs/handbook/modules.html) に配置されている必要があります。つまり、そのファイルには少なくとも 1 つのトップレベルの `import` または `export` (単なる `export {}` であったとしても) が含まれている必要があります。もし拡張がモジュールの外に置かれた場合、元の型を拡張するのではなく、上書きしてしまいます !
+モジュール拡張を利用するためには、拡張が [TypeScript module](https://www.typescriptlang.org/docs/handbook/modules.html) に配置されている必要があります。つまり、そのファイルには少なくとも 1 つのトップレベルの `import` または `export`（単なる `export {}` であったとしても）が含まれている必要があります。もし拡張がモジュールの外に置かれた場合、元の型を拡張するのではなく、上書きしてしまいます !
 
 ```ts
 // 動作せず、元の型を上書きします

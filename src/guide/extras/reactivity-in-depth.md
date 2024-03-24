@@ -65,7 +65,7 @@ whenDepsChange(update)
 
 ## Vue におけるリアクティビティーの仕組み {#how-reactivity-works-in-vue}
 
-私たちは、この例のようなローカル変数の読み書きを実際に追跡することはできません。バニラ（素の）JavaScript にはそのような仕組みがないのです。**できる**のは、**オブジェクトのプロパティ**の読み書きを傍受(インターセプト)することです。
+私たちは、この例のようなローカル変数の読み書きを実際に追跡することはできません。バニラ（素の）JavaScript にはそのような仕組みがないのです。**できる**のは、**オブジェクトのプロパティ**の読み書きを傍受（インターセプト）することです。
 
 JavaScript でプロパティにアクセスを傍受する方法は 2 つあります: [getter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get) / [setters](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set) と [Proxy](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) です。Vue 2 では、ブラウザのサポートの制限により、getter / setter のみを使用していました。Vue 3 では、Proxy はリアクティブオブジェクトに、getter / setters は ref に使用されています。以下は、動作を説明する疑似コードです:
 

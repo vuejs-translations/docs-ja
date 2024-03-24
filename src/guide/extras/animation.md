@@ -7,11 +7,11 @@ import AnimateWatcher from './demos/AnimateWatcher.vue'
 
 # アニメーションテクニック {#animation-techniques}
 
-Vue には、enter (挿入) / leave (削除) とリストのトランジションを処理するための[`<Transition>`](/guide/built-ins/transition) と [`<TransitionGroup>`](/guide/built-ins/transition-group)というコンポーネントがあります。しかし、Vue のアプリケーションであっても、Web 上でアニメーションを使用する方法は他にもたくさんあります。ここでは、いくつかの追加のテクニックについて説明します。
+Vue には、enter（挿入）/ leave（削除）とリストのトランジションを処理するための[`<Transition>`](/guide/built-ins/transition) と [`<TransitionGroup>`](/guide/built-ins/transition-group)というコンポーネントがあります。しかし、Vue のアプリケーションであっても、Web 上でアニメーションを使用する方法は他にもたくさんあります。ここでは、いくつかの追加のテクニックについて説明します。
 
 ## クラスベースのアニメーション {#class-based-animations}
 
-DOM に entering (挿入) / leaving (削除) しない要素については、CSS のクラスを動的に追加することで、アニメーションを起動することができます。
+DOM に entering（挿入）/ leaving（削除）しない要素については、CSS のクラスを動的に追加することで、アニメーションを起動することができます。
 
 <div class="composition-api">
 

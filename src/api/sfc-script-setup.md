@@ -410,7 +410,7 @@ export default {
 </script>
 
 <script setup>
-// setup() のスコープで実行される(インスタンスごとに)
+// setup() のスコープで実行される（インスタンスごとに）
 </script>
 ```
 

@@ -60,12 +60,12 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
   <component :is="view" />
 </KeepAlive>
 
-<!-- 正義表現 (`v-bind` を使用) -->
+<!-- 正義表現（`v-bind` を使用）-->
 <KeepAlive :include="/a|b/">
   <component :is="view" />
 </KeepAlive>
 
-<!-- 配列 (`v-bind` を使用) -->
+<!-- 配列（`v-bind` を使用）-->
 <KeepAlive :include="['a', 'b']">
   <component :is="view" />
 </KeepAlive>
