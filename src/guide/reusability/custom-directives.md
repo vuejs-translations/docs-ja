@@ -147,7 +147,7 @@ const myDirective = {
   - `dir`: ディレクティブ定義オブジェクト。
 
 - `vnode`: バインドされた要素を表す基礎となる VNode。
-- `prevNode`: 前のレンダリングからバインドされた要素を表す VNode。`beforeUpdate` と `updated` フックでのみ利用可能です。
+- `prevVnode`: 前のレンダリングからバインドされた要素を表す VNode。`beforeUpdate` と `updated` フックでのみ利用可能です。
 
 例として、次のようなディレクティブの使い方を考えてみましょう:
 
