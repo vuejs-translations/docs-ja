@@ -8,7 +8,7 @@
 <!--
 ### 未翻訳ページを翻訳する
 1. [GitHub Issues](https://github.com/vuejs-translations/docs-ja/issues) のうち、[翻訳募集中](https://github.com/vuejs-translations/docs-ja/issues?q=is%3Aissue+is%3Aopen+label%3A%E7%BF%BB%E8%A8%B3%E5%8B%9F%E9%9B%86%E4%B8%AD)タグのついている issue を探します
-2. 選択した issue の説明文の下にリンクされている「翻訳まとめ」の issue（[#6](https://github.com/vuejs-translations/docs-ja/issues/6) など）で、「〇〇ページの翻訳やります！」などのコメントで宣言します :raising_hand: (`vuejs-translations/docs-ja` のメンテナーの方々は、GitHub の assign 機能で self assign で OK です)
+2. 選択した issue の説明文の下にリンクされている「翻訳まとめ」の issue（[#6](https://github.com/vuejs-translations/docs-ja/issues/6) など）で、「〇〇ページの翻訳やります！」などのコメントで宣言します :raising_hand: （`vuejs-translations/docs-ja` のメンテナーの方々は、GitHub の assign 機能で self assign で OK です）
     - その際、`@vuejs-translations/ja` のメンションをつけてください
     - まとめ issue で一元管理しているため、ページ翻訳の issue への直接コメントは無効となります
     - 翻訳希望は一度に 1 つまでとさせていただきます。複数ページ翻訳希望の場合はプルリクエストがマージされてからお願いします
@@ -108,7 +108,7 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 - 訳文:
 > track-by="$index" は2つの状況で使用を回避してください。繰り返されたブロックにリストを再描画するために使用することができる form の input を含んでいるとき、または、繰り返されるデータがそれに割り当てられる他に、可変な状態でコンポーネントを繰り返しているときです。
 
-### 単語の統一 (特に技術用語)
+### 単語の統一（特に技術用語）
 
 - 技術用語は基本英語、ただ日本語で一般的に使われている場合は日本語 OK !!
   - 例: 英語の filter 、日本語のフィルター
@@ -143,14 +143,14 @@ Pull Request を送るときに、余裕があれば "resolve #123" といった
 NG: 空行がなくなっている
 
 ```text
-15 | Vue （**view**のように /vjuː/ と発音）は ...
+15 | Vue（**view**のように /vjuː/ と発音）は ...
 16 | 以下は最小限の例です:
 ```
 
 NG: 改行が増えている
 
 ```text
-15 | Vue （**view**のように /vjuː/ と発音）は ...
+15 | Vue（**view**のように /vjuː/ と発音）は ...
 16 | これは標準的な HTML、CSS、JavaScript の ...
 17 |
 18 | 以下は最小限の例です:
@@ -159,7 +159,7 @@ NG: 改行が増えている
 OK: 行がそのまま
 
 ```text
-15 | Vue （**view**のように /vjuː/ と発音）は ...
+15 | Vue（**view**のように /vjuː/ と発音）は ...
 16 |
 17 | 以下は最小限の例です:
 ```

@@ -2,6 +2,7 @@
   "rules": {
     "preset-vuejs-jp": {
       "2.1.6.カタカナの長音": true,
+      "4.3.1.丸かっこ（）": true,
       "no-mix-dearu-desumasu": {
         "strict": false
       }

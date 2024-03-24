@@ -380,7 +380,7 @@ export default {
 ```js
 defineProps({
   // 基本的な型チェック
-  // (`null` 値と `undefined` 値は、任意の型を許可します)
+  // （`null` 値と `undefined` 値は、任意の型を許可します）
   propA: Number,
   // 複数の型の可能性
   propB: [String, Number],
@@ -435,7 +435,7 @@ defineProps({
 export default {
   props: {
     // 基本的な型チェック
-    // (`null` 値と `undefined` 値は、任意の型を許可します)
+    // （`null` 値と `undefined` 値は、任意の型を許可します）
     propA: Number,
     // 複数の型の可能性
     propB: [String, Number],

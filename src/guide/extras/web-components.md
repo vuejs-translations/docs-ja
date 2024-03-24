@@ -66,7 +66,7 @@ module.exports = {
 
 DOM 属性は文字列のみしか扱えないため、複雑なデータをカスタム要素に DOM プロパティとして渡す必要があります。カスタム要素上に props が設定されるとき、Vue 3 では自動的に `in` 演算子を使って DOM プロパティの存在をチェックし、キーが存在する場合は DOM プロパティとして値を設定するよう優先します。これは、多くのケースではカスタム要素が[推奨されるベストプラクティス](https://web.dev/custom-elements-best-practices/)に従っている場合は、この点を考慮する必要はないことを意味します。
 
-しかしながら、データを DOM プロパティとして渡さなければならないのに、カスタム要素がそのプロパティを適切に定義 / 反映していない (`in` チェックが失敗する) 場合があります。このようなケースの場合、`.prop` 修飾子を使って `v-bind` バインディングを DOM プロパティとして設定するように強制することができます:
+しかしながら、データを DOM プロパティとして渡さなければならないのに、カスタム要素がそのプロパティを適切に定義 / 反映していない（`in` チェックが失敗する）場合があります。このようなケースの場合、`.prop` 修飾子を使って `v-bind` バインディングを DOM プロパティとして設定するように強制することができます:
 
 ```vue-html
 <my-element :user.prop="{ name: 'jack' }"></my-element>
@@ -106,7 +106,7 @@ const MyVueElement = defineCustomElement({
 customElements.define('my-vue-element', MyVueElement)
 
 // プログラマチックに要素をインスタンス化することもできます:
-// (登録後にのみ行うことができます)
+//（登録後にのみ行うことができます）
 document.body.appendChild(
   new MyVueElement({
     // 初期 props（任意）
@@ -151,7 +151,7 @@ document.body.appendChild(
 
 #### イベント {#events}
 
-`this.$emit` や setup の `emit` を通じて発行されたイベントは、カスタム要素上でネイティブの[カスタムイベント (CustomEvents)](https://developer.mozilla.org/ja/docs/Web/Events/Creating_and_triggering_events#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%BF%BD%E5%8A%A0_%E2%80%93_customevent) としてディスパッチされます。追加のイベント引数(ペイロード)は、カスタムイベントオブジェクトの `detail` プロパティの配列として公開されます。
+`this.$emit` や setup の `emit` を通じて発行されたイベントは、カスタム要素上でネイティブの[カスタムイベント (CustomEvents)](https://developer.mozilla.org/ja/docs/Web/Events/Creating_and_triggering_events#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%BF%BD%E5%8A%A0_%E2%80%93_customevent) としてディスパッチされます。追加のイベント引数（ペイロード）は、カスタムイベントオブジェクトの `detail` プロパティの配列として公開されます。
 
 #### スロット {#slots}
 
@@ -175,9 +175,9 @@ document.body.appendChild(
 
 `defineCustomElement` は、Vue の単一ファイルコンポーネント (SFC: Single-File Components) でも動作します。しかしながら、デフォルトのツール設定では、SFC 内の `<style>` は、プロダクションビルド時に抽出され、単一の CSS ファイルにマージされます。SFC をカスタム要素として使用する場合は、代わりにカスタム要素の shadow root に `<style>` タグを注入するのが望ましいことが多いです。
 
-公式の SFC ツールは、"カスタム要素モード (custom element mode)" での SFC の読み込みをサポートしています (`@vitejs/plugin-vue@^1.4.0` または `vue-loader@^16.5.0` が必要)。カスタム要素モードで読み込まれた SFC は、その `<style>` タグを CSS の文字列としてインライン化し、コンポーネントの `styles` オプションで公開します。これは、`defineCustomElement` によってピックアップされ、インスタンス化されたときに要素の shadow root に注入されます。
+公式の SFC ツールは、"カスタム要素モード (custom element mode)" での SFC の読み込みをサポートしています（`@vitejs/plugin-vue@^1.4.0` または `vue-loader@^16.5.0` が必要）。カスタム要素モードで読み込まれた SFC は、その `<style>` タグを CSS の文字列としてインライン化し、コンポーネントの `styles` オプションで公開します。これは、`defineCustomElement` によってピックアップされ、インスタンス化されたときに要素の shadow root に注入されます。
 
-このモードを利用する(オプトイン)には、コンポーネントのファイル名の最後に `.ce.vue` をつけるだけです:
+このモードを利用する（オプトイン）には、コンポーネントのファイル名の最後に `.ce.vue` をつけるだけです:
 
 ```js
 import { defineCustomElement } from 'vue'

@@ -3,7 +3,7 @@
 :::info See also
 よりリアクティビティー API を理解するために、ガイド内の次の章を読むことを推奨します:
 
-- [リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals) (API 環境設定が Composition API に設定されている場合)
+- [リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals)（API 環境設定が Composition API に設定されている場合）
 - [リアクティビティーの探求](/guide/extras/reactivity-in-depth)
   :::
 
@@ -193,7 +193,7 @@
 
 ## readonly() {#readonly}
 
-オブジェクト(リアクティブ、もしくはプレーン)または [ref](#ref) を受け取り、元のオブジェクトへの読み取り専用なプロキシを返します。
+オブジェクト（リアクティブ、もしくはプレーン）または [ref](#ref) を受け取り、元のオブジェクトへの読み取り専用なプロキシを返します。
 
 - **型**
 
