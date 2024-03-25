@@ -1,6 +1,6 @@
 # フォームバインディング {#form-bindings}
 
-`v-bind` と `v-on` を一緒に使うことで、input 要素に双方向 (two-way) バインディングを作成することができます。
+`v-bind` と `v-on` を一緒に使うことで、input 要素に双方向（two-way）バインディングを作成することができます。
 
 ```vue-html
 <input :value="text" @input="onInput">
@@ -34,7 +34,7 @@ function onInput(e) {
 
 入力ボックスに文字を入力してみてください。`<p>` の中の文字が入力された通りに更新されるのがわかると思います。
 
-双方向 (two-way) バインディングを簡略化するために、Vue は上記のシンタックスシュガー（糖衣構文）の `v-model` というディレクティブを提供しています。
+双方向（two-way）バインディングを簡略化するために、Vue は上記のシンタックスシュガー（糖衣構文）の `v-model` というディレクティブを提供しています。
 
 ```vue-html
 <input v-model="text">

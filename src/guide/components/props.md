@@ -232,7 +232,7 @@ export default {
 
 ### オブジェクトを利用した複数のプロパティのバインディング {#binding-multiple-properties-using-an-object}
 
-オブジェクトに含まれるすべてのプロパティを props として渡したい場合には、[引数なしの `v-bind`](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) を使用します (`:prop-name` の代わりに `v-bind`)。例えば、以下のような `post` オブジェクトがあるとします:
+オブジェクトに含まれるすべてのプロパティを props として渡したい場合には、[引数なしの `v-bind`](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) を使用します（`:prop-name` の代わりに `v-bind`）。例えば、以下のような `post` オブジェクトがあるとします:
 
 <div class="options-api">
 

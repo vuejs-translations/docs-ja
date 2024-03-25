@@ -250,7 +250,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'テスト', link: '/guide/scaling-up/testing' },
         {
-          text: 'サーバーサイドレンダリング (SSR)',
+          text: 'サーバーサイドレンダリング（SSR）',
           link: '/guide/scaling-up/ssr'
         }
       ]

@@ -283,7 +283,7 @@ data() {
 <div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
 ```
 
-CSS プロパティのキーにはキャメルケース (camelCase) が推奨されますが、`:style` では CSS の実際の書き方に対応するケバブケース (kebab-cased) のキーもサポートされています。例:
+CSS プロパティのキーにはキャメルケース（camelCase）が推奨されますが、`:style` では CSS の実際の書き方に対応するケバブケース（kebab-case）のキーもサポートされています。例:
 
 ```vue-html
 <div :style="{ 'font-size': fontSize + 'px' }"></div>

@@ -24,7 +24,7 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 ### IDE のサポート {#ide-support}
 
-- [Visual Studio Code](https://code.visualstudio.com/) (VSCode) は、すぐに利用できる TypeScript サポートを提供しているため、強く推奨されます。
+- [Visual Studio Code](https://code.visualstudio.com/)（VSCode）は、すぐに利用できる TypeScript サポートを提供しているため、強く推奨されます。
 
   - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（元 Volar）は公式 VSCode 拡張機能です。Vue SFC 内部での TypeScript のサポートなど、その他の優れた機能を持ちます。
 

@@ -39,7 +39,7 @@ Vue では、HTML ベースのテンプレート構文を使用します。テ�
 `span` の中身は `rawHtml` プロパティが持つ値に置き換えられ、プレーンな HTML として解釈されます。データバインディングは無視されます。`v-html` は、テンプレートの断片を組み立てるのには利用できないことに注意してください。これは、Vue が文字列ベースのテンプレートエンジンではないためです。それに代わり、UI の再利用や組み立ての基本単位として推奨されているのが「コンポーネント」です。
 
 :::warning セキュリティーに関する警告
-ウェブサイト上で任意の HTML を動的にレンダリングすることは、[クロスサイトスクリプティング (XSS) 脆弱性](https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0)を招きやすく、非常に危険です。`v-html` は信頼できるコンテンツにのみ使用し、ユーザーから渡されるコンテンツには**決して**使用しないでください。
+ウェブサイト上で任意の HTML を動的にレンダリングすることは、[クロスサイトスクリプティング（XSS）脆弱性](https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0)を招きやすく、非常に危険です。`v-html` は信頼できるコンテンツにのみ使用し、ユーザーから渡されるコンテンツには**決して**使用しないでください。
 :::
 
 ## 属性バインディング {#attribute-bindings}
@@ -87,7 +87,7 @@ HTML 属性の中ではマスタッシュ構文が使えません。代わりに
 <button :disabled="isButtonDisabled">Button</button>
 ```
 
-この `disabled` という属性は、`isButtonDisabled` が [真値 (truthy value)](https://developer.mozilla.org/ja/docs/Glossary/Truthy) である場合に要素に含まれます。また、`<button disabled="">` との一貫性を保つため、値が空の文字列である場合にも含まれます。それ以外の[偽値 (falsy values)](https://developer.mozilla.org/ja/docs/Glossary/Falsy) の場合には、属性が要素から取り除かれます。
+この `disabled` という属性は、`isButtonDisabled` が [真値（truthy value）](https://developer.mozilla.org/ja/docs/Glossary/Truthy) である場合に要素に含まれます。また、`<button disabled="">` との一貫性を保つため、値が空の文字列である場合にも含まれます。それ以外の[偽値（falsy values）](https://developer.mozilla.org/ja/docs/Glossary/Falsy) の場合には、属性が要素から取り除かれます。
 
 ### 複数の属性を動的にバインドさせる {#dynamically-binding-multiple-attributes}
 
@@ -268,7 +268,7 @@ Vue のテンプレートでは、以下の場所で JavaScript の式を使用�
 
 ### 修飾子 {#modifiers}
 
-修飾子は、ドット (.) で示される特別な接頭辞で、ディレクティブを何らかの特別な方法でバインドすることを表します。例えば、以下に示す `.prevent` という修飾子は、イベントがトリガーされたときに `event.preventDefault()` を呼び出すことを `v-on` ディレクティブに伝えます:
+修飾子は、ドット（.）で示される特別な接頭辞で、ディレクティブを何らかの特別な方法でバインドすることを表します。例えば、以下に示す `.prevent` という修飾子は、イベントがトリガーされたときに `event.preventDefault()` を呼び出すことを `v-on` ディレクティブに伝えます:
 
 ```vue-html
 <form @submit.prevent="onSubmit">...</form>
