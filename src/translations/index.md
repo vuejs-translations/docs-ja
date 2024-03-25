@@ -15,10 +15,10 @@ aside: false
 - [Português / ポルトガル語](https://pt.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-pt)]
 - [বাংলা / ベンガル語](https://bn.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-bn)]
 - [Italiano / イタリア語](https://it.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-it)]
+- [فارسی / ペルシャ語](https://fa.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-fa)]
 
 ## 作業中の言語 {#work-in-progress-languages}
 
-- [فارسی / ペルシャ語](https://fa.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-fa)]
 - [Čeština / チェコ語](https://cs.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-cs)]
 - [العربية / アラビア語](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
 
