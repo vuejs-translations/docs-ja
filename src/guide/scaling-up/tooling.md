@@ -17,7 +17,7 @@ Vue の SFC を試すためにマシンに何かをインストールする必�
 
 また、バグ報告の際には、これらのオンラインのプレイグラウンドで再現方法を提供することが推奨されます。
 
-## プロジェクトの雛形の作成 (Project Scaffolding) {#project-scaffolding}
+## プロジェクトの雛形の作成（Project Scaffolding） {#project-scaffolding}
 
 ### Vite {#vite}
 
@@ -56,7 +56,7 @@ Vite + Vue で始めるには、以下を実行するだけです:
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-このコマンドは、Vue 公式の雛形作成 (scaffolding) ツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。
+このコマンドは、Vue 公式の雛形作成（scaffolding）ツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。
 
 - Vite の詳細については、[Vite ドキュメント](https://ja.vitejs.dev) を参照してください。
 - Vite のプロジェクトで Vue のコンパイラーにオプションを渡すなどの、Vue 固有の設定をするには、[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme) のドキュメントを参照してください。
@@ -94,7 +94,7 @@ Vue をビルドステップなしで使用する場合、コンポーネント�
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) も Vue SFC の素晴らしいサポートを提供しています。
 
-- [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP) をサポートする他の IDE も LSP を介して Volar のコア機能を利用できます。
+- [Language Service Protocol](https://microsoft.github.io/language-server-protocol/)（LSP）をサポートする他の IDE も LSP を介して Volar のコア機能を利用できます。
 
   - [LSP-Volar](https://github.com/sublimelsp/LSP-volar) による Sublime Text のサポート
 

@@ -1,6 +1,6 @@
 # Vue と Web コンポーネント {#vue-and-web-components}
 
-[Web コンポーネント](https://developer.mozilla.org/ja/docs/Web/Web_Components) は、開発者が再利用可能なカスタム要素 (custom elements) を作成するための一連の Web ネイティブ API 群の総称です。
+[Web コンポーネント](https://developer.mozilla.org/ja/docs/Web/Web_Components) は、開発者が再利用可能なカスタム要素（custom elements）を作成するための一連の Web ネイティブ API 群の総称です。
 
 私たちは Vue と Web コンポーネントを主に補完的な技術と考えています。Vue はカスタム要素の作成と使用することの両方に優れたサポートを提供します。既にある Vue アプリケーションにカスタム要素を統合する場合や、Vue を使ってビルドしそしてカスタム要素を配布する場合においても、良き仲間です。
 
@@ -130,7 +130,7 @@ document.body.appendChild(
 
   - 属性は常に対応するプロパティに反映されます。
 
-  - プリミティブな値 (`string`、`boolean`、`number`) を持つプロパティは、属性として反映されます。
+  - プリミティブな値（`string`、`boolean`、`number`）を持つプロパティは、属性として反映されます。
 
 - また、Vue は `Boolean` や `Number` で宣言された props が属性（常に文字列）として設定されると、自動的に目的の型にキャストします。例えば、次のようなプロパティ宣言があるとします:
 
@@ -151,7 +151,7 @@ document.body.appendChild(
 
 #### イベント {#events}
 
-`this.$emit` や setup の `emit` を通じて発行されたイベントは、カスタム要素上でネイティブの[カスタムイベント (CustomEvents)](https://developer.mozilla.org/ja/docs/Web/Events/Creating_and_triggering_events#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%BF%BD%E5%8A%A0_%E2%80%93_customevent) としてディスパッチされます。追加のイベント引数（ペイロード）は、カスタムイベントオブジェクトの `detail` プロパティの配列として公開されます。
+`this.$emit` や setup の `emit` を通じて発行されたイベントは、カスタム要素上でネイティブの[カスタムイベント（CustomEvents）](https://developer.mozilla.org/ja/docs/Web/Events/Creating_and_triggering_events#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%BF%BD%E5%8A%A0_%E2%80%93_customevent) としてディスパッチされます。追加のイベント引数（ペイロード）は、カスタムイベントオブジェクトの `detail` プロパティの配列として公開されます。
 
 #### スロット {#slots}
 
@@ -173,9 +173,9 @@ document.body.appendChild(
 
 ### カスタム要素としての SFC {#sfc-as-custom-element}
 
-`defineCustomElement` は、Vue の単一ファイルコンポーネント (SFC: Single-File Components) でも動作します。しかしながら、デフォルトのツール設定では、SFC 内の `<style>` は、プロダクションビルド時に抽出され、単一の CSS ファイルにマージされます。SFC をカスタム要素として使用する場合は、代わりにカスタム要素の shadow root に `<style>` タグを注入するのが望ましいことが多いです。
+`defineCustomElement` は、Vue の単一ファイルコンポーネント（SFC: Single-File Components）でも動作します。しかしながら、デフォルトのツール設定では、SFC 内の `<style>` は、プロダクションビルド時に抽出され、単一の CSS ファイルにマージされます。SFC をカスタム要素として使用する場合は、代わりにカスタム要素の shadow root に `<style>` タグを注入するのが望ましいことが多いです。
 
-公式の SFC ツールは、"カスタム要素モード (custom element mode)" での SFC の読み込みをサポートしています（`@vitejs/plugin-vue@^1.4.0` または `vue-loader@^16.5.0` が必要）。カスタム要素モードで読み込まれた SFC は、その `<style>` タグを CSS の文字列としてインライン化し、コンポーネントの `styles` オプションで公開します。これは、`defineCustomElement` によってピックアップされ、インスタンス化されたときに要素の shadow root に注入されます。
+公式の SFC ツールは、"カスタム要素モード（custom element mode）" での SFC の読み込みをサポートしています（`@vitejs/plugin-vue@^1.4.0` または `vue-loader@^16.5.0` が必要）。カスタム要素モードで読み込まれた SFC は、その `<style>` タグを CSS の文字列としてインライン化し、コンポーネントの `styles` オプションで公開します。これは、`defineCustomElement` によってピックアップされ、インスタンス化されたときに要素の shadow root に注入されます。
 
 このモードを利用する（オプトイン）には、コンポーネントのファイル名の最後に `.ce.vue` をつけるだけです:
 
@@ -257,7 +257,7 @@ declare module 'vue' {
 
 - コンポーネント間でのロジックの抽出と再利用を容易にする、リアクティブな状態管理システム
 
-- SEO や [LCP などの Web Vitals の指標](https://web.dev/vitals/)で重要な、サーバー上でコンポーネントをレンダリングし、クライアント上でハイドレートするパフォーマンスの高い方法 (SSR)。ネイティブのカスタム要素の SSR では、一般的に Node.js で DOM をシミュレートし、変異された DOM をシリアライズしますが、Vue の SSR では可能な限り文字列の連結にコンパイルされるため、より効率的です。
+- SEO や [LCP などの Web Vitals の指標](https://web.dev/vitals/)で重要な、サーバー上でコンポーネントをレンダリングし、クライアント上でハイドレートするパフォーマンスの高い方法（SSR）。ネイティブのカスタム要素の SSR では、一般的に Node.js で DOM をシミュレートし、変異された DOM をシリアライズしますが、Vue の SSR では可能な限り文字列の連結にコンパイルされるため、より効率的です。
 
 Vue のコンポーネントモデルは、これらのニーズを考慮して、一貫したシステムとして設計されています。
 

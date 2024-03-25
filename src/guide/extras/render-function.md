@@ -26,7 +26,7 @@ const vnode = h(
 )
 ```
 
-`h()` 関数は **hyperscript** の略で、「HTML (hypertext markup language) を生成する JavaScript」という意味です。この名前は、多くの仮想 DOM 実装で共有されている慣習を継承しています。より分かりやすい名前としては `createVnode()` がありますが、レンダー関数の中でこの関数を何度も呼び出さなければならない場合には、短い名前の方が便利です。
+`h()` 関数は **hyperscript** の略で、「HTML（hypertext markup language）を生成する JavaScript」という意味です。この名前は、多くの仮想 DOM 実装で共有されている慣習を継承しています。より分かりやすい名前としては `createVnode()` がありますが、レンダー関数の中でこの関数を何度も呼び出さなければならない場合には、短い名前の方が便利です。
 
 `h()` 関数は非常に柔軟に設計されています。
 

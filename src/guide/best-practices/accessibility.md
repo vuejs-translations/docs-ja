@@ -454,16 +454,16 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 
 ## 標準規格 {#standards}
 
-World Wide Web Consortium (W3C) の Web Accessibility Initiative (WAI) は、さまざまなコンポーネントの Web アクセシビリティー規格を策定しています:
+World Wide Web Consortium（W3C）の Web Accessibility Initiative（WAI）は、さまざまなコンポーネントの Web アクセシビリティー規格を策定しています:
 
-- [ユーザーエージェントアクセシビリティーガイドライン (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)
+- [ユーザーエージェントアクセシビリティーガイドライン（UAAG）](https://www.w3.org/WAI/standards-guidelines/uaag/)
   - Web ブラウザとメディアプレーヤー、アシスティブ・テクノロジーの観点を含む
-- [オーサリングツールアクセシビリティーガイドライン (ATAG)](https://www.w3.org/WAI/standards-guidelines/atag/)
+- [オーサリングツールアクセシビリティーガイドライン（ATAG）](https://www.w3.org/WAI/standards-guidelines/atag/)
   - オーサリングツール
-- [Web コンテンツアクセシビリティーガイドライン (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [Web コンテンツアクセシビリティーガイドライン（WCAG）](https://www.w3.org/WAI/standards-guidelines/wcag/)
   - Web コンテンツ - 開発者や、オーサリングツール、アクセシビリティー評価ツールが使用する
 
-### Web コンテンツアクセシビリティーガイドライン (WCAG) {#web-content-accessibility-guidelines-wcag}
+### Web コンテンツアクセシビリティーガイドライン（WCAG） {#web-content-accessibility-guidelines-wcag}
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/) は、[WCAG 2.0](https://www.w3.org/TR/WCAG20/) を拡張し、Web の変化に対応することで、新しい技術の実装を可能にするものです。W3C は、Web アクセシビリティー方針を策定又は更新する際に、最新版の WCAG を使用することを推奨しています。
 
@@ -524,7 +524,7 @@ W3C の WAI-ARIA は、動的コンテンツや高度なユーザーインター
 
 ### ユーザー {#users}
 
-世界保健機関 (WHO) は、世界人口の 15% が何らかの障害を持ち、そのうち 2-4% が重度であると推定しています。これは全世界で 10 億人と推定され、障害者は世界最大のマイノリティーグループとなっています。
+世界保健機関（WHO）は、世界人口の 15% が何らかの障害を持ち、そのうち 2-4% が重度であると推定しています。これは全世界で 10 億人と推定され、障害者は世界最大のマイノリティーグループとなっています。
 
 障害の範囲は非常に多く、大きく 4 つに分類されます。
 

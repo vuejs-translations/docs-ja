@@ -215,7 +215,7 @@ export default defineComponent({
 
 ## グローバルなプロパティの拡張 {#augmenting-global-properties}
 
-プラグインによっては、[`app.config.globalProperties`](/api/application#app-config-globalproperties) を通じて、すべてのコンポーネントインスタンスにグローバルに利用可能なプロパティを追加するものがあります。例えば、データ取得のために `this.$http` をインストールしたり、国際化のために `this.$translate` を追加したりすることができます。これを TypeScript とうまく連携させるために、Vue は [TypeScript のモジュール拡張 (TypeScript module augmentation)](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) で拡張できるように設計された `ComponentCustomProperties` インターフェイスを公開しています。
+プラグインによっては、[`app.config.globalProperties`](/api/application#app-config-globalproperties) を通じて、すべてのコンポーネントインスタンスにグローバルに利用可能なプロパティを追加するものがあります。例えば、データ取得のために `this.$http` をインストールしたり、国際化のために `this.$translate` を追加したりすることができます。これを TypeScript とうまく連携させるために、Vue は [TypeScript のモジュール拡張（TypeScript module augmentation）](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) で拡張できるように設計された `ComponentCustomProperties` インターフェイスを公開しています。
 
 ```ts
 import axios from 'axios'
