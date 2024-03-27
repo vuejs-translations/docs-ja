@@ -189,7 +189,7 @@ data() {
 しかし、条件を付けたいクラスが複数あると、これでは少し冗長になります。そこで、配列構文の中でオブジェクト構文を使うこともできるようになっています:
 
 ```vue-html
-<div :class="[{ active: isActive }, errorClass]"></div>
+<div :class="[{ activeClass: isActive }, errorClass]"></div>
 ```
 
 ### コンポーネントでの使用 {#with-components}
