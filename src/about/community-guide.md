@@ -35,7 +35,7 @@ Vue のコミュニティーは信じられないほど急速に成長してお�
 - [The Awesome Vue ページ](https://github.com/vuejs/awesome-vue): 他の素晴らしい人々によって公開された、他の素晴らしいリソースを見ることができます。
 - [Vue Telescope Explorer](https://vuetelescope.com/explore): Vue で作られた Web サイトを探索し、使用しているフレームワークやライブラリーに関する洞察を得られます。
 - [Made with Vue.js](https://madewithvuejs.com/): Vue で作られたプロジェクトやライブラリーのショーケースです。
-- [The "Show and Tell" Subforum](https://forum.vuejs.org/c/show-and-tell): 成長する Vue のエコシステムのために、他の人が作ったものをチェックするための、もう 1 つの素晴らしい場所です。
+- [The "Show and Tell" Subforum](https://github.com/vuejs/core/discussions/categories/show-and-tell): 成長する Vue のエコシステムのために、他の人が作ったものをチェックするための、もう 1 つの素晴らしい場所です。
 
 ## あなたができること {#what-you-can-do}
 
