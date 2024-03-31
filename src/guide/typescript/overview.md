@@ -24,12 +24,12 @@ Vite ベースのセットアップでは、開発サーバーとそのバンド
 
 ### IDE のサポート {#ide-support}
 
-- [Visual Studio Code](https://code.visualstudio.com/)（VSCode）は、すぐに利用できる TypeScript サポートを提供しているため、強く推奨されます。
+- [Visual Studio Code](https://code.visualstudio.com/)（VS Code）は、すぐに利用できる TypeScript サポートを提供しているため、強く推奨されます。
 
-  - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（元 Volar）は公式 VSCode 拡張機能です。Vue SFC 内部での TypeScript のサポートなど、その他の優れた機能を持ちます。
+  - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（元 Volar）は公式 VS Code 拡張機能です。Vue SFC 内部での TypeScript のサポートなど、その他の優れた機能を持ちます。
 
     :::tip
-    Vue - Official は Vue 2 の公式 VSCode 拡張機能である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。現在 Vetur がインストールされている場合、Vue 3 のプロジェクトで必ず無効化してください。
+    Vue - Official は Vue 2 の公式 VS Code 拡張機能である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。現在 Vetur がインストールされている場合、Vue 3 のプロジェクトで必ず無効化してください。
     :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) は TypeScript と Vue の両方をすぐに利用できるようサポートしています。他の JetBrains IDE も最初から、または [この無料プラグイン](https://plugins.jetbrains.com/plugin/9442-vue-js) で、これらをサポートしています。バージョン 2023.2 では、WebStorm と Vue プラグインは Vue Language Server をビルトインでサポートしています。Settings → Languages & Frameworks → TypeScript → Vue で、すべての TypeScript バージョンで Volar インテグレーションを使用するように Vue サービスを設定できます。デフォルトでは、Volar は TypeScript バージョン 5.0 以上で使用されます。

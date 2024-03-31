@@ -420,7 +420,7 @@ ES モジュールは `file://` プロトコルでは動作しないため、上
 
 ローカル HTTP サーバーを起動するには、まず [Node.js](https://nodejs.org/en/) がインストールされていることを確認し、HTML ファイルがあるのと同じディレクトリでコマンドラインから `npx serve` を実行します。正しい MIME タイプで静的ファイルを配信できる他の HTTP サーバーを使用することもできます。
 
-インポートされたコンポーネントのテンプレートが JavaScript 文字列としてインライン化されていることに気づいたかもしれません。VSCode を使っている場合は [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 拡張機能をインストールして、文字列の前に `/*html*/` というコメントをつけることでシンタックスハイライトさせられます。
+インポートされたコンポーネントのテンプレートが JavaScript 文字列としてインライン化されていることに気づいたかもしれません。VS Code を使っている場合は [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 拡張機能をインストールして、文字列の前に `/*html*/` というコメントをつけることでシンタックスハイライトさせられます。
 
 ## 次のステップ {#next-steps}
 

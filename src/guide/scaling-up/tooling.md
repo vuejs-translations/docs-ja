@@ -86,10 +86,10 @@ Vue をビルドステップなしで使用する場合、コンポーネント�
 
 ## IDE のサポート {#ide-support}
 
-- 推奨の IDE の設定は [VSCode](https://code.visualstudio.com/) + [Vue - Official 拡張機能](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（元 Volar）です。その拡張は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネント props の intellisense を提供します。
+- 推奨の IDE の設定は [VS Code](https://code.visualstudio.com/) + [Vue - Official 拡張機能](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（元 Volar）です。その拡張は、シンタックスハイライト、TypeScript のサポート、テンプレート内の式とコンポーネント props の intellisense を提供します。
 
   :::tip
-  Vue - Official は Vue 2 用の以前の VSCode 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
+  Vue - Official は Vue 2 用の以前の VS Code 拡張である [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) を置き換えるものです。Vetur をインストールしている場合は、Vue 3 のプロジェクトでは無効にすることを忘れないでください。
   :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) も Vue SFC の素晴らしいサポートを提供しています。
@@ -142,7 +142,7 @@ Vue CLI を使用していたユーザーは、webpack ローダーを介して�
 
 1. `npm install -D eslint eslint-plugin-vue` を実行し、それから `eslint-plugin-vue` の [設定ガイド](https://eslint.vuejs.org/user-guide/#usage) に従います。
 
-2. [ESLint for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) などの ESLint の IDE 拡張を設定することで、開発中にエディターで直接リンターのフィードバックを受けることができます。また、開発サーバーの起動時に不要なリントが実行されるコストを回避することができます。
+2. [ESLint for VS Code](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) などの ESLint の IDE 拡張を設定することで、開発中にエディターで直接リンターのフィードバックを受けることができます。また、開発サーバーの起動時に不要なリントが実行されるコストを回避することができます。
 
 3. プロダクションビルドコマンドの一部として ESLint を実行し、プロダクションにリリースする前に完全なリンターのフィードバックを受けることができます。
 
@@ -150,7 +150,7 @@ Vue CLI を使用していたユーザーは、webpack ローダーを介して�
 
 ## コードフォーマット {#formatting}
 
-- [Vue - Official](https://github.com/vuejs/language-tools) VSCode 拡張は、すぐ使える Vue SFC のフォーマット機能を提供します。
+- [Vue - Official](https://github.com/vuejs/language-tools) VS Code 拡張は、すぐ使える Vue SFC のフォーマット機能を提供します。
 
 - また、 [Prettier](https://prettier.io/) では、Vue の SFC のフォーマットを組み込みでサポートしています。
 
