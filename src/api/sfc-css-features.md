@@ -120,7 +120,7 @@
 
 生成されたクラスは衝突を避けるためにハッシュ化され、CSS を現在のコンポーネントのみにスコープするのと同じ効果を得ることができます。
 
-[グローバルの例外](https://github.com/css-modules/css-modules#exceptions)や[コンポジション](https://github.com/css-modules/css-modules#composition)などの詳細は、[CSS モジュールの仕様](https://github.com/css-modules/css-modules)を参照してください。
+[グローバルの例外](https://github.com/css-modules/css-modules/blob/master/docs/composition.md#exceptions)や[コンポジション](https://github.com/css-modules/css-modules/blob/master/docs/composition.md#composition)などの詳細は、[CSS モジュールの仕様](https://github.com/css-modules/css-modules)を参照してください。
 
 ### カスタム注入名 {#custom-inject-name}
 
