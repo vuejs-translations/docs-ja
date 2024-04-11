@@ -296,6 +296,35 @@ function BaseLayout(slots) {
 }
 ```
 
+## 条件付きスロット {#conditional-slots}
+
+スロットが存在するかどうかに基づいて何かをレンダリングしたい場合があります。
+
+これを実現するには、[$slots](/api/component-instance.html#slots) プロパティと [v-if](/guide/essentials/conditional.html#v-if) を組み合わせて使用します。
+
+以下の例では、`header` と `footer` という 2 つの条件付きスロットを持つ Card コンポーネントを定義します。
+そしてヘッダー/フッターが存在する場合に、スタイル追加のためにスロットをラップしています:
+
+```vue-html
+<template>
+  <div class="card">
+    <div v-if="$slots.header" class="card-header">
+      <slot name="header" />
+    </div>
+    
+    <div class="card-content">
+      <slot />
+    </div>
+    
+    <div v-if="$slots.footer" class="card-footer">
+      <slot name="footer" />
+    </div>
+  </div>
+</template>
+```
+
+[Playground で試す](https://play.vuejs.org/#eNqFVD1v2zAQ/SsEWyBLIjVoJlcN0AYZ2qEt2oxaaOkkMaZIgqRcGYH/e4+kqFi26wAejvfevfu0XugXrbPtAHRFC1sZrh2x4AZ9X0rea2UceWCmJo1RPbnKcv/w9KtSFnnkIxMfDnotmAN8EVJ4WrDQTgh51wGrwUx+RLrb+6eOW4I/1wGJcJGjewrND1RP1Gpo2CB8+klOL9QqJR1IV+S+lbfVGqXcYW3QL9QiXOToPqPmn1PLCz+9ps5iIQ1vs2erJA75xbNLWqlecwHmp3ZcSVvSFQmIx5gQ6u/34HNmgOvkrzqoNmf8z3b0vpL+MmDBbKGkM+aYacFF+PHPDxjRnsFe1YNA9gXwN1glBl9jpH0dZI1lH/BCtd/CqXDZPtnHEcduU1O+UM/cB35J8XQeLrT+Wu7H7C7ElXKPU0xn5690Ofeab0klmLWfcUDIKmlakEe2N7xB4L0VytksHlhJFwE3yfu6e88mkvWAlDkmnxePwpN9kGkhOd3eieYbGstq48kdV5u856udY04zJevob1BYtxNxlplPkHaxVgb7XpFbPRI8AV6TtWDV5lNENatr3PaKfAgO3NIsMM1z1sGg1ig8G5yKUKhoN7u1GOBY6U6Pp1rTIJPYZXJs/v+JBW871xq2u5g6fNjCTOj+H/sTpqs=)
+
 ## 動的なスロットの名前 {#dynamic-slot-names}
 
 [動的なディレクティブの引数](/guide/essentials/template-syntax.md#dynamic-arguments)は `v-slot` でも機能します。これにより、動的なスロットの名前の定義が可能になります:
