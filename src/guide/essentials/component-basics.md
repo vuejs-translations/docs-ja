@@ -469,6 +469,7 @@ HTML 要素と同じように、以下のようにコンポーネントにコン
 これは Vue のカスタム要素 `<slot>` を用いて実現することができます:
 
 ```vue{4}
+<!-- AlertBox.vue -->
 <template>
   <div class="alert-box">
     <strong>This is an Error for Demo Purposes</strong>
