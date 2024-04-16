@@ -133,6 +133,40 @@ pending 状態に戻った場合、フォールバックのコンテンツはす
 
 Vue Router には、動的インポートを使用した [lazily loading components（遅延ローディングコンポーネント）](https://router.vuejs.org/guide/advanced/lazy-loading.html) が組み込まれています。これらは非同期コンポーネントとは異なり、現在のところ `<Suspense>` をトリガーすることはありません。しかし、非同期コンポーネントを子コンポーネントとして持つことは可能で、その場合は通常の方法で `<Suspense>` をトリガーすることができます。
 
+## ネストした Suspense {#nested-suspense}
+
+次のように複数の非同期コンポーネントがある場合（ネストされたルートやレイアウトベースのルートによくあります）:
+
+```vue-html
+<Suspense>
+  <component :is="DynamicAsyncOuter">
+    <component :is="DynamicAsyncInner" />
+  </component>
+</Suspense>
+```
+
+`<Suspense>` は期待通り、ツリーの下にあるすべての非同期コンポーネントを解決する境界を作成します。ただし、`DynamicAsyncOuter` を変更すると、`<Suspense>` は正しく待機しますが、ネストした `DynamicAsyncInner` を変更した場合は解決されるまで（以前の状態やフォールバックスロットではなく）空のノードをレンダリングします。
+
+
+
+これを直すには、ネストしたコンポーネントのパッチを処理するネストしたサスペンスを作成します:
+
+```vue-html
+<Suspense>
+  <component :is="DynamicAsyncOuter">
+    <Suspense suspensible> <!-- this -->
+      <component :is="DynamicAsyncInner" />
+    </Suspense>
+  </component>
+</Suspense>
+```
+
+もし `suspensible` プロパティを設定しなかった場合、内側の `<Suspense>` は親の `<Suspense>` から同期コンポーネントとして扱われます。つまり、独自のフォールバックスロットを持つことになり、両方の `Dynamic` コンポーネントが同時に変更された場合、子の `<Suspense>` が自身の依存関係ツリーをロードしている間に、空のノードや複数のパッチサイクルが発生する可能性があり、これは望ましくありません。`suspensible` が設定されていると、非同期な依存処理はすべて親の `<Suspense>` に委ねられ（発行されるイベントも含まれます）、内側の `<Suspense>` は依存関係の解決とパッチのための別の境界としてのみ機能します。
+
+
+
+
+
 ---
 
 **関連**
