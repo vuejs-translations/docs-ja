@@ -318,6 +318,7 @@ h(Transition, {
   ```ts
   interface SuspenseProps {
     timeout?: string | number
+    suspensible?: boolean
   }
   ```
 
@@ -332,5 +333,8 @@ h(Transition, {
   `<Suspense>` は `#default` スロットと `#fallback` スロットの 2 つのスロットを受け付けます。default スロットをメモリー内にレンダリングする間、fallback スロットの内容を表示します。
 
   デフォルトスロットのレンダリング中に非同期な依存関係（[非同期コンポーネント](/guide/components/async)や [`async setup()`](/guide/built-ins/suspense#async-setup) のコンポーネント）が発生すると、それらが全て解決するまで待ってからデフォルトスロットを表示します。
+
+  Suspense を `suspensible` に設定することで、すべての非同期依存処理は親の Suspense によって処理されます。[実装の詳細](https://github.com/vuejs/core/pull/6736) を参照してください。
+
 
 - **参照** [ガイド - Suspense](/guide/built-ins/suspense)
