@@ -352,7 +352,7 @@ JavaScript で `<Transition>` コンポーネントのイベントを購読す�
 // 要素の "enter-from" 状態を設定するために使用する
 function onBeforeEnter(el) {}
 
-// 要素が DON に挿入された次のフレームで呼ばれる
+// 要素が DOM に挿入された次のフレームで呼ばれる
 // アニメーションを開始するときに使用する
 function onEnter(el, done) {
   // トランジションの終了を示すために done コールバックを呼ぶ
@@ -397,7 +397,7 @@ export default {
     // 要素の "enter-from" 状態を設定するために使用する
     onBeforeEnter(el) {},
 
-    // 要素が DON に挿入された次のフレームで呼ばれる
+    // 要素が DOM に挿入された次のフレームで呼ばれる
     // アニメーションを開始するときに使用する
     onEnter(el, done) {
       // トランジションの終了を示すために done コールバックを呼ぶ
