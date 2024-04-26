@@ -547,7 +547,7 @@ const [firstName, firstNameModifiers] = defineModel('firstName')
 const [lastName, lastNameModifiers] = defineModel('lastName')
 
 console.log(firstNameModifiers) // { capitalize: true }
-console.log(lastNameModifiers) // { uppercase: true}
+console.log(lastNameModifiers) // { uppercase: true }
 </script>
 ```
 
@@ -565,7 +565,7 @@ lastNameModifiers: { default: () => ({}) }
 defineEmits(['update:firstName', 'update:lastName'])
 
 console.log(props.firstNameModifiers) // { capitalize: true }
-console.log(props.lastNameModifiers) // { uppercase: true}
+console.log(props.lastNameModifiers) // { uppercase: true }
 </script>
 ```
 
