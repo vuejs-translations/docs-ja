@@ -336,5 +336,4 @@ h(Transition, {
 
   Suspense を `suspensible` に設定することで、すべての非同期依存処理は親の Suspense によって処理されます。[実装の詳細](https://github.com/vuejs/core/pull/6736) を参照してください。
 
-
 - **参照** [ガイド - Suspense](/guide/built-ins/suspense)
