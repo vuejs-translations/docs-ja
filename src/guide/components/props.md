@@ -389,13 +389,18 @@ defineProps({
     type: String,
     required: true
   },
-  // デフォルト値を持つ数値
+  // 必須だが null になる可能性がある文字列
   propD: {
+    type: [String, null],
+    required: true
+  },
+  // デフォルト値を持つ数値
+  propE: {
     type: Number,
     default: 100
   },
   // デフォルト値を持つオブジェクト
-  propE: {
+  propF: {
     type: Object,
     // オブジェクトと配列のデフォルトは、ファクトリー関数を使って
     // 返す必要があります。ファクトリー関数は、コンポーネントが
@@ -406,14 +411,14 @@ defineProps({
   },
   // カスタムのバリデーター関数
   // 3.4 以降、全ての props が第 2 引数として渡されます
-  propF: {
+  propG: {
     validator(value, props) {
       // 値が以下の文字列のいずれかに一致する必要がある
       return ['success', 'warning', 'danger'].includes(value)
     }
   },
   // デフォルト値を持つ関数
-  propG: {
+  propH: {
     type: Function,
     // オブジェクトや配列のデフォルトと異なり、これは
     // ファクトリー関数ではなく、デフォルト値として機能する関数です
@@ -444,13 +449,18 @@ export default {
       type: String,
       required: true
     },
-    // デフォルト値を持つ数値
+    // 必須だが null になる可能性がある文字列
     propD: {
+      type: [String, null],
+      required: true
+    },
+    // デフォルト値を持つ数値
+    propE: {
       type: Number,
       default: 100
     },
     // デフォルト値を持つオブジェクト
-    propE: {
+    propF: {
       type: Object,
       // オブジェクトと配列のデフォルトは、ファクトリー関数を使って
       // 返す必要があります。ファクトリー関数は、コンポーネントが
@@ -461,14 +471,14 @@ export default {
     },
     // カスタムのバリデーター関数
     // 3.4 以降、全ての props が第 2 引数として渡されます
-    propF: {
+    propG: {
       validator(value, props) {
         // 値が以下の文字列のいずれかに一致する必要がある
         return ['success', 'warning', 'danger'].includes(value)
       }
     },
     // デフォルト値を持つ関数
-    propG: {
+    propH: {
       type: Function,
       // オブジェクトや配列のデフォルトと異なり、これは
       // ファクトリー関数ではなく、デフォルト値として機能する関数です
@@ -556,6 +566,39 @@ export default {
 </div>
 
 Vue は `instanceof Person` を使って、`author` props の値が本当に `Person` クラスのインスタンスであるかどうかを検証しています。
+
+## null になる可能性がある型
+
+もし型が必須だが null になる可能性がある場合、あなたは `null` を含む配列構文を使用することができます:
+
+<div class="composition-api">
+
+```js
+defineProps({
+  id: {
+    type: [String, null],
+    required: true
+  }
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  props: {
+    id: {
+      type: [String, null],
+      required: true
+    }
+  }
+}
+```
+
+</div>
+
+もし配列構文を使用せずに `type` に `null` だけを指定する場合、任意の型を許可することに注意してください。
 
 ## 真偽値の型変換 {#boolean-casting}
 
