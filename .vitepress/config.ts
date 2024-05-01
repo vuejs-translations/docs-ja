@@ -640,14 +640,6 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
     [
       'script',
-      {},
-      fs.readFileSync(
-        path.resolve(__dirname, './inlined-scripts/uwu.js'),
-        'utf-8'
-      )
-    ],
-    [
-      'script',
       {
         src: 'https://cdn.usefathom.com/script.js',
         'data-site': 'NJTQDIQA',
