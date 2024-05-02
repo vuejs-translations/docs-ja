@@ -1,40 +1,40 @@
-# Vue.js Privacy Policy
+# Vue.js プライバシーポリシー
 
-> Effective Date: April 26, 2024
+> 発効日 2024 年 4 月 26 日
 
-This Privacy Policy describes the Vue.js organization ("Vue", "we", "us" or "our") practices for handling your information in connection with this website (https://vuejs.org) and our open source-related websites ("Websites") and any content, related documentation, information and services (e.g. tutorials, tools to support the developer workflow, access to resources, etc.) made available to you on this website (collectively, the "Services"). This Privacy Policy describes the personal information we process to support our Services.
+本プライバシーポリシーは、Vue.js 組織（以下、「Vue」、「私たち」）が、本 Web サイト（https://ja.vuejs.org）および私たちのオープンソース関連 Web サイト（以下、「関連 Web サイト」）、ならびに本 Web サイト上で利用可能なコンテンツ、関連ドキュメント、情報およびサービス（チュートリアル、開発者のワークフローを支援するツール、リソースへのアクセスなど。以下、総称して「本サービス」）に関連して、あなたの情報を取り扱う際の慣行について説明するものです。本プライバシーポリシーでは、本サービスをサポートするために私たちが処理する個人情報について説明します。
 
-For clarity, this Privacy Policy only applies to the Websites and does not apply to any:
+明確にするため、本プライバシーポリシーは関連 Web サイトにのみ適用され、以下には適用されません:
 
-1. Use of open source code, documentation or specifications made available on GitHub (https://github.com/), which are governed by the terms of the applicable open source license;
+1. GitHub (https://github.com/) 上で公開されているオープンソースコード、ドキュメント、仕様書の使用は、該当するオープンソースライセンスの条件が適用されます。
 
-2. Pull requests, issues and any other interactions or features related to participation in open source projects on GitHub, which are governed by GitHub's terms and conditions; or
+2. プルリクエスト、issue、および GitHub 上のオープンソースプロジェクトへの参加に関連するその他のやりとりおよび機能は、GitHub の利用規約によって管理されます。
 
-3. Usage statistics of our published packages on NPM (https://npmjs.com/), which are governed by NPM's terms and conditions; or
+3. NPM (https://npmjs.com/) で公開されている私たちパッケージの利用統計は、NPM の利用規約が適用されます。
 
-4. Usage statistics of our published browser extensions, which are collected by the browser vendors and governed by their respective terms and conditions.
+4. 私たちが公開しているブラウザー拡張機能の利用統計は、ブラウザーのベンダーによって収集され、それぞれの利用規約によって管理されます。
 
-## What Kinds of Information Do We Collect?
+## どのような種類の情報を収集しますか？
 
-We do not collect or store any type of personal data, but may collect anonymized data via 3rd party services integrated in our websites:
+私たちは、いかなる種類の個人データも収集・保存しませんが、私たちの Web サイトに統合されたサードパーティーのサービスを通じて匿名化されたデータを収集することがあります:
 
-- **Visitor data to our websites.** Our website analytics is powered by [Fathom Analytics](https://usefathom.com/), which doesn't use cookies and complies with the GDPR, ePrivacy (including PECR), COPPA and CCPA. Using this privacy-friendly website analytics software, your IP address is only briefly processed, and we (running this website) have no way of identifying you. As per the CCPA, your personal information is de-identified. You can read more about this on Fathom Analytics' website.
+- **Web サイトへの訪問者データ。** 私たちの Web サイトの解析は、Cookie を使用せず、GDPR、e プライバシー（PECR を含む）、COPPA、CCPA に準拠する [Fathom Analytics](https://usefathom.com/) を使用しています。このプライバシーに配慮した Web サイト解析ソフトウェアを使用すると、あなたの IP アドレスは短時間しか処理されず、（この Web サイトを運営している）私たちはあなたを特定する手段を持ちません。CCPA に従い、あなたの個人情報は匿名化されます。詳しくは Fathom Analytics の Web サイトをご覧ください。
 
-  - Fathom Analytics' Privacy Policy: https://usefathom.com/legal/privacy
+  - Fathom Analytics のプライバシーポリシー: https://usefathom.com/legal/privacy
 
-- **Usage data of the search functionality.** Our search functionality is powered by [Algolia DocSearch](https://docsearch.algolia.com/), which does not perform any type of user tracking or fingerprinting, and does not use cookies. Algolia services are GPDR compliant, CCPA compliant, and TRUSTe Certified.
+- **検索機能の使用データ。**　私たちの検索機能は、[Algolia DocSearch](https://docsearch.algolia.com/) を利用しています。この検索機能は、いかなる種類のユーザー追跡やフィンガープリンティングも行わず、Cookie も使用しません。Algolia のサービスは、GPDR 準拠、CCPA 準拠、TRUSTe 認証を受けています。
 
-  - Algolia's privacy policy: https://www.algolia.com/policies/privacy/
-  - Algolia's security and privacy compliance: https://www.algolia.com/distributed-secure/security-compliance/
+  - Algolia のプライバシーポリシー: https://www.algolia.com/policies/privacy/
+  - Algolia のセキュリティとプライバシーのコンプライアンス: https://www.algolia.com/distributed-secure/security-compliance/
 
-## How Do We Use Information?
+## 情報はどのように使用されますか？
 
-The sole purpose of collecting the aforementioned data is to understand our website traffic and usage in the most privacy-friendly way possible so that we can continually improve our website and documentation quality. The lawful basis as per the GDPR is "Article 6(1)(f); where our legitimate interests are to improve our website and business continually." As per the explanation, no personal data is stored over time.
+前述のデータを収集する唯一の目的は、可能な限りプライバシーに配慮した方法で Web サイトのトラフィックと利用状況を把握し、 Web サイトとドキュメントの品質を継続的に改善することです。GDPR による法的根拠は、「第 6 条 1 項 (f) 私たちの正当な利益は、私たちの Web サイトおよび事業を継続的に改善すること」です。説明の通り、個人データは長期間保存されません。
 
-## Data Retention
+## データの保持
 
-All data collected are stored on aforementioned 3rd party services and are subject to the services' respective data retention policies.
+収集されたデータはすべて前述のサードパーティーのサービスに保存され、各サービスのデータ保持ポリシーが適用されます。
 
-## Questions
+## 質問
 
-If you have any questions about this Privacy Policy or our practices, please contact us via email at hello@vuejs.org.
+本プライバシーポリシーまたは私たちの慣行についてご質問がある場合は、https://vuejs-jp.org/contact からお問い合わせください。

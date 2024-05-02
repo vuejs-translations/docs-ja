@@ -113,7 +113,7 @@ const nav: ThemeConfig['nav'] = [
         link: '/about/community-guide'
       },
       { text: '行動規範', link: '/about/coc' },
-      { text: 'Privacy Policy', link: '/about/privacy' },
+      { text: 'プライバシーポリシー', link: '/about/privacy' },
       {
         text: 'ドキュメンタリー',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
