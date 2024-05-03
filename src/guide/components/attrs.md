@@ -14,7 +14,7 @@ outline: deep
 
 ```vue-html
 <!-- <MyButton> のテンプレート -->
-<button>click me</button>
+<button>Click Me</button>
 ```
 
 そして、このコンポーネントを使う親が以下です:
@@ -26,7 +26,7 @@ outline: deep
 最終的に DOM は以下のようにレンダリングされます:
 
 ```html
-<button class="large">click me</button>
+<button class="large">Click Me</button>
 ```
 
 ここで、`<MyButton>` は `class` を受け入れ可能な props として宣言していません。そのため、`class` はフォールスルー属性として扱われ、自動的に `<MyButton>` のルート要素に追加されます。
@@ -37,13 +37,13 @@ outline: deep
 
 ```vue-html
 <!-- <MyButton> の テンプレート -->
-<button class="btn">click me</button>
+<button class="btn">Click Me</button>
 ```
 
 そうすると、最終的にレンダリングされる DOM は、こうなります:
 
 ```html
-<button class="btn large">click me</button>
+<button class="btn large">Click Me</button>
 ```
 
 ### `v-on` リスナーの継承 {#v-on-listener-inheritance}
@@ -112,7 +112,7 @@ defineOptions({
 
 ```vue-html
 <div class="btn-wrapper">
-  <button class="btn">click me</button>
+  <button class="btn">Click Me</button>
 </div>
 ```
 
@@ -120,7 +120,7 @@ defineOptions({
 
 ```vue-html{2}
 <div class="btn-wrapper">
-  <button class="btn" v-bind="$attrs">click me</button>
+  <button class="btn" v-bind="$attrs">Click Me</button>
 </div>
 ```
 

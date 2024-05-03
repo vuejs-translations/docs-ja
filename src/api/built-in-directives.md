@@ -451,7 +451,7 @@ props の受け取りを期待する名前付きスロットまたはスコー�
   <span v-once>This will never change: {{msg}}</span>
   <!-- 子要素を持つ要素 -->
   <div v-once>
-    <h1>comment</h1>
+    <h1>Comment</h1>
     <p>{{msg}}</p>
   </div>
   <!-- コンポーネント -->
