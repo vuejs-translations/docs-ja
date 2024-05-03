@@ -48,7 +48,7 @@ const nav: ThemeConfig['nav'] = [
           { text: 'テーマ', link: '/ecosystem/themes' },
           { text: 'UI コンポーネント', link: 'https://ui-libs.vercel.app/' },          {
             text: '検定',
-            link: 'https://certification.vuejs.org/?ref=vuejs-nav'
+            link: 'https://certificates.dev/vuejs/?ref=vuejs-nav'
           },
           { text: '仕事', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'T シャツショップ', link: 'https://vue.threadless.com/' }
