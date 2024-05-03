@@ -141,7 +141,7 @@ const obj = reactive({ count: 0 })
 
 // これは、watch() に数値を渡しているので動作しません。
 watch(obj.count, (count) => {
-  console.log(`count is: ${count}`)
+  console.log(`Count is: ${count}`)
 })
 ```
 
@@ -152,7 +152,7 @@ watch(obj.count, (count) => {
 watch(
   () => obj.count,
   (count) => {
-    console.log(`count is: ${count}`)
+    console.log(`Count is: ${count}`)
   }
 )
 ```

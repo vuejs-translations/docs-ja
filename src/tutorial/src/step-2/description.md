@@ -63,7 +63,7 @@ setup() {
 
 ```vue-html
 <h1>{{ message }}</h1>
-<p>count is: {{ counter.count }}</p>
+<p>Count is: {{ counter.count }}</p>
 ```
 
 テンプレートで `message` ref にアクセスする際、`.value` を使用する必要がないことに注意してください。自動的にアンラップされ、より簡潔な使い方ができます。
