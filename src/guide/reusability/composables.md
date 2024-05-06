@@ -199,7 +199,7 @@ const { data, error } = useFetch(url)
 url.value = '/new-url'
 ```
 
-もしくは、getter 関数を受け取ります:
+もしくは、[getter 関数](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get#%E8%A7%A3%E8%AA%AC)を受け取ります:
 
 ```js
 // props.id が変更されたときに再取得する

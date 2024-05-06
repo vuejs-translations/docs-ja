@@ -275,7 +275,7 @@ Vue の文脈的には、リアクティビティは機能のコレクション�
 
 リアクティビティーシステムを実装する方法にはさまざまなものがあります。例えば、コードを静的に解析して依存関係を特定する方法があります。しかし、Vue はそのような形式のリアクティビティーシステムを採用していません。
 
-その代わりに、Vue のリアクティビティーシステムは、実行時にプロパティへのアクセスを追跡します。これは、Proxy ラッパーとプロパティの getter/setter 関数の両方を使用して行われます。
+その代わりに、Vue のリアクティビティーシステムは、実行時にプロパティへのアクセスを追跡します。これは、Proxy ラッパーとプロパティの [getter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get#%E8%A7%A3%E8%AA%AC)/[setter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set#%E8%A7%A3%E8%AA%AC) 関数の両方を使用して行われます。
 
 詳しくはこちらをご覧ください:
 - [ガイド - リアクティビティーの基礎](/guide/essentials/reactivity-fundamentals.html)

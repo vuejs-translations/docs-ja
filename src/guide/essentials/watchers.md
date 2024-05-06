@@ -109,7 +109,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 
 ### 監視ソースの種類 {#watch-source-types}
 
-`watch` の第一引数は、リアクティブな「ソース」のさまざまな型に対応しています: その引数には ref（算出 ref も含む）やリアクティブなオブジェクト、getter 関数、あるいは複数のソースの配列といったものです:
+`watch` の第一引数は、リアクティブな「ソース」のさまざまな型に対応しています: その引数には ref（算出 ref も含む）やリアクティブなオブジェクト、[getter 関数](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get#%E8%A7%A3%E8%AA%AC)、あるいは複数のソースの配列といったものです:
 
 ```js
 const x = ref(0)
@@ -272,13 +272,12 @@ watch(
 
 </div>
 
-
 ## 一度きりのウォッチャー <sup class="vt-badge" data-text="3.4+" /> {#once-watchers}
 
 ウォッチャーのコールバックは、監視対象のソースが変更されるたびに実行されます。ソースが変更されたときに一度だけコールバックを起動したい場合は、`once: true` オプションを使用します。
 
 <div class="options-api">
-  
+
 ```js
 export default {
   watch: {

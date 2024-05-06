@@ -67,7 +67,7 @@ whenDepsChange(update)
 
 私たちは、この例のようなローカル変数の読み書きを実際に追跡することはできません。バニラ（素の）JavaScript にはそのような仕組みがないのです。**できる**のは、**オブジェクトのプロパティ**の読み書きを傍受（インターセプト）することです。
 
-JavaScript でプロパティにアクセスを傍受する方法は 2 つあります: [getter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get) / [setters](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set) と [Proxy](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) です。Vue 2 では、ブラウザのサポートの制限により、getter / setter のみを使用していました。Vue 3 では、Proxy はリアクティブオブジェクトに、getter / setters は ref に使用されています。以下は、動作を説明する疑似コードです:
+JavaScript でプロパティにアクセスを傍受する方法は 2 つあります: [getter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get#%E8%A7%A3%E8%AA%AC) / [setter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set#%E8%A7%A3%E8%AA%AC)、そして [Proxy](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy) です。Vue 2 では、ブラウザのサポートの制限により、getter / setter のみを使用していました。Vue 3 では、Proxy はリアクティブオブジェクトに、getter / setters は ref に使用されています。以下は、動作を説明する疑似コードです:
 
 ```js{4,9,17,22}
 function reactive(obj) {

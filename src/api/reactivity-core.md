@@ -45,7 +45,7 @@
 
 ## computed() {#computed}
 
-ゲッター関数を受け取り、ゲッターからの戻り値に対して読み取り専用のリアクティブな [ref](#ref) オブジェクトを返します。また、`get` 関数と `set` 関数を持つオブジェクトを受け取り、書き込み可な ref オブジェクトを作成することができます。
+[getter 関数](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/set#%E8%A7%A3%E8%AA%AC)を受け取り、getter からの戻り値に対して読み取り専用のリアクティブな [ref](#ref) オブジェクトを返します。また、`get` 関数と `set` 関数を持つオブジェクトを受け取り、書き込み可な ref オブジェクトを作成することができます。
 
 - **型**
 
