@@ -154,8 +154,6 @@ watch(
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 form 要素に `autocomplete='on'` を記述すると、フォーム内のすべての入力欄に適用されることに注意してください。各入力欄に対して異なる [autocomplete 属性の値](https://developer.mozilla.org/ja/docs/Web/HTML/Attributes/autocomplete) を設定することもできます。
 
 ### ラベル {#labels}
@@ -166,8 +164,6 @@ form 要素に `autocomplete='on'` を記述すると、フォーム内のすべ
 <label for="name">Name: </label>
 <input type="text" name="name" id="name" v-model="name" />
 ```
-
-<!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 Chrome デベロッパー ツールでこの要素を検査し、Elements タブ内の Accessibility タブを開くと、入力欄がどのようにラベルから名付けられているか確認できます:
 
@@ -201,8 +197,6 @@ Chrome デベロッパー ツールでこの要素を検査し、Elements タブ
 />
 ```
 
-<!-- <common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 Chrome DevTools でこの要素を検査し、アクセシブルな名前がどのように変更されたか確認できます:
 
 ![Chrome デベロッパー ツールが、入力欄が aria-label から得たアクセシブルな名前を表示している](./images/AccessibleARIAlabelDevTools.png)
@@ -233,8 +227,6 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 ![Chrome デベロッパー ツールが、入力欄が aria-labelledby から得たアクセシブルな名前を表示している](./images/AccessibleARIAlabelledbyDevTools.png)
 
 #### `aria-describedby` {#aria-describedby}
@@ -264,8 +256,6 @@ Chrome DevTools でこの要素を検査し、アクセシブルな名前がど�
   <button type="submit">Submit</button>
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 Chrome DevTools で検査することで、その説明文を確認することができます:
 
@@ -352,8 +342,6 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 </fieldset>
 ```
 
-<!-- <common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 ### コンテンツの非表示 {#hiding-content}
 
 通常、たとえ入力欄がアクセシブルな名前を持っていても、ラベルを視覚的に非表示にすることは推奨されません。しかし、入力欄の機能が周囲の内容から理解できるのであれば、視覚的にラベルを非表示にすることができます。
@@ -386,8 +374,6 @@ Chrome DevTools で検査することで、その説明文を確認すること�
 }
 ```
 
-<!-- <common-codepen-snippet title="Form Search" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 #### `aria-hidden="true"` {#aria-hidden-true}
 
 `aria-hidden="true"` を追加すると、アシスティブ・テクノロジーから要素を隠しますが、その他のユーザーは視覚的に利用できます。フォーカス可能な要素には使用せず、純粋に装飾的なコンテンツ、複製されたコンテンツ、画面外のコンテンツに使用してください。
@@ -413,8 +399,6 @@ Chrome DevTools で検査することで、その説明文を確認すること�
   <input type="submit" value="Submit" />
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Form Buttons" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ### 機能的な画像 {#functional-images}
 
@@ -449,8 +433,6 @@ Chrome DevTools で検査することで、その説明文を確認すること�
   </button>
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Functional Images" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ## 標準規格 {#standards}
 
