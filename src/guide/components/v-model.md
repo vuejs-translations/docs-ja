@@ -59,6 +59,7 @@ const model = defineModel()
 3.4 以前は、上記の子コンポーネントはこのように実装されていました:
 
 ```vue
+<!-- Child.vue -->
 <script setup>
 const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
@@ -70,6 +71,16 @@ const emit = defineEmits(['update:modelValue'])
     @input="emit('update:modelValue', $event.target.value)"
   />
 </template>
+```
+
+すると、親コンポーネントの `v-model="modelValue"` は次のようにコンパイルされます:
+
+```vue-html
+<!-- Parent.vue -->
+<Child
+  :modelValue="foo"
+  @update:modelValue="$event => (foo = $event)"
+/>
 ```
 
 見ての通り、かなり冗長です。ただ、内部で何が起こっているのかを理解するのに役立ちます。
