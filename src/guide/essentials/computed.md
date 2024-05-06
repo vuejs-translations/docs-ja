@@ -130,7 +130,7 @@ const publishedBooksMessage = computed(() => {
 
 [Playground で試す](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
 
-ここでは、`publishedBooksMessage` という算出プロパティを宣言しています。`computed()` 関数は getter 関数が渡されることを想定しており、返り値は **算出された ref** となります。通常の ref と同様に、`publishedBooksMessage.value` で算出結果を参照することができます。また、算出結果はテンプレート内では自動的にアンラップされるため、テンプレート内では `.value` なしで参照することができます。
+ここでは、`publishedBooksMessage` という算出プロパティを宣言しています。`computed()` 関数は [getter 関数](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/get#%E8%A7%A3%E8%AA%AC)が渡されることを想定しており、返り値は **算出された ref** となります。通常の ref と同様に、`publishedBooksMessage.value` で算出結果を参照することができます。また、算出結果はテンプレート内では自動的にアンラップされるため、テンプレート内では `.value` なしで参照することができます。
 
 算出プロパティは、自動的にリアクティブな依存関係を追跡します。Vue は `publishedBooksMessage` の算出が `author.books` に依存することを知っているので、`author.books` が変わると `publishedBooksMessage` に依存する全てのバインディングを更新します。
 
