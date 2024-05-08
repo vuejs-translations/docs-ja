@@ -567,9 +567,9 @@ export default {
 
 Vue は `instanceof Person` を使って、`author` props の値が本当に `Person` クラスのインスタンスであるかどうかを検証しています。
 
-## null になる可能性がある型
+## null になる可能性がある型 {#nullable-type}
 
-もし型が必須だが null になる可能性がある場合、あなたは `null` を含む配列構文を使用することができます:
+型が必須だが null になる可能性がある場合、`null` を含む配列構文を使用できます:
 
 <div class="composition-api">
 
@@ -598,7 +598,7 @@ export default {
 
 </div>
 
-もし配列構文を使用せずに `type` に `null` だけを指定する場合、任意の型を許可することに注意してください。
+もし配列構文を使用せず `type` に `null` だけを指定した場合、任意の型を許可することに注意してください。
 
 ## 真偽値の型変換 {#boolean-casting}
 
