@@ -46,7 +46,8 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'パートナー', link: '/partners/' },
           { text: 'テーマ', link: '/ecosystem/themes' },
-          { text: 'UI コンポーネント', link: 'https://ui-libs.vercel.app/' },          {
+          { text: 'UI コンポーネント', link: 'https://ui-libs.vercel.app/' },
+          {
             text: '検定',
             link: 'https://certificates.dev/vuejs/?ref=vuejs-nav'
           },
@@ -112,6 +113,7 @@ const nav: ThemeConfig['nav'] = [
         link: '/about/community-guide'
       },
       { text: '行動規範', link: '/about/coc' },
+      { text: 'プライバシーポリシー', link: '/about/privacy' },
       {
         text: 'ドキュメンタリー',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
