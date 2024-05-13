@@ -24,7 +24,7 @@ const nav: ThemeConfig['nav'] = [
       },
       {
         text: 'Vue 2 からの移行',
-        link: 'https://v3-migration.vuejs.org/'
+        link: 'https://v3-migration.vuejs.org/ja/'
       }
     ]
   },
