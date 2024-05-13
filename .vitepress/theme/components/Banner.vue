@@ -22,30 +22,16 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <p class="vt-banner-text">
-      <span class="vt-text-primary">VueConf US</span>
-      <span class="vt-tagline"> - Join the official Vue.js conference</span>
-      | May 15-17, 2024 <span class="vt-place"> - New Orleans, USA</span>
-      <a
-        target="_blank"
-        class="vt-primary-action"
-        href="https://vueconf.us?utm_source=vuejs&utm_content=top_banner"
-      >Register <span class="vt-time-now">Now</span></a
-      >
-    </p>
-    <button @click="dismiss">
-      <VTIconPlus class="close" />
-    </button>
-    <p class="vt-banner-text vt-coupon">
-      <span class="vt-text-primary">Use code</span> VUEJSDOCS
-      <span class="vt-text-primary">to get $100 off!</span>
-    </p>
+    <a href="https://note.com/tutti2612/n/n30bdb59e7949" target="_blank">
+      Vue Fes Japan 2024 スポンサー2次募集中！
+    </a>
   </div>
 </template>
 
 <style>
 html:not(.banner-dismissed) {
   --vt-banner-height: 60px;
+  --vt-banner-height: 30px; /* Vue Fes */
 }
 </style>
 
@@ -68,6 +54,9 @@ html:not(.banner-dismissed) {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: #35495e; /* Vue Fes */
+  font-size: 13px; /* Vue Fes */
 }
 
 .banner-dismissed .banner {
