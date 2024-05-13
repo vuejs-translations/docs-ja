@@ -8,7 +8,7 @@ Vue の開発は主にスポンサーシップを通じて資金提供されて�
 
 ## Vue 2 と Vue 3 の違いは何ですか？ {#what-s-the-difference-between-vue-2-and-vue-3}
 
-Vue 3 は、Vue の現在の最新メジャーバージョンです。Teleport、Suspense、テンプレートの複数ルート要素など、Vue 2 にはない新しい機能が含まれています。また、Vue 2 と互換性のない破壊的な変更も含まれています。詳細については、[Vue 3 移行ガイド](https://v3-migration.vuejs.org/)に記載されています。
+Vue 3 は、Vue の現在の最新メジャーバージョンです。Teleport、Suspense、テンプレートの複数ルート要素など、Vue 2 にはない新しい機能が含まれています。また、Vue 2 と互換性のない破壊的な変更も含まれています。詳細については、[Vue 3 移行ガイド](https://v3-migration.vuejs.org/ja/)に記載されています。
 
 違いはあるものの、Vue API の大部分は 2 つのメジャーバージョン間で共有されているため、Vue 2 の知識のほとんどは Vue 3 でも引き続き使用できます。特に、Composition API はもともと Vue 3 のみの機能でしたが、現在は Vue 2 にバックポートされ、[Vue 2.7](https://github.com/vuejs/vue/blob/main/CHANGELOG.md#270-2022-07-01) で利用可能になっています。
 
@@ -16,7 +16,7 @@ Vue 3 は、Vue の現在の最新メジャーバージョンです。Teleport�
 
 - IE11 をサポートする必要がある場合。Vue 3 はモダンな JavaScript の機能を活用しているため、IE11 をサポートしていません。
 
-既存の Vue 2 アプリを Vue 3 に移行する場合は、[移行ガイド](https://v3-migration.vuejs.org/)を参照してください。
+既存の Vue 2 アプリを Vue 3 に移行する場合は、[移行ガイド](https://v3-migration.vuejs.org/ja/)を参照してください。
 
 ## Vue 2 はまだサポートされているのでしょうか？ {#is-vue-2-still-supported}
 
