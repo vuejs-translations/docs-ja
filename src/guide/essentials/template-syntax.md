@@ -98,7 +98,8 @@ HTML 属性の中ではマスタッシュ構文が使えません。代わりに
 ```js
 const objectOfAttrs = {
   id: 'container',
-  class: 'wrapper'
+  class: 'wrapper',
+  style: 'background-color:green'
 }
 ```
 
