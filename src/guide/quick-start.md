@@ -196,7 +196,7 @@ CDN から Vue を使用する場合は「ビルドステップ」は必要あ�
 </script>
 ```
 
-[Codepen のデモ](https://codepen.io/vuejs-examples/pen/QWJwJLp)
+[CodePen のデモ &gt;](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
 </div>
 
@@ -221,7 +221,7 @@ CDN から Vue を使用する場合は「ビルドステップ」は必要あ�
 </script>
 ```
 
-[Codepen のデモ](https://codepen.io/vuejs-examples/pen/eYQpQEG)
+[CodePen のデモ &gt;](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
 :::tip
 このガイドでは、Composition API の多くの例で `<script setup>` という構文を使用しており、これにはビルド ツールが必要です。ビルドステップなしで Composition API を使用する場合は、[`setup()` オプション](/api/composition-api-setup) の使い方を参照してください。
@@ -278,12 +278,12 @@ CDN から Vue を使用する場合は「ビルドステップ」は必要あ�
 
 <div class="options-api">
 
-[Codepen のデモ](https://codepen.io/vuejs-examples/pen/VwVYVZO)
+[CodePen のデモ &gt;](https://codepen.io/vuejs-examples/pen/VwVYVZO)
 
 </div>
 <div class="composition-api">
 
-[Codepen のデモ](https://codepen.io/vuejs-examples/pen/MWzazEv)
+[CodePen のデモ &gt;](https://codepen.io/vuejs-examples/pen/MWzazEv)
 
 </div>
 
@@ -323,7 +323,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[Codepen のデモ](https://codepen.io/vuejs-examples/pen/wvQKQyM)
+[CodePen のデモ &gt;](https://codepen.io/vuejs-examples/pen/wvQKQyM)
 
 </div>
 
@@ -354,7 +354,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[Codepen のデモ](https://codepen.io/vuejs-examples/pen/YzRyRYM)
+[CodePen のデモ &gt;](https://codepen.io/vuejs-examples/pen/YzRyRYM)
 
 </div>
 
