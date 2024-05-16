@@ -444,33 +444,37 @@ props は名前付きスロットに次のように渡します:
 名前付きスロットとデフォルトのスコープ付きスロットを混在させる場合は、デフォルトスロットに明示的に `<template>` タグを使用する必要があります。`v-slot` ディレクティブを直接コンポーネントに配置しようとすると、コンパイルエラーになります。これは、デフォルトスロット props のスコープが曖昧にならないようにするためです。例えば:
 
 ```vue-html
+<!-- <MyComponent> template -->
+<div>
+  <slot :message="hello"></slot>
+  <slot name="footer" />
+</div>
+```
+
+```vue-html
 <!-- このテンプレートはコンパイルされません -->
-<template>
-  <MyComponent v-slot="{ message }">
+<MyComponent v-slot="{ message }">
+  <p>{{ message }}</p>
+  <template #footer>
+    <!-- message はデフォルトスロットに属しており、ここでは使用できません -->
     <p>{{ message }}</p>
-    <template #footer>
-      <!-- message はデフォルトスロットに属しており、ここでは使用できません -->
-      <p>{{ message }}</p>
-    </template>
-  </MyComponent>
-</template>
+  </template>
+</MyComponent>
 ```
 
 デフォルトスロットに明示的に `<template>` タグを使用することで、`message` props が他のスロット内では使用できないことを明確にできます:
 
 ```vue-html
-<template>
-  <MyComponent>
-    <!-- 明示的なデフォルトスロットを使用する -->
-    <template #default="{ message }">
-      <p>{{ message }}</p>
-    </template>
+<MyComponent>
+  <!-- 明示的なデフォルトスロットを使用する -->
+  <template #default="{ message }">
+    <p>{{ message }}</p>
+  </template>
 
-    <template #footer>
-      <p>Here's some contact info</p>
-    </template>
-  </MyComponent>
-</template>
+  <template #footer>
+    <p>Here's some contact info</p>
+  </template>
+</MyComponent>
 ```
 
 ### Fancy List の例 {#fancy-list-example}
