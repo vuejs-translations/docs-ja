@@ -267,7 +267,7 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 ### その他の選択肢 {#other-options-2}
 
-- [Playwright](https://playwright.dev/) も優れた E2E テストソリューションです。WebKit は Playwright でサポートされていますが、Electron は実験的とされています。詳しくは [Why Playwright](https://playwright.dev/docs/why-playwright) をご覧ください。
+- [Playwright](https://playwright.dev/) も優れた E2E テストソリューションで、Chromium、WebKit、Firefox を含むすべてのモダンなレンダリングエンジンをサポートしています。Windows、Linux、macOS 上で、ローカルまたは CI 上で、ヘッドレスまたはヘッドフルで、Android 用 Google Chrome と Mobile Safari のネイティブモバイルエミュレーションを使用してテストします。
 
 - [Nightwatch](https://nightwatchjs.org/) は、[Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) をベースとした E2E テストソリューションです。こちらはネイティブモバイルテストを含む、最も広い範囲のブラウザーをサポートしています。Selenium ベースのソリューションは、Playwright や Cypress よりも遅くなります。
 
