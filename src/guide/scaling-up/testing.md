@@ -263,13 +263,13 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 - [Cypress](https://www.cypress.io/)
 
-  全体的に見て Cypress は、有益なグラフィカルインターフェース、優れたデバッグ性、組み込みアサーションとスタブ、耐フレーク性、並列化、スナップショットなどの機能により、最も完成した E2E ソリューションを提供すると私たちは考えています。また、前述の通り[コンポーネントのテスト](https://docs.cypress.io/guides/component-testing/introduction)もサポートしています。ですが、サポートしているのは Chromium ベースのブラウザーと Firefox のみです。
+  全体的に見て Cypress は、有益なグラフィカルインターフェース、優れたデバッグ性、組み込みアサーションとスタブ、耐フレーク性、並列化、スナップショットなどの機能により、最も完成した E2E ソリューションを提供すると私たちは考えています。また、前述の通り[コンポーネントのテスト](https://docs.cypress.io/guides/component-testing/introduction)もサポートしています。Chromium ベースのブラウザー、Firefox、Electron をサポートしています。WebKit のサポートもありますが、実験的とされています。
 
 ### その他の選択肢 {#other-options-2}
 
-- [Playwright](https://playwright.dev/) は、より幅広いブラウザー（主に WebKit）をサポートする、優れた E2E テストソリューションでもあります。詳しくは [Why Playwright](https://playwright.dev/docs/why-playwright) をご覧ください。
+- [Playwright](https://playwright.dev/) も優れた E2E テストソリューションです。WebKit は Playwright でサポートされていますが、Electron は実験的とされています。詳しくは [Why Playwright](https://playwright.dev/docs/why-playwright) をご覧ください。
 
-- [Nightwatch](https://nightwatchjs.org/) は、[Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) をベースとした E2E テストソリューションです。こちらは最も広い範囲のブラウザーをサポートしています。
+- [Nightwatch](https://nightwatchjs.org/) は、[Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) をベースとした E2E テストソリューションです。こちらはネイティブモバイルテストを含む、最も広い範囲のブラウザーをサポートしています。Selenium ベースのソリューションは、Playwright や Cypress よりも遅くなります。
 
 - [WebdriverIO](https://webdriver.io/) は、WebDriver プロトコルに基づいた Web およびモバイルテスト用のテスト自動化フレームワークです。
 
