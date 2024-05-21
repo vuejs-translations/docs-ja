@@ -10,15 +10,18 @@
 
 このサイトは [VitePress](https://github.com/vuejs/vitepress) で構築されており、[@vue/theme](https://github.com/vuejs/vue-theme) に依存しています。サイトのコンテンツは `src` にある Markdown フォーマットで書かれています。シンプルな編集であれば、GitHub 上で直接編集して Pull Request を作成できます。
 
-ローカルでの開発なら、パッケージマネージャーには [pnpm](https://pnpm.io/) が推奨です:
+ローカルの開発では、パッケージマネージャーは [pnpm](https://pnpm.io/) が推奨です:
 
 ```bash
 pnpm i
 pnpm run dev
 ```
 
-このプロジェクトで使用する Node.js は、Optional chaining などの JavaScript の新機能をコード内で使用するため、 `v14.19.0` 以降である必要があります。
+このプロジェクトには Node.js の `v18` 以上が必要です。また、corepack を有効にすることを推奨しています:
 
+```bash
+corepack enable
+```
 
 ## コンテンツに関する作業
 
