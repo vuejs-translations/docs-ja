@@ -18,6 +18,7 @@ aside: false
 - [فارسی / ペルシャ語](https://fa.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-fa)]
 - [Русский / ロシア語](https://ru.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ru)]
 - [Čeština / チェコ語](https://cs.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-cs)]
+- [繁體中文 / 繁体字中国語](https://zh-hk.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-zh-hk)]
 
 ## 作業中の言語 {#work-in-progress-languages}
 
