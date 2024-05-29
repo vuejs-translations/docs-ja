@@ -24,6 +24,8 @@ aside: false
 
 - [العربية / アラビア語](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
 
+- [Español / スペイン語](https://vue3-spanish-docs.netlify.app/) [[source](https://github.com/icarusgk/vuejs-spanish-docs)]
+
 ## 新しい翻訳の開始 {#starting-a-new-translation}
 
 Vue のドキュメントは最近大幅に改訂されたため、他の言語での翻訳はまだ不足しているか、または作業中です。
