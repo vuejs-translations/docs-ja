@@ -12,7 +12,7 @@ importers:
         specifier: ^4.1.2
         version: 4.2.0
       '@vue/theme':
-        specifier: ^2.2.11
+        specifier: ^2.2.12
         version: 2.2.12(@algolia/client-search@4.20.0)(search-insights@2.14.0)(vitepress@1.2.2(@algolia/client-search@4.20.0)(@types/node@20.12.12)(postcss@8.4.38)(search-insights@2.14.0)(terser@5.31.0)(typescript@5.4.5))(vue@3.4.27(typescript@5.4.5))
       dynamics.js:
         specifier: ^1.1.5
