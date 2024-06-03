@@ -12,12 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: 18
-    - run: corepack enable pnpm
+        cache: 'pnpm'
     - name: Install deps
-      run: npx pnpm i
+      run: pnpm install
     - name: Run textlint
-      run: npm run lint
+      run: pnpm run lint
+      env:
+        CI: true
