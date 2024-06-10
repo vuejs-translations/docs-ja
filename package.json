@@ -12,18 +12,18 @@
     "lint": "textlint --format pretty-error src/**"
   },
   "dependencies": {
-    "@vue/repl": "^4.1.2",
+    "@vue/repl": "^4.2.1",
     "@vue/theme": "^2.2.12",
     "dynamics.js": "^1.1.5",
     "gsap": "^3.12.5",
-    "vitepress": "^1.2.2",
+    "vitepress": "^1.2.3",
     "vue": "^3.4.27"
   },
   "devDependencies": {
     "@nexhome/yorkie": "^2.0.8",
     "@types/body-scroll-lock": "^3.1.2",
     "@types/markdown-it": "^14.1.1",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.14.1",
     "lint-staged": "^12.3.2",
     "terser": "^5.31.0",
     "textlint": "^12.1.0",
@@ -39,5 +39,5 @@
   "lint-staged": {
     "*.md": "textlint --format pretty-error"
   },
-  "packageManager": "pnpm@9.1.2"
+  "packageManager": "pnpm@9.1.4"
 }
