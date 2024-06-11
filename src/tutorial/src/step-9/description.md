@@ -2,7 +2,7 @@
 
 これまで Vue はリアクティビティーと宣言的レンダリングのおかげですべての DOM 更新を処理してくれました。しかし、必然的に DOM を手動で操作する必要がある場合があります。
 
-<a target="_blank" href="/api/built-in-special-attributes.html#ref">特別な `ref` 属性</a>（例：テンプレート内の要素）をつかって、テンプレート参照が要求できます：
+<a target="_blank" href="/api/built-in-special-attributes.html#ref">特別な `ref` 属性</a>（例: テンプレート内の要素）をつかって、テンプレート参照が要求できます:
 
 ```vue-html
 <p ref="pElementRef">hello</p>
@@ -10,7 +10,7 @@
 
 <div class="composition-api">
 
-ref にアクセスするには、一致する名前を定義<span class="html">して公開</span>する必要があります：
+ref にアクセスするには、一致する名前を定義<span class="html">して公開</span>する必要があります:
 
 <div class="sfc">
 
@@ -35,7 +35,7 @@ setup() {
 
 ref は `null` で初期化されることに注目してください。これは <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> が実行時に要素がまだ存在されないためです。テンプレート参照はコンポーネントが**マウントした後**でないとアクセスできません。
 
-マウントした後のコードを実施したい場合、`onMounted()` の関数が使えます：
+マウントした後のコードを実施したい場合、`onMounted()` の関数が使えます:
 
 <div class="sfc">
 
@@ -69,7 +69,7 @@ createApp({
 
 要素が `this.$refs` は `this.$refs.pElementRef` として公開されますが、コンポーネントが**マウントされた後**でないとにアクセスできません。
 
-マウントした後のコードを実施したい場合、`mounted` の option が使えます：
+マウントした後のコードを実施したい場合、`mounted` の option が使えます:
 
 <div class="sfc">
 

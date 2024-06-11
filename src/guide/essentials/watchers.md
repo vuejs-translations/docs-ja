@@ -170,7 +170,7 @@ export default {
   watch: {
     someObject: {
       handler(newValue, oldValue) {
-        // 注意：オブジェクト自体が置き替わらない限り、
+        // 注意: オブジェクト自体が置き替わらない限り、
         // ネストした変更では、 `newValue` は、`oldValue` と
         // 等しくなります。
       },

@@ -1,6 +1,6 @@
 # 属性バインディング {#attribute-bindings}
 
-Vue では mustaches（二重中括弧）はテキスト補間のみ使用します。動的な値を属性にバインドするのは、`v-bind` ディレクティブを使います：
+Vue では mustaches（二重中括弧）はテキスト補間のみ使用します。動的な値を属性にバインドするのは、`v-bind` ディレクティブを使います:
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
