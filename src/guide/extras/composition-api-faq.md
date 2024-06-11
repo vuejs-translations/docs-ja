@@ -146,6 +146,8 @@ React Hooks はコンポーネントが更新されるたびに繰り返し実�
 
 - stale クロージャの問題は、 Concurrent 機能と組み合わさって、フックコードの一部がいつ実行されるかを推論することを難しくし、（`useRef` によって）レンダー間で持続されるべき変更可能な状態を扱うことを面倒なものにします。
 
+> 注意: メモ化に関する上記の問題の一部は、今後リリースされる [React Compiler](https://ja.react.dev/learn/react-compiler) によって解決される可能性があります。
+
 これと比較して、 Vue Composition API は:
 
 - `setup()` または `<script setup>` のコードを一度だけ呼び出します。これにより、コードは JavaScript の慣用的な使い方に沿った直感的なコードになり、 stale クロージャの心配はありません。 Composition API の呼び出しは、呼び出しの順番に関係なく、条件付きで呼び出すことができます。
