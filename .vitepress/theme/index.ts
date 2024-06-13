@@ -11,7 +11,6 @@ import SponsorsAside from './components/SponsorsAside.vue'
 import VueSchoolLink from './components/VueSchoolLink.vue'
 import Banner from './components/Banner.vue'
 // import TextAd from './components/TextAd.vue'
-// import VueMasteryBanner from './components/VueMasteryBanner.vue'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
