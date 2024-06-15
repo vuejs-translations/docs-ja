@@ -251,7 +251,7 @@ methods: {
 ```
 
 ::: tip
-関連するコードが同じの順番で生成されるため、修飾子を使用するときには順番は重要です。したがって、`@click.prevent.self` を使うと **要素自身とその子要素に対するクリックのデフォルトアクション** に干渉するのに対して、`@click.self.prevent` は要素自身のクリックのデフォルトアクションにのみに干渉します。
+関連するコードが同じ順番で生成されるため、修飾子を使用するときには順番は重要です。したがって、`@click.prevent.self` を使うと **要素自身とその子要素に対するクリックのデフォルトアクション** に干渉するのに対して、`@click.self.prevent` は要素自身のクリックのデフォルトアクションにのみに干渉します。
 :::
 
 `.capture`、 `.once`、 さらには `.passive` 修飾子は[ネイティブ  `addEventListener` メソッドのオプション](https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener#options)を反映します:
