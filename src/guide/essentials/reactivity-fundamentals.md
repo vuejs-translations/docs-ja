@@ -411,10 +411,10 @@ console.log(proxy === raw) // false
 プロキシへの一貫したアクセスを保証するために、同じオブジェクトに対して `reactive()` を呼ぶと常に同じプロキシを返し、既存のプロキシに対して `reactive()` を呼ぶとその同じプロキシも返されます。
 
 ```js
-// calling reactive() on the same object returns the same proxy
+// 同じオブジェクトに対して reactive() を呼び出すと、同じプロキシが返されます
 console.log(reactive(raw) === proxy) // true
 
-// calling reactive() on a proxy returns itself
+// プロキシに対して reactive() を呼び出すと、プロキシ自体が返されます
 console.log(reactive(proxy) === proxy) // true
 ```
 
