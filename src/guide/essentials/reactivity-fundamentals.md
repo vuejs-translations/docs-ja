@@ -394,7 +394,7 @@ const state = reactive({ count: 0 })
 
 `reactive()` はオブジェクトを深く変換します。ネストしたオブジェクトもアクセスした際に `reactive()` でラップされます。また、ref の値がオブジェクトである場合、内部では `ref()` からも呼び出されます。浅い ref と同様に、深いリアクティビティーをオプトアウトするための [`shallowReactive()`](/api/reactivity-advanced#shallowreactive) API もあります。
 
-### リアクティブプロキシ vs. 独自 \*\* {#reactive-proxy-vs-original-1}
+### リアクティブプロキシ vs. 元のオブジェクト \*\* {#reactive-proxy-vs-original-1}
 
 注意すべきは、`reactive()` の戻り値が、元のオブジェクトの[プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)であり、元のオブジェクトと等しくないということです:
 
