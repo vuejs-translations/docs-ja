@@ -41,7 +41,7 @@ export default {
 
 Vue は、コンポーネントのインスタンスを介して自身の組み込み API を公開する際に、接頭辞として `$` を使用します。また、内部プロパティには `_` という接頭辞を予約します。トップレベルの `data` プロパティには、これらの文字で始まる名前を使用しないでください。
 
-### リアクティブプロキシ vs. 独自 \* {#reactive-proxy-vs-original}
+### リアクティブプロキシ vs. 元のオブジェクト \* {#reactive-proxy-vs-original}
 
 Vue 3 では、[JavaScript プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)を活用することで、データをリアクティブにできます。Vue 2 から来たユーザーは、以下のエッジケースに注意する必要があります:
 
@@ -394,7 +394,7 @@ const state = reactive({ count: 0 })
 
 `reactive()` はオブジェクトを深く変換します。ネストしたオブジェクトもアクセスした際に `reactive()` でラップされます。また、ref の値がオブジェクトである場合、内部では `ref()` からも呼び出されます。浅い ref と同様に、深いリアクティビティーをオプトアウトするための [`shallowReactive()`](/api/reactivity-advanced#shallowreactive) API もあります。
 
-### リアクティブプロキシ vs. 独自 \*\* {#reactive-proxy-vs-original-1}
+### リアクティブプロキシ vs. 元のオブジェクト \*\* {#reactive-proxy-vs-original-1}
 
 注意すべきは、`reactive()` の戻り値が、元のオブジェクトの[プロキシ](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy)であり、元のオブジェクトと等しくないということです:
 
