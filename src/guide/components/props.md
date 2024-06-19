@@ -40,7 +40,7 @@ export default {
 
 <div class="options-api">
 
- rops は、以下のように [`props`](/api/options-state#props) オプションを使って宣言します:
+ props は、以下のように [`props`](/api/options-state#props) オプションを使って宣言します:
 
 ```js
 export default {
