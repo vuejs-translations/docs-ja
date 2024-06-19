@@ -111,23 +111,23 @@ app.directive('focus', {
 const myDirective = {
   // バインドされた要素の属性や
   // イベントリスナーが適用される前に呼ばれます
-  created(el, binding, vnode, prevVnode) {
+  created(el, binding, vnode) {
     // 引数の詳細については下を参照してください
   },
   // 要素が DOM に挿入される直前に呼ばれます
-  beforeMount(el, binding, vnode, prevVnode) {},
+  beforeMount(el, binding, vnode) {},
   // バインドされた要素の親コンポーネントと
   // そのすべての子要素がマウントされたときに呼び出されます
-  mounted(el, binding, vnode, prevVnode) {},
+  mounted(el, binding, vnode) {},
   // 親コンポーネントが更新される前に呼ばれます
   beforeUpdate(el, binding, vnode, prevVnode) {},
   // 親コンポーネントとすべての子要素が
   // 更新された後に呼ばれます
   updated(el, binding, vnode, prevVnode) {},
   // 親コンポーネントがアンマウントされる前に呼ばれます
-  beforeUnmount(el, binding, vnode, prevVnode) {},
+  beforeUnmount(el, binding, vnode) {},
   // 親コンポーネントのアンマウント時に呼ばれます
-  unmounted(el, binding, vnode, prevVnode) {}
+  unmounted(el, binding, vnode) {}
 }
 ```
 
