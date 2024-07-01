@@ -74,7 +74,7 @@ const emit = defineEmits(['update:modelValue'])
 </template>
 ```
 
-すると、親コンポーネントの `v-model="modelValue"` は次のようにコンパイルされます:
+すると、親コンポーネントの `v-model="foo"` は次のようにコンパイルされます:
 
 ```vue-html
 <!-- Parent.vue -->
