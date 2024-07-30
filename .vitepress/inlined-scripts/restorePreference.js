@@ -8,6 +8,6 @@
   restore('vue-docs-prefer-composition', 'prefer-composition', true)
   restore('vue-docs-prefer-sfc', 'prefer-sfc', true)
 
-  window.__VUE_BANNER_ID__ = 'vuefes2024_cfp'
+  window.__VUE_BANNER_ID__ = 'vuefes2024_ticket'
   restore(`vue-docs-banner-${__VUE_BANNER_ID__}`, 'banner-dismissed')
 })()

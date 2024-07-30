@@ -22,8 +22,8 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <a href="https://vuefes.jp/2024/#speakers" target="_blank">
-      Vue Fes Japan 2024 セッション & LT 募集中！
+    <a href="https://note.com/moe6811/n/n813c1da8cad7" target="_blank">
+      Vue Fes Japan 2024 チケット発売開始！ <span>8/25（日）までのご購入で 1,000円 OFF!</span>
     </a>
   </div>
 </template>
@@ -50,12 +50,6 @@ html:not(.banner-dismissed) {
   font-weight: 600;
   color: #fff;
   background-color: var(--vt-c-green);
-  background: linear-gradient(
-    90deg,
-    rgba(66, 184, 131, 1) 0%,
-    rgba(39, 179, 137, 1) 19%,
-    rgba(100, 126, 255, 1) 100%
-  );
 }
 
 .banner-dismissed .banner {
