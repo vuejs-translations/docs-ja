@@ -287,7 +287,6 @@ if (modelModifiers.trim) {
 }
 ```
 
-
 修飾子が存在する場合、親から読み込んだ値や親に同期して返す値を変換する必要があることが多いです。それを実現するには `get` と `set` 変換オプションを使用します:
 
 ```js
@@ -469,6 +468,25 @@ defineProps<{
 }>()
 </script>
 ```
+
+`ref` でジェネリックコンポーネントへの参照を使用する場合、`InstanceType` は動作しないので、[`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) ライブラリーを使用する必要があります。
+
+```vue
+<script
+  setup
+  lang="ts"
+>
+import componentWithoutGenerics from '../component-without-generics.vue';
+import genericComponent from '../generic-component.vue';
+
+import type { ComponentExposed } from 'vue-component-type-helpers';
+
+// ジェネリクスのないコンポーネントでは動作します
+ref<InstanceType<typeof componentWithoutGenerics>>();
+
+ref<ComponentExposed<typeof genericComponent>>();
+```
+
 
 ## 制限 {#restrictions}
 
