@@ -134,7 +134,7 @@ items.forEach((item, index) => {
 
 ## `v-for` をオブジェクトに適用する {#v-for-with-an-object}
 
-`v-for` は、オブジェクトの各プロパティを反復処理するのにも使用できます。反復処理の順序は、オブジェクトに対して `Object.keys()` を呼び出した結果に基づきます:
+`v-for` は、オブジェクトの各プロパティを反復処理するのにも使用できます。反復処理の順序は、オブジェクトに対して `Object.values()` を呼び出した結果に基づきます:
 
 <div class="composition-api">
 
