@@ -23,7 +23,7 @@ function dismiss() {
 <template>
   <div class="banner" v-if="open">
     <a href="https://note.com/moe6811/n/n813c1da8cad7" target="_blank">
-      Vue Fes Japan 2024 チケット発売開始！ <span>8/25（日）までのご購入で 1,000円 OFF!</span>
+      Vue Fes Japan 2024 チケット早割販売中！ <span>8/25（日）までのご購入で 1,000円 OFF!</span>
     </a>
   </div>
 </template>
@@ -72,5 +72,11 @@ button {
   height: 20px;
   fill: #fff;
   transform: rotate(45deg);
+}
+
+@media (max-width: 720px) {
+  a > span {
+    display: none;
+  }
 }
 </style>
