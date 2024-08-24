@@ -101,7 +101,13 @@
 
   </div>
 
-- **参照** [フォールスルー属性](/guide/components/attrs)
+- **参照**
+
+  - [フォールスルー属性](/guide/components/attrs)
+  <div class="composition-api">
+
+  - [通常の `<script>` では `inheritAttrs` を使用します](/api/sfc-script-setup.html#usage-alongside-normal-script)
+  </div>
 
 ## components {#components}
 
