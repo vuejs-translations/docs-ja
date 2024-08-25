@@ -23,7 +23,7 @@ function dismiss() {
 <template>
   <div class="banner" v-if="open">
     <a href="https://note.com/moe6811/n/n813c1da8cad7" target="_blank">
-      Vue Fes Japan 2024 チケット早割販売中！ <span>8/25（日）までのご購入で 1,000円 OFF!</span>
+      Vue Fes Japan 2024 チケット<span>早割販売中！</span>9/8<span>（日）</span>まで<span>のご購入で</span> 1,000円 OFF!
     </a>
   </div>
 </template>
@@ -50,6 +50,7 @@ html:not(.banner-dismissed) {
   font-weight: 600;
   color: #fff;
   background-color: var(--vt-c-green);
+  background-color: #35495e; /* Vue Fes */
 }
 
 .banner-dismissed .banner {
