@@ -108,17 +108,14 @@ Vue をビルドステップなしで使用する場合、コンポーネント�
 
 ## ブラウザーの開発者ツール {#browser-devtools}
 
-<VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
-
 Vue のブラウザー開発者ツール拡張では、Vue アプリのコンポーネントツリーの探索や、個別のコンポーネントの状態の確認、状態管理イベントの追跡、パフォーマンスのプロファイルなどができます。
 
-![devtools screenshot](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
+![devtools screenshot](./images/devtools.png)
 
 - [ドキュメント](https://devtools.vuejs.org/)
-- [Chrome Extension](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-- [Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- [Edge Extension](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
-- [スタンドアロンの Electron アプリ](https://devtools.vuejs.org/guide/installation.html#standalone)
+- [Chrome Extension](https://chromewebstore.google.com/detail/vuejs-devtools-beta/ljjemllljcmogpfapbkkighbhhppjdbg)
+- [Vite プラグイン](https://devtools.vuejs.org/guide/vite-plugin)
+- [スタンドアロンの Electron アプリ](https://devtools.vuejs.org/guide/standalone)
 
 ## TypeScript {#typescript}
 
