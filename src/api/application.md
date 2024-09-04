@@ -98,7 +98,7 @@
 
   ```ts
   interface App {
-    onUnmount(callback: () => any): this
+    onUnmount(callback: () => any): void
   }
   ```
 
