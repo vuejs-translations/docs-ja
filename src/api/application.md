@@ -89,6 +89,7 @@
     unmount(): void
   }
   ```
+
 ## app.onUnmount() <sup class="vt-badge" data-text="3.5+" /> {#app-onunmount}
 
 アプリケーションがアンマウントされたときに呼び出されるコールバックを登録します。
@@ -621,7 +622,6 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   ```
 
 - **参照** [コンポーネントインスタンス - `$options`](/api/component-instance#options)
-
 
 ## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
 
