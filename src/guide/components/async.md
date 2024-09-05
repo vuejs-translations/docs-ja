@@ -108,6 +108,105 @@ const AsyncComp = defineAsyncComponent({
 
 エラーコンポーネントが与えられた場合、ローダー関数から返された Promise が reject されたときに表示されます。リクエストが長すぎる場合にエラーコンポーネントを表示するために、timeout を指定することもできます。
 
+## 遅延ハイドレーション <sup class="vt-badge" data-text="3.5+" /> {#lazy-hydration}
+
+> このセクションは[サーバーサイドレンダリング](/guide/scaling-up/ssr)を使用している場合のみ適用されます。
+
+Vue 3.5 以降では、非同期コンポーネントはハイドレーション戦略を提供することでいつハイドレートされるかを制御できます。
+
+- Vue は複数のビルトインのハイドレーション戦略を提供しています。これらのビルトイン戦略は使用されていない場合にツリーシェイキングするために個別にインポートする必要があります。
+
+- 柔軟性を持たせるために設計は意図的に低レベルになっています。コンパイラーのシンタックスシュガー（糖衣構文）は将来的にこれに基づいてコアまたは高レベルのソリューション（例： Nuxt）で構築される可能性があります。
+
+### アイドル状態でハイドレート
+
+`requestIdleCallback` を使用してハイドレートします:
+
+```js
+import { defineAsyncComponent, hydrateOnIdle } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnIdle(/* オプションでタイムアウトの上限を渡すことができます */)
+})
+```
+
+### 表示時にハイドレート
+
+`IntersectionObserver` を使用して要素が表示されたときにハイドレートします。
+
+```js
+import { defineAsyncComponent, hydrateOnVisible } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnVisible()
+})
+```
+
+オブザーバーに対してオプションのオブジェクト値を渡すことができます:
+
+```js
+hydrateOnVisible({ rootMargin: '100px' })
+```
+
+### メディアクエリーでハイドレート
+
+指定されたメディアクエリーに一致したときにハイドレートします。
+
+```js
+import { defineAsyncComponent, hydrateOnMediaQuery } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnMediaQuery('(max-width:500px)')
+})
+```
+
+### インタラクションでハイドレート
+
+コンポーネント要素に指定されたイベントがトリガーされたときにハイドレートします。ハイドレーションがトリガーされたイベントもハイドレーションが一度完了すると再生されます。
+
+```js
+import { defineAsyncComponent, hydrateOnInteraction } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnInteraction('click')
+})
+```
+
+複数のイベントタイプをリストにすることもできます:
+
+```js
+hydrateOnInteraction(['wheel', 'mouseover'])
+```
+
+### カスタム戦略
+
+```ts
+import { defineAsyncComponent, type HydrationStrategy } from 'vue'
+
+const myStrategy: HydrationStrategy = (hydrate, forEachElement) => {
+  // forEachElement は全てのルート要素を反復処理するためのヘルパーです
+  // ハイドレートされていない DOM の中では、ルート要素がフラグメントである可能性があるためです
+  // 単一の要素の代わりに
+  forEachElement(el => {
+    // ...
+  })
+  // 準備が整ったときに `hydrate` を呼び出します
+  hydrate()
+  return () => {
+    // 必要に応じて破棄する関数を返します
+  }
+}
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: myStrategy
+})
+```
+
 ## Suspense での使用 {#using-with-suspense}
 
 非同期コンポーネントは、ビルトインコンポーネント `<Suspense>` と使用することもできます。`<Suspense>` と非同期コンポーネント間のインタラクションについては、[`<Suspense>` のページ](/guide/built-ins/suspense) にドキュメントがあります。
