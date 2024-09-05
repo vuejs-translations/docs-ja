@@ -144,7 +144,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-オブザーバーに対してオプションのオブジェクト値を渡すことができます:
+オブザーバーに対してオブジェクト値を渡すことができます（省略可能）:
 
 ```js
 hydrateOnVisible({ rootMargin: '100px' })
