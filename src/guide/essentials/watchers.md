@@ -362,6 +362,128 @@ watchEffect(async () => {
 
 </div>
 
+## 副作用のクリーンアップ {#side-effect-cleanup}
+
+ウォッチャー内で、例えば非同期リクエストなど、副作用が伴う場合があります:
+
+<div class="composition-api">
+
+```js
+watch(id, (newId) => {
+  fetch(`/api/${newId}`).then(() => {
+    // コールバックのロジック
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  watch: {
+    id(newId) {
+      fetch(`/api/${newId}`).then(() => {
+        // コールバックのロジック
+      })
+    }
+  }
+}
+```
+
+</div>
+
+しかし、リクエストが完了する前に `id` が変更されたらどうなるでしょう？前のリクエストが完了したときに、すでに古くなった ID 値でコールバックが発火してしまいます。理想的には、`id` が新しい値に変更されたときに古いリクエストをキャンセルしたいです。
+
+[`onWatcherCleanup()`](/api/reactivity-core#onwatchercleanup) <sup class="vt-badge" data-text="3.5+" /> API を使って、ウォッチャーが無効になり再実行される直前に呼び出されるクリーンアップ関数を登録することができます:
+
+<div class="composition-api">
+
+```js {10-13}
+import { watch, onWatcherCleanup } from 'vue'
+
+watch(id, (newId) => {
+  const controller = new AbortController()
+
+  fetch(`/api/${newId}`, { signal: controller.signal }).then(() => {
+    // コールバックのロジック
+  })
+
+  onWatcherCleanup(() => {
+    // 古くなったリクエストを中止する
+    controller.abort()
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js {12-15}
+import { onWatcherCleanup } from 'vue'
+
+export default {
+  watch: {
+    id(newId) {
+      const controller = new AbortController()
+
+      fetch(`/api/${newId}`, { signal: controller.signal }).then(() => {
+        // コールバックのロジック
+      })
+
+      onWatcherCleanup(() => {
+        // 古くなったリクエストを中止する
+        controller.abort()
+      })
+    }
+  }
+}
+```
+
+</div>
+
+`onWatcherCleanup` は Vue 3.5+ でのみサポートされており、`watchEffect` エフェクト関数または `watch` コールバック関数の同期実行中に呼び出す必要があることに注意してください: 非同期関数の `await` ステートメントの後に呼び出すことはできません。
+
+代わりに、`onCleanup` 関数も第 3 引数としてウォッチャーコールバックに渡され<span class="composition-api">、`watchEffect` エフェクト関数には第 1 引数として渡され</span>ます:
+
+<div class="composition-api">
+
+```js
+watch(id, (newId, oldId, onCleanup) => {
+  // ...
+  onCleanup(() => {
+    // クリーンアップのロジック
+  })
+})
+
+watchEffect((onCleanup) => {
+  // ...
+  onCleanup(() => {
+    // クリーンアップのロジック
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  watch: {
+    id(newId, oldId, onCleanup) {
+      // ...
+      onCleanup(() => {
+        // クリーンアップのロジック
+      })
+    }
+  }
+}
+```
+
+</div>
+
+これは 3.5 以前のバージョンで動作します。また、関数の引数で渡される `onCleanup` はウォッチャーインスタンスにバインドされるため、`onWatcherCleanup` の同期的な制約は受けません。
+
 ## コールバックが実行されるタイミング {#callback-flush-timing}
 
 リアクティブな状態が変更されるとき、Vue コンポーネントの更新と生成されたウォッチャーコールバックを実行します。
