@@ -188,9 +188,9 @@ hydrateOnInteraction(['wheel', 'mouseover'])
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'
 
 const myStrategy: HydrationStrategy = (hydrate, forEachElement) => {
-  // forEachElement は全てのルート要素を反復処理するためのヘルパーです
-  // ハイドレートされていない DOM の中では、ルート要素がフラグメントである可能性があるためです
-  // 単一の要素の代わりに
+  // forEachElement はコンポーネントのハイドレートされていない DOM の中にある
+  // 全てのルート要素を反復処理するためのヘルパーです。ルート要素は単一の要素ではなく
+  // フラグメントである可能性があるためです
   forEachElement(el => {
     // ...
   })
