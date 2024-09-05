@@ -90,6 +90,18 @@
   }
   ```
 
+## app.onUnmount() <sup class="vt-badge" data-text="3.5+" /> {#app-onunmount}
+
+アプリケーションがアンマウントされたときに呼び出されるコールバックを登録します。
+
+- **型**
+
+  ```ts
+  interface App {
+    onUnmount(callback: () => any): void
+  }
+  ```
+
 ## app.component() {#app-component}
 
 名称文字列とコンポーネント定義を両方渡す場合、グローバルコンポーネントとして登録し、名称のみ渡す場合、登録済みのコンポーネントを取得します。
@@ -610,3 +622,21 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
   ```
 
 - **参照** [コンポーネントインスタンス - `$options`](/api/component-instance#options)
+
+## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
+
+プロダクションモードで未処理のエラーを強制的にスローします。
+
+- **型:** `boolean`
+
+- **デフォルト:** `false`
+
+- **詳細**
+
+  デフォルトでは、Vue アプリケーション内でスローされたが明示的に処理されていないエラーは、開発モードとプロダクションモードで異なる動作をします:
+
+  - 開発中は、エラーがスローされ、アプリケーションがクラッシュする可能性があります。これは、エラーを目立たせることで、開発中に気づいて修正できるようにするためです。
+
+  - プロダクションでは、エンドユーザーへの影響を最小限に抑えるため、エラーはコンソールにログ出力されるだけです。ただし、これによりプロダクションでのみ発生するエラーがエラー監視サービスで捕捉されない可能性があります。
+
+  `app.config.throwUnhandledErrorInProduction` を `true` に設定することで、プロダクションモードでも未処理のエラーがスローされるようになります。
