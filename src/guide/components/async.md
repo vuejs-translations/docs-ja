@@ -197,7 +197,7 @@ const myStrategy: HydrationStrategy = (hydrate, forEachElement) => {
   // 準備が整ったときに `hydrate` を呼び出します
   hydrate()
   return () => {
-    // 必要に応じて破棄する関数を返します
+    // 必要であれば、後処理（teardown）の関数を返します
   }
 }
 
