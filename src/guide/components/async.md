@@ -127,7 +127,7 @@ import { defineAsyncComponent, hydrateOnIdle } from 'vue'
 
 const AsyncComp = defineAsyncComponent({
   loader: () => import('./Comp.vue'),
-  hydrate: hydrateOnIdle(/* オプションでタイムアウトの上限を渡すことができます */)
+  hydrate: hydrateOnIdle(/* タイムアウトの上限を渡すこともできます（省略可能） */)
 })
 ```
 
