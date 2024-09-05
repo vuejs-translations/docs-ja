@@ -444,7 +444,7 @@ export default {
 
 `onWatcherCleanup` は Vue 3.5+ でのみサポートされており、`watchEffect` エフェクト関数または `watch` コールバック関数の同期実行中に呼び出す必要があることに注意してください: 非同期関数の `await` ステートメントの後に呼び出すことはできません。
 
-代わりに、`onCleanup` 関数も第 3 引数としてウォッチャーコールバックに渡され<span class="composition-api">、`watchEffect` エフェクト関数には第 1 引数として渡されます</span>:
+代わりに、`onCleanup` 関数も第 3 引数としてウォッチャーコールバックに渡され<span class="composition-api">、`watchEffect` エフェクト関数には第 1 引数として渡され</span>ます:
 
 <div class="composition-api">
 

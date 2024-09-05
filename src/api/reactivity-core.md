@@ -571,9 +571,9 @@
 
 ## onWatcherCleanup() <sup class="vt-badge" data-text="3.5+" /> {#onwatchercleanup}
 
-現在のクリーンアップ関数が再実行される直前に実行されるクリーンアップ関数を登録します。`watchEffect` エフェクト関数または `watch` コールバック関数の同期実行中にのみ呼び出すことができます（つまり、非同期関数内の `await` ステートメントの後には呼び出すことができません）。
+現在のウォッチャーが再実行される直前に実行されるクリーンアップ関数を登録します。`watchEffect` エフェクト関数または `watch` コールバック関数の同期実行中にのみ呼び出すことができます（つまり、非同期関数内の `await` ステートメントの後には呼び出すことができません）。
 
-- **Type**
+- **型**
 
   ```ts
   function onWatcherCleanup(
@@ -582,7 +582,7 @@
   ): void
   ```
 
-- **Example**
+- **例**
 
   ```ts
   import { watch, onWatcherCleanup } from 'vue'
