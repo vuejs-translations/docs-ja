@@ -117,6 +117,45 @@ defineProps<{
 
 </div>
 
+<div class="composition-api">
+
+## リアクティブな props の分割代入 <sup class="vt-badge" data-text="3.5+" /> \*\* {#reactive-props-destructure}
+
+Vue のリアクティビティシステムは、プロパティアクセスに基づいて状態の使用を追跡します。例えば、算出プロパティやウォッチャーで `props.foo` にアクセスすると、`foo` プロパティが依存関係として追跡されます。
+
+そこで、以下のようなコードを考えます:
+
+```js
+const { foo } = defineProps(['foo'])
+
+watchEffect(() => {
+  // 3.5 以前は 1 回だけ実行されます。
+  // 3.5 以降は "foo" が変更されるたびに再実行されます。
+  console.log(foo)
+})
+```
+
+バージョン 3.4 以前では、`foo` は実際の定数であり、変更されることはありません。バージョン 3.5 以降では、同じ `<script setup>` ブロック内で `defineProps` から分割代入された変数にアクセスするコードがあると、Vue のコンパイラーは自動的に `props.` を先頭に追加します。したがって、上記のコードは以下のようになります:
+
+```js {5}
+const props = defineProps(['foo'])
+
+watchEffect(() => {
+  // `foo` はコンパイラーによって `props.foo` に変換されました。
+  console.log(props.foo)
+})
+```
+
+さらに、JavaScript のネイティブなデフォルト値構文を使用して、props のデフォルト値を宣言できます。これは型ベースの props 宣言を使用する場合に特に便利です:
+
+```ts
+const { foo = 'hello' } = defineProps<{ foo?: string }>()
+```
+
+### 関数への分割代入 props 渡し
+
+</div>
+
 ## props 渡しの詳細 {#prop-passing-details}
 
 ### props 名の大文字・小文字の使い分け {#prop-name-casing}

@@ -238,7 +238,7 @@
   function watchEffect(
     effect: (onCleanup: OnCleanup) => void,
     options?: WatchEffectOptions
-  ): StopHandle
+  ): WatchHandle
 
   type OnCleanup = (cleanupFn: () => void) => void
 
@@ -248,7 +248,12 @@
     onTrigger?: (event: DebuggerEvent) => void
   }
 
-  type StopHandle = () => void
+  interface WatchHandle {
+    (): void // 呼び出し可能、`stop` と同様
+    pause: () => void
+    resume: () => void
+    stop: () => void
+  }
   ```
 
 - **詳細**
@@ -295,6 +300,47 @@
   stop()
   ```
 
+  ウォッチャーの一時停止 / 再開: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // ウォッチャーを一時停止する
+  pause()
+
+  // あとで再開する
+  resume()
+
+  // 停止する
+  stop()
+  ```
+
+  副作用のクリーンアップ:
+
+  ```js
+  watchEffect(async (onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `id` が変更されると `cancel` が呼ばれ、
+    // 前のリクエストがまだ完了していない場合はキャンセルされます
+    onCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
+  3.5+ での副作用のクリーンアップ:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watchEffect(async () => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `id` が変更されると `cancel` が呼ばれ、
+    // 前のリクエストがまだ完了していない場合はキャンセルされます
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
   オプション:
 
   ```js
@@ -333,14 +379,14 @@
     source: WatchSource<T>,
     callback: WatchCallback<T>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   // 複数ソースの監視
   function watch<T>(
     sources: WatchSource<T>[],
     callback: WatchCallback<T[]>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   type WatchCallback<T> = (
     value: T,
@@ -357,11 +403,18 @@
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // 初期値: false
-    deep?: boolean // 初期値: false
+    deep?: boolean | number // 初期値: false
     flush?: 'pre' | 'post' | 'sync' // 初期値: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
     once?: boolean // 初期値: false
+  }
+
+  interface WatchHandle {
+    (): void // 呼び出し可能、`stop` と同様
+    pause: () => void
+    resume: () => void
+    stop: () => void
   }
   ```
 
@@ -385,7 +438,7 @@
   省略可能な第 3 引数は、以下のオプションをサポートするオプションオブジェクトです:
 
   - **`immediate`**: ウォッチャーが作成されたら、すぐにコールバックを起動します。最初の呼び出しでは、古い値は `undefined` になります。
-  - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。詳しくは[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)をご参照ください。
+  - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。3.5+ では、どこまで深くオブジェクトを監視するかを数値で指定することもできます。詳しくは[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)をご参照ください。
   - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core#watcheffect) をご参照ください。
   - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)をご参照ください。
   - **`once`**: コールバックを一度だけ実行します。最初のコールバックが実行されると、ウォッチャーは自動的に停止します。<sup class="vt-badge" data-text="3.4+" />
@@ -472,6 +525,21 @@
   stop()
   ```
 
+  ウォッチャーの一時停止 / 再開: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // ウォッチャーを一時停止する
+  pause()
+
+  // あとで再開する
+  resume()
+
+  // 停止する
+  stop()
+  ```
+
   副作用のクリーンアップ:
 
   ```js
@@ -484,7 +552,45 @@
   })
   ```
 
+  3.5+ での副作用のクリーンアップ:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watch(id, async (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
 - **参照**
 
   - [ガイド - ウォッチャー](/guide/essentials/watchers)
   - [ガイド - ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)
+
+## onWatcherCleanup() <sup class="vt-badge" data-text="3.5+" /> {#onwatchercleanup}
+
+現在のウォッチャーが再実行される直前に実行されるクリーンアップ関数を登録します。`watchEffect` エフェクト関数または `watch` コールバック関数の同期実行中にのみ呼び出すことができます（つまり、非同期関数内の `await` ステートメントの後には呼び出すことができません）。
+
+- **型**
+
+  ```ts
+  function onWatcherCleanup(
+    cleanupFn: () => void,
+    failSilently?: boolean
+  ): void
+  ```
+
+- **例**
+
+  ```ts
+  import { watch, onWatcherCleanup } from 'vue'
+
+  watch(id, (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `id` が変更されると `cancel` が呼ばれ、
+    // 前のリクエストがまだ完了していない場合はキャンセルされます
+    onWatcherCleanup(cancel)
+  })
+  ```
