@@ -211,7 +211,7 @@ const emit = defineEmits<{
 
 ### リアクティブな props の分割代入 <sup class="vt-badge" data-text="3.5+" /> {#reactive-props-destructure}
 
-Vue 3.5 以降、`defineProps` の戻り値から分割代入された変数はリアクティブです。Vue のコンパイラーは、同じ `<script setup>` ブロック内のコードが `defineProps` から分割代入された変数にアクセスすると、自動的に `props.` を先頭に追加します:
+Vue 3.5 以降、`defineProps` の戻り値から分割代入された変数はリアクティブです。同じ `<script setup>` ブロック内で `defineProps` から分割代入された変数にアクセスするコードがあると、Vue のコンパイラーは自動的に `props.` を先頭に追加します:
 
 ```ts
 const { foo } = defineProps(['foo'])
@@ -247,7 +247,7 @@ const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
 
 ### 型宣言を使用時のデフォルトの props 値 <sup class="vt-badge ts" /> {#default-props-values-when-using-type-declaration}
 
-3.5 以降では、リアクティブな props の分割代入を使用すると、当然デフォルト値を宣言できます。しかし、3.4 以前では、リアクティブな props の分割代入はデフォルトで有効になっていません。型ベースの宣言で props のデフォルト値を宣言するには、`withDefaults` コンパイラーマクロが必要です:
+3.5 以降では、リアクティブな props の分割代入を使用すると、自然な形でデフォルト値を宣言できます。しかし、3.4 以前では、リアクティブな props の分割代入はデフォルトで有効になっていません。型ベースの宣言で props のデフォルト値を宣言するには、`withDefaults` コンパイラーマクロが必要です:
 
 ```ts
 interface Props {
