@@ -613,7 +613,7 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 ## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
 
-アプリケーション内で[useId()](/api/general#useid)から生成されるすべての ID に対してプレフィックスを設定します。
+アプリケーション内で [useId()](/api/composition-api-helpers#useid) から生成されるすべての ID に対してプレフィックスを設定します。
 
 - **型:** `string`
 - **デフォルト:** `undefined`
