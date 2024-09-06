@@ -68,7 +68,18 @@ const props = defineProps<Props>()
 
 ###  props のデフォルト値 {#props-default-values}
 
-型ベースの宣言を使用すると、props のデフォルト値を宣言できません。これは、`withDefaults` コンパイラーマクロによって解決できます:
+型ベースの宣言を使用すると、props のデフォルト値を宣言できません。これは、[リアクティブな props の分割代入](/guide/components/props#reactive-props-destructure) <sup class="vt-badge" data-text="3.5+" /> によって解決できます:
+
+```ts
+export interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
+```
+
+3.4 以下ではリアクティブな props の分割代入はデフォルトでは有効ではありません。代わりに `withDefaults` コンパイラーマクロを使用します:
 
 ```ts
 export interface Props {
@@ -85,7 +96,7 @@ const props = withDefaults(defineProps<Props>(), {
 これは、ランタイム props の `default` オプションと同等にコンパイルされます。さらに、`withDefaults` ヘルパーはデフォルト値の型チェックを提供し、戻り値の `props` の型からはデフォルト値が宣言されているプロパティのオプションフラグが削除されていることを保証します。
 
 :::info
-変更可能な参照型（配列やオブジェクトなど）のデフォルト値は、偶発的な変更や外部からの副作用を避けるために、関数でラップする必要があることに注意してください。こうすることで、各コンポーネントのインスタンスがデフォルト値のコピーを取得することが保証されます。
+変更可能な参照型（配列やオブジェクトなど）のデフォルト値は、偶発的な変更や外部からの副作用を避けるために `withDefaults` を使う時は、関数でラップする必要があることに注意してください。こうすることで、各コンポーネントのインスタンスがデフォルト値のコピーを取得することが保証されます。これは分割代入でデフォルト値を使う時は**不要**です。
 :::
 
 ### `<script setup>` を使用しない場合 {#without-script-setup}
