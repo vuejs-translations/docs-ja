@@ -130,7 +130,7 @@ const { foo } = defineProps(['foo'])
 
 watchEffect(() => {
   // 3.5 以前は 1 回だけ実行されます。
-  // 3.5 以降は `foo` が変更されるたびに再実行されます。
+  // 3.5 以降は "foo" が変更されるたびに再実行されます。
   console.log(foo)
 })
 ```
