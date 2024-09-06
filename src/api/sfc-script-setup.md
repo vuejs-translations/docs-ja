@@ -209,12 +209,48 @@ const emit = defineEmits<{
 
   この制限は 3.3 で解決されました。Vue の最新バージョンは型引数の位置でインポートされた複雑な型の限定されたセットを参照することをサポートしています。しかし、型からランタイムへの変換は依然として AST ベースであるため、実際の型解析を必要とするいくつかの複雑な型、例えば条件型など、はサポートされていません。条件型は単一の props の型には使用できますが、props オブジェクト全体の型には使用できません。
 
-### 型宣言を使用時のデフォルトの props 値 {#default-props-values-when-using-type-declaration}
+### リアクティブな props の分割代入 <sup class="vt-badge" data-text="3.5+" /> {#reactive-props-destructure}
 
-型のみの `defineProps` 宣言の欠点は、props のデフォルト値を提供する方法がないことです。この問題を解決するために、`withDefaults` コンパイラーマクロも用意されています:
+Vue 3.5 以降、`defineProps` の戻り値から分割代入された変数はリアクティブです。同じ `<script setup>` ブロック内で `defineProps` から分割代入された変数にアクセスするコードがあると、Vue のコンパイラーは自動的に `props.` を先頭に追加します:
 
 ```ts
-export interface Props {
+const { foo } = defineProps(['foo'])
+
+watchEffect(() => {
+  // 3.5 以前は 1 回だけ実行されます。
+  // 3.5 以降は "foo" が変更されるたびに再実行されます。
+  console.log(foo)
+})
+```
+
+上記のコードがコンパイルされると以下のようになります:
+
+```js {5}
+const props = defineProps(['foo'])
+
+watchEffect(() => {
+  // `foo` はコンパイラーによって `props.foo` に変換されました。
+  console.log(props.foo)
+})
+```
+
+さらに、JavaScript のネイティブなデフォルト値構文を使用して、props のデフォルト値を宣言できます。これは型ベースの props 宣言を使用する場合に特に便利です:
+
+```ts
+interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
+```
+
+### 型宣言を使用時のデフォルトの props 値 <sup class="vt-badge ts" /> {#default-props-values-when-using-type-declaration}
+
+3.5 以降では、リアクティブな props の分割代入を使用すると、自然な形でデフォルト値を宣言できます。しかし、3.4 以前では、リアクティブな props の分割代入はデフォルトで有効になっていません。型ベースの宣言で props のデフォルト値を宣言するには、`withDefaults` コンパイラーマクロが必要です:
+
+```ts
+interface Props {
   msg?: string
   labels?: string[]
 }
@@ -228,7 +264,7 @@ const props = withDefaults(defineProps<Props>(), {
 これは、同等なランタイム props の `default` オプションにコンパイルされます。さらに、`withDefaults` ヘルパーは、デフォルト値の型チェックを行います。また、返される `props` の型が、デフォルト値が宣言されているプロパティに対して、省略可能フラグが削除されていることを保証します。
 
 :::info
-変更可能な参照型（配列やオブジェクトなど）のデフォルト値は、偶発的な変更や外部からの副作用を避けるために、関数でラップする必要があることに注意してください。こうすることで、各コンポーネントのインスタンスがデフォルト値のコピーを取得することが保証されます。
+変更可能な参照型（配列やオブジェクトなど）のデフォルト値は、偶発的な変更や外部からの副作用を避けるために `withDefaults` を使う時は、関数でラップする必要があることに注意してください。こうすることで、各コンポーネントのインスタンスがデフォルト値のコピーを取得することが保証されます。これは分割代入でデフォルト値を使う時は**不要**です。
 :::
 
 ## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
@@ -486,7 +522,6 @@ ref<InstanceType<typeof componentWithoutGenerics>>();
 
 ref<ComponentExposed<typeof genericComponent>>();
 ```
-
 
 ## 制限 {#restrictions}
 
