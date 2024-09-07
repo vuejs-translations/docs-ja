@@ -12,7 +12,7 @@
 
 ## useSlots() {#useslots}
 
-仮想 DOM ノードを返す呼び出し可能な関数として、親に渡されたスロットを含む [Setup Context](/api/composition-api-setup#setup-context) か `slots` オブジェクトを返します。これは Setup Context オブジェクトが利用できない `<script setup>` での利用を意図しています。
+仮想 DOM ノードを返す呼び出し可能な関数として、親に渡されたスロットを含む [Setup Context](/api/composition-api-setup#setup-context) から `slots` オブジェクトを返します。これは Setup Context オブジェクトが利用できない `<script setup>` での利用を意図しています。
 
 TypeScript を使用する場合は、代わりに [`defineSlots()`](/api/sfc-script-setup#defineslots) を優先すべきです。
 
@@ -58,7 +58,7 @@ TypeScript を使用する場合は、代わりに [`defineSlots()`](/api/sfc-sc
 
 - **詳細**
 
-  `useModel()` は、例えば生の `setup()` 関数を使用する場合など、SFC 以外のコンポーネントで使用することができます。第一引数として `props` オブジェクトを、第二引数としてモデル名を指定します。オプションの第三引数は、結果の ref モデルに対してカスタムゲッターとカスタムセッターを宣言するために使われます。`defineModel()` とは異なり、props や emits の宣言は自身で行うことに注意してください。
+  `useModel()` は、例えば生の `setup()` 関数を使用する場合など、SFC 以外のコンポーネントで使用することができます。第一引数として `props` オブジェクトを、第二引数としてモデル名を指定します。省略可能な第三引数は、結果の ref モデルに対してカスタムゲッターとカスタムセッターを宣言するために使われます。`defineModel()` とは異なり、props や emits の宣言は自身で行うことに注意してください。
 
 ## useTemplateRef() <sup class="vt-badge" data-text="3.5+" /> {#usetemplateref}
 
