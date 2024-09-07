@@ -368,6 +368,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: '依存関係の注入',
           link: '/api/composition-api-dependency-injection'
+        },
+        {
+          text: 'ヘルパー',
+          link: '/api/composition-api-helpers'
         }
       ]
     },

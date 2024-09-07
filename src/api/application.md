@@ -623,6 +623,23 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 
 - **参照** [コンポーネントインスタンス - `$options`](/api/component-instance#options)
 
+## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
+
+アプリケーション内で [useId()](/api/composition-api-helpers#useid) から生成されるすべての ID に対してプレフィックスを設定します。
+
+- **型:** `string`
+- **デフォルト:** `undefined`
+- **例**
+
+  ```js
+  app.config.idPrefix = 'my-app'
+  ```
+  ```js
+  // コンポーネント内:
+  const id1 = useId() // 'my-app:0'
+  const id2 = useId() // 'my-app:1'
+  ```
+
 ## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
 
 プロダクションモードで未処理のエラーを強制的にスローします。
