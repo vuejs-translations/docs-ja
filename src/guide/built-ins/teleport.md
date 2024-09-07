@@ -195,6 +195,19 @@ const open = ref(false)
 </div>
 ```
 
+## 遅延 Teleport <sup class="vt-badge" data-text="3.5+" /> {#deferred-teleport}
+
+Vue 3.5 以降では、`defer` prop を使用するとアプリケーションの他の部分がマウントされるまで、Teleport のターゲット解決を遅延できます。これにより、Vue によってレンダリングされるコンポーネントツリーの後の方にあるコンテナ要素をターゲットにすることができます：
+
+```vue-html
+<Teleport defer to="#late-div">...</Teleport>
+
+<!-- テンプレートの後のほうにあります -->
+<div id="late-div"></div>
+```
+
+ターゲット要素はテレポートと同じマウント / 更新ティックでレンダリングされる必要があることに注意してください。つまり、`<div>` が 1 秒後にマウントされた場合でも、Teleport はエラーを報告します。defer は `mounted` ライフサイクルフックと同様に動作します。
+
 ---
 
 **関連**
