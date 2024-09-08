@@ -220,3 +220,23 @@
   }
   </script>
   ```
+
+## data-allow-mismatch <sup class="vt-badge" data-text="3.5+" /> {#data-allow-mismatch}
+
+[ハイドレーション・ミスマッチ](/guide/scaling-up/ssr#hydration-mismatch) の警告を抑制するために使用できる特別な属性です。
+
+- **例**
+
+  ```html
+  <div data-allow-mismatch="text">{{ data.toLocaleString() }}</div>
+  ```
+
+  この値で特定のタイプのミスマッチを許可することができます。指定できる値は以下の通りです:
+
+  - `text`
+  - `children`（直下の子要素に対してのみミスマッチを許可します）
+  - `class`
+  - `style`
+  - `attribute`
+
+  値を指定しない場合、すべてのタイプのミスマッチが許可されます。
