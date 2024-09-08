@@ -286,6 +286,12 @@ h(Transition, {
      * 動的に変更できます。
      */
     disabled?: boolean
+    /**
+     * `true` の場合、Teleport は
+     * ターゲットを解決する前にアプリケーションの他の部分が
+     * マウントされるまで遅延します。(3.5+)
+     */
+    defer?: boolean
   }
   ```
 
@@ -305,6 +311,15 @@ h(Transition, {
   <Teleport to="#popup" :disabled="displayVideoInline">
     <video src="./my-movie.mp4">
   </Teleport>
+  ```
+
+  ターゲットの解決を遅延する <sup class="vt-badge" data-text="3.5+" />:
+
+  ```vue-html
+  <Teleport defer to="#late-div">...</Teleport>
+
+  <!-- テンプレートの後の方 -->
+  <div id="late-div"></div>
   ```
 
 - **参照** [ガイド - Teleport](/guide/built-ins/teleport)
