@@ -178,7 +178,7 @@ watch(() => foo, /* ... */)
 useComposable(() => foo)
 ```
 
-外部関数は、提供された prop の変更を追跡する必要がある場合（例えば、`computed` や `watcher` のゲッター内で）、ゲッターを呼び出すか、[toValue](/api/reactivity-utilities.html#tovalue) で正規化することができます。
+外部関数は、提供された props の変更を追跡する必要がある場合（例えば、computed や watcher のゲッター内で）、ゲッターを呼び出す（もしくは [toValue](/api/reactivity-utilities.html#tovalue) で正規化する）ことができます。
 
 </div>
 
