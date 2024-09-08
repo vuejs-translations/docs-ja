@@ -146,6 +146,8 @@ watchEffect(() => {
 })
 ```
 
+IDEで分割代入されたpropsと通常の変数をより視覚的に区別したい場合、VueのVSCode拡張機能には、分割代入されたpropsのインラインヒントを有効にする設定があります。
+
 さらに、JavaScript のネイティブなデフォルト値構文を使用して、props のデフォルト値を宣言できます。これは型ベースの props 宣言を使用する場合に特に便利です:
 
 ```ts
@@ -153,6 +155,30 @@ const { foo = 'hello' } = defineProps<{ foo?: string }>()
 ```
 
 ### 関数への分割代入 props 渡し
+
+分割代入されたpropを関数に渡す場合、例えば：
+
+```js
+const { foo } = defineProps(['foo'])
+
+watch(foo, /* ... */)
+```
+
+これは期待通りに動作しません。なぜなら、これは `watch(props.foo, ...)` と同等であり、リアクティブなデータソースではなく値を `watch` に渡しているからです。実際、Vueのコンパイラはこのような場合を検出し、警告を発します。
+
+通常のpropを `watch(() => props.foo, ...)` と監視できるのと同様に、分割代入されたpropもゲッターでラップすることで監視できます：
+
+```js
+watch(() => foo, /* ... */)
+```
+
+さらに、リアクティビティを保持しながら分割代入されたpropを外部関数に渡す必要がある場合、これが推奨されるアプローチです：
+
+```js
+useComposable(() => foo)
+```
+
+外部関数は、提供されたpropの変更を追跡する必要がある場合（例えば、computedやwatcherのゲッター内で）、ゲッターを呼び出すか、[toValue](/api/reactivity-utilities.html#tovalue)で正規化することができます。
 
 </div>
 
