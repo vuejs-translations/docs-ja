@@ -131,7 +131,7 @@ Vue の現在のバージョンを公開します。
 
   ### 関数シグネチャー {#function-signature}
 
-- 3.3 以上でのみサポートされています。
+- 3.3 以上でのみサポートされています
 
   `defineComponent()` には、Composition API と[レンダー関数か JSX](/guide/extras/render-function.html) で使うための代替シグネチャーもあります。
 

@@ -441,7 +441,7 @@
   - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。3.5+ では、どこまで深くオブジェクトを監視するかを数値で指定することもできます。詳しくは[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)をご参照ください。
   - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core#watcheffect) をご参照ください。
   - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)をご参照ください。
-  - **`once`**:（3.4+）コールバックを一度だけ実行します。最初のコールバックが実行されると、ウォッチャーは自動的に停止します。
+  - **`once`**:（3.4 以上）コールバックを一度だけ実行します。最初のコールバックが実行されると、ウォッチャーは自動的に停止します。
 
   [`watchEffect()`](#watcheffect) と比較すると、`watch()` は以下のことができます:
 

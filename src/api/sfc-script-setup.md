@@ -269,7 +269,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 ## defineModel() {#definemodel}
 
-- 3.4 以上でのみ使用できます。
+- 3.4 以上でのみ使用できます
 
 このマクロは親コンポーネントから `v-model` 経由で使用できる双方向バインディングの props を宣言するために使用できます。使用例は、[コンポーネントの `v-model`](/guide/components/v-model) のガイドでも説明されています。
 
