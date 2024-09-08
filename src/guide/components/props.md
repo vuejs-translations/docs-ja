@@ -156,7 +156,7 @@ const { foo = 'hello' } = defineProps<{ foo?: string }>()
 
 ### 関数への分割代入 props 渡し
 
-分割代入された `prop` を関数に渡す場合、例えば：
+分割代入された props を関数に渡す場合、例えば：
 
 ```js
 const { foo } = defineProps(['foo'])
