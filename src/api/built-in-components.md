@@ -318,7 +318,7 @@ h(Transition, {
   ```vue-html
   <Teleport defer to="#late-div">...</Teleport>
 
-  <!-- テンプレートの後の方にあります -->
+  <!-- テンプレートの後の方 -->
   <div id="late-div"></div>
   ```
 

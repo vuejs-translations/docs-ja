@@ -202,7 +202,7 @@ Vue 3.5 以降では、`defer` prop を使用するとアプリケーション�
 ```vue-html
 <Teleport defer to="#late-div">...</Teleport>
 
-<!-- テンプレートの後のほうにあります -->
+<!-- テンプレートの後の方 -->
 <div id="late-div"></div>
 ```
 
