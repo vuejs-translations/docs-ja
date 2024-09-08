@@ -283,9 +283,11 @@
   - [アプリケーションレベルの Provide](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
 
-## app.runWithContext()<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
+## app.runWithContext() {#app-runwithcontext}
 
 現在のアプリをインジェクションコンテキストとしてコールバックを実行します。
+
+- 3.3 以上でのみサポートされています。
 
 - **型**
 

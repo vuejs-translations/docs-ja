@@ -26,7 +26,7 @@ TypeScript を使用する場合は、代わりに [`defineSlots()`](/api/sfc-sc
 
 これは、[`defineModel()`](/api/sfc-script-setup#definemodel) を動かすための基礎となるヘルパーです。`<script setup>` を使用する場合は、`defineModel()` を使用することを推奨します。
 
-- 3.4+から使用可能
+- 3.4 以上でのみ使用できます。
 
 - **型**
 

@@ -132,11 +132,13 @@
 
   オブジェクトプロパティのシグネチャーを使用する場合、`toRef()` はソースプロパティが現在存在しない場合でも、利用可能な ref を返します。これにより [`toRefs`](#torefs) では取得できない、省略可能なプロパティを扱えるようになります。
 
-## toValue() <sup class="vt-badge" data-text="3.3+" /> {#tovalue}
+## toValue() {#tovalue}
 
 値 / ref / getter を値に正規化します。これは [unref()](#unref) に似ていますが、getter も正規化する点が異なります。引数が getter の場合、その getter が呼び出され、その戻り値が返されます。
 
 これは、[コンポーザブル](/guide/reusability/composables.html)で、値、ref、getter のいずれかになりうる引数を正規化するために使用できます。
+
+- 3.3 以上でのみサポートされています。
 
 - **型**
 

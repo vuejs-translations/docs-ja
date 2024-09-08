@@ -112,7 +112,7 @@
   - [ガイド - 算出プロパティ](/guide/essentials/computed)
   - [ガイド - 算出プロパティのデバッグ](/guide/extras/reactivity-in-depth#computed-debugging)
   - [ガイド - `computed()` の型付け](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
-  - [ガイド - パフォーマンス - 算出プロパティの安定性](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
+  - [ガイド - パフォーマンス - 算出プロパティの安定性](/guide/best-practices/performance#computed-stability)
 
 ## reactive() {#reactive}
 
@@ -441,7 +441,7 @@
   - **`deep`**: オブジェクトの場合、深い変更の際にコールバックが発生するように、ソースの深い探索を強制します。3.5+ では、どこまで深くオブジェクトを監視するかを数値で指定することもできます。詳しくは[ディープ・ウォッチャー](/guide/essentials/watchers#deep-watchers)をご参照ください。
   - **`flush`**: コールバックのフラッシュタイミングを調整します。詳しくは[コールバックが実行されるタイミング](/guide/essentials/watchers#callback-flush-timing)や [`watchEffect()`](/api/reactivity-core#watcheffect) をご参照ください。
   - **`onTrack / onTrigger`**: ウォッチャーの依存関係をデバッグします。詳しくは[ウォッチャーのデバッグ](/guide/extras/reactivity-in-depth#watcher-debugging)をご参照ください。
-  - **`once`**: コールバックを一度だけ実行します。最初のコールバックが実行されると、ウォッチャーは自動的に停止します。<sup class="vt-badge" data-text="3.4+" />
+  - **`once`**:（3.4+）コールバックを一度だけ実行します。最初のコールバックが実行されると、ウォッチャーは自動的に停止します。
 
   [`watchEffect()`](#watcheffect) と比較すると、`watch()` は以下のことができます:
 

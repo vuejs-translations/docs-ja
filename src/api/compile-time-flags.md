@@ -26,11 +26,13 @@ outline: deep
 
   本番ビルドにおける devtools サポートを有効 / 無効にします。バンドルに含まれるコードが増えるので、デバッグ目的でのみ有効にすることをお勧めします。
 
-## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` <sup class="vt-badge" data-text="3.4+" /> {#VUE_PROD_HYDRATION_MISMATCH_DETAILS}
+## `__VUE_PROD_HYDRATION_MISMATCH_DETAILS__` {#VUE_PROD_HYDRATION_MISMATCH_DETAILS}
 
 - **デフォルト:** `false`
 
   本番ビルドにおけるハイドレーションの不一致についての詳細な警告を有効 / 無効にします。バンドルに含まれるコードが増えるので、デバッグ目的でのみ有効にすることをお勧めします。
+
+-  3.4 以上でのみ使用できます。
 
 ## 設定ガイド {#configuration-guides}
 
