@@ -129,7 +129,9 @@ Vue の現在のバージョンを公開します。
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### 関数シグネチャー <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+  ### 関数シグネチャー {#function-signature}
+
+- 3.3 以上でのみサポートされています
 
   `defineComponent()` には、Composition API と[レンダー関数か JSX](/guide/extras/render-function.html) で使うための代替シグネチャーもあります。
 

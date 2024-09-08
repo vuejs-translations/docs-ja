@@ -259,7 +259,7 @@
 
 - **省略記法:**
   - `:` or `.`（`.prop` 修飾子使用時）
-  - 値の省略（属性とバインドされた値が同じ名前の場合）<sup class="vt-badge">3.4+</sup>
+  - 値の省略（属性とバインドされた値が同じ名前の場合、3.4 以上が必要）
 
 - **期待する値:** `any（引数ありの場合）| Object（引数なしの場合）`
 
@@ -268,8 +268,8 @@
 - **修飾子**
 
   - `.camel` - kebab-case の属性名を camelCase に変換します。
-  - `.prop` - バインディングを DOM プロパティとして設定するよう強制します。<sup class="vt-badge">3.2+</sup>
-  - `.attr` - バインディングを DOM 属性として設定するよう強制します。<sup class="vt-badge">3.2+</sup>
+  - `.prop` - バインディングを DOM プロパティとして設定するよう強制します（3.2 以上）。
+  - `.attr` - バインディングを DOM 属性として設定するよう強制します（3.2 以上）。
 
 - **使用法**
 
@@ -468,7 +468,9 @@ props の受け取りを期待する名前付きスロットまたはスコー�
   - [データバインディング構文 - 展開](/guide/essentials/template-syntax#text-interpolation)
   - [v-memo](#v-memo)
 
-## v-memo <sup class="vt-badge" data-text="3.2+" /> {#v-memo}
+## v-memo {#v-memo}
+
+- 3.2 以上でのみサポートされています
 
 - **期待する値:** `any[]`
 

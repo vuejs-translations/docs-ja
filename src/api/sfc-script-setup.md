@@ -267,7 +267,9 @@ const props = withDefaults(defineProps<Props>(), {
 変更可能な参照型（配列やオブジェクトなど）のデフォルト値は、偶発的な変更や外部からの副作用を避けるために `withDefaults` を使う時は、関数でラップする必要があることに注意してください。こうすることで、各コンポーネントのインスタンスがデフォルト値のコピーを取得することが保証されます。これは分割代入でデフォルト値を使う時は**不要**です。
 :::
 
-## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
+## defineModel() {#definemodel}
+
+- 3.4 以上でのみ使用できます
 
 このマクロは親コンポーネントから `v-model` 経由で使用できる双方向バインディングの props を宣言するために使用できます。使用例は、[コンポーネントの `v-model`](/guide/components/v-model) のガイドでも説明されています。
 
