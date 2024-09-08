@@ -134,11 +134,11 @@
 
 ## toValue() {#tovalue}
 
+- 3.3 以上でのみサポートされています
+
 値 / ref / getter を値に正規化します。これは [unref()](#unref) に似ていますが、getter も正規化する点が異なります。引数が getter の場合、その getter が呼び出され、その戻り値が返されます。
 
 これは、[コンポーザブル](/guide/reusability/composables.html)で、値、ref、getter のいずれかになりうる引数を正規化するために使用できます。
-
-- 3.3 以上でのみサポートされています
 
 - **型**
 

@@ -34,15 +34,15 @@
 
 ## MaybeRef\<T> {#mayberef}
 
-`T | Ref<T>` のエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
+- 3.3 以上でのみサポートされています
 
-- 3.3 以上でのみサポートされています。
+`T | Ref<T>` のエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-`T | Ref<T> | (() => T)` のエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
+- 3.3 以上でのみサポートされています
 
-- 3.3 以上でのみサポートされています。
+`T | Ref<T> | (() => T)` のエイリアスです。 [コンポーザブル](/guide/reusability/composables.html)の引数を注釈するときに役立ちます。
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
@@ -77,9 +77,9 @@
 
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-ランタイム props オプションオブジェクトから props の型を抽出します。抽出された型は外向き、つまり親が渡すことのできる props です。
+- 3.3 以上でのみサポートされています
 
-- 3.3 以上でのみサポートされています。
+ランタイム props オプションオブジェクトから props の型を抽出します。抽出された型は外向き、つまり親が渡すことのできる props です。
 
 - **例**
 

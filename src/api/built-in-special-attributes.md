@@ -91,7 +91,9 @@
 
 - **期待する値:** `string | Component`
 
-- **ネイティブ要素での使用** <sup class="vt-badge">3.1+</sup>
+- **ネイティブ要素での使用**
+
+- 3.1 以上でのみサポートされています
 
   ネイティブの HTML 要素で `is` 属性が使われている場合、[Customized built-in element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) として解釈されます。これは、ネイティブの Web プラットフォームの機能です。
 
