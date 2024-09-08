@@ -23,7 +23,7 @@ function dismiss() {
 <template>
   <div class="banner" v-if="open">
     <a href="https://note.com/moe6811/n/n813c1da8cad7" target="_blank">
-      Vue Fes Japan 2024 チケット<span>早割販売中！</span>9/8<span>（日）</span>まで<span>のご購入で</span> 1,000円 OFF!
+      <span>10月19日（土）開催、</span>Vue Fes Japan 2024 チケット販売中！
     </a>
   </div>
 </template>
