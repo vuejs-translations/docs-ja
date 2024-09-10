@@ -379,7 +379,9 @@ defineExpose({
 
 親がテンプレート参照を介してこのコンポーネントのインスタンスを取得すると、取得されたインスタンスは `{ a: number, b: number }` という形状になります（ref は通常のインスタンスと同様、自動的にアンラップされます）。
 
-## defineOptions() <sup class="vt-badge" data-text="3.3+" /> {#defineoptions}
+## defineOptions() /> {#defineoptions}
+
+- 3.3 以上でのみサポートされています
 
 このマクロは、`<script>` ブロックを別途使用することなく、`<script setup>` 内で直接コンポーネントオプションを宣言するために使用できます:
 
@@ -394,10 +396,11 @@ defineOptions({
 </script>
 ```
 
-- 3.3 以上でのみサポートされています。
 - これはマクロです。オプションはモジュールスコープに巻き上げられ、`<script setup>` 内のリテラル定数でないローカル変数にはアクセスできません。
 
 ## defineSlots() <sup class="vt-badge ts"/> {#defineslots}
+
+- 3.3 以上でのみサポートされています
 
 このマクロは、スロット名と props の型チェックのために IDE に型ヒントを提供するために使用することができます。
 
@@ -412,8 +415,6 @@ const slots = defineSlots<{
 }>()
 </script>
 ```
-
-- 3.3 以上でのみサポートされています。
 
 ## `useSlots()` & `useAttrs()` {#useslots-useattrs}
 
