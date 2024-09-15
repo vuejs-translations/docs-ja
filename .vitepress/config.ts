@@ -421,6 +421,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: '高度な API',
       items: [
+        { text: 'カスタム要素', link: '/api/custom-elements' },
         { text: 'レンダー関数', link: '/api/render-function' },
         { text: 'サーバーサイドレンダリング', link: '/api/ssr' },
         { text: 'TypeScript ユーティリティー', link: '/api/utility-types' }, // /api/ で折り返されないよう「型」を省略
