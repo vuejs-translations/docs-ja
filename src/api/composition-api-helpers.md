@@ -35,12 +35,17 @@ TypeScript を使用する場合は、代わりに [`defineSlots()`](/api/sfc-sc
     props: Record<string, any>,
     key: string,
     options?: DefineModelOptions
-  )
+  ): ModelRef
 
   type DefineModelOptions<T = any> = {
     get?: (v: T) => any
     set?: (v: T) => any
   }
+
+  type ModelRef<T, M extends PropertyKey = string, G = T, S = T> = Ref<G, S> & [
+    ModelRef<T, M, G, S>,
+    Record<M, true | undefined>
+]
   ```
 
 - **例**
