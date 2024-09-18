@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@vue/repl": "^4.3.1",
-    "@vue/theme": "^2.2.12",
+    "@vue/theme": "^2.2.13",
     "dynamics.js": "^1.1.5",
     "gsap": "^3.12.5",
     "vitepress": "^1.3.2",
@@ -38,5 +38,5 @@
   "lint-staged": {
     "*.md": "textlint --format pretty-error"
   },
-  "packageManager": "pnpm@9.9.0"
+  "packageManager": "pnpm@9.10.0"
 }
