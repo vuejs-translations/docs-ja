@@ -371,6 +371,17 @@ const foo = inject('foo') as string
 
 ## テンプレート参照の型付け {#typing-template-refs}
 
+Vue 3.5 と `@vue/language-tools` 2.1（IDE の言語サービスと `vue-tsc` の両方をサポート）では、SFC の `useTemplateRef()` で作成された `ref` の型は、`ref` 属性が使用されている要素またはコンポーネントに基づいて、静的な `ref` の型を *自動的に推論* できます。
+
+自動推論が不可能な場合でも、`generic` 引数を使用してテンプレート参照を明示的な型にキャストすることができます：
+
+```ts
+const el = useTemplateRef<HTMLInputElement>(null)
+```
+
+<details>
+<summary>3.5 以前の使用方法</summary>
+
 テンプレート参照は、明示的な型引数と初期値 `null` を指定して作成されます:
 
 ```vue
@@ -389,50 +400,45 @@ onMounted(() => {
 </template>
 ```
 
+</details>
+
 適切な DOM インターフェースを取得するには、[MDN](https://developer.mozilla.org/ja/docs/Web/HTML/Element/input#技術的概要) のようなページを確認してください。
 
 厳密な型安全性のために、`el.value` にアクセスする際には、オプショナルチェーンもしくは型ガードをする必要があります。なぜなら、コンポーネントがマウントされるまでは ref の初期値は `null` であり、参照されていた要素が `v-if` によってアンマウントされた場合にも `null` にセットされる可能性があるからです。
 
 ## コンポーネントのテンプレート参照の型付け {#typing-component-template-refs}
 
-時に、子コンポーネントのパブリックメソッドを呼ぶために、子コンポーネントのテンプレート参照に型づけする必要があるかもしれません。例えば、モーダルを開くメソッドを持つ `MyModal` という子コンポーネントがあるとします:
+Vue 3.5 と `@vue/language-tools` 2.1（IDE の言語サービスと `vue-tsc` の両方をサポート）では、SFC の `useTemplateRef()` で作成された `ref` の型は、`ref` 属性が使用されている要素またはコンポーネントに基づいて、静的な `ref` の型を *自動的に推論* できます。
 
-```vue
-<!-- MyModal.vue -->
-<script setup lang="ts">
-import { ref } from 'vue'
+自動推論が不可能な場合（例えば、SFC 以外の使用や動的コンポーネントの場合）でも、`generic` 引数を使用してテンプレート参照を明示的な型にキャストすることができます。
 
-const isContentShown = ref(false)
-const open = () => (isContentShown.value = true)
-
-defineExpose({
-  open
-})
-</script>
-```
-
-`MyModal` のインスタンスの型を得るために、まず `typeof` によって型を取得し、次に TypeScript の組み込みユーティリティーの `InstanceType` を使って型を抽出する必要があります:
+インポートされたコンポーネントのインスタンスの型を得るために、まず `typeof` によって型を取得し、次に TypeScript の組み込みユーティリティーの `InstanceType` を使って型を抽出する必要があります:
 
 ```vue{5}
 <!-- App.vue -->
 <script setup lang="ts">
-import MyModal from './MyModal.vue'
+import { useTemplateRef } from 'vue'
+import Foo from './Foo.vue'
+import Bar from './Bar.vue'
 
-const modal = ref<InstanceType<typeof MyModal> | null>(null)
+type FooType = InstanceType<typeof Foo>
+type BarType = InstanceType<typeof Bar>
 
-const openModal = () => {
-  modal.value?.open()
-}
+const compRef = useTemplateRef<FooType | BarType>('comp')
 </script>
+
+<template>
+  <component :is="Math.random() > 0.5 ? Foo : Bar" ref="comp" />
+</template>
 ```
 
 コンポーネントの正確な型がわからない場合や重要でない場合は、代わりに `ComponentPublicInstance` を使用できます。この場合、`$el` のようなすべてのコンポーネントで共有されているプロパティのみが含まれます:
 
 ```ts
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 
-const child = ref<ComponentPublicInstance | null>(null)
+const child = useTemplateRef<ComponentPublicInstance | null>(null)
 ```
 
 参照されるコンポーネントが[ジェネリックコンポーネント](/guide/typescript/overview.html#generic-components)の場合、例えば `MyGenericModal` の場合:
@@ -457,11 +463,11 @@ defineExpose({
 ```vue
 <!-- App.vue -->
 <script setup lang="ts">
+import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
+import type { ComponentExposed } from 'vue-component-type-helpers'
 
-import type { ComponentExposed } from 'vue-component-type-helpers';
-
-const modal = ref<ComponentExposed<typeof MyModal> | null>(null)
+const modal = useTemplateRef<ComponentExposed<typeof MyModal>>(null)
 
 const openModal = () => {
   modal.value?.open('newValue')
@@ -469,3 +475,4 @@ const openModal = () => {
 </script>
 ```
 
+なお、`@vue/language-tools` 2.1 以降では、静的テンプレート参照の型は自動的に推論されるので、上記はエッジケースでのみ必要となります。
