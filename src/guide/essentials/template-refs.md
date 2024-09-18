@@ -12,7 +12,31 @@ Vue の宣言型レンダリングモデルは、直接的な DOM 操作のほ�
 
 <div class="composition-api">
 
-Composition API で参照を取得するには、以下のようにテンプレートの ref 属性の値と一致する名前の ref を宣言します:
+Composition API で参照を取得するには、[`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) ヘルパー <sup class="vt-badge" data-text="3.5+" /> を使用できます:
+
+```vue
+<script setup>
+import { useTemplateRef, onMounted } from 'vue'
+
+// 最初の引数は、テンプレートの ref の値に一致させる必要があります。
+const input = useTemplateRef('my-input')
+
+onMounted(() => {
+  input.value.focus()
+})
+</script>
+
+<template>
+  <input ref="my-input" />
+</template>
+```
+
+TypeScript を使用する場合、Vue の IDE サポートと `vue-tsc` は、一致する `ref` 属性が使用されている要素やコンポーネントに基づいて、`inputRef.value` の型を自動的に推論します。
+
+<details>
+<summary>3.5 以前の使用方法</summary>
+
+`useTemplateRef()` が導入されていなかった 3.5 以前のバージョンでは、テンプレート内の `ref` 属性の値と同じ名前で `ref` を宣言する必要がありました:
 
 ```vue
 <script setup>
@@ -45,6 +69,8 @@ export default {
   }
 }
 ```
+
+</details>
 
 </div>
 <div class="options-api">
@@ -97,6 +123,33 @@ watchEffect(() => {
 
 ```vue
 <script setup>
+import { ref, useTemplateRef, onMounted } from 'vue'
+
+const list = ref([
+  /* ... */
+])
+
+const itemRefs = useTemplateRef('items')
+
+onMounted(() => console.log(itemRefs.value))
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in list" ref="items">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+
+[Playground で試す](https://play.vuejs.org/#eNp9UsluwjAQ/ZWRLwQpDepyQoDUIg6t1EWUW91DFAZq6tiWF4oU5d87dtgqVRyyzLw3b+aN3bB7Y4ptQDZkI1dZYTw49MFMuBK10dZDAxZXOQSHC6yNLD3OY6zVsw7K4xJaWFldQ49UelxxVWnlPEhBr3GszT6uc7jJ4fazf4KFx5p0HFH+Kme9CLle4h6bZFkfxhNouAIoJVqfHQSKbSkDFnVpMhEpovC481NNVcr3SaWlZzTovJErCqgydaMIYBRk+tKfFLC9Wmk75iyqg1DJBWfRxT7pONvTAZom2YC23QsMpOg0B0l0NDh2YjnzjpyvxLrYOK1o3ckLZ5WujSBHr8YL2gxnw85lxEop9c9TynkbMD/kqy+svv/Jb9wu5jh7s+jQbpGzI+ZLu0byEuHZ+wvt6Ays9TJIYl8A5+i0DHHGjvYQ1JLGPuOlaR/TpRFqvXCzHR2BO5iKg0Zmm/ic0W2ZXrB+Gve2uEt1dJKs/QXbwePE)
+
+<details>
+<summary>3.5 以前の使用方法</summary>
+
+```vue
+<script setup>
 import { ref, onMounted } from 'vue'
 
 const list = ref([
@@ -117,7 +170,7 @@ onMounted(() => console.log(itemRefs.value))
 </template>
 ```
 
-[Playground で試す](https://play.vuejs.org/#eNpFjs1qwzAQhF9l0CU2uDZtb8UOlJ576bXqwaQyCGRJyCsTEHr3rGwnOehnd2e+nSQ+vW/XqMSH6JdL0J6wKIr+LK2evQuEhKCmBs5+u2hJ/SNjCm7GiV0naaW9OLsQjOZrKNrq97XBW4P3v/o51qTmHzUtd8k+e0CrqsZwRpIWGI0KVN0N7TqaqNp59JUuEt2SutKXY5elmimZT9/t2Tk1F+z0ZiTFFdBHs738Mxrry+TCIEWhQ9sttRQl0tEsK6U4HEBKW3LkfDA6o3dst3H77rFM5BtTfm/P)
+</details>
 
 </div>
 <div class="options-api">
@@ -175,6 +228,26 @@ export default {
 
 ```vue
 <script setup>
+import { useTemplateRef, onMounted } from 'vue'
+import Child from './Child.vue'
+
+const childRef = useTemplateRef('child')
+
+onMounted(() => {
+  // child.value は <Child /> のインスタンスを保持します。
+})
+</script>
+
+<template>
+  <Child ref="child" />
+</template>
+```
+
+<details>
+<summary>3.5 以前の使用方法</summary>
+
+```vue
+<script setup>
 import { ref, onMounted } from 'vue'
 import Child from './Child.vue'
 
@@ -189,6 +262,8 @@ onMounted(() => {
   <Child ref="child" />
 </template>
 ```
+
+</details>
 
 </div>
 <div class="options-api">
