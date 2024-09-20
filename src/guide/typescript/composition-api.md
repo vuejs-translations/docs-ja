@@ -408,7 +408,7 @@ onMounted(() => {
 
 ## コンポーネントのテンプレート参照の型付け {#typing-component-template-refs}
 
-Vue 3.5 と `@vue/language-tools` 2.1（IDE の言語サービスと `vue-tsc` の両方をサポート）では、SFC の `useTemplateRef()` で作成された `ref` の型は、`ref` 属性が使用されている要素またはコンポーネントに基づいて、静的な `ref` の型を *自動的に推論* できます。
+Vue 3.5 と `@vue/language-tools` 2.1（IDE の言語サービスと `vue-tsc` の両方をサポート）では、SFC の `useTemplateRef()` で作成された `ref` の型は、`ref` 属性が使用されている要素またはコンポーネントに基づいて、静的な `ref` の型を**自動的に推論**できます。
 
 自動推論が不可能な場合（例えば、SFC 以外の使用や動的コンポーネントの場合）でも、`generic` 引数を使用してテンプレート参照を明示的な型にキャストすることができます。
 
