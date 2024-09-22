@@ -278,19 +278,6 @@
   // -> logs 1
   ```
 
-  副作用のクリーンアップ:
-
-  ```js
-  watchEffect(async (onCleanup) => {
-    const { response, cancel } = doAsyncWork(id.value)
-    // `cancel` は `id` が変更された場合に呼ばれます
-    // 前の保留中のリクエストが完了していない場合は
-    // キャンセルされます
-    onCleanup(cancel)
-    data.value = await response
-  })
-  ```
-
   ウォッチャーの停止:
 
   ```js
@@ -528,7 +515,7 @@
   ウォッチャーの一時停止 / 再開: <sup class="vt-badge" data-text="3.5+" />
 
   ```js
-  const { stop, pause, resume } = watchEffect(() => {})
+  const { stop, pause, resume } = watch(() => {})
 
   // ウォッチャーを一時停止する
   pause()
