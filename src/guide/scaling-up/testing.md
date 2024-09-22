@@ -261,13 +261,11 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 ### 推奨事項 {#recommendation-2}
 
-- [Cypress](https://www.cypress.io/)
+- [Playwright](https://playwright.dev/) は、Chromium、WebKit、Firefox をサポートする優れた E2E テストソリューションです。Windows、Linux、macOS で、ローカルまたは CI で、ヘッドレスまたは Android および Mobile Safari 用の Google Chrome のネイティブモバイルエミュレーションでテストできます。情報豊富な UI、優れたデバッグ性、組み込みのアサーション、並列化、トレースを備え、不安定（flaky）なテストを排除するように設計されています。[コンポーネントテスト](https://playwright.dev/docs/component-testing) のサポートは利用可能ですが、実験的機能とされています。Playwright はオープンソースであり、Microsoft によってメンテナンスされています。
 
-  全体的に見て Cypress は、有益なグラフィカルインターフェース、優れたデバッグ性、組み込みアサーションとスタブ、耐フレーク性、並列化、スナップショットなどの機能により、最も完成した E2E ソリューションを提供すると私たちは考えています。また、前述の通り[コンポーネントのテスト](https://docs.cypress.io/guides/component-testing/introduction)もサポートしています。Chromium ベースのブラウザー、Firefox、Electron をサポートしています。WebKit のサポートもありますが、実験的とされています。
+- [Cypress](https://www.cypress.io/) は、情報豊富なグラフィカルインターフェース、優れたデバッグ性、組み込みアサーションとスタブ、耐フレーク性（flake-resistance）、スナップショットなどの機能を備えています。また、前述の通り[コンポーネントテスト](https://docs.cypress.io/guides/component-testing/introduction)もサポートしています。Chromium ベースのブラウザー、Firefox、Electron をサポートしています。WebKit のサポートもありますが、実験的機能とされています。Cypress は MIT ライセンスですが、並列化などの一部の機能には Cypress Cloud へのサブスクリプションが必要です。
 
 ### その他の選択肢 {#other-options-2}
-
-- [Playwright](https://playwright.dev/) も優れた E2E テストソリューションで、Chromium、WebKit、Firefox を含むすべてのモダンなレンダリングエンジンをサポートしています。Windows、Linux、macOS 上で、ローカルまたは CI 上で、ヘッドレスまたはヘッドフルで、Android 用 Google Chrome と Mobile Safari のネイティブモバイルエミュレーションを使用してテストします。
 
 - [Nightwatch](https://nightwatchjs.org/) は、[Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) をベースとした E2E テストソリューションです。こちらはネイティブモバイルテストを含む、最も広い範囲のブラウザーをサポートしています。Selenium ベースのソリューションは、Playwright や Cypress よりも遅くなります。
 
