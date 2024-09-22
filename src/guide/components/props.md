@@ -152,7 +152,7 @@ watchEffect(() => {
 const { foo = 'hello' } = defineProps<{ foo?: string }>()
 ```
 
-### 関数への分割代入 props 渡し
+### 関数への分割代入 props 渡し {#passing-destructured-props-into-functions}
 
 </div>
 
