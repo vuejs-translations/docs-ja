@@ -442,7 +442,7 @@ export default {
 <input v-model.number="age" />
 ```
 
-もし値が `parseFloat()` で解析できない場合は、代わりに元の(文字列)値が使用されます。特に、入力が空の場合(例えばユーザーが入力フィールドをクリアした後など)、空文字列が返されます。この動作は [DOM プロパティの `valueAsNumber`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#valueasnumber) とは異なります。
+もし値が `parseFloat()` で解析できない場合は、代わりに元の（文字列）値が使用されます。特に、入力が空の場合（例えばユーザーが入力フィールドをクリアした後など）、空文字列が返されます。この動作は [DOM プロパティの `valueAsNumber`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#valueasnumber) とは異なります。
 
 input が `type="number"` を持つ場合は `number` 修飾子が自動で適用されます。
 
