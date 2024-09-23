@@ -154,7 +154,7 @@ IDE 上で分割代入された props と通常の変数をより視覚的に区
 const { foo = 'hello' } = defineProps<{ foo?: string }>()
 ```
 
-### 関数への分割代入 props 渡し
+### 関数への分割代入 props 渡し {#passing-destructured-props-into-functions}
 
 分割代入された props を関数に渡す場合、例えば：
 

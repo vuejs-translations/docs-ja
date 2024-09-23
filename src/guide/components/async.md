@@ -118,7 +118,7 @@ Vue 3.5 以降では、非同期コンポーネントはハイドレーション
 
 - 柔軟性を持たせるために設計は意図的に低レベルになっています。将来的にコアまたは高レベルのソリューション（例： Nuxt）で、コンパイラーのシンタックスシュガー（糖衣構文）がこれに基づいて構築される可能性があります。
 
-### アイドル状態でハイドレート
+### アイドル状態でハイドレート {#hydrate-on-idle}
 
 `requestIdleCallback` を使用してハイドレートします:
 
@@ -131,7 +131,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### 表示時にハイドレート
+### 表示時にハイドレート {#hydrate-on-visible}
 
 `IntersectionObserver` を使用して要素が表示されたときにハイドレートします。
 
@@ -150,7 +150,7 @@ const AsyncComp = defineAsyncComponent({
 hydrateOnVisible({ rootMargin: '100px' })
 ```
 
-### メディアクエリーでハイドレート
+### メディアクエリーでハイドレート {#hydrate-on-media-query}
 
 指定されたメディアクエリーに一致したときにハイドレートします。
 
@@ -163,7 +163,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### インタラクションでハイドレート
+### インタラクションでハイドレート {#hydrate-on-interaction}
 
 コンポーネント要素に指定されたイベントがトリガーされたときにハイドレートします。ハイドレーションが完了すると、ハイドレーションをトリガーしたイベントも再生されます。
 
@@ -182,7 +182,7 @@ const AsyncComp = defineAsyncComponent({
 hydrateOnInteraction(['wheel', 'mouseover'])
 ```
 
-### カスタム戦略
+### カスタム戦略 {#custom-strategy}
 
 ```ts
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'
