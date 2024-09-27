@@ -127,10 +127,6 @@ watch(
 | form            | role="form"          | フォームに関連する要素のコレクション                                                                           |
 | section         | role="region"        | 関連性がありユーザーが移動したくなるであろうコンテンツ。この要素にはラベルを付ける必要がある |
 
-:::tip ヒント:
-[HTML5 のセマンティック要素をサポートしていないレガシーブラウザー](https://caniuse.com/html5semantic)との互換性を最大化するために、冗長なランドマークロール属性を持つランドマーク HTML 要素を使用することが推奨されています。
-:::
-
 [ランドマークについてもっと読む](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
 ## セマンティックなフォーム {#semantic-forms}
