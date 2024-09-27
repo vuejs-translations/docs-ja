@@ -135,6 +135,8 @@ Vue Router には、動的インポートを使用した [lazily loading compone
 
 ## ネストした Suspense {#nested-suspense}
 
+- 3.3 以上でのみサポートされています
+
 次のように複数の非同期コンポーネントがある場合（ネストされたルートやレイアウトベースのルートによくあります）:
 
 ```vue-html
