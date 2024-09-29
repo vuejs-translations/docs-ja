@@ -125,6 +125,7 @@ const vFocus = {
   mounted: (el) => el.focus()
 }
 </script>
+
 <template>
   <input v-focus />
 </template>
@@ -138,6 +139,7 @@ const vFocus = {
 const focus = {
   mounted: (el) => el.focus()
 }
+
 export default {
   directives: {
     // テンプレート内で v-focus が有効になります
