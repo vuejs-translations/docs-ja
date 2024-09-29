@@ -135,3 +135,7 @@ export default {
 ```
 
 </div>
+
+### NPM 用のバンドル
+
+プラグインをビルドし、他の人が使用できるように公開したい場合は、[ViteのLibrary Modeに関するセクション](https://vitejs.dev/guide/build.html#library-mode)を参照してください。
