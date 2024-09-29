@@ -138,4 +138,4 @@ export default {
 
 ### NPM 用のバンドル
 
-プラグインをビルドし、他の人が使用できるように公開したい場合は、[ViteのLibrary Modeに関するセクション](https://vitejs.dev/guide/build.html#library-mode)を参照してください。
+プラグインをビルドし、他の人が使用できるように公開したい場合は、[Vite のライブラリーモードに関するセクション](https://ja.vitejs.dev/guide/build.html#library-mode)を参照してください。
