@@ -71,8 +71,6 @@ export default {
   <p v-highlight>This sentence is important!</p>
 </div>
 
-ページの他の場所をクリックしていないと仮定すると、上の入力欄は自動的にフォーカスされるはずです。このディレクティブはページロード時だけでなく、Vue によって要素が動的に挿入されたときにも機能するため、`autofocus` 属性よりも便利です。
-
 <div class="composition-api">
 
 `<script setup>` では、接頭辞が `v` で始まるキャメルケースの変数をカスタムディレクティブとして使用することができます。上の例では、`vHighlight` はテンプレート内で `v-highlight` として使用できます。
