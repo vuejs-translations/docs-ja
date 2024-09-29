@@ -12,6 +12,7 @@ const vHighlight = {
 .vt-doc p.is-highlight {
   margin-bottom: 0;
 }
+
 .is-highlight {
   background-color: yellow;
   color: black;
