@@ -1,12 +1,23 @@
 # カスタムディレクティブ {#custom-directives}
 
 <script setup>
-const vFocus = {
+const vHighlight = {
   mounted: el => {
-    el.focus()
+    el.classList.add('is-highlight')
   }
 }
 </script>
+
+<style>
+.vt-doc p.is-highlight {
+  margin-bottom: 0;
+}
+
+.is-highlight {
+  background-color: yellow;
+  color: black;
+}
+</style>
 
 ## はじめに {#introduction}
 
@@ -15,6 +26,95 @@ const vFocus = {
 Vue におけるコードの再利用として 2 つの方法を紹介してきました:[コンポーネント](/guide/essentials/component-basics)と[コンポーザブル](./composables)です。コンポーネントはメインブロックの構築、コンポーザブルはステートフルなロジックの再利用に重点を置いています。一方、カスタムディレクティブは主にプレーンな要素に対する低レベルの DOM アクセスを伴うロジックを再利用することを目的としています。
 
 カスタムディレクティブは、コンポーネントと同様のライフサイクルフックを含むオブジェクトとして定義されます。フックは、ディレクティブがバインドされている要素を受け取ります。以下は Vue によって要素が DOM に挿入されたときに入力欄にフォーカスするディレクティブの例です:
+
+<div class="composition-api">
+
+```vue
+<script setup>
+// テンプレート内で v-highlight が有効になります
+const vHighlight = {
+  mounted: (el) => {
+    el.classList.add('is-highlight')
+  }
+}
+</script>
+
+<template>
+  <p v-highlight>This sentence is important!</p>
+</template>
+```
+
+</div>
+
+<div class="options-api">
+
+```js
+const highlight = {
+  mounted: (el) => el.classList.add('is-highlight')
+}
+
+export default {
+  directives: {
+    // テンプレート内で v-highlight が有効になります
+    highlight
+  }
+}
+```
+
+```vue-html
+<p v-highlight>This sentence is important!</p>
+```
+
+</div>
+
+<div class="demo">
+  <p v-highlight>This sentence is important!</p>
+</div>
+
+<div class="composition-api">
+
+`<script setup>` では、接頭辞が `v` で始まるキャメルケースの変数をカスタムディレクティブとして使用することができます。上の例では、`vHighlight` はテンプレート内で `v-highlight` として使用できます。
+
+`<script setup>` を使用しない場合、カスタムディレクティブは `directives` オプションを使用して登録することができます:
+
+```js
+export default {
+  setup() {
+    /*...*/
+  },
+  directives: {
+    // テンプレート内で v-highlight が有効になります
+    highlight: {
+      /* ... */
+    }
+  }
+}
+```
+
+</div>
+
+<div class="options-api">
+
+コンポーネントと同様に、カスタムディレクティブもテンプレートで使用できるように登録する必要があります。上の例では、 `directives` オプションを使用してローカル登録しています。
+
+</div>
+
+また、カスタムディレクティブをアプリケーションレベルでグローバル登録することもよくあります:
+
+```js
+const app = createApp({})
+
+// 全てのコンポーネントで v-highlight が使用可能
+app.directive('highlight', {
+  /* ... */
+})
+```
+
+## カスタムディレクティブを使用するタイミング {#when-to-use}
+
+カスタムディレクティブは DOM を直接操作することでしか必要な機能を実現できない場合にのみ使用してください。
+
+一般的な例として、要素にフォーカスを当てる `v-focus` カスタムディレクティブがあります。
 
 <div class="composition-api">
 
@@ -54,54 +154,9 @@ export default {
 
 </div>
 
-<div class="demo">
-  <input v-focus placeholder="This should be focused" />
-</div>
+このディレクティブは `autofocus` 属性よりも便利です。ページ読み込み時だけでなく、Vue によって要素が動的に挿入されたときにも機能するからです！
 
-ページの他の場所をクリックしていないと仮定すると、上の入力欄は自動的にフォーカスされるはずです。このディレクティブはページロード時だけでなく、Vue によって要素が動的に挿入されたときにも機能するため、`autofocus` 属性よりも便利です。
-
-<div class="composition-api">
-
-`<script setup>` では、接頭辞が `v` で始まるキャメルケースの変数をカスタムディレクティブとして使用することができます。上の例では、`vFocus` はテンプレート内で `v-focus` として使用できます。
-
-`<script setup>` を使用しない場合、カスタムディレクティブは `directives` オプションを使用して登録することができます:
-
-```js
-export default {
-  setup() {
-    /*...*/
-  },
-  directives: {
-    // テンプレート内で v-focus が有効になります
-    focus: {
-      /* ... */
-    }
-  }
-}
-```
-
-</div>
-
-<div class="options-api">
-
-コンポーネントと同様に、カスタムディレクティブもテンプレートで使用できるように登録する必要があります。上の例では、 `directives` オプションを使用してローカル登録しています。
-
-</div>
-
-また、カスタムディレクティブをアプリケーションレベルでグローバル登録することもよくあります:
-
-```js
-const app = createApp({})
-
-// 全てのコンポーネントで v-focus が使用可能
-app.directive('focus', {
-  /* ... */
-})
-```
-
-:::tip
-カスタムディレクティブは DOM を直接操作することでしか必要な機能を実現できない場合にのみ使用してください。`v-bind` のような組み込みディレクティブを使用した宣言的なテンプレートは、効率的かつサーバーレンダリングフレンドリーです。可能なかぎり組み込みディレクティブを使用することをおすすめします。
-:::
+可能な限り `v-bind` のような組み込みディレクティブを使用した宣言的なテンプレートを推奨します。これらはより効率的で、サーバーレンダリングにも適しているためです。
 
 ## ディレクティブフック {#directive-hooks}
 
@@ -213,7 +268,6 @@ app.directive('demo', (el, binding) => {
 :::warning 推奨しません
 コンポーネントにカスタムディレクティブを使用することは推奨しません。コンポーネントに複数のルートノードがある場合、予期しない動作が発生する可能性があります。
 :::
-
 
 コンポーネントで使用すると、[フォールスルー属性](/guide/components/attrs)と同様にカスタムディレクティブは常にコンポーネントのルートノードに適用されます。
 
