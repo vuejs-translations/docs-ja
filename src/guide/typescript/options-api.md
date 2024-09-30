@@ -230,7 +230,7 @@ declare module 'vue' {
 
 参照:
 
-- [コンポーネントの型拡張の TypeScript の単体テスト](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
+- [コンポーネントの型拡張の TypeScript の単体テスト](https://github.com/vuejs/core/blob/main/packages-private/dts-test/componentTypeExtensions.test-d.tsx)
 
 ### 型拡張の配置 {#type-augmentation-placement}
 
@@ -290,4 +290,4 @@ declare module 'vue' {
 
 参照:
 
-- [コンポーネントの型拡張の TypeScript の単体テスト](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
+- [コンポーネントの型拡張の TypeScript の単体テスト](https://github.com/vuejs/core/blob/main/packages-private/dts-test/componentTypeExtensions.test-d.tsx)
