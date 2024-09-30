@@ -384,9 +384,7 @@
   type WatchSource<T> =
     | Ref<T> // ref
     | (() => T) // ゲッター
-    | T extends object
-    ? T
-    : never // リアクティブなオブジェクト
+    | (T extends object ? T : never) // リアクティブなオブジェクト
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // 初期値: false
