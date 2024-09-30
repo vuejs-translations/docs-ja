@@ -259,6 +259,115 @@ const fullName = computed({
 
 </div>
 
+## 前回の値を取得する {#previous}
+
+- 3.4 以上でのみサポートされています
+
+
+必要であれば、ゲッターの第 1 引数にアクセスすることで、算出プロパティが前回返した値を取得できます:
+
+<div class="options-api">
+
+```js
+export default {
+  data() {
+    return {
+      count: 2
+    }
+  },
+  computed: {
+    // この computed は、count が 3 以下の場合にはその値を返します。
+    // count が >= 4 の場合は、count が 3 以下になるまで、
+    // 条件を満たした最後の値が代わりに返されます
+    alwaysSmall(previous) {
+      if (this.count <= 3) {
+        return this.count;
+      }
+
+      return previous;
+    }
+  }
+}
+```
+</div>
+
+<div class="composition-api">
+
+```vue
+<script setup>
+import { ref, computed } from 'vue'
+
+const count = ref(2)
+
+// この computed は、count が 3 以下の場合にはその値を返します。
+// count が >= 4 の場合は、count が 3 以下になるまで、
+// 条件を満たした最後の値が代わりに返されます
+const alwaysSmall = computed((previous) => {
+  if (count.value <= 3) {
+    return count.value;
+  }
+
+  return previous;
+})
+</script>
+```
+</div>
+
+書き込み可能な computed を使用している場合は:
+
+<div class="options-api">
+
+```js
+export default {
+  data() {
+    return {
+      count: 2
+    }
+  },
+  computed: {
+    alwaysSmall: {
+      get(previous) {
+        if (this.count <= 3) {
+          return this.count;
+        }
+
+        return previous;
+      },
+      set(newValue) {
+        this.count = newValue * 2;
+      }
+    }
+  }
+}
+```
+
+</div>
+<div class="composition-api">
+
+```vue
+<script setup>
+import { ref, computed } from 'vue'
+
+const count = ref(2)
+
+const alwaysSmall = computed({
+  get(previous) {
+    if (count.value <= 3) {
+      return count.value;
+    }
+
+    return previous;
+  },
+  set(newValue) {
+    count.value = newValue * 2;
+  }
+})
+</script>
+```
+
+</div>
+
+
 ## ベストプラクティス {#best-practices}
 
 ### getter 関数は副作用のないものでなければならない {#getters-should-be-side-effect-free}
