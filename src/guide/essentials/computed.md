@@ -255,7 +255,7 @@ const fullName = computed({
 </script>
 ```
 
-`fullName = 'John Doe'` を呼ぶと、setter 関数が呼び出され、`firstName` と `lastName` が適切に更新されます。
+`fullName.value = 'John Doe'` を呼ぶと、setter 関数が呼び出され、`firstName` と `lastName` が適切に更新されます。
 
 </div>
 
