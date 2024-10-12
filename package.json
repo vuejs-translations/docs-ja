@@ -12,25 +12,25 @@
     "lint": "textlint --format pretty-error src/**"
   },
   "dependencies": {
-    "@vue/repl": "^4.3.1",
+    "@vue/repl": "^4.4.2",
     "@vue/theme": "^2.3.0",
     "dynamics.js": "^1.1.5",
     "gsap": "^3.12.5",
-    "vitepress": "^1.3.2",
-    "vue": "^3.5.0"
+    "vitepress": "^1.4.0",
+    "vue": "^3.5.12"
   },
   "devDependencies": {
     "@nexhome/yorkie": "^2.0.8",
     "@types/body-scroll-lock": "^3.1.2",
-    "@types/markdown-it": "^14.1.1",
-    "@types/node": "^20.14.1",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.7.5",
     "lint-staged": "^12.3.2",
     "textlint": "^12.1.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-preset-vuejs-jp": "github:vuejs-jp/textlint-rule-preset-vuejs-jp",
-    "typescript": "^5.4.5",
-    "vue-tsc": "^2.0.29"
+    "typescript": "^5.6.3",
+    "vue-tsc": "^2.1.6"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -38,5 +38,5 @@
   "lint-staged": {
     "*.md": "textlint --format pretty-error"
   },
-  "packageManager": "pnpm@9.10.0"
+  "packageManager": "pnpm@9.12.1"
 }
