@@ -148,6 +148,8 @@ onMounted(() => console.log(itemRefs.value))
 <details>
 <summary>3.5 以前の使用方法</summary>
 
+`useTemplateRef()` が導入されていなかった 3.5 以前のバージョンでは、テンプレートの ref 属性の値と一致する名前で ref を宣言する必要があります。 ref には配列の値も含まれます:
+
 ```vue
 <script setup>
 import { ref, onMounted } from 'vue'
