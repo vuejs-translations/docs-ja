@@ -115,7 +115,7 @@ watchEffect(() => {
 
 ## `v-for` の中の参照 {#refs-inside-v-for}
 
-> v3.2.25 以降が必要です。
+> v3.5 以降が必要です。
 
 <div class="composition-api">
 
