@@ -286,7 +286,7 @@ methods: {
 <input @keyup.enter="submit" />
 ```
 
-[`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)<!-- TODO: 日本語版のページが出来たら URL 差し替え --> を介して公開されている有効なキーネームをケバブケースに変換されることで、直接修飾子として使用することができます。
+[`KeyboardEvent.key`](https://developer.mozilla.org/ja/docs/Web/API/UI_Events/Keyboard_event_key_values) を介して公開されている有効なキーネームをケバブケースに変換されることで、直接修飾子として使用することができます。
 
 ```vue-html
 <input @keyup.page-down="onPageDown" />
