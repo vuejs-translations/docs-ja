@@ -45,7 +45,7 @@ TypeScript を使用する場合は、代わりに [`defineSlots()`](/api/sfc-sc
   type ModelRef<T, M extends PropertyKey = string, G = T, S = T> = Ref<G, S> & [
     ModelRef<T, M, G, S>,
     Record<M, true | undefined>
-]
+  ]
   ```
 
 - **例**
