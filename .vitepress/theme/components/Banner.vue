@@ -22,8 +22,8 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <a href="https://note.com/moe6811/n/n813c1da8cad7" target="_blank">
-      <span>10月19日（土）開催、</span>Vue Fes Japan 2024 チケット販売中！
+    <a href="https://vuefes.jp/2024/" target="_blank">
+      Vue Fes Japan 2024、10月19日（土）開催
     </a>
   </div>
 </template>
