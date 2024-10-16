@@ -31,7 +31,7 @@ onMounted(() => {
 </template>
 ```
 
-TypeScript を使用する場合、Vue の IDE サポートと `vue-tsc` は、一致する `ref` 属性が使用されている要素やコンポーネントに基づいて、`inputRef.value` の型を自動的に推論します。
+TypeScript を使用する場合、Vue の IDE サポートと `vue-tsc` は、一致する `ref` 属性が使用されている要素やコンポーネントに基づいて、`input.value` の型を自動的に推論します。
 
 <details>
 <summary>3.5 以前の使用方法</summary>
