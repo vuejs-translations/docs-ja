@@ -153,6 +153,26 @@ useCssModule()
 useCssModule('classes')
 ```
 
+- **例**
+
+```vue
+<script setup lang="ts">
+import { useCssModule } from 'vue'
+
+const classes = useCssModule()
+</script>
+
+<template>
+  <p :class="classes.red">red</p>
+</template>
+
+<style module>
+.red {
+  color: red;
+}
+</style>
+```
+
 ## CSS の `v-bind()` {#v-bind-in-css}
 
 SFC の `<style>` タグでは `v-bind` という CSS 関数を使用して、CSS の値をコンポーネントの動的な状態にリンクすることをサポートします:
