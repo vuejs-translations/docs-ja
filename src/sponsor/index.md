@@ -7,6 +7,10 @@ sponsors: false
 
 <script setup>
 import SponsorsGroup from '@theme/components/SponsorsGroup.vue'
+import { load, data } from '@theme/components/sponsors'
+import { onMounted } from 'vue'
+
+onMounted(load)
 </script>
 
 # Vue.js のスポンサーになる {#become-a-vue-js-sponsor}
@@ -18,11 +22,11 @@ Vue.js は、MIT ライセンスのオープンソースプロジェクトで、
 
 スポンサーシップは [GitHub Sponsors](https://github.com/sponsors/yyx990803) または [OpenCollective](https://opencollective.com/vuejs) から行えます。請求書は、GitHub の支払いシステムから入手できます。毎月の継続的なスポンサーシップと、一度だけの寄付の両方を受け付けています。定期的なスポンサーシップの場合、[スポンサーシップのティア](#tier-benefits)で指定されているように、ロゴを配置する権利があります。
 
-ティア、決済ロジスティックス、スポンサー公開データに関するご質問は、[sponsor@vuejs.org](mailto:sponsor@vuejs.org) までお問い合わせください。
+ティア、決済ロジスティックス、スポンサー公開データに関するご質問は、[sponsor@vuejs.org](mailto:sponsor@vuejs.org?subject=Vue.js%20sponsorship%20inquiry) までお問い合わせください。
 
 ## 企業として Vue を支援する {#sponsoring-vue-as-a-business}
 
-Vue のスポンサーになると、Web サイトや GitHub プロジェクトの README を通じて、世界中の**170万人**を超える Vue 開発者に大きく露出できます。また、OSS をサポートすることは、開発者と交流するすべての企業にとって重要な資産であるブランドの評判を向上させることになります。
+Vue のスポンサーになると、Web サイトや GitHub プロジェクトの README を通じて、世界中の**200万人**を超える Vue 開発者に大きく露出できます。これは直接的に見込み客を獲得するだけでなく、オープンソースを大切にする企業としてブランド認知度も向上させます。これは無形資産ですが、開発者向け製品を開発する企業にとっては、コンバージョン率の向上につながるため、非常に重要な資産です。
 
 Vue を使用して収益を上げる製品を構築している場合、Vue の開発を後援することはビジネス上理にかなっています。**これにより、あなたの製品が依存しているプロジェクトが健全で活発に維持されることが保証されます。**また、Vue コミュニティーでの露出と肯定的なブランドイメージにより、Vue の開発者を引き付け、採用することが容易になります。
 
