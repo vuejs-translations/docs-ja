@@ -97,4 +97,4 @@ createApp({
 
 これは**ライフサイクルフック**とよばれます。コンポーネントライフサイクルの特定の時に呼び出されるコールバックが登録できます。他にも <span class="options-api">`created` と `updated`</span><span class="composition-api">`onUpdated` と `onUnmounted`</span> があります。詳しくは<a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">ライフサイクルダイアグラム</a>を参照してください。
 
-では、 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> のフックを追加し、`<p>` の要素が<span class="options-api">`this.$refs.pElementRef`</span><span class="composition-api">`pElementRef.value`</span>でアクセスして直接に DOM の操作（例:`textContent` の変更）をしてみましょう。
+では、 <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> のフックを追加し、`<p>` の要素に<span class="options-api">`this.$refs.pElementRef`</span><span class="composition-api">`pElementRef.value`</span>でアクセスして直接に DOM の操作（例:`textContent` の変更）をしてみましょう。
