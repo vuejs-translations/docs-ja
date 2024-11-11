@@ -8,12 +8,14 @@ defineProps<{ title?: string }>()
   <PageHero>
     <template #title>{{ title || 'Vue Partners' }}</template>
     <template #lead>
-      Vue パートナーは、一流の Vue コンサルティングおよび
-      開発サービスを提供する、Vue チーム推奨の代理店です。
-      パートナーとしての掲載にご興味のある企業様は、
-      <a class="link" href="https://airtable.com/shrCQhat57SApJI2l" target="_blank"
-        >こちらからご登録をお願いします</a
-      >。
+      <p>
+        Vue パートナーは、一流の Vue コンサルティングおよび開発サービスを提供する、Vue
+        チームが承認した代理店です。
+        貴社がパートナーとしてリストに掲載されることにご興味がある場合は、
+        <a class="link" href="https://airtable.com/shrCQhat57SApJI2l" target="_blank"
+          >こちらからご登録ください</a
+        >。
+      </p>
     </template>
   </PageHero>
 </template>
