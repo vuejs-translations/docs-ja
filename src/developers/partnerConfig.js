@@ -25,12 +25,14 @@ const partnerConfig = {
 
   // Hero Section
   pageHeroBanner: {
-    title: 'Vue Developers',
-    description: 'Vue Developers は認定された個人フリーランサーです。支払い、コンプライアンス、審査はパートナーである Proxify によって管理されています。リストへの参加に興味がありますか？',
-    applyButton: {
-      url: applyUrl,
-      label: 'お申し込みはこちら'
-    }
+    title: 'チームのためのトップ Vue.js 開発者を見つける',
+    description1: '次のプロジェクトで利用可能な認定 Vue.js 開発者にアクセス',
+    description2: 'Proxify は、トップクラスの品質と信頼性を保証するために審査プロセスを処理します',
+    hireButton: {
+      url: hireUrl,
+      label: '今すぐ Vue.js 開発者を探す'
+    },
+    footer: "48 時間以内に Vue.js のトップ開発者とマッチング",
   },
 
   // Hero Section
