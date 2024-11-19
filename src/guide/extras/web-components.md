@@ -220,6 +220,8 @@ Vue でカスタム要素をビルドする場合、要素は Vue のランタ�
 個々の要素コンストラクタをエクスポートして、ユーザーに必要に応じてインポートさせたり、必要なタグ名で登録できる柔軟性を持たせることをおすすめします。また、すべての要素を自動的に登録する便利な関数をエクスポートすることもできます。以下は、Vue カスタム要素ライブラリのエントリーポイントの例です:
 
 ```js
+// elements.js
+
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
 import Bar from './MyBar.ce.vue'
@@ -236,30 +238,276 @@ export function register() {
 }
 ```
 
-もし多くのコンポーネントがある場合、Vite の [glob import](https://vitejs.dev/guide/features.html#glob-import) や webpack の [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) のようなビルドツールの機能を利用して、ディレクトリーからすべてのコンポーネントを読み込むこともできます。
+コンポーネントの利用者は、Vue ファイル内の要素を使用できます
 
-### Web コンポーネント と TypeScript {#web-components-and-typescript}
+```vue
+<script setup>
+import { register } from 'path/to/elements.js'
+register()
+</script>
 
-もしアプリケーションやライブラリーを開発している場合、カスタム要素として定義されているものも含めて、Vue コンポーネントを[型チェック](/guide/scaling-up/tooling.html#typescript)したいかもしれません。
+<template>
+  <my-foo ...>
+    <my-bar ...></my-bar>
+  </my-foo>
+</template>
+```
 
-カスタム要素はネイティブ API を使用してグローバルに登録されているので、デフォルトでは Vue テンプレートで使用される時に型推論が行われません。カスタム要素として登録された Vue コンポーネントの型のサポートを提供するために、Vue テンプレート、または [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) で [`GlobalComponents` インターフェース](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage)を使用することでグローバルなコンポーネントの型を登録することができます:
+または、JSX などの他のフレームワーク内の要素を、カスタム名で使用することもできます:
+
+```jsx
+import { MyFoo, MyBar } from 'path/to/elements.js'
+
+customElements.define('some-foo', MyFoo)
+customElements.define('some-bar', MyBar)
+
+export function MyComponent() {
+  return <>
+    <some-foo ...>
+      <some-bar ...></some-bar>
+    </some-foo>
+  </>
+}
+```
+
+### Vue ベースの Web コンポーネントと TypeScript {#web-components-and-typescript}
+
+Vue SFC テンプレートを記述する際には、カスタム要素として定義されたものも含めて、Vue コンポーネントの[型チェック](/guide/scaling-up/tooling.html#typescript) を行うとよいでしょう。
+
+カスタム要素はネイティブ API を使用してグローバルに登録されるため、デフォルトでは Vue テンプレートで使用された際に型推論が行われません。カスタム要素として登録された Vue コンポーネントに型サポートを提供するには、Vue テンプレートおよび/または [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) で [`GlobalComponents` インターフェース](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage)を使用してグローバルコンポーネントの型付けを登録します。
+
+Vue で作成されたカスタム要素の型を定義する方法は次のとおりです:
 
 ```typescript
 import { defineCustomElement } from 'vue'
 
-// vue SFC
-import CounterSFC from './src/components/counter.ce.vue'
+// Vue component をインポート。
+import SomeComponent from './src/components/SomeComponent.ce.vue'
 
-// コンポーネントを Web コンポーネントに変換
-export const Counter = defineCustomElement(CounterSFC)
+// Vue component をカスタム要素クラスに変換。
+export const SomeElement = defineCustomElement(SomeComponent)
 
-// グローバルな型を登録
+// 要素クラスをブラウザに登録することを忘れずに。
+customElements.define('some-element', SomeElement)
+
+// Vue の GlobalComponents タイプに新しい要素タイプを追加します。
 declare module 'vue' {
-  export interface GlobalComponents {
-    Counter: typeof Counter
+  interface GlobalComponents {
+    // ここでは必ず Vue コンポーネントタイプ(SomeElement **ではなく** SomeComponent)を渡してください。
+    // カスタム要素にはハイフンが必要です。そのため、ここではハイフン付きの要素名を使用します。
+    'some-element': typeof SomeComponent
   }
 }
 ```
+
+## Vue ではない Web コンポーネントと TypeScript
+
+Vue で構築されていないカスタム要素の SFC テンプレートで型チェックを有効にする推奨の方法をご紹介します。
+
+
+> [!Note]
+> この方法は、カスタム要素を作成する際に使用するフレームワークによって異なる場合があります。
+
+
+いくつかの JS プロパティとイベントが定義されたカスタム要素があり、それが `some-lib` というライブラリーに同梱されているとします:
+
+
+```ts
+// file: some-lib/src/SomeElement.ts
+
+// 型付き JS プロパティを持つクラスを定義します。
+export class SomeElement extends HTMLElement {
+  foo: number = 123
+  bar: string = 'blah'
+
+  lorem: boolean = false
+
+  // このメソッドはテンプレート型に公開すべきではありません。
+  someMethod() {
+    /* ... */
+  }
+
+  // ... 実装の詳細は省略 ...
+  // ... "apple-fell" という名前のイベントをディスパッチすると想定 ...
+}
+
+customElements.define('some-element', SomeElement)
+
+// これは、フレームワークテンプレート（例えば、Vue SFCテンプレート）で
+// 型チェックのために選択されるSomeElementのプロパティの一覧です。
+// その他のプロパティは公開されません。
+export type SomeElementAttributes = 'foo' | 'bar'
+
+// SomeElement がディスパッチするイベントの種類を定義します。
+export type SomeElementEvents = {
+  'apple-fell': AppleFellEvent
+}
+
+export class AppleFellEvent extends Event {
+  /* ... 詳細は省略 ... */
+}
+```
+
+実装の詳細は省略しますが、重要な部分は、プロパティの型とイベントの型という 2 つの型定義があることです。
+
+
+Vue でカスタム要素の型定義を簡単に登録するための型ヘルパーを作成してみましょう
+
+
+```ts
+// file: some-lib/src/DefineCustomElement.ts
+
+// 定義する必要のある要素ごとに、このタイプのヘルパーを再利用することができます。
+type DefineCustomElement<
+  ElementType extends HTMLElement,
+  Events extends EventMap = {},
+  SelectedAttributes extends keyof ElementType = keyof ElementType
+> = new () => ElementType & {
+  // テンプレート型のチェックに公開されるプロパティを定義するには、$props を使用します。
+  // Vue は、特に `$props` 型からプロパティ定義を読み取ります。要素のプロパティを
+  // グローバルな HTML プロパティと Vue の特別なプロパティと組み合わせることに
+  // 注意してください。
+  /** @deprecated カスタム要素参照では、$props プロパティを使用しないでください。これはテンプレートプロパティ型専用です。 */
+  $props: HTMLAttributes &
+    Partial<Pick<ElementType, SelectedAttributes>> &
+    PublicProps
+
+  // イベントタイプを明示的に定義するには、$emit を使用します。
+  // Vue は、イベントタイプを`$emit`タイプから読み取ります。
+  // `$emit` は、`Events` にマッピングする特定のフォーマットを必要とします。
+  /** @deprecated カスタム要素参照では $emit プロパティを使用しないでください。これはテンプレートプロパティ型専用です。 */
+  $emit: VueEmit<Events>
+}
+
+type EventMap = {
+  [event: string]: Event
+}
+
+// これは、Vue の $emit 型が期待する形式に EventMap をマッピングします。
+type VueEmit<T extends EventMap> = EmitFn<{
+  [K in keyof T]: (event: T[K]) => void
+}>
+```
+
+> [!Note]
+> 私たちは `$props` と `$emit` を非推奨としました。カスタム要素の `ref` を取得した際に、これらのプロパティを使用したくなる誘惑にかられないようにするためです。これらのプロパティはカスタム要素に関しては型チェックのみに使用されるためです。これらのプロパティは実際にはカスタム要素のインスタンスには存在しません。
+
+
+
+
+型ヘルパーを使用して、Vue テンプレートで型チェックのために公開すべき JS プロパティを選択できます:
+
+
+```ts
+// file: some-lib/src/SomeElement.vue.ts
+
+import {
+  SomeElement,
+  SomeElementAttributes,
+  SomeElementEvents
+} from './SomeElement.js'
+import type { Component } from 'vue'
+import type { DefineCustomElement } from './DefineCustomElement'
+
+// Vue の GlobalComponents タイプに新しい要素タイプを追加します。
+declare module 'vue' {
+  interface GlobalComponents {
+    'some-element': DefineCustomElement<
+      SomeElement,
+      SomeElementAttributes,
+      SomeElementEvents
+    >
+  }
+}
+```
+
+`some-lib` が TypeScript のソースファイルを `dist/` フォルダにビルドするとします。 `some-lib` のユーザーは、`SomeElement` をインポートし、Vue SFC で次のように使用できます:
+
+
+```vue
+<script setup lang="ts">
+// これにより、要素が作成され、ブラウザーに登録されます。
+import 'some-lib/dist/SomeElement.js'
+
+// TypeScript と Vue を使用しているユーザーは、さらに Vue 固有の型定義を
+// インポートする必要があります（他のフレームワークを使用しているユーザーは、
+// 他のフレームワーク固有の型定義をインポートする場合があります）。
+import type {} from 'some-lib/dist/SomeElement.vue.js'
+
+import { useTemplateRef, onMounted } from 'vue'
+
+const el = useTemplateRef('el')
+
+onMounted(() => {
+  console.log(
+    el.value!.foo,
+    el.value!.bar,
+    el.value!.lorem,
+    el.value!.someMethod()
+  )
+
+  // これらの props は使用しないでください。これらは `undefined` です（IDE では取り消し線が表示されます）:
+  el.$props
+  el.$emit
+})
+</script>
+
+<template>
+  <!-- これで型チェックを行いながら要素を使用できます: -->
+  <some-element
+    ref="el"
+    :foo="456"
+    :blah="'hello'"
+    @apple-fell="
+      (event) => {
+        // ここで、`event` の型は `AppleFellEvent` であると推論されます
+      }
+    "
+  ></some-element>
+</template>
+```
+
+要素に型定義がない場合、プロパティとイベントの型はより手動で定義することができます:
+
+
+```vue
+<script setup lang="ts">
+// `some-lib` が型定義のないプレーンな JavaScript で、TypeScript が型を
+// 推論できないと仮定します:
+import { SomeElement } from 'some-lib'
+
+// 前回と同じ型ヘルパーを使用します。
+import { DefineCustomElement } from './DefineCustomElement'
+
+type SomeElementProps = { foo?: number; bar?: string }
+type SomeElementEvents = { 'apple-fell': AppleFellEvent }
+interface AppleFellEvent extends Event {
+  /* ... */
+}
+
+// Vue の GlobalComponents 型に新しい要素タイプを追加します。
+declare module 'vue' {
+  interface GlobalComponents {
+    'some-element': DefineCustomElement<
+      SomeElementProps,
+      SomeElementEvents
+    >
+  }
+}
+
+// ... 以前と同じように、要素への参照を使用します ...
+</script>
+
+<template>
+  <!-- ... 以前と同じように、テンプレート内の要素を使用します ... -->
+</template>
+```
+
+カスタム要素の作成者は、ライブラリーからフレームワーク固有のカスタム要素の型定義を自動的にエクスポートすべきではありません。例えば、ライブラリーの残りの部分もエクスポートする `index.ts` ファイルからエクスポートすべきではありません。そうしないと、ユーザーに予期しないモジュール拡張エラーが発生します。ユーザーは、必要なフレームワーク固有の型定義ファイルをインポートする必要があります。
+
+
+
+
 
 ## Web コンポーネント と Vue コンポーネントの比較 {#web-components-vs-vue-components}
 
