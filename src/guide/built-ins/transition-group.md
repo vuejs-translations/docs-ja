@@ -80,9 +80,9 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 [完全な例](/examples/#list-transition)
 
-### カスタムトランジションクラス
+### カスタムトランジションクラス {#custom-transitiongroup-classes}
 
-[`<Transition>` のカスタムトランジションクラス](https://vuejs.org/guide/built-ins/transition.html#custom-transition-classes)と同様に、`<TransitionGroup>` に `moveClass` プロパティを渡すことで、移動する要素のカスタムトランジションクラスを指定することもできます。
+[`<Transition>` のカスタムトランジションクラス](/guide/built-ins/transition.html#custom-transition-classes)と同様に、`<TransitionGroup>` に `moveClass` プロパティを渡すことで、移動する要素のカスタムトランジションクラスを指定することもできます。
 
 ## 時差をもたせたリストのトランジション {#staggering-list-transitions}
 
