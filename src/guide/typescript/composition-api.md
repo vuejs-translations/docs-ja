@@ -376,7 +376,7 @@ Vue 3.5 と `@vue/language-tools` 2.1（IDE の言語サービスと `vue-tsc` �
 自動推論が不可能な場合でも、ジェネリック引数を使用してテンプレート参照を明示的な型にキャストすることができます：
 
 ```ts
-const el = useTemplateRef<HTMLInputElement>(null)
+const el = useTemplateRef<HTMLInputElement>('el')
 ```
 
 <details>
@@ -438,7 +438,7 @@ const compRef = useTemplateRef<FooType | BarType>('comp')
 import { useTemplateRef } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 
-const child = useTemplateRef<ComponentPublicInstance | null>(null)
+const child = useTemplateRef<ComponentPublicInstance>('child')
 ```
 
 参照されるコンポーネントが[ジェネリックコンポーネント](/guide/typescript/overview.html#generic-components)の場合、例えば `MyGenericModal` の場合:
@@ -467,7 +467,7 @@ import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 
-const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>(null)
+const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>('modal')
 
 const openModal = () => {
   modal.value?.open('newValue')
