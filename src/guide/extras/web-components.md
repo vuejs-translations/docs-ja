@@ -274,7 +274,7 @@ export function MyComponent() {
 
 Vue SFC テンプレートを記述する際には、カスタム要素として定義されたものも含めて、Vue コンポーネントの[型チェック](/guide/scaling-up/tooling.html#typescript) を行うとよいでしょう。
 
-カスタム要素はネイティブ API を使用してグローバルに登録されるため、デフォルトでは Vue テンプレートで使用された際に型推論が行われません。カスタム要素として登録された Vue コンポーネントに型サポートを提供するには、Vue テンプレートおよび/または [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) で [`GlobalComponents` インターフェース](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage)を使用してグローバルコンポーネントの型付けを登録します。
+カスタム要素はネイティブ API を使用してグローバルに登録されるため、デフォルトでは Vue テンプレートで使用された際に型推論が行われません。カスタム要素として登録された Vue コンポーネントに型サポートを提供するには、Vue テンプレートおよび/または [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) で [`GlobalComponents` インターフェース](https://github.com/vuejs/language-tools/wiki/Global-Component-Types)を使用してグローバルコンポーネントの型付けを登録します。
 
 Vue で作成されたカスタム要素の型を定義する方法は次のとおりです:
 
