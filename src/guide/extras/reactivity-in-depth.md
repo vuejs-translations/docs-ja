@@ -403,7 +403,7 @@ export function useMachine(options) {
 他のたくさんのフレームワークでも、Vue の Composition API の ref に似たリアクティビティープリミティブを「シグナル」という用語で導入しています:
 
 - [Solid のシグナル](https://www.solidjs.com/docs/latest/api#createsignal)
-- [Angular のシグナル](https://angular.io/guide/signals)
+- [Angular のシグナル](https://angular.dev/guide/signals)
 - [Preact のシグナル](https://preactjs.com/guide/v10/signals/)
 - [Qwik のシグナル](https://qwik.builder.io/docs/components/state/#usesignal)
 
