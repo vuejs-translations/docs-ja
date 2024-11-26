@@ -300,7 +300,7 @@ declare module 'vue' {
 }
 ```
 
-## Vue ではない Web コンポーネントと TypeScript
+## Vue ではない Web コンポーネントと TypeScript {#non-vue-web-components-and-typescript}
 
 Vue で構築されていないカスタム要素の SFC テンプレートで型チェックを有効にする推奨の方法をご紹介します。
 
