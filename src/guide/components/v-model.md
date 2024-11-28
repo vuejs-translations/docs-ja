@@ -99,11 +99,15 @@ const model = defineModel({ default: 0 })
 :::warning
 もし `defineModel` props に `default` 値を指定し、親コンポーネントからこの props に何も値を与えなかった場合、親と子のコンポーネント間で同期が取れなくなる可能性があります。以下の例では、親コンポーネントの `myRef` は undefined ですが、子コンポーネントの `model` は 1 です:
 
-```js
-// 子コンポーネント:
-const model = defineModel({ default: 1 })
+**子コンポーネント:**
 
-// 親コンポーネント:
+```js
+const model = defineModel({ default: 1 })
+```
+
+**親コンポーネント:**
+
+```js
 const myRef = ref()
 ```
 
