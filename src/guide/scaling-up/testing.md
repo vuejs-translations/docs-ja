@@ -1,6 +1,29 @@
 <script setup>
 import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
+<style>
+.lambdatest {
+  background-color: var(--vt-c-bg-soft);
+  border-radius: 8px;
+  padding: 12px 16px 12px 12px;
+  font-size: 13px;
+  a {
+    display: flex;
+    color: var(--vt-c-text-2);
+  }
+  img {
+    background-color: #fff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-right: 24px;
+  }
+  .testing-partner {
+    color: var(--vt-c-text-1);
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+</style>
 
 # テスト {#testing}
 
@@ -40,7 +63,7 @@ Vue アプリケーションのテスト戦略を設計する際には、以下�
 
 ```js
 // helpers.js
-export function increment (current, max = 10) {
+export function increment(current, max = 10) {
   if (current < max) {
     return current + 1
   }
@@ -129,62 +152,66 @@ Vue アプリケーションでは、コンポーネントは UI の主要な構
 <VTCodeGroup>
   <VTCodeGroupTab label="Vue Test Utils">
 
-  ```js
-  const valueSelector = '[data-testid=stepper-value]'
-  const buttonSelector = '[data-testid=increment]'
+```js
+const valueSelector = '[data-testid=stepper-value]'
+const buttonSelector = '[data-testid=increment]'
 
-  const wrapper = mount(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+const wrapper = mount(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  expect(wrapper.find(valueSelector).text()).toContain('0')
+expect(wrapper.find(valueSelector).text()).toContain('0')
 
-  await wrapper.find(buttonSelector).trigger('click')
+await wrapper.find(buttonSelector).trigger('click')
 
-  expect(wrapper.find(valueSelector).text()).toContain('1')
-  ```
+expect(wrapper.find(valueSelector).text()).toContain('1')
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="Cypress">
 
-  ```js
-  const valueSelector = '[data-testid=stepper-value]'
-  const buttonSelector = '[data-testid=increment]'
+```js
+const valueSelector = '[data-testid=stepper-value]'
+const buttonSelector = '[data-testid=increment]'
 
-  mount(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+mount(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  cy.get(valueSelector).should('be.visible').and('contain.text', '0')
-    .get(buttonSelector).click()
-    .get(valueSelector).should('contain.text', '1')
-  ```
+cy.get(valueSelector)
+  .should('be.visible')
+  .and('contain.text', '0')
+  .get(buttonSelector)
+  .click()
+  .get(valueSelector)
+  .should('contain.text', '1')
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="Testing Library">
 
-  ```js
-  const { getByText } = render(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+```js
+const { getByText } = render(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  getByText('0') // // コンポーネント内に "0 "があることを暗黙のうちに評価します
+getByText('0') // // コンポーネント内に "0 "があることを暗黙のうちに評価します
 
-  const button = getByRole('button', { name: /increment/i })
+const button = getByRole('button', { name: /increment/i })
 
-  // インクリメントボタンにクリックイベントをディスパッチします。
-  await fireEvent.click(button)
+// インクリメントボタンにクリックイベントをディスパッチします。
+await fireEvent.click(button)
 
-  getByText('1')
+getByText('1')
 
-  await fireEvent.click(button)
-  ```
+await fireEvent.click(button)
+```
 
   </VTCodeGroupTab>
 </VTCodeGroup>
@@ -264,6 +291,16 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 - [Playwright](https://playwright.dev/) は、Chromium、WebKit、Firefox をサポートする優れた E2E テストソリューションです。Windows、Linux、macOS で、ローカルまたは CI で、ヘッドレスまたは Android および Mobile Safari 用の Google Chrome のネイティブモバイルエミュレーションでテストできます。情報豊富な UI、優れたデバッグ性、組み込みのアサーション、並列化、トレースを備え、不安定（flaky）なテストを排除するように設計されています。[コンポーネントテスト](https://playwright.dev/docs/test-components) のサポートは利用可能ですが、実験的機能とされています。Playwright はオープンソースであり、Microsoft によってメンテナンスされています。
 
 - [Cypress](https://www.cypress.io/) は、情報豊富なグラフィカルインターフェース、優れたデバッグ性、組み込みアサーションとスタブ、耐フレーク性（flake-resistance）、スナップショットなどの機能を備えています。また、前述の通り[コンポーネントテスト](https://docs.cypress.io/guides/component-testing/introduction)もサポートしています。Chromium ベースのブラウザー、Firefox、Electron をサポートしています。WebKit のサポートもありますが、実験的機能とされています。Cypress は MIT ライセンスですが、並列化などの一部の機能には Cypress Cloud へのサブスクリプションが必要です。
+
+<div class="lambdatest">
+  <a href="https://lambdatest.com" target="_blank">
+    <img src="/images/lambdatest.svg">
+    <div>
+      <div class="testing-partner">Testing Sponsor</div>
+      <div>Lambdatest は、AI 支援によるテスト生成機能を備え、主要なブラウザと実機を対象に、E2E、アクセシビリティ、Visual Regression Test を実行するためのクラウドプラットフォームです！</div>
+    </div>
+  </a>
+</div>
 
 ### その他の選択肢 {#other-options-2}
 
