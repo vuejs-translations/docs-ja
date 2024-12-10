@@ -1,4 +1,8 @@
-# 優先度B: 強く推奨 {#priority-b-rules-strongly-recommended}
+# 優先度 B: 強く推奨 {#priority-b-rules-strongly-recommended}
+
+::: warning Note
+この Vue.js スタイルガイドは古くなっていますので、見直しが必要です。ご質問やご意見がありましたら、[issue をオープン](https://github.com/vuejs/docs/issues/new)してください。
+:::
 
 これらのルールは、ほとんどのプロジェクトで可読性や開発者の使い勝手を向上させることが分かっています。これらのルールに違反した場合でも、あなたのコードは動作しますが、違反はごく少数で十分に正当な理由がなければいけません。
 

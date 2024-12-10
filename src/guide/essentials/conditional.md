@@ -110,8 +110,8 @@ const awesome = ref(true)
 
 ## `v-if` と `v-for` {#v-if-with-v-for}
 
-::: warning Note
-暗黙的な優先順位により、 `v-if` と `v-for` を同じ要素で利用することは **推奨されません**。 詳細については [スタイルガイド](/style-guide/rules-essential#avoid-v-if-with-v-for) を参照ください。
-:::
+同じ要素に対して `v-if` と `v-for` が両方使用されている場合、`v-if` が先に評価されます。詳細は、[リストレンダリングガイド](list#v-for-with-v-if)を参照してください。
 
-`v-if` と `v-for` が同じ要素に両方つかわれる場合、 `v-if` が先に評価されます。詳細については[リストレンダリングのガイド](list.html#v-for-with-v-if)を参照してください。
+::: warning Note
+暗黙的な優先順位により、 `v-if` と `v-for` を同じ要素で利用することは **推奨されません**。 詳細については[リストレンダリングガイド](list#v-for-with-v-if)を参照ください。
+:::
