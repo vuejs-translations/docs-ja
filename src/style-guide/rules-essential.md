@@ -1,4 +1,8 @@
-# 優先度A: 必須 {#priority-a-rules-essential}
+# 優先度 A: 必須 {#priority-a-rules-essential}
+
+::: warning Note
+この Vue.js スタイルガイドは古くなっていますので、見直しが必要です。ご質問やご意見がありましたら、[issue をオープン](https://github.com/vuejs/docs/issues/new)してください。
+:::
 
 これらのルールはエラーを防ぐのに役立ちますので、何としても学んで守ってください。例外はありますが、非常にまれで、 JavaScript と Vue の両方の専門的な知識を持つ人のみが行うべきことです。
 
