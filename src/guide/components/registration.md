@@ -138,4 +138,4 @@ export default {
 
 このスタイルは、SFC や文字列テンプレートを合わせて使う時に推奨されるスタイルです。ただし、[DOM 内テンプレート解析の注意点](/guide/essentials/component-basics#in-dom-template-parsing-caveats) で説明しているように、DOM 内テンプレートの中では PascalCase のタグが使えません。
 
-幸いなことに、Vue は PascalCase で登録したコンポーネントから kebab-case 形式のタグへの解決をサポートしています。これにより、`MyComponent` として登録したコンポーネントは、`<MyComponent>` と `<my-component>` のどちらを使ってもテンプレート内で参照できます。そのため、テンプレートの出どころに関わらず、JavaScript のコンポーネント登録のコードには同じものを用いることができます。
+幸いなことに、Vue は PascalCase で登録したコンポーネントから kebab-case 形式のタグへの解決をサポートしています。これにより、`MyComponent` として登録したコンポーネントは、`<MyComponent>` と `<my-component>` のどちらを使っても Vue テンプレート内（または Vue によってレンダリングされる HTML 要素内）で参照できます。そのため、テンプレートの出どころに関わらず、JavaScript のコンポーネント登録のコードには同じものを用いることができます。
