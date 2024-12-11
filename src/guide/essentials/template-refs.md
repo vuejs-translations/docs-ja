@@ -314,6 +314,8 @@ defineExpose({
 
 親がテンプレート参照を用いてこのコンポーネントのインスタンスを取得する場合、取得されるインスタンスは `{ a: number, b: number }` の形になります（通常のインスタンスと同様に、ref は自動的にアンラップされます）。
 
+defineExpose は必ず await 操作の前に呼び出す必要があります。そうでないと、await 操作の後に公開されるプロパティやメソッドにアクセスできなくなります。
+
 こちらもご覧ください: [コンポーネントのテンプレート参照の型付け](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 </div>
