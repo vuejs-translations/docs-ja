@@ -181,15 +181,15 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/event-handling'
         },
         { text: 'フォーム入力バインディング', link: '/guide/essentials/forms' },
-        {
-          text: 'ライフサイクルフック',
-          link: '/guide/essentials/lifecycle'
-        },
         { text: 'ウォッチャー', link: '/guide/essentials/watchers' },
         { text: 'テンプレート参照', link: '/guide/essentials/template-refs' },
         {
           text: 'コンポーネントの基礎',
           link: '/guide/essentials/component-basics'
+        },
+        {
+          text: 'ライフサイクルフック',
+          link: '/guide/essentials/lifecycle'
         }
       ]
     },
