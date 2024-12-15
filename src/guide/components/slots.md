@@ -298,12 +298,12 @@ function BaseLayout(slots) {
 
 ## 条件付きスロット {#conditional-slots}
 
-スロットが存在するかどうかに基づいて何かをレンダリングしたい場合があります。
+スロットにコンテンツが渡されたかどうかに基づいて何かをレンダリングしたい場合があります。
 
 これを実現するには、[$slots](/api/component-instance.html#slots) プロパティと [v-if](/guide/essentials/conditional.html#v-if) を組み合わせて使用します。
 
 以下の例では、`header`, `footer`, `default` の 3 つの条件付きスロットを持つ Card コンポーネントを定義しています。
-そしてヘッダー/フッター/デフォルトが存在する場合に、スタイル追加のためにスロットをラップしています:
+そしてヘッダー/フッター/デフォルトのコンテンツが存在する場合に、スタイル追加のためにスロットをラップしています:
 
 ```vue-html
 <template>
