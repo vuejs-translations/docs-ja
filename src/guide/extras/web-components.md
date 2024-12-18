@@ -238,7 +238,7 @@ export function register() {
 }
 ```
 
-コンポーネントの利用者は、Vue ファイル内の要素を使用できます
+コンポーネントの利用者は、Vue ファイル内の要素を使用できます:
 
 ```vue
 <script setup>
@@ -263,8 +263,8 @@ customElements.define('some-bar', MyBar)
 
 export function MyComponent() {
   return <>
-    <some-foo ...>
-      <some-bar ...></some-bar>
+    <some-foo ... >
+      <some-bar ... ></some-bar>
     </some-foo>
   </>
 }
@@ -293,8 +293,10 @@ customElements.define('some-element', SomeElement)
 // Vue の GlobalComponents タイプに新しい要素タイプを追加します。
 declare module 'vue' {
   interface GlobalComponents {
-    // ここでは必ず Vue コンポーネントタイプ(SomeElement **ではなく** SomeComponent)を渡してください。
-    // カスタム要素にはハイフンが必要です。そのため、ここではハイフン付きの要素名を使用します。
+    // ここでは必ず Vue コンポーネントタイプを渡してください。
+    // (SomeElement **ではなく** SomeComponent)
+    // カスタム要素にはハイフンが必要です。
+    // そのため、ここではハイフン付きの要素名を使用します。
     'some-element': typeof SomeComponent
   }
 }
@@ -304,13 +306,11 @@ declare module 'vue' {
 
 Vue で構築されていないカスタム要素の SFC テンプレートで型チェックを有効にする推奨の方法をご紹介します。
 
-
 > [!Note]
 > この方法は、カスタム要素を作成する際に使用するフレームワークによって異なる場合があります。
 
 
 いくつかの JS プロパティとイベントが定義されたカスタム要素があり、それが `some-lib` というライブラリーに同梱されているとします:
-
 
 ```ts
 // file: some-lib/src/SomeElement.ts
@@ -350,9 +350,7 @@ export class AppleFellEvent extends Event {
 
 実装の詳細は省略しますが、重要な部分は、プロパティの型とイベントの型という 2 つの型定義があることです。
 
-
 Vue でカスタム要素の型定義を簡単に登録するための型ヘルパーを作成してみましょう
-
 
 ```ts
 // file: some-lib/src/DefineCustomElement.ts
@@ -367,7 +365,8 @@ type DefineCustomElement<
   // Vue は、特に `$props` 型からプロパティ定義を読み取ります。要素のプロパティを
   // グローバルな HTML プロパティと Vue の特別なプロパティと組み合わせることに
   // 注意してください。
-  /** @deprecated カスタム要素参照では、$props プロパティを使用しないでください。これはテンプレートプロパティ型専用です。 */
+  /** @deprecated カスタム要素参照では、$props プロパティを使用しないでください。
+    これはテンプレートプロパティ型専用です。 */
   $props: HTMLAttributes &
     Partial<Pick<ElementType, SelectedAttributes>> &
     PublicProps
@@ -375,7 +374,8 @@ type DefineCustomElement<
   // イベントタイプを明示的に定義するには、$emit を使用します。
   // Vue は、イベントタイプを`$emit`タイプから読み取ります。
   // `$emit` は、`Events` にマッピングする特定のフォーマットを必要とします。
-  /** @deprecated カスタム要素参照では $emit プロパティを使用しないでください。これはテンプレートプロパティ型専用です。 */
+  /** @deprecated カスタム要素参照では $emit プロパティを使用しないでください。
+    これはテンプレートプロパティ型専用です。 */
   $emit: VueEmit<Events>
 }
 
@@ -396,7 +396,6 @@ type VueEmit<T extends EventMap> = EmitFn<{
 
 
 型ヘルパーを使用して、Vue テンプレートで型チェックのために公開すべき JS プロパティを選択できます:
-
 
 ```ts
 // file: some-lib/src/SomeElement.vue.ts
@@ -423,7 +422,6 @@ declare module 'vue' {
 
 `some-lib` が TypeScript のソースファイルを `dist/` フォルダにビルドするとします。 `some-lib` のユーザーは、`SomeElement` をインポートし、Vue SFC で次のように使用できます:
 
-
 ```vue
 <script setup lang="ts">
 // これにより、要素が作成され、ブラウザーに登録されます。
@@ -446,7 +444,8 @@ onMounted(() => {
     el.value!.someMethod()
   )
 
-  // これらの props は使用しないでください。これらは `undefined` です（IDE では取り消し線が表示されます）:
+  // これらの props は使用しないでください。これらは `undefined` です
+  // IDE では取り消し線が表示されます:
   el.$props
   el.$emit
 })
@@ -468,7 +467,6 @@ onMounted(() => {
 ```
 
 要素に型定義がない場合、プロパティとイベントの型はより手動で定義することができます:
-
 
 ```vue
 <script setup lang="ts">
@@ -504,10 +502,6 @@ declare module 'vue' {
 ```
 
 カスタム要素の作成者は、ライブラリーからフレームワーク固有のカスタム要素の型定義を自動的にエクスポートすべきではありません。例えば、ライブラリーの残りの部分もエクスポートする `index.ts` ファイルからエクスポートすべきではありません。そうしないと、ユーザーに予期しないモジュール拡張エラーが発生します。ユーザーは、必要なフレームワーク固有の型定義ファイルをインポートする必要があります。
-
-
-
-
 
 ## Web コンポーネント と Vue コンポーネントの比較 {#web-components-vs-vue-components}
 
