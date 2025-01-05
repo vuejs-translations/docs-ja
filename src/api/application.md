@@ -123,12 +123,12 @@
   const app = createApp({})
 
   // オプションオブジェクトを登録します。
-  app.component('my-component', {
+  app.component('MyComponent', {
     /* ... */
   })
 
   // 登録されたコンポーネントを取得します。
-  const MyComponent = app.component('my-component')
+  const MyComponent = app.component('MyComponent')
   ```
 
 - **参照** [コンポーネントの登録](/guide/components/registration)
@@ -156,17 +156,17 @@
   })
 
   // 登録（オブジェクトディレクティブ）
-  app.directive('my-directive', {
+  app.directive('myDirective', {
     /* カスタムディレクティブのフック */
   })
 
   // 登録（関数ディレクティブの省略記法）
-  app.directive('my-directive', () => {
+  app.directive('myDirective', () => {
     /* ... */
   })
 
   // 登録済ディレクティブの取得
-  const myDirective = app.directive('my-directive')
+  const myDirective = app.directive('myDirective')
   ```
 
 - **参照** [カスタムディレクティブ](/guide/reusability/custom-directives)
@@ -634,12 +634,12 @@ Vue からの実行時警告に対して、カスタムハンドラーを割り�
 - **例**
 
   ```js
-  app.config.idPrefix = 'my-app'
+  app.config.idPrefix = 'myApp'
   ```
   ```js
   // コンポーネント内:
-  const id1 = useId() // 'my-app:0'
-  const id2 = useId() // 'my-app:1'
+  const id1 = useId() // 'myApp:0'
+  const id2 = useId() // 'myApp:1'
   ```
 
 ## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
