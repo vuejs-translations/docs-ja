@@ -242,7 +242,7 @@ Vitest とブラウザーベースのランナーの主な違いは、スピー�
 
 - [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) は、実装の詳細に依存しないコンポーネントのテストに重点を置いた Vue のテストライブラリーです。その指針は、テストがソフトウェアの使われ方に似ていればいるほど、より信頼性を高めることができるというものです。
 
-アプリケーションのコンポーネントのテストには `@vue/test-utils` を使用することをお勧めします。`testing-library/vue` は Suspense を使った非同期コンポーネントのテストに問題があるため、注意して使用する必要があります。
+アプリケーションのコンポーネントのテストには `@vue/test-utils` を使用することをお勧めします。`@testing-library/vue` は Suspense を使った非同期コンポーネントのテストに問題があるため、注意して使用する必要があります。
 
 ### その他の選択肢 {#other-options-1}
 
