@@ -93,7 +93,7 @@ export default {
 
 ここでは、`publishedBooksMessage` という算出プロパティを宣言しています。
 
-アプリケーションの `data` プロパティ内の `books` 配列の値を変更してみると、それに応じて `publishedBooksMessage` の結果がどのように変化しているかがわかります。
+アプリケーションの `data` 内の `books` 配列の値を変更してみると、それに応じて `publishedBooksMessage` の結果がどのように変化しているかがわかります。
 
 通常のプロパティと同じように、テンプレート内の算出プロパティにデータバインドすることもできます。Vue は `this.publishedBooksMessage` が `this.author.books` に依存していることを知っているので、`this.author.books` が変わると `this.publishedBooksMessage` に依存する全てのバインディングを更新します。
 
@@ -116,7 +116,7 @@ const author = reactive({
   ]
 })
 
-// 算出プロパティの参照
+// 算出 ref
 const publishedBooksMessage = computed(() => {
   return author.books.length > 0 ? 'Yes' : 'No'
 })
@@ -263,8 +263,8 @@ const fullName = computed({
 
 - 3.4 以上でのみサポートされています
 
-
 必要であれば、ゲッターの第 1 引数にアクセスすることで、算出プロパティが前回返した値を取得できます:
+
 
 <div class="options-api">
 
