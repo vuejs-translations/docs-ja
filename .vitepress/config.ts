@@ -200,7 +200,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: '登録',
           link: '/guide/components/registration'
         },
-        { text: 'プロパティ', link: '/guide/components/props' },
+        { text: 'props', link: '/guide/components/props' },
         { text: 'イベント', link: '/guide/components/events' },
         { text: 'コンポーネントの v-model', link: '/guide/components/v-model' },
         {

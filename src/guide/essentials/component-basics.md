@@ -300,13 +300,13 @@ const posts = ref([
 
 動的な props の値を渡すための [`v-bind` 構文](/api/built-in-directives#v-bind)（`:title="post.title"`）の使い方に注目してください。これは、レンダリングするコンテンツを事前に正確に把握していない場合に特に役立ちます。
 
-props については以上となりますが、このページを読み終え内容に慣れてきたら、後ほど[props](/guide/components/props)の完全ガイドを読みにくることをおすすめします。
+props については以上となりますが、このページを読み終え内容に慣れてきたら、後ほど [props](/guide/components/props) の完全ガイドを読みにくることをおすすめします。
 
 ## イベントの購読 {#listening-to-events}
 
 `<BlogPost>` コンポーネントを開発していく中で、いくつかの機能については、親コンポーネントへの通信が必要になるかもしれません。例えば、ブログ記事のテキストを拡大し、ページの残りの部分はデフォルトのサイズのままにしておくアクセシビリティー機能を含めることにするかもしれません。
 
-親コンポーネントの中では、`postFontSize` という <span class="options-api">data property</span><span class="composition-api">ref</span> を追加することで、この機能をサポートできます:
+親コンポーネントの中では、`postFontSize` という <span class="options-api">data プロパティ</span><span class="composition-api">ref </span>を追加することで、この機能をサポートできます:
 
 <div class="options-api">
 

@@ -362,11 +362,11 @@ type DefineCustomElement<
   SelectedAttributes extends keyof ElementType = keyof ElementType
 > = new () => ElementType & {
   // テンプレート型のチェックに公開されるプロパティを定義するには、$props を使用します。
-  // Vue は、特に `$props` 型からプロパティ定義を読み取ります。要素のプロパティを
-  // グローバルな HTML プロパティと Vue の特別なプロパティと組み合わせることに
+  // Vue は、特に `$props` 型から props 定義を読み取ります。要素の props を
+  // グローバルな HTML props と Vue の特別な props と組み合わせることに
   // 注意してください。
   /** @deprecated カスタム要素参照では、$props プロパティを使用しないでください。
-    これはテンプレートプロパティ型専用です。 */
+    これはテンプレート props 型専用です。 */
   $props: HTMLAttributes &
     Partial<Pick<ElementType, SelectedAttributes>> &
     PublicProps
@@ -375,7 +375,7 @@ type DefineCustomElement<
   // Vue は、イベントタイプを`$emit`タイプから読み取ります。
   // `$emit` は、`Events` にマッピングする特定のフォーマットを必要とします。
   /** @deprecated カスタム要素参照では $emit プロパティを使用しないでください。
-    これはテンプレートプロパティ型専用です。 */
+    これはテンプレート props 型専用です。 */
   $emit: VueEmit<Events>
 }
 
