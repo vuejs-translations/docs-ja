@@ -379,7 +379,7 @@ defineExpose({
 
 親がテンプレート参照を介してこのコンポーネントのインスタンスを取得すると、取得されたインスタンスは `{ a: number, b: number }` という形状になります（ref は通常のインスタンスと同様、自動的にアンラップされます）。
 
-## defineOptions() /> {#defineoptions}
+## defineOptions() {#defineoptions}
 
 - 3.3 以上でのみサポートされています
 
