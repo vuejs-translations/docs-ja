@@ -11,7 +11,7 @@
 - **型**
 
   ```ts
-  function onMounted(callback: () => void): void
+  function onMounted(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **詳細**
@@ -53,7 +53,7 @@
 - **型**
 
   ```ts
-  function onUpdated(callback: () => void): void
+  function onUpdated(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **詳細**
@@ -96,7 +96,7 @@
 - **型**
 
   ```ts
-  function onUnmounted(callback: () => void): void
+  function onUnmounted(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **詳細**
@@ -135,7 +135,7 @@
 - **型**
 
   ```ts
-  function onBeforeMount(callback: () => void): void
+  function onBeforeMount(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **詳細**
@@ -151,7 +151,7 @@
 - **型**
 
   ```ts
-  function onBeforeUpdate(callback: () => void): void
+  function onBeforeUpdate(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **詳細**
@@ -167,7 +167,7 @@
 - **型**
 
   ```ts
-  function onBeforeUnmount(callback: () => void): void
+  function onBeforeUnmount(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **詳細**
@@ -282,7 +282,7 @@
 - **型**
 
   ```ts
-  function onActivated(callback: () => void): void
+  function onActivated(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **参照** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
@@ -296,7 +296,7 @@
 - **型**
 
   ```ts
-  function onDeactivated(callback: () => void): void
+  function onDeactivated(callback: () => void, target?: ComponentInternalInstance | null): void
   ```
 
 - **参照** [ガイド - キャッシュされたインスタンスのライフサイクル](/guide/built-ins/keep-alive#lifecycle-of-cached-instance)
