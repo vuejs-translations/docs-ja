@@ -52,7 +52,7 @@ onMounted(load)
     </p>
   </section>
 
-  <section v-if="data && data.special" id="special-sponsor">
+  <section v-if="data && data.special" id="special-spsr">
     <span>スペシャルスポンサー</span>
     <template v-for="{ url, img, name, description } of data.special">
       <a :href="url" target="_blank" rel="sponsored noopener">
@@ -74,7 +74,7 @@ onMounted(load)
       <span>{{ description }}</span>
     </template>
   </section>
-  <section v-else id="special-sponsor">
+  <section v-else id="special-spsr">
     <span>
       <a href="/sponsor/#tier-benefits">
         Special Sponsor slot is now vacant - Inquire now
@@ -106,7 +106,7 @@ onMounted(load)
     </div>
   </section>
 
-  <section id="sponsors">
+  <section id="spsrs">
     <h2>プラチナスポンサー</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
     <h2>ゴールドスポンサー</h2>
@@ -226,7 +226,7 @@ html:not(.dark) .accent,
   background-color: var(--vt-c-gray-dark-3);
 }
 
-#special-sponsor {
+#special-spsr {
   border-top: 1px solid var(--vt-c-divider-light);
   border-bottom: 1px solid var(--vt-c-divider-light);
   padding: 12px 24px;
@@ -234,7 +234,7 @@ html:not(.dark) .accent,
   align-items: center;
 }
 
-#special-sponsor span {
+#special-spsr span {
   color: var(--vt-c-text-2);
   font-weight: 500;
   font-size: 13px;
@@ -242,22 +242,22 @@ html:not(.dark) .accent,
   flex: 1;
 }
 
-#special-sponsor span:first-child {
+#special-spsr span:first-child {
   text-align: right;
 }
 
-#special-sponsor a {
+#special-spsr a {
   display: flex;
   justify-content: center;
   padding: 0 24px;
 }
 
-#special-sponsor img {
+#special-spsr img {
   height: 42px;
   margin: -6px 0;
 }
 
-.dark #special-sponsor img {
+.dark #special-spsr img {
   filter: grayscale(1) invert(1);
 }
 
@@ -285,18 +285,18 @@ html:not(.dark) .accent,
   background-color: transparent;
 }
 
-#sponsors {
+#spsrs {
   max-width: 900px;
   margin: 0px auto;
 }
 
-#sponsors h2 {
+#spsrs h2 {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 1em;
 }
 
-#sponsors .sponsor-container {
+#spsrs .spsr-container {
   margin-bottom: 3em;
 }
 
@@ -329,14 +329,14 @@ html:not(.dark) .accent,
     font-size: 16px;
     margin: 18px 0 30px;
   }
-  #special-sponsor {
+  #special-spsr {
     flex-direction: column;
   }
-  #special-sponsor img {
+  #special-spsr img {
     height: 36px;
     margin: 8px 0;
   }
-  #special-sponsor span {
+  #special-spsr span {
     text-align: center !important;
   }
   #highlights h3 {
