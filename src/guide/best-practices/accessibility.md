@@ -13,6 +13,7 @@ Web アクセシビリティー（a11y としても知られます）とは、�
 通常、これは `App.vue` の上部に置かれ、すべてのページで最初にフォーカス可能な要素になります:
 
 ```vue-html
+<span ref="backToTop" tabindex="-1" />
 <ul class="skip-links">
   <li>
     <a href="#main" ref="skipLink" class="skip-link">Skip to main content</a>
@@ -23,6 +24,9 @@ Web アクセシビリティー（a11y としても知られます）とは、�
 フォーカスされない限りリンクを非表示にするには、以下のようなスタイルを追加します:
 
 ```css
+.skip-links {
+  list-style: none;
+}
 .skip-link {
   white-space: nowrap;
   margin: 1em auto;
@@ -40,7 +44,7 @@ Web アクセシビリティー（a11y としても知られます）とは、�
 }
 ```
 
-ユーザーがルートを変更したら、スキップリンクにフォーカスを戻します。これは、スキップリンクのテンプレート参照でフォーカスを呼び出すことで実現できます（`vue-router` の使用を想定しています）:
+ユーザーがルートを変更したら、ページの一番最初、スキップリンクの直前にフォーカスを戻します。これは `backToTop` テンプレート参照でフォーカスを呼び出すことで実現できます（`vue-router` の使用を想定しています）:
 
 <div class="options-api">
 
@@ -49,7 +53,7 @@ Web アクセシビリティー（a11y としても知られます）とは、�
 export default {
   watch: {
     $route() {
-      this.$refs.skipLink.focus()
+      this.$refs.backToTop.focus()
     }
   }
 }
@@ -65,12 +69,12 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const skipLink = ref()
+const backToTop = ref()
 
 watch(
   () => route.path,
   () => {
-    skipLink.value.focus()
+    backToTop.value.focus()
   }
 )
 </script>
