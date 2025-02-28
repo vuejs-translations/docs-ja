@@ -16,15 +16,16 @@ aside: false
 - [বাংলা / ベンガル語](https://bn.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-bn)]
 - [Italiano / イタリア語](https://it.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-it)]
 - [فارسی / ペルシャ語](https://fa.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-fa)]
-- [Русский / ロシア語](https://ru.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ru)]
+- [Русский / ロシア語](https://ru.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-ru)]
 - [Čeština / チェコ語](https://cs.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-cs)]
 - [繁體中文 / 繁体字中国語](https://zh-hk.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-zh-hk)]
 
 ## 作業中の言語 {#work-in-progress-languages}
 
-- [العربية / アラビア語](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
-- [Español / スペイン語](https://vue3-spanish-docs.netlify.app/) [[source](https://github.com/icarusgk/vuejs-spanish-docs)]
-- [Deutsch / ドイツ語](https://de.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-de)]
+- [العربية / アラビア語](https://ar.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-ar)]
+- [Español / スペイン語](https://vue3-spanish-docs.netlify.app/) [[ソース](https://github.com/icarusgk/vuejs-spanish-docs)]
+- [Deutsch / ドイツ語](https://de.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-de)]
+- [Polski / ポーランド語](https://pl.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-pl)]
 
 ## 新しい翻訳の開始 {#starting-a-new-translation}
 
