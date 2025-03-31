@@ -330,7 +330,7 @@ Vue では、トランジションが終了したことを検知するために�
 
 JavaScript で `<Transition>` コンポーネントのイベントを購読することで、トランジション処理にフックすることができます。
 
-```html
+```vue-html
 <Transition
   @before-enter="onBeforeEnter"
   @enter="onEnter"
