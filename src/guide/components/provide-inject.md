@@ -123,6 +123,8 @@ const message = inject('message')
 </script>
 ```
 
+複数の親が同じキーを持つデータを提供する場合、inject はコンポーネントの親チェーン内の最も近い親からの値に解決されます。
+
 提供された値が ref である場合、そのまま注入され、自動的にアンラップされることは**ありません**。これにより、インジェクターコンポーネントはプロバイダーコンポーネントとのリアクティビティーの接続を保持できます。
 
 [リアクティビティーのある provide と inject の完全なサンプル](https://play.vuejs.org/#eNqFUUFugzAQ/MrKF1IpxfeIVKp66Kk/8MWFDXYFtmUbpArx967BhURRU9/WOzO7MzuxV+fKcUB2YlWovXYRAsbBvQije2d9hAk8Xo7gvB11gzDDxdseCuIUG+ZN6a7JjZIvVRIlgDCcw+d3pmvTglz1okJ499I0C3qB1dJQT9YRooVaSdNiACWdQ5OICj2WwtTWhAg9hiBbhHNSOxQKu84WT8LkNQ9FBhTHXyg1K75aJHNUROxdJyNSBVBp44YI43NvG+zOgmWWYGt7dcipqPhGZEe2ef07wN3lltD+lWN6tNkV/37+rdKjK2rzhRTt7f3u41xhe37/xJZGAL2PLECXa9NKdD/a6QTTtGnP88LgiXJtYv4BaLHhvg==)
@@ -169,7 +171,7 @@ export default {
 }
 ```
 
-複数の親が同じキーのデータを提供する場合、inject は親チェーンの最初の親に解決されます。
+複数の親が同じキーを持つデータを提供する場合、inject はコンポーネントの親チェーン内の最も近い親からの値に解決されます。
 
 [provide と inject の完全なサンプル](https://play.vuejs.org/#eNqNkcFqwzAQRH9l0EUthOhuRKH00FO/oO7B2JtERZaEvA4F43+vZCdOTAIJCImRdpi32kG8h7A99iQKobs6msBvpTNt8JHxcTC2wS76FnKrJpVLZelKR39TSUO7qreMoXRA7ZPPkeOuwHByj5v8EqI/moZeXudCIBL30Z0V0FLXVXsqIA9krU8R+XbMR9rS0mqhS4KpDbZiSgrQc5JKQqvlRWzEQnyvuc9YuWbd4eXq+TZn0IvzOeKr8FvsNcaK/R6Ocb9Uc4FvefpE+fMwP0wH8DU7wB77nIo6x6a2hvNEME5D0CpbrjnHf+8excI=)
 
