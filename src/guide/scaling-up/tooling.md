@@ -113,7 +113,7 @@ Vue のブラウザー開発者ツール拡張では、Vue アプリのコンポ
 ![devtools screenshot](./images/devtools.png)
 
 - [ドキュメント](https://devtools.vuejs.org/)
-- [Chrome Extension](https://chromewebstore.google.com/detail/vuejs-devtools-beta/ljjemllljcmogpfapbkkighbhhppjdbg)
+- [Chrome Extension](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Vite プラグイン](https://devtools.vuejs.org/guide/vite-plugin)
 - [スタンドアロンの Electron アプリ](https://devtools.vuejs.org/guide/standalone)
 
