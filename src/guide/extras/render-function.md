@@ -706,7 +706,25 @@ const vnode = withDirectives(h('div'), [
 
 <div class="composition-api">
 
-Composition API では、`ref()` 自身を vnode の props として渡すことで、テンプレート参照が作成されます:
+Composition API を使用すると、[`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" /> のテンプレート参照は、vnode に props として文字列値を渡すことによって作成されます:
+
+```js
+import { h, useTemplateRef } from 'vue'
+
+export default {
+  setup() {
+    const divEl = useTemplateRef('my-div')
+
+    // <div ref="my-div">
+    return () => h('div', { ref: 'my-div' })
+  }
+}
+```
+
+<details>
+<summary>3.5 以前を使用している場合</summary>
+
+useTemplateRef() が導入されていない 3.5 より前のバージョンでは、ref() 自体を vnode の props としてとして渡すことにより、テンプレート参照が作成されます:
 
 ```js
 import { h, ref } from 'vue'
@@ -720,22 +738,7 @@ export default {
   }
 }
 ```
-
-もしくは（バージョン 3.5 以上）
-
-```js
-import { h, useTemplateRef } from 'vue'
-
-export default {
-  setup() {
-    const divEl = useTemplateRef('my-div')
-
-    // <div ref="divEl">
-    return () => h('div', { ref: 'my-div' })
-  }
-}
-```
-
+</details>
 </div>
 <div class="options-api">
 
