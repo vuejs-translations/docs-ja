@@ -522,6 +522,18 @@ defineProps<{
 </script>
 ```
 
+型を推論できない場合は、`@vue-generic` ディレクティブを使用して明示的な型を渡すことができます:
+
+```vue
+<template>
+  <!-- @vue-generic {import('@/api').Actor} -->
+  <ApiSelect v-model="selectedPeopleIds" endpoint="/api/actors" id-prop="actorId" />
+
+  <!-- @vue-generic {import('@/api').Genre} -->
+  <ApiSelect v-model="selectedGenreIds" endpoint="/api/genres" id-prop="genreId" />
+</template>
+```
+
 `ref` でジェネリックコンポーネントへの参照を使用する場合、`InstanceType` は動作しないので、[`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) ライブラリーを使用する必要があります。
 
 ```vue
