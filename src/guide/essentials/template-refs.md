@@ -113,113 +113,6 @@ watchEffect(() => {
 
 </div>
 
-## `v-for` の中の参照 {#refs-inside-v-for}
-
-> v3.5 以降が必要です。
-
-<div class="composition-api">
-
-`v-for` の中で `ref` を使用すると、対応する参照には配列値が格納されます。そしてこの配列値には、マウント後の要素が代入されます:
-
-```vue
-<script setup>
-import { ref, useTemplateRef, onMounted } from 'vue'
-
-const list = ref([
-  /* ... */
-])
-
-const itemRefs = useTemplateRef('items')
-
-onMounted(() => console.log(itemRefs.value))
-</script>
-
-<template>
-  <ul>
-    <li v-for="item in list" ref="items">
-      {{ item }}
-    </li>
-  </ul>
-</template>
-```
-
-[Playground で試す](https://play.vuejs.org/#eNp9UsluwjAQ/ZWRLwQpDepyQoDUIg6t1EWUW91DFAZq6tiWF4oU5d87dtgqVRyyzLw3b+aN3bB7Y4ptQDZkI1dZYTw49MFMuBK10dZDAxZXOQSHC6yNLD3OY6zVsw7K4xJaWFldQ49UelxxVWnlPEhBr3GszT6uc7jJ4fazf4KFx5p0HFH+Kme9CLle4h6bZFkfxhNouAIoJVqfHQSKbSkDFnVpMhEpovC481NNVcr3SaWlZzTovJErCqgydaMIYBRk+tKfFLC9Wmk75iyqg1DJBWfRxT7pONvTAZom2YC23QsMpOg0B0l0NDh2YjnzjpyvxLrYOK1o3ckLZ5WujSBHr8YL2gxnw85lxEop9c9TynkbMD/kqy+svv/Jb9wu5jh7s+jQbpGzI+ZLu0byEuHZ+wvt6Ays9TJIYl8A5+i0DHHGjvYQ1JLGPuOlaR/TpRFqvXCzHR2BO5iKg0Zmm/ic0W2ZXrB+Gve2uEt1dJKs/QXbwePE)
-
-<details>
-<summary>3.5 以前の使用方法</summary>
-
-`useTemplateRef()` が導入されていなかった 3.5 以前のバージョンでは、テンプレートの ref 属性の値と一致する名前で ref を宣言する必要があります。 ref には配列の値も含まれます:
-
-```vue
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const list = ref([
-  /* ... */
-])
-
-const itemRefs = ref([])
-
-onMounted(() => console.log(itemRefs.value))
-</script>
-
-<template>
-  <ul>
-    <li v-for="item in list" ref="itemRefs">
-      {{ item }}
-    </li>
-  </ul>
-</template>
-```
-
-</details>
-
-</div>
-<div class="options-api">
-
-`v-for` の中で `ref` を使用すると、結果として得られる参照の値は、対応する要素を格納する配列になります:
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      list: [
-        /* ... */
-      ]
-    }
-  },
-  mounted() {
-    console.log(this.$refs.items)
-  }
-}
-</script>
-
-<template>
-  <ul>
-    <li v-for="item in list" ref="items">
-      {{ item }}
-    </li>
-  </ul>
-</template>
-```
-
-[Playground で試す](https://play.vuejs.org/#eNpFjk0KwjAQha/yCC4Uaou6kyp4DuOi2KkGYhKSiQildzdNa4WQmTc/37xeXJwr35HEUdTh7pXjszT0cdYzWuqaqBm9NEDbcLPeTDngiaM3PwVoFfiI667AvsDhNpWHMQzF+L9sNEztH3C3JlhNpbaPNT9VKFeeulAqplfY5D1p0qurxVQSqel0w5QUUEedY8q0wnvbWX+SYgRAmWxIiuSzm4tBinkc6HvkuSE7TIBKq4lZZWhdLZfE8AWp4l3T)
-
-</div>
-
-参照の配列では、元の配列と同じ順序が**保証されない**ことに注意する必要があります。
-
-## 関数を使った参照 {#function-refs}
-
-`ref` 属性は、文字列のキーの代わりに、関数にバインドすることもできます。関数はコンポーネントが更新されるたびに呼び出され、要素の参照をどこに保持するかを柔軟に決めることができます。関数は、第 1 引数として要素への参照を受け取ります:
-
-```vue-html
-<input :ref="(el) => { /* el をプロパティまたは ref に保持する */ }">
-```
-
-動的な `:ref` のバインディングを使っていることに注目してください。これにより、参照の名前を示す文字列ではなく、関数を渡すことが可能になります。要素がアンマウントされると、引数は `null` になります。もちろん、インライン関数のほかに、メソッドを指定することもできます。
-
 ## コンポーネントでの参照 {#ref-on-component}
 
 > このセクションは、[コンポーネント](/guide/essentials/component-basics)についての知識があることを前提にしています。読み飛ばして、後で戻ってくるのでも大丈夫です。
@@ -346,3 +239,110 @@ export default {
 上の例では、テンプレート参照を用いてこのコンポーネントを参照する親に、`publicData` と `publicMethod` のみへのアクセスを許可します。
 
 </div>
+
+## `v-for` の中の参照 {#refs-inside-v-for}
+
+> v3.5 以降が必要です。
+
+<div class="composition-api">
+
+`v-for` の中で `ref` を使用すると、対応する参照には配列値が格納されます。そしてこの配列値には、マウント後の要素が代入されます:
+
+```vue
+<script setup>
+import { ref, useTemplateRef, onMounted } from 'vue'
+
+const list = ref([
+  /* ... */
+])
+
+const itemRefs = useTemplateRef('items')
+
+onMounted(() => console.log(itemRefs.value))
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in list" ref="items">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+
+[Playground で試す](https://play.vuejs.org/#eNp9UsluwjAQ/ZWRLwQpDepyQoDUIg6t1EWUW91DFAZq6tiWF4oU5d87dtgqVRyyzLw3b+aN3bB7Y4ptQDZkI1dZYTw49MFMuBK10dZDAxZXOQSHC6yNLD3OY6zVsw7K4xJaWFldQ49UelxxVWnlPEhBr3GszT6uc7jJ4fazf4KFx5p0HFH+Kme9CLle4h6bZFkfxhNouAIoJVqfHQSKbSkDFnVpMhEpovC481NNVcr3SaWlZzTovJErCqgydaMIYBRk+tKfFLC9Wmk75iyqg1DJBWfRxT7pONvTAZom2YC23QsMpOg0B0l0NDh2YjnzjpyvxLrYOK1o3ckLZ5WujSBHr8YL2gxnw85lxEop9c9TynkbMD/kqy+svv/Jb9wu5jh7s+jQbpGzI+ZLu0byEuHZ+wvt6Ays9TJIYl8A5+i0DHHGjvYQ1JLGPuOlaR/TpRFqvXCzHR2BO5iKg0Zmm/ic0W2ZXrB+Gve2uEt1dJKs/QXbwePE)
+
+<details>
+<summary>3.5 以前の使用方法</summary>
+
+`useTemplateRef()` が導入されていなかった 3.5 以前のバージョンでは、テンプレートの ref 属性の値と一致する名前で ref を宣言する必要があります。 ref には配列の値も含まれます:
+
+```vue
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const list = ref([
+  /* ... */
+])
+
+const itemRefs = ref([])
+
+onMounted(() => console.log(itemRefs.value))
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in list" ref="itemRefs">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+
+</details>
+
+</div>
+<div class="options-api">
+
+`v-for` の中で `ref` を使用すると、結果として得られる参照の値は、対応する要素を格納する配列になります:
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      list: [
+        /* ... */
+      ]
+    }
+  },
+  mounted() {
+    console.log(this.$refs.items)
+  }
+}
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in list" ref="items">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+
+[Playground で試す](https://play.vuejs.org/#eNpFjk0KwjAQha/yCC4Uaou6kyp4DuOi2KkGYhKSiQildzdNa4WQmTc/37xeXJwr35HEUdTh7pXjszT0cdYzWuqaqBm9NEDbcLPeTDngiaM3PwVoFfiI667AvsDhNpWHMQzF+L9sNEztH3C3JlhNpbaPNT9VKFeeulAqplfY5D1p0qurxVQSqel0w5QUUEedY8q0wnvbWX+SYgRAmWxIiuSzm4tBinkc6HvkuSE7TIBKq4lZZWhdLZfE8AWp4l3T)
+
+</div>
+
+参照の配列では、元の配列と同じ順序が**保証されない**ことに注意する必要があります。
+
+## 関数を使った参照 {#function-refs}
+
+`ref` 属性は、文字列のキーの代わりに、関数にバインドすることもできます。関数はコンポーネントが更新されるたびに呼び出され、要素の参照をどこに保持するかを柔軟に決めることができます。関数は、第 1 引数として要素への参照を受け取ります:
+
+```vue-html
+<input :ref="(el) => { /* el をプロパティまたは ref に保持する */ }">
+```
+
+動的な `:ref` のバインディングを使っていることに注目してください。これにより、参照の名前を示す文字列ではなく、関数を渡すことが可能になります。要素がアンマウントされると、引数は `null` になります。もちろん、インライン関数のほかに、メソッドを指定することもできます。
