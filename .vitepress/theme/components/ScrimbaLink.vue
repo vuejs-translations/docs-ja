@@ -42,9 +42,9 @@ export default {
   top: calc(50% - 15px);
   left: -4px;
   border-radius: 50%;
-  background-color: #2B2B2B; /* Scrimba's dark color */
-}
-.scrimba a:after {
+  background-color: #73abfe;
+ }
+ .scrimba a:after {
   content: '';
   position: absolute;
   display: block;
