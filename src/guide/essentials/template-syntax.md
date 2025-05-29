@@ -1,5 +1,9 @@
 # テンプレート構文 {#template-syntax}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-template-syntax" title="Free Vue.js Template Syntax Lesson" type="scrimba">
+  Scrimba でインタラクティブなビデオレッスンを見る
+</ScrimbaLink>
+
 Vue では、HTML ベースのテンプレート構文を使用します。テンプレート構文では、基盤とするコンポーネントのインスタンスのデータと、レンダリングされる DOM を宣言的にバインドすることが可能です。すべての Vue テンプレートは、仕様に準拠しているブラウザーや HTML パーサーでパースできる、構文的に正規の HTML です。
 
 内部では、Vue はテンプレートをコンパイルし、高度に最適化された JavaScript のコードにします。リアクティビティー機構と組み合わせ、Vue はアプリの状態が変化したとき、再レンダリングを必要とする最小限のコンポーネントをインテリジェントに見つけ出すことができます。そして、最小限の DOM 操作を適用します。
