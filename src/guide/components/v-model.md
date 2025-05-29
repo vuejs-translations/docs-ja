@@ -1,5 +1,9 @@
 # コンポーネントの v-model {#component-v-model}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-component-v-model" title="Free Vue.js Component v-model Lesson" type="scrimba">
+  Scrimba でインタラクティブなビデオレッスンを見る
+</ScrimbaLink>
+
 ## 基本的な使い方 {#basic-usage}
 
 コンポーネント上で `v-model` を使用すると双方向バインディングを実装できます。

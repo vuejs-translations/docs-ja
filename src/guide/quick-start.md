@@ -16,6 +16,8 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 - Node.js とビルドツールの概念に既に慣れている場合は、[StackBlitz](https://vite.new/vue) を使ってブラウザー内で完全なビルドセットアップを試すことも可能です。
 
+- 推奨されるセットアップのチュートリアルについては、はじめての Vue アプリケーションの実行、編集、デプロイ方法を紹介するインタラクティブな [Scrimba](http://scrimba.com/links/vue-quickstart) チュートリアルをご覧ください。
+
 ## Vue アプリケーションの作成 {#creating-a-vue-application}
 
 :::tip 前提条件

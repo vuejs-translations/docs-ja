@@ -1,5 +1,9 @@
 # コンポーネントの基礎 {#components-basics}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-component-basics" title="Free Vue.js Components Basics Lesson" type="scrimba">
+  Scrimba でインタラクティブなビデオレッスンを見る
+</ScrimbaLink>
+
 コンポーネントによって UI を独立した再利用可能なピースに分割し、それぞれのピースを切り離して考えることができるようになります。アプリケーションはネストされたコンポーネントのツリーによって構成されているのが一般的です:
 
 ![コンポーネントツリー](./images/components.png)
