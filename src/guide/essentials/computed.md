@@ -263,7 +263,14 @@ const fullName = computed({
 
 - 3.4 以上でのみサポートされています
 
+<p class="options-api">
+必要であれば、ゲッターの第 2 引数にアクセスすることで、算出プロパティが前回返した値を取得できます:
+</p>
+
+
+<p class="composition-api">
 必要であれば、ゲッターの第 1 引数にアクセスすることで、算出プロパティが前回返した値を取得できます:
+</p>
 
 
 <div class="options-api">
@@ -326,7 +333,7 @@ export default {
   },
   computed: {
     alwaysSmall: {
-      get(previous) {
+      get(_, previous) {
         if (this.count <= 3) {
           return this.count
         }
