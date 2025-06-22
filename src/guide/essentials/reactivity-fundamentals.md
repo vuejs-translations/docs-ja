@@ -452,7 +452,7 @@ console.log(proxy.nested === raw) // false
 
    // count は分割代入すると state.count と切り離されます。
    let { count } = state
-   // 元の状態に戻りません。
+   // 元の状態には影響しません。
    count++
 
    // この関数は数値を受け取りますが、これだと
