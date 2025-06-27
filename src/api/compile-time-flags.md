@@ -40,8 +40,7 @@ outline: deep
 
 `@vitejs/plugin-vue` はこれらのフラグのデフォルト値を自動的に提供します。デフォルト値を変更するには、Vite の [`define` 設定オプション](https://vitejs.dev/config/shared-options.html#define)を使用してください:
 
-```js
-// vite.config.js
+```js [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -56,8 +55,7 @@ export default defineConfig({
 
 `@vue/cli-service` はこれらのフラグのデフォルト値を自動的に提供します。値を設定 / 変更するには:
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.plugin('define').tap((definitions) => {
@@ -76,8 +74,7 @@ module.exports = {
 
 フラグは webpack の [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) を使って定義します:
 
-```js
-// webpack.config.js
+```js [webpack.config.js]
 module.exports = {
   // ...
   plugins: [
@@ -94,8 +91,7 @@ module.exports = {
 
 フラグは [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace) を使って定義します:
 
-```js
-// rollup.config.js
+```js [rollup.config.js]
 import replace from '@rollup/plugin-replace'
 
 export default {
