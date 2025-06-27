@@ -40,8 +40,7 @@ const myPlugin = {
 
 まずはプラグインオブジェクトの設定から始めましょう。以下のように別のファイルに作ってエクスポートするのがおすすめです。ロジックを封じ込めて分離させるためです。
 
-```js
-// plugins/i18n.js
+```js [plugins/i18n.js]
 export default {
   install: (app, options) => {
     // プラグインのコードが入る
@@ -99,8 +98,7 @@ app.use(i18nPlugin, {
 
 プラグインは `provide` を使用して、ユーザーに関数や属性へのアクセスを提供することもできます。例えば、翻訳オブジェクトを使用できるようにするため、アプリケーションが `options` 引数へアクセスできるようにします。
 
-```js{10}
-// plugins/i18n.js
+```js{10} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     app.provide('i18n', options)

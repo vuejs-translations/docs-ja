@@ -293,8 +293,7 @@ Vue の SFC 内だけでなく、有効な JS / TS を書くことのできる�
 - SFC と js(x)/ts(x) ファイルに適用されます。変換を適用する前に、ファイルの高速使用チェックが行われるので、マクロを使用していないファイルに対するパフォーマンスコストは発生しないはずです。
 - `reactivityTransform` は SFC 以外にも作用するため、`script.refSugar` のようにネストされているのではなくプラグインのルートレベルのオプションになったことに注意してください。
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default {
   plugins: [
     vue({
@@ -309,8 +308,7 @@ export default {
 - 現在は SFC のみ
 - `vue-loader@>=17.0.0` が必要
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.module
@@ -331,8 +329,7 @@ module.exports = {
 - 現在は SFC のみ
 - `vue-loader@>=17.0.0` が必要
 
-```js
-// webpack.config.js
+```js [webpack.config.js]
 module.exports = {
   module: {
     rules: [

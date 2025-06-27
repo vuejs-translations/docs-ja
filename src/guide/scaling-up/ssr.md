@@ -172,8 +172,7 @@ export function createApp() {
 
 クライアントエントリーは、ユニバーサルコードをインポートしてアプリケーションを作成し、マウントを実行します:
 
-```js
-// client.js
+```js [client.js]
 import { createApp } from './app.js'
 
 createApp().mount('#app')
@@ -181,8 +180,8 @@ createApp().mount('#app')
 
 そして、サーバーはリクエストハンドラー内で同じアプリケーション作成ロジックを使用します:
 
-```js{2,5}
-// server.js（関係ないコードは省略）
+```js{2,5} [server.js]
+// （関係ないコードは省略）
 import { createApp } from './app.js'
 
 server.get('/', (req, res) => {

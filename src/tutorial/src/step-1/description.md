@@ -32,8 +32,7 @@ import { ... } from 'vue/dist/vue.esm-bundler.js'
 
 もしくはビルドツールで `vue` を解決するように設定してください。[Vite](https://vitejs.dev/) の設定例:
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default {
   resolve: {
     alias: {

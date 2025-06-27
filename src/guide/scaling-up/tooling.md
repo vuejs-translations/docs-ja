@@ -25,40 +25,29 @@ Vue の SFC を試すためにマシンに何かをインストールする必�
 
 Vite + Vue で始めるには、以下を実行するだけです:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh
-  $ npm create vue@latest
-  ```
+```sh [npm]
+$ npm create vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh [pnpm]
+$ pnpm create vue@latest
+```
   
-  ```sh
-  $ pnpm create vue@latest
-  ```
-
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
+```sh [yarn]
+# Yarn Modern (v2+)
+$ yarn create vue@latest
   
-  ```sh
-  # Yarn (v2+)
-  $ yarn create vue@latest
+# Yarn ^v4.11
+$ yarn dlx create-vue@latest
+```
   
-  # Yarn ^v4.11
-  $ yarn dlx create-vue@latest
-  ```
+```sh [bun]
+$ bun create vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-  
-  ```sh
-  $ bun create vue@latest
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
 
 このコマンドは、Vue 公式の雛形作成（scaffolding）ツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。
 
