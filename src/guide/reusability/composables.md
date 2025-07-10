@@ -21,7 +21,7 @@ Vue アプリケーションの文脈で「コンポーザブル（composable）
 
 コンポーネント内で直接 Composition API を使ってマウストラッキング機能を実装すると、次のようになります:
 
-```vue
+```vue [MouseComponent.vue]
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
@@ -42,8 +42,7 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 
 しかし、複数のコンポーネントで同じロジックを再利用したい場合はどうでしょうか？　コンポーザブル関数として外部ファイルにロジックを抽出できます:
 
-```js
-// mouse.js
+```js [mouse.js]
 import { ref, onMounted, onUnmounted } from 'vue'
 
 // 慣習として、コンポーザブル関数の名前は "use" で始めます
@@ -70,7 +69,7 @@ export function useMouse() {
 
 そしてこれがコンポーネント内での使い方です:
 
-```vue
+```vue [MouseComponent.vue]
 <script setup>
 import { useMouse } from './mouse.js'
 
@@ -92,8 +91,7 @@ const { x, y } = useMouse()
 
 例えば、DOM イベントリスナーを追加・削除するロジックを独自のコンポーザブルに抽出できます:
 
-```js
-// event.js
+```js [event.js]
 import { onMounted, onUnmounted } from 'vue'
 
 export function useEventListener(target, event, callback) {
@@ -106,8 +104,7 @@ export function useEventListener(target, event, callback) {
 
 これで `useMouse()` コンポーザブルは次のように簡略化できます:
 
-```js{3,9-12}
-// mouse.js
+```js{2,8-11} [mouse.js]
 import { ref } from 'vue'
 import { useEventListener } from './event'
 
@@ -157,8 +154,7 @@ fetch('...')
 
 データを取得する必要があるすべてのコンポーネントでこのパターンを繰り返さなければならないのは面倒です。コンポーザブルに抽出してみましょう:
 
-```js
-// fetch.js
+```js [fetch.js]
 import { ref } from 'vue'
 
 export function useFetch(url) {
@@ -208,8 +204,7 @@ const { data, error } = useFetch(() => `/posts/${props.id}`)
 
 [`watchEffect()`](/api/reactivity-core.html#watcheffect) と [`toValue()`](/api/reactivity-utilities.html#tovalue) API を使用して、既存の実装をリファクタリングできます:
 
-```js{8,13}
-// fetch.js
+```js{7,12} [fetch.js]
 import { ref, watchEffect, toValue } from 'vue'
 
 export function useFetch(url) {

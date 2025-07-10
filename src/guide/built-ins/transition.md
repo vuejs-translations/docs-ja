@@ -469,8 +469,7 @@ JavaScript のみでトランジションを利用する場合、通常は `:css
 
 トランジションは、Vue のコンポーネントシステムによって再利用できます。再利用可能なトランジションを作成するには、`<Transition>` コンポーネントをラップしたコンポーネントを作成し、スロットコンテンツを受け渡します:
 
-```vue{5}
-<!-- MyTransition.vue -->
+```vue{6} [MyTransition.vue]
 <script>
 // JavaScript フックのロジックを記載 ...
 </script>
@@ -615,7 +614,7 @@ export default {
   data() {
     return {
       count: 1,
-      interval: null 
+      interval: null
     }
   },
   mounted() {

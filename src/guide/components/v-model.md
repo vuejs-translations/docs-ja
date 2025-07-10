@@ -12,8 +12,7 @@
 
 Vue 3.4 以降は、[`defineModel()`](/api/sfc-script-setup#definemodel) マクロを使うことが推奨されています:
 
-```vue
-<!-- Child.vue -->
+```vue [Child.vue]
 <script setup>
 const model = defineModel()
 
@@ -30,8 +29,7 @@ function update() {
 
 親は `v-model` で値をバインドできます:
 
-```vue-html
-<!-- Parent.vue -->
+```vue-html [Parent.vue]
 <Child v-model="countModel" />
 ```
 
@@ -63,8 +61,7 @@ const model = defineModel()
 
 3.4 以前は、上記の子コンポーネントはこのように実装されていました:
 
-```vue
-<!-- Child.vue -->
+```vue [Child.vue]
 <script setup>
 const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
@@ -80,8 +77,7 @@ const emit = defineEmits(['update:modelValue'])
 
 すると、親コンポーネントの `v-model="foo"` は次のようにコンパイルされます:
 
-```vue-html
-<!-- Parent.vue -->
+```vue-html [Parent.vue]
 <Child
   :modelValue="foo"
   @update:modelValue="$event => (foo = $event)"
@@ -103,20 +99,20 @@ const model = defineModel({ default: 0 })
 :::warning
 もし `defineModel` props に `default` 値を指定し、親コンポーネントからこの props に何も値を与えなかった場合、親と子のコンポーネント間で同期が取れなくなる可能性があります。以下の例では、親コンポーネントの `myRef` は undefined ですが、子コンポーネントの `model` は 1 です:
 
-**子コンポーネント:**
-
-```js
+```vue [Child.vue]
+<script setup>
 const model = defineModel({ default: 1 })
+</script>
 ```
 
-**親コンポーネント:**
-
-```js
+```vue [Parent.vue]
+<script setup>
 const myRef = ref()
-```
+</script>
 
-```html
-<Child v-model="myRef"></Child>
+<template>
+  <Child v-model="myRef"></Child>
+</template>
 ```
 
 :::
@@ -156,8 +152,7 @@ const myRef = ref()
 
 実際には次のようになります:
 
-```vue
-<!-- CustomInput.vue -->
+```vue [CustomInput.vue]
 <script>
 export default {
   props: ['modelValue'],
@@ -183,8 +178,7 @@ export default {
 
 このコンポーネントで `v-model` を実装するもう 1 つの方法は、getter と setter の両方を持つ、書き込み可能な `computed` プロパティを使用することです。`get` メソッドは `modelValue` プロパティを返し、`set` メソッドは対応するイベントを発行する必要があります:
 
-```vue
-<!-- CustomInput.vue -->
+```vue [CustomInput.vue]
 <script>
 export default {
   props: ['modelValue'],
@@ -221,8 +215,7 @@ export default {
 
 子コンポーネントでは、`defineModel()` の第一引数に文字列を渡すことで、対応する引数をサポートできます:
 
-```vue
-<!-- MyComponent.vue -->
+```vue [MyComponent.vue]
 <script setup>
 const title = defineModel('title')
 </script>
@@ -243,8 +236,7 @@ const title = defineModel('title', { required: true })
 <details>
 <summary>3.4 以前の使用法</summary>
 
-```vue
-<!-- MyComponent.vue -->
+```vue [MyComponent.vue]
 <script setup>
 defineProps({
   title: {
@@ -271,8 +263,7 @@ defineEmits(['update:title'])
 
 この場合、デフォルトの `modelValue` props と `update:modelValue` イベントの代わりに、子コンポーネントは `title` props を受け取り、親コンポーネントの値を更新するためには `update:title` イベントを発行します:
 
-```vue
-<!-- MyComponent.vue -->
+```vue [MyComponent.vue]
 <script>
 export default {
   props: ['title'],
@@ -412,7 +403,7 @@ console.log(modifiers) // { capitalize: true }
 
 修飾子に基づいて値の読み書きを条件付きで調整するために、`defineModel()` に `get` と `set` オプションを渡すことができます。これら 2 つのオプションは、モデルの ref の読み取り・設定時に値を受け取り、変換された値を返す必要があります。以下は `set` オプションを使って `capitalize` 修飾子を実装する方法です:
 
-```vue{6-8}
+```vue{4-6}
 <script setup>
 const [model, modifiers] = defineModel({
   set(value) {

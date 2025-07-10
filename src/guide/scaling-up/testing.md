@@ -74,7 +74,7 @@ export function increment(current, max = 10) {
 
 これらのアサーションのいずれかが失敗した場合、問題が `increment` 関数の中にあることは明らかです。
 
-```js{4-16} [helpers.spec.js]
+```js{3-15} [helpers.spec.js]
 import { increment } from './helpers'
 
 describe('increment', () => {
@@ -430,7 +430,8 @@ export function withSetup(composable) {
   return [result, app]
 }
 ```
-```js
+
+```js [foo.test.js]
 import { withSetup } from './test-utils'
 import { useFoo } from './foo'
 
