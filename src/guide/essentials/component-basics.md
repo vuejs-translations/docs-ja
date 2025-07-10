@@ -188,8 +188,7 @@ props はコンポーネントに登録できるカスタム属性のことで�
 
 <div class="options-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script>
 export default {
   props: ['title']
@@ -206,8 +205,7 @@ props 属性に値が渡されると、その値はコンポーネントイン�
 </div>
 <div class="composition-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 </script>
@@ -352,8 +350,8 @@ const postFontSize = ref(1)
 
 では、`<BlogPost>` コンポーネントのテンプレートにボタンを追加してみましょう:
 
-```vue{5}
-<!-- BlogPost.vue, omitting <script> -->
+```vue{5} [BlogPost.vue]
+<!-- omitting <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -373,8 +371,8 @@ const postFontSize = ref(1)
 
 そして、子コンポーネントは組み込みの [**`$emit`** メソッド](/api/component-instance#emit)を呼び出し、イベント名を渡すことによって自身のイベントを発行することができます:
 
-```vue{5}
-<!-- BlogPost.vue, omitting <script> -->
+```vue{5} [BlogPost.vue]
+<!-- omitting <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -400,8 +398,7 @@ const postFontSize = ref(1)
 
 <div class="options-api">
 
-```vue{5}
-<!-- BlogPost.vue -->
+```vue{4} [BlogPost.vue]
 <script>
 export default {
   props: ['title'],
@@ -413,8 +410,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```vue{4}
-<!-- BlogPost.vue -->
+```vue{3} [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 defineEmits(['enlarge-text'])
@@ -472,8 +468,7 @@ HTML 要素と同じように、以下のようにコンポーネントにコン
 
 これは Vue のカスタム要素 `<slot>` を用いて実現することができます:
 
-```vue{5}
-<!-- AlertBox.vue -->
+```vue{4} [AlertBox.vue]
 <template>
   <div class="alert-box">
     <strong>This is an Error for Demo Purposes</strong>

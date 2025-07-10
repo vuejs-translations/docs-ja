@@ -264,19 +264,19 @@ const inputClasses = computed(() => {
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
 
-```vue-html
+```vue-html [ComponentX.vue]
 <style>/* ... */</style>
 <script>/* ... */</script>
 <template>...</template>
 ```
 
-```vue-html
-<!-- ComponentA.vue -->
+```vue-html [ComponentA.vue]
 <script>/* ... */</script>
 <template>...</template>
 <style>/* ... */</style>
+```
 
-<!-- ComponentB.vue -->
+```vue-html [ComponentB.vue]
 <template>...</template>
 <script>/* ... */</script>
 <style>/* ... */</style>
@@ -287,25 +287,27 @@ const inputClasses = computed(() => {
 <div class="style-example style-example-good">
 <h3>良い例</h3>
 
-```vue-html
-<!-- ComponentA.vue -->
-<script>/* ... */</script>
-<template>...</template>
-<style>/* ... */</style>
-
-<!-- ComponentB.vue -->
+```vue-html [ComponentA.vue]
 <script>/* ... */</script>
 <template>...</template>
 <style>/* ... */</style>
 ```
 
-```vue-html
-<!-- ComponentA.vue -->
+```vue-html [ComponentB.vue]
+<script>/* ... */</script>
+<template>...</template>
+<style>/* ... */</style>
+```
+
+もしくは
+
+```vue-html  [ComponentA.vue]
 <template>...</template>
 <script>/* ... */</script>
 <style>/* ... */</style>
+```
 
-<!-- ComponentB.vue -->
+```vue-html [ComponentB.vue]
 <template>...</template>
 <script>/* ... */</script>
 <style>/* ... */</style>

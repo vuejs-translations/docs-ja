@@ -56,8 +56,7 @@ export default {
 
 この関数はすべてのテンプレートでグローバルに利用できる必要があるので、プラグインの `app.config.globalProperties` にアタッチして、それを実現します:
 
-```js{4-11}
-// plugins/i18n.js
+```js{3-10} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     // グローバルに利用可能な $translate() メソッドを注入
@@ -98,7 +97,7 @@ app.use(i18nPlugin, {
 
 プラグインは `provide` を使用して、ユーザーに関数や属性へのアクセスを提供することもできます。例えば、翻訳オブジェクトを使用できるようにするため、アプリケーションが `options` 引数へアクセスできるようにします。
 
-```js{10} [plugins/i18n.js]
+```js{3} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     app.provide('i18n', options)
@@ -110,7 +109,7 @@ export default {
 
 <div class="composition-api">
 
-```vue
+```vue{4}
 <script setup>
 import { inject } from 'vue'
 
@@ -123,7 +122,7 @@ console.log(i18n.greetings.hello)
 </div>
 <div class="options-api">
 
-```js
+```js{2}
 export default {
   inject: ['i18n'],
   created() {

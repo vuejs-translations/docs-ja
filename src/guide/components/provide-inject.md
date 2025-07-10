@@ -327,8 +327,7 @@ export default {
 
 シンボルは専用のファイルに書き出しておくことをおすすめします:
 
-```js
-// keys.js
+```js [keys.js]
 export const myInjectionKey = Symbol()
 ```
 

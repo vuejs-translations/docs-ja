@@ -156,8 +156,8 @@ app.mount('#app')
 
 ここでは、最も基本的なセットアップを実演します。まず、アプリケーションを作成するロジックを専用のファイル `app.js` に分割してみましょう:
 
-```js
-// app.js（サーバーとクライアント間に共有されています）
+```js [app.js]
+// （サーバーとクライアント間に共有されています）
 import { createSSRApp } from 'vue'
 
 export function createApp() {
@@ -266,8 +266,8 @@ SSR では、各リクエストの URL はアプリケーションにとって�
 
 推奨される解決策は、ルーターやグローバルストアを含むアプリケーション全体の新しいインスタンスを、リクエストごとに作成することです。それから、コンポーネントで直接インポートするのではなく、[アプリケーションレベルの Provide](/guide/components/provide-inject#app-level-provide) を使って共有する状態を提供し、それを必要とするコンポーネントでインジェクトすることです:
 
-```js
-// app.js（サーバーとクライアントで共有されます）
+```js [app.js]
+// （サーバーとクライアントで共有されます）
 import { createSSRApp } from 'vue'
 import { createStore } from './store.js'
 

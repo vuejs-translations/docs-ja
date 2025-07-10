@@ -43,8 +43,7 @@ export default {
 
 #### Vue CLI 設定の例 {#example-vue-cli-config}
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.module
@@ -218,8 +217,7 @@ Vue でカスタム要素をビルドする場合、要素は Vue のランタ�
 
 個々の要素コンストラクタをエクスポートして、ユーザーに必要に応じてインポートさせたり、必要なタグ名で登録できる柔軟性を持たせることをおすすめします。また、すべての要素を自動的に登録する便利な関数をエクスポートすることもできます。以下は、Vue カスタム要素ライブラリのエントリーポイントの例です:
 
-```js
-// elements.js
+```js [elements.js]
 
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
@@ -311,9 +309,7 @@ Vue で構築されていないカスタム要素の SFC テンプレートで�
 
 いくつかの JS プロパティとイベントが定義されたカスタム要素があり、それが `some-lib` というライブラリーに同梱されているとします:
 
-```ts
-// file: some-lib/src/SomeElement.ts
-
+```ts [some-lib/src/SomeElement.ts]
 // 型付き JS プロパティを持つクラスを定義します。
 export class SomeElement extends HTMLElement {
   foo: number = 123
@@ -351,9 +347,7 @@ export class AppleFellEvent extends Event {
 
 Vue でカスタム要素の型定義を簡単に登録するための型ヘルパーを作成してみましょう
 
-```ts
-// file: some-lib/src/DefineCustomElement.ts
-
+```ts [some-lib/src/DefineCustomElement.ts]
 // 定義する必要のある要素ごとに、このタイプのヘルパーを再利用することができます。
 type DefineCustomElement<
   ElementType extends HTMLElement,
@@ -394,9 +388,7 @@ type VueEmit<T extends EventMap> = EmitFn<{
 
 型ヘルパーを使用して、Vue テンプレートで型チェックのために公開すべき JS プロパティを選択できます:
 
-```ts
-// file: some-lib/src/SomeElement.vue.ts
-
+```ts [some-lib/src/SomeElement.vue.ts]
 import {
   SomeElement,
   SomeElementAttributes,
@@ -465,7 +457,7 @@ onMounted(() => {
 
 要素に型定義がない場合、プロパティとイベントの型はより手動で定義することができます:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // `some-lib` が型定義のないプレーンな JavaScript で、TypeScript が型を
 // 推論できないと仮定します:

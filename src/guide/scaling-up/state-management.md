@@ -83,8 +83,7 @@ Options API では、リアクティブなデータは `data()` オプション�
 
 もし状態の一部を複数のインスタンスで共有する必要が有る場合、[`reactive()`](/api/reactivity-core#reactive) でリアクティブなオブジェクトを作成し、それを複数のコンポーネントにインポートすることができます:
 
-```js
-// store.js
+```js [store.js]
 import { reactive } from 'vue'
 
 export const store = reactive({
@@ -94,8 +93,7 @@ export const store = reactive({
 
 <div class="composition-api">
 
-```vue
-<!-- ComponentA.vue -->
+```vue [ComponentA.vue]
 <script setup>
 import { store } from './store.js'
 </script>
@@ -103,8 +101,7 @@ import { store } from './store.js'
 <template>From A: {{ store.count }}</template>
 ```
 
-```vue
-<!-- ComponentB.vue -->
+```vue [ComponentB.vue]
 <script setup>
 import { store } from './store.js'
 </script>
@@ -115,8 +112,7 @@ import { store } from './store.js'
 </div>
 <div class="options-api">
 
-```vue
-<!-- ComponentA.vue -->
+```vue [ComponentA.vue]
 <script>
 import { store } from './store.js'
 
@@ -132,8 +128,7 @@ export default {
 <template>From A: {{ store.count }}</template>
 ```
 
-```vue
-<!-- ComponentB.vue -->
+```vue [ComponentB.vue]
 <script>
 import { store } from './store.js'
 
@@ -165,8 +160,7 @@ export default {
 
 シンプルなケースではこれは有効ですが、どんなコンポーネントでも任意に変更が可能なグローバルな状態は、長期的にはメンテナンスしづらくなるでしょう。状態を更新する処理を状態と同様に一箇所にまとめるために、アクションの意図を表現する名前を持つメソッドをストアに定義することが推奨されます:
 
-```js{6-8}
-// store.js
+```js{5-7} [store.js]
 import { reactive } from 'vue'
 
 export const store = reactive({

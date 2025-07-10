@@ -418,8 +418,7 @@ Vue 3.5 と `@vue/language-tools` 2.1（IDE の言語サービスと `vue-tsc` �
 
 インポートされたコンポーネントのインスタンスの型を得るために、まず `typeof` によって型を取得し、次に TypeScript の組み込みユーティリティーの `InstanceType` を使って型を抽出する必要があります:
 
-```vue{5}
-<!-- App.vue -->
+```vue{6,7} [App.vue]
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
 import Foo from './Foo.vue'
@@ -447,8 +446,7 @@ const child = useTemplateRef<ComponentPublicInstance>('child')
 
 参照されるコンポーネントが[ジェネリックコンポーネント](/guide/typescript/overview.html#generic-components)の場合、例えば `MyGenericModal` の場合:
 
-```vue
-<!-- MyGenericModal.vue -->
+```vue [MyGenericModal.vue]
 <script setup lang="ts" generic="ContentType extends string | number">
 import { ref } from 'vue'
 
@@ -464,8 +462,7 @@ defineExpose({
 
 `InstanceType` は動作しないので、[`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) ライブラリーの `ComponentExposed` を使って参照する必要があります。
 
-```vue
-<!-- App.vue -->
+```vue [App.vue]
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'

@@ -298,16 +298,20 @@ function inc() {
 :::warning
 もし `defineModel` props に `default` 値を指定し、親コンポーネントからこの props に何も値を与えなかった場合、親と子のコンポーネント間で同期が取れなくなる可能性があります。以下の例では、親コンポーネントの `myRef` は undefined ですが、子コンポーネントの `model` は 1 です:
 
-```js
-// 子コンポーネント:
+```vue [Child.vue]
+<script setup>
 const model = defineModel({ default: 1 })
-
-// 親コンポーネント:
-const myRef = ref()
+</script>
 ```
 
-```html
-<Child v-model="myRef"></Child>
+```vue [Parent.vue]
+<script setup>
+const myRef = ref()
+</script>
+
+<template>
+  <Child v-model="myRef" />
+</template>
 ```
 
 :::
