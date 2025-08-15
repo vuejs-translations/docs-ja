@@ -24,7 +24,7 @@
 
   - Fathom Analytics のプライバシーポリシー: https://usefathom.com/legal/privacy
 
-- **検索機能の使用データ。**　私たちの検索機能は、[Algolia DocSearch](https://docsearch.algolia.com/) を利用しています。この検索機能は、いかなる種類のユーザー追跡やフィンガープリンティングも行わず、Cookie も使用しません。Algolia のサービスは、GPDR 準拠、CCPA 準拠、TRUSTe 認証を受けています。
+- **検索機能の使用データ。**　私たちの検索機能は、[Algolia DocSearch](https://docsearch.algolia.com/) を利用しています。この検索機能は、いかなる種類のユーザー追跡やフィンガープリンティングも行わず、Cookie も使用しません。Algolia のサービスは、GDPR 準拠、CCPA 準拠、TRUSTe 認証を受けています。
 
   - Algolia のプライバシーポリシー: https://www.algolia.com/policies/privacy/
   - Algolia のセキュリティとプライバシーのコンプライアンス: https://www.algolia.com/distributed-secure/security-compliance/
