@@ -544,19 +544,19 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/style-guide/'
         },
         {
-          text: '優先度A: 必須',
+          text: '優先度 A: 必須',
           link: '/style-guide/rules-essential'
         },
         {
-          text: '優先度B: 強く推奨',
+          text: '優先度 B: 強く推奨',
           link: '/style-guide/rules-strongly-recommended'
         },
         {
-          text: '優先度C: 推奨',
+          text: '優先度 C: 推奨',
           link: '/style-guide/rules-recommended'
         },
         {
-          text: '優先度D: 注意深く使用する',
+          text: '優先度 D: 注意深く使用する',
           link: '/style-guide/rules-use-with-caution'
         }
       ]

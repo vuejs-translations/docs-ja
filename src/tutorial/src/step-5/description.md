@@ -11,7 +11,7 @@
 ```js
 methods: {
   onInput(e) {
-    // v-on ハンドラーはネイティブDOMのイベントを
+    // v-on ハンドラーはネイティブ DOM のイベントを
     // 引数として受け取ります。
     this.text = e.target.value
   }
@@ -24,7 +24,7 @@ methods: {
 
 ```js
 function onInput(e) {
-  // v-on ハンドラーはネイティブDOMのイベントを
+  // v-on ハンドラーはネイティブ DOM のイベントを
   // 引数として受け取ります。
   text.value = e.target.value
 }
