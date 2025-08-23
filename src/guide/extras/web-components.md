@@ -328,8 +328,8 @@ export class SomeElement extends HTMLElement {
 
 customElements.define('some-element', SomeElement)
 
-// これは、フレームワークテンプレート（例えば、Vue SFCテンプレート）で
-// 型チェックのために選択されるSomeElementのプロパティの一覧です。
+// これは、フレームワークテンプレート（例えば、Vue SFC テンプレート）で
+// 型チェックのために選択される SomeElement のプロパティの一覧です。
 // その他のプロパティは公開されません。
 export type SomeElementAttributes = 'foo' | 'bar'
 

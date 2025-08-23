@@ -55,7 +55,7 @@ shuffleMembers(membersPartnerData as Member[])
     <TeamList :members="(membersCoreData as Member[])">
       <template #title>コアチームメンバー</template>
       <template #lead>
-        コアチームメンバーは1つから複数のプロジェクトを
+        コアチームメンバーは 1 つから複数のプロジェクトを
         積極的にメンテナンスしています。
         彼らは Vue エコシステムに有意な貢献をしており、
         プロジェクトとユーザーの成功のために長い期間献身しています。

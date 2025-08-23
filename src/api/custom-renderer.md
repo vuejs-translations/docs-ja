@@ -74,4 +74,4 @@
   export * from '@vue/runtime-core'
   ```
 
-  Vue 独自の `@vue/runtime-dom` は [同じAPIを使って実装されています](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts)。よりシンプルな実装については、Vue 自体のユニットテスト用のプライベートパッケージである [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts) を確認してください。
+  Vue 独自の `@vue/runtime-dom` は [同じ API を使って実装されています](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts)。よりシンプルな実装については、Vue 自体のユニットテスト用のプライベートパッケージである [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts) を確認してください。
