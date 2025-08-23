@@ -40,7 +40,7 @@
 7. textlint で引っかかる場合は再度修正を行いコミットします
 8. フォークした自分のリポジトリーに Push します: `git push origin my-topic-branch`
 9. 問題がなければ、プルリクエストを `vuejs-translations/docs-ja` の `main` ブランチに送ります
-10. レビューで指摘事項があったら修正 + Push し、再レビュー依頼（ :arrows_counterclockwise: ボタン）します
+10. レビューで指摘事項があったら修正 + Push し、再レビュー依頼（Reviewers の :arrows_counterclockwise: ボタン）します
     - 依頼の前に、修正漏れがないか確認してください
 11. レビューで OK ならば、マージされてドキュメントに反映されます :tada:
 

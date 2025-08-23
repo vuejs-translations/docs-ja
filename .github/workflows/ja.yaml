@@ -22,5 +22,3 @@ jobs:
       run: pnpm install
     - name: Run textlint
       run: pnpm run lint
-      env:
-        CI: true

@@ -9,7 +9,7 @@
     "preview": "vitepress preview",
     "preinstall": "npx only-allow pnpm",
     "type": "vue-tsc --noEmit",
-    "lint": "textlint --format pretty-error src/**"
+    "lint": "textlint --format pretty-error \"**/*.md\""
   },
   "dependencies": {
     "@vue/repl": "^4.4.2",
