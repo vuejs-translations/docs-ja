@@ -129,7 +129,7 @@ import Child from './Child.vue'
 const childRef = useTemplateRef('child')
 
 onMounted(() => {
-  // child.value は <Child /> のインスタンスを保持します。
+  // childRef.value は <Child /> のインスタンスを保持します。
 })
 </script>
 
