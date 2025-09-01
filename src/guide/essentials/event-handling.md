@@ -131,7 +131,7 @@ methods: {
 
 ### メソッド 対 インライン検出 {#method-vs-inline-detection}
 
-テンプレートコンパイラーは、`v-on` の文字列値が JavaScript identifier、あるいはプロパティのアクセスパスとして適切かどうかを検証することで、メソッドハンドラーを検出します。例えば、`foo`、 `foo.bar` さらには `foo['bar']` がメソッドハンドラーとして扱われる一方、`foo()` and `count++` はインラインハンドラーとして扱われます。
+テンプレートコンパイラーは、`v-on` の文字列値が JavaScript identifier、あるいはプロパティのアクセスパスとして適切かどうかを検証することで、メソッドハンドラーを検出します。例えば、`foo`、 `foo.bar` さらには `foo['bar']` がメソッドハンドラーとして扱われる一方、`foo()` や `count++` はインラインハンドラーとして扱われます。
 
 ## インラインハンドラー下でのメソッドの呼び出し {#calling-methods-in-inline-handlers}
 
