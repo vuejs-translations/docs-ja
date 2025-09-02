@@ -468,7 +468,8 @@ import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 
-const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>('modal')
+const modal =
+  useTemplateRef<ComponentExposed<typeof MyGenericModal>>('modal')
 
 const openModal = () => {
   modal.value?.open('newValue')
@@ -477,3 +478,41 @@ const openModal = () => {
 ```
 
 なお、`@vue/language-tools` 2.1 以降では、静的テンプレート参照の型は自動的に推論されるので、上記はエッジケースでのみ必要となります。
+
+## カスタムグローバルディレクティブの型付け {#typing-global-custom-directives}
+
+`app.directive()` で宣言されたグローバルカスタムディレクティブで型ヒントと型チェックを取得するために、`ComponentCustomProperties` を拡張することができます
+
+```ts [src/directives/highlight.ts]
+import type { Directive } from 'vue'
+
+export type HighlightDirective = Directive<HTMLElement, string>
+
+declare module 'vue' {
+  export interface ComponentCustomProperties {
+    // v をプレフィックスとして付ける（v-highlight）
+    vHighlight: HighlightDirective
+  }
+}
+
+export default {
+  mounted: (el, binding) => {
+    el.style.backgroundColor = binding.value
+  }
+} satisfies HighlightDirective
+```
+
+```ts [main.ts]
+import highlight from './directives/highlight'
+// ...その他のコード
+const app = createApp(App)
+app.directive('highlight', highlight)
+```
+
+コンポーネントでの使用方法
+
+```vue [App.vue]
+<template>
+  <p v-highlight="'blue'">This sentence is important!</p>
+</template>
+```
