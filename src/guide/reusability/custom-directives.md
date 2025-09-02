@@ -110,6 +110,10 @@ app.directive('highlight', {
 })
 ```
 
+グローバルカスタムディレクティブは `vue` の `ComponentCustomProperties` インターフェースを拡張することで型付けすることが可能です
+
+詳細: [カスタムグローバルディレクティブの型付け](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
+
 ## カスタムディレクティブを使用するタイミング {#when-to-use}
 
 カスタムディレクティブは DOM を直接操作することでしか必要な機能を実現できない場合にのみ使用してください。
