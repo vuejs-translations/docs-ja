@@ -40,9 +40,10 @@ Vue を使用して収益を上げる製品を構築している場合、Vue の
 
 ## ティアごとの特典 {#tier-benefits}
 
-- **Global Special**:
-  - 全世界で 1 つのスポンサー限定（現在満席）。
-  - [vuejs.org](/) のトップページで、スクロールしないで見える範囲にロゴを独占的に掲載。
+- **Global Special Sponsor**:
+  - 全世界で **1 つ**のスポンサー限定。<span v-if="!data?.special">現在空いています。[お問い合わせください](mailto:sponsor@vuejs.org?subject=Vue.js%20special%20sponsor%20inquiry)！</span><span v-else>（現在満席）</span>
+  - （独占）[vuejs.org](/) のトップページで、**スクロールしないで見える範囲**にロゴを掲載。
+  - （独占）[Vue の公式 X アカウント](https://x.com/vuejs)（フォロワー 32 万人）を通じて、主要な製品発表時に特別な言及と定期的なリツイート。
   - すべての場所で、以下のティアよりも最も目立つロゴを掲載。
 - **Platinum（USD$2,000/月）**:
   - [vuejs.org](/) のトップページに目立つロゴを掲載。
