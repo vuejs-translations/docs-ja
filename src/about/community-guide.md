@@ -16,7 +16,7 @@ Vue のコミュニティーは信じられないほど急速に成長してお�
 
 ### 最新情報を入手 {#stay-in-the-know}
 
-- [公式 Twitter アカウント](https://twitter.com/vuejs)をフォローしてください。
+- [公式 Twitter アカウント](https://x.com/vuejs)をフォローしてください。
 - Twitter や GitHub で[チームメンバー](./team)をフォローしてください。
 - [RFC の議論](https://github.com/vuejs/rfcs)をフォローしてください。
 - [公式ブログ](https://blog.vuejs.org/)を購読してください。
@@ -28,7 +28,7 @@ Vue のコミュニティーは信じられないほど急速に成長してお�
 - [DEV コミュニティー](https://dev.to/t/vue): Dev.to の Vue 関連トピックを共有、議論してください。
 - [Meetups](https://events.vuejs.org/meetups): あなたのようなローカルな Vue の愛好家を見つけたいですか？　コミュニティーのリーダーになることに興味がありますか？　あなたが必要とするヘルプとサポートがここにあります！
 - [GitHub](https://github.com/vuejs): バグを報告したり、機能をリクエストしたりする場合は、GitHub の issue がその役割を果たします。各リポジトリーの issue テンプレートで指定されたルールを尊重してください。
-- [Twitter コミュニティー（非公式）](https://twitter.com/i/communities/1516368750634840064): 他の Vue 愛好家に会ったり、ヘルプを得たり、Vue についてチャットできる Twitter コミュニティー。
+- [Twitter コミュニティー（非公式）](https://x.com/i/communities/1516368750634840064): 他の Vue 愛好家に会ったり、ヘルプを得たり、Vue についてチャットできる Twitter コミュニティー。
 
 ### エコシステムを探索する {#explore-the-ecosystem}
 
@@ -80,4 +80,4 @@ Vue のコアリポジトリーには、[contributing guide](https://github.com/
 - **自分でミートアップを始める。** もし、あなたの地域にまだ Vue のミートアップがなければ、自分で始めることができます！　[events.vuejs.org のリソース](https://events.vuejs.org/resources/#getting-started)を使って成功させましょう！
 - **ミートアップの主催者を支援する。** イベントの運営は、支援が多くて困ることはありません。すべてのイベントを成功させるために、地域の主催者に手を貸してください。
 
-地域の Vue コミュニティーに参加する方法について質問がある場合は、Twitter で[@vuejs_events](https://www.twitter.com/vuejs_events) に連絡してください！
+地域の Vue コミュニティーに参加する方法について質問がある場合は、Twitter で[@vuejs_events](https://x.com/vuejs_events) に連絡してください！
