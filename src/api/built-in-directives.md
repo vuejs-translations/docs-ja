@@ -8,7 +8,7 @@
 
 - **詳細**
 
-  `v-text` は要素の [textContent](https://developer.mozilla.org/ja/docs/Web/API/Node/textContent) プロパティをセットする動作なので、要素内の既存のコンテンツはすべて上書きされます。`textContent` の一部を更新する必要がある場合は、代わりに[マスタッシュ展開](/guide/essentials/template-syntax#text-interpolation)を使用します。
+  `v-text` は要素の [textContent](https://developer.mozilla.org/ja/docs/Web/API/Node/textContent) プロパティをセットする動作なので、要素内の既存のコンテンツはすべて上書きされます。`textContent` の一部だけを更新する必要がある場合は、代わりに[マスタッシュ展開](/guide/essentials/template-syntax#text-interpolation)を使用します (例: <span v-pre>`<span>これは保持して {{dynamicPortion}} を更新</span>`</span>)。
 
 - **例**
 
