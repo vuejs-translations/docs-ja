@@ -79,7 +79,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## キャッシュインスタンスの最大数 {#max-cached-instances}
 
-`max` props を使うと、キャッシュできるコンポーネントインスタンスの最大数を制限することができます。`max` が指定された場合、`<KeepAlive>` は [LRU キャッシュ](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>) のように動作します。つまり、キャッシュインスタンスの数が指定された最大数を越えようとした時点で、最も過去にアクセスされたキャッシュインスタンスが破棄され、新しいキャッシュ用のスペースが作られます。
+`max` props を使うと、キャッシュできるコンポーネントインスタンスの最大数を制限することができます。`max` が指定された場合、`<KeepAlive>` は [LRU キャッシュ](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_(LRU)>) のように動作します。つまり、キャッシュインスタンスの数が指定された最大数を越えようとした時点で、最も過去にアクセスされたキャッシュインスタンスが破棄され、新しいキャッシュ用のスペースが作られます。
 
 ```vue-html
 <KeepAlive :max="10">
