@@ -400,6 +400,11 @@ console.log(app.config)
   }
   ```
 
+- **デフォルト**
+
+  デフォルトのエラーハンドラーは、開発環境ではエラーを再スローし、本番環境ではエラーをログに出力します。
+  この動作は [throwUnhandledErrorInProduction](#app-config-throwunhandlederrorinproduction) プロパティで設定できます。
+
 ## app.config.warnHandler {#app-config-warnhandler}
 
 Vue からの実行時警告に対して、カスタムハンドラーを割り当てます。
