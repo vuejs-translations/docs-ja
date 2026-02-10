@@ -481,7 +481,7 @@ const openModal = () => {
 
 ## カスタムグローバルディレクティブの型付け {#typing-global-custom-directives}
 
-`app.directive()` で宣言されたグローバルカスタムディレクティブで型ヒントと型チェックを取得するために、`ComponentCustomProperties` を拡張することができます
+`app.directive()` で宣言されたグローバルカスタムディレクティブで型ヒントと型チェックを取得するために、`GlobalDirectives` を拡張することができます
 
 ```ts [src/directives/highlight.ts]
 import type { Directive } from 'vue'
@@ -489,7 +489,7 @@ import type { Directive } from 'vue'
 export type HighlightDirective = Directive<HTMLElement, string>
 
 declare module 'vue' {
-  export interface ComponentCustomProperties {
+  export interface GlobalDirectives {
     // v をプレフィックスとして付ける（v-highlight）
     vHighlight: HighlightDirective
   }
