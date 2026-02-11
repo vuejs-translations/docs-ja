@@ -38,7 +38,7 @@ outline: deep
 
 ### Vite {#vite}
 
-`@vitejs/plugin-vue` はこれらのフラグのデフォルト値を自動的に提供します。デフォルト値を変更するには、Vite の [`define` 設定オプション](https://vitejs.dev/config/shared-options.html#define)を使用してください:
+`@vitejs/plugin-vue` はこれらのフラグのデフォルト値を自動的に提供します。デフォルト値を変更するには、Vite の [`define` 設定オプション](https://ja.vite.dev/config/shared-options.html#define)を使用してください:
 
 ```js [vite.config.js]
 import { defineConfig } from 'vite'

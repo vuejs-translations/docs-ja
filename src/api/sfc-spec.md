@@ -105,7 +105,7 @@ p {{ msg }}
 
 なお、各種プリプロセッサーとの統合はツールチェーンによって異なる場合があることに注意してください。例については、それぞれのドキュメントを参照してください:
 
-- [Vite](https://ja.vitejs.dev/guide/features.html#css-%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)
+- [Vite](https://ja.vite.dev/guide/features.html#css-%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)
 - [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
 - [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors.html#using-pre-processors)
 

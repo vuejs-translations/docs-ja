@@ -26,7 +26,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 - [Node.js](https://nodejs.org/ja/) のバージョン `^20.19.0 || >=22.12.0` をインストールしている
   :::
 
-このセクションでは、ローカルマシン上で Vue の[シングルページアプリケーション](/guide/extras/ways-of-using-vue#single-page-application-spa)を生成する方法を紹介します。作成されたプロジェクトは、[Vite](https://ja.vitejs.dev/) に基づいたビルド設定を使用し、Vue の単一ファイルコンポーネント（SFC）を使用できるようにします。
+このセクションでは、ローカルマシン上で Vue の[シングルページアプリケーション](/guide/extras/ways-of-using-vue#single-page-application-spa)を生成する方法を紹介します。作成されたプロジェクトは、[Vite](https://ja.vite.dev/) に基づいたビルド設定を使用し、Vue の単一ファイルコンポーネント（SFC）を使用できるようにします。
 
 [Node.js](https://nodejs.org/) の最新バージョンがインストールされていること、現在の作業ディレクトリがプロジェクトを作成する予定の場所であることを確認し、コマンドラインで次のコマンドを（`$` 記号なしで）実行します:
 

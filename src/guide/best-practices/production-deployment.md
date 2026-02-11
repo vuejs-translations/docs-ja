@@ -32,8 +32,8 @@ CDN やセルフホストのスクリプトからロードして、ビルドツ�
 
 その他の参考文献:
 
-- [Vite 本番環境用のビルドガイド](https://ja.vitejs.dev/guide/build.html)
-- [Vite デプロイガイド](https://ja.vitejs.dev/guide/static-deploy.html)
+- [Vite 本番環境用のビルドガイド](https://ja.vite.dev/guide/build.html)
+- [Vite デプロイガイド](https://ja.vite.dev/guide/static-deploy.html)
 - [Vue CLI デプロイガイド](https://cli.vuejs.org/guide/deployment.html)
 
 ## ランタイムエラーの追跡 {#tracking-runtime-errors}

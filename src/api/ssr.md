@@ -213,7 +213,7 @@
   import { useSSRContext } from 'vue'
 
   // SSR の時だけ呼び出すようにする
-  // https://ja.vitejs.dev/guide/ssr.html#条件付きロジック
+  // https://ja.vite.dev/guide/ssr.html#条件付きロジック
   if (import.meta.env.SSR) {
     const ctx = useSSRContext()
     // ...コンテキストにプロパティを付加する
