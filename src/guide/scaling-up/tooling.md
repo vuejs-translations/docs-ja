@@ -21,7 +21,7 @@ Vue の SFC を試すためにマシンに何かをインストールする必�
 
 ### Vite {#vite}
 
-[Vite](https://vitejs.dev/) は、ファーストクラスの Vue SFC のサポートがある軽量で高速なビルドツールです。Vue の作者でもある Evan You によって作成されました！
+[Vite](https://ja.vite.dev/) は、ファーストクラスの Vue SFC のサポートがある軽量で高速なビルドツールです。Vue の作者でもある Evan You によって作成されました！
 
 Vite + Vue で始めるには、以下を実行するだけです:
 
@@ -51,7 +51,7 @@ $ bun create vue@latest
 
 このコマンドは、Vue 公式の雛形作成（scaffolding）ツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。
 
-- Vite の詳細については、[Vite ドキュメント](https://ja.vitejs.dev) を参照してください。
+- Vite の詳細については、[Vite ドキュメント](https://ja.vite.dev/) を参照してください。
 - Vite のプロジェクトで Vue のコンパイラーにオプションを渡すなどの、Vue 固有の設定をするには、[@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme) のドキュメントを参照してください。
 
 上記のオンラインプレイグラウンドはいずれも Vite プロジェクトとしてのファイルのダウンロードにも対応しています。

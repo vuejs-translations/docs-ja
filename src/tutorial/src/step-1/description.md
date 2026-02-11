@@ -30,7 +30,7 @@ Vue 2 や他のフレームワークから来た経験豊富な開発者であ�
 import { ... } from 'vue/dist/vue.esm-bundler.js'
 ```
 
-もしくはビルドツールで `vue` を解決するように設定してください。[Vite](https://vitejs.dev/) の設定例:
+もしくはビルドツールで `vue` を解決するように設定してください。[Vite](https://ja.vite.dev/) の設定例:
 
 ```js [vite.config.js]
 export default {

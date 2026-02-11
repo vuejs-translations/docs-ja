@@ -10,7 +10,7 @@ Vue 自体が TypeScript で書かれており、第一級の TypeScript のサ�
 
 ## プロジェクトのセットアップ {#project-setup}
 
-[`create-vue`](https://github.com/vuejs/create-vue) は公式のプロジェクトセットアップツールで、[Vite](https://vitejs.dev/) を用いた TypeScript 対応の Vue プロジェクトをセットアップするためのオプションを提供します。
+[`create-vue`](https://github.com/vuejs/create-vue) は公式のプロジェクトセットアップツールで、[Vite](https://ja.vite.dev/) を用いた TypeScript 対応の Vue プロジェクトをセットアップするためのオプションを提供します。
 
 ### 概要 {#overview}
 
