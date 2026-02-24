@@ -486,7 +486,7 @@ export default {
 
 </div>
 
-これは 3.5 以前のバージョンで動作します。また、関数の引数で渡される `onCleanup` はウォッチャーインスタンスにバインドされるため、`onWatcherCleanup` の同期的な制約は受けません。
+関数の引数で渡される `onCleanup` はウォッチャーインスタンスにバインドされるため、`onWatcherCleanup` の同期的な制約は受けません。
 
 ## コールバックが実行されるタイミング {#callback-flush-timing}
 
