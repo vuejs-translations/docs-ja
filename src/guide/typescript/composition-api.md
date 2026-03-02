@@ -54,7 +54,7 @@ const props = defineProps<Props>()
 </script>
 ```
 
-これは `Props` が外部のソースからインポートされた場合にも機能します。この機能は、TypeScript が Vue の peer dependency である必要があります。
+これは `Props` が別のファイル（相対インポート、`@/types` のようなパスエイリアス、`node_modules` のような外部依存など）からインポートされた場合にも機能します。この機能は、TypeScript が Vue の peer dependency である必要があります。
 
 ```vue
 <script setup lang="ts">
