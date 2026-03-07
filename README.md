@@ -17,7 +17,7 @@ pnpm i
 pnpm run dev
 ```
 
-このプロジェクトには Node.js の `v18` 以上が必要です。また、corepack を有効にすることを推奨しています:
+このプロジェクトには Node.js の `v20` 以上が必要です。また、corepack を有効にすることを推奨しています:
 
 ```bash
 corepack enable
