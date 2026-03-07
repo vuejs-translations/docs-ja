@@ -508,7 +508,7 @@
   },
   {
     "name": "ubugeeei",
-    "title": "Software Engineer",
+    "title": "Chief Engineer",
     "company": "Mates Inc.",
     "companyLink": "https://github.com/mates-system",
     "projects": [
@@ -546,7 +546,8 @@
     "socials": {
       "github": "ubugeeei",
       "twitter": "ubugeeei"
-    }
+    },
+    "sponsor": true
   },
   {
     "name": "Vincent Ngai • SerKo",
