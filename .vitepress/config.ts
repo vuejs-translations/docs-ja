@@ -20,10 +20,10 @@ const nav: ThemeConfig['nav'] = [
     text: 'ドキュメント',
     activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
     items: [
+      { text: 'クイックスタート', link: '/guide/quick-start' },
       { text: 'ガイド', link: '/guide/introduction' },
       { text: 'チュートリアル', link: '/tutorial/' },
       { text: '実装例', link: '/examples/' },
-      { text: 'クイックスタート', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
       { text: '用語集', link: '/glossary/' },
       { text: 'エラーリファレンス', link: '/error-reference/' },
