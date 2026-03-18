@@ -18,12 +18,13 @@ import {
 const nav: ThemeConfig['nav'] = [
   {
     text: 'ドキュメント',
-    activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
+    activeMatch: `^/(guide|tutorial|examples|api|glossary|error-reference)/`,
     items: [
       { text: 'クイックスタート', link: '/guide/quick-start' },
       { text: 'ガイド', link: '/guide/introduction' },
       { text: 'チュートリアル', link: '/tutorial/' },
       { text: '実装例', link: '/examples/' },
+      { text: 'API', link: '/api/' },
       // { text: 'Style Guide', link: '/style-guide/' },
       { text: '用語集', link: '/glossary/' },
       { text: 'エラーリファレンス', link: '/error-reference/' },
@@ -38,11 +39,6 @@ const nav: ThemeConfig['nav'] = [
     ]
   },
   {
-    text: 'API',
-    activeMatch: `^/api/`,
-    link: '/api/'
-  },
-  {
     text: 'プレイグラウンド',
     link: 'https://play.vuejs.org'
   },
@@ -53,7 +49,6 @@ const nav: ThemeConfig['nav'] = [
       {
         text: 'リソース',
         items: [
-          { text: 'パートナー', link: '/partners/' },
           { text: 'テーマ', link: '/ecosystem/themes' },
           { text: 'UI コンポーネント', link: 'https://ui-libs.vercel.app/' },
           {
@@ -134,13 +129,12 @@ const nav: ThemeConfig['nav'] = [
     ]
   },
   {
-    text: 'スポンサー',
-    link: '/sponsor/'
-  },
-  {
-    text: 'パートナー',
-    activeMatch: `^/partners/`,
-    link: '/partners/'
+    text: 'サポート',
+    activeMatch: `^/(sponsor|partners)/`,
+    items: [
+      { text: 'スポンサー', link: '/sponsor/' },
+      { text: 'パートナー', link: '/partners/' }
+    ]
   }
 ]
 
