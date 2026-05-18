@@ -1,9 +1,5 @@
 # 優先度 A: 必須 {#priority-a-rules-essential}
 
-::: warning Note
-この Vue.js スタイルガイドは古くなっていますので、見直しが必要です。ご質問やご意見がありましたら、[issue をオープン](https://github.com/vuejs/docs/issues/new)してください。
-:::
-
 これらのルールはエラーを防ぐのに役立ちますので、何としても学んで守ってください。例外はありますが、非常にまれで、 JavaScript と Vue の両方の専門的な知識を持つ人のみが行うべきことです。
 
 ## 複数単語のコンポーネント名を使用する {#use-multi-word-component-names}
@@ -337,7 +333,7 @@ const activeUsers = computed(() => {
 
 アプリケーションの場合、トップレベルの `App` コンポーネントとレイアウトコンポーネントのスタイルはグローバルであってもかまいませんが、その他のコンポーネントは常にスコープされるべきです。
 
-これは、[単一ファイルコンポーネント](/guide/scaling-up/sfc) にのみ関連しています。これは、[`scoped` 属性](https://vue-loader.vuejs.org/guide/scoped-css.html) を使用することを必要としません。スコープは、[CSS モジュール](https://vue-loader.vuejs.org/guide/css-modules.html) や [BEM](http://getbem.com/) のようなクラスベースの戦略、あるいは他のライブラリーや規約を利用することができます。
+これは、[単一ファイルコンポーネント](/guide/scaling-up/sfc) にのみ関連しています。これは、[`scoped` 属性](/api/sfc-css-features#scoped-css) を使用することを必要としません。スコープは、[CSS モジュール](/api/sfc-css-features#css-modules) や [BEM](https://getbem.com/) のようなクラスベースの戦略、あるいは他のライブラリーや規約を利用することができます。
 
 **しかし、コンポーネントライブラリーは `scoped` 属性を使用する代わりに、クラスベースの戦略を取るべきです。**
 

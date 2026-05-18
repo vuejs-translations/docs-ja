@@ -1,9 +1,5 @@
 # 優先度 B: 強く推奨 {#priority-b-rules-strongly-recommended}
 
-::: warning Note
-この Vue.js スタイルガイドは古くなっていますので、見直しが必要です。ご質問やご意見がありましたら、[issue をオープン](https://github.com/vuejs/docs/issues/new)してください。
-:::
-
 これらのルールは、ほとんどのプロジェクトで可読性や開発者の使い勝手を向上させることが分かっています。これらのルールに違反した場合でも、あなたのコードは動作しますが、違反はごく少数で十分に正当な理由がなければいけません。
 
 ## コンポーネントのファイル {#component-files}
@@ -101,23 +97,15 @@ components/
 
 - コンポーネントの名前は常に複数単語にするべきなので、このルールによって、シンプルなコンポーネントラッパーに任意のプレフィックスを選ばなければならない（例: `MyButton`、`VueButton`）ということがなくなります。
 
-- これらのコンポーネントは頻繁に使用されるので、あらゆる場所で import するのではなく、単純にグローバル化してしまいたいと思うかもしれません。プレフィックスを利用すれば、Webpack で以下ができるようになります:
+- これらのコンポーネントは頻繁に使用されるので、あらゆる場所で import するのではなく、単純にグローバル化してしまいたいと思うかもしれません。プレフィックスを利用すれば、Vite で以下ができるようになります:
 
   ```js
-  const requireComponent = require.context(
-    './src',
-    true,
-    /Base[A-Z]\w+\.(vue|js)$/
-  )
-  requireComponent.keys().forEach(function (fileName) {
-    let baseComponentConfig = requireComponent(fileName)
-    baseComponentConfig =
-      baseComponentConfig.default || baseComponentConfig
-    const baseComponentName =
-      baseComponentConfig.name ||
-      fileName.replace(/^.+\//, '').replace(/\.\w+$/, '')
-    app.component(baseComponentName, baseComponentConfig)
-  })
+  const modules = import.meta.glob('./src/**/Base*.vue', { eager: true })
+  for (const path in modules) {
+    const config = modules[path].default
+    const name = config.name || path.match(/Base[A-Z]\w+/)[0]
+    app.component(name, config)
+  }
   ```
 
   :::
@@ -317,7 +305,7 @@ components/
 
 自己終了形式のコンポーネントは、単に中身を持たないだけでなく、中身を持たないことを**意図した**ことだとはっきりと表現します。これは、本の中にある白紙のページと、「このページは意図的に白紙のままにしてあります」と書かれたページとの違いです。また、不要な閉じタグがなくなるため、コードもすっきりします。
 
-残念ながら、HTML はカスタム要素の自己終了形式を許可しているのは、[公式の「空」要素](https://www.w3.org/TR/html/syntax.html#void-elements)だけです。これが、Vue のテンプレートコンパイラーが DOM よりも先にテンプレートにアクセスして、その後 DOM の仕様に準拠した HTML を出力することができる場合にだけこの方策を使うことができる理由です。
+残念ながら、HTML はカスタム要素の自己終了形式を許可しているのは、[公式の「空」要素](https://html.spec.whatwg.org/multipage/syntax.html#void-elements)だけです。これが、Vue のテンプレートコンパイラーが DOM よりも先にテンプレートにアクセスして、その後 DOM の仕様に準拠した HTML を出力することができる場合にだけこの方策を使うことができる理由です。
 
 <div class="style-example style-example-bad">
 <h3>悪い例</h3>
