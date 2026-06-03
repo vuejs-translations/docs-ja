@@ -348,7 +348,7 @@ export class AppleFellEvent extends Event {
 Vue でカスタム要素の型定義を簡単に登録するための型ヘルパーを作成してみましょう
 
 ```ts [some-lib/src/DefineCustomElement.ts]
-// 定義する必要のある要素ごとに、このタイプのヘルパーを再利用することができます。
+// 定義する必要のある各要素にこの型ヘルパーを再利用できます。
 type DefineCustomElement<
   ElementType extends HTMLElement,
   Events extends EventMap = {},
