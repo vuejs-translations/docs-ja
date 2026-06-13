@@ -85,23 +85,23 @@ onMounted(load)
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>親しみやすい</h2>
+      <h2>Versatile<span style="font-size: 0.7em;">（多用途）</span></h2>
+      <p>
+        ライブラリーとフル機能のフレームワークの間でスケールする、リッチで段階的に採用可能なエコシステム。
+
+      </p>
+    </div>
+    <div class="vt-box">
+      <h2>User-friendly<span style="font-size: 0.7em;">（ユーザーフレンドリー）</span></h2>
       <p>
         直感的な API とワールドクラスのドキュメントを使用して、標準的な
         HTML、CSS、JavaScript をもとに構築します。
       </p>
     </div>
     <div class="vt-box">
-      <h2>高パフォーマンス</h2>
+      <h2>Efficient<span style="font-size: 0.7em;">（効率的）</span></h2>
       <p>
         手動での最適化をほとんど必要としない、真にリアクティブなコンパイラで最適化されたレンダリングシステム。
-
-      </p>
-    </div>
-    <div class="vt-box">
-      <h2>多用途</h2>
-      <p>
-        ライブラリーとフル機能のフレームワークの間でスケールする、リッチで段階的に採用可能なエコシステム。
 
       </p>
     </div>
@@ -284,6 +284,10 @@ html:not(.dark) .accent,
 
 #highlights .vt-box {
   background-color: transparent;
+}
+
+#highlights .vt-box h2::first-letter{
+  color: var(--vt-c-green);
 }
 
 #spsrs {
