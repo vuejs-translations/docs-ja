@@ -196,7 +196,7 @@ server.get('/', (req, res) => {
 
 1. `server.js` に `server.use(express.static('.'))` を追加して、クライアントにファイルを提供する。
 2. HTML シェルに `<script type="module" src="/client.js"></script>` を追加して、クライアントエントリーを読み込む。
-3. HTML シェルに [Import Map](https://github.com/WICG/import-maps) を追加して、ブラウザー内で `import * from 'vue'` のような用法をサポートする。
+3. HTML シェルに [Import Map](https://html.spec.whatwg.org/multipage/webappapis.html#import-maps) を追加して、ブラウザー内で `import * from 'vue'` のような用法をサポートする。
 
 [StackBlitz で完璧な使い方を試す](https://stackblitz.com/fork/vue-ssr-example?file=index.js)。いま、こちらのボタンはインタラクティブになっています！
 
