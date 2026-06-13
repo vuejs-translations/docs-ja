@@ -338,6 +338,30 @@ const post = {
 <BlogPost :id="post.id" :title="post.title" />
 ```
 
+### バインディングを組み合わせるときのマージ動作 {#merge-behavior-when-combining-bindings}
+
+`v-bind` を同じコンポーネントの明示的なバインディングと組み合わせて使用した場合、Vue は内部的に `mergeProps()` を呼び出してそれらを結合します。マージ戦略はキーの種類によって異なります:
+
+- **通常の props** — 後の値が優先されます:
+
+```vue-html
+<!-- title === 'bar' -->
+<BlogPost title="foo" v-bind="{ title: 'bar' }" />
+```
+
+- **イベントリスナー** — `v-bind` オブジェクトにリスナーを渡す場合は、[`onEventName` キー規約を使用してください](/guide/extras/render-function#v-on)。同じイベントのすべてのハンドラーが呼び出されます（[`v-on` リスナーの継承](/guide/components/attrs#v-on-listener-inheritance) を参照）:
+
+```vue-html
+<!-- 1 と 2 がログ出力される -->
+<BlogPost @click="console.log(1)" v-bind="{ onClick: () => console.log(2) }" />
+```
+
+- **`class` と `style`** も同様のマージ戦略に従います（[`class` と `style` のマージ](/guide/components/attrs#class-and-style-merging) を参照）。
+
+:::tip
+完全なマージルールは [`mergeProps()`](/api/render-function#mergeprops) API リファレンスに記載されています。
+:::
+
 ## 一方向のデータフロー {#one-way-data-flow}
 
 すべての props では、子のプロパティと親のプロパティとの間に**一方向バインディング**が形成されます。親のプロパティが更新されたときには子にも流れますが、その逆はありません。これにより、親の状態が誤って子コンポーネントによって変更されてアプリのデータフローが把握しにくくなる、といった事態が防がれます。
