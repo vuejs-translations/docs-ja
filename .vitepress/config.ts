@@ -666,13 +666,13 @@ export default defineConfigWithTheme<ThemeConfig>({
         defer: ''
       }
     ],
-    [
-      'script',
-      {
-        src: 'https://media.bitterbrains.com/main.js?from=vuejs&type=top',
-        async: 'true'
-      }
-    ]
+    // [
+    //   'script',
+    //   {
+    //     src: 'https://media.bitterbrains.com/main.js?from=vuejs&type=top',
+    //     async: 'true'
+    //   }
+    // ]
   ],
 
   themeConfig: {
