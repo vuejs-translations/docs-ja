@@ -11,6 +11,7 @@ aside: false
 - [日本語](https://ja.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-ja)]
 - [Українська / ウクライナ語](https://ua.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-ua)]
 - [Français / フランス語](https://fr.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-fr)]
+- [Deutsch / ドイツ語](https://de.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-de)]
 - [한국어 / 韓国語](https://ko.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-ko)]
 - [Português / ポルトガル語](https://pt.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-pt)]
 - [বাংলা / ベンガル語](https://bn.vuejs.org) [[ソース](https://github.com/vuejs-translations/docs-bn)]
@@ -25,7 +26,6 @@ aside: false
 
 - [العربية / アラビア語](https://ar.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-ar)]
 - [Español / スペイン語](https://vue3-spanish-docs.netlify.app/) [[ソース](https://github.com/icarusgk/vuejs-spanish-docs)]
-- [Deutsch / ドイツ語](https://de.vuejs.org/) [[ソース](https://github.com/vuejs-translations/docs-de)]
 
 ## 新しい翻訳の開始 {#starting-a-new-translation}
 
