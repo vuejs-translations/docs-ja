@@ -208,7 +208,7 @@ const emit = defineEmits<{
 </div>
 <div class="options-api">
 
-```js
+```ts
 export default {
   emits: {
     submit(payload: { email: string, password: string }) {
