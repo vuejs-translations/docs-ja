@@ -22,8 +22,8 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <a href="https://note.com/tutti2612/n/n1408ade7ae2e" target="_blank">
-      Vue Fes Japan 2026 CFP 募集中！
+    <a href="https://note.com/moe6811/n/n883644700208" target="_blank">
+      Vue Fes Japan 2026 ボランティアスタッフ募集!!
     </a>
     <button @click="dismiss">
       <VTIconPlus class="close" />
@@ -60,8 +60,8 @@ html:not(.banner-dismissed) {
     rgba(100, 126, 255, 1) 100%
   );
   */
-  color: #5b21b6; /* Vue Fes */
-  background-color: #c2dce6; /* Vue Fes */
+  color: #385fcc; /* Vue Fes */
+  background-color: #ffdaff; /* Vue Fes */
 }
 
 .banner-dismissed .banner {
