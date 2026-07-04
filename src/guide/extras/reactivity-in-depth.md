@@ -278,7 +278,7 @@ type DebuggerEvent = {
 
 ### 算出プロパティのデバッグ {#computed-debugging}
 
-<!-- TODO options API equivalent -->
+<div class="composition-api">
 
 `computed()` の第 2 引数に `onTrack` と `onTrigger` のコールバック関数オブジェクトを渡すことで、算出プロパティをデバッグすることができます:
 
@@ -310,9 +310,17 @@ count.value++
 算出プロパティの `onTrack` と `onTrigger` オプションは開発モードでのみ動作します。
 :::
 
+</div>
+
+<div class="options-api">
+
+算出プロパティのデバッグオプションは、Composition API の `computed()` 関数を介してのみ利用できます。
+
+</div>
+
 ### ウォッチャーのデバッグ {#watcher-debugging}
 
-<!-- TODO options API equivalent -->
+<div class="composition-api">
 
 `computed()` と同様にウォッチャーも `onTrack` と `onTrigger` オプションをサポートしています:
 
@@ -339,6 +347,32 @@ watchEffect(callback, {
 :::tip
 ウォッチャーの `onTrack` と `onTrigger` オプションは開発モードでのみ動作します。
 :::
+
+</div>
+
+<div class="options-api">
+
+オブジェクト構文で宣言されたウォッチャーも `onTrack` と `onTrigger` オプションをサポートしています:
+
+```js
+export default {
+  watch: {
+    source: {
+      handler() {
+        // ...
+      },
+      onTrack(e) {
+        debugger
+      },
+      onTrigger(e) {
+        debugger
+      }
+    }
+  }
+}
+```
+
+</div>
 
 ## 外部の状態システムとの統合 {#integration-with-external-state-systems}
 
