@@ -59,7 +59,7 @@ setTimeout(() => {
 
 以下は、インスタンスライフサイクルのダイアグラムです。今すべてを完全に理解する必要はありませんが、さらに学習して構築するにつれて、有用なリファレンスになるでしょう。
 
-![Component lifecycle diagram](./images/lifecycle.png)
+![Vue コンポーネントの生成から破棄までの完全なライフサイクルを、テンプレートのコンパイルやマウントといった内部処理も含む主要なライフサイクルフックとともに示す図](./images/lifecycle.png)
 
 <!-- https://www.figma.com/file/Xw3UeNMOralY6NV7gSjWdS/Vue-Lifecycle -->
 

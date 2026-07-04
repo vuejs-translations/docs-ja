@@ -26,7 +26,7 @@
 
 `<slot>` 要素は、親が提供した **スロットコンテンツ** をレンダリングすべき場所を示す **スロットアウトレット** です。
 
-![slot diagram](./images/slots.png)
+![親から渡されたスロットコンテンツが子コンポーネントのスロットアウトレットに注入される様子を示す図](./images/slots.png)
 
 <!-- https://www.figma.com/file/LjKTYVL97Ck6TEmBbstavX/slot -->
 
@@ -207,7 +207,7 @@ Vue コンポーネントのスロットの仕組みは、[ネイティブの We
 
 `v-slot` には専用の省略表記 `#` があるため、`<template v-slot:header>` は単に短く `<template #header>` と書けます。これは「このテンプレートフラグメントを子コンポーネント内の 'header' スロット内にレンダリングする」という意味だと考えてください。
 
-![名前付きスロットのダイアグラム](./images/named-slots.png)
+![レイアウトコンポーネント内の複数の名前付きスロットに、親から渡されたコンテンツがそれぞれ対応する header、main、footer スロットへ振り分けられる様子を示す図](./images/named-slots.png)
 
 <!-- https://www.figma.com/file/2BhP8gVZevttBu9oUmUUyz/named-slot -->
 
@@ -367,7 +367,7 @@ function BaseLayout(slots) {
 </MyComponent>
 ```
 
-![スコープ付きスロットのダイアグラム](./images/scoped-slots.svg)
+![子コンポーネントが親提供のスロットコンテンツにデータを渡し返すスコープ付きスロットの様子を示す図](./images/scoped-slots.svg)
 
 <!-- https://www.figma.com/file/QRneoj8eIdL1kw3WQaaEyc/scoped-slot -->
 

@@ -6,7 +6,7 @@
 
 通常、親コンポーネントから子コンポーネントにデータを渡す必要がある場合、[props](/guide/components/props)を使用します。ですが、大きなコンポーネントツリーがあり、深くネストされたコンポーネントが遠い祖先のコンポーネントから何かしらを必要とするケースを想像してみてください。props だけを使う場合、親コンポーネントのチェーン全体に同じ props を渡さなければなりません:
 
-![props バケツリレーダイアグラム](./images/prop-drilling.png)
+![深くネストした子コンポーネントに到達するために、複数階層のコンポーネントを通じて props が渡される様子を示す図](./images/prop-drilling.png)
 
 <!-- https://www.figma.com/file/yNDTtReM2xVgjcGVRzChss/prop-drilling -->
 
@@ -14,7 +14,7 @@
 
 props のバケツリレーは `provide` と `inject` で解決できます。親コンポーネントは、そのすべての子孫コンポーネントに対して **依存関係を提供するプロバイダー（dependency provider）** として機能できます。子孫ツリー内のどのコンポーネントも、その深さに関係なく、親チェーン内の上位コンポーネントが提供する依存関係を**注入（inject）** できます。
 
-![Provide/inject スキーマ](./images/provide-inject.png)
+![親コンポーネントが依存関係を提供し、それを中間コンポーネントを介さずに深くネストした子コンポーネントが直接注入できる provide/inject の仕組みを示す図](./images/provide-inject.png)
 
 <!-- https://www.figma.com/file/PbTJ9oXis5KUawEOWdy2cE/provide-inject -->
 
