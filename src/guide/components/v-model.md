@@ -524,7 +524,7 @@ export default {
 引数と修飾子の両方を持つ `v-model` バインディングの場合、生成される props の名前は `arg + "Modifiers"` になります。例えば:
 
 ```vue-html
-<MyComponent v-model:title.capitalize="myText">
+<MyComponent v-model:title.capitalize="myText" />
 ```
 
 対応する宣言は次のとおりです:
