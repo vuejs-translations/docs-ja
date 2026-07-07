@@ -580,7 +580,7 @@ export default {
 export default {
   created() {
     // 各インスタンスがデバウンスされたハンドラーのコピーを持つようになりました。
-    this.debouncedClick = _.debounce(this.click, 500)
+    this.debouncedClick = debounce(this.click, 500)
   },
   unmounted() {
     // また、タイマーをキャンセルするのも良いアイデアです
