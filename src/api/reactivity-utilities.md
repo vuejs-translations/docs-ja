@@ -263,3 +263,13 @@
   ```ts
   function isReadonly(value: unknown): boolean
   ```
+
+## isShallow() {#isshallow}
+
+オブジェクトが [`shallowRef`](./reactivity-advanced#shallowref)、[`shallowReactive()`](./reactivity-advanced#shallowreactive)、[`shallowReadonly()`](./reactivity-advanced#shallowreadonly) によって作られたプロキシかどうかをチェックします。
+
+- **型**
+
+  ```ts
+  function isShallow(value: unknown): boolean
+  ```
