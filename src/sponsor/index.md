@@ -48,7 +48,7 @@ Vue を使用して収益を上げる製品を構築している場合、Vue の
 - **Platinum（USD$2,000/月）**:
   - [vuejs.org](/) のトップページに目立つロゴを掲載。
   - すべてのコンテンツページのサイドバーに目立つロゴを掲載。
-  - [`vuejs/core`](https://github.com/vuejs/core) と [`vuejs/vue`](https://github.com/vuejs/core) の README に目立つロゴを掲載。
+  - [`vuejs/core`](https://github.com/vuejs/core) と [`vuejs/vue`](https://github.com/vuejs/vue) の README に目立つロゴを掲載。
 - **Gold（USD$500/月）**:
   - [vuejs.org](/) のトップページに大きなロゴを掲載。
   - `vuejs/core` と `vuejs/vue` の README に大きなロゴを掲載。
