@@ -397,6 +397,24 @@ ES モジュールは `file://` プロトコルでは動作しないため、上
 
 インポートされたコンポーネントのテンプレートが JavaScript 文字列としてインライン化されていることに気づいたかもしれません。VS Code を使っている場合は [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) 拡張機能をインストールして、文字列の前に `/*html*/` というコメントをつけることでシンタックスハイライトさせられます。
 
+## フレームワーク {#frameworks}
+
+[SSR](/guide/scaling-up/ssr) などの機能を標準でサポートする Vue フレームワークがあります:
+- [Nuxt](https://nuxt.com/)
+- [Vike](https://vike.dev/)
+- [Astro](https://astro.build/)
+- [Quasar](https://quasar.dev/)
+
+:::tip
+一般的には、SSR が必要な場合にのみフレームワークを使用することが推奨されます。
+
+SSR が必要ない場合は、単純に [Vite](https://vite.dev/) を使用できます（これは上記の[Vue アプリケーションの作成](#creating-a-vue-application)のセクションでスキャフォールディングしたものです）。
+:::
+
+:::info
+Vue フレームワークは通常 Vite を裏側で使用しているため、SSR が不要な場合は Vue フレームワークの代わりに直接 Vite を使用する方がよりシンプルなセットアップになります。とはいえ、フレームワークは UI テーマなどの追加機能もサポートしているため、それが単に Vite を使うのではなく Vue フレームワークを選ぶ理由になることもあります。
+:::
+
 ## 次のステップ {#next-steps}
 
 あなたが [はじめに](/guide/introduction) を跳ばしたなら、残りのドキュメントに移る前にこれを読むことを強く推奨します。
