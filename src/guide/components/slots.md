@@ -350,22 +350,25 @@ function BaseLayout(slots) {
 
 しかし、スロットのコンテンツが親のスコープと子のスコープの両方から来たデータを利用できると便利な場合があります。これを実現するためには、レンダリング時に子がデータをスロットに渡す手段が必要です。
 
-実際、まさにその通りのことが可能で、props をコンポーネントに渡すときと同様に、属性をスロットアウトレットに渡すことができます:
+実際、まさにその通りのことが可能で、props をコンポーネントに渡すときと同様に、属性をスロットアウトレットに渡すことができます。親テンプレートは `v-slot` でスロット props を受け取り、子テンプレートはレンダリング時にスロットアウトレットに props を渡します:
 
 ```vue-html
-<!-- <MyComponent> template -->
-<div>
-  <slot :text="greetingMessage" :count="1"></slot>
-</div>
+<!-- 親テンプレート（使用側） -->
+<ChildComponent v-slot="receivedProps">
+  {{ receivedProps.text }} {{ receivedProps.count }}
+</ChildComponent>
 ```
-
-スロット props を受け取るのは、デフォルトスロットと名前付きスロットを使用するのとは少し異なります。子コンポーネントのタグ上で `v-slot` を直接使うことによって、単一のデフォルトスロットを使って props を受け取る方法を最初に示します:
 
 ```vue-html
-<MyComponent v-slot="slotProps">
-  {{ slotProps.text }} {{ slotProps.count }}
-</MyComponent>
+<!-- 子テンプレート（スロットの定義） -->
+<!-- props つきでレンダーする！ -->
+<slot
+  text="hello"
+  :count="1"
+/>
 ```
+
+スロット props を受け取るのは、デフォルトスロットと名前付きスロットを使用するのとは少し異なります。上記の例では、`ChildComponent` タグ上で直接 `v-slot` を使うことによって、単一のデフォルトスロットを使って props を受け取っています。
 
 ![子コンポーネントが親提供のスロットコンテンツにデータを渡し返すスコープ付きスロットの様子を示す図](./images/scoped-slots.svg)
 
@@ -373,12 +376,12 @@ function BaseLayout(slots) {
 
 <div class="composition-api">
 
-[Playground で試す](https://play.vuejs.org/#eNp9kMEKgzAMhl8l9OJlU3aVOhg7C3uAXsRlTtC2tFE2pO++dA5xMnZqk+b/8/2dxMnadBxQ5EL62rWWwCMN9qh021vjCMrn2fBNoya4OdNDkmarXhQnSstsVrOOC8LedhVhrEiuHca97wwVSsTj4oz1SvAUgKJpgqWZEj4IQoCvZm0Gtgghzss1BDvIbFkqdmID+CNdbbQnaBwitbop0fuqQSgguWPXmX+JePe1HT/QMtJBHnE51MZOCcjfzPx04JxsydPzp2Szxxo7vABY1I/p)
+[Playground で試す](https://play.vuejs.org/#eJxlj00Kg0AMha8SsnHTKt2KDhQv0ANkUzTFgfljJkpBvHsZhYK6fS+878uCzxDKeWKssUl91EEgsUxBkdM2+CjQjdoMnbfBO3YCn+gtFGV1jPNEQa6p9g1FjlwjbIN5CytyAM1pZ74n46UljNyznnl4RR8S4XYMsCxwKErhr8C6XoveTy43G+SkpbLSXwNveLXOjx9Fs9cukZkt4cjGeMI9qzdeS/jYk+rEWH9AQHet)
 
 </div>
 <div class="options-api">
 
-[Playground で試す](https://play.vuejs.org/#eNqFkNFqxCAQRX9l8CUttAl9DbZQ+rzQD/AlJLNpwKjoJGwJ/nvHpAnusrAg6FzHO567iE/nynlCUQsZWj84+lBmGJ31BKffL8sng4bg7O0IRVllWnpWKAOgDF7WBx2em0kTLElt975QbwLkhkmIyvCS1TGXC8LR6YYwVSTzH8yvQVt6VyJt3966oAR38XhaFjjEkvBCECNcia2d2CLyOACZQ7CDrI6h4kXcAF7lcg+za6h5et4JPdLkzV4B9B6RBtOfMISmxxqKH9TarrGtATxMgf/bDfM/qExEUCdEDuLGXAmoV06+euNs2JK7tyCrzSNHjX9aurQf)
+[Playground で試す](https://play.vuejs.org/#eJxlkMEKgzAMhl8l5LLLpuwqKoy9wB4gl6GRCTUtNYogffdRywbq9f+Tfl+64sO5bJ4YCyzHxvdOa5J+cNYrPD+9aZ92cFZYFDpvB7hk+T6OyxcSEl62pZa792QUVhKA5jc1FimAw6MxCySBpMz/eJJSeXDmrVzHgfIgMt9GY7Ui9NxwP3P78taNhHUirCvsikx5UQjhXDR2kthskMNddVT6a+AVz2fHP9uLRq8kEZkV4YeNsYQpKzZeRXhPSX5ghC8NDY0G)
 
 </div>
 
@@ -387,25 +390,22 @@ function BaseLayout(slots) {
 スコープ付きスロットは、子コンポーネントに渡された関数として考えられます。その後、子コンポーネントはその関数を呼び、props を引数として渡します:
 
 ```js
-MyComponent({
+ChildComponent({
   // デフォルトスロットを関数として渡す
-  default: (slotProps) => {
-    return `${slotProps.text} ${slotProps.count}`
+  default: (receivedProps) => {
+    return `${receivedProps.text} ${receivedProps.count}`
   }
 })
 
-function MyComponent(slots) {
-  const greetingMessage = 'hello'
-  return `<div>${
-    // スロット関数を props つきで呼びだす！
-    slots.default({ text: greetingMessage, count: 1 })
-  }</div>`
+function ChildComponent(slots) {
+  // スロット関数を props つきで呼びだす！
+  return slots.default({ text: 'hello', count: 1 })
 }
 ```
 
 実際、これはスコープ付きスロットがコンパイルされる方法や、スコープ付きスロットを手動で [レンダー関数](/guide/extras/render-function)に渡す方法に非常に近いものです。
 
-`v-slot="slotProps"` がスロット関数のシグネチャーにどのように対応しているかに注目してください。関数の引数のように、`v-slot` でもオブジェクトの分割が利用できます:
+`v-slot="receivedProps"` がスロット関数のシグネチャーにどのように対応しているかに注目してください。関数の引数のように、`v-slot` でもオブジェクトの分割が利用できます:
 
 ```vue-html
 <MyComponent v-slot="{ text, count }">
@@ -415,7 +415,7 @@ function MyComponent(slots) {
 
 ### 名前およびスコープ付きスロット {#named-scoped-slots}
 
-名前付きスロットも同じように動作します。スロット props は `v-slot` ディレクティブの値として `v-slot:name="slotProps"` のようにアクセスできます。省略表記を使うと、次のようになります:
+名前付きスロットも同じように動作します。スロット props は `v-slot` ディレクティブの値として `v-slot:name="receivedProps"` のようにアクセスできます。省略表記を使うと、次のようになります:
 
 ```vue-html
 <MyComponent>
@@ -436,7 +436,7 @@ function MyComponent(slots) {
 props は名前付きスロットに次のように渡します:
 
 ```vue-html
-<slot name="header" message="hello"></slot>
+<slot name="header" message="hello" />
 ```
 
 スロットの `name` は予約されているため、props には含まれないことに注意してください。そのため、`headerProps` は `{ message: 'hello' }` となります。
@@ -446,7 +446,7 @@ props は名前付きスロットに次のように渡します:
 ```vue-html
 <!-- <MyComponent> template -->
 <div>
-  <slot :message="hello"></slot>
+  <slot message="hello" />
   <slot name="footer" />
 </div>
 ```
@@ -497,7 +497,7 @@ props は名前付きスロットに次のように渡します:
 ```vue-html
 <ul>
   <li v-for="item in items">
-    <slot name="item" v-bind="item"></slot>
+    <slot name="item" v-bind="item" />
   </li>
 </ul>
 ```
