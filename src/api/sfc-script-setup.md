@@ -314,6 +314,7 @@ const myRef = ref()
 </template>
 ```
 
+また、`defineProps` で `withDefaults` を使用する場合、変更可能な参照型（配列やオブジェクトなど）のデフォルト値は、意図しない変更や外部からの副作用を避けるために、`defineModel` では関数でラップする必要があります。
 :::
 
 ### 修飾子と変換 {#modifiers-and-transformers}
