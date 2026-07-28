@@ -1,0 +1,26 @@
+name: yuki-no
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  # 追跡元リポジトリーの変更を読む
+  contents: read
+  # 差分更新の issue を作成・更新する
+  issues: write
+  # 前回の実行情報を取得する
+  actions: read
+
+jobs:
+  yuki-no:
+    name: Yuki-no
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Gumball12/yuki-no@6379b1eeb16492952331d3cea3f7dd4685768eb4 # v1
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+          head-repo: https://github.com/vuejs/docs
+          head-repo-branch: main
+          track-from: 7681134fd8505e61a265d161d73d28acb3c74822
