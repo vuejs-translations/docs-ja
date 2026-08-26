@@ -2,7 +2,8 @@ name: yuki-no
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    # JST 3,11,15,19,23時に実行（本家のコミットが少ない 4-9 時台は停止）
+    - cron: '0 2,6,10,14,18 * * *'
   workflow_dispatch:
 
 permissions:
