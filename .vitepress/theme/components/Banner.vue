@@ -23,7 +23,7 @@ function dismiss() {
 <template>
   <div class="banner" v-if="open">
     <a href="https://vuefes.jp/2026/ticket" target="_blank">
-      Vue Fes Japan 2026チケット 販売中！ <span>早割は 8/31 まで</span>
+      Vue Fes Japan 2026チケット 販売中！ <span>購入はお早めに</span>
     </a>
     <button @click="dismiss">
       <VTIconPlus class="close" />
