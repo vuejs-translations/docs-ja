@@ -12,7 +12,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 `<TransitionGroup>` は `<Transition>` と同じ props、CSS トランジションクラス、JavaScript フックをサポートしますが、以下の違いがあります:
 
-- デフォルトでは、ラッパーの要素はレンダリングされません。しかし、`tag` props でレンダリングする要素を指定することができます。
+- リストのラッパーとしてレンダリングする要素を指定する `tag` props を受け取ります。`<Transition>` と同様に、デフォルトではラッパー要素はレンダリングされません。
 
 - [トランジションモード](./transition#transition-modes)は、排他的な要素同士を交互にトランジションすることがなくなったので、利用できません。
 
