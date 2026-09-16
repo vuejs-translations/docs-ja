@@ -64,3 +64,7 @@ setTimeout(() => {
 <!-- https://www.figma.com/file/Xw3UeNMOralY6NV7gSjWdS/Vue-Lifecycle -->
 
 すべてのライフサイクルフックとそれぞれのユースケースの詳細については、<span class="composition-api">[ライフサイクルフック API リファレンス](/api/composition-api-lifecycle)</span><span class="options-api">[ライフサイクルフック API リファレンス](/api/options-lifecycle)</span> を参照してください。
+
+そして実は、これで Vue の「基本編」は終わりです。おめでとうございます！まだ学ぶことはありますが、ひとまずは休みをいれて、あなた自身が Vue で遊び、何か楽しいものを作ってみることをおすすめします。もしくは、[サンプル集](/examples/)をまだ見ていないようであれば、チェックしてください。
+
+いま受けたダイジェストの知識に慣れてきたと感じたら、ガイドを進めてコンポーネントについてより深く学んでみましょう。
