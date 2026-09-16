@@ -245,7 +245,7 @@ vnode はすでに作成されたレンダリング出力を表すもので、�
 
 ## JSX / TSX {#jsx-tsx}
 
-[JSX](https://facebook.github.io/jsx/) は、JavaScript の XML 的な拡張機能で、こんなコードを書くことができるようになります:
+[JSX](https://react.dev/learn/writing-markup-with-jsx) は、JavaScript の XML 的な拡張機能で、こんなコードを書くことができるようになります:
 
 ```jsx
 const vnode = <div>hello</div>
