@@ -1,7 +1,5 @@
 # Teleport {#teleport}
 
-<VueSchoolLink href="https://vueschool.io/lessons/vue-3-teleport" title="Vue.js Teleport の無料レッスン"/>
-
 `<Teleport>` は、コンポーネントにあるテンプレートの一部を、そのコンポーネントの DOM 階層の外側に存在する DOM ノードに「テレポート」できる組み込みコンポーネントです。
 
 ## 基本的な使い方 {#basic-usage}
