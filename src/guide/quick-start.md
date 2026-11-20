@@ -54,6 +54,10 @@ $ yarn dlx create-vue@latest
 ```sh [bun]
 $ bun create vue@latest
 ```
+
+```sh [vite+]
+$ vp create vue@latest
+```
 :::
 
 このコマンドは、公式の Vue プロジェクトスキャフォールディングツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。TypeScript やテストのサポートなど、いくつかのオプション機能がプロンプトに表示されます:
@@ -100,6 +104,12 @@ $ bun install
 $ bun run dev
 ```
 
+```sh-vue [vite+]
+$ cd {{'<your-project-name>'}}
+$ vp install
+$ vp run dev
+```
+
 :::
 
 
@@ -128,6 +138,10 @@ $ yarn build
 
 ```sh [bun]
 $ bun run build
+```
+
+```sh [vite+]
+$ vp run build
 ```
 
 :::

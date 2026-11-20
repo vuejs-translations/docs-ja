@@ -47,6 +47,10 @@ $ yarn dlx create-vue@latest
 $ bun create vue@latest
 ```
 
+```sh [vite+]
+$ vp create vue@latest
+```
+
 :::
 
 このコマンドは、Vue 公式の雛形作成（scaffolding）ツールである [create-vue](https://github.com/vuejs/create-vue) をインストールして実行します。
