@@ -25,3 +25,16 @@ jobs:
           head-repo: https://github.com/vuejs/docs
           head-repo-branch: main
           track-from: 7681134fd8505e61a265d161d73d28acb3c74822
+
+  # 60 日間リポジトリーに動きがないとスケジュール実行が無効化されるため、定期的に再有効化する
+  keepalive:
+    name: Keepalive
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Re-enable workflow
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/yuki-no.yml/enable"
+        env:
+          GH_TOKEN: ${{ github.token }}
