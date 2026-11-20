@@ -218,6 +218,51 @@ export default defineComponent({
 })
 ```
 
+## コンポーネントのスロットの型付け {#typing-component-slots}
+
+`<script setup>` では、`defineSlots()` マクロ <sup class="vt-badge" data-text="3.3+" /> を使ってスロットを型付けできます。このマクロは、各キーがスロット名、各値がそのスロットの props を受け取る関数である型リテラルを受け取ります:
+
+```vue
+<script setup lang="ts">
+defineSlots<{
+  default(props: { msg: string }): any
+}>()
+</script>
+
+<template>
+  <slot msg="hello" />
+</template>
+```
+
+Vue はテンプレート内の `<slot>` の使用からスロットの型を推論できますが、`defineSlots()` を使うと明示的な規約を宣言できるため、親コンポーネントでスロット名やスロット props に対する型チェックや自動補完がより適切に働きます。詳しくは [defineSlots()](/api/sfc-script-setup#defineslots) を参照してください。
+
+### 再帰的コンポーネントでのスロットの転送 {#forwarding-slots-in-recursive-components}
+
+コンポーネントは `<template #default="slotProps"><slot v-bind="slotProps" /></template>` のようにして、スロットのすべての props を子コンポーネントのスロットに転送できます。その子がコンポーネント自身である場合、つまり[再帰的コンポーネント](/api/sfc-script-setup#recursive-components)の場合、`defineSlots()` でスロットの型を明示的に宣言しない限り、TypeScript は `slotProps` の型を推論できず、`'slotProps' implicitly has type 'any'` というエラーを報告します:
+
+```vue
+<script setup lang="ts">
+const props = defineProps<{ tier: number }>()
+
+defineSlots<{
+  default(props: { value: number }): any
+}>()
+</script>
+
+<template>
+  <div>
+    <TreeNode v-if="props.tier > 1" :tier="props.tier - 1">
+      <template #default="slotProps">
+        <slot v-bind="slotProps" />
+      </template>
+    </TreeNode>
+    <div v-else>
+      <slot :value="props.tier" />
+    </div>
+  </div>
+</template>
+```
+
 ## `ref()` の型付け {#typing-ref}
 
 ref は初期値から型推論されます:
