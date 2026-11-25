@@ -22,9 +22,7 @@ function dismiss() {
 
 <template>
   <div class="banner" v-if="open">
-    <a href="https://vuefes.jp/2026/ticket" target="_blank">
-      Vue Fes Japan 2026チケット 販売中！ <span>購入はお早めに</span>
-    </a>
+    <a target="_blank"></a>
     <button @click="dismiss">
       <VTIconPlus class="close" />
     </button>
@@ -50,7 +48,6 @@ html:not(.banner-dismissed) {
   text-align: center;
   font-size: 13px;
   font-weight: 600;
-  /*
   color: #fff;
   background-color: var(--vt-c-green);
   background: linear-gradient(
@@ -59,9 +56,6 @@ html:not(.banner-dismissed) {
     rgba(39, 179, 137, 1) 19%,
     rgba(100, 126, 255, 1) 100%
   );
-  */
-  color: #077358; /* Vue Fes */
-  background-color: #f5e6e1; /* Vue Fes */
 }
 
 .banner-dismissed .banner {
@@ -84,12 +78,11 @@ button {
   height: 20px;
   fill: #fff;
   transform: rotate(45deg);
-  fill: #5b21b6; /* Vue Fes */
 }
-
+/*
 @media (max-width: 720px) {
   a > span {
     display: none;
   }
-}
+} */
 </style>
